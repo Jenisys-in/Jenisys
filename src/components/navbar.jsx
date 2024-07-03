@@ -41,11 +41,11 @@ function Navbar() {
 
   return (
     <header className="flex flex-direction:row items-center justify-between bg-[#0c0741] text-white p-6 w-full border-b border-solid border-gray-900">
-      <div className="flex items-center gap-4 relative">
+      <div className="-mt-[35px] flex items-center gap-4 relative">
         <img
           src="/img/ellipse.jpeg"
           alt="Logo"
-          className="w-12 h-12 rounded-full"
+          className="-ml-[40px] -mt-[10px] w-14 h-14 rounded-full"
         />
         <h1 className="text-3xl font-bold tracking-tight text-white">LOGO</h1>
       </div>
