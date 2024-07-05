@@ -52,7 +52,7 @@ function Navbar() {
   ];
 
   return (
-    <header className="flex items-center justify-between bg-[#0c0741] text-white p-6 w-full h-[90px] border-b border-solid border-gray-900">
+    <header className="flex items-center justify-between bg-[#0c0741] text-white p-6 w-full h-[90px] border-b border-solid border-[#0c0741]">
       <div className="-mt-[34px] flex items-center">
         <img
           src="/img/ellipse.jpeg"
