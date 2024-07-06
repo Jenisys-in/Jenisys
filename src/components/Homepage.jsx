@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { MdModeEdit } from "react-icons/md";
 import "../App.css";
 
 const StyledText = styled.h1`
@@ -38,7 +39,15 @@ function Home() {
                 of technological advancement, but our impact reaches globally.
               </div>
               </StyledText>
+              <div className="flex  tp-[30px] py-10">
+              
+              <button className="lex items-center justify-center text-[#1E1E1E] rounded-full bg-[#FFFBEB] w-[183px] h-[57px]">
+               <MdModeEdit  className=" pl-[10px]  w-[24px] h-[24px]" />
+              Learn More
+            </button>
             </div>
+            </div>
+           
           </div>
         </div>
       </div>
