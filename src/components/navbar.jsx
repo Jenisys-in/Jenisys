@@ -22,7 +22,7 @@ const Button = ({ children, variant, to }) => (
       variant === "primary"
         ? "bg-white text-black border-zinc-200"
         : "bg-white text-black border-zinc-200"
-    } border-2 transition-colors duration-300 relative hover:bg-[#64b5f6] active:border-white duration-300 active:text-white`}
+    } border-2 transition-colors duration-300 relative hover:bg-[#F9A825] active:border-white duration-300 active:text-white`}
   >
     <Link to={to} className="w-full h-full">
       {children}
@@ -52,7 +52,7 @@ function Navbar() {
   ];
 
   return (
-    <header className="flex items-center justify-between bg-[#0c0741] text-white p-6 w-full h-[90px] border-b border-solid border-[#0c0741]">
+    <header className="fixed w-full top-0 left-0  flex items-center justify-between bg-[#5851AD] text-white p-6 w-full h-[90px] border-b border-solid border-[#5851AD]">
       <div className="-mt-[34px] flex items-center">
         <img
           src="/img/ellipse.jpeg"
@@ -86,7 +86,7 @@ function Navbar() {
           placeholder="Search"
           className="text-black font-semibold w-full p-4 rounded-full white"
         />
-        <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-[#0c0741] duration-300 hover:bg-[#64b5f6] rounded-full">
+        <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-[#5851AD] duration-300 hover:bg-[#F9A825] rounded-full">
           <AiOutlineSearch />
         </button>
       </div>
@@ -99,7 +99,7 @@ function Navbar() {
               placeholder="Search"
               className="text-black font-semibold w-full p-4 rounded-full white"
             />
-            <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-[#0c0741] duration-300 hover:bg-[#64b5f6] rounded-full">
+            <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-[#5851AD] duration-300 hover:bg-[#64b5f6] rounded-full">
               <AiOutlineSearch />
             </button>
           </div>
@@ -123,7 +123,7 @@ function Navbar() {
       </nav>
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#0c0741] text-white z-50">
+        <div className="md:hidden fixed inset-0 bg-[#5851AD] text-white z-50">
           <div className="p-6">
             <button
               onClick={closeMobileMenu}
