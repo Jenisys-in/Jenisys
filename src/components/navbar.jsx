@@ -9,7 +9,7 @@ const NavItem = ({ children, isActive, to }) => (
     to={to}
     className={`px-1 py-2 whitespace-nowrap rounded-full ${
       isActive ? "text-white font-semibold" : "text-white"
-    } transition duration-300 ease-in-out hover:bg-white hover:text-black active:border-white duration-300 active:text-white`}
+    } transition duration-300 ease-in-out hover:bg-white hover:text-black active:border-white duration-300 active:text-white hover:[box-shadow:0_7px_8px_0_#C0C0C0_,_0_7px_50px_0_#C0C0C0]`}
   >
     {children}
   </Link>
@@ -22,7 +22,7 @@ const Button = ({ children, variant, to }) => (
       variant === "primary"
         ? "bg-white text-black border-zinc-200"
         : "bg-white text-black border-zinc-200"
-    } border-2 transition-colors duration-300 relative hover:bg-[#F9A825] active:border-white duration-300 active:text-white`}
+    } border-0 transition-colors duration-300 relative hover:bg-[#F9A825] active:border-white duration-300 active:text-white hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A]`}
   >
     <Link to={to} className="w-full h-full">
       {children}
