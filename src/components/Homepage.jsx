@@ -4,7 +4,7 @@ import "@fontsource/lexend-exa";
 
 function Home() {
   return (
-    <div className="mt-[90px] flex flex-col grow shrink-0 items-center text-2xl basis-0 w-fit max-md:max-w-full bg-[#5851AD] min-h-screen">
+    <div className="mt-[35px] flex flex-col grow shrink-0 items-center text-2xl basis-0 w-fit max-md:max-w-full bg-[#5851AD] min-h-screen">
       <div className="flex">
         <div className="text-6xl font-bold tracking-tighter text-white bg-clip-text leading-[76.8px] max-md:max-w-full max-md:text-4xl">
           <h1 className="mt-[50px] w-[731px] text-center relative text-inherit tracking-[-0.03em] leading-[120%] font-bold font-['Lexend_Exa'] inline-block shrink-0 ">
@@ -37,15 +37,36 @@ function Home() {
           className="mr-[50px] mt-[70px] w-19 h-12 rounded-full"
         />
       </div>
-      <div className="flex flex-col justify-center mt-5 max-w-full tracking-normal text-center bg-amber-50 shadow-md leading-[133%] rounded-[30px] text-[color:var(--sds-color-text-default-default)] w-[183px] max-md:mt-10">
+      <div className="flex flex-col justify-center mt-5 max-w-full tracking-normal text-center bg-amber-50 shadow-md leading-[133%] rounded-[30px] text-[color:var(--sds-color-text-default-default)] w-[183px] max-md:mt-10 hover:bg-[#F9A825] active:border-white duration-300">
         <div className="flex gap-3 justify-center  py-3.5">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/9afb6dcba9f05d54e0df071a9722482e614fd8d31d6f128b5899af272ff40509?apiKey=150ca4726f0b413090f132e093d2a392&"
             className="shrink-0 my-auto w-6 aspect-square"
           />
-          <div>Learn More</div>
+          <div >
+            <button >Learn More</button></div>
         </div>
+      </div>
+      <div className="flex flex-row pt-[27px]">
+      <img
+            loading="lazy"
+            src="img/Rectangle 2.png"
+            className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50"
+          />
+          <img
+            loading="lazy"
+            src="img/Rectangle 2.png"
+            className="object-contain w-[500px] h-[400px] rounded-50"
+          />
+          <img
+            loading="lazy"
+            src="img/Rectangle 2.png"
+            className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50"
+          />    
+      </div>
+      <div className="pt-[10px]">
+      <hr className=" place-content-center border-[1px] w-[1100px] h-0   border-[solid] border-[#FFFFFF]"></hr>
       </div>
     </div>
   );
