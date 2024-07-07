@@ -52,7 +52,7 @@ function Navbar() {
   ];
 
   return (
-    <header className="fixed w-full top-0 left-0  flex items-center justify-between bg-[#5851AD] text-white p-6 w-full h-[90px] border-b border-solid border-[#5851AD]">
+    <header className="fixed z-10 w-full top-0 left-0  flex items-center justify-between bg-[#5851AD] text-white p-6 w-full h-[90px] border-b border-solid border-[#5851AD]">
       <div className="-mt-[34px] flex items-center">
         <img
           src="/img/ellipse.jpeg"
