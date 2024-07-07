@@ -118,13 +118,36 @@ const Home = () => {
           <hr className="absolute left-[145px] bottom-[75px] border-[1px] w-[480px] border-[#FFFFFF]" />
         </div>
       </div>
-      <div className="-ml-[340px] mb-[10px] flex gap-5 justify-between w-full max-w-[1100px] max-md:flex-wrap max-md:max-w-full">
+      <div className="-ml-[250px] mb-[10px] flex gap-5 justify-between w-full max-w-[1100px] max-md:flex-wrap max-md:max-w-full">
         <div className="flex flex-col justify-center">
           <div className="shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
         </div>
         <div className="mr-[130px] ml-[110px] pt-[60px]">
           <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
         </div>
+      </div>
+      <div className="relative mt-6">
+        <h1 className="self-center pl-[390px] text-white font-[Italiana] text-[64px] py-[23px]">Client Testimonials</h1>
+        <div className="flex justify-center gap-x-16  pt-[50px]">
+        <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[140px] w-[140px] left-[110px] mt-[20px]" />
+        <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[140px] w-[140px] left-[1010px] mt-[20px]" />
+        <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[210px] w-[210px] left-[523px] mt-[20px]" />
+        
+          <img
+          loading="lazy"
+          src="img/testimonials.png"
+          className="rounded-1-[25px] w-[350px] h-[400px] pt-[80px]" />
+           <img
+          loading="lazy"
+          src="img/testimonials.png"
+          className="rounded-1-[25px] w-[425px] h-[500px]" />
+           <img
+          loading="lazy"
+          src="img/testimonials.png"
+          className="rounded-1-[25px] w-[350px] h-[400px] pt-[80px]" />
+
+        </div>
+
       </div>
     </div>
   );
