@@ -118,11 +118,11 @@ const Home = () => {
           <hr className="absolute left-[145px] bottom-[75px] border-[1px] w-[480px] border-[#FFFFFF]" />
         </div>
       </div>
-      <div className="-ml-[330px] mb-[10px] flex gap-5 justify-between w-full max-w-[1100px] max-md:flex-wrap max-md:max-w-full">
+      <div className="-ml-[340px] mb-[10px] flex gap-5 justify-between w-full max-w-[1100px] max-md:flex-wrap max-md:max-w-full">
         <div className="flex flex-col justify-center">
           <div className="shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
         </div>
-        <div className="mr-[130px] ml-[100px] pt-[60px]">
+        <div className="mr-[130px] ml-[110px] pt-[60px]">
           <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
         </div>
       </div>
