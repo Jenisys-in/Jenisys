@@ -132,23 +132,64 @@ const Home = () => {
         <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[140px] w-[140px] left-[110px] mt-[20px]" />
         <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[140px] w-[140px] left-[1010px] mt-[20px]" />
         <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[210px] w-[210px] left-[523px] mt-[20px]" />
-        
+          <div>
           <img
           loading="lazy"
           src="img/testimonials.png"
-          className="rounded-1-[25px] w-[350px] h-[400px] pt-[80px]" />
+          className="rounded-1-[25px] w-[350px] h-[440px] pt-[80px]" />
+          <p className="absolute bottom-[140px] left-[10px] font-[League Spartan] text-[16px] text-white leading-6">
+            Welcome to Stellar Innovations Inc., where <br></br>
+            technology meets ingenuity. Established in <br></br>
+            2010, we are a leading provider of innovative<br></br>
+            solutions designed to enhance the way <br></br>
+            businesses operate. Our headquarters are<br></br>
+            located in Silicon Valley, the heart of <br></br>
+            technological advancement, but our impact<br></br>
+            reaches globally.</p>
+          </div>
+          <div>
            <img
           loading="lazy"
           src="img/testimonials.png"
           className="rounded-1-[25px] w-[425px] h-[500px]" />
+          <p className="absolute bottom-[70px] left-[435px] font-[League Spartan] text-[20px] text-white leading-6">
+            Welcome to Stellar Innovations Inc., where <br></br>
+            technology meets ingenuity. Established in <br></br>
+            2010, we are a leading provider of innovative<br></br>
+            solutions designed to enhance the way <br></br>
+            businesses operate. Our headquarters are<br></br>
+            located in Silicon Valley, the heart of <br></br>
+            technological advancement, but our impact<br></br>
+            reaches globally.</p>
+          </div>
+          <div>
            <img
           loading="lazy"
           src="img/testimonials.png"
-          className="rounded-1-[25px] w-[350px] h-[400px] pt-[80px]" />
+          className="rounded-1-[25px] w-[350px] h-[440px] pt-[80px]" />
+          <p className="absolute bottom-[140px] left-[920px] font-[League Spartan] text-[16px] text-white leading-6">
+            Welcome to Stellar Innovations Inc., where <br></br>
+            technology meets ingenuity. Established in <br></br>
+            2010, we are a leading provider of innovative<br></br>
+            solutions designed to enhance the way <br></br>
+            businesses operate. Our headquarters are<br></br>
+            located in Silicon Valley, the heart of <br></br>
+            technological advancement, but our impact<br></br>
+            reaches globally.</p>
+          </div>
 
         </div>
 
       </div>
+        <div>
+          <div className=" mt-[12px] absolute right-[25px] rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
+          </div>
+      <div className="mr-[130px] ml-[110px] pt-[60px]">
+          <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
+        </div>
+        <div >
+          about us
+        </div>
     </div>
   );
 };
