@@ -195,101 +195,159 @@ const Home = () => {
       </div>
       <div className="relative flex mt-[50px] ">
         <div className="justify-start pr-[750px]">
-          <h1 className="pt-[50px] pl-[40px] font-['Lexend_Exa'] text-white text-[80px]">About</h1>
-          <div className=" mt-[5px] absolute top-[20px] right-[920px] rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
-          <h1 className=" pt-[60px] pl-[40px]  font-['Londrina_Shadow'] text-white text-[80px] pt-[40px]">Us</h1>
+          <h1 className="pt-[50px] pl-[40px] font-['Lexend_Exa'] text-white text-[80px]">
+            About
+          </h1>
+          <div className=" mt-[5px] absolute top-[20px] ml-[350px] rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
+          <h1 className=" pt-[60px] pl-[40px]  font-['Londrina_Shadow'] text-white text-[80px] pt-[40px]">
+            Us
+          </h1>
           <p className=" pt-[70px] pl-[40px]  font-[League Spartan] text-[25px] text-white pt-[40px] tracking-7">
-              Welcome to Stellar Innovations Inc., where 
-              technology meets ingenuity. Established in 
-              2010, we are a leading provider of innovative
-              solutions designed to enhance the way 
-              businesses operate. Our headquarters are
-              located in Silicon Valley, the heart of 
-              technological advancement, but our impact
-              reaches globally.
-            </p>
-            <p className=" pt-[70px] pl-[40px]  font-[League Spartan] text-[25px] text-white pt-[40px] tracking-7 mb-[100px]">
-              Note from the Owner
-            </p>
+            Welcome to Stellar Innovations Inc., where technology meets
+            ingenuity. Established in 2010, we are a leading provider of
+            innovative solutions designed to enhance the way businesses operate.
+            Our headquarters are located in Silicon Valley, the heart of
+            technological advancement, but our impact reaches globally.
+          </p>
+          <p className=" pt-[70px] pl-[40px]  font-[League Spartan] text-[25px] text-white pt-[40px] tracking-7 mb-[100px]">
+            Note from the Owner
+          </p>
+          <div>
             <div>
-            <img
-            loading="lazy"
-            src="img/about.png"
-            className="  mt-[200px] absolute top-[20px] right-[120px] w-[300px] rounded-l-lg "
-            alt="Rectangle"
-          />
-          <img
-            loading="lazy"
-            src="img/about.png"
-            className="  mt-[120px] absolute top-[1px] left-[775px]  w-[300px] rounded-l-lg "
-            alt="Rectangle"
-          />
+              <img
+                loading="lazy"
+                src="img/about.png"
+                className="  mt-[200px] absolute top-[110px] right-[120px] w-[300px] rounded-l-lg "
+                alt="Rectangle"
+              />
             </div>
-
+            <div>
+              <img
+                loading="lazy"
+                src="img/about.png"
+                className="  mt-[200px] absolute top-[20px] right-[120px] w-[300px] rounded-l-lg "
+                alt="Rectangle"
+              />
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="img/about.png"
+                className="  mt-[120px] absolute top-[1px] left-[775px]  w-[300px] rounded-l-lg "
+                alt="Rectangle"
+              />
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="img/about.png"
+                className=" w-[200px]  absolute top-[300px] right-[120px] w-[300px] rounded-l-lg "
+                alt="Rectangle"
+              />
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="img/about.png"
+                className=" w-[300px]  absolute top-[20px] right-[120px] w-[300px] rounded-l-lg "
+                alt="Rectangle"
+              />
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="img/about.png"
+                className=" w-[200px] mt-[200px] absolute top-[20px] right-[400px] w-[300px] rounded-l-lg "
+                alt="Rectangle"
+              />
+            </div>
+          </div>
         </div>
-        
       </div>
       <div className="mr-[130px] ml-[110px] pt-[60px]">
         <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
       </div>
       <div className="relative flex-row  bg-[#2B2381] self-stretch ">
         <div className="mt-[150px] ml-[70px] mb-[190px] w-[700px] ">
-        <a href="url"><img 
-        loading="lazy"
-        src="img/X Logo.png"
-        className=" top-[150px]  "
-        /></a>
-        <a href="url"><img 
-        loading="lazy"
-        src="img/Logo Instagram.png"
-        className="absolute top-[150px] pl-[40px]"
-        /></a>
-        <a href="url"><img 
-        loading="lazy"
-        src="img/Logo Youtube.png"
-        className="absolute top-[150px] pl-[80px]"
-        /></a>
-        <a href="url"><img 
-        loading="lazy"
-        src="img/LinkedIn.png"
-        className=" absolute top-[150px] pl-[120px]"
-        /></a>
-
-
-        
+          <a href="url">
+            <img
+              loading="lazy"
+              src="img/X Logo.png"
+              className=" top-[150px]  "
+            />
+          </a>
+          <a href="url">
+            <img
+              loading="lazy"
+              src="img/Logo Instagram.png"
+              className="absolute top-[150px] pl-[40px]"
+            />
+          </a>
+          <a href="url">
+            <img
+              loading="lazy"
+              src="img/Logo Youtube.png"
+              className="absolute top-[150px] pl-[80px]"
+            />
+          </a>
+          <a href="url">
+            <img
+              loading="lazy"
+              src="img/LinkedIn.png"
+              className=" absolute top-[150px] pl-[120px]"
+            />
+          </a>
         </div>
         <div className="absolute top-[70px] pl-[400px] mb-[100px] text-white ">
           <h2 className="mb-[10px] font-bold">Use Cases</h2>
-        <a href="url">UI Design</a><br />
-        <a href="url">UX Design</a><br />
-        <a href="url">Wireframing</a><br />
-        <a href="url">Diagramming</a><br />
-        <a href="url">Brainstorming</a><br />
-        <a href="url">Online whiteboard</a><br />
-        <a href="url">Team collaboration</a><br />
-
+          <a href="url">UI Design</a>
+          <br />
+          <a href="url">UX Design</a>
+          <br />
+          <a href="url">Wireframing</a>
+          <br />
+          <a href="url">Diagramming</a>
+          <br />
+          <a href="url">Brainstorming</a>
+          <br />
+          <a href="url">Online whiteboard</a>
+          <br />
+          <a href="url">Team collaboration</a>
+          <br />
         </div>
         <div className="absolute top-[70px] pl-[740px] mb-[100px] text-white ">
           <h2 className="mb-[10px] font-bold">Explore</h2>
-        <a href="url">Design</a><br />
-        <a href="url">Prototyping</a><br />
-        <a href="url">Development features</a><br />
-        <a href="url">Design systems</a><br />
-        <a href="url">Collaboration features</a><br />
-        <a href="url">Design process</a><br />
-        <a href="url/">FigJam</a><br />
-
+          <a href="url">Design</a>
+          <br />
+          <a href="url">Prototyping</a>
+          <br />
+          <a href="url">Development features</a>
+          <br />
+          <a href="url">Design systems</a>
+          <br />
+          <a href="url">Collaboration features</a>
+          <br />
+          <a href="url">Design process</a>
+          <br />
+          <a href="url/">FigJam</a>
+          <br />
         </div>
         <div className="absolute top-[70px] pl-[1100px] mb-[100px] text-white ">
           <h2 className="mb-[10px] font-bold">Resources</h2>
-        <a href="url">Blog</a><br />
-        <a href="url">Best practices</a><br />
-        <a href="url">Colors</a><br />
-        <a href="url">Color wheel</a><br />
-        <a href="url">Support</a><br />
-        <a href="url">Developers</a><br />
-        <a href="url">Resource library</a><br />
-
+          <a href="url">Blog</a>
+          <br />
+          <a href="url">Best practices</a>
+          <br />
+          <a href="url">Colors</a>
+          <br />
+          <a href="url">Color wheel</a>
+          <br />
+          <a href="url">Support</a>
+          <br />
+          <a href="url">Developers</a>
+          <br />
+          <a href="url">Resource library</a>
+          <br />
         </div>
       </div>
     </div>
