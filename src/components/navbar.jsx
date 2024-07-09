@@ -45,7 +45,7 @@ function Navbar() {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Mission", path: "/mission" },
-    { name: "Blog", path: "/blog" },
+    { name: "Blog", path: "/Blog" },
     { name: "Testimonials", path: "/testimonials" },
     { name: "About Us", path: "/about" },
     { name: "Contact Us", path: "/contact" },
