@@ -218,7 +218,7 @@ const Home = () => {
               <img
                 loading="lazy"
                 src="img/about.png"
-                className="  mt-[200px] absolute top-[110px] right-[120px] w-[300px] rounded-l-lg "
+                className="  -mt-[40px] absolute top-[100px] left-[830px] w-[290px] h-[250px] rounded-l-lg "
                 alt="Rectangle"
               />
             </div>
@@ -226,7 +226,7 @@ const Home = () => {
               <img
                 loading="lazy"
                 src="img/about.png"
-                className="  mt-[200px] absolute top-[20px] right-[120px] w-[300px] rounded-l-lg "
+                className="  mt-[181px] absolute -top-[10px] left-[805px]  w-[360px] h-[313px] rounded-l-lg "
                 alt="Rectangle"
               />
             </div>
@@ -234,7 +234,7 @@ const Home = () => {
               <img
                 loading="lazy"
                 src="img/about.png"
-                className="  mt-[120px] absolute top-[1px] left-[775px]  w-[300px] rounded-l-lg "
+                className=" mt-[280px] absolute top-[10px] left-[870px] w-[336px] h-[295px] rounded-l-lg "
                 alt="Rectangle"
               />
             </div>
@@ -242,7 +242,7 @@ const Home = () => {
               <img
                 loading="lazy"
                 src="img/about.png"
-                className=" w-[200px]  absolute top-[300px] right-[120px] w-[300px] rounded-l-lg "
+                className="  mt-[250px] absolute top-[20px] left-[980px] w-[330px] h-[295px] rounded-l-lg "
                 alt="Rectangle"
               />
             </div>
