@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import "@fontsource/lexend-exa";
 
+
 const Home = () => {
   return (
     <div className="mt-[35px] z-1 absolute flex flex-col items-center text-2xl w-fit max-md:max-w-full bg-[#5851AD] min-h-screen">
