@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import Navbar from "./components/navbar.jsx";
 import Home from "./components/Homepage.jsx";
+import LogIn from "./components/Login.jsx";
 import ScrollToTop from "./ScrolltoTop.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LogIn />} />
       </Routes>
     </Router>
   );
