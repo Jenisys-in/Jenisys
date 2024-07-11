@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import "@fontsource/lexend-exa";
 
+
 const Home = () => {
   return (
     <div className="mt-[35px] z-1 absolute flex flex-col items-center text-2xl w-fit max-md:max-w-full bg-[#5851AD] min-h-screen">
@@ -225,15 +226,11 @@ const Home = () => {
               <img
                 loading="lazy"
                 src="img/about.png"
+<<<<<<< HEAD
                 className="  mt-[75px] absolute top-[20px] left-[820px] w-[340px] h-[295px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-            <div>
-              <img
-                loading="lazy"
-                src="img/about.png"
+=======
                 className="  mt-[181px] absolute -top-[10px] left-[805px]  w-[360px] h-[313px] rounded-l-lg "
+>>>>>>> 6d3487c02dd776a1414f99b7c9a21b0c076a2908
                 alt="Rectangle"
               />
             </div>
@@ -241,7 +238,23 @@ const Home = () => {
               <img
                 loading="lazy"
                 src="img/about.png"
+<<<<<<< HEAD
+                className="  mt-[181px] absolute -top-[10px] left-[805px]  w-[360px] h-[313px] rounded-l-lg "
+=======
+                className=" mt-[280px] absolute top-[10px] left-[870px] w-[336px] h-[295px] rounded-l-lg "
+>>>>>>> 6d3487c02dd776a1414f99b7c9a21b0c076a2908
+                alt="Rectangle"
+              />
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="img/about.png"
+<<<<<<< HEAD
                 className="mt-[180px] absolute top-[10px] left-[895px] w-[340px] h-[295px] rounded-l-lg "
+=======
+                className="  mt-[250px] absolute top-[20px] left-[980px] w-[330px] h-[295px] rounded-l-lg "
+>>>>>>> 6d3487c02dd776a1414f99b7c9a21b0c076a2908
                 alt="Rectangle"
               />
             </div>
