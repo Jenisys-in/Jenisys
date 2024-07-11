@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import "@fontsource/lexend-exa";
 
@@ -6,16 +6,16 @@ const Home = () => {
   return (
     <div className="mt-[35px] z-1 absolute flex flex-col items-center text-2xl w-fit max-md:max-w-full bg-[#5851AD] min-h-screen">
       <div className="flex">
-        <h1 className="mt-[80px] text-6xl font-bold tracking-tighter text-white bg-clip-text leading-[76.8px] max-md:text-4xl">
+        <h1 className="mt-20 text-6xl font-bold text-white">
           <span>This is - </span>
-          <span className="text-transparent bg-gradient-to-r from-white via-[#8a72ce_51.4%] to-[#694ac0] bg-clip-text">
-            Jenisys
+          <span className="text-transparent bg-gradient-to-r from-white to-[#694ac0] bg-clip-text">
+            <span className="tracking-widest leading-[1.2em]">Jenisys</span>
           </span>
         </h1>
       </div>
       <div className="flex">
-        <section className="self-stretch ml-[60px] mt-3 px-2 py-3 font-medium tracking-tight leading-7 text-[24px] text-center text-amber-50 max-md:max-w-full font-league-spartan">
-          <p className="leading-[120%] tracking-[-2%]">
+        <section className="self-stretch ml-12 mt-3 px-2 py-3 font-medium tracking-tight leading-7 text-2xl text-center text-amber-50 max-md:max-w-full font-league-spartan">
+          <p className="leading-[120%] tracking-[-0.02em]">
             Welcome to Stellar Innovations Inc., where technology meets
             ingenuity. Established in 2010, we are a leading provider of
             innovative solutions designed to enhance the way businesses operate.
