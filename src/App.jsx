@@ -15,11 +15,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-<<<<<<< HEAD
+
         <Route path="/Blog" element={<Blog />} />
-=======
+
         <Route path="/login" element={<LogIn />} />
->>>>>>> 6d3487c02dd776a1414f99b7c9a21b0c076a2908
       </Routes>
     </Router>
   );
