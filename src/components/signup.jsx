@@ -68,10 +68,10 @@ const SignUp = () => {
           </button>
         </form>
         <div>
-          <button className=" text-[18px]  hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[110px] left-[390px]  bg-white text-black border-zinc-200 rounded-full px-32 py-2 drop-shadow-xl mt-[40px] mb-[55px] ">
+          <button className=" text-[18px] flex  hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[110px] left-[390px]  bg-white text-black border-zinc-200 rounded-full px-32 py-2 drop-shadow-xl mt-[40px] mb-[55px] ">
             Sign Up with Google
             <img
-              className="w-[30px] h-[30px] absolute left-[180px] top-[802px] absolute"
+              className="w-[30px] h-[30px]  "
               src="https://d1nc6vzg2bevln.cloudfront.net/images/general/google.svg"
             />
           </button>
