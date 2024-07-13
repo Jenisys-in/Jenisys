@@ -1,6 +1,8 @@
 import React from "react";
 import "../App.css";
 import "@fontsource/lexend-exa";
+import { Link } from 'react-router-dom';
+
 
 const SignUp = () => {
   return (
@@ -23,9 +25,11 @@ const SignUp = () => {
             <h1 className="font-['Encode_Sans_Semi_Expanded'] px-[150px] text-[20px] pt-[35px] text-white ">
               Already have an account?{" "}
             </h1>
+            <Link to="/login">
             <button className=" duration-300 hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] text-[18px] active:border-white duration-300 active:text-white absolute left-[410px] top-[30px] bg-white text-black border-zinc-200 rounded-full px-4 py-2 drop-shadow-xl">
               Sign In
             </button>
+            </Link>
           </div>
         </div>
         <form>
