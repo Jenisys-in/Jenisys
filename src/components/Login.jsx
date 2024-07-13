@@ -1,8 +1,7 @@
 import React from "react";
 import "../App.css";
 import "@fontsource/lexend-exa";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const LogIn = () => {
   return (
@@ -26,43 +25,53 @@ const LogIn = () => {
               Don't have an account?{" "}
             </h1>
             <Link to="/signup">
-            <button to="/signup" className=" duration-300 hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] text-[18px] active:border-white duration-300 active:text-white absolute left-[390px] top-[30px] bg-white text-black border-zinc-200 rounded-full px-4 py-2 drop-shadow-xl">
-              Sign Up
-            </button>
+              <button
+                to="/signup"
+                className=" duration-300 hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] text-[18px] active:border-white duration-300 active:text-white absolute left-[390px] top-[30px] bg-white text-black border-zinc-200 rounded-full px-4 py-2 drop-shadow-xl"
+              >
+                Sign Up
+              </button>
             </Link>
           </div>
         </div>
         <form>
-        <div className="mt-[60px]">
-          <h1 className="pl-[90px] text-white text-[20px]">Username</h1>
-          <input
-            id="usn"
-            className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
-          />
-          <h1 className="pl-[90px] text-white  text-[20px] mt-[10px]">
-            Password
-          </h1>
-          <input
-            id="pass"
-            type="password"
-            className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
-          />
-        </div>
-        <div className="flex flex-row pl-[80px] mt-[20px]">
-          <h3 className="text-[20px] text-white">
-            <input type="checkbox" /> Keep me logged in
-          </h3>
-          <h3 className="text-white text-[20px] pl-[100px] underline">
-            {" "}
-            Forgot Password?
-          </h3>
-        </div>
-        <button className=" text-[18px] hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[270px] left-[390px] top-[30px] bg-white text-black border-zinc-200 rounded-full px-4 py-2 drop-shadow-xl mt-[20px]">
-          Log in
-        </button>
+          <div className="mt-[60px]">
+            <h1 className="pl-[90px] text-white text-[20px]">Username</h1>
+            <input
+              id="usn"
+              placeholder="    username"
+              type="text"
+              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+            />
+            <h1 className="pl-[90px] text-white  text-[20px] mt-[10px]">
+              Password
+            </h1>
+            <input
+              id="pass"
+              type="password"
+              placeholder="    Password"
+              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+            />
+          </div>
+          <div className="flex flex-row pl-[80px] mt-[20px]">
+            <h3 className="text-[20px] text-white">
+              <input type="checkbox" /> Keep me logged in
+            </h3>
+            <h3 className="text-white text-[20px] pl-[100px] underline">
+              {" "}
+              Forgot Password?
+            </h3>
+          </div>
+          <button className=" text-[18px] hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[270px] left-[390px] top-[30px] bg-white text-black border-zinc-200 rounded-full px-4 py-2 drop-shadow-xl mt-[20px]">
+            Log in
+          </button>
         </form>
         <button className=" text-[18px]  hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[110px] left-[390px]  bg-white text-black border-zinc-200 rounded-full px-32 py-2 drop-shadow-xl mt-[40px] mb-[55px]">
           Log in with Google
+          <img
+            className="w-[30px] h-[30px] absolute left-[180px] top-[605px] absolute"
+            src="https://d1nc6vzg2bevln.cloudfront.net/images/general/google.svg"
+          />
         </button>
       </div>
     </div>
