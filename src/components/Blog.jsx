@@ -1,16 +1,17 @@
 import React from "react"; // eslint-disable-line
 import "../App.css";
+import { Link } from "react-router-dom";
 
 function Blog() {
   return (
-    <div  className="mt-[90px] bg-[#30248c] ">
+    <div  className="mt-[90px] bg-[#30248c] relative self-stretch ">
     <div className=" flex flex-row pt-[25px] pb-[10px]">
       <h1 className="font-['Kodchasan'] text-[35px] ml-[25px] mr-[500px] text-white">Categories</h1>
-     
+      <Link to="/newblog">
       <button className="font-['Inter'] ml-[480px] text-[22px]  text-[#FFFBEB] bg-[#5851AD] rounded-full py-2 px-3">
         New Blog
       </button>
-     
+      </Link>
     </div>
     <hr className="border-[1px] w-[1355px] border-[#FFFFFF] ml-[10px]" />
     <div className="mt[20px]  bg-[#30248c] py-4 ">
@@ -51,11 +52,16 @@ function Blog() {
 
     </div>
     </div>
+    
+    <button>
     <img 
-    className="ml-[1300px] "
+    className=" absolute bg-[#30248c] left-[1300px] "
     src="img/arrowdown.png"
     alt="arrow"
     />
+    </button>
+    
+    
     </div>
   );
 }
