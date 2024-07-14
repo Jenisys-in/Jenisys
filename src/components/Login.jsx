@@ -39,7 +39,7 @@ const LogIn = () => {
             <h1 className="pl-[90px] text-white text-[20px]">Username</h1>
             <input
               id="usn"
-              placeholder="    username"
+              placeholder="  Username"
               type="text"
               className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
@@ -49,7 +49,7 @@ const LogIn = () => {
             <input
               id="pass"
               type="password"
-              placeholder="    Password"
+              placeholder="  Password"
               className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
           </div>
@@ -69,7 +69,7 @@ const LogIn = () => {
         <button className=" text-[18px] flex  hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[110px] left-[390px]  bg-white text-black border-zinc-200 rounded-full px-32 py-2 drop-shadow-xl mt-[40px] mb-[55px]">
           Log in with Google
           <img
-            className="w-[30px] h-[30px]  "
+            className="w-[30px] h-[30px]"
             src="https://d1nc6vzg2bevln.cloudfront.net/images/general/google.svg"
           />
         </button>

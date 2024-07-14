@@ -7,6 +7,8 @@ import ScrollToTop from "./ScrolltoTop.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Blog from "./components/Blog.jsx";
 import SignUp from "./components/signup.jsx";
+import NewBlog from "./components/new-blog.jsx";
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
 
         <Route path="/Blog" element={<Blog />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/newblog" element={<NewBlog />} />
 
         <Route path="/login" element={<LogIn />} />
       </Routes>
