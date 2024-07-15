@@ -1,6 +1,7 @@
 import React from "react"; // eslint-disable-line
 import "../App.css";
 import { Link } from "react-router-dom";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 function Blog() {
   return (
@@ -9,6 +10,7 @@ function Blog() {
       <h1 className="font-['Kodchasan'] text-[35px] ml-[25px] mr-[500px] text-white">Categories</h1>
       <Link to="/newblog">
       <button className="font-['Inter'] ml-[480px] text-[22px]  text-[#FFFBEB] bg-[#5851AD] rounded-full py-2 px-3">
+      <IoIosAddCircleOutline className="inline mr-[5px] -mt-[3px]" />
         New Blog
       </button>
       </Link>

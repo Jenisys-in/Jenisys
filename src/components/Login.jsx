@@ -55,7 +55,7 @@ const LogIn = () => {
           </div>
           <div className="flex flex-row pl-[80px] mt-[20px]">
             <h3 className="text-[20px] text-white">
-              <input type="checkbox" /> Keep me logged in
+              <span><input type="checkbox" /> Keep me logged in </span>
             </h3>
             <h3 className="text-white text-[20px] pl-[100px] underline">
               {" "}
@@ -69,7 +69,7 @@ const LogIn = () => {
         <button className=" text-[18px] flex  hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[110px] left-[390px]  bg-white text-black border-zinc-200 rounded-full px-32 py-2 drop-shadow-xl mt-[40px] mb-[55px]">
           Log in with Google
           <img
-            className="w-[30px] h-[30px]"
+            className="w-[30px] h-[30px] ml-[10px]"
             src="https://d1nc6vzg2bevln.cloudfront.net/images/general/google.svg"
           />
         </button>
