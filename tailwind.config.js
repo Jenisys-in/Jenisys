@@ -4,6 +4,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'radial-gradient': 'radial-gradient(circle, #5A54A4, #2D248F)',
+      },
       letterSpacing: {
         'negative-3': '-0.03em', // -3% letter spacing
       },
