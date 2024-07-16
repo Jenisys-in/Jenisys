@@ -36,14 +36,14 @@ const SignUp = () => {
             <h1 className="pl-[90px] text-white text-[20px] mt-[10px]">Name</h1>
             <input
               id="name"
-              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+              className=" mt-[10px] ml-[70px] pl-[20px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
             <h1 className="pl-[90px] text-white text-[20px] mt-[10px]">
               Username
             </h1>
             <input
               id="usn"
-              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+              className=" mt-[10px] ml-[70px] pl-[20px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
             <h1 className="pl-[90px] text-white text-[20px] mt-[10px]">
               Password
@@ -51,7 +51,7 @@ const SignUp = () => {
             <input
               id="pass1"
               type="password"
-              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+              className=" mt-[10px] ml-[70px] pl-[20px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
 
             <h1 className="pl-[90px] text-white  text-[20px] mt-[10px]">
@@ -60,7 +60,7 @@ const SignUp = () => {
             <input
               id="pass2"
               type="password"
-              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+              className=" mt-[10px] ml-[70px] pl-[20px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
           </div>
           <button className=" text-[18px] hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A] hover:bg-[#F9A825] active:border-white duration-300 active:text-white ml-[270px] left-[390px] top-[30px] bg-white text-black border-zinc-200 rounded-full px-4 py-2 drop-shadow-xl mt-[20px]">

@@ -39,9 +39,9 @@ const LogIn = () => {
             <h1 className="pl-[90px] text-white text-[20px]">Username</h1>
             <input
               id="usn"
-              placeholder="  Username"
+              placeholder="Username"
               type="text"
-              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+              className=" mt-[10px] ml-[70px] pl-[20px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
             <h1 className="pl-[90px] text-white  text-[20px] mt-[10px]">
               Password
@@ -49,13 +49,15 @@ const LogIn = () => {
             <input
               id="pass"
               type="password"
-              placeholder="  Password"
-              className=" mt-[10px] ml-[70px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
+              placeholder="Password"
+              className=" mt-[10px] ml-[70px] pl-[20px] text-black font-semibold pr-[170px] py-[20px] rounded-full white drop-shadow-xl"
             />
           </div>
           <div className="flex flex-row pl-[80px] mt-[20px]">
             <h3 className="text-[20px] text-white">
-              <span><input type="checkbox" /> Keep me logged in </span>
+              <span>
+                <input type="checkbox" /> Keep me logged in{" "}
+              </span>
             </h3>
             <h3 className="text-white text-[20px] pl-[100px] underline">
               {" "}
