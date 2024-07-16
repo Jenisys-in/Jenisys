@@ -5,7 +5,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 
 function Blog() {
   return (
-    <div  className="mt-[90px] bg-[#30248c] relative self-stretch ">
+    <div  className="mt-[90px]  bg-radial-gradient relative self-stretch ">
     <div className=" flex flex-row pt-[25px] pb-[10px]">
       <h1 className="font-['Kodchasan'] text-[35px] ml-[25px] mr-[500px] text-white">Categories</h1>
       <Link to="/newblog">
@@ -16,7 +16,7 @@ function Blog() {
       </Link>
     </div>
     <hr className="border-[1px] w-[1355px] border-[#FFFFFF] ml-[10px]" />
-    <div className="mt[20px]  bg-[#30248c] py-4 ">
+    <div className="mt[20px]   py-4 ">
     <button className="font-['Inter'] ml-[6px] text-[22px] hover:bg-[#5A54A4] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
         Technology
       </button>

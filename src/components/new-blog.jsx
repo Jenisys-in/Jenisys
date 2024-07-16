@@ -10,7 +10,7 @@ function NewBlog(){
     const [isOpen, setIsOpen] = useState(false);
     return(
         
-        <div className="mt-[90px] pt-[20px] self-stretch bg-[#30248c] flex flex-row ">
+        <div className="mt-[90px] pt-[20px] self-stretch bg-radial-gradient flex flex-row ">
         <div className="pl-[20px] flex-col relative">
             <h1 className="text-white font-['Kodchasan'] text-[30px] underline"
             >Blog Title Here</h1>
@@ -52,10 +52,10 @@ function NewBlog(){
         loading='lazy'
         className='mt-[110px] w-[280px] h-[310px]'
         />
-        <button className=" bg-white text-[#5A54A4] text-[20px] text-lg border-none py-2 px-10 mb-[60px] mt-[35px] rounded-full font-['Inter'] "> Publish </button>
+        <button className="shadow-lg shadow-black hover:bg-[#F9A825] hover:text-[#5851AD] hover:shadow-white bg-white text-[#5A54A4] text-[20px] text-lg border-none py-2 px-10 mb-[60px] mt-[35px] rounded-full font-['Inter'] "> Publish </button>
         </div>
         <div className='pl-[20px] flex-col relative'>
-          <div className="rounded-lg bg-[#5A54A4] px-4 inline flex flex-row text-[#FFFBEB] font-['Kodchasan'] space-x-6 text-[25px]" >
+          <div className="rounded-lg bg-[#5A54A4] px-4 inline flex flex-row text-[#FFFBEB] font-['Kodchasan'] space-x-5 text-[25px]" >
             
             <h1>Fonts Selection</h1>
             <h1>Bold/Italic/Underline</h1>
