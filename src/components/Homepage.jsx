@@ -14,19 +14,14 @@ const Home = () => {
         </h1>
       </div>
       <div className="flex">
-        <section className="self-stretch ml-12 mt-3 px-2 py-3 font-medium tracking-tight leading-7 text-2xl text-center text-amber-50 max-md:max-w-full font-league-spartan">
+        <section className="self-stretch ml-12 mt-3 px-2 py-3 md:font-medium tracking-tight leading-7 sm:md:text-sm md:text-2xl text-left md:text-center text-amber-50 max-md:max-w-full font-league-spartan">
           <p className="leading-[120%] tracking-[-0.02em]">
-            Welcome to Stellar Innovations Inc., where technology meets
-            ingenuity. Established in 2010, we are a leading provider of
-            innovative solutions designed to enhance the way businesses operate.
-            Our headquarters are located in Silicon Valley, the heart of
-            technological advancement, but our impact reaches globally.
-          </p>
+          Welcome to Jenisys! We are a cutting-edge software agency dedicated to transforming ideas into digital excellence. Our team specializes in innovative software solutions, including web and mobile development, and IT consultation services. We strive to drive business growth through technology and creativity.          </p>
         </section>
         <img
           src="/img/ellipse.jpeg"
           alt="Logo"
-          className="-mr-[40px] -mt-[40px] w-21 h-20 rounded-full"
+          className="-mr-[40px] -mt-[40px] w-21 h-20 rounded-full invisible sm:visible "
         />
         <img
           src="/img/ellipse.jpeg"
@@ -51,71 +46,71 @@ const Home = () => {
         <img
           loading="lazy"
           src="img/Rectangle 2.png"
-          className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50"
+          className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50 ml-32 md:ml-0 "
           alt="Rectangle 2"
         />
         <img
           loading="lazy"
           src="img/Rectangle 2.png"
-          className="object-contain w-[500px] h-[400px] rounded-50"
+          className="object-contain w-[500px] h-[400px] rounded-50 invisible md:visible   "
           alt="Rectangle 2"
         />
         <img
           loading="lazy"
           src="img/Rectangle 2.png"
-          className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50"
+          className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50 invisible md:visible "
           alt="Rectangle 2"
         />
       </div>
       <div className="pt-[10px]">
-        <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
+        <hr className="border-[1px] w-[1100px] border-[#FFFFFF] invisible md:visible" />
       </div>
-      <div className="flex flex-row pt-[35px]">
-        <div className="place-items-start">
-          <img loading="lazy" src="img/Mission.png" alt="Mission" />
-          <div className="absolute top-[855px] left-[40px]">
+      <div className="flex md:flex-row md:pt-[35px] flex-col">
+        <div className="place-items-start mb-[60px] md:mb-[0px]">
+          <img loading="lazy" src="img/Mission.png" alt="Mission" className="md:w-[500px] w-[330px]" />
+          <div className="absolute top-[1050px] md:top-[855px] left-[40px]">
             <h1 className="font-['Lexend_Exa'] text-5xl font-regular text-[#1C1658] opacity-50">
               Mission
             </h1>
           </div>
-          <div className="absolute top-[1000px] left-[50px]">
-            <h1 className="font-league-spartan">Welcome to Jenisys</h1>
+          <div className="absolute top-[1130px] md:top-[1000px] left-[50px]">
+            <h1 className="font-league-spartan text-left ">Welcome to Jenisys</h1>
           </div>
           <img
             loading="lazy"
             src="img/Line 3.png"
-            className="h-[450px] ml-[20px] mt-[30px] border-1"
+            className="md:h-[450px] h-[350px] ml-[20px]   md:mt-[30px] border-1"
             alt="Line"
           />
         </div>
-        <div className="items-stretch ml-[200px] relative">
+        <div className="items-stretch md:ml-[200px] relative">
           <img
             loading="lazy"
             src="img/vision.png"
-            className="absolute top-[225px] w-[400px] left-[140px]"
+            className="absolute top-[50px]  md:top-[225px] w-[400px] md:left-[140px] left-[175px] "
             alt="Vision"
           />
-          <div className="absolute z-auto top-[250px] left-[200px]">
+          <div className="absolute z-auto md:top-[250px] md:left-[200px] left-[240px] top-[80px]">
             <h1 className="font-['Lexend_Exa'] text-5xl font-regular text-[#1C1658] opacity-50">
               Vision
             </h1>
           </div>
-          <div className="absolute top-[385px] left-[145px]">
+          <div className="absolute md:top-[385px] md:left-[145px] left-[310px] top-[160px] text-right">
             <p className="font-league-spartan">Welcome to Jenisys</p>
           </div>
           <img
             loading="lazy"
             src="img/Ellipse 4.png"
-            className="absolute top-[100px] w-[400px] left-[450px]"
+            className="absolute top-[100px] w-[400px] left-[450px] invisible md:visible"
             alt="Ellipse"
           />
           <img
             loading="lazy"
             src="img/vision bg.png"
-            className="duration-300 hover:[box-shadow:0_7px_8px_0_#C0C0C0,_0_7px_50px_0_#C0C0C0] rounded-l-[25px]"
+            className="duration-300 md:hover:[box-shadow:0_7px_8px_0_#C0C0C0,_0_7px_50px_0_#C0C0C0] rounded-l-[25px] h-[580px] md:h-auto "
             alt="Vision Background"
           />
-          <hr className="absolute left-[145px] bottom-[75px] border-[1px] w-[480px] border-[#FFFFFF]" />
+          <hr className="absolute md:left-[145px] md:bottom-[75px] border-[1px] md:w-[480px] border-[#FFFFFF] left-[10px] -bottom-[30px] w-[550px]" />
         </div>
       </div>
       <div className="-ml-[250px] mb-[10px] flex gap-5 justify-between w-full max-w-[1100px] max-md:flex-wrap max-md:max-w-full">
