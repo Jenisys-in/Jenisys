@@ -1,350 +1,97 @@
 import React, { useState } from "react";
 import "../App.css";
-import "@fontsource/lexend-exa";
+
+
 
 const Home = () => {
   return (
-    <div className="mt-[35px] z-1 absolute flex flex-col items-center text-2xl w-fit max-md:max-w-full bg-[#5851AD] min-h-screen">
-      <div className="flex">
-        <h1 className="mt-20 text-6xl font-bold text-white">
-          <span>This is - </span>
-          <span className="text-transparent bg-gradient-to-r from-white to-[#694ac0] bg-clip-text">
-            <span className="tracking-widest leading-[1.2em]">Jenisys</span>
-          </span>
-        </h1>
+    <div className="mt-[85px] flex-col relative">
+      <div className="bg-white flex px-[70px] pt-[45px] gap-8">
+        <div>
+      <img
+      src="../img/Jenisys Hero.png"
+      className="w-[220px] h-[50px]"
+      />
+      <h1
+      className="font-['Montserrat'] text-[40px] pl-[10px] pt-[20px] font-semibold">Revolutionize your business with Jenisys</h1>
+      <h1
+      className="font-['Montserrat'] text-[20px] pl-[10px] pt-[10px]">Jenisys: Where Innovation Begins. We craft top-tier <br></br>software and digital solutions, ensuring your business<br></br> thrives with unmatched quality and excellence. From<br></br> consultation to development, our expertise drives your <br></br> success beyond limits. </h1>
+      <button className="ml-[10px] mt-[30px] bg-[#361CA9] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">Learn More</button>
       </div>
-      <div className="flex">
-        <section className="self-stretch ml-12 mt-3 px-2 py-3 md:font-medium tracking-tight leading-7 sm:md:text-sm md:text-2xl text-left md:text-center text-amber-50 max-md:max-w-full font-league-spartan">
-          <p className="leading-[120%] tracking-[-0.02em]">
-          Welcome to Jenisys! We are a cutting-edge software agency dedicated to transforming ideas into digital excellence. Our team specializes in innovative software solutions, including web and mobile development, and IT consultation services. We strive to drive business growth through technology and creativity.          </p>
-        </section>
-        <img
-          src="/img/ellipse.jpeg"
-          alt="Logo"
-          className="-mr-[40px] -mt-[40px] w-21 h-20 rounded-full invisible sm:visible "
+      <img
+      src="../img/image 2.png"
+      className=" w-[660px] h-[480px] mb-[80px]"
+      />
+      </div>
+      <div className="bg-black flex px-[70px] relative w-full">
+        <img 
+        src="../img/Group 21.png "
+        className="w-full h-[720px] "
         />
-        <img
-          src="/img/ellipse.jpeg"
-          alt="Logo"
-          className="mr-[50px] mt-[70px] w-19 h-12 rounded-full"
+        {/* <h1 className="text-white absolute top-[300px] left-[250px]">Hello</h1> */}
+        <div className="flex-col absolute">
+        <img 
+        src="../img/image 3.png"
+        className="w-[550px] h-[330px] mt-[70px]"
         />
-      </div>
-      <div className="flex flex-col justify-center mt-5 max-w-full text-center bg-amber-50 shadow-md leading-[133%] rounded-[30px] text-[color:var(--sds-color-text-default-default)] w-[183px] max-md:mt-10 hover:bg-[#F9A825] active:border-white duration-300 hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A]">
-        <div className="flex gap-3 justify-center py-3.5">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/9afb6dcba9f05d54e0df071a9722482e614fd8d31d6f128b5899af272ff40509?apiKey=150ca4726f0b413090f132e093d2a392&"
-            className="shrink-0 my-auto w-6 aspect-square"
-            alt="Icon"
-          />
-          <button className="active:border-white duration-300 active:text-white">
-            Learn More
-          </button>
+        <h1 className= "text-white font-['Montserrat'] font-extrabold text-[30px] pt-[40px] ">Our Vision</h1>
+        <h1 className= "text-white font-['Montserrat']  text-[20px] pt-[20px]">Our vision is to be the leading transformative technology <br></br>solutions provider, empowering businesses with innovative<br></br> digital solutions and driving transformative growth.</h1>
+        <button className=" mt-[30px]  bg-[#7526FE] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">Learn More</button>
+
         </div>
-      </div>
-      <div className="flex flex-row pt-[27px]">
-        <img
-          loading="lazy"
-          src="img/Rectangle 2.png"
-          className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50 ml-32 md:ml-0 "
-          alt="Rectangle 2"
+        <div className="absolute">
+        <h1 className= "pl-[630px]   text-white font-['Montserrat'] font-extrabold text-[30px] pt-[60px]">Our Mission</h1>
+        <div className="flex flex-row">
+        <img 
+        src="../img/bulb.png"
+        className="pt-[50px] pl-[630px] "
         />
-        <img
-          loading="lazy"
-          src="img/Rectangle 2.png"
-          className="object-contain w-[500px] h-[400px] rounded-50 invisible md:visible   "
-          alt="Rectangle 2"
+        <h1
+        className="text-white pt-[50px] px-[20px] font-['Montserrat'] text-[20px] ">To Empower Businesses with Uncompromised Quality and Innovation.</h1>
+        </div>
+        <div className="flex flex-row">
+        <img 
+        src="../img/nano.png"
+        className="pt-[50px] pl-[630px] "
         />
-        <img
-          loading="lazy"
-          src="img/Rectangle 2.png"
-          className="object-contain w-[450px] h-[350px] pt-[25px] rounded-50 invisible md:visible "
-          alt="Rectangle 2"
+        <h1
+        className="text-white pt-[50px] px-[20px] font-['Montserrat'] text-[20px] ">To Revolutionize Business Growth Through Superior Technology.</h1>
+        </div>
+        <div className="flex flex-row">
+         <img 
+        src="../img/arrow.png"
+        className="pt-[50px] pl-[630px] "
         />
-      </div>
-      <div className="pt-[10px]">
-        <hr className="border-[1px] w-[1100px] border-[#FFFFFF] invisible md:visible" />
-      </div>
-      <div className="flex md:flex-row md:pt-[35px] flex-col">
-        <div className="place-items-start mb-[60px] md:mb-[0px]">
-          <img loading="lazy" src="img/Mission.png" alt="Mission" className="md:w-[500px] w-[330px]" />
-          <div className="absolute top-[1050px] md:top-[855px] left-[40px]">
-            <h1 className="font-['Lexend_Exa'] text-5xl font-regular text-[#1C1658] opacity-50">
-              Mission
-            </h1>
-          </div>
-          <div className="absolute top-[1130px] md:top-[1000px] left-[50px]">
-            <h1 className="font-league-spartan text-left ">Welcome to Jenisys</h1>
-          </div>
-          <img
-            loading="lazy"
-            src="img/Line 3.png"
-            className="md:h-[450px] h-[350px] ml-[20px]   md:mt-[30px] border-1"
-            alt="Line"
-          />
+        <h1
+        className="text-white pt-[50px] px-[20px] font-['Montserrat'] text-[20px] ">To Drive Success with Tailored, High-Quality Digital Solutions.</h1>
         </div>
-        <div className="items-stretch md:ml-[200px] relative">
-          <img
-            loading="lazy"
-            src="img/vision.png"
-            className="absolute top-[50px]  md:top-[225px] w-[400px] md:left-[140px] left-[175px] "
-            alt="Vision"
-          />
-          <div className="absolute z-auto md:top-[250px] md:left-[200px] left-[240px] top-[80px]">
-            <h1 className="font-['Lexend_Exa'] text-5xl font-regular text-[#1C1658] opacity-50">
-              Vision
-            </h1>
-          </div>
-          <div className="absolute md:top-[385px] md:left-[145px] left-[310px] top-[160px] text-right">
-            <p className="font-league-spartan">Welcome to Jenisys</p>
-          </div>
-          <img
-            loading="lazy"
-            src="img/Ellipse 4.png"
-            className="absolute top-[100px] w-[400px] left-[450px] invisible md:visible"
-            alt="Ellipse"
-          />
-          <img
-            loading="lazy"
-            src="img/vision bg.png"
-            className="duration-300 md:hover:[box-shadow:0_7px_8px_0_#C0C0C0,_0_7px_50px_0_#C0C0C0] rounded-l-[25px] h-[580px] md:h-auto "
-            alt="Vision Background"
-          />
-          <hr className="absolute md:left-[145px] md:bottom-[75px] border-[1px] md:w-[480px] border-[#FFFFFF] left-[10px] -bottom-[30px] w-[550px]" />
+        <div className="flex flex-row" >
+         <img 
+        src="../img/success.png"
+        className="pt-[50px] pl-[630px] "
+        />
+        <h1
+        className="text-white pt-[50px] px-[20px] font-['Montserrat'] text-[20px] ">To Create the Future of Business with Relentless Excellence.</h1>
         </div>
+        
+        </div>
+
       </div>
-      <div className="-ml-[250px] mb-[10px] flex gap-5 justify-between w-full max-w-[1100px] max-md:flex-wrap max-md:max-w-full">
-        <div className="flex flex-col justify-center">
-          <div className="shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
+      <div className="flex flex-row bg-white gap-6 px-[70px] mt-[80px]">
+        <div className="flex-col">
+        <h1
+        className="text-[35px] font-['Montserrat'] font-semibold">Innovative tech solutions for transformative growth</h1>
+        <h1
+        className="text-[30px] font-['Montserrat'] pt-[20px] font-bold">Our Values</h1>
+
         </div>
-        <div className="mr-[130px] ml-[110px] pt-[60px]">
-          <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
-        </div>
+
+        <img 
+        src="../img/image 4.png"
+        />
+
       </div>
-      <div className="relative mt-6">
-        <h1 className="self-center pl-[390px] text-white font-[Italiana] text-[64px] py-[23px]">
-          Client Testimonials
-        </h1>
-        <div className="flex justify-center gap-x-16  pt-[50px]">
-          <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[140px] w-[140px] left-[110px] mt-[20px]" />
-          <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[140px] w-[140px] left-[1010px] mt-[20px]" />
-          <div className="absolute shrink-0 rounded-full bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_100%)] h-[210px] w-[210px] left-[523px] mt-[20px]" />
-          <div>
-            <img
-              loading="lazy"
-              src="img/testimonials.png"
-              className="rounded-1-[25px] w-[350px] h-[440px] pt-[80px]"
-            />
-            <p className="absolute bottom-[140px] left-[10px] font-[League Spartan] text-[16px] text-white leading-6">
-              Welcome to Stellar Innovations Inc., where <br></br>
-              technology meets ingenuity. Established in <br></br>
-              2010, we are a leading provider of innovative<br></br>
-              solutions designed to enhance the way <br></br>
-              businesses operate. Our headquarters are<br></br>
-              located in Silicon Valley, the heart of <br></br>
-              technological advancement, but our impact<br></br>
-              reaches globally.
-            </p>
-          </div>
-          <div>
-            <img
-              loading="lazy"
-              src="img/testimonials.png"
-              className="rounded-1-[25px] w-[425px] h-[500px]"
-            />
-            <p className="absolute bottom-[70px] left-[435px] font-[League Spartan] text-[20px] text-white leading-6">
-              Welcome to Stellar Innovations Inc., where <br></br>
-              technology meets ingenuity. Established in <br></br>
-              2010, we are a leading provider of innovative<br></br>
-              solutions designed to enhance the way <br></br>
-              businesses operate. Our headquarters are<br></br>
-              located in Silicon Valley, the heart of <br></br>
-              technological advancement, but our impact<br></br>
-              reaches globally.
-            </p>
-          </div>
-          <div>
-            <img
-              loading="lazy"
-              src="img/testimonials.png"
-              className="rounded-1-[25px] w-[350px] h-[440px] pt-[80px]"
-            />
-            <p className="absolute bottom-[140px] left-[920px] font-[League Spartan] text-[16px] text-white leading-6">
-              Welcome to Stellar Innovations Inc., where <br></br>
-              technology meets ingenuity. Established in <br></br>
-              2010, we are a leading provider of innovative<br></br>
-              solutions designed to enhance the way <br></br>
-              businesses operate. Our headquarters are<br></br>
-              located in Silicon Valley, the heart of <br></br>
-              technological advancement, but our impact<br></br>
-              reaches globally.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className=" mt-[12px] absolute right-[25px] rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
-      </div>
-      <div className="mr-[130px] ml-[110px] pt-[60px]">
-        <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
-      </div>
-      <div className="relative flex mt-[50px] ">
-        <div className="justify-start pr-[750px]">
-          <h1 className="pt-[50px] pl-[40px] font-['Lexend_Exa'] text-white text-[80px]">
-            About
-          </h1>
-          <div className=" mt-[5px] absolute top-[20px] ml-[350px] rounded-full bg-[linear-gradient(180deg,#FFFDF6_0%,#1E12A7_100%)] h-[84px] w-[84px]" />
-          <h1 className=" pt-[60px] pl-[40px]  font-['Londrina_Shadow'] text-white text-[80px] pt-[40px]">
-            Us
-          </h1>
-          <p className=" pt-[70px] pl-[40px]  font-[League Spartan] text-[25px] text-white pt-[40px] tracking-7">
-            Welcome to Stellar Innovations Inc., where technology meets
-            ingenuity. Established in 2010, we are a leading provider of
-            innovative solutions designed to enhance the way businesses operate.
-            Our headquarters are located in Silicon Valley, the heart of
-            technological advancement, but our impact reaches globally.
-          </p>
-          <p className=" pt-[70px] pl-[40px]  font-[League Spartan] text-[25px] text-white pt-[40px] tracking-7 mb-[100px]">
-            Note from the Owner
-          </p>
-          <div className="">
-            <div className="">
-              <img
-                loading="lazy"
-                src="img/about.png"
-                className="  -mt-[40px] absolute top-[100px] left-[830px] w-[290px] h-[250px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-            <div>
-              <img
-                loading="lazy"
-                src="img/about.png"
-                className="  mt-[75px] absolute top-[20px] left-[820px] w-[340px] h-[295px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-            <div>
-              <img
-                loading="lazy"
-                src="img/about.png"
-                className="  mt-[181px] absolute -top-[10px] left-[805px]  w-[360px] h-[313px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-            <div>
-              <img
-                loading="lazy"
-                src="img/about.png"
-                className="mt-[180px] absolute top-[10px] left-[895px] w-[340px] h-[295px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-            <div>
-              <img
-                loading="lazy"
-                src="img/about.png"
-                className=" mt-[280px] absolute top-[10px] left-[870px] w-[336px] h-[295px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-            <div>
-              <img
-                loading="lazy"
-                src="img/about.png"
-                className="  mt-[250px] absolute top-[20px] left-[980px] w-[330px] h-[295px] rounded-l-lg "
-                alt="Rectangle"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="mr-[130px] ml-[110px] pt-[60px]">
-        <hr className="border-[1px] w-[1100px] border-[#FFFFFF]" />
-      </div>
-      <div className="relative flex-row  bg-[#2B2381] self-stretch ">
-        <div className="mt-[150px] ml-[70px] mb-[190px] w-[700px] ">
-          <a href="url">
-            <img
-              loading="lazy"
-              src="img/X Logo.png"
-              className=" top-[150px]  "
-            />
-          </a>
-          <a href="url">
-            <img
-              loading="lazy"
-              src="img/Logo Instagram.png"
-              className="absolute top-[150px] pl-[40px]"
-            />
-          </a>
-          <a href="url">
-            <img
-              loading="lazy"
-              src="img/Logo Youtube.png"
-              className="absolute top-[150px] pl-[80px]"
-            />
-          </a>
-          <a href="url">
-            <img
-              loading="lazy"
-              src="img/LinkedIn.png"
-              className=" absolute top-[150px] pl-[120px]"
-            />
-          </a>
-        </div>
-        <div className="absolute top-[70px] pl-[400px] mb-[100px] text-white ">
-          <h2 className="mb-[10px] font-bold">Use Cases</h2>
-          <a href="url">UI Design</a>
-          <br />
-          <a href="url">UX Design</a>
-          <br />
-          <a href="url">Wireframing</a>
-          <br />
-          <a href="url">Diagramming</a>
-          <br />
-          <a href="url">Brainstorming</a>
-          <br />
-          <a href="url">Online whiteboard</a>
-          <br />
-          <a href="url">Team collaboration</a>
-          <br />
-        </div>
-        <div className="absolute top-[70px] pl-[740px] mb-[100px] text-white ">
-          <h2 className="mb-[10px] font-bold">Explore</h2>
-          <a href="url">Design</a>
-          <br />
-          <a href="url">Prototyping</a>
-          <br />
-          <a href="url">Development features</a>
-          <br />
-          <a href="url">Design systems</a>
-          <br />
-          <a href="url">Collaboration features</a>
-          <br />
-          <a href="url">Design process</a>
-          <br />
-          <a href="url/">FigJam</a>
-          <br />
-        </div>
-        <div className="absolute top-[70px] pl-[1100px] mb-[100px] text-white ">
-          <h2 className="mb-[10px] font-bold">Resources</h2>
-          <a href="url">Blog</a>
-          <br />
-          <a href="url">Best practices</a>
-          <br />
-          <a href="url">Colors</a>
-          <br />
-          <a href="url">Color wheel</a>
-          <br />
-          <a href="url">Support</a>
-          <br />
-          <a href="url">Developers</a>
-          <br />
-          <a href="url">Resource library</a>
-          <br />
-        </div>
-      </div>
+    
     </div>
   );
 };
