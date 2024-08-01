@@ -7,8 +7,8 @@ import "../App.css";
 const NavItem = ({ children, isActive, to }) => (
   <Link
     to={to}
-    className={`px-1 py-2 whitespace-nowrap rounded-full ${
-      isActive ? "text-white font-semibold" : "text-white"
+    className={`px-1 py-2 whitespace-nowrap rounded-full font-semibold ${
+      isActive ? "text-white " : "text-black"
     } transition duration-300 ease-in-out hover:bg-white hover:text-black active:border-white duration-300 active:text-white hover:[box-shadow:0_7px_8px_0_#C0C0C0_,_0_7px_50px_0_#C0C0C0]`}
   >
     {children}
@@ -44,23 +44,14 @@ function Navbar() {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Mission", path: "/mission" },
+    { name: "Services", path: "/services" },
     { name: "Blog", path: "/Blog" },
-    { name: "Testimonials", path: "/testimonials" },
     { name: "About Us", path: "/about" },
     { name: "Contact Us", path: "/contact" },
   ];
 
   return (
-    <header className="fixed w-full z-10 top-0 left-0  flex items-center justify-between bg-[#5851AD] text-white p-6 w-full h-[90px] border-b border-solid border-[#5851AD]">
-      <div className="-mt-[34px] flex items-center">
-        <img
-          src="/img/ellipse.jpeg"
-          alt="Logo"
-          className="-ml-[40px] -mt-[10px] w-14 h-14 rounded-full"
-        />
-        <h1 className="mt-[30px] text-3xl font-bold tracking-tight">LOGO</h1>
-      </div>
+    <header className="fixed w-full z-10 top-0 left-0  flex items-center justify-between   p-6 w-full h-[90px] ">
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden">
         {!isMobileMenuOpen ? (
@@ -79,32 +70,7 @@ function Navbar() {
           </button>
         )}
       </div>
-      {/* Search Input */}
-      <div className="hidden md:block w-[400px] relative">
-        <input
-          type="search"
-          placeholder="Search"
-          className="text-black font-semibold w-full p-4 rounded-full white"
-        />
-        <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-[#5851AD] duration-300 hover:bg-[#F9A825] rounded-full">
-          <AiOutlineSearch />
-        </button>
-      </div>
-      {/* Mobile Search Input */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden w-full mt-4">
-          <div className="relative">
-            <input
-              type="search"
-              placeholder="Search"
-              className="text-black font-semibold w-full p-4 rounded-full white"
-            />
-            <button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 bg-[#5851AD] duration-300 hover:bg-[#64b5f6] rounded-full">
-              <AiOutlineSearch />
-            </button>
-          </div>
-        </div>
-      )}
+
       {/* Desktop Menu */}
       <nav className="hidden md:flex gap-6">
         {navItems.map((item, index) => (
