@@ -43,7 +43,7 @@ function Contact() {
                 Email Us
               </div>
               <div className="self-stretch mt-5 text-xl tracking-tight">
-                tuhindas@jenisys.in
+                tuhin.das@jenisys.in
               </div>
             </div>
           </div>
@@ -74,28 +74,34 @@ function Contact() {
                   <div className="self-start text-2xl font-semibold tracking-tight">
                     Name
                   </div>
-                  <div className="px-3.5 py-5 mt-6 text-base font-light tracking-tight rounded-md shadow-sm max-md:pr-5">
-                    Ex. Parker
-                  </div>
+                  <input
+                    className="w-[190px]  font-light font-montserrat  top-[14px] left-[13px] tracking-[-0.02em] leading-[120%] text-black text-left inline-block h-5 p-0 z-[1]"
+                    placeholder="Ex. Parker"
+                    type="text"
+                  />
                 </div>
                 <div className="flex flex-col flex-1 grow shrink-0 basis-0 w-fit">
                   <div className="self-start text-2xl font-semibold tracking-tight">
                     Email
                   </div>
-                  <div className="px-3.5 py-4 mt-6 text-base font-light tracking-tight rounded-md shadow-sm max-md:pr-5">
-                    Ex. yourmail@gmail.com
-                  </div>
+                  <input
+                    className="w-[200px]  font-light font-montserrat  top-[14px] left-[13px] tracking-[-0.02em] leading-[120%] text-black text-left inline-block h-5 p-0 z-[2]"
+                    placeholder="Ex. yourmail@gmail.com"
+                    type="text"
+                  />
                 </div>
               </div>
               <div className="self-start mt-12 text-2xl font-semibold tracking-tight max-md:mt-10">
                 Message
               </div>
-              <div className="px-3.5 py-5 mt-5 text-base font-light tracking-tight rounded-md shadow-sm max-md:pr-5 max-md:max-w-full">
-                Type Your Message Here
-              </div>
-              <div className="px-16 py-8 mt-14 text-2xl font-semibold tracking-tight text-white bg-indigo-800 rounded-md max-md:px-5 max-md:mt-10 max-md:mr-0.5 max-md:max-w-full">
+              <input
+                className="w-[338px]  font-light font-montserrat text-mini bg-[transparent] h-5 relative tracking-[-0.02em] leading-[120%] text-black text-left inline-block max-w-full p-0 z-[1]"
+                placeholder="Type Your Message Here"
+                type="text"
+              />
+              <button className="px-16 py-8 mt-14 text-2xl font-semibold tracking-tight text-white bg-indigo-800 rounded-md max-md:px-5 max-md:mt-10 max-md:mr-0.5 max-md:max-w-full">
                 Get Started
-              </div>
+              </button>
             </div>
           </div>
           <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
