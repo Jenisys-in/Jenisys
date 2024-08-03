@@ -108,7 +108,7 @@ const Home = () => {
         />
 
       </div>
-      <div className="relative flex-col " >
+      <div className="relative flex-col " id="services" >
       <img
       src ="../img/Services.png"
       className="w-full"
@@ -215,9 +215,80 @@ const Home = () => {
         </div>
         </div>
       </div>
-      <div className="absolute bottom-[260px] justify-center">
-        <h1 className="font-['Montserrat'] font-semibold text-[40px] text-center px-[260px] ">Don't miss a byte! Subscribe for the latest in software and tech</h1>
+      <div className="absolute -bottom-[175px] justify-center">
+        <h1 className="font-['Montserrat'] font-semibold text-[40px] text-center px-[260px] mb-[30px]">Don't miss a byte! Subscribe for the latest in software and tech</h1>
+        <div className="flex flex-row ">
+          <div className="flex flex-col pl-[100px] pt-[10px] ">
+            <img 
+            src="../img/Jenisys Hero.png"
+            className="w-[172px] h-[50px] mb-[20px]"
+            />
+            <a className="text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px] pl-[10px]" href='#services' >Services</a><br></br>
+            <a className="text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px]  pl-[10px]" href='#'>About Us</a><br></br>
+            <a className="text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px]  pl-[10px]" href='#'>Blogs</a><br></br>
+            <a className="text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px]  pl-[10px]" href='#'>Contact Us</a><br></br>
+            <a className="text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px]  pl-[10px]" href='#'>Careers</a><br></br>
+            
+          </div>
+            <div className="flex flex-col pl-[200px] pt-[5px]">
+              <h1
+              className="font-['Montserrat'] font-medium text-[20px] mb-[10px]">Name</h1>
+              <input 
+              className="w-[373px] h-[48px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]"/>
+              <h1
+              className="font-['Montserrat'] font-medium text-[20px] mb-[10px]">E-Mail</h1>
+              <input
+              className="w-[373px] h-[48px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              <h1
+              className="font-['Montserrat'] font-medium text-[20px] mb-[10px]">Contact Number</h1>
+              <input 
+              className="w-[373px] h-[48px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[40px]"/>
+              <button className=" bg-[#361CA9] text-white w-[373px] h-[53px] text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">Subscribe</button>
+
+            </div>
+            <div className="flex flex-col pt-[20px] pl-[200px]">
+              <h1
+              className="font-['Montserrat'] font-semibold text-[20px] pb-[30px]">Operational Work Hours</h1>
+              
+              <h1
+              className="font-['Montserrat'] font-medium text-[16px] pl-[30px] pb-[10px]">Mon - Wed : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM - 4PM</h1>
+              <hr className="pt-[20px] ml-[25px]" />
+              <h1
+              className="font-['Montserrat'] font-medium text-[16px] pl-[30px] pb-[10px]">Thu - Sat : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM - 5PM</h1>
+              <hr  className="pt-[20px] ml-[25px]"/>
+              <h1
+              className="font-['Montserrat'] font-medium text-[16px] pl-[30px] pb-[10px]">Weekend : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Closed</h1>
+              <hr  className="pt-[20px] ml-[25px]" />
+            </div>
+        </div>
+        <img 
+        src="../img/Group 23.png"
+        className="w-full h-[215px] absolute top-[600px]"
+        />
+        <h1
+        className="absolute font-['Montserrat'] font-semibold text-[26px] left-[600px] -bottom-[120px] text-white">Follow Us On</h1>
+        <div className="bg-[#A3A3A3] absolute h-[50px] w-[50px] rounded-full left-[595px] -bottom-[185px] z-1"></div>
+        <div className="bg-[#A3A3A3] absolute h-[50px] w-[50px] rounded-full left-[675px] -bottom-[185px] z-1"></div>
+        <div className="bg-[#A3A3A3] absolute h-[50px] w-[50px] rounded-full left-[753px] -bottom-[185px] z-1"></div>
+        <a href="https://www.instagram.com/jenisys.in/ " target="_blank">
+        <img 
+        src="../img/mdi_instagram.png"
+        className="absolute left-[600px] -bottom-[180px] h-[40px] w-[40px]"
+        /></a>
+        <a href="#">
+        <img 
+        src="../img/facebook.png"
+        className="absolute left-[760px] -bottom-[180px] h-[40px] w-[40px]"
+        /></a>
+        <a href="https://www.linkedin.com/company/jenisys/" target="_blank">
+        <img 
+        src="../img/LinkedIn 2.png"
+        className="absolute left-[680px] -bottom-[180px] h-[40px] w-[40px]"
+        /></a>
+        <h1
+        className="absolute font-['Montserrat'] font-semibold text-[14px] left-[550px] -bottom-[250px] text-white">Copyright © 2024 Jenisys. All rights reserved.</h1>
       </div>
+      
     
     </div>
   );
