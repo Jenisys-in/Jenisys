@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import Lottie from "lottie-react";
-//import animationData from "../img/AnimationLottie.json";
+import animationData from "./AnimationLottie.json";
 
 const Home = () => {
   return (
@@ -125,8 +125,13 @@ const Home = () => {
         </button>
         <div className="flex-row  px-[125px] ">
           <div className=" absolute justify-center bg-white border-2 border-black rounded-[17px] -bottom-[280px] h-[387px] w-[261px]">
-            {/* <Lottie animationData={animationData} /> */}
+            <Lottie
+              className="absolute -top-[135px] -left-[7px]"
+              animationData={animationData}
+            />
+
             <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
+
             <img
               src="../img/laptop.png"
               className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
@@ -143,6 +148,10 @@ const Home = () => {
             </button>
           </div>
           <div className="absolute justify-center bg-white border-2 border-black -bottom-[280px] rounded-[17px] left-[410px] h-[387px] w-[261px]">
+            <Lottie
+              className="absolute -top-[135px] -left-[7px]"
+              animationData={animationData}
+            />
             <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
             <img
               src="../img/mobile.png"
@@ -160,6 +169,10 @@ const Home = () => {
             </button>
           </div>
           <div className="absolute justify-center bg-white border-2 border-black -bottom-[280px] rounded-[17px] left-[695px] h-[387px] w-[261px]">
+            <Lottie
+              className="absolute -top-[135px] -left-[7px]"
+              animationData={animationData}
+            />
             <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
             <img
               src="../img/nano1.png"
@@ -177,6 +190,10 @@ const Home = () => {
             </button>
           </div>
           <div className=" absolute justify-center bg-white border-2 border-black -bottom-[280px] rounded-[17px] left-[980px] h-[387px] w-[261px]">
+            <Lottie
+              className="absolute -top-[135px] -left-[7px]"
+              animationData={animationData}
+            />
             <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
             <img
               src="../img/shield.png"
