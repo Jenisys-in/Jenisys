@@ -53,7 +53,7 @@ function Navbar() {
   return (
     <header className="fixed w-full z-10 top-0 left-0  flex items-center justify-between   p-6 w-full h-[90px] ">
       {/* Hamburger Icon for Mobile */}
-      <div className="block md:hidden">
+      <div className="block md:hidden 3xl:hidden">
         {!isMobileMenuOpen ? (
           <button
             onClick={toggleMobileMenu}
@@ -72,7 +72,7 @@ function Navbar() {
       </div>
 
       {/* Desktop Menu */}
-      <nav className="hidden md:flex gap-6">
+      <nav className="hidden md:flex gap-6 3xl:flex gap-32 ">
         {navItems.map((item, index) => (
           <NavItem key={item.name} to={item.path} isActive={index === 0}>
             {item.name}
