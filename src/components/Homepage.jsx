@@ -8,7 +8,10 @@ const Home = () => {
     <div className="mt-[85px] flex-col relative ">
       <div className="bg-white flex px-[70px] 3xl:pt-[150px] pt-[45px] gap-8 3xl:mx-[150px]">
         <div>
-          <img src="../img/Jenisys Hero.png" className="w-[220px] h-[50px] 3xl:w-[460px] 3xl:h-[104px]" />
+          <img
+            src="../img/Jenisys Hero.png"
+            className="w-[220px] h-[50px] 3xl:w-[460px] 3xl:h-[104px]"
+          />
           <h1 className="font-['Montserrat'] text-[40px] pl-[10px] pt-[20px] font-semibold">
             Revolutionize your business with Jenisys
           </h1>
@@ -29,7 +32,10 @@ const Home = () => {
         />
       </div>
       <div className="bg-black flex px-[70px] relative w-full ">
-        <img src="../img/Group 21.png " className="w-full h-[720px] 3xl:h-screen" />
+        <img
+          src="../img/Group 21.png "
+          className="w-full h-[720px] 3xl:h-screen"
+        />
         {/* <h1 className="text-white absolute top-[300px] left-[250px]">Hello</h1> */}
         <div className="flex-col absolute">
           <img
@@ -53,25 +59,37 @@ const Home = () => {
             Our Mission
           </h1>
           <div className="flex flex-row">
-            <img src="../img/bulb.png" className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px]" />
+            <img
+              src="../img/bulb.png"
+              className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px]"
+            />
             <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
               To Empower Businesses with Uncompromised Quality and Innovation.
             </h1>
           </div>
           <div className="flex flex-row">
-            <img src="../img/nano.png" className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px] " />
+            <img
+              src="../img/nano.png"
+              className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px] "
+            />
             <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
               To Revolutionize Business Growth Through Superior Technology.
             </h1>
           </div>
           <div className="flex flex-row">
-            <img src="../img/arrow.png" className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px] " />
+            <img
+              src="../img/arrow.png"
+              className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px] "
+            />
             <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
               To Drive Success with Tailored, High-Quality Digital Solutions.
             </h1>
           </div>
           <div className="flex flex-row">
-            <img src="../img/success.png" className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px]" />
+            <img
+              src="../img/success.png"
+              className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px]"
+            />
             <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
               To Create the Future of Business with Relentless Excellence.
             </h1>
@@ -212,9 +230,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[420px] relative w-full">
+      <div className="mt-[400px] relative w-full">
         <img src="../img/Group 23.png " className="w-full h-screen " />
-        <div className="flex-col absolute">
+        <div className="flex-col absolute mt-[50px]">
           <h1 className="text-white font-['Montserrat'] 3xl:bottom-[900px] text-[32px] font-bold absolute bottom-[850px] left-[80px]">
             Testimonials
           </h1>
@@ -224,7 +242,7 @@ const Home = () => {
             in delivering outstanding results
           </h1>
         </div>
-        <div className="flex-row flex">
+        <div className="flex-row flex mt-[50px]">
           <div className="flex-col">
             <h1 className="relative text-white font-['Montserrat'] 3xl:bottom-[590px] text-[18px] font-medium absolute bottom-[545px] 3xl:left-[200px] left-[80px]">
               Jenisys has been an incredible partner in driving our digital
@@ -365,7 +383,7 @@ const Home = () => {
             <hr className="pt-[20px] ml-[25px]" />
           </div>
         </div>
-        
+
         <img
           src="../img/Group 23.png"
           className="w-full h-[215px] absolute top-[600px]"
@@ -398,7 +416,6 @@ const Home = () => {
           Copyright © 2024 Jenisys. All rights reserved.
         </h1>
       </div>
-      
     </div>
   );
 };

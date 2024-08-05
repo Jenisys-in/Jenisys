@@ -38,16 +38,18 @@ function Navbar() {
   };
 
   const navItems = [
-    
     { name: "Services", path: "/services" },
-    
+
     { name: "About Us", path: "/about" },
     { name: "Blog", path: "/Blog" },
     { name: "Contact Us", path: "/contact" },
   ];
 
   return (
-    <header className="fixed w-full z-10 top-0 left-0  flex items-center justify-between   p-6 w-full h-[90px] ">
+    <nav
+      className="fixed w-full z-10 top-0 left-0 max-w-screen backdrop-filter 
+                backdrop-blur-md  flex items-center justify-between bg-opacity-40   p-6 w-full h-[90px] "
+    >
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ">
         {!isMobileMenuOpen ? (
@@ -69,21 +71,28 @@ function Navbar() {
 
       {/* Desktop Menu */}
       <nav className="hidden md:flex gap-6  ">
-        <a href="/"><img 
-        src="../img/Logo.png"
-        className="md:w-[33px] md:h-[49px] 3xl:w-[49px] 3xl:h-[59px] 3xl:ml-[100px] md:ml-[50px]"
-        /></a>
-      <div className="flex gap-4 3xl:ml-[280px] 3xl:mt-[5px] md:ml-[135px]">
-          <Button variant="secondary" to="/login" >
+        <a className="flex" href="/">
+          <img
+            src="../img/Logo.png"
+            className=" ml-[50px] mb-[8px] w-[60px] h-[65px]  "
+          />
+          <img
+            src="../img/Jenisys Hero.png"
+            className="mt-[10px] -ml-[10px] w-[145px] h-[45px]"
+          />
+        </a>
+
+        <div className="flex gap-4 3xl:ml-[280px] 3xl:mt-[5px] md:ml-[135px]">
+          <Button variant="secondary" to="/login">
             Log In / Sign Up
           </Button>
         </div>
-        <div className=" 3xl:mt-[15px]  md:ml-[270px] md:mt-[8px]">
-        {navItems.map((item, index) => (
-          <NavItem key={item.name} to={item.path} isActive={index === 0}>
-            {item.name}
-          </NavItem>
-        ))}
+        <div className=" 3xl:mt-[20px]  md:ml-[270px] md:mt-[20px]">
+          {navItems.map((item, index) => (
+            <NavItem key={item.name} to={item.path} isActive={index === 0}>
+              {item.name}
+            </NavItem>
+          ))}
         </div>
       </nav>
       {/* Mobile Menu */}
@@ -114,7 +123,7 @@ function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </nav>
   );
 }
 
