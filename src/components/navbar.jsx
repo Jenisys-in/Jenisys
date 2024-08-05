@@ -7,9 +7,8 @@ import "../App.css";
 const NavItem = ({ children, isActive, to }) => (
   <Link
     to={to}
-    className={`px-1 py-2 whitespace-nowrap rounded-full font-semibold ${
-      isActive ? "text-white " : "text-black"
-    } transition duration-300 ease-in-out hover:bg-white hover:text-black active:border-white duration-300 active:text-white hover:[box-shadow:0_7px_8px_0_#C0C0C0_,_0_7px_50px_0_#C0C0C0]`}
+    className={`hover:underline underline-offset-8 decoration-purple 3xl:ml-[130px] md:ml-[80px]  px-1 text-[20px]  whitespace-nowrap rounded-full font-['Montserrat'] font-semibold 
+    transition duration-300 ease-in-out text-black border-white`}
   >
     {children}
   </Link>
@@ -18,11 +17,7 @@ const NavItem = ({ children, isActive, to }) => (
 // Button Component
 const Button = ({ children, variant, to }) => (
   <div
-    className={`px-4 py-2 rounded-full font-semibold ${
-      variant === "primary"
-        ? "bg-white text-black border-zinc-200"
-        : "bg-white text-black border-zinc-200"
-    } border-0 transition-colors duration-300 relative hover:bg-[#F9A825] active:border-white duration-300 active:text-white hover:[box-shadow:0_7px_8px_0_#E6BE8A_,_0_7px_50px_0_#E6BE8A]`}
+    className={` hover:underline underline-offset-8 decoration-purple px-4 py-2 rounded-full font-['Montserrat'] font-semibold text-[20px]  border-0 transition-colors duration-300 relative   duration-300 `}
   >
     <Link to={to} className="w-full h-full">
       {children}
@@ -43,17 +38,18 @@ function Navbar() {
   };
 
   const navItems = [
-    { name: "Home", path: "/" },
+    
     { name: "Services", path: "/services" },
-    { name: "Blog", path: "/Blog" },
+    
     { name: "About Us", path: "/about" },
+    { name: "Blog", path: "/Blog" },
     { name: "Contact Us", path: "/contact" },
   ];
 
   return (
     <header className="fixed w-full z-10 top-0 left-0  flex items-center justify-between   p-6 w-full h-[90px] ">
       {/* Hamburger Icon for Mobile */}
-      <div className="block md:hidden 3xl:hidden">
+      <div className="block md:hidden ">
         {!isMobileMenuOpen ? (
           <button
             onClick={toggleMobileMenu}
@@ -72,19 +68,22 @@ function Navbar() {
       </div>
 
       {/* Desktop Menu */}
-      <nav className="hidden md:flex gap-6 3xl:flex gap-32 ">
+      <nav className="hidden md:flex gap-6  ">
+        <a href="/"><img 
+        src="../img/Logo.png"
+        className="md:w-[33px] md:h-[49px] 3xl:w-[49px] 3xl:h-[59px] 3xl:ml-[100px] md:ml-[50px]"
+        /></a>
+      <div className="flex gap-4 3xl:ml-[280px] 3xl:mt-[5px] md:ml-[135px]">
+          <Button variant="secondary" to="/login" >
+            Log In / Sign Up
+          </Button>
+        </div>
+        <div className=" 3xl:mt-[15px]  md:ml-[270px] md:mt-[8px]">
         {navItems.map((item, index) => (
           <NavItem key={item.name} to={item.path} isActive={index === 0}>
             {item.name}
           </NavItem>
         ))}
-        <div className="flex gap-4">
-          <Button variant="secondary" to="/login">
-            Log In
-          </Button>
-          <Button variant="primary" to="/signup">
-            Sign Up
-          </Button>
         </div>
       </nav>
       {/* Mobile Menu */}

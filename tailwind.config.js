@@ -4,6 +4,10 @@ module.exports = {
   ],
   theme: {
     screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
       
       // => @media (min-width: 640px) { ... }
 
@@ -14,6 +18,9 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     },
     extend: {
+      colors: {
+        'purple': '#361CA9',
+      },
       backgroundImage: {
         'radial-gradient': 'radial-gradient(circle, #5A54A4, #2D248F)',
       },
