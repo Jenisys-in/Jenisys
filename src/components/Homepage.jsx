@@ -233,65 +233,65 @@ const Home = () => {
       <div className="mt-[400px] relative w-full">
         <img src="../img/Group 23.png " className="w-full h-screen " />
         <div className="flex-col absolute mt-[50px]">
-          <h1 className="text-white font-['Montserrat'] 3xl:bottom-[900px] text-[32px] font-bold absolute bottom-[850px] left-[80px]">
+          <h1 className="text-white font-['Montserrat'] 3xl:bottom-[950px] text-[32px] font-bold absolute bottom-[850px] left-[80px]">
             Testimonials
           </h1>
 
-          <h1 className="relative text-white font-['Montserrat'] text-[40px] font-semibold 3xl:bottom-[750px] absolute bottom-[700px] left-[80px]">
+          <h1 className="relative text-white font-['Montserrat'] text-[40px] font-semibold 3xl:bottom-[820px] absolute bottom-[700px] left-[80px]">
             Our positive feedbacks from clients highlight our<br></br>abilities
             in delivering outstanding results
           </h1>
         </div>
         <div className="flex-row flex mt-[50px]">
           <div className="flex-col">
-            <h1 className="relative text-white font-['Montserrat'] 3xl:bottom-[590px] text-[18px] font-medium absolute bottom-[545px] 3xl:left-[200px] left-[80px]">
+            <h1 className="relative text-white font-['Montserrat'] 3xl:bottom-[650px] text-[18px] font-medium absolute bottom-[545px] 3xl:left-[200px] left-[80px]">
               Jenisys has been an incredible partner in driving our digital
               <br></br>transformation. Their expertise in custom software
               development<br></br>and cloud computing has been invaluable in
               optimizing our<br></br>operations and driving growth.
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[540px] 3xl:left-[260px] left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[600px] 3xl:left-[260px] left-[140px]">
               Tuhin Das
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[540px] 3xl:left-[260px] left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[600px] 3xl:left-[260px] left-[140px]">
               Company Name, City
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[18px] font-medium absolute bottom-[510px] 3xl:left-[200px] left-[80px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[18px] font-medium absolute bottom-[570px] 3xl:left-[200px] left-[80px]">
               Jenisys has been an incredible partner in driving our digital
               <br></br>transformation. Their expertise in custom software
               development<br></br>and cloud computing has been invaluable in
               optimizing our<br></br>operations and driving growth.
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[500px] 3xl:left-[260px]  left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[560px] 3xl:left-[260px]  left-[140px]">
               Tuhin Das
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[500px] 3xl:left-[260px]  left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[560px] 3xl:left-[260px]  left-[140px]">
               Company Name, City
             </h1>
           </div>
           <div className="flex-col pl-[60px]">
-            <h1 className="relative text-white font-['Montserrat'] text-[18px] 3xl:bottom-[590px] font-medium absolute bottom-[545px] 3xl:left-[370px] left-[80px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[18px] 3xl:bottom-[650px] font-medium absolute bottom-[545px] 3xl:left-[370px] left-[80px]">
               Jenisys has been an incredible partner in driving our digital
               <br></br>transformation. Their expertise in custom software
               development<br></br>and cloud computing has been invaluable in
               optimizing our<br></br>operations and driving growth.
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[540px] 3xl:left-[430px]  left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[600px] 3xl:left-[430px]  left-[140px]">
               Tuhin Das
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[540px] 3xl:left-[430px] left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[600px] 3xl:left-[430px] left-[140px]">
               Company Name, City
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[18px] font-medium absolute 3xl:left-[370px] bottom-[510px] left-[80px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[18px] font-medium absolute 3xl:left-[370px] bottom-[570px] left-[80px]">
               Jenisys has been an incredible partner in driving our digital
               <br></br>transformation. Their expertise in custom software
               development<br></br>and cloud computing has been invaluable in
               optimizing our<br></br>operations and driving growth.
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[500px] 3xl:left-[430px] left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[28px] font-bold absolute bottom-[560px] 3xl:left-[430px] left-[140px]">
               Tuhin Das
             </h1>
-            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[500px]  3xl:left-[430px] left-[140px]">
+            <h1 className="relative text-white font-['Montserrat'] text-[20px]  absolute bottom-[560px]  3xl:left-[430px] left-[140px]">
               Company Name, City
             </h1>
           </div>
@@ -308,8 +308,8 @@ const Home = () => {
               className="w-[172px] h-[50px] mb-[20px]"
             />
             <a
-              className="text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px] pl-[10px]"
-              href="#services"
+              className="   text-[#361CA9] font-['Montserrat'] font-medium text-[18px] mb-[5px] pl-[10px]"
+              href="#services" 
             >
               Services
             </a>
@@ -383,7 +383,7 @@ const Home = () => {
             <hr className="pt-[20px] ml-[25px]" />
           </div>
         </div>
-
+          <div className="3xl:hidden">
         <img
           src="../img/Group 23.png"
           className="w-full h-[215px] absolute top-[600px]"
@@ -415,6 +415,42 @@ const Home = () => {
         <h1 className="absolute font-['Montserrat'] font-semibold text-[14px] left-[550px] -bottom-[250px] mb-[20px] text-white">
           Copyright © 2024 Jenisys. All rights reserved.
         </h1>
+        </div>
+      </div>
+      <div className=" absolute hidden  3xl:block mt-[200px]">
+      <img
+          src="../img/Group 23.png"
+          className="w-screen h-[250px] "
+        />
+         <h1 className="absolute z-10 font-['Montserrat'] font-semibold text-[26px] left-[770px] bottom-[165px] text-white">
+          Follow Us On
+        </h1>
+        <div className="bg-[#A3A3A3] absolute h-[50px] w-[50px] rounded-full left-[735px] bottom-[95px] z-1"></div>
+        <div className="bg-[#A3A3A3] absolute h-[50px] w-[50px] rounded-full left-[835px] bottom-[95px] z-1"></div>
+        <div className="bg-[#A3A3A3] absolute h-[50px] w-[50px] rounded-full left-[933px] bottom-[95px] z-1"></div>
+        <a href="https://www.instagram.com/jenisys.in/ " target="_blank">
+          <img
+            src="../img/mdi_instagram.png"
+            className="absolute left-[740px] bottom-[100px] h-[40px] w-[40px]"
+          />
+        </a>
+        <a href="#">
+          <img
+            src="../img/facebook.png"
+            className="absolute left-[840px] bottom-[100px] h-[40px] w-[40px]"
+          />
+        </a>
+        <a href="https://www.linkedin.com/company/jenisys/" target="_blank">
+          <img
+            src="../img/LinkedIn 2.png"
+            className="absolute left-[938px] bottom-[100px] h-[40px] w-[40px]"
+          />
+        </a>
+        <h1 className="absolute font-['Montserrat'] font-semibold text-[20px] left-[640px] bottom-[20px] mb-[20px] text-white">
+          Copyright © 2024 Jenisys. All rights reserved.
+        </h1>
+
+
       </div>
     </div>
   );
