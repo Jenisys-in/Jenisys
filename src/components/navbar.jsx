@@ -47,8 +47,8 @@ function Navbar() {
 
   return (
     <nav
-      className="fixed w-full z-10 top-0 left-0 max-w-screen backdrop-filter 
-                backdrop-blur-md  flex items-center justify-between bg-opacity-40   p-6 w-full h-[90px] "
+      className="fixed w-full z-10 top-0 left-0 max-w-screen bg-white
+                 flex items-center justify-between    px-6 w-full h-[90px] "
     >
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ">
@@ -78,16 +78,16 @@ function Navbar() {
           />
           <img
             src="../img/Jenisys Hero.png"
-            className="mt-[10px] -ml-[10px] w-[145px] h-[45px]"
+            className="mt-[10px] -ml-[10px] w-[180px] h-[50px]"
           />
         </a>
 
-        <div className="flex gap-4 3xl:ml-[280px] 3xl:mt-[5px] md:ml-[135px]">
+        <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]">
           <Button variant="secondary" to="/login">
             Log In / Sign Up
           </Button>
         </div>
-        <div className=" 3xl:mt-[20px]  md:ml-[270px] md:mt-[20px]">
+        <div className=" 3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
           {navItems.map((item, index) => (
             <NavItem key={item.name} to={item.path} isActive={index === 0}>
               {item.name}
