@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"; // Add useEffect import
+import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import "../App.css";
 
 // NavItem Component
-const NavItem = ({ children, isActive, to }) => (
-  <Link
-    to={to}
-    className={`hover:underline underline-offset-8 decoration-purple 3xl:ml-[130px] md:ml-[80px]  px-1 text-[20px]  whitespace-nowrap rounded-full font-['Montserrat'] font-semibold 
-    transition duration-300 ease-in-out text-black border-white`}
-  >
-    {children}
-  </Link>
-);
+const NavItem = ({ children, to }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  return (
+    <Link to={to} className={`nav-link ${isActive ? "active" : ""}`}>
+      {children}
+    </Link>
+  );
+};
 
 // Button Component
-const Button = ({ children, variant, to }) => (
-  <div
-    className={` hover:underline underline-offset-8 decoration-purple px-4 py-2 rounded-full font-['Montserrat'] font-semibold text-[20px]  border-0 transition-colors duration-300 relative   duration-300 `}
-  >
+const Button = ({ children, to }) => (
+  <div className="button">
     <Link to={to} className="w-full h-full">
       {children}
     </Link>
@@ -28,6 +27,9 @@ const Button = ({ children, variant, to }) => (
 // Navbar Component
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [navbarStyle, setNavbarStyle] = useState("bg-white");
+
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -37,18 +39,43 @@ function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleScroll = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.classList.contains("white-section")) {
+          setNavbarStyle("frosted-glass");
+        } else {
+          setNavbarStyle("bg-white");
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleScroll, {
+      threshold: 0.1,
+    });
+
+    const sections = document.querySelectorAll(".section");
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const navItems = [
     { name: "Services", path: "/services" },
-
     { name: "About Us", path: "/about" },
-    { name: "Blog", path: "/Blog" },
+    { name: "Blog", path: "/blog" },
     { name: "Contact Us", path: "/contact" },
   ];
 
   return (
     <nav
-      className="fixed w-full z-10 top-0 left-0 max-w-screen bg-white
-                 flex items-center justify-between    px-6 w-full h-[90px] "
+      className={`fixed w-full z-10 top-0 left-0 max-w-screen ${navbarStyle} transition-color flex items-center justify-between px-6 h-[90px]`}
     >
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ">
@@ -70,11 +97,11 @@ function Navbar() {
       </div>
 
       {/* Desktop Menu */}
-      <nav className="hidden md:flex gap-6  ">
+      <nav className="hidden md:flex gap-6">
         <a className="flex" href="/">
           <img
             src="../img/Logo.png"
-            className=" ml-[50px] mb-[8px] w-[60px] h-[65px]  "
+            className="ml-[50px] mb-[8px] w-[60px] h-[65px]"
           />
           <img
             src="../img/Jenisys Hero.png"
@@ -83,18 +110,17 @@ function Navbar() {
         </a>
 
         <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]">
-          <Button variant="secondary" to="/login">
-            Log In / Sign Up
-          </Button>
+          <Button to="/login">Log In / Sign Up</Button>
         </div>
-        <div className=" 3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
-          {navItems.map((item, index) => (
-            <NavItem key={item.name} to={item.path} isActive={index === 0}>
+        <div className="3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
+          {navItems.map((item) => (
+            <NavItem key={item.name} to={item.path}>
               {item.name}
             </NavItem>
           ))}
         </div>
       </nav>
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-[#5851AD] text-white z-50">
@@ -106,18 +132,14 @@ function Navbar() {
               <AiOutlineClose className="text-2xl" />
             </button>
             <div className="flex flex-col gap-4">
-              {navItems.map((item, index) => (
-                <NavItem key={item.name} to={item.path} isActive={index === 0}>
+              {navItems.map((item) => (
+                <NavItem key={item.name} to={item.path}>
                   {item.name}
                 </NavItem>
               ))}
               <div className="flex flex-col gap-4">
-                <Button variant="secondary" to="/login">
-                  Log In
-                </Button>
-                <Button variant="primary" to="/signup">
-                  Sign Up
-                </Button>
+                <Button to="/login">Log In</Button>
+                <Button to="/signup">Sign Up</Button>
               </div>
             </div>
           </div>

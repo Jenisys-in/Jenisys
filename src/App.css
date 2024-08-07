@@ -21,6 +21,49 @@
     width: 100%;
   }
 
+
+.frosted-glass {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.bg-white {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.transition-color {
+  transition: background-color 0.1s ease;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  margin-left: 3rem; /* Adjusted for responsiveness */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 20px;
+  white-space: nowrap;
+  border-radius: 9999px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  color: black;
+  border-color: white;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-color: purple;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-color: purple;
+}
+
+
   
 
   
