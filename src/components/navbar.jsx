@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // Add useEffect import
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import "../App.css";
@@ -17,7 +17,7 @@ const NavItem = ({ children, to }) => {
 
 // Button Component
 const Button = ({ children, to }) => (
-  <div className="button">
+  <div className="` hover:underline underline-offset-8 decoration-purple px-4 py-2 rounded-full font-['Montserrat'] font-semibold text-[20px] border-0 transition-colors duration-300 relative duration-300 `">
     <Link to={to} className="w-full h-full">
       {children}
     </Link>
@@ -75,7 +75,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-10 top-0 left-0 max-w-screen ${navbarStyle} transition-color flex items-center justify-between px-6 h-[90px]`}
+      className={`fixed w-full z-10 top-0 left-0 max-w-screen ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
     >
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ">
@@ -110,7 +110,9 @@ function Navbar() {
         </a>
 
         <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]">
-          <Button to="/login">Log In / Sign Up</Button>
+          <Button variant="secondary" to="/login">
+            Log In / Sign Up
+          </Button>
         </div>
         <div className="3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
           {navItems.map((item) => (
@@ -138,8 +140,12 @@ function Navbar() {
                 </NavItem>
               ))}
               <div className="flex flex-col gap-4">
-                <Button to="/login">Log In</Button>
-                <Button to="/signup">Sign Up</Button>
+                <Button variant="secondary" to="/login">
+                  Log In
+                </Button>
+                <Button variant="primary" to="/signup">
+                  Sign Up
+                </Button>
               </div>
             </div>
           </div>
