@@ -48,15 +48,32 @@
   font-weight: 600;
   transition: all 0.3s ease-in-out;
   color: black;
-  border-color: white;
+  position: relative; /* Allow :after to be positioned within */
+  display: inline-block; /* Ensure link width doesn't affect underline */
 }
 
 .nav-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 8px;
-  text-decoration-color: purple;
+  text-decoration: none; /* Remove default underline */
+  color: black; /* Change text color on hover */
 }
 
+/* Underline Effect */
+.nav-link:after {
+  content: "";
+  display: block;
+  height: 2px; /* Underline thickness */
+  left: 50%;
+  position: absolute;
+  background: purple; /* Underline color */
+  transition: width 0.3s ease, left 0.3s ease; /* Smooth animation */
+  width: 0;
+  bottom: -2px; /* Position underline directly below the text */
+}
+
+.nav-link:hover:after { 
+  width: 100%; /* Expand underline on hover */
+  left: 0; /* Align underline with link start */
+}
 .nav-link.active {
   text-decoration: underline;
   text-underline-offset: 8px;
