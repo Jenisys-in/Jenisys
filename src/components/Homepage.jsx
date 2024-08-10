@@ -5,97 +5,97 @@ import animationData from "./AnimationLottie.json";
 
 const Home = () => {
   return (
-    <div className="mt-[85px] flex-col relative ">
+    <div className="mt-[85px] flex-col relative snap-y snap-mandatory ">
       <div className="section black-section">
-        <div className="bg-white flex px-[70px] 3xl:pt-[150px] pt-[45px] gap-8 3xl:mx-[150px]">
+        <div className="relative md:h-screen h-[500px]  bg-white snap-start  md:flex px-[50px] md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:pt-[45px] 3xl:gap-8 md:gap-8 3xl:mx-[150px]">
           <div>
             <img
               src="../img/Jenisys Hero.png"
-              className="w-[220px] h-[50px] 3xl:w-[460px] 3xl:h-[104px]"
+              className="md:w-[220px] md:h-[50px] 3xl:w-[460px] 3xl:h-[104px] w-[133px] h-[32px]"
             />
-            <h1 className="font-['Montserrat'] text-[40px] pl-[10px] pt-[20px] font-semibold">
+            <h1 className="font-['Montserrat'] md:text-[40px] pl-[10px] pt-[20px] font-semibold text-[20px]">
               Revolutionize your business with Jenisys
             </h1>
-            <h1 className="font-['Montserrat'] text-[20px] pl-[10px] pt-[10px]">
+            <h1 className="font-['Montserrat'] text-[11px] md:text-[20px] md:pl-[10px] absolute md:relative md:top-0 top-[300px] pt-[10px] ">
               Jenisys: Where Innovation Begins. We craft top-tier <br></br>
               software and digital solutions, ensuring your business<br></br>{" "}
               thrives with unmatched quality and excellence. From<br></br>{" "}
               consultation to development, our expertise drives your <br></br>{" "}
               success beyond limits.{" "}
             </h1>
-            <button className="ml-[10px] mt-[30px] bg-[#361CA9] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">
+            <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white  md:w-[250px] w-[109px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 h-[27px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">
               Learn More
             </button>
           </div>
           <img
             src="../img/image 2.png"
-            className=" w-[660px] 3xl:w-[850px] 3xl:pl-[40px] h-[480px] 3xl:mb-[200px]  mb-[80px]"
+            className=" absolute md:relative md:top-4 top-[140px] md:w-[660px] 3xl:w-[850px] 3xl:pl-[40px] md:h-[480px] 3xl:mb-[200px] w-[317px] h-[140px]  md:mb-[80px]"
           />
         </div>
       </div>
-      <div className="section white-section">
-        <div className="bg-black flex px-[70px] relative w-full ">
+      <div className="section snap-start  white-section">
+        <div className="bg-black flex-col md:flex md:px-[60px] md:px-[70px] relative w-full ">
           <img
             src="../img/Group 21.png "
-            className="w-full h-[720px] 3xl:h-screen"
+            className="w-full h-screen md:h-[720px] 3xl:h-screen snap-start"
           />
           {/* <h1 className="text-white absolute top-[300px] left-[250px]">Hello</h1> */}
           <div className="flex-col absolute">
             <img
               src="../img/image 3.png"
-              className="w-[550px] h-[330px] mt-[70px] 3xl:mt-[140px]"
+              className=" w-full md:px-0 px-[40px] md:pr-0 pr-[60px] h-[157px] md:w-[550px] absolute md:relative md:top-0 -top-[870px] md:h-[330px] md:mt-[70px] 3xl:mt-[140px]"
             />
-            <h1 className="text-white font-['Montserrat'] 3xl:pt-[90px] font-extrabold text-[30px] pt-[40px] ">
+              <h1 className="md:text-[30px] md:relative md:left-0  px-[40px] md:w-[524px] absolute md:-top-0 -top-[375px] 3xl:text-[27px] w-[360px] text-white pt-[50px] md:px-[0px] 3xl:pt-[110px] font-extrabold font-['Montserrat'] text-[12px] md:text-[20px] ">
               Our Vision
             </h1>
-            <h1 className="text-white font-['Montserrat']  text-[20px] pt-[20px]">
-              Our vision is to be the leading transformative technology{" "}
+            <h1 className="md:relative md:left-0 left-[40px] px-[0px] md:w-auto absolute md:-top-0 -top-[340px] 3xl:text-[27px] w-[360px] text-white md:pt-0 pt-[50px] md:px-[0px] 3xl:pt-[110px] font-['Montserrat'] text-[11px] md:text-[20px] ">
+            Our vision is to be the leading transformative technology{" "}
               <br></br>
               solutions provider, empowering businesses with innovative<br></br>{" "}
               digital solutions and driving transformative growth.
             </h1>
-            <button className=" mt-[30px]  bg-[#7526FE] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">
+            <button className="md:relative md:left-0 left-[40px] md:-top-0 absolute -mt-[200px] md:mt-[30px]  bg-[#7526FE] text-white md:w-[250px] w-[102px] h-[29px] md:h-[67px] text-[12px] md:text-[24px]  font-['Montserrat'] font-semibold rounded-[2px] md:rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">
               Learn More
             </button>
           </div>
-          <div className="absolute">
-            <h1 className="pl-[630px] 3xl:pt-[120px] 3xl:text-[40px] 3xl:pl-[730px] text-white font-['Montserrat'] font-extrabold text-[30px] pt-[60px]">
+          <div className="flex-col absolute">
+            <h1 className="md:relative md:px-0 px-[40px] w-[214px] md:w-[1000px] absolute md:-top-0 -top-[675px] md:pl-[630px] text-[12px] 3xl:pt-[120px] 3xl:text-[40px] 3xl:pl-[730px] text-white font-['Montserrat'] font-extrabold md:text-[30px] md:pt-[60px]">
               Our Mission
             </h1>
             <div className="flex flex-row">
               <img
                 src="../img/bulb.png"
-                className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px]"
+                className="absolute md:-top-0 -top-[625px] left-[40px] md:left-0 md:relative md:pt-[50px] 3xl:pt-[100px] md:pl-[630px] 3xl:pl-[730px] h-[28px] w-[28px] md:h-auto md:w-auto"
               />
-              <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
+              <h1 className="md:relative md:left-0 left-[40px] px-[40px] md:w-[524px] absolute md:-top-0 -top-[675px] 3xl:text-[27px] w-[360px] text-white pt-[50px] md:px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[11px] md:text-[20px] ">
                 To Empower Businesses with Uncompromised Quality and Innovation.
               </h1>
             </div>
             <div className="flex flex-row">
               <img
                 src="../img/nano.png"
-                className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px] "
+                className="absolute md:-top-0 -top-[550px] left-[40px] md:left-0 md:relative md:pt-[50px] 3xl:pt-[100px] md:pl-[630px] 3xl:pl-[730px] h-[28px] w-[28px] md:h-auto md:w-auto"
               />
-              <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
-                To Revolutionize Business Growth Through Superior Technology.
+              <h1 className="md:relative md:left-0 left-[40px] px-[40px] md:w-[524px] absolute md:-top-0 -top-[600px] 3xl:text-[27px] w-[360px] text-white pt-[50px] md:px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[11px] md:text-[20px] ">
+              To Revolutionize Business Growth Through Superior Technology.
               </h1>
             </div>
             <div className="flex flex-row">
               <img
                 src="../img/arrow.png"
-                className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px] "
+                className="absolute md:-top-0 -top-[475px] left-[40px] md:left-0 md:relative md:pt-[50px] 3xl:pt-[100px] md:pl-[630px] 3xl:pl-[730px] h-[28px] w-[28px] md:h-auto md:w-auto"
               />
-              <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
-                To Drive Success with Tailored, High-Quality Digital Solutions.
+              <h1 className="md:relative md:left-0 left-[40px] px-[40px] md:w-[524px] absolute md:-top-0 -top-[525px] 3xl:text-[27px] w-[360px] text-white pt-[50px] md:px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[11px] md:text-[20px] ">
+              To Drive Success with Tailored, High-Quality Digital Solutions.
               </h1>
             </div>
             <div className="flex flex-row">
               <img
                 src="../img/success.png"
-                className="pt-[50px] 3xl:pt-[100px] pl-[630px] 3xl:pl-[730px]"
+                className="  md:-top-0 top-[475px] left-[40px] md:left-0 md:relative md:pt-[50px] 3xl:pt-[100px] md:pl-[630px] 3xl:pl-[730px] h-[28px] w-[28px] md:h-auto md:w-auto"
               />
-              <h1 className="3xl:text-[27px] text-white pt-[50px] px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[20px] ">
-                To Create the Future of Business with Relentless Excellence.
+              <h1 className="md:relative md:left-0 left-[40px] px-[40px] md:w-[524px] absolute md:-top-0 -top-[450px] 3xl:text-[27px] w-[360px] text-white pt-[50px] md:px-[20px] 3xl:pt-[110px] font-['Montserrat'] text-[11px] md:text-[20px] ">
+              To Create the Future of Business with Relentless Excellence.
               </h1>
             </div>
           </div>
