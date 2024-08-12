@@ -10,6 +10,7 @@ import SignUp from "./components/signup.jsx";
 import NewBlog from "./components/new-blog.jsx";
 import Contact from "./components/contact.jsx";
 import Preloader from "./components/preloader.jsx";
+import AboutUs from "./components/about-us.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,6 +52,7 @@ function App() {
             <Route path="/newblog" element={<NewBlog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<LogIn />} />
+            <Route path="/about" element={<AboutUs />} />
           </Routes>
         </Router>
       </div>
