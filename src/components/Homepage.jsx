@@ -43,7 +43,7 @@ const Home = () => {
           <div className="flex-col absolute">
             <img
               src="../img/image 3.png"
-              className=" w-full md:px-0 px-[40px] md:pr-0 pr-[60px] h-[157px] md:w-[550px] absolute md:relative md:top-0 -top-[870px] md:h-[330px] md:mt-[70px] 3xl:mt-[140px]"
+              className=" w-screen md:px-0 px-[40px] md:pr-0 pr-[60px] h-[157px] md:w-[550px] absolute md:relative md:top-0 -top-[870px] md:h-[330px] md:mt-[70px] 3xl:mt-[140px]"
             />
               <h1 className="md:text-[30px] md:relative md:left-0  px-[40px] md:w-[524px] absolute md:-top-0 -top-[375px] 3xl:text-[27px] w-[360px] text-white pt-[50px] md:px-[0px] 3xl:pt-[110px] font-extrabold font-['Montserrat'] text-[12px] md:text-[20px] ">
               Our Vision
