@@ -23,7 +23,7 @@ const Home = () => {
               consultation to development, our expertise drives your <br></br>{" "}
               success beyond limits.{" "}
             </h1>
-            <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white  md:w-[250px] w-[109px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 h-[27px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)]">
+            <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white  md:w-[250px] w-[109px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 h-[27px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] -[6px_7px_4px_rgba(0,0,0,0.25)]">
               Learn More
             </button>
           </div>
@@ -153,7 +153,7 @@ const Home = () => {
         </div>
         <div className="section white-section">
           <div className="flex-row 3xl:px-[250px] md:px-[125px] relative ">
-            <div className=" rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white border-2 border-black md:rounded-[17px] md:-bottom-[280px] md:h-[387px] md:w-[261px] -bottom-[110px] left-[50px]">
+            <div className=" rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white border-2 border-black md:rounded-[17px] md:-bottom-[280px] md:h-[387px] md:w-[261px] -bottom-[110px] md:left-[120px]">
               <Lottie
                 className="absolute  w-[100px] md:w-auto -top-[50px] md:-top-[135px] md:-left-[7px]"
                 animationData={animationData}
