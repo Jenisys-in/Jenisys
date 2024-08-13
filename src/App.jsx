@@ -21,7 +21,7 @@ function App() {
     // Set a timer to hide the preloader after 5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 4000); // 5000 milliseconds = 5 seconds
+    }, 500); // 5000 milliseconds = 5 seconds
 
     // Cleanup the timer on component unmount
     return () => clearTimeout(timer);
@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     if (!isLoading) {
       // Hide the preloader with a slight delay to allow the fade-out transition
-      const timeout = setTimeout(() => setIsPreloaderVisible(false), 1000); // 1000 milliseconds = 1 second
+      const timeout = setTimeout(() => setIsPreloaderVisible(false), 500); // 1000 milliseconds = 1 second
       return () => clearTimeout(timeout);
     }
   }, [isLoading]);
@@ -39,7 +39,7 @@ function App() {
     <>
       {isPreloaderVisible && <Preloader isVisible={isLoading} />}
       <div
-        className={`transition-opacity duration-1000 ${
+        className={` transition-opacity duration-1000 ${
           isPreloaderVisible ? "opacity-0" : "opacity-100"
         }`}
       >
@@ -55,7 +55,6 @@ function App() {
             <Route path="/login" element={<LogIn />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<Services />} />
-
           </Routes>
         </Router>
       </div>
