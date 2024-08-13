@@ -11,6 +11,7 @@ import NewBlog from "./components/new-blog.jsx";
 import Contact from "./components/contact.jsx";
 import Preloader from "./components/preloader.jsx";
 import AboutUs from "./components/about-us.jsx";
+import Services from "./components/services.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,6 +54,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+
           </Routes>
         </Router>
       </div>
