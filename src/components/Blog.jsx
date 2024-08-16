@@ -1,70 +1,25 @@
 import React from "react"; // eslint-disable-line
 import "../App.css";
-import { Link } from "react-router-dom";
-import { IoIosAddCircleOutline } from "react-icons/io";
+
+
 
 function Blog() {
   return (
-    <div  className="mt-[90px]  bg-radial-gradient relative self-stretch ">
-    <div className=" flex flex-row pt-[25px] pb-[10px]">
-      <h1 className="font-['Kodchasan'] text-[35px] ml-[25px] mr-[500px] text-white">Categories</h1>
-      <Link to="/newblog">
-      <button className="font-['Inter'] ml-[480px] text-[22px]  text-[#FFFBEB] bg-[#5851AD] rounded-full py-2 px-3">
-      <IoIosAddCircleOutline className="inline mr-[5px] -mt-[3px]" />
-        New Blog
-      </button>
-      </Link>
-    </div>
-    <hr className="border-[1px] w-[1355px] border-[#FFFFFF] ml-[10px]" />
-    <div className="mt[20px]   py-4 ">
-    <button className="font-['Inter'] ml-[6px] text-[22px] hover:bg-[#5A54A4] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
-        Technology
-      </button>
-      <button className="font-['Inter'] hover:bg-[#5A54A4] text-[22px] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
-      Technology
-      </button>
-      <button className="font-['Inter'] hover:bg-[#5A54A4] text-[22px] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
-      Technology
-      </button>
-      <button className="font-['Inter'] hover:bg-[#5A54A4] text-[22px] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
-      Technology
-      </button>
-      <button className="font-['Inter'] hover:bg-[#5A54A4] text-[22px] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
-      Technology
-      </button>
-      <button className="font-['Inter'] hover:bg-[#5A54A4] text-[22px] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8 mr-[9px]">
-      Technology
-      </button>
-      <button className="font-['Inter'] hover:bg-[#5A54A4] text-[22px] border-[1px] border-[#FFFFFF] text-[#FFFBEB] bg-[#918ADF] rounded-full py-2 px-8">
-      Technology
-      </button>
-    </div>
-    <div className="flex flex-row mt-[30px] mx-[20px] pb-[30px]">
-      <img
-      src="img/Blog.png"
-      alt="blog"
-      className="w-[750px] h-[450px]"
-      />
-      <div className="flex flex-col">
-      <h1 className=" px-10 text-wrap text-white font-['Inter'] text-[33px] mr-[20px] leading-8 mb-[15px] ">How Apple Outperformed Google and Microsoft in AI Rollout</h1>
-      <h1 className=" pt-[15px] px-10 text-wrap text-white font-['Inter'] text-[18px] ">Over the last several weeks, we’ve had Google I/O, which highlighted the rollout of Google’s Gemini AI engine for smartphones; Microsoft Build, which focused on its Copilot+ rollout for PCs; and Apple’s WWDC24 video, which showcased the rollout of AI on both PCs and smartphones. Let’s explor...</h1>
-      <button className="shadow-lg ml-10 mt-5 font-['Inter']  hover:shadow-white text-[22px]  text-[#5A54A4] bg-[#FFFBEB] rounded-full w-[155px] h-[50px]">
-        Read More
-      </button>
+    <div className="flex justify-center items-center h-screen"> 
+    <div className="border-2 flex flex-col justify-center items-center p-32 rounded-[90px] hover:shadow-[#361CA9] hover:shadow-lg transition duration-300"> 
+      <a href="/">
+      <img 
+        src="../img/Jenisys Hero.png"
+        alt="logo"
+        className="md:shadow-2xl hover:shadow-[#361CA9] transition duration-300 aspect-auto"
 
+      /></a>
+      <h1 className="font-['Montserrat'] md:text-[1.5rem] text-center md:mt-16">
+        This page is currently under construction. Stay tuned!
+      </h1>
     </div>
-    </div>
-    
-    <button>
-    <img 
-    className=" absolute bg-[#30248c] left-[1300px] "
-    src="img/arrowdown.png"
-    alt="arrow"
-    />
-    </button>
-    
-    
-    </div>
+  </div>
+  
   );
 }
 

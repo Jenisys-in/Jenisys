@@ -27,7 +27,7 @@ function AboutUs() {
           </video>
         </div>
 
-        <h1 className="font-['Montserrat'] md:text-[26px] font-medium text-[10px] text-white absolute text-center mt-[165px] md:mt-[580px] px-[51px] md:px-[70px] 3xl:mt-[500px]">
+        <h1 className="font-['Montserrat'] md:text-[26px] bg-black font-medium text-[10px] text-white md:pb-[70px] text-center mt-[165px] md:pt-[70px] md:mt-[0px] px-[51px] md:px-[70px] 3xl:mt-[500px]">
           {" "}
           At Jenisys, we are the architects of innovation, dedicated to
           delivering top-tier software and digital solutions that empower
@@ -38,10 +38,7 @@ function AboutUs() {
           Jenisys is where your business's potential meets our expertise, paving
           the way for a future of limitless possibilities.
         </h1>
-        <img
-          src="../img/aboutus1.png"
-          className="min-h-[327px] w-full md:w-auto md:h-full 3xl:w-full 3xl:h-[750px]"
-        />
+        
       </div>
       <div className="flex-col px-[52px] md:px-[60px] mb-[50px] md:mb-[200px] ">
         <img
