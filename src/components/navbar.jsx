@@ -110,9 +110,9 @@ function Navbar() {
         </a>
 
         <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]">
-          <Button variant="secondary" to="/login">
+          {/* <Button variant="secondary" to="/login">
             Log In / Sign Up
-          </Button>
+          </Button> */}
         </div>
         <div className="3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
           {navItems.map((item) => (
@@ -140,12 +140,12 @@ function Navbar() {
                 </NavItem>
               ))}
               <div className="flex flex-col gap-4">
-                <Button variant="secondary" to="/login">
+                {/* <Button variant="secondary" to="/login">
                   Log In
                 </Button>
                 <Button variant="primary" to="/signup">
                   Sign Up
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
