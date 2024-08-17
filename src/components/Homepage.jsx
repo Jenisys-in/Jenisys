@@ -5,7 +5,7 @@ import animationData from "./AnimationLottie.json";
 
 const Home = () => {
   return (
-    <div className="mt-[85px] flex-col relative  snap-mandatory md:w-screen ">
+    <div className="mt-[85px] flex-col relative overflow-x-hidden  snap-mandatory md:w-full ">
       <div className="section black-section">
         <div className="w-screen md:w-screen px-[10px] relative md:h-screen h-[500px]  bg-white snap-start  md:flex px-[50px] md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:pt-[45px] 3xl:gap-8 md:gap-8 3xl:mx-[150px]">
           <div>
@@ -40,44 +40,63 @@ const Home = () => {
       <div className="section snap-start  white-section">
         <div className="w-screen h-screen bg-black md:pl-[60px] flex  text-white">
           <div className="flex-col md:w-1/2">
-          <img 
-          src="../img/image 3.png"
-          className="md:pt-[80px] " />
-          <h1 className="font-['Montserrat'] font-extrabold md:text-[32px] md:pt-[30px]">Our Vision</h1>
-          <h1 className="font-['Montserrat']  md:text-[20px] md:pt-[20px]">Our vision is to be the leading transformative technology solutions provider, empowering businesses with innovative digital solutions and driving transformative growth.</h1>
+            <img src="../img/image 3.png" className="md:pt-[80px] " />
+            <h1 className="font-['Montserrat'] font-extrabold md:text-[32px] md:pt-[30px]">
+              Our Vision
+            </h1>
+            <h1 className="font-['Montserrat']  md:text-[20px] md:pt-[20px]">
+              Our vision is to be the leading transformative technology
+              solutions provider, empowering businesses with innovative digital
+              solutions and driving transformative growth.
+            </h1>
           </div>
-          <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[80px]"> 
-          <h1 className="md:text-[32px] font-extrabold ">Our Mission</h1>
-          <div className="flex flex-row items-center">
-          <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
-          <img src="../img/bulb.png" className="md:w-[52px] md:h-[52px]" />
+          <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[80px]">
+            <h1 className="md:text-[32px] font-extrabold ">Our Mission</h1>
+            <div className="flex flex-row items-center">
+              <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
+                <img
+                  src="../img/bulb.png"
+                  className="md:w-[52px] md:h-[52px]"
+                />
+              </div>
+              <h1 className="md:text-[20px] md:w-[524px] md:ml-4">
+                To Empower Businesses with Uncompromised Quality and Innovation.
+              </h1>
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
+                <img
+                  src="../img/nano.png"
+                  className="md:w-[52px] md:h-[52px]"
+                />
+              </div>
+              <h1 className="md:text-[20px] md:w-[524px] md:ml-4">
+                To Revolutionize Business Growth Through Superior Technology.
+              </h1>
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
+                <img
+                  src="../img/arrow.png"
+                  className="md:w-[52px] md:h-[52px]"
+                />
+              </div>
+              <h1 className="md:text-[20px] md:w-[524px] md:ml-4">
+                To Drive Success with Tailored, High-Quality Digital Solutions.
+              </h1>
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
+                <img
+                  src="../img/success.png"
+                  className="md:w-[52px] md:h-[52px]"
+                />
+              </div>
+              <h1 className="md:text-[20px] md:w-[524px] md:ml-4">
+                To Create the Future of Business with Relentless Excellence.
+              </h1>
+            </div>
           </div>
-          <h1 className="md:text-[20px] md:w-[524px] md:ml-4">To Empower Businesses with Uncompromised Quality and Innovation.</h1>
-          </div>
-          <div className="flex flex-row items-center">
-          <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
-          <img src="../img/nano.png" className="md:w-[52px] md:h-[52px]" />
-          </div>
-          <h1 className="md:text-[20px] md:w-[524px] md:ml-4">To Revolutionize Business Growth Through Superior Technology.</h1>
-          </div>
-          <div className="flex flex-row items-center">
-          <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
-          <img src="../img/arrow.png" className="md:w-[52px] md:h-[52px]" />
-          </div>
-          <h1 className="md:text-[20px] md:w-[524px] md:ml-4">To Drive Success with Tailored, High-Quality Digital Solutions.</h1>
-          </div>
-          <div className="flex flex-row items-center">
-          <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] md:mt-[30px] flex justify-center items-center">
-          <img src="../img/success.png" className="md:w-[52px] md:h-[52px]" />
-          </div>
-          <h1 className="md:text-[20px] md:w-[524px] md:ml-4">To Create the Future of Business with Relentless Excellence.</h1>
-          </div>
-
-          
-
-          </div>
-
-
         </div>
       </div>
       <div className="section black-section">
@@ -230,15 +249,15 @@ const Home = () => {
         </div>
       </div>
       <div className="section black-section">
-      <div className="bg-black w-screen h-screen text-white md:mt-[400px] md:pl-[50px]">
-        
-        <h1 className="text-white font-['Montserrat']  md:text-[32px] font-bold md:pt-[50px] ">
-        Testimonials
-        </h1>
-        <h1 className="text-white font-['Montserrat']  md:text-[40px] font-semibold md:pt-[10px] md:w-[1115px] ">
-        Our positive feedbacks from clients highlight our abilities in delivering outstanding results
-        </h1>
-        <div className="md:flex-row flex md:mt-[30px]">
+        <div className="bg-black w-screen h-screen text-white md:mt-[400px] md:pl-[50px]">
+          <h1 className="text-white font-['Montserrat']  md:text-[32px] font-bold md:pt-[50px] ">
+            Testimonials
+          </h1>
+          <h1 className="text-white font-['Montserrat']  md:text-[40px] font-semibold md:pt-[10px] md:w-[1115px] ">
+            Our positive feedbacks from clients highlight our abilities in
+            delivering outstanding results
+          </h1>
+          <div className="md:flex-row flex md:mt-[30px]">
             <div className="md:flex-col">
               <h1 className="relative text-white font-['Montserrat']  md:text-[18px] font-medium ">
                 Jenisys has been an incredible partner in driving our digital
@@ -253,7 +272,7 @@ const Home = () => {
                 Company Name, City
               </h1>
               <h1 className="relative text-white font-['Montserrat']  md:text-[18px] font-medium md:mt-[30px] ">
-                 Jenisys has been an incredible partner in driving our digital
+                Jenisys has been an incredible partner in driving our digital
                 <br></br>transformation. Their expertise in custom software
                 development<br></br>and cloud computing has been invaluable in
                 optimizing our<br></br>operations and driving growth.
@@ -266,8 +285,8 @@ const Home = () => {
               </h1>
             </div>
             <div className="md:flex-col md:pl-[60px]">
-            <h1 className="relative text-white font-['Montserrat']  md:text-[18px] font-medium ">
-              Jenisys has been an incredible partner in driving our digital
+              <h1 className="relative text-white font-['Montserrat']  md:text-[18px] font-medium ">
+                Jenisys has been an incredible partner in driving our digital
                 <br></br>transformation. Their expertise in custom software
                 development<br></br>and cloud computing has been invaluable in
                 optimizing our<br></br>operations and driving growth.
@@ -292,67 +311,76 @@ const Home = () => {
               </h1>
             </div>
           </div>
-
-      </div>
+        </div>
       </div>
       <div className="section white-section">
         <div className="bg-white font-['Montserrat'] justify-center items-center md:mt-[30px] w-screen md:mb-[50px]">
-        <h1 className="md:text-[40px] font-semibold text-center md:px-[270px]">Don't miss a byte! Subscribe for the latest in software and tech</h1>
-        <div className="flex flex-row md:mt-[40px]">
-          <div className="md:flex-col md:ml-[100px] md:w-1/3 ">
-          <img
-          src="../img/Jenisys Hero.png"
-          className="md:w-[172px] md:h-[50px] md:mb-[20px]   "
-          />
-          <a
-          className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:pb-[0px]"
-          href="#services"
-          >Services
-          </a> <br></br>
-          <a
-          className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mt-[5px] "
-          href="#"
-          >About Us
-          </a> <br></br>
-          <a
-          className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
-          href="#"
-          >Blogs
-          </a> <br></br>
-          <a
-          className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
-          href="#"
-          >Contact Us
-          </a> <br></br>
-          <a
-          className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
-          href="#"
-          >Careers
-          </a>
-          
-          </div>
-          <div className="md:flex-col md:w-1/3 md:pr-[500px]">
-          <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px]">
-          Name
+          <h1 className="md:text-[40px] font-semibold text-center md:px-[270px]">
+            Don't miss a byte! Subscribe for the latest in software and tech
           </h1>
-          <input className="w-[373px] h-[48px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
-          <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] ">
-          E- mail
-          </h1>
-          <input className="w-[373px] h-[48px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
-          <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[266px] ">
-          Contact Number
-          </h1>
-          <input className="w-[373px] h-[48px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
-          <button className=" bg-[#361CA9] text-white md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
-          Subscribe
-          </button>
-          </div>
-          <div className="md:flex-col md:ml-[00px] md:pl-[50px] md:w-1/3 ">
-          <h1 className="font-['Montserrat'] font-semibold md:text-[20px] md:pb-[30px]">
-          Operational Work Hours
-          </h1>
-          <h1 className="font-['Montserrat'] font-medium md:text-[16px] md:pl-[30px] md:pb-[10px] md:w-[255px]">
+          <div className="flex flex-row md:mt-[40px]">
+            <div className="md:flex-col md:ml-[100px] md:w-1/3 ">
+              <img
+                src="../img/Jenisys Hero.png"
+                className="md:w-[172px] md:h-[50px] md:mb-[20px]   "
+              />
+              <a
+                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:pb-[0px]"
+                href="#services"
+              >
+                Services
+              </a>{" "}
+              <br></br>
+              <a
+                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mt-[5px] "
+                href="#"
+              >
+                About Us
+              </a>{" "}
+              <br></br>
+              <a
+                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
+                href="#"
+              >
+                Blogs
+              </a>{" "}
+              <br></br>
+              <a
+                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
+                href="#"
+              >
+                Contact Us
+              </a>{" "}
+              <br></br>
+              <a
+                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
+                href="#"
+              >
+                Careers
+              </a>
+            </div>
+            <div className="md:flex-col md:w-1/3 md:pr-[500px]">
+              <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px]">
+                Name
+              </h1>
+              <input className="w-[373px] h-[48px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] ">
+                E- mail
+              </h1>
+              <input className="w-[373px] h-[48px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[266px] ">
+                Contact Number
+              </h1>
+              <input className="w-[373px] h-[48px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              <button className=" bg-[#361CA9] text-white md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
+                Subscribe
+              </button>
+            </div>
+            <div className="md:flex-col md:ml-[00px] md:pl-[50px] md:w-1/3 ">
+              <h1 className="font-['Montserrat'] font-semibold md:text-[20px] md:pb-[30px]">
+                Operational Work Hours
+              </h1>
+              <h1 className="font-['Montserrat'] font-medium md:text-[16px] md:pl-[30px] md:pb-[10px] md:w-[255px]">
                 Mon - Wed : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM - 4PM
               </h1>
               <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
@@ -368,30 +396,35 @@ const Home = () => {
                 &nbsp;&nbsp; Closed
               </h1>
               <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <div className="w-screen bg-black md:h-[210px] justify-center items-center">
-        
-      <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px]" >
-        Follow Us On
-       </h1>
-       <div className="md:flex md:flex-row justify-center items-center md:gap-8 md:mt-[20px]" >
-       <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
-        <img src="../img/mdi_instagram.png" className="md:h-[34px] md:w-[34px]" />
+        <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px]">
+          Follow Us On
+        </h1>
+        <div className="md:flex md:flex-row justify-center items-center md:gap-8 md:mt-[20px]">
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/mdi_instagram.png"
+              className="md:h-[34px] md:w-[34px]"
+            />
+          </div>
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/Linkedin 2.png"
+              className="md:h-[34px] md:w-[34px]"
+            />
+          </div>
+          <div className="bg-[#A3A3A3] md:h-[50px]md:w-[50px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/facebook.png"
+              className="md:h-[34px] md:w-[34px]"
+            />
+          </div>
         </div>
-        <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
-        <img src="../img/Linkedin 2.png" className="md:h-[34px] md:w-[34px]" />
-        </div>
-        <div className="bg-[#A3A3A3] md:h-[50px]md:w-[50px] rounded-full flex justify-center items-center">
-        <img src="../img/facebook.png" className="md:h-[34px] md:w-[34px]" />
-        </div>
-       </div>
-
       </div>
-      
-     
     </div>
   );
 };
