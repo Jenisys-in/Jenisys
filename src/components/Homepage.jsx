@@ -5,7 +5,7 @@ import animationData from "./AnimationLottie.json";
 
 const Home = () => {
   return (
-    <div className="mt-[85px] flex-col relative w-screen snap-mandatory md:w-screen ">
+    <div className="mt-[85px] flex-col relative  snap-mandatory md:w-screen ">
       <div className="section black-section">
         <div className="w-screen md:w-screen px-[10px] relative md:h-screen h-[500px]  bg-white snap-start  md:flex px-[50px] md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:pt-[45px] 3xl:gap-8 md:gap-8 3xl:mx-[150px]">
           <div>
@@ -218,11 +218,11 @@ const Home = () => {
               <h1 className="text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
                 Maintenance, Support<br></br>& Cybersecurity
               </h1>
-              <h1 className="text-center  font-['Montserrat'] md:text-[16px] md:pt-[20px] md:px-[25px]">
+              <h1 className="text-center  font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
                 It involves updates, user assistance, & protection against cyber
                 threats to maintain system integrity and user trust.
               </h1>
-              <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] ">
+              <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] ">
                 Read More
               </button>
             </div>
@@ -384,7 +384,7 @@ const Home = () => {
         <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
         <img src="../img/Linkedin 2.png" className="md:h-[34px] md:w-[34px]" />
         </div>
-        <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] rounded-full flex justify-center items-center">
+        <div className="bg-[#A3A3A3] md:h-[50px]md:w-[50px] rounded-full flex justify-center items-center">
         <img src="../img/facebook.png" className="md:h-[34px] md:w-[34px]" />
         </div>
        </div>
