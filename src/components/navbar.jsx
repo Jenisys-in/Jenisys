@@ -75,7 +75,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-10 top-0 left-0 max-w-screen ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
+      className={`fixed z-10 top-0 left-0 min-w-full ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
     >
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ">
