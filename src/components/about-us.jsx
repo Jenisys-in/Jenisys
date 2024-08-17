@@ -27,7 +27,7 @@ function AboutUs() {
           </video>
         </div>
 
-        <h1 className="font-['Montserrat'] md:text-[26px] bg-black font-medium text-[10px] text-white md:pb-[70px] text-center mt-[165px] md:pt-[70px] md:mt-[0px] px-[51px] md:px-[70px] 3xl:mt-[500px]">
+        <h1 className="font-['Montserrat'] md:text-[26px] bg-black font-medium text-[10px] text-white md:pb-[70px] text-center pt-[20px] pb-[20px] md:pt-[70px] md:mt-[0px] px-[51px] md:px-[70px] 3xl:mt-[500px]">
           {" "}
           At Jenisys, we are the architects of innovation, dedicated to
           delivering top-tier software and digital solutions that empower
@@ -43,7 +43,7 @@ function AboutUs() {
       <div className="flex-col px-[52px] md:px-[60px] mb-[50px] md:mb-[200px] ">
         <img
           src="../img/aboutus2.png"
-          className=" h-[250px] w-full md:w-[600px] md:h-[750px] md:float-right 3xl:mr-[100px] 3xl:h-[867px] 3xl:w-[800px]"
+          className=" mt-[20px] md:mt-0 h-[250px] w-full md:w-[600px] md:h-[750px] md:float-right 3xl:mr-[100px] 3xl:h-[867px] 3xl:w-[800px]"
         />
         <h1 className="font-['Montserrat'] font-bold text-[12px] md:text-[32px] mt-[20px] 3xl:text-[40px]">
           Our Core Values
