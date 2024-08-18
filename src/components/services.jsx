@@ -98,13 +98,13 @@ const Services = () => {
             Web & Mobile App Development
           </h1>
           <h1 className="text-center  font-['Montserrat']  text-[6px] px-[10px] md:px-[20px] md:mb-[10px] md:text-[15px] ">
-            At Jenisys, we specialize in developing custom software solutions
-            tailored to meet the unique needs of your business. Our team of
-            experienced developers utilizes the latest technologies to create
-            software that aligns perfectly with your specific requirements.
-            Whether you need a comprehensive enterprise solution, a bespoke web
-            application, or a specialized mobile app, we have the expertise to
-            deliver high-quality, scalable, and robust software.
+            At Jenisys, we provide comprehensive web and mobile app development
+            services designed to help your business establish a robust digital
+            presence. Our team creates responsive, SEO-friendly websites and
+            intuitive mobile applications, ensuring a seamless and engaging user
+            experience across all devices. We focus on building solutions that
+            are visually appealing, highly functional, and easy to navigate,
+            enhancing user experiance.
           </h1>
           <button className="rounded-[1px] w-[55px] md:w-[147px] md:h-[49px] md:rounded-[4px] text-[8px] h-[15px] mx-[40px] md:mx-[100px]  bg-[#8847FA] text-white  font-['Montserrat'] font-semibold md:text-[20px] ">
             Get Started
@@ -310,30 +310,30 @@ const Services = () => {
         </div>
       </div>
       <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
-  <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
-    Follow Us On
-  </h1>
-  <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
-    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-      <img
-        src="../img/mdi_instagram.png"
-        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-      />
-    </div>
-    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-      <img
-        src="../img/Linkedin 2.png"
-        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-      />
-    </div>
-    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-      <img
-        src="../img/facebook.png"
-        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-      />
-    </div>
-  </div>
-</div>
+        <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
+          Follow Us On
+        </h1>
+        <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/mdi_instagram.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
+          </div>
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/Linkedin 2.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
+          </div>
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/facebook.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

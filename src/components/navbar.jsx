@@ -1,42 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import "../App.css";
 
 // NavItem Component
-const NavItem = ({ children, to }) => {
+const NavItem = ({ children, to, onClick }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
 
   return (
-    <Link to={to} className={`nav-link ${isActive ? "active" : ""}`}>
+    <Link
+      to={to}
+      onClick={onClick}
+      className={`nav-link ${isActive ? "active" : ""}`}
+    >
       {children}
     </Link>
   );
 };
 
-// Button Component
-const Button = ({ children, to }) => (
-  <div className="hover:underline underline-offset-8 decoration-purple px-4 py-2 rounded-full font-['Montserrat'] font-semibold text-[20px] border-0 transition-colors duration-300 relative duration-300">
-    <Link to={to} className="w-full h-full">
-      {children}
-    </Link>
-  </div>
-);
-
 // Navbar Component
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navbarStyle, setNavbarStyle] = useState("bg-white");
-
   const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
   };
 
   const handleScroll = (entries) => {
@@ -67,6 +56,7 @@ function Navbar() {
   }, []);
 
   const navItems = [
+    { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
     { name: "About Us", path: "/about" },
     { name: "Blog", path: "/blog" },
@@ -77,7 +67,7 @@ function Navbar() {
     <nav
       className={`fixed z-10 top-0 left-0 min-w-full ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
     >
-      {/* Desktop Menu */}
+      {/* Logo */}
       <a className="flex gap-2" href="/">
         <img
           src="../img/Logo.png"
@@ -89,12 +79,9 @@ function Navbar() {
         />
       </a>
 
+      {/* Desktop Menu */}
       <div className="hidden md:flex items-center">
-        <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]">
-          {/* <Button variant="secondary" to="/login">
-            Log In / Sign Up
-          </Button> */}
-        </div>
+        <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]"></div>
         <div className="3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
           {navItems.map((item) => (
             <NavItem key={item.name} to={item.path}>
@@ -106,49 +93,29 @@ function Navbar() {
 
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ml-auto">
-        
-        {!isMobileMenuOpen ? (
-          <button
-            onClick={toggleMobileMenu}
-            className="text-black focus:outline-none"
-          >
-            <AiOutlineMenu className="text-4xl" />
-          </button>
-        ) : (
-          <button
-            onClick={closeMobileMenu}
-            className="text-black focus:outline-none"
-          >
-            <AiOutlineClose className="text-4xl" />
-          </button>
-        )}
+        <div
+          className={`hamburger ${isMobileMenuOpen ? "open" : "closed"}`}
+          onClick={toggleMobileMenu}
+        >
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white text-black z-50">
-          <div className="p-6">
-            <button
-              onClick={closeMobileMenu}
-              className="text-black absolute top-4 right-4 focus:outline-none"
-            >
-              <AiOutlineClose className="text-2xl" />
-            </button>
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <NavItem key={item.name} to={item.path}>
-                  {item.name}
-                </NavItem>
-              ))}
-              <div className="flex flex-col gap-4">
-                {/* <Button variant="secondary" to="/login">
-                  Log In
-                </Button>
-                <Button variant="primary" to="/signup">
-                  Sign Up
-                </Button> */}
-              </div>
-            </div>
+        <div className="md:hidden fixed inset-0 bg-white text-black z-50 flex flex-col p-6">
+          <div className="flex flex-col gap-6 mt-12">
+            {navItems.map((item) => (
+              <NavItem
+                key={item.name}
+                to={item.path}
+                onClick={toggleMobileMenu}
+              >
+                {item.name}
+              </NavItem>
+            ))}
           </div>
         </div>
       )}
