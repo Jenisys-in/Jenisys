@@ -78,14 +78,14 @@ function Navbar() {
       className={`fixed z-10 top-0 left-0 min-w-full ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
     >
       {/* Desktop Menu */}
-      <a className="hidden md:flex" href="/">
+      <a className="flex gap-2" href="/">
         <img
           src="../img/Logo.png"
-          className="ml-[50px] mb-[8px] w-[60px] h-[65px]"
+          className="md:ml-[50px] md:mb-[8px] md:w-[60px] md:h-[65px] w-[25px] h-[30px]"
         />
         <img
           src="../img/Jenisys Hero.png"
-          className="mt-[10px] -ml-[10px] w-[180px] h-[50px]"
+          className="md:mt-[10px] md:-ml-[10px] md:w-[180px] md:h-[50px] mt-[5px] md:mt-0 w-[90px] h-[25px]"
         />
       </a>
 
@@ -106,6 +106,7 @@ function Navbar() {
 
       {/* Hamburger Icon for Mobile */}
       <div className="block md:hidden ml-auto">
+        
         {!isMobileMenuOpen ? (
           <button
             onClick={toggleMobileMenu}
@@ -125,11 +126,11 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#5851AD] text-white z-50">
+        <div className="md:hidden fixed inset-0 bg-white text-black z-50">
           <div className="p-6">
             <button
               onClick={closeMobileMenu}
-              className="text-white absolute top-4 right-4 focus:outline-none"
+              className="text-black absolute top-4 right-4 focus:outline-none"
             >
               <AiOutlineClose className="text-2xl" />
             </button>
