@@ -46,9 +46,10 @@ const Home = () => {
               consultation to development, our expertise drives your <br></br>{" "}
               success beyond limits.{" "}
             </h1>
+            <a href="/about">
             <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white w-[109px] h-[27px]  md:w-[250px] w-[109px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 h-[27px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] -[6px_7px_4px_rgba(0,0,0,0.25)]">
               Learn More
-            </button>
+            </button> </a>
           </div>
           <video
             className=" absolute md:relative md:top-4 top-[140px] md:w-[660px] 3xl:w-[850px] 3xl:pl-[40px] md:h-[480px] 3xl:mb-[200px] w-auto h-[140px]  md:mb-[80px]"
@@ -76,9 +77,10 @@ const Home = () => {
                 solutions provider, empowering businesses with innovative
                 digital solutions and driving transformative growth.
               </h1>
+              <a href="/about">
               <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2 md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none ">
                 Learn More
-              </button>
+              </button></a>
             </div>
             <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[80px] order-first md:order-none">
               <h1 className="md:text-[32px] font-extrabold text-[12px] mb-[10px] md:mb-0">
@@ -171,7 +173,7 @@ const Home = () => {
 
           <img
             src="../img/image 4.png"
-            className="w-[330px] h-[170px] md:h-auto md:w-auto absolute md:relative left-[50px] top-[30px]"
+            className="w-[330px] h-[170px] md:h-auto md:w-auto absolute md:relative left-[50px] top-[30px] md:mr-[70px]"
           />
         </div>
       </div>
@@ -188,9 +190,10 @@ const Home = () => {
             The future is flexible. Partner with <br></br> us to outsoure Your{" "}
             <span className="text-[#7F4BED] font-extrabold">Tech Needs</span>
           </h1>
+          <a href="/services">
           <button className=" hidden md:block bg-[#7526FE] 3xl:left-[1320px] 3xl:bottom-[300px] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] absolute bottom-[250px] left-[1035px] ">
             Learn More
-          </button>
+          </button></a>
         </div>
         <div className="section white-section">
           <div className="flex-row 3xl:px-[250px] md:px-[125px] relative ">
@@ -213,9 +216,10 @@ const Home = () => {
                 It involves creating software tailored to meet specific needs or
                 requirements of a business or user.
               </h1>
+              <a href="/services">
               <button className="rounded-[2px] w-[60px]  text-[8px] h-[20px] md:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] md:mt-[25px] mx-[20px] bg-[#7526FE] text-white md:w-[147px] md:h-[49px] md:text-[20px] font-['Montserrat'] font-semibold md:rounded-[4px] ">
                 Read More
-              </button>
+              </button></a>
             </div>
             <div className="right-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:rounded-[17px] md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:-bottom-[280px] md:h-[387px] md:w-[261px] md:left-[410px] -bottom-[110px] ">
               <Lottie
@@ -234,9 +238,10 @@ const Home = () => {
                 It involves creating applications that can be accessed on both
                 web browsers and mobile devices.
               </h1>
+              <a href="/services">
               <button className="rounded-[2px] w-[60px]  text-[8px] h-[20px] md:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] md:mt-[25px] mx-[20px] bg-[#7526FE] text-white md:w-[147px] md:h-[49px] md:text-[20px] font-['Montserrat'] font-semibold md:rounded-[4px] ">
                 Read More
-              </button>
+              </button></a>
             </div>
             <div className="hidden md:block absolute justify-center bg-white md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[960px] left-[695px] h-[387px] w-[261px]">
               <Lottie
@@ -255,9 +260,10 @@ const Home = () => {
                 It involves guiding businesses in using technology to improve
                 operations and achieve goals.
               </h1>
+              <a href="/services">
               <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] ">
                 Read More
-              </button>
+              </button></a>
             </div>
             <div className="hidden md:block absolute justify-center bg-white md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[1315px] left-[980px] h-[387px] w-[261px]">
               <Lottie
@@ -276,9 +282,10 @@ const Home = () => {
                 It involves updates, user assistance, & protection against cyber
                 threats to maintain system integrity and user trust.
               </h1>
+              <a href="/services">
               <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] ">
                 Read More
-              </button>
+              </button></a>
             </div>
           </div>
         </div>
@@ -497,7 +504,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className=" w-screen bg-black md:h-[210px] h-[80px] justify-center items-center ">
+      <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
         <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px]">
           Follow Us On
         </h1>
