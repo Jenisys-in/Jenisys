@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <div className="mt-[85px] flex-col relative overflow-x-hidden  snap-mandatory w-full ">
       <div className="section black-section">
-        <div className="scroll-on-appear w-screen md:w-screen  md:px-[40px] px-[50px]  relative md:h-screen h-[500px]  bg-white snap-start  md:flex  md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:pt-[45px] 3xl:gap-8 md:gap-8 3xl:mx-[150px]">
+        <div className="scroll-on-appear w-screen md:w-screen  md:px-[40px] px-[50px]  relative md:h-screen h-[500px]  bg-white snap-start  md:flex  md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:gap-8 md:gap-8 3xl:px-[150px]">
           <div>
             <img
               src="../img/Jenisys Hero.png"
@@ -72,17 +72,17 @@ const Home = () => {
               <h1 className="font-['Montserrat'] font-extrabold md:text-[32px] md:pt-[30px] pt-[20px] text-[12px] ">
                 Our Vision
               </h1>
-              <h1 className="font-['Montserrat'] md:text-[20px] md:pt-[0px] text-[11px]">
+              <h1 className="font-['Montserrat'] md:text-[20px] md:pt-[0px] text-[11px] 3xl:text-[25px] 3xl:mt-[20px] ">
                 Our vision is to be the leading transformative technology
                 solutions provider, empowering businesses with innovative
                 digital solutions and driving transformative growth.
               </h1>
               <a href="/about">
-              <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2 md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none ">
+              <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2 md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none 3xl:mt-[60px] ">
                 Learn More
               </button></a>
             </div>
-            <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[80px] order-first md:order-none">
+            <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[80px] order-first md:order-none 3xl:pt-[150px]">
               <h1 className="md:text-[32px] font-extrabold text-[12px] mb-[10px] md:mb-0">
                 Our Mission
               </h1>
@@ -93,7 +93,7 @@ const Home = () => {
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
-                <h1 className="md:text-[20px] text-[11px] md:w-[524px] md:ml-4 ml-2">
+                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
                   To Empower Businesses with Uncompromised Quality and
                   Innovation.
                 </h1>
@@ -105,7 +105,7 @@ const Home = () => {
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
-                <h1 className="md:text-[20px] text-[11px] md:w-[524px] md:ml-4 ml-2">
+                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
                   To Revolutionize Business Growth Through Superior Technology.
                 </h1>
               </div>
@@ -116,7 +116,7 @@ const Home = () => {
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
-                <h1 className="md:text-[20px] text-[11px] md:w-[524px] md:ml-4 ml-2">
+                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
                   To Drive Success with Tailored, High-Quality Digital
                   Solutions.
                 </h1>
@@ -128,7 +128,7 @@ const Home = () => {
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
-                <h1 className="md:text-[20px] text-[11px] md:w-[524px] md:ml-4 ml-2">
+                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
                   To Create the Future of Business with Relentless Excellence.
                 </h1>
               </div>
@@ -197,7 +197,7 @@ const Home = () => {
         </div>
         <div className="section white-section">
           <div className="flex-row 3xl:px-[250px] md:px-[125px] relative ">
-            <div className=" left-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:rounded-[17px] md:-bottom-[280px] md:h-[387px] md:w-[261px] -bottom-[110px] md:left-[120px]">
+            <div className=" left-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:rounded-[17px] md:-bottom-[280px] md:h-[387px] md:w-[261px] -bottom-[110px] md:left-[120px] 3xl:left-[250px]">
               <Lottie
                 className="absolute  w-[100px] md:w-auto -top-[50px] md:-top-[135px] md:-left-[7px]"
                 animationData={animationData}
@@ -221,7 +221,7 @@ const Home = () => {
                 Read More
               </button></a>
             </div>
-            <div className="right-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:rounded-[17px] md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:-bottom-[280px] md:h-[387px] md:w-[261px] md:left-[410px] -bottom-[110px] ">
+            <div className="right-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:rounded-[17px] md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:-bottom-[280px] md:h-[387px] md:w-[261px] md:left-[410px] -bottom-[110px] 3xl:left-[600px] ">
               <Lottie
                 className="absolute md:w-auto w-[100px] -top-[50px] md:-top-[135px] md:-left-[7px]"
                 animationData={animationData}
@@ -292,63 +292,63 @@ const Home = () => {
       </div>
       <div className="scroll-on-appear section black-section">
         <div className="bg-black w-screen h-[380px] md:h-screen text-white md:mt-[400px] mt-[150px] md:pl-[50px] px-[20px] md:px-0">
-          <h1 className="text-white font-['Montserrat'] text-[12px]  md:text-[32px] font-bold md:pt-[50px] pt-[30px] ">
+          <h1 className="text-white font-['Montserrat'] text-[12px]  md:text-[32px] font-bold md:pt-[50px] pt-[30px] 3xl:text-[48px] ">
             Testimonials
           </h1>
-          <h1 className="text-white font-['Montserrat']  md:text-[40px] text-[14px] font-semibold md:pt-[10px] md:w-[1115px] ">
+          <h1 className="text-white font-['Montserrat']  md:text-[40px] text-[14px] font-semibold md:pt-[10px] md:w-[1115px] 3xl:text-[50px] 3xl:w-[1500px] ">
             Our positive feedbacks from clients highlight our abilities in
             delivering outstanding results
           </h1>
           <div className="md:flex-row flex md:mt-[30px]">
             <div className="md:flex-col ">
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px]  md:text-[18px] font-medium ">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px]  md:text-[18px] font-medium 3xl:text-[22px] ">
                 Jenisys has been an incredible partner in driving our digital
                 <br></br>transformation. Their expertise in custom software
                 development<br></br>and cloud computing has been invaluable in
                 optimizing our<br></br>operations and driving growth.
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px] font-bold md:ml-[80px] ml-[20px] ">
+              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px] font-bold md:ml-[80px] ml-[20px] 3xl:text-[32px]  ">
                 Tuhin Das
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] 3xl:bottom-[650px] md:ml-[80px] ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] md:ml-[80px] ml-[20px] 3xl:text-[24px]">
                 Company Name, City
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px]  md:text-[18px] font-medium md:mt-[30px] ">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px]  md:text-[18px] font-medium md:mt-[30px] 3xl:text-[22px]">
                 Jenisys has been an incredible partner in driving our digital
                 <br></br>transformation. Their expertise in custom software
                 development<br></br>and cloud computing has been invaluable in
                 optimizing our<br></br>operations and driving growth.
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px] 3xl:bottom-[560px] font-bold md:ml-[80px]  ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[32px]">
                 Tuhin Das
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] 3xl:bottom-[560px] md:ml-[80px]  ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]  md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
                 Company Name, City
               </h1>
             </div>
-            <div className="md:flex-col md:pl-[60px] pl-[70px]">
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium ">
+            <div className="md:flex-col md:pl-[60px] pl-[70px] 3xl:pl-[160px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium 3xl:text-[22px]">
                 Jenisys has been an incredible partner in driving our digital
                 <br></br>transformation. Their expertise in custom software
                 development<br></br>and cloud computing has been invaluable in
                 optimizing our<br></br>operations and driving growth.
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[32px]">
                 Tuhin Das
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]  absolute md:ml-[80px]  ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]   md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
                 Company Name, City
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium md:mt-[30px] ">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium md:mt-[30px] 3xl:text-[22px] ">
                 Jenisys has been an incredible partner in driving our digital
                 <br></br>transformation. Their expertise in custom software
                 development<br></br>and cloud computing has been invaluable in
                 optimizing our<br></br>operations and driving growth.
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[32px]">
                 Tuhin Das
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] md:ml-[80px]  ml-[20px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
                 Company Name, City
               </h1>
             </div>
@@ -505,7 +505,7 @@ const Home = () => {
         </div>
       </div>
       <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
-        <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px]">
+        <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
           Follow Us On
         </h1>
         <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">

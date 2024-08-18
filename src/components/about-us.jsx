@@ -1,3 +1,5 @@
+
+
 import React, { useEffect } from "react";
 import "../App.css";
 
@@ -26,7 +28,7 @@ function AboutUs() {
     };
   }, []);
   return (
-    <div className="mt-[85px]  relative">
+    <div className="mt-[85px]  relative overflow-x-hidden">
       <div className="scroll-on-appear flex flex-col justify-center items-center text-center px-[51px] md:px-[220px]">
         <h1 className="text-black font-['Montserrat'] text-[21px] md:text-[48px] font-bold align-center">
           About Us
@@ -50,7 +52,7 @@ function AboutUs() {
           </video>
         </div>
 
-        <h1 className="font-['Montserrat'] md:text-[26px] bg-black font-medium text-[10px] text-white md:pb-[70px] text-center pt-[20px] pb-[20px] md:pt-[70px] md:mt-[0px] px-[51px] md:px-[70px] 3xl:mt-[500px]">
+        <h1 className="font-['Montserrat'] md:text-[26px] bg-black font-medium text-[10px] text-white md:pb-[70px] text-center pt-[20px] pb-[20px] md:pt-[70px] md:mt-[0px] px-[51px] md:px-[70px]">
           {" "}
           At Jenisys, we are the architects of innovation, dedicated to
           delivering top-tier software and digital solutions that empower
@@ -62,7 +64,7 @@ function AboutUs() {
           the way for a future of limitless possibilities.
         </h1>
       </div>
-      <div className="scroll-on-appear flex-col px-[52px] md:px-[60px] mb-[50px] md:mb-[200px] ">
+      <div className="scroll-on-appear flex-col px-[52px] md:px-[60px] mb-[50px] md:mb-[100px] ">
         <img
           src="../img/aboutus2.png"
           className=" mt-[20px] md:mt-0 h-[250px] w-full md:w-[600px] md:h-[750px] md:float-right 3xl:mr-[100px] 3xl:h-[867px] 3xl:w-[800px]"
@@ -107,6 +109,31 @@ function AboutUs() {
           enhance their business outcomes. It's about maximizing value rather
           than just minimizing costs.
         </h1>
+      </div>
+      <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
+        <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
+          Follow Us On
+        </h1>
+        <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/mdi_instagram.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
+          </div>
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/Linkedin 2.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
+          </div>
+          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+            <img
+              src="../img/facebook.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
+          </div>
+        </div>
       </div>
     </div>
   ); //ha

@@ -28,7 +28,7 @@ const Services = () => {
     };
   }, []);
   return (
-    <div className="mt-[85px] w-full">
+    <div className="mt-[85px] w-full overflow-x-hidden">
       {" "}
       <div className="scroll-on-appear w-full">
         {" "}
@@ -53,7 +53,7 @@ const Services = () => {
           </video>
         </div>
       </div>
-      <div className="scroll-on-appear grid grid-cols-2 mx-[60px] md:mx-0 md:ml-[80px] md:grid-cols-3 3xl:mx-[150px]  mb-[100px]">
+      <div className="scroll-on-appear grid grid-cols-2 mx-[60px] md:mx-0 md:ml-[80px] md:grid-cols-3 3xl:mx-[150px]  mb-[50px]">
         <div className="scroll-on-appear drop-shadow-2xl shadow-[3px_3px_16px_rgba(0,0,0,0.25)] relative rounded-[5px] mt-[40px] md:mt-[100px] w-[140px] md:w-[353px] md:h-[525px]  h-[200px] justify-center bg-white   border-[0.4px]  ">
           <Lottie
             className=" absolute w-[100px] md:w-[340px] bottom-[150px] right-[20px] md:bottom-[360px] md:right-[20px]"
@@ -309,6 +309,31 @@ const Services = () => {
           </button>
         </div>
       </div>
+      <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
+  <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
+    Follow Us On
+  </h1>
+  <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
+    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+      <img
+        src="../img/mdi_instagram.png"
+        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+      />
+    </div>
+    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+      <img
+        src="../img/Linkedin 2.png"
+        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+      />
+    </div>
+    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
+      <img
+        src="../img/facebook.png"
+        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+      />
+    </div>
+  </div>
+</div>
     </div>
   );
 };
