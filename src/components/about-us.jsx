@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
 
 function AboutUs() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+        });
+      },
+      { threshold: 0.1 } // Adjust threshold to suit the effect you want
+    );
+
+    const elements = document.querySelectorAll(".scroll-on-appear");
+    elements.forEach((element) => observer.observe(element));
+
+    return () => {
+      if (elements && elements.length > 0) {
+        elements.forEach((element) => observer.unobserve(element));
+      }
+    };
+  }, []);
   return (
     <div className="mt-[85px]  relative">
-      <div className="flex flex-col justify-center items-center text-center px-[51px] md:px-[220px]">
+      <div className="scroll-on-appear flex flex-col justify-center items-center text-center px-[51px] md:px-[220px]">
         <h1 className="text-black font-['Montserrat'] text-[21px] md:text-[48px] font-bold align-center">
           About Us
         </h1>
@@ -15,7 +38,7 @@ function AboutUs() {
           achieve your goals with excellence and precision.
         </h1>
       </div>
-      <div className="mt-[30px] relative">
+      <div className="scroll-on-appear mt-[30px] relative">
         <div className="w-full mt-[20px] overflow-hidden">
           <video
             className="w-full h-auto md:h-[403px] object-cover"
@@ -38,9 +61,8 @@ function AboutUs() {
           Jenisys is where your business's potential meets our expertise, paving
           the way for a future of limitless possibilities.
         </h1>
-        
       </div>
-      <div className="flex-col px-[52px] md:px-[60px] mb-[50px] md:mb-[200px] ">
+      <div className="scroll-on-appear flex-col px-[52px] md:px-[60px] mb-[50px] md:mb-[200px] ">
         <img
           src="../img/aboutus2.png"
           className=" mt-[20px] md:mt-0 h-[250px] w-full md:w-[600px] md:h-[750px] md:float-right 3xl:mr-[100px] 3xl:h-[867px] 3xl:w-[800px]"

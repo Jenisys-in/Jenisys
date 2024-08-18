@@ -17,7 +17,7 @@ const NavItem = ({ children, to }) => {
 
 // Button Component
 const Button = ({ children, to }) => (
-  <div className="` hover:underline underline-offset-8 decoration-purple px-4 py-2 rounded-full font-['Montserrat'] font-semibold text-[20px] border-0 transition-colors duration-300 relative duration-300 `">
+  <div className="hover:underline underline-offset-8 decoration-purple px-4 py-2 rounded-full font-['Montserrat'] font-semibold text-[20px] border-0 transition-colors duration-300 relative duration-300">
     <Link to={to} className="w-full h-full">
       {children}
     </Link>
@@ -77,38 +77,19 @@ function Navbar() {
     <nav
       className={`fixed z-10 top-0 left-0 min-w-full ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
     >
-      {/* Hamburger Icon for Mobile */}
-      <div className="block md:hidden ">
-        {!isMobileMenuOpen ? (
-          <button
-            onClick={toggleMobileMenu}
-            className="text-white focus:outline-none"
-          >
-            <AiOutlineMenu className="text-4xl" />
-          </button>
-        ) : (
-          <button
-            onClick={closeMobileMenu}
-            className="text-white focus:outline-none"
-          >
-            <AiOutlineClose className="text-4xl" />
-          </button>
-        )}
-      </div>
-
       {/* Desktop Menu */}
-      <nav className="hidden md:flex gap-6">
-        <a className="flex" href="/">
-          <img
-            src="../img/Logo.png"
-            className="ml-[50px] mb-[8px] w-[60px] h-[65px]"
-          />
-          <img
-            src="../img/Jenisys Hero.png"
-            className="mt-[10px] -ml-[10px] w-[180px] h-[50px]"
-          />
-        </a>
+      <a className="hidden md:flex" href="/">
+        <img
+          src="../img/Logo.png"
+          className="ml-[50px] mb-[8px] w-[60px] h-[65px]"
+        />
+        <img
+          src="../img/Jenisys Hero.png"
+          className="mt-[10px] -ml-[10px] w-[180px] h-[50px]"
+        />
+      </a>
 
+      <div className="hidden md:flex items-center">
         <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]">
           {/* <Button variant="secondary" to="/login">
             Log In / Sign Up
@@ -121,7 +102,26 @@ function Navbar() {
             </NavItem>
           ))}
         </div>
-      </nav>
+      </div>
+
+      {/* Hamburger Icon for Mobile */}
+      <div className="block md:hidden ml-auto">
+        {!isMobileMenuOpen ? (
+          <button
+            onClick={toggleMobileMenu}
+            className="text-black focus:outline-none"
+          >
+            <AiOutlineMenu className="text-4xl" />
+          </button>
+        ) : (
+          <button
+            onClick={closeMobileMenu}
+            className="text-black focus:outline-none"
+          >
+            <AiOutlineClose className="text-4xl" />
+          </button>
+        )}
+      </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (

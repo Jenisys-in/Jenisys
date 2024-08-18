@@ -1,21 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
 
 function Contact() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+        });
+      },
+      { threshold: 0.1 } // Adjust threshold to suit the effect you want
+    );
+
+    const elements = document.querySelectorAll(".scroll-on-appear");
+    elements.forEach((element) => observer.observe(element));
+
+    return () => {
+      if (elements && elements.length > 0) {
+        elements.forEach((element) => observer.unobserve(element));
+      }
+    };
+  }, []);
   return (
     <div className="flex overflow-hidden flex-col items-center px-20 pb-56 bg-white max-md:px-5 max-md:pb-24">
-      <div className="mt-28 text-5xl font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:text-4xl">
+      <div className="scroll-on-appear mt-28 text-5xl font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:text-4xl">
         Contact Us
       </div>
-      <div className="mt-11 text-lg font-semibold tracking-tight leading-8 text-center text-black w-[915px] max-md:mt-10 max-md:max-w-full">
+      <div className="scroll-on-appear mt-11 text-lg font-semibold tracking-tight leading-8 text-center text-black w-[915px] max-md:mt-10 max-md:max-w-full">
         If you have any questions about our services, want to discuss a
         potential collaboration, or just need advice on your tech strategy, our
         team is here to help. Get in touch with us today.
       </div>
-      <div className="mt-20 text-4xl font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:max-w-full">
+      <div className="scroll-on-appear mt-20 text-4xl font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:max-w-full">
         Contact our team for a consultation
       </div>
-      <div className="mt-20 w-full max-w-[1147px] max-md:mt-10 max-md:max-w-full">
+      <div className="scroll-on-appear mt-20 w-full max-w-[1147px] max-md:mt-10 max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col">
           <div className="flex flex-col w-[41%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col grow items-center leading-tight text-black max-md:mt-10">
@@ -27,7 +50,7 @@ function Contact() {
               <div className="mt-7 text-3xl font-semibold tracking-tight">
                 Talk to our Team
               </div>
-              <div className="self-stretch mt-6 text-xl tracking-tight">
+              <div className="self-stretch mt-6 ml-[60px] text-xl tracking-tight">
                 +14047365291, +918240384648
               </div>
             </div>
@@ -42,7 +65,7 @@ function Contact() {
               <div className="mt-7 text-3xl font-semibold tracking-tight">
                 Email Us
               </div>
-              <div className="self-stretch mt-5 text-xl tracking-tight">
+              <div className="self-stretch mt-5 ml-[60px] text-xl tracking-tight">
                 tuhin.das@jenisys.in
               </div>
             </div>
@@ -54,7 +77,7 @@ function Contact() {
                 srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/953cbefbd3c0e319848d7047fb41a447c592c28c3c451256fe18472cb73f56d1?apiKey=150ca4726f0b413090f132e093d2a392&&apiKey=150ca4726f0b413090f132e093d2a392"
                 className="object-contain max-w-full rounded-lg aspect-square w-[105px]"
               />
-              <div className="self-stretch mt-7 text-3xl font-semibold tracking-tight">
+              <div className="self-stretch mt-7 ml-[60px] text-3xl font-semibold tracking-tight">
                 Operating Hours
               </div>
               <div className="mt-4 text-xl tracking-tight">8am to 5pm</div>
@@ -62,7 +85,7 @@ function Contact() {
           </div>
         </div>
       </div>
-      <div className="mt-32 w-full max-w-[1325px] max-md:mt-10 max-md:max-w-full">
+      <div className="scroll-on-appear mt-32 w-full max-w-[1325px] max-md:mt-10 max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col">
           <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
             <div className="flex flex-col mt-28 w-full leading-tight text-black max-md:mt-10 max-md:max-w-full">
@@ -75,7 +98,7 @@ function Contact() {
                     Name
                   </div>
                   <input
-                    className="w-[190px]  font-light font-montserrat  top-[14px] left-[13px] tracking-[-0.02em] leading-[120%] text-black text-left inline-block h-5 p-0 z-[1]"
+                    className="w-[190px]  h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] font-light font-montserrat  top-[14px] left-[13px] tracking-[-0.02em] leading-[120%] text-black text-left inline-block h-5 p-0 z-[1]"
                     placeholder="Ex. Parker"
                     type="text"
                   />
@@ -85,7 +108,7 @@ function Contact() {
                     Email
                   </div>
                   <input
-                    className="w-[200px]  font-light font-montserrat  top-[14px] left-[13px] tracking-[-0.02em] leading-[120%] text-black text-left inline-block h-5 p-0 z-[2]"
+                    className="w-[200px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] font-light font-montserrat  top-[14px] left-[13px] tracking-[-0.02em] leading-[120%] text-black text-left inline-block h-5 p-0 z-[2]"
                     placeholder="Ex. yourmail@gmail.com"
                     type="text"
                   />
@@ -95,7 +118,7 @@ function Contact() {
                 Message
               </div>
               <input
-                className="w-[338px]  font-light font-montserrat text-mini bg-[transparent] h-5 relative tracking-[-0.02em] leading-[120%] text-black text-left inline-block max-w-full p-0 z-[1]"
+                className="w-[338px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] font-light font-montserrat text-mini bg-[transparent] h-5 relative tracking-[-0.02em] leading-[120%] text-black text-left inline-block max-w-full p-0 z-[1]"
                 placeholder="Type Your Message Here"
                 type="text"
               />
