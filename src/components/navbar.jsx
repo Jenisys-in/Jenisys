@@ -126,11 +126,11 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#5851AD] text-white z-50">
+        <div className="md:hidden fixed inset-0 bg-white text-black z-50">
           <div className="p-6">
             <button
               onClick={closeMobileMenu}
-              className="text-white absolute top-4 right-4 focus:outline-none"
+              className="text-black absolute top-4 right-4 focus:outline-none"
             >
               <AiOutlineClose className="text-2xl" />
             </button>
