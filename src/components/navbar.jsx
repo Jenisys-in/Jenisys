@@ -21,39 +21,12 @@ const NavItem = ({ children, to, onClick }) => {
 // Navbar Component
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [navbarStyle, setNavbarStyle] = useState("bg-white");
+
   const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  const handleScroll = (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        if (entry.target.classList.contains("white-section")) {
-          setNavbarStyle("frosted-glass");
-        } else {
-          setNavbarStyle("bg-white");
-        }
-      }
-    });
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(handleScroll, {
-      threshold: 0.1,
-    });
-
-    const sections = document.querySelectorAll(".section");
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -64,9 +37,7 @@ function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed z-10 top-0 left-0 min-w-full ${navbarStyle} transition-color flex items-center justify-between px-6 h-[80px]`}
-    >
+    <nav className="fixed z-10 top-0 left-0 w-full bg-white transition-color flex items-center justify-between px-6 h-[80px]">
       {/* Logo */}
       <a className="flex gap-2" href="/">
         <img
