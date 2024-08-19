@@ -410,7 +410,8 @@ const Home = () => {
                 Careers
               </a>
             </div>
-            <div className="md:flex-col md:w-1/3 md:pr-[500px] pl-[50px] ">
+            
+            <div className="md:flex-col md:w-1/3 md:pr-[0px] pl-[50px] ">
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] mt-[20px] md:mt-0 ">
                 Name
               </h1>
@@ -426,8 +427,11 @@ const Home = () => {
               <button className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
                 Subscribe
               </button>
+              
             </div>
-            
+            <div className="hidden md:block flex-col w-1/2  px-[40px] mt-[40px] 3xl:px-[80px]">
+          <h1 className="font-['Montserrat'] font-semibold text-[20px] 3xl:text-[25px] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo fuga soluta rerum magnam eos modi earum esse vi rem ipsum dolor sit amet consectetur adipisicing elit. Illo fuga soluta rerum magna</h1>
+        </div>
           </div>
         </div>
       </div>
