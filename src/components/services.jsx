@@ -48,6 +48,8 @@ const Services = () => {
             autoPlay
             muted
             loop
+            playsInline // Ensures autoplay works on mobile devices
+            preload="auto" // Preloads the video to ensure it starts playing immediately
           >
             <source src="/Our Services Video.mp4" type="video/mp4" />
           </video>
