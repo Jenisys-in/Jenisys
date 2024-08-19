@@ -65,36 +65,36 @@ const Home = () => {
         </div>
       </div>
       <div className="section snap-start  white-section">
-        <div className="scroll-on-appear w-screen min-h-[650px] md:h-screen bg-black md:pl-[60px] px-[50px] md:px-0 md:flex flex flex-col-reverse md:flex-row  text-white">
+        <div className="scroll-on-appear w-screen min-h-[650px] md:h-screen bg-black max-md:pl-[20px] md:pl-[60px] px-[50px] md:px-0 md:flex flex flex-col-reverse md:flex-row  text-white">
           <div className="md:flex md:flex-row flex flex-col-reverse">
             <div className="md:flex-col md:w-1/2">
               <img
                 src="../img/image 3.png"
-                className="md:pt-[80px] w-full pt-[40px] md:pt-0 md:w-auto"
+                className="md:pt-[40px] w-full pt-[40px] md:w-auto"
               />
               <h1 className="font-['Montserrat'] font-extrabold md:text-[32px] md:pt-[30px] pt-[20px] text-[12px] ">
                 Our Vision
               </h1>
-              <h1 className="font-['Montserrat'] md:text-[20px] md:pt-[0px] text-[11px] 3xl:text-[25px] 3xl:mt-[20px] ">
+              <h1 className="font-['Montserrat'] md:text-[20px] md:pt-[0px] text-[11px] 3xl:text-[25px] 3xl:mt-[20px]  ">
                 Our vision is to be the leading transformative technology
                 solutions provider, empowering businesses with innovative
                 digital solutions and driving transformative growth.
               </h1>
               <a href="/about">
-                <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2 md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none 3xl:mt-[60px] ">
+                <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2  md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none 3xl:mt-[60px] ">
                   Learn More
                 </button>
               </a>
             </div>
-            <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[80px] order-first md:order-none 3xl:pt-[150px]">
+            <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[30px] order-first md:order-none ">
               <h1 className="md:text-[32px] font-extrabold text-[12px] mb-[10px] md:mb-0">
                 Our Mission
               </h1>
               <div className="flex flex-row items-center">
-                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] mb-[10px] md:mb-0 rounded-[3px]  w-[47px] h-[47px] md:mt-[30px] flex justify-center items-center">
+                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] mb-[10px] md:mb-0 rounded-[3px] max-pm:w-[54px]  w-[53px]  h-[47px] md:mt-[30px] flex justify-center items-center">
                   <img
                     src="../img/bulb.png"
-                    className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
+                    className="md:w-[52px] md:h-[52px] w-[30px] h-[28px] ml-[2.5px] md:ml-0"
                   />
                 </div>
                 <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
@@ -103,7 +103,7 @@ const Home = () => {
                 </h1>
               </div>
               <div className="flex flex-row items-center">
-                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] mb-[10px] md:mb-0  w-[47px] h-[47px] md:mt-[30px] flex justify-center items-center">
+                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] mb-[10px] md:mb-0  w-[49px] h-[47px] md:mt-[30px] flex justify-center items-center">
                   <img
                     src="../img/nano.png"
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
@@ -177,7 +177,7 @@ const Home = () => {
 
           <img
             src="../img/image 4.png"
-            className="w-[330px] h-[170px] md:h-auto md:w-auto absolute md:relative left-[50px] top-[30px] md:mr-[70px]"
+            className="w-[330px] h-[170px] md:h-auto md:w-auto absolute md:relative max-pm:left-[30px] pm:left-[50px] top-[30px] md:mr-[70px]"
           />
         </div>
       </div>
@@ -427,90 +427,50 @@ const Home = () => {
                 Subscribe
               </button>
             </div>
-            <div className="md:flex-col md:ml-[00px] md:pl-[50px] md:w-1/3 hidden md:block">
-              <h1 className="font-['Montserrat'] font-semibold md:text-[20px] md:pb-[30px]">
-                Operational Work Hours
-              </h1>
-              <h1 className="font-['Montserrat'] font-medium md:text-[16px] md:pl-[30px] md:pb-[10px] md:w-[255px]">
-                Mon - Wed : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM - 4PM
-              </h1>
-              <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
-              <h1 className="font-['Montserrat'] font-medium md:text-[16px] md:pl-[30px] md:pb-[10px]">
-                Thu - Sat :
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM
-                - 5PM
-              </h1>
-              <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
-              <h1 className="font-['Montserrat'] font-medium md:text-[16px] md:pl-[30px] md:pb-[10px]">
-                Weekend :
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp; Closed
-              </h1>
-              <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
-            </div>
+            
           </div>
         </div>
       </div>
-      <div className="bg-white block md:hidden h-[200px] flex flex-row mt-[40px] ml-[60px]">
+      <div className="bg-white block md:hidden h-[200px] flex flex-row mt-[20px] ml-[60px]">
         <div className="flex-col  md:w-1/2 ">
-          <img src="../img/Jenisys Hero.png" className=" w-[60px] h-[18px] " />
+          <img src="../img/Jenisys Hero.png" className="pr-[0px] w-[100px] h-[30px] " />
           <a
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] "
+            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#services"
           >
             Services
           </a>{" "}
           <br></br>
           <a
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] "
+            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
             href="#"
           >
             About Us
           </a>{" "}
           <br></br>
           <a
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] "
+            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#"
           >
             Blogs
           </a>{" "}
           <br></br>
           <a
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] "
+            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
             href="#"
           >
             Contact Us
           </a>{" "}
           <br></br>
           <a
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px]"
+            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#"
           >
             Careers
           </a>
         </div>
-        <div className="flex-col w-1/2 pl-[80px]">
-          <div className="md:flex-col md:ml-[00px] md:pl-[50px] md:w-1/3 ">
-            <h1 className="font-['Montserrat'] font-semibold text-[7px] pb-[20px] ">
-              Operational Work Hours
-            </h1>
-            <h1 className="font-['Montserrat'] font-medium text-[7px] md:pl-[30px] pb-[10px] ">
-              Mon - Wed : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM - 4PM
-            </h1>
-            <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
-            <h1 className="font-['Montserrat'] font-medium text-[7px] md:pl-[30px] pb-[10px]">
-              Thu - Sat :
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9AM -
-              5PM
-            </h1>
-            <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
-            <h1 className="font-['Montserrat'] font-medium text-[7px] md:pl-[30px] pb-[10px]">
-              Weekend :
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp; Closed
-            </h1>
-            <hr className="md:pt-[20px] md:ml-[15px] md:w-[255px]" />
-          </div>
+        <div className="flex-col w-1/2 pl-[40px] mt-[40px]">
+          <h1 className="font-['Montserrat'] font-semibold text-[10px] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo fuga soluta rerum magnam eos modi earum esse vi</h1>
         </div>
       </div>
       <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">

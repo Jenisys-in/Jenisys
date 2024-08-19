@@ -55,7 +55,7 @@ const Services = () => {
           </video>
         </div>
       </div>
-      <div className="scroll-on-appear grid grid-cols-2 mx-[60px] md:mx-0 md:ml-[80px] md:grid-cols-3 3xl:mx-[150px]  mb-[50px]">
+      <div className="scroll-on-appear grid grid-cols-2 max-pm:mx-[40px] pm:mx-[60px] md:mx-0 md:ml-[80px] md:grid-cols-3 3xl:mx-[150px]  mb-[50px]">
         <div className="scroll-on-appear drop-shadow-2xl shadow-[3px_3px_16px_rgba(0,0,0,0.25)] relative rounded-[5px] mt-[40px] md:mt-[100px] w-[140px] md:w-[353px] md:h-[525px]  h-[200px] justify-center bg-white   border-[0.4px]  ">
           <Lottie
             className=" absolute w-[100px] md:w-[340px] bottom-[150px] right-[20px] md:bottom-[360px] md:right-[20px]"
@@ -324,7 +324,7 @@ const Services = () => {
           </div>
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
             <img
-              src="../img/Linkedin 2.png"
+              src="../img/linkedIn.png"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>

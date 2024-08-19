@@ -123,7 +123,7 @@ function AboutUs() {
           </div>
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
             <img
-              src="../img/Linkedin 2.png"
+              src="../img/linkedIn.png"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
