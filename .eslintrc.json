@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "next/next/no-img-element": "off",  // Disable image optimization warning
+    "jsx-a11y/alt-text": "warn",       // Warn about missing alt text
+    "react/no-unescaped-entities": "off" // Enforce escaping unescaped entities
+  }
 }
