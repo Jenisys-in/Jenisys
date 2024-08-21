@@ -341,7 +341,7 @@ const Home = () => {
                 CTO of BrightFuture Solutions
               </h1>
             </div>
-            <div className="md:flex-col md:pl-[40px] pl-[40px] 3xl:pl-[120px]">
+            <div className="md:flex-col md:pl-[60px] pl-[70px] 3xl:pl-[160px]">
               <h1 className="relative text-white font-['Montserrat'] text-[5px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium 3xl:text-[15px]">
                 “The team at Jenisys went above and beyond to help us redesign
                 our website. Their attention to detail, creative flair, and
@@ -352,7 +352,7 @@ const Home = () => {
               <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[25px]">
                 Sophie Nguyen
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]   md:ml-[80px]  ml-[15px] 3xl:text-[24px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]   md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
                 Marketing Director at Pulse Dynamics
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[5px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium md:mt-[30px] 3xl:text-[22px] ">

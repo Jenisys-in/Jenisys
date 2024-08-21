@@ -8,7 +8,7 @@ const LogIn = () => {
     <div className="mt-[85px]  w-full h-screen bg-cover bg-center" style={{ backgroundImage: "url('../img/logbg.png')" }}>
 
       <div className="flex-col bg-white w-1/2 mx-[100px] mt-[200px]">
-      <image
+      <img
       src="../img/Group 29.png" />
       </div>
      
