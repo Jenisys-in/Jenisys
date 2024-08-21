@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import "../app/global.css"; 
+import "../app/global.css";
 import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
 
@@ -179,7 +179,7 @@ const Home = () => {
 
           <img
             src="../img/image 4.png"
-            className="w-[330px] h-[170px] md:h-auto md:w-auto absolute md:relative max-pm:left-[30px] pm:left-[50px] top-[30px] md:mr-[70px]"
+            className="w-[330px] h-[170px]  md:h-auto md:w-auto absolute md:relative max-pm:left-[30px] pm:left-[50px] top-[30px] md:mr-[70px]"
           />
         </div>
       </div>
@@ -312,61 +312,55 @@ const Home = () => {
           </h1>
           <div className="md:flex-row flex md:mt-[30px]">
             <div className="md:flex-col ">
-              <h1 className="relative text-white font-['Montserrat'] text-[5px] w-[147px] md:w-auto mt-[10px]  md:text-[18px] font-medium 3xl:text-[15px] ">
-                “Working with Jenisys has been a game-changer for our tech
-                startup. Their innovative approach to web development and deep
-                understanding of our needs resulted in a seamless,
-                high-performance website that has significantly boosted our
-                client engagement. The team’s professionalism and dedication are
-                second to none.”
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[170px]  md:w-auto mt-[10px]  md:text-[15px] font-medium 3xl:text-[22px] ">
+              “Working with Jenisys has been a game-changer for our tech startup.
+              Their innovative approach to web development and deep understanding 
+               of our needs resulted in a seamless, high-performance website that 
+                has significantly boosted our client engagement."
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px] font-bold md:ml-[80px] ml-[20px] 3xl:text-[32px]  ">
-                Emily Carter
+              Emily Carter
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] md:ml-[80px] ml-[20px] 3xl:text-[24px]">
-                CEO of InnovateTech
+              CEO of InnovateTech
               </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[5px] w-[147px] md:w-auto mt-[10px]  md:text-[18px] font-medium md:mt-[30px] 3xl:text-[15px]">
-                “Jenisys transformed our vision into reality with their{" "}
-                exceptional software development skills. Their expertise in
-                creating user-friendly applications and their commitment to
-                delivering top- notch solutions made our collaboration a
-                pleasure. We’ve seen impressive improvements in efficiency and
-                customer satisfaction.”
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[170px] md:w-auto mt-[10px]  md:text-[18px] font-medium md:mt-[30px] 3xl:text-[22px]">
+              “Jenisys transformed our vision into reality with their exceptional
+               software development skills. Their expertise in creating 
+               user-friendly applications and their commitment to delivering 
+               top- notch solutions made our collaboration a pleasure."
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[32px]">
-                James Thompson
+              James Thompson
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]  md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
-                CTO of BrightFuture Solutions
+              CTO of BrightFuture Solutions
               </h1>
             </div>
-            <div className="md:flex-col md:pl-[60px] pl-[70px] 3xl:pl-[160px]">
-              <h1 className="relative text-white font-['Montserrat'] text-[5px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium 3xl:text-[15px]">
-                “The team at Jenisys went above and beyond to help us redesign
-                our website. Their attention to detail, creative flair, and
-                technical prowess were evident throughout the project. Our new
-                site not only looks fantastic but also performs flawlessly,
-                thanks to Jenisys’s outstanding work.”
-              </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[25px]">
-                Sophie Nguyen
-              </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]   md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
-                Marketing Director at Pulse Dynamics
-              </h1>
-              <h1 className="relative text-white font-['Montserrat'] text-[5px] w-[147px] md:w-auto mt-[10px] md:text-[18px] font-medium md:mt-[30px] 3xl:text-[22px] ">
-                “We chose Jenisys for their reputation for delivering
-                high-quality tech solutions, and they exceeded our expectations.
-                Their expertise in both front-end and back-end development
-                ensured a smooth and efficient project. Their support has been
-                invaluable, and we highly recommend their services.”
+            <div className="md:flex-col md:pl-[60px] pl-[20px] 3xl:pl-[160px]">
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[170px] md:w-auto mt-[10px] md:text-[18px] font-medium 3xl:text-[22px]">
+              “The team at Jenisys went above and beyond to help us redesign
+               our website. Their attention to detail, were evident throughout
+                the project. Our new site not only looks fantastic but also performs 
+                flawlessly,thanks to Jenisys’s outstanding work.”
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[32px]">
-                Michael Johnson
+              Sophie Nguyen
+              </h1>
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px]   md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
+              Marketing Director at Pulse Dynamics
+              </h1>
+              <h1 className="relative text-white font-['Montserrat'] text-[8px] w-[170px] md:w-auto mt-[10px] md:text-[18px] font-medium md:mt-[30px] 3xl:text-[22px] ">
+              “We chose Jenisys for their reputation for delivering 
+              high-quality tech solutions, and they exceeded our expectations.
+              Their support has been invaluable, and we highly 
+              recommend their services.”
+              </h1>
+              <h1 className="relative text-white font-['Montserrat'] text-[10px] md:text-[28px]  font-bold md:ml-[80px]  ml-[20px] 3xl:text-[32px]">
+              Michael Johnson
               </h1>
               <h1 className="relative text-white font-['Montserrat'] text-[8px] md:text-[20px] md:ml-[80px]  ml-[20px] 3xl:text-[24px]">
-                Founder of Quantum Innovations
+              Founder of Quantum Innovations
               </h1>
             </div>
           </div>
@@ -418,7 +412,7 @@ const Home = () => {
                 Careers
               </a>
             </div>
-
+            
             <div className="md:flex-col md:w-1/3 md:pr-[0px] pl-[50px] ">
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] mt-[20px] md:mt-0 ">
                 Name
@@ -435,21 +429,17 @@ const Home = () => {
               <button className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
                 Subscribe
               </button>
+              
             </div>
             <div className="hidden md:block flex-col w-1/2  px-[40px] mt-[40px] 3xl:px-[80px]">
-              <h1 className="font-['Montserrat'] font-semibold text-[20px] 3xl:text-[25px] ">
-                Advancing Excellence Beyond Cost
-              </h1>
-            </div>
+          <h1 className="font-['Montserrat'] font-semibold text-[20px] 3xl:text-[35px] ">Advancing Excellence<br className="hidden 3xl:block"></br> Beyond Cost</h1>
+        </div>
           </div>
         </div>
       </div>
       <div className="bg-white block md:hidden h-[200px] flex flex-row mt-[20px] ml-[60px]">
         <div className="flex-col  md:w-1/2 ">
-          <img
-            src="../img/Jenisys Hero.png"
-            className="pr-[0px] w-[100px] h-[30px] "
-          />
+          <img src="../img/Jenisys Hero.png" className="pr-[0px] w-[100px] h-[30px] " />
           <a
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#services"
@@ -459,21 +449,21 @@ const Home = () => {
           <br></br>
           <a
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
-            href="/about"
+            href="#"
           >
             About Us
           </a>{" "}
           <br></br>
           <a
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
-            href="/blog"
+            href="#"
           >
             Blogs
           </a>{" "}
           <br></br>
           <a
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
-            href="/contact"
+            href="#"
           >
             Contact Us
           </a>{" "}
@@ -486,7 +476,7 @@ const Home = () => {
           </a>
         </div>
         <div className="flex-col w-1/2 pl-[40px] mt-[40px]">
-          <h1 className="font-['Montserrat'] font-semibold text-[10px] "></h1>
+          <h1 className="font-['Montserrat'] font-semibold text-[10px] ">Advancing Excellence Beyond Cost</h1>
         </div>
       </div>
       <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
@@ -495,30 +485,16 @@ const Home = () => {
         </h1>
         <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <a
-              href="https://www.instagram.com/jenisys.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../img/mdi_instagram.png"
-                className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-                alt="Instagram Profile"
-              />
-            </a>
+            <img
+              src="../img/mdi_instagram.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
           </div>
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <a
-              href="https://www.linkedin.com/in/09tuhin-das/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../img/linkedIn.png"
-                className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-                alt="LinkedIn Profile"
-              />
-            </a>
+            <img
+              src="../img/linkedIn.png"
+              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+            />
           </div>
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
             <img

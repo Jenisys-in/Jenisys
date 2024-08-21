@@ -83,7 +83,7 @@ function Contact() {
               <div className="font-['Montserrat']  self-stretch mt-7  text-3xl font-semibold tracking-tight text-center">
                 Operating Hours
               </div>
-              <div className="mt-4 text-xl tracking-tight font-['Montserrat'] ">8am to 5pm</div>
+              <div className="mt-4 text-xl tracking-tight font-['Montserrat'] ">Call us anytime you want ;)</div>
             </div>
           </div>
         </div>
