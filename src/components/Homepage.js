@@ -1,11 +1,36 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../app/global.css";
 import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
 
 const Home = () => {
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contactNumber: ''
+  });
+
+  const handleChange = (e) => {
+    console.log("Val");
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    // Log the form data or send it to your server
+    console.log("Form submitted");
+    console.log(formData);
+    // You can also make an API call here to submit the data to your MongoDB server
+  };
+
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,13 +48,14 @@ const Home = () => {
     const elements = document.querySelectorAll(".scroll-on-appear");
     elements.forEach((element) => observer.observe(element));
 
-    return () => {
+    return () => { 
       if (elements && elements.length > 0) {
         elements.forEach((element) => observer.unobserve(element));
       }
     };
   }, []);
   return (
+    
     <div className="mt-[85px] flex-col relative overflow-x-hidden  snap-mandatory w-full ">
       <div className="section black-section">
         <div className="scroll-on-appear w-screen md:w-screen  md:px-[40px] px-[50px]  relative md:h-screen h-[500px]  bg-white snap-start  md:flex  md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:gap-8 md:gap-8 3xl:px-[150px]">
@@ -414,22 +440,35 @@ const Home = () => {
             </div>
             
             <div className="md:flex-col md:w-1/3 md:pr-[0px] pl-[50px] ">
+              <form onSubmit= {submitForm}>
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] mt-[20px] md:mt-0 ">
                 Name
               </h1>
-              <input className="md:w-[373px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px] " />
+              <input
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="md:w-[373px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px] " />
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px]  ">
                 E- mail
               </h1>
-              <input className="md:w-[373px] md:h-[48px] w-[300px] h-[30px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              <input 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="md:w-[373px] md:h-[48px] w-[300px] h-[30px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[266px] ">
                 Contact Number
               </h1>
-              <input className="md:w-[373px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
-              <button className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
+              <input 
+              name="number"
+              value={formData.number}
+              onChange={handleChange}
+              className="md:w-[373px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              <button type="submit" className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
                 Subscribe
               </button>
-              
+              </form>
             </div>
             <div className="hidden md:block flex-col w-1/2  px-[40px] mt-[40px] 3xl:px-[80px]">
           <h1 className="font-['Montserrat'] font-semibold text-[20px] 3xl:text-[35px] ">Advancing Excellence<br className="hidden 3xl:block"></br> Beyond Cost</h1>
