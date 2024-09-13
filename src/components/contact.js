@@ -41,7 +41,7 @@ function Contact() {
       <h1 className="font-['Montserrat'] md:text-[35px] font-bold md:pt-[15px]">Request Service Assistance</h1>
       </div>
       <h1 className="font-['Montserrat'] md:text-[30px] md:pl-[50px] md:pr-[110px] md:pt-[40px] font-semibold">We’ve powered growth and impactful change across all industries, and we’re ready to turn your vision into reality. Tell us a bit about yourself, and we’ll set things in motion.</h1>
-      <div className=" md:mt-[50px] bg-gradient-to-r from-[#000000] from-30% via-[#000000] from-74% via-[#1A163B]  from-74% via-[#3B2BBB] from-82% via-[#4A34F7] to-95%  from-95% via-[#712CFD] to-[#7D29FE] ">
+      <div className=" md:mt-[50px] bg-gradient-to-r from-[#000000] from-30% via-[#000000] from-74% via-[#1A163B]  from-74% via-[#1A163B] from-82% via-[#4A34F7] to-95% to-[#7D29FE] ">
       <div className="md:pl-[50px] w-screen grid grid-col-2 md:pt-[50px] md:gap-y-12">
         <div cla>
         <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white">First Name*</h1>
@@ -70,8 +70,8 @@ function Contact() {
         </div>
       </div>
       <div className="flex md:pl-[50px] md:mt-[50px]">
-      <input type="checkbox" className="md:w-[30px] md:h-[30px] border border-white" />
-      <h1 className="text-white font-['Montserrat'] md:text-[24px] font-medium md:pl-[10px] ">I authorize Jenisys to use my personal data to reach out to me.</h1> </div>
+      <input type="checkbox" className="md:w-[30px] md:h-[30px] border-2 border-white " />
+      <h1 className="text-white font-['Montserrat'] md:text-[24px] font-medium md:pl-[10px]">I authorize Jenisys to use my personal data to reach out to me.</h1> </div>
       <div className="flex md:pl-[50px] md:mt-[30px]">
       <input type="checkbox" className="md:w-[30px] md:h-[30px] border-2 border-white " />
       <h1 className="text-white font-['Montserrat'] md:text-[24px] font-medium md:pl-[10px]">I would like to recieve updates regarding products and services of Jenisys.</h1> </div>
