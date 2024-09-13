@@ -1,5 +1,6 @@
 "use client";
 
+const mongoose = require('mongoose');
 import React, { useState, useEffect } from "react";
 import "../app/global.css";
 import Lottie from "lottie-react";
@@ -7,29 +8,44 @@ import animationData from "./AnimationLottie.json";
 
 const Home = () => {
   
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    contactNumber: ''
-  });
+    number: ''
+  })
 
   const handleChange = (e) => {
-    console.log("Val");
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
   };
-
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    // Log the form data or send it to your server
-    console.log("Form submitted");
-    console.log(formData);
-    // You can also make an API call here to submit the data to your MongoDB server
+    try {
+      const response = await fetch('/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Form data successfully logged:', await response.json());
+      } else {
+        console.error('Failed to log form data:', await response.json());
+      }
+    } catch (err) {
+      console.error('Error:', err);
+    }
   };
 
+
+
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(

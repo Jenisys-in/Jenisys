@@ -13,16 +13,25 @@ app.use(cors({
 }));
 
 // Define the schema and model for contact data
-const contactData = mongoose.Schema({
+const contactSchema = new mongoose.Schema({
     name: String,
     email: String,
-    message: String
-}, { timestamps: true });
+    number: String
+  }, { timestamps: true });
 
-const contactModel = mongoose.model("Contact", contactData);
+  let Contact;
+
+  try {
+    // Prevent model overwrite in development
+    Contact = mongoose.model('Contact');
+  } catch {
+    Contact = mongoose.model('Contact', contactSchema);
+  }
 
 // MongoDB connection
 const MONGO_URI = process.env.MONGO_URI;
+
+
 
 mongoose.connect(MONGO_URI)
     .then(() => {
@@ -38,21 +47,10 @@ mongoose.connect(MONGO_URI)
     })
     .catch((err) => console.log(err));
 
-// Function to create and save a contact
-async function createAndSavePerson() {
-    try {
-        const janeFonda = new contactModel({
-            name: "John Doe",
-            email: "john.doe@example.com",
-            message: "Hello World!"
-        });
+    
 
-        const data = await janeFonda.save();
-        console.log('Saved contact:', data);
-    } catch (err) {
-        console.error('Error saving contact:', err);
-    }
-}
+
+
 
 // Uncaught Exception and Unhandled Rejection handlers
 process.on('uncaughtException', (err) => {
@@ -62,3 +60,18 @@ process.on('uncaughtException', (err) => {
 process.on('unhandledRejection', (err) => {
     console.error('Unhandled Rejection:', err.message);
 });
+
+app.post('/submit-form', async (req, res) => {
+    try {
+      const { name, email, number } = req.body;
+      const contact = new Contact({ name, email, number });
+      const savedContact = await contact.save();
+      res.status(201).json(savedContact);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to save contact' });
+    }
+  });
+  
+  app.get('/', (req, res) => {
+    res.send("Server is running");
+  });
