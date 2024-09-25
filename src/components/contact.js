@@ -30,7 +30,7 @@ function Contact() {
   }, []);
   return (
     <div className="flex overflow-hidden flex-col justify-center  bg-white max-md:mt-[50px]   md:mt-[85px] md:mt-0">
-      <div className="text-center scroll-on-appear mt-28 font-['Montserrat']  md:text-[48px] font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:text-[21px]">
+      <div className="text-center scroll-on-appear mt-20 font-['Montserrat']  md:text-[48px] font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:text-[21px]">
         Contact Us
       </div>
       <div className="flex md:px-[50px] md:pt-[40px] max-md:px-[10px] max-md:pt-[20px]">
@@ -46,27 +46,27 @@ function Contact() {
         <div >
         <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">First Name*</h1>
         <input 
-        className=" max-md:w-[170px] md:w-[460px]  md:mt-2 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
+        className=" max-md:w-[170px] text-[25px] md:w-[460px]  md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
         </div>
         <div>
         <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">Last Name*</h1>
         <input
-        className="max-md:w-[170px] md:w-[460px] md:mt-2 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
+        className="max-md:w-[170px] text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
         </div>
         <div>
         <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">E-Mail*</h1>
         <input 
-        className="max-md:w-[170px] md:w-[460px] md:mt-2 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
+        className="max-md:w-[170px] text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
         </div>
         <div>
         <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">Contact Number*</h1>
         <input
-        className="max-md:w-[170px] md:w-[460px] md:mt-2 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
+        className="max-md:w-[170px] text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
         </div>
         <div className="col-span-2">
         <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">How can we help you ?</h1>
         <input
-        className="max-md:w-[220px] md:w-[460px] md:mt-2 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
+        className="max-md:w-[220px] text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
         </div>
       </div>
       <div className="flex md:pl-[50px] md:mt-[50px] max-md:mt-[20px]">

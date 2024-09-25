@@ -1,6 +1,5 @@
 "use client";
 
-const mongoose = require('mongoose');
 import React, { useState, useEffect } from "react";
 import "../app/global.css";
 import Lottie from "lottie-react";
@@ -9,43 +8,16 @@ import animationData from "./AnimationLottie.json";
 const Home = () => {
   
   
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    number: ''
-  })
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-  const submitForm = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log('Form data successfully logged:', await response.json());
-      } else {
-        console.error('Failed to log form data:', await response.json());
-      }
-    } catch (err) {
-      console.error('Error:', err);
-    }
-  };
-
-
-
   
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    // Log the form data or send it to your server
+    console.log("Form submitted");
+    console.log(formData);
+    // You can also make an API call here to submit the data to your MongoDB server
+  };
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -462,25 +434,22 @@ const Home = () => {
               </h1>
               <input
               name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="md:w-[373px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px] " />
+              
+              className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px] " />
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px]  ">
                 E- mail
               </h1>
               <input 
               name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="md:w-[373px] md:h-[48px] w-[300px] h-[30px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              
+              className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[266px] ">
                 Contact Number
               </h1>
               <input 
               name="number"
-              value={formData.number}
-              onChange={handleChange}
-              className="md:w-[373px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
+              
+              className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
               <button type="submit" className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
                 Subscribe
               </button>

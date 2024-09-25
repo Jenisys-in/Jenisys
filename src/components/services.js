@@ -312,6 +312,8 @@ const Services = () => {
           </button>
         </div>
       </div>
+      
+      
       <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
         <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
           Follow Us On
