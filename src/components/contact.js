@@ -5,6 +5,15 @@ import React, { useEffect, useState } from "react";
 import "../app/global.css"; 
 
 function Contact() {
+  const [showAlert, setShowAlert] = useState(false);
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);   
+
+  };
   const [formData , setFormData] = useState({
     firstname : '',
     lastname : '',
@@ -47,6 +56,7 @@ function Contact() {
   
       if (response.ok) {
         console.log('Email sent successfully');
+        handleShowAlert();
         setFormData({
           firstname : '',
           lastname : '',
@@ -147,11 +157,12 @@ function Contact() {
         className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
         </div>
         <div className="col-span-2">
-        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">How can we help you ?</h1>
+        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">How can we help you ?*</h1>
         <input
         type="text"
         name="msg"
         placeholder="Write your message"
+        required
         value={formData.msg}
         onChange={handleChange}
         className="max-md:w-[220px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
@@ -177,8 +188,17 @@ function Contact() {
       className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px] " />
       <h1 className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:mt-[30px]">I would like to recieve updates regarding products and services of Jenisys.</h1> </div>
       <h1 className="font-['Montserrat'] md:text-[24px] text-white text-[10px] md:pl-[50px] md:mt-[50px] max-md:mt-[30px]">For more information, please refer to the <span className="font-extrabold">Privacy Policy</span> of Jenisys.</h1>
-      <button type="submit" className="bg-white text-black md:ml-[50px] md:mt-[50px] max-md:mt-[30px] max-md:text-[10px] md:text-[36px] font-semibold max-md:w-[69px] max-md:h-[22px] md:w-[240px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[20px]  md:rounded-[48px] max-md:mb-[20px] md:mb-[90px] hover:shadow-lg hover:shadow-white">Send</button>
-       
+      <button type="submit" className="bg-white text-black md:ml-[50px] md:mt-[50px] max-md:mt-[30px] max-md:text-[10px] md:text-[36px] font-semibold max-md:w-[69px] max-md:h-[22px] md:w-[240px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[20px]  md:rounded-[48px] max-md:mb-[0px] md:mb-[30px] hover:shadow-lg hover:shadow-white">Send</button>
+      <div>  
+      {showAlert && (
+      <div className=" justify-center text-center display-flex items-center bg-white text-black md:ml-[50px]  max-md:text-[7px] md:text-[20px]  md:font-semibold max-md:w-[150px] max-md:h-[22px] md:w-[350px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[2px]  md:rounded-[10px]  md:b-[10px]">
+      <p>Thanks! You'll here from us soon!</p>
+      <button onClick={handleCloseAlert}
+      className="mx-[20px] md:mx-[130px] bg-[#361CA9] max-md:text-[5px]  text-white max-md:rounded-[2px] md:rounded-[5px]  px-[10px] md:mt-[10px] max-md:mt-0"
+      >Close</button>
+      </div>
+      )}
+      </div>
       </div>
       </form>
       <div className=" w-screen bg-black md:h-[190px] max-md:h-[190px] justify-center items-center ">

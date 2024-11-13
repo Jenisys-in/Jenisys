@@ -6,16 +6,58 @@ import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
 
 const Home = () => {
-  
-  
-  
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    // Log the form data or send it to your server
-    console.log("Form submitted");
+  const [formData , setFormData] = useState({
+    name : "",
+    email : "",
+    contactNo: "",
+  });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);   
+
+  };
+  const handleChange = (e) => {
+    setFormData({...formData,[e.target.name]:e.target.value});
     console.log(formData);
-    // You can also make an API call here to submit the data to your MongoDB server
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (!formData.name || !formData.email ) {
+      console.log('Required fields are missing');
+      return; // Prevent form submission if required fields are empty
+    }
+  
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        console.log('Email sent successfully');
+        handleShowAlert();
+        setFormData({
+          name : "",
+          email : "",
+          contactNo: "",
+        });
+      } else {
+        console.error('Error sending email');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
 
@@ -428,31 +470,52 @@ const Home = () => {
             </div>
             
             <div className="md:flex-col md:w-1/3 md:pr-[0px] pl-[50px] ">
-              <form onSubmit= {submitForm}>
+              <form onSubmit= {handleSubmit}>
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] mt-[20px] md:mt-0 ">
                 Name
               </h1>
               <input
               name="name"
-              
+              type="text"
+              placeholder="John Doe"
+              required
+              value={formData.name}
+              onChange={handleChange}
               className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px] " />
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px]  ">
                 E- mail
               </h1>
               <input 
               name="email"
-              
+              type="text"
+              placeholder="john.doe@gmail.com"
+              required
+              value={formData.email}
+              onChange={handleChange}
               className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
               <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[266px] ">
                 Contact Number
               </h1>
               <input 
-              name="number"
-              
+              name="contactNo"
+              type="text"
+              placeholder="Contact No."
+              value={formData.contactNo}
+              onChange={handleChange}
               className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
               <button type="submit" className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
                 Subscribe
               </button>
+              <div>  
+              {showAlert && (
+              <div className="bg-[#b696fa] border-2 border-[#702eff] justify-center display-flex items-center text-[12px] w-[300px] h-[45px] md:w-[373px] md:h-[65px] md:text-[14px] font-['Montserrat'] text-center rounded-[5px]">
+              <p>You're now subscribed to the newsletter! :D</p>
+              <button onClick={handleCloseAlert}
+              className="mx-[120px] md:mx-[150px] bg-[#361CA9] text-white rounded-[5px] px-[10px] md:mt-[10px]"
+              >Close</button>
+              </div>
+              )}
+              </div>
               </form>
             </div>
             <div className="hidden md:block flex-col w-1/2  px-[40px] mt-[40px] 3xl:px-[80px]">
