@@ -31,6 +31,8 @@ export default function RootLayout({ children }) {
           {children}
           <ScrollToTop />
         </div>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
