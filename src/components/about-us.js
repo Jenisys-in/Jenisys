@@ -117,24 +117,30 @@ function AboutUs() {
           Follow Us On
         </h1>
         <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
+          <a href="https://www.instagram.com/jenisys.in/" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
             <img
               src="../img/mdi_instagram.png"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
+          </a>
+          <a href="https://www.linkedin.com/company/jenisys" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
             <img
               src="../img/linkedIn.png"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
+          </a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
             <img
               src="../img/facebook.png"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
+          </a>
         </div>
       </div>
     </div>

@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 Jenisys Website
 
-## Getting Started
+Welcome to the official repository for the **Jenisys Website** — a modern, fast, and fully responsive marketing and service site built with **Next.js** and **Tailwind CSS**.
 
-First, run the development server:
+Jenisys is a software development and consulting company helping businesses transform their digital presence with innovative solutions. This website acts as the central hub to showcase services, case studies, and client acquisition.
+
+## 🚀 Live Preview
+
+👉 [https://jenisys.in](https://jenisys.in)
+
+---
+
+## 📦 Tech Stack
+
+| Tech          | Description                                      |
+|---------------|--------------------------------------------------|
+| **Next.js**   | React-based framework for SSR/SSG and routing   |
+| **Tailwind CSS** | Utility-first CSS framework for styling       |
+| **Framer Motion** | Smooth, production-ready animations          |
+| **Headless UI** | Accessible UI components (for modals, menus)  |
+| **Vercel**     | Hosting & deployment platform (optional)       |
+
+---
+
+## 📁 Project Structure
+
+jenisys-website/ ├── public/ # Static assets like images, icons ├── src/ │ ├── components/ # Reusable React components (Navbar, Footer, etc.) │ ├── pages/ # Next.js pages (index.js, services.js, etc.) │ ├── styles/ # Global Tailwind styles (globals.css) │ ├── animations/ # Reusable animation logic (optional) │ └── utils/ # Helpers, constants ├── tailwind.config.js # Tailwind customization ├── postcss.config.js # PostCSS config ├── next.config.js # Next.js config ├── package.json # Project dependencies and scripts └── README.md # You're reading it!
+
+
+---
+
+## 🧠 Features
+
+✅ Lightning-fast performance  
+✅ SEO-optimized with `next/head`  
+✅ Fully responsive design  
+✅ Scroll-based animations  
+✅ Customizable service pages  
+✅ Contact form (optional: integrates with Formspree, EmailJS, etc.)  
+✅ Google Analytics and meta tags included  
+✅ Clean and scalable codebase  
+
+---
+
+## 📸 Screenshots
+
+_Add screenshots here if available._
+
+---
+
+## 🛠️ Installation & Development
 
 ```bash
+# Clone the repo
+git clone https://github.com/Jenisys-in/website.git
+cd website
+
+# Install dependencies
+npm install
+
+# Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Now visit http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧪 Build for Production
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+npm run build
+npm run start
+🌐 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project is optimized for deployment on Vercel.
 
-## Learn More
+To deploy:
 
-To learn more about Next.js, take a look at the following resources:
+Push this repo to GitHub
+Connect your GitHub repo to Vercel
+Set any required environment variables
+Deploy and you're live 🚀
+📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is open-sourced under the MIT License.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+🤝 Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Made with ❤️ by Tuhin Das and Hridhwesh Maity
+🔗 Visit: https://jenisys.in
+📧 Email: contact@jenisys.in
