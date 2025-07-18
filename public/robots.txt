@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.jenisys.in
+
+# Sitemaps
+Sitemap: https://www.jenisys.in/sitemap.xml
