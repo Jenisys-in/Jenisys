@@ -15,7 +15,7 @@
     "strictNullChecks": true,
     "plugins": [{ "name": "next" }],
     
-    // ✅ Add these two lines:
+    
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
