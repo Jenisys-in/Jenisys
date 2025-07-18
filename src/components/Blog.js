@@ -1,21 +1,23 @@
 
 
-import React from "react"; // eslint-disable-line
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import "../app/global.css"; 
-
-
 
 function Blog() {
   return (<div className="overflow-x-hidden">
     <div className="flex justify-center items-center h-screen"> 
     <div className="border-2 flex flex-col justify-center items-center p-32 rounded-[90px] hover:shadow-[#361CA9] hover:shadow-lg transition duration-300"> 
-      <a href="/">
-      <img 
-        src="../img/Jenisys Hero.png"
+      <Link href="/">
+      <Image 
+        src="/img/Jenisys Hero.png"
         alt="logo"
+        width={500}
+        height={150}
         className="md:shadow-2xl hover:shadow-[#361CA9] transition duration-300 aspect-auto"
 
-      /></a>
+      /></Link>
       <h1 className="font-['Montserrat'] md:text-[1.5rem] text-center md:mt-16">
         This page is currently under construction. Stay tuned!
       </h1>
@@ -27,30 +29,39 @@ function Blog() {
     Follow Us On
   </h1>
   <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
-          <a href="https://www.instagram.com/jenisys.in/" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.instagram.com/jenisys.in/" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <img
-              src="../img/mdi_instagram.png"
+            <Image
+              src="/img/mdi_instagram.png"
+              alt="Instagram"
+              width={34}
+              height={34}
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
-          </a>
-          <a href="https://www.linkedin.com/company/jenisys" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://www.linkedin.com/company/jenisys" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <img
-              src="../img/linkedIn.png"
+            <Image
+              src="/img/linkedIn.png"
+              alt="LinkedIn"
+              width={34}
+              height={34}
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
-          </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <img
-              src="../img/facebook.png"
+            <Image
+              src="/img/facebook.png"
+              alt="Facebook"
+              width={34}
+              height={34}
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
-          </a>
+          </Link>
         </div>
 </div>
 </div>

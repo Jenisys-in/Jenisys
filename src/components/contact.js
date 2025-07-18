@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 import "../app/global.css";
 
 // Constants moved outside component to prevent recreation
@@ -106,7 +107,7 @@ const LocationPin = React.memo(({ name, position }) => (
 ));
 
 const SocialLink = React.memo(({ href, icon, alt }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">
+  <Link href={href} target="_blank" rel="noopener noreferrer">
     <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center hover:bg-gray-300 transition-colors">
       <Image
         src={icon}
@@ -116,7 +117,7 @@ const SocialLink = React.memo(({ href, icon, alt }) => (
         className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
       />
     </div>
-  </a>
+  </Link>
 ));
 
 const AlertMessage = React.memo(({ onClose }) => (
@@ -304,128 +305,97 @@ function Contact() {
           We've powered growth and impactful change across all industries, and we're ready to turn your vision into reality. Tell us a bit about yourself, and we'll set things in motion.
         </p>
         
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="max-md:mt-[20px] md:mt-[50px] bg-gradient-to-r from-[#000000] from-30% via-[#000000] via-[#1A163B] to-[#4A34F7] max-md:px-[10px]">
-            <div className="md:pl-[50px] w-screen grid grid-cols-2 md:pt-[50px] max-md:pt-[30px] md:gap-y-12">
-              <div>
-                <label className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">
-                  First Name*
-                </label>
-                <input 
-                  type="text"
-                  name="firstname"
-                  placeholder="John"
-                  required
-                  value={formData.firstname}
-                  onChange={handleChange}
-                  className="max-md:w-[170px] md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0 placeholder-gray-300"
-                  aria-required="true"
-                />
-              </div>
-              <div>
-                <label className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="lastname"
-                  placeholder="Doe"
-                  value={formData.lastname}
-                  onChange={handleChange}
-                  className="max-md:w-[170px] md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0 placeholder-gray-300"
-                />
-              </div>
-              <div>
-                <label className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">
-                  E-Mail*
-                </label>
-                <input 
-                  type="email"
-                  name="email"
-                  placeholder="john.doe@gmail.com"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="max-md:w-[170px] md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0 placeholder-gray-300"
-                  aria-required="true"
-                />
-              </div>
-              <div>
-                <label className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">
-                  Contact Number
-                </label>
-                <input
-                  type="tel"
-                  name="contactNo"
-                  placeholder="Contact Number"
-                  value={formData.contactNo}
-                  onChange={handleChange}
-                  className="max-md:w-[170px] md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0 placeholder-gray-300"
-                />
-              </div>
-              <div className="col-span-2">
-                <label className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">
-                  How can we help you?
-                </label>
-                <textarea
-                  name="msg"
-                  placeholder="Write your message"
-                  value={formData.msg}
-                  onChange={handleChange}
-                  rows="1"
-                  className="max-md:w-[220px] md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0 placeholder-gray-300 resize-none"
-                />
-              </div>
-            </div>
-            
-            <div className="flex md:pl-[50px] md:mt-[50px] max-md:mt-[20px]">
-              <input 
-                type="checkbox"
-                name="personalData"
-                checked={formData.personalData}
-                onChange={handleCheckboxChange}
-                className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px]"
-                aria-required="true"
-              />
-              <label className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:pt-[30px]">
-                I authorize Jenisys to use my personal data to reach out to me.
-              </label>
-            </div>
-            
-            {error && (
-              <p className="text-red-500 text-[10px] md:text-[14px] font-medium md:pl-[50px] mt-2" role="alert">
-                {error}
-              </p>
-            )}
-            
-            <div className="flex md:pl-[50px] md:mt-[30px]">
-              <input 
-                type="checkbox"
-                name="marketting"
-                checked={formData.marketting}
-                onChange={handleCheckboxChange}
-                className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px]"
-              />
-              <label className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:mt-[30px]">
-                I would like to receive updates regarding products and services of Jenisys.
-              </label>
-            </div>
-            
-            <p className="font-['Montserrat'] md:text-[24px] text-white text-[10px] md:pl-[50px] md:mt-[50px] max-md:mt-[30px]">
-              For more information, please refer to the <span className="font-extrabold">Privacy Policy</span> of Jenisys.
+        <form onSubmit={handleSubmit}>
+      <div className="max-md:mt-[20px] md:mt-[50px] bg-gradient-to-r from-[#000000] from-30% via-[#000000] from-74% via-[#1A163B]  from-74% via-[#1A163B] from-82% via-[#4A34F7] to-95% to-[#7D29FE] max-md:px-[10px]">
+      <div className="md:pl-[50px] w-screen grid grid-col-2 md:pt-[50px]  max-md:pt-[30px] md:gap-y-12">
+        
+        <div >
+        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">First Name*</h1>
+        <input 
+        type="text"
+        name="firstname"
+        placeholder="John"
+        required
+        value={formData.firstname}
+        onChange={handleChange}
+        className=" max-md:w-[170px] md:text-[25px] md:w-[460px]  md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
+        </div>
+        <div>
+        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">Last Name*</h1>
+        <input
+        type="text"
+        name="lastname"
+        placeholder="Doe"
+        value={formData.lastname}
+        onChange={handleChange}
+        className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
+        </div>
+        <div>
+        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">E-Mail*</h1>
+        <input 
+        type="text"
+        name="email"
+        placeholder="john.doe@gmail.com"
+        required
+        value={formData.email}
+        onChange={handleChange}
+        className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
+        </div>
+        <div>
+        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">Contact Number*</h1>
+        <input
+        type="text"
+        name="contactNo"
+        placeholder="Contact Number"
+        value={formData.contactNo}
+        onChange={handleChange}
+        className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
+        </div>
+        <div className="col-span-2">
+        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">How can we help you ?*</h1>
+        <input
+        type="text"
+        name="msg"
+        placeholder="Write your message"
+        required
+        value={formData.msg}
+        onChange={handleChange}
+        className="max-md:w-[220px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
+        </div>
+      </div>
+      <div className="flex md:pl-[50px] md:mt-[50px] max-md:mt-[20px]">
+      <input type="checkbox"
+      name="personalData"
+      checked={formData.personalData}
+      onChange={handleCheckboxChange}
+      className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px] " />
+      <h1 className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:pt-[30px]">I authorize Jenisys to use my personal data to reach out to me.</h1> </div>
+      {error && (
+            <p className="text-red-500 text-[10px] md:text-[14px] font-medium md:pl-[50px] mt-2">
+              {error}
             </p>
-            
-            <button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="bg-white text-black md:ml-[50px] md:mt-[50px] max-md:mt-[30px] max-md:text-[10px] md:text-[36px] font-semibold max-md:w-[69px] max-md:h-[22px] md:w-[240px] md:h-[75px] max-md:rounded-[20px] md:rounded-[48px] max-md:mb-[0px] md:mb-[30px] hover:shadow-lg hover:shadow-white transition-shadow disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "Sending..." : "Send"}
-            </button>
-            
-            {showAlert && <AlertMessage onClose={handleCloseAlert} />}
-          </div>
-        </form>
+          )}
+      <div className="flex md:pl-[50px] md:mt-[30px]">
+      <input type="checkbox"
+      name="marketting"
+      checked={formData.marketting}
+      onChange={handleCheckboxChange}
+      className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px] " />
+      <h1 className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:mt-[30px]">I would like to recieve updates regarding products and services of Jenisys.</h1> </div>
+      <h1 className="font-['Montserrat'] md:text-[24px] text-white text-[10px] md:pl-[50px] md:mt-[50px] max-md:mt-[30px]">For more information, please refer to the <span className="font-extrabold">Privacy Policy</span> of Jenisys.</h1>
+      <button type="submit" className="bg-white text-black md:ml-[50px] md:mt-[50px] max-md:mt-[30px] max-md:text-[10px] md:text-[36px] font-semibold max-md:w-[69px] max-md:h-[22px] md:w-[240px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[20px]  md:rounded-[48px] max-md:mb-[0px] md:mb-[30px] hover:shadow-lg hover:shadow-white">Send</button>
+      <div>  
+      {showAlert && (
+      <div className=" justify-center text-center display-flex items-center bg-white text-black md:ml-[50px]  max-md:text-[7px] md:text-[20px]  md:font-semibold max-md:w-[150px] max-md:h-[22px] md:w-[350px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[2px]  md:rounded-[10px]  md:b-[10px]">
+      <p>Thanks! You'll here from us soon!</p>
+      <button onClick={handleCloseAlert}
+      className="mx-[20px] md:mx-[130px] bg-[#361CA9] max-md:text-[5px]  text-white max-md:rounded-[2px] md:rounded-[5px]  px-[10px] md:mt-[10px] max-md:mt-0"
+      >Close</button>
+      </div>
+      )}
+      </div>
+      </div>
+      </form>
 
         {/* Footer Social Section */}
         <footer className="w-screen bg-black md:h-[190px] max-md:h-[190px] justify-center items-center">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "../app/global.css";
 
+
 const AboutUs = () => {
   const observerRef = useRef(null);
 

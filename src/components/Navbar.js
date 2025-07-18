@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "../app/global.css";
 
@@ -99,14 +100,18 @@ function Navbar() {
       <nav className="fixed z-10 top-0 left-0 w-full bg-white transition-color flex items-center justify-between px-6 h-[80px] shadow-sm">
         {/* Logo */}
         <Link className="flex gap-2" href="/">
-          <img
+          <Image
             src="/img/Logo.png"
             alt="Logo"
+            width={60}
+            height={65}
             className="md:ml-[50px] md:mb-[8px] md:w-[60px] md:h-[65px] w-[25px] h-[30px]"
           />
-          <img
+          <Image
             src="/img/Jenisys Hero.png"
             alt="Jenisys Hero"
+            width={180}
+            height={50}
             className="md:mt-[10px] md:-ml-[10px] md:w-[180px] md:h-[50px] mt-[5px] md:mt-0 w-[90px] h-[25px]"
           />
         </Link>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { IoIosArrowDropdown , IoIosAddCircleOutline } from "react-icons/io";
+import Image from 'next/image';
+import Link from 'next/link';
 import "../App.css";
 
 
@@ -24,31 +26,33 @@ function NewBlog(){
       </button>
       {isOpen && (
         <div className="absolute bg-[#5851AD] min-w-[160px] shadow-lg z-10">
-          <a
+          <Link
             href="#"
             className="block text-white font-extrabold py-3 px-4 hover:bg-gray-300 hover:text-black"
           >
              1
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="block text-white font-extrabold py-3 px-4 hover:bg-gray-300 hover:text-black"
           >
              2
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="block text-white font-extrabold py-3 px-4 hover:bg-gray-300 hover:text-black"
           >
              3
-          </a>
+          </Link>
         </div>
       )}
     </div>
     <button className=" bg-[#5851AD] text-[#FFFBEB] text-[20px] text-lg border-none py-2 pr-14 pl-4 rounded-full font-['Inter'] absolute top-[140px] left-[20px]"> <IoIosAddCircleOutline className='inline -mt-[2px]' /> Image</button>
-        <img 
+        <Image 
         alt="pic"
-        src="img/login.png"
+        src="/img/login.png"
+        width={280}
+        height={310}
         loading='lazy'
         className='mt-[110px] w-[280px] h-[310px]'
         />

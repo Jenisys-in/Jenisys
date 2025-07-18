@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import "../app/global.css";
 import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
+import Image from "next/image";
+import Link from "next/link";
 
 const Home = () => {
 
@@ -90,8 +92,11 @@ const Home = () => {
       <div className="section black-section">
         <div className="scroll-on-appear w-screen md:w-screen  md:px-[40px] px-[50px]  relative md:h-screen h-[500px]  bg-white snap-start  md:flex  md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:gap-8 md:gap-8 3xl:px-[150px]">
           <div>
-            <img
-              src="../img/Jenisys Hero.png"
+            <Image
+              src="/img/Jenisys Hero.png"
+              width={460}
+              height={104}
+              alt="Jenisys Hero Logo"
               className="md:w-[220px] md:h-[50px] 3xl:w-[460px] 3xl:h-[104px] w-[133px] h-[32px]"
             />
             <h1 className="font-['Montserrat'] md:text-[40px] pl-[10px] pt-[20px] md:w-auto font-semibold text-[20px]">
@@ -104,11 +109,11 @@ const Home = () => {
               consultation to development, our expertise drives your <br></br>{" "}
               success beyond limits.{" "}
             </h1>
-            <a href="/about">
+            <Link href="/about">
               <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white w-[109px] h-[27px]  md:w-[250px] w-[109px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 h-[27px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] -[6px_7px_4px_rgba(0,0,0,0.25)]">
                 Learn More
               </button>{" "}
-            </a>
+            </Link>
           </div>
           <video
             className=" absolute md:relative md:top-4 top-[140px] md:w-[660px] 3xl:w-[850px] 3xl:pl-[40px] md:h-[480px] 3xl:mb-[200px] w-auto h-[140px]  md:mb-[80px]"
@@ -126,8 +131,11 @@ const Home = () => {
         <div className="scroll-on-appear w-screen min-h-[650px] md:h-screen bg-black max-md:pl-[20px] md:pl-[60px] px-[50px] md:px-0 md:flex flex flex-col-reverse md:flex-row  text-white">
           <div className="md:flex md:flex-row flex flex-col-reverse">
             <div className="md:flex-col md:w-1/2">
-              <img
-                src="../img/image 3.png"
+              <Image
+                src="/img/image 3.png"
+                width={500}
+                height={500}
+                alt="Our Vision"
                 className="md:pt-[40px] w-full pt-[40px] md:w-auto"
               />
               <h1 className="font-['Montserrat'] font-extrabold md:text-[32px] md:pt-[30px] pt-[20px] text-[12px] ">
@@ -138,11 +146,11 @@ const Home = () => {
                 solutions provider, empowering businesses with innovative
                 digital solutions and driving transformative growth.
               </h1>
-              <a href="/about">
+              <Link href="/about">
                 <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2  md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none 3xl:mt-[60px] ">
                   Learn More
                 </button>
-              </a>
+              </Link>
             </div>
             <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[30px] order-first md:order-none ">
               <h1 className="md:text-[32px] font-extrabold text-[12px] mb-[10px] md:mb-0">
@@ -150,8 +158,11 @@ const Home = () => {
               </h1>
               <div className="flex flex-row items-center">
                 <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] mb-[10px] md:mb-0 rounded-[3px] max-pm:w-[54px]  w-[53px]  h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <img
-                    src="../img/bulb.png"
+                  <Image
+                    src="/img/bulb.png"
+                    width={52}
+                    height={52}
+                    alt="bulb"
                     className="md:w-[52px] md:h-[52px] w-[30px] h-[28px] ml-[2.5px] md:ml-0"
                   />
                 </div>
@@ -162,8 +173,11 @@ const Home = () => {
               </div>
               <div className="flex flex-row items-center">
                 <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] mb-[10px] md:mb-0  w-[49px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <img
-                    src="../img/nano.png"
+                  <Image
+                    src="/img/nano.png"
+                    width={52}
+                    height={52}
+                    alt="nano"
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
@@ -173,8 +187,11 @@ const Home = () => {
               </div>
               <div className="flex flex-row items-center">
                 <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] mb-[10px] md:mb-0  w-[47px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <img
-                    src="../img/arrow.png"
+                  <Image
+                    src="/img/arrow.png"
+                    width={52}
+                    height={52}
+                    alt="arrow"
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
@@ -185,8 +202,11 @@ const Home = () => {
               </div>
               <div className="flex flex-row items-center mb-[70px] md:mb-0">
                 <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px]  md:mb-0  w-[47px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <img
-                    src="../img/success.png"
+                  <Image
+                    src="/img/success.png"
+                    width={52}
+                    height={52}
+                    alt="success"
                     className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
                   />
                 </div>
@@ -233,16 +253,22 @@ const Home = () => {
             </div>
           </div>
 
-          <img
-            src="../img/image 4.png"
+          <Image
+            src="/img/image 4.png"
+            width={330}
+            height={170}
+            alt="Our Values Image"
             className="w-[330px] h-[170px]  md:h-auto md:w-auto absolute md:relative max-pm:left-[30px] pm:left-[50px] top-[30px] md:mr-[70px]"
           />
         </div>
       </div>
       <div className="scroll-on-appear section white-section">
         <div className=" pt-[300px] md:pt-0 relative flex-col " id="services">
-          <img
-            src="../img/Services.png"
+          <Image
+            src="/img/Services.png"
+            width={1920}
+            height={1080}
+            alt="Services"
             className="w-full md:h-auto h-[200px]"
           />
           <h1 className="text-white text-[12px] w-[224px] h-[15px] md:w-auto md:h-auto  font-['Montserrat'] 3xl:bottom-[455px] 3xl:text-[45px] md:text-[32px] font-extrabold absolute md:bottom-[355px] md:left-[80px] bottom-[150px] left-[30px]">
@@ -252,11 +278,11 @@ const Home = () => {
             The future is flexible. Partner with <br></br> us to outsoure Your{" "}
             <span className="text-[#7F4BED] font-extrabold">Tech Needs</span>
           </h1>
-          <a href="/services">
+          <Link href="/services">
             <button className=" hidden md:block bg-[#7526FE] 3xl:left-[1320px] 3xl:bottom-[300px] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] absolute bottom-[250px] left-[1035px] ">
               Learn More
             </button>
-          </a>
+          </Link>
         </div>
         <div className="section white-section">
           <div className="flex-row 3xl:px-[250px] md:px-[125px] relative ">
@@ -268,8 +294,11 @@ const Home = () => {
 
               <div className="md:left-[80px] md:-top-[50px] bg-[#8847FA] absolute md:h-[92px] h-[37px] w-[38px] md:w-[92px] rounded-full md:left-a left-[32px] -top-[18px] z-1"></div>
 
-              <img
-                src="../img/laptop.png"
+              <Image
+                src="/img/laptop.png"
+                width={52}
+                height={52}
+                alt="laptop"
                 className="md:w-[52px] md:h-[52px] absolute md:left-[100px] w-[22px] h-[22px] left-[40px] -top-[12px] md:-top-[28px]"
               />
               <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
@@ -279,11 +308,11 @@ const Home = () => {
                 It involves creating software tailored to meet specific needs or
                 requirements of a business or user.
               </h1>
-              <a href="/services">
+              <Link href="/services">
                 <button className="rounded-[2px] w-[60px]  text-[8px] h-[20px] md:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] md:mt-[25px] mx-[20px] bg-[#7526FE] text-white md:w-[147px] md:h-[49px] md:text-[20px] font-['Montserrat'] font-semibold md:rounded-[4px] ">
                   Read More
                 </button>
-              </a>
+              </Link>
             </div>
             <div className="right-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:rounded-[17px] md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:-bottom-[280px] md:h-[387px] md:w-[261px] md:left-[410px] -bottom-[110px] 3xl:left-[600px] ">
               <Lottie
@@ -291,8 +320,11 @@ const Home = () => {
                 animationData={animationData}
               />
               <div className="md:left-[80px] md:-top-[50px] bg-[#8847FA] absolute md:h-[92px] h-[37px] w-[38px] md:w-[92px] rounded-full left-[32px] -top-[18px] z-1"></div>
-              <img
-                src="../img/mobile.png"
+              <Image
+                src="/img/mobile.png"
+                width={52}
+                height={52}
+                alt="mobile"
                 className="md:w-[52px] md:h-[52px] absolute md:left-[100px]  w-[22px] h-[22px] left-[40px] -top-[12px] md:-top-[28px]"
               />
               <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
@@ -302,11 +334,11 @@ const Home = () => {
                 It involves creating applications that can be accessed on both
                 web browsers and mobile devices.
               </h1>
-              <a href="/services">
+              <Link href="/services">
                 <button className="rounded-[2px] w-[60px]  text-[8px] h-[20px] md:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] md:mt-[25px] mx-[20px] bg-[#7526FE] text-white md:w-[147px] md:h-[49px] md:text-[20px] font-['Montserrat'] font-semibold md:rounded-[4px] ">
                   Read More
                 </button>
-              </a>
+              </Link>
             </div>
             <div className="hidden md:block absolute justify-center bg-white md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[960px] left-[695px] h-[387px] w-[261px]">
               <Lottie
@@ -314,8 +346,11 @@ const Home = () => {
                 animationData={animationData}
               />
               <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
-              <img
-                src="../img/nano1.png"
+              <Image
+                src="/img/nano1.png"
+                width={52}
+                height={52}
+                alt="nano"
                 className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
               />
               <h1 className="text-center font-semibold font-['Montserrat'] text-[20px] pt-[75px]">
@@ -325,11 +360,11 @@ const Home = () => {
                 It involves guiding businesses in using technology to improve
                 operations and achieve goals.
               </h1>
-              <a href="/services">
+              <Link href="/services">
                 <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] ">
                   Read More
                 </button>
-              </a>
+              </Link>
             </div>
             <div className="hidden md:block absolute justify-center bg-white md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[1315px] left-[980px] h-[387px] w-[261px]">
               <Lottie
@@ -337,8 +372,11 @@ const Home = () => {
                 animationData={animationData}
               />
               <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
-              <img
-                src="../img/shield.png"
+              <Image
+                src="/img/shield.png"
+                width={52}
+                height={52}
+                alt="shield"
                 className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
               />
               <h1 className="text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
@@ -348,11 +386,11 @@ const Home = () => {
                 It involves updates, user assistance, & protection against cyber
                 threats to maintain system integrity and user trust.
               </h1>
-              <a href="/services">
+              <Link href="/services">
                 <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] ">
                   Read More
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -429,44 +467,47 @@ const Home = () => {
           </h1>
           <div className="flex flex-row md:mt-[40px]">
             <div className="md:flex-col md:ml-[100px] md:w-1/3 hidden md:block ">
-              <img
-                src="../img/Jenisys Hero.png"
+              <Image
+                src="/img/Jenisys Hero.png"
+                width={172}
+                height={50}
+                alt="Jenisys Hero Logo"
                 className="md:w-[172px] md:h-[50px] md:mb-[20px]   "
               />
-              <a
+              <Link
                 className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:pb-[0px]"
                 href="#services"
               >
                 Services
-              </a>{" "}
+              </Link>{" "}
               <br></br>
-              <a
+              <Link
                 className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mt-[5px] "
                 href="#"
               >
                 About Us
-              </a>{" "}
+              </Link>{" "}
               <br></br>
-              <a
+              <Link
                 className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
                 href="#"
               >
                 Blogs
-              </a>{" "}
+              </Link>{" "}
               <br></br>
-              <a
+              <Link
                 className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
                 href="#"
               >
                 Contact Us
-              </a>{" "}
+              </Link>{" "}
               <br></br>
-              <a
+              <Link
                 className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
                 href="#"
               >
                 Careers
-              </a>
+              </Link>
             </div>
             
             <div className="md:flex-col md:w-1/3 md:pr-[0px] pl-[50px] ">
@@ -526,41 +567,41 @@ const Home = () => {
       </div>
       <div className="bg-white block md:hidden h-[200px] flex flex-row mt-[20px] ml-[60px]">
         <div className="flex-col  md:w-1/2 ">
-          <img src="../img/Jenisys Hero.png" className="pr-[0px] w-[100px] h-[30px] " />
-          <a
+          <Image src="/img/Jenisys Hero.png" width={100} height={30} alt="Jenisys Hero" className="pr-[0px] w-[100px] h-[30px] " />
+          <Link
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#services"
           >
             Services
-          </a>{" "}
+          </Link>{" "}
           <br></br>
-          <a
+          <Link
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
             href="#"
           >
             About Us
-          </a>{" "}
+          </Link>{" "}
           <br></br>
-          <a
+          <Link
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#"
           >
             Blogs
-          </a>{" "}
+          </Link>{" "}
           <br></br>
-          <a
+          <Link
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
             href="#"
           >
             Contact Us
-          </a>{" "}
+          </Link>{" "}
           <br></br>
-          <a
+          <Link
             className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
             href="#"
           >
             Careers
-          </a>
+          </Link>
         </div>
         <div className="flex-col w-1/2 pl-[40px] mt-[40px]">
           <h1 className="font-['Montserrat'] font-semibold text-[10px] ">Advancing Excellence Beyond Cost</h1>
@@ -573,24 +614,33 @@ const Home = () => {
         <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
           <a href="https://www.instagram.com/jenisys.in/" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <img
-              src="../img/mdi_instagram.png"
+            <Image
+              src="/img/mdi_instagram.png"
+              width={34}
+              height={34}
+              alt="instagram"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
           </a>
           <a href="https://www.linkedin.com/company/jenisys" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <img
-              src="../img/linkedIn.png"
+            <Image
+              src="/img/linkedIn.png"
+              width={34}
+              height={34}
+              alt="linkedin"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
           </a>
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <img
-              src="../img/facebook.png"
+            <Image
+              src="/img/facebook.png"
+              width={34}
+              height={34}
+              alt="facebook"
               className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
             />
           </div>
