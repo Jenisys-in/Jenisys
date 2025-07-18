@@ -69,18 +69,18 @@ const SOCIAL_LINKS = [
 
 // Memoized components for better performance
 const ContactInfoCard = React.memo(({ icon, title, content, alt }) => (
-  <div className="flex flex-col items-center">
-    <div className="bg-white p-4 rounded-lg mb-6">
+  <div className="flex flex-col items-center px-4">
+    <div className="bg-white p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
       <Image
         src={icon}
         alt={alt}
         width={40}
         height={40}
-        className="w-10 h-10"
+        className="w-8 h-8 sm:w-10 sm:h-10"
       />
     </div>
-    <h2 className="text-xl font-semibold">{title}</h2>
-    <p className="mt-2 text-base text-gray-200">{content}</p>
+    <h2 className="text-lg sm:text-xl font-semibold text-center">{title}</h2>
+    <p className="mt-2 text-sm sm:text-base text-gray-200 text-center">{content}</p>
   </div>
 ));
 
@@ -93,7 +93,7 @@ const LocationPin = React.memo(({ name, position }) => (
       transform: 'translate(-50%, -50%)' 
     }}
   >
-    <p className="text-[10px] sm:text-xs md:text-sm font-bold text-black mb-1 text-center">
+    <p className="text-[8px] xs:text-[10px] sm:text-xs md:text-sm font-bold text-black mb-1 text-center whitespace-nowrap">
       {name}
     </p>
     <Image
@@ -101,32 +101,34 @@ const LocationPin = React.memo(({ name, position }) => (
       alt={name}
       width={20}
       height={20}
-      className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mx-auto"
+      className="w-2 h-2 xs:w-3 xs:h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mx-auto"
     />
   </div>
 ));
 
 const SocialLink = React.memo(({ href, icon, alt }) => (
   <Link href={href} target="_blank" rel="noopener noreferrer">
-    <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center hover:bg-gray-300 transition-colors">
+    <div className="bg-[#A3A3A3] w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-[50px] md:h-[50px] rounded-full flex justify-center items-center hover:bg-gray-300 transition-colors">
       <Image
         src={icon}
         alt={alt}
         width={34}
         height={34}
-        className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
+        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-[34px] md:h-[34px]"
       />
     </div>
   </Link>
 ));
 
 const AlertMessage = React.memo(({ onClose }) => (
-  <div className="justify-center text-center flex items-center bg-white text-black md:ml-[50px] max-md:text-[7px] md:text-[20px] md:font-semibold max-md:w-[150px] max-md:h-[22px] md:w-[350px] md:h-[75px] max-md:rounded-[2px] md:rounded-[10px] md:mb-[10px]">
-    <div>
-      <p>Thanks! You'll hear from us soon!</p>
+  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white text-black p-4 sm:p-6 rounded-lg shadow-lg max-w-xs sm:max-w-sm md:max-w-md">
+    <div className="text-center">
+      <p className="text-sm sm:text-base md:text-lg font-semibold mb-4">
+        Thanks! You'll hear from us soon!
+      </p>
       <button 
         onClick={onClose}
-        className="mx-[20px] md:mx-[130px] bg-[#361CA9] max-md:text-[5px] text-white max-md:rounded-[2px] md:rounded-[5px] px-[10px] md:mt-[10px] max-md:mt-0 hover:bg-[#2d1587] transition-colors"
+        className="bg-[#361CA9] text-white px-4 py-2 sm:px-6 sm:py-2 rounded text-sm sm:text-base hover:bg-[#2d1587] transition-colors"
       >
         Close
       </button>
@@ -250,12 +252,12 @@ function Contact() {
         <link rel="canonical" href="https://jenisys.in/contact" />
       </Head>
 
-      <div className="flex overflow-hidden flex-col justify-center bg-white max-md:mt-[50px] md:mt-[85px] md:mt-0">
-        <header className="text-center scroll-on-appear mt-20 font-['Montserrat'] md:text-[48px] font-bold tracking-tighter leading-tight text-black max-md:mt-10 max-md:text-[21px]">
+      <div className="flex overflow-hidden flex-col justify-center bg-white mt-12 xs:mt-16 sm:mt-20 md:mt-24 lg:mt-0">
+        <header className="text-center scroll-on-appear mt-8 sm:mt-12 md:mt-16 lg:mt-20 font-['Montserrat'] text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold tracking-tighter leading-tight text-black px-4">
           <h1>Contact Us</h1>
         </header>
         
-        <div className="scroll-on-appear mt-11 mb-10 font-['Montserrat'] text-lg font-semibold tracking-tight leading-8 text-black w-[915px] max-md:mt-10 max-md:max-w-full mx-auto text-center">
+        <div className="scroll-on-appear mt-6 sm:mt-8 md:mt-10 lg:mt-11 mb-6 sm:mb-8 md:mb-10 font-['Montserrat'] text-sm sm:text-base md:text-lg font-semibold tracking-tight leading-6 sm:leading-7 md:leading-8 text-black max-w-4xl mx-auto text-center px-4 sm:px-6 md:px-8">
           If you have any questions about our services, want to discuss a
           potential collaboration, or just need advice on your tech strategy, our
           team is here to help. Get in touch with us today.
@@ -263,18 +265,18 @@ function Contact() {
         
         {/* Contact Info Section */}
         <section
-          className="w-full bg-cover bg-center py-16 text-white"
+          className="w-full bg-cover bg-center py-8 sm:py-12 md:py-16 text-white"
           style={{ backgroundImage: "url('/img/cont.png')" }}
         >
-          <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 text-center">
             {contactInfoCards}
           </div>
         </section>
 
         {/* Location Section */}
-        <section className="bg-black py-16 text-white text-center">
-          <h2 className="text-2xl font-semibold mb-8">We're located at</h2>
-          <div className="relative w-full max-w-6xl mx-auto px-4">
+        <section className="bg-black py-8 sm:py-12 md:py-16 text-white text-center">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 px-4">We're located at</h2>
+          <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
             <Image
               src="/img/maps.png"
               alt="World Map showing our locations"
@@ -288,124 +290,183 @@ function Contact() {
         </section>
 
         {/* Form Section */}
-        <section className="flex md:px-[50px] md:pt-[40px] max-md:px-[10px] max-md:pt-[20px]">
+        <section className="flex items-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
           <Image
             src="/img/Logo.png"
             alt="Jenisys Logo"
             width={80}
             height={75}
-            className="w-[25px] h-[25px] md:w-[80px] md:h-[75px]"
+            className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0"
           />
-          <h2 className="font-['Montserrat'] text-[15px] md:text-[35px] font-bold max-md:pt-[2px] md:pt-[15px]">
+          <h2 className="font-['Montserrat'] text-sm xs:text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[35px] font-bold ml-3 sm:ml-4 leading-tight">
             Request Service Assistance
           </h2>
         </section>
 
-        <p className="font-['Montserrat'] md:text-[30px] max-md:text-[12px] md:pl-[50px] md:pr-[110px] md:pt-[40px] max-md:pt-[10px] font-semibold max-md:px-[10px]">
+        <p className="font-['Montserrat'] text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 font-semibold leading-relaxed">
           We've powered growth and impactful change across all industries, and we're ready to turn your vision into reality. Tell us a bit about yourself, and we'll set things in motion.
         </p>
         
-        <form onSubmit={handleSubmit}>
-      <div className="max-md:mt-[20px] md:mt-[50px] bg-gradient-to-r from-[#000000] from-30% via-[#000000] from-74% via-[#1A163B]  from-74% via-[#1A163B] from-82% via-[#4A34F7] to-95% to-[#7D29FE] max-md:px-[10px]">
-      <div className="md:pl-[50px] w-screen grid grid-col-2 md:pt-[50px]  max-md:pt-[30px] md:gap-y-12">
-        
-        <div >
-        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">First Name*</h1>
-        <input 
-        type="text"
-        name="firstname"
-        placeholder="John"
-        required
-        value={formData.firstname}
-        onChange={handleChange}
-        className=" max-md:w-[170px] md:text-[25px] md:w-[460px]  md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
-        </div>
-        <div>
-        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px]">Last Name*</h1>
-        <input
-        type="text"
-        name="lastname"
-        placeholder="Doe"
-        value={formData.lastname}
-        onChange={handleChange}
-        className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
-        </div>
-        <div>
-        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">E-Mail*</h1>
-        <input 
-        type="text"
-        name="email"
-        placeholder="john.doe@gmail.com"
-        required
-        value={formData.email}
-        onChange={handleChange}
-        className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0" />
-        </div>
-        <div>
-        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">Contact Number*</h1>
-        <input
-        type="text"
-        name="contactNo"
-        placeholder="Contact Number"
-        value={formData.contactNo}
-        onChange={handleChange}
-        className="max-md:w-[170px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
-        </div>
-        <div className="col-span-2">
-        <h1 className="font-['Montserrat'] md:text-[30px] font-semibold text-white max-md:text-[10px] max-md:pt-[30px]">How can we help you ?*</h1>
-        <input
-        type="text"
-        name="msg"
-        placeholder="Write your message"
-        required
-        value={formData.msg}
-        onChange={handleChange}
-        className="max-md:w-[220px]  md:text-[25px] md:w-[460px] md:mt-4 bg-transparent border-b-2 border-white text-white focus:outline-none focus:border-white focus:ring-0"  />
-        </div>
-      </div>
-      <div className="flex md:pl-[50px] md:mt-[50px] max-md:mt-[20px]">
-      <input type="checkbox"
-      name="personalData"
-      checked={formData.personalData}
-      onChange={handleCheckboxChange}
-      className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px] " />
-      <h1 className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:pt-[30px]">I authorize Jenisys to use my personal data to reach out to me.</h1> </div>
-      {error && (
-            <p className="text-red-500 text-[10px] md:text-[14px] font-medium md:pl-[50px] mt-2">
-              {error}
-            </p>
-          )}
-      <div className="flex md:pl-[50px] md:mt-[30px]">
-      <input type="checkbox"
-      name="marketting"
-      checked={formData.marketting}
-      onChange={handleCheckboxChange}
-      className="md:w-[30px] md:h-[30px] border-2 border-white max-md:mt-[30px] " />
-      <h1 className="text-white font-['Montserrat'] md:text-[24px] text-[10px] font-medium pl-[10px] max-md:mt-[30px]">I would like to recieve updates regarding products and services of Jenisys.</h1> </div>
-      <h1 className="font-['Montserrat'] md:text-[24px] text-white text-[10px] md:pl-[50px] md:mt-[50px] max-md:mt-[30px]">For more information, please refer to the <span className="font-extrabold">Privacy Policy</span> of Jenisys.</h1>
-      <button type="submit" className="bg-white text-black md:ml-[50px] md:mt-[50px] max-md:mt-[30px] max-md:text-[10px] md:text-[36px] font-semibold max-md:w-[69px] max-md:h-[22px] md:w-[240px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[20px]  md:rounded-[48px] max-md:mb-[0px] md:mb-[30px] hover:shadow-lg hover:shadow-white">Send</button>
-      <div>  
-      {showAlert && (
-      <div className=" justify-center text-center display-flex items-center bg-white text-black md:ml-[50px]  max-md:text-[7px] md:text-[20px]  md:font-semibold max-md:w-[150px] max-md:h-[22px] md:w-[350px] md:h-[75px] max-md:h-[20px]  max-md:rounded-[2px]  md:rounded-[10px]  md:b-[10px]">
-      <p>Thanks! You'll here from us soon!</p>
-      <button onClick={handleCloseAlert}
-      className="mx-[20px] md:mx-[130px] bg-[#361CA9] max-md:text-[5px]  text-white max-md:rounded-[2px] md:rounded-[5px]  px-[10px] md:mt-[10px] max-md:mt-0"
-      >Close</button>
-      </div>
-      )}
-      </div>
-      </div>
-      </form>
+        <form onSubmit={handleSubmit} className="w-full">
+          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16 bg-gradient-to-r from-[#000000] from-30% via-[#1A163B] via-74% to-[#4A34F7] to-95%">
+            <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16">
+              
+              {/* Form Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
+                
+                {/* First Name */}
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                  <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+                    First Name*
+                  </h3>
+                  <input 
+                    type="text"
+                    name="firstname"
+                    placeholder="John"
+                    required
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 border-white text-white placeholder-gray-300 focus:outline-none focus:border-white focus:ring-0 pb-2"
+                  />
+                </div>
+
+                {/* Last Name */}
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                  <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+                    Last Name*
+                  </h3>
+                  <input
+                    type="text"
+                    name="lastname"
+                    placeholder="Doe"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 border-white text-white placeholder-gray-300 focus:outline-none focus:border-white focus:ring-0 pb-2"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                  <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+                    E-Mail*
+                  </h3>
+                  <input 
+                    type="email"
+                    name="email"
+                    placeholder="john.doe@gmail.com"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 border-white text-white placeholder-gray-300 focus:outline-none focus:border-white focus:ring-0 pb-2"
+                  />
+                </div>
+
+                {/* Contact Number */}
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                  <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+                    Contact Number*
+                  </h3>
+                  <input
+                    type="tel"
+                    name="contactNo"
+                    placeholder="Contact Number"
+                    value={formData.contactNo}
+                    onChange={handleChange}
+                    className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 border-white text-white placeholder-gray-300 focus:outline-none focus:border-white focus:ring-0 pb-2"
+                  />
+                </div>
+
+                {/* Message - Full Width */}
+                <div className="lg:col-span-2 space-y-2 sm:space-y-3 md:space-y-4">
+                  <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+                    How can we help you?*
+                  </h3>
+                  <textarea
+                    name="msg"
+                    placeholder="Write your message"
+                    required
+                    value={formData.msg}
+                    onChange={handleChange}
+                    rows={3}
+                    className="w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 border-white text-white placeholder-gray-300 focus:outline-none focus:border-white focus:ring-0 pb-2 resize-none"
+                  />
+                </div>
+              </div>
+
+              {/* Checkboxes */}
+              <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 space-y-4 sm:space-y-6">
+                {/* Personal Data Checkbox */}
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <input 
+                    type="checkbox"
+                    name="personalData"
+                    checked={formData.personalData}
+                    onChange={handleCheckboxChange}
+                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 border-2 border-white bg-transparent mt-1 flex-shrink-0 accent-white"
+                  />
+                  <label className="text-white font-['Montserrat'] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-relaxed">
+                    I authorize Jenisys to use my personal data to reach out to me.
+                  </label>
+                </div>
+
+                {/* Error Message */}
+                {error && (
+                  <p className="text-red-400 text-xs sm:text-sm md:text-base font-medium">
+                    {error}
+                  </p>
+                )}
+
+                {/* Marketing Checkbox */}
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <input 
+                    type="checkbox"
+                    name="marketting"
+                    checked={formData.marketting}
+                    onChange={handleCheckboxChange}
+                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 border-2 border-white bg-transparent mt-1 flex-shrink-0 accent-white"
+                  />
+                  <label className="text-white font-['Montserrat'] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-relaxed">
+                    I would like to receive updates regarding products and services of Jenisys.
+                  </label>
+                </div>
+              </div>
+
+              {/* Privacy Policy */}
+              <p className="font-['Montserrat'] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white mt-6 sm:mt-8 md:mt-10 lg:mt-12 leading-relaxed">
+                For more information, please refer to the{' '}
+                <span className="font-extrabold">Privacy Policy</span> of Jenisys.
+              </p>
+
+              {/* Submit Button */}
+              <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-white text-black font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[36px] font-semibold px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-3 sm:py-4 md:py-5 lg:py-6 xl:py-8 rounded-full sm:rounded-2xl md:rounded-3xl lg:rounded-[48px] hover:shadow-lg hover:shadow-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
 
         {/* Footer Social Section */}
-        <footer className="w-screen bg-black md:h-[190px] max-md:h-[190px] justify-center items-center">
-          <h3 className="font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] max-md:pt-[50px] 3xl:text-[32px]">
+        <footer className="w-full bg-black py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
+          <h3 className="font-['Montserrat'] font-semibold text-lg sm:text-xl md:text-2xl lg:text-[26px] xl:text-[32px] text-center text-white mb-4 sm:mb-6 md:mb-8">
             Follow Us On
           </h3>
-          <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
+          <div className="flex flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8">
             {socialLinks}
           </div>
         </footer>
+
+        {/* Alert Modal */}
+        {showAlert && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <AlertMessage onClose={handleCloseAlert} />
+          </div>
+        )}
       </div>
     </>
   );
