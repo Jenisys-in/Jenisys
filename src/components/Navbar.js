@@ -10,7 +10,7 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -21,7 +21,7 @@ function Navbar() {
       const scrollTop = window.scrollY;
       setIsScrolled(scrollTop > 0);
     };
-
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -50,11 +50,7 @@ function Navbar() {
 
   return (
     <>
-     
-
-      <nav className={`fixed z-10 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-6 h-[80px] shadow-sm ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md' : 'bg-white'
-      }`}>
+      <nav className={`fixed z-10 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-6 h-[80px] shadow-sm bg-white`}>
         {/* Logo */}
         <Link className="flex gap-2" href="/">
           <Image

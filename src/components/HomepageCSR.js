@@ -110,7 +110,7 @@ const HomepageCSR = () => {
               success beyond limits.{" "}
             </h1>
             <Link href="/about">
-              <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white w-[109px] h-[27px]  md:w-[250px] w-[109px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 h-[27px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] -[6px_7px_4px_rgba(0,0,0,0.25)] holographic-button">
+              <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white w-[109px] h-[27px]  md:w-[250px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)] holographic-button">
                 Learn More
               </button>{" "}
             </Link>

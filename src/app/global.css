@@ -15,6 +15,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .transition-opacity {
   transition: opacity 1s ease-in-out;
   -webkit-transition: opacity 1s ease-in-out; /* Safari */
@@ -30,10 +31,6 @@
   }
 
 
-.frosted-glass {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.6);
-}
 
 .bg-white {
   background-color: rgba(255, 255, 255, 1);
@@ -98,6 +95,39 @@
 
         .mobile-menu.open {
           transform: translateX(0);
+        }
+
+        /* Force solid white background for mobile menu - nuclear option */
+        .mobile-menu,
+        .mobile-menu.open,
+        div.mobile-menu,
+        div.mobile-menu.open,
+        [class*="mobile-menu"],
+        [class*="mobile-menu"][class*="open"] {
+          background-color: white !important;
+          background: white !important;
+          background-image: none !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          opacity: 1 !important;
+        }
+
+        /* Override any potential parent transparency */
+        .mobile-menu *,
+        .mobile-menu.open * {
+          box-sizing: border-box;
+        }
+
+        /* Ensure the mobile menu container itself is opaque */
+        .mobile-menu::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: white;
+          z-index: -1;
         }
 
         /* Minimalist Animated Hover Effects for Navigation Links */
@@ -240,10 +270,6 @@
             margin: 0 4px;
           }
         }
-
-
-
-
 
 
 
