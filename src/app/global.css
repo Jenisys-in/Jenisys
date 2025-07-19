@@ -337,6 +337,53 @@
   transform: translateY(-1px);
   transition: all 0.1s ease;
 }
+
+.hamburger {
+  width: 30px;
+  height: 30px; /* Increase height for better visibility */
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center lines vertically */
+  align-items: center; /* Center lines horizontally */
+  z-index: 100;
+}
+
+.hamburger .line {
+  width: 30px;
+  height: 3px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+  position: absolute; /* Ensure lines are positioned relative to the container */
+}
+
+.hamburger .line:nth-child(1) {
+  top: 0; /* Position top line */
+}
+
+.hamburger .line:nth-child(2) {
+  top: 50%; /* Center middle line vertically */
+  transform: translateY(-50%); /* Correct middle line's position */
+}
+
+.hamburger .line:nth-child(3) {
+  bottom: 0; /* Position bottom line */
+}
+
+.hamburger.open .line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open .line:nth-child(2) {
+  opacity: 0; /* Hide middle line */
+}
+
+.hamburger.open .line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
   
 
   
