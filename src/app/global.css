@@ -44,57 +44,208 @@
 }
 
 
-.nav-link {
-  text-decoration: none;
-  margin-left: 3rem; /* Adjusted for responsiveness */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 20px;
-  white-space: nowrap;
-  border-radius: 9999px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  transition: all 0.3s ease-in-out;
-  color: black;
-  position: relative; /* Allow :after to be positioned within */
-  display: inline-block; /* Ensure link width doesn't affect underline */
-}
+ .hamburger {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+          width: 30px;
+          height: 24px;
+          justify-content: space-between;
+          align-items: center;
+          padding: 4px;
+          transition: all 0.3s ease;
+        }
 
-.nav-link:hover {
-  text-decoration: none; /* Remove default underline */
-  color: black; /* Change text color on hover */
-}
+        .hamburger .line {
+          width: 100%;
+          height: 3px;
+          background-color: #333;
+          transition: all 0.3s ease;
+          transform-origin: center;
+        }
 
-/* Underline Effect */
-.nav-link:after {
-  content: "";
-  display: block;
-  height: 2px; /* Underline thickness */
-  left: 50%;
-  position: absolute;
-  background: purple; /* Underline color */
-  transition: width 0.3s ease, left 0.3s ease; /* Smooth animation */
-  width: 0;
-  bottom: -2px; /* Position underline directly below the text */
-}
+        .hamburger.open .line:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
 
-.nav-link:hover:after { 
-  width: 100%; /* Expand underline on hover */
-  left: 0; /* Align underline with link start */
-}
+        .hamburger.open .line:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
 
-/* Active State Styling */
-.nav-link.active:after {
-  width: 100%; /* Ensure underline is fully visible for active links */
-  left: 0; /* Align underline with link start */
-  bottom: -2px; /* Adjust position to align with text */
-}
+        .hamburger.open .line:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
 
-.nav-link.active {
-  text-decoration: underline;
-  text-underline-offset: 8px;
-  text-decoration-color: purple;
-}
+        .hamburger.closed .line:nth-child(1) {
+          transform: rotate(0deg) translate(0px, 0px);
+        }
+
+        .hamburger.closed .line:nth-child(2) {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
+        .hamburger.closed .line:nth-child(3) {
+          transform: rotate(0deg) translate(0px, 0px);
+        }
+
+        /* Mobile menu slide animation */
+        .mobile-menu {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.open {
+          transform: translateX(0);
+        }
+
+        /* Minimalist Animated Hover Effects for Navigation Links */
+        .nav-link {
+          position: relative;
+          display: inline-block;
+          padding: 12px 20px;
+          margin: 0 8px;
+          color: #333;
+          text-decoration: none !important;
+          font-weight: 500;
+          font-size: 15px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          overflow: hidden;
+          border-radius: 10px;
+          border-bottom: none !important;
+          box-shadow: none !important;
+        }
+
+        /* Force remove any existing underline effects */
+        .nav-link:hover,
+        .nav-link:focus,
+        .nav-link:active,
+        .nav-link.active {
+          text-decoration: none !important;
+          border-bottom: none !important;
+          box-shadow: none !important;
+        }
+
+        /* Morphing background shape */
+        .nav-link::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 8px;
+          height: 8px;
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.08));
+          border-radius: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: -1;
+        }
+
+        /* Floating particle effect */
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          top: 20%;
+          right: 15%;
+          width: 3px;
+          height: 3px;
+          background: rgba(102, 126, 234, 0.4);
+          border-radius: 50%;
+          opacity: 0;
+          transform: translateY(10px) rotate(0deg);
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hover state */
+        .nav-link:hover {
+          color: #4c51bf;
+          transform: translateY(-1px);
+        }
+
+        .nav-link:hover::before {
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          transform: translate(-50%, -50%) scale(1);
+        }
+
+        .nav-link:hover::after {
+          opacity: 1;
+          transform: translateY(-5px) rotate(360deg);
+          animation: float 2s ease-in-out infinite;
+        }
+
+        /* Active state */
+        .nav-link.active {
+          color: #667eea;
+          background: rgba(102, 126, 234, 0.06);
+        }
+
+        .nav-link.active::before {
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          transform: translate(-50%, -50%) scale(1);
+          background: rgba(102, 126, 234, 0.08);
+        }
+
+        .nav-link.active::after {
+          opacity: 0.6;
+          transform: translateY(-3px);
+        }
+
+        /* Floating particle animation */
+        @keyframes float {
+          0%, 100% { transform: translateY(-5px) rotate(360deg); }
+          50% { transform: translateY(-8px) rotate(360deg); }
+        }
+
+        /* Mobile menu link styles */
+        .mobile-menu .nav-link {
+          font-size: 18px;
+          padding: 16px 0;
+          margin: 8px 0;
+          border-radius: 12px;
+          background: transparent;
+        }
+
+        .mobile-menu .nav-link:hover {
+          background: rgba(102, 126, 234, 0.08);
+          transform: translateX(6px);
+        }
+
+        .mobile-menu .nav-link::after {
+          display: none;
+        }
+
+        .mobile-menu .nav-link::before {
+          border-radius: 12px;
+        }
+
+        /* Enhanced hamburger hover effect */
+        .hamburger:hover {
+          transform: scale(1.1);
+        }
+
+        .hamburger:hover .line {
+          background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .nav-link {
+            font-size: 16px;
+            padding: 10px 16px;
+            margin: 0 4px;
+          }
+        }
+
+
+
+
+
+
 
 
 /* Scroll-on-Appear Effect */
@@ -109,53 +260,83 @@
   transform: translateY(0);
 }
 
-.hamburger {
-  width: 30px;
-  height: 30px; /* Increase height for better visibility */
+/* Holographic Button Hover Effect - Universal */
+.holographic-button {
+  background: linear-gradient(45deg, #361CA9, #7c3aed, #361CA9);
+  background-size: 200% 200%;
   position: relative;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center lines vertically */
-  align-items: center; /* Center lines horizontally */
-  z-index: 100;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.hamburger .line {
-  width: 30px;
-  height: 3px;
-  background-color: black;
-  transition: all 0.3s ease-in-out;
-  position: absolute; /* Ensure lines are positioned relative to the container */
+/* Holographic sweep effect */
+.holographic-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  transition: transform 0.8s;
 }
 
-.hamburger .line:nth-child(1) {
-  top: 0; /* Position top line */
+.holographic-button:hover {
+  background-position: 100% 100%;
+  animation: hologram 0.8s ease-in-out;
 }
 
-.hamburger .line:nth-child(2) {
-  top: 50%; /* Center middle line vertically */
-  transform: translateY(-50%); /* Correct middle line's position */
+.holographic-button:hover::after {
+  transform: translateX(100%) skewX(-15deg);
 }
 
-.hamburger .line:nth-child(3) {
-  bottom: 0; /* Position bottom line */
+@keyframes hologram {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(90deg); }
 }
 
-.hamburger.open .line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+/* Smooth Cool Button Hover Effect - Universal */
+.smooth-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
 }
 
-.hamburger.open .line:nth-child(2) {
-  opacity: 0; /* Hide middle line */
+.smooth-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
-.hamburger.open .line:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+.smooth-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 24px rgba(54, 28, 169, 0.3),
+    0 6px 12px rgba(54, 28, 169, 0.2);
+  background: linear-gradient(135deg, #4a2fd4, #361CA9);
 }
 
+.smooth-hover:hover::before {
+  left: 100%;
+}
 
-
+.smooth-hover:active {
+  transform: translateY(-1px);
+  transition: all 0.1s ease;
+}
   
 
   

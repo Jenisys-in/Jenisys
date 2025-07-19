@@ -50,64 +50,7 @@ function Navbar() {
 
   return (
     <>
-      {/* Hamburger Menu Styles */}
-      <style jsx>{`
-        .hamburger {
-          display: flex;
-          flex-direction: column;
-          cursor: pointer;
-          width: 30px;
-          height: 24px;
-          justify-content: space-between;
-          align-items: center;
-          padding: 4px;
-          transition: all 0.3s ease;
-        }
-
-        .hamburger .line {
-          width: 100%;
-          height: 3px;
-          background-color: #333;
-          transition: all 0.3s ease;
-          transform-origin: center;
-        }
-
-        .hamburger.open .line:nth-child(1) {
-          transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.open .line:nth-child(2) {
-          opacity: 0;
-          transform: scaleX(0);
-        }
-
-        .hamburger.open .line:nth-child(3) {
-          transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        .hamburger.closed .line:nth-child(1) {
-          transform: rotate(0deg) translate(0px, 0px);
-        }
-
-        .hamburger.closed .line:nth-child(2) {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-
-        .hamburger.closed .line:nth-child(3) {
-          transform: rotate(0deg) translate(0px, 0px);
-        }
-
-        /* Mobile menu slide animation */
-        .mobile-menu {
-          transform: translateX(-100%);
-          transition: transform 0.3s ease-in-out;
-        }
-
-        .mobile-menu.open {
-          transform: translateX(0);
-        }
-      `}</style>
+     
 
       <nav className={`fixed z-10 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-6 h-[80px] shadow-sm ${
         isScrolled ? 'bg-white/90 backdrop-blur-md' : 'bg-white'
