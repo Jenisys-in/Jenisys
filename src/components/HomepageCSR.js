@@ -100,44 +100,51 @@ const HomepageCSR = () => {
               className="md:w-[220px] md:h-[50px] 3xl:w-[460px] 3xl:h-[104px] w-[133px] h-[32px]"
             />
             <h1 className="font-['Montserrat'] md:text-[40px] pl-[10px] pt-[20px] md:w-auto font-semibold text-[20px]">
-              Revolutionize your business with Jenisys
-            </h1>
-            <h1 className="font-['Montserrat'] text-[11px] md:text-[20px] md:pl-[10px] absolute md:relative md:top-0 top-[300px] pt-[10px] ">
-              Jenisys: Where Innovation Begins. We craft top-tier <br></br>
-              software and digital solutions, ensuring your business<br></br>{" "}
-              thrives with unmatched quality and excellence. From<br></br>{" "}
-              consultation to development, our expertise drives your <br></br>{" "}
-              success beyond limits.{" "}
-            </h1>
-            <Link href="/about" className="inline-block">
-      <button className="
-        ml-0 mt-4
-        md:ml-[10px] md:mt-[30px] 
-        bg-[#361CA9] text-white 
-        w-[109px] h-[27px] 
-        md:w-[250px] md:h-[67px] 
-        text-[12px] md:text-[24px] 
-        font-['Montserrat'] font-semibold 
-        rounded-[3px] md:rounded-[11px] 
-        shadow-[6px_7px_4px_rgba(0,0,0,0.25)] 
-        holographic-button
-        relative
-        block
-      ">
-        <span className="relative z-10">Learn More</span>
-      </button>
-    </Link>
+  Revolutionize your business with Jenisys
+</h1>
+
+<p className="font-['Montserrat'] text-[11px] md:text-[20px] md:pl-[10px] relative pt-[10px] mt-4">
+  Jenisys: Where Innovation Begins. We craft top-tier <br />
+  software and digital solutions, ensuring your business<br />
+  thrives with unmatched quality and excellence. From<br />
+  consultation to development, our expertise drives your <br />
+  success beyond limits.
+</p>
+
+<div className="mt-4 md:mt-[30px] md:ml-[10px]">
+  <Link href="/about" className="inline-block">
+    <button className="
+      bg-[#361CA9] text-white 
+      w-[109px] h-[27px] md:w-[250px] md:h-[67px]
+      text-[12px] md:text-[24px]
+      font-['Montserrat'] font-semibold 
+      rounded-[3px] md:rounded-[11px]
+      shadow-[6px_7px_4px_rgba(0,0,0,0.25)] 
+      holographic-button
+    ">
+      <span className="relative z-10">Learn More</span>
+    </button>
+  </Link>
+</div>
+
           </div>
           <video
-            className=" absolute md:relative md:top-4 top-[140px] md:w-[660px] 3xl:w-[850px] 3xl:pl-[40px] md:h-[480px] 3xl:mb-[200px] w-auto h-[140px]  md:mb-[80px]"
-            autoPlay
-            muted
-            loop
-            playsInline // Ensures autoplay works on mobile devices
-            preload="auto" // Preloads the video to ensure it starts playing immediately
-          >
-            <source src="/Home Page Video.mp4" type="video/mp4" />
-          </video>
+  className="
+    relative 
+    w-full md:w-[660px] 3xl:w-[850px] 
+    h-[140px] md:h-[480px] 
+    mt-6 md:mt-4 
+    md:mb-[80px] 3xl:mb-[200px]
+  "
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+>
+  <source src="/Home Page Video.mp4" type="video/mp4" />
+</video>
+
         </div>
       </div>
       <div className="section snap-start  white-section">
@@ -276,137 +283,178 @@ const HomepageCSR = () => {
         </div>
       </div>
       <div className="scroll-on-appear section white-section">
-        <div className=" pt-[300px] md:pt-0 relative flex-col " id="services">
-          <Image
-            src="/img/Services.png"
-            width={1920}
-            height={1080}
-            alt="Services"
-            className="w-full md:h-auto h-[200px]"
-          />
-          <h1 className="text-white text-[12px] w-[224px] h-[15px] md:w-auto md:h-auto  font-['Montserrat'] 3xl:bottom-[455px] 3xl:text-[45px] md:text-[32px] font-extrabold absolute md:bottom-[355px] md:left-[80px] bottom-[150px] left-[30px]">
-            Our Services
-          </h1>
-          <h1 className="text-[14px] bottom-[95px]  left-[30px] md:w-auto md:h-auto  text-white font-['Montserrat'] 3xl:bottom-[250px] 3xl:text-[50px] md:text-[44px] font-bold absolute md:bottom-[200px] md:left-[80px]">
-            The future is flexible. Partner with <br></br> us to outsoure Your{" "}
-            <span className="text-[#7F4BED] font-extrabold">Tech Needs</span>
-          </h1>
-          <Link href="/services">
-            <button className=" hidden md:block bg-[#7526FE] 3xl:left-[1320px] 3xl:bottom-[300px] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] absolute bottom-[250px] left-[1035px] holographic-button">
-              Learn More
-            </button>
-          </Link>
-        </div>
+       <div className="pt-[300px] lg:pt-0 relative flex-col" id="services">
+  <Image
+    src="/img/Services.png"
+    width={1920}
+    height={1080}
+    alt="Services"
+    className="w-full lg:h-auto h-[200px]"
+  />
+  
+  {/* "Our Services" heading */}
+  <h1 className="text-white text-[12px] w-[224px] h-[15px] lg:w-auto lg:h-auto  
+                 font-['Montserrat'] font-extrabold absolute 
+                 bottom-[150px] left-[30px]
+                 lg:bottom-[355px] lg:left-[80px] 
+                 lg:text-[32px]
+                 3xl:bottom-[455px] 3xl:text-[45px]">
+    Our Services
+  </h1>
+  
+  {/* Main heading */}
+  <h1 className="text-[14px] bottom-[95px] left-[30px] lg:w-auto lg:h-auto text-white 
+                 font-['Montserrat'] font-bold absolute 
+                 lg:bottom-[200px] lg:left-[80px] lg:text-[44px]
+                 3xl:bottom-[250px] 3xl:text-[50px]">
+    The future is flexible. Partner with <br></br> us to outsource Your{" "}
+    <span className="text-[#7F4BED] font-extrabold">Tech Needs</span>
+  </h1>
+  
+  {/* Learn More button */}
+  <Link href="/services">
+    <button className="hidden lg:block bg-[#7526FE] text-white w-[250px] h-[67px] text-[24px] 
+                       font-['Montserrat'] font-semibold rounded-[11px] absolute 
+                       bottom-[250px] left-[1035px] 
+                       3xl:left-[1320px] 3xl:bottom-[300px] 
+                       holographic-button">
+      Learn More
+    </button>
+  </Link>
+</div>
         <div className="section white-section">
-          <div className="flex-row 3xl:px-[250px] md:px-[125px] relative ">
-            <div className=" left-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:rounded-[17px] md:-bottom-[280px] md:h-[387px] md:w-[261px] -bottom-[110px] md:left-[120px] 3xl:left-[250px]">
-              <Lottie
-                className="absolute  w-[100px] md:w-auto -top-[50px] md:-top-[135px] md:-left-[7px]"
-                animationData={animationData}
-              />
+  <div className="flex-row 3xl:px-[250px] lg:px-[125px] relative">
+    {/* First Service Card */}
+    <div className="left-[50px] rounded-[9px] w-[107px] h-[158px] absolute justify-center bg-white shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[110px] 
+                    md:left-[100px]
+                    lg:shadow-[5px_5px_15px] lg:rounded-[17px] lg:-bottom-[280px] lg:h-[387px] lg:w-[261px] lg:left-[120px] 
+                    3xl:left-[250px]">
+      <Lottie
+        className="absolute w-[100px] -top-[50px] lg:w-auto lg:-top-[135px] lg:-left-[7px]"
+        animationData={animationData}
+      />
 
-              <div className="md:left-[80px] md:-top-[50px] bg-[#8847FA] absolute md:h-[92px] h-[37px] w-[38px] md:w-[92px] rounded-full md:left-a left-[32px] -top-[18px] z-1"></div>
+      <div className="bg-[#8847FA] absolute h-[37px] w-[38px] rounded-full left-[32px] -top-[18px] z-1
+                      lg:left-[80px] lg:-top-[50px] lg:h-[92px] lg:w-[92px]"></div>
 
-              <Image
-                src="/img/laptop.png"
-                width={52}
-                height={52}
-                alt="laptop"
-                className="md:w-[52px] md:h-[52px] absolute md:left-[100px] w-[22px] h-[22px] left-[40px] -top-[12px] md:-top-[28px]"
-              />
-              <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
-                Custom Software Development
-              </h1>
-              <h1 className="text-center  font-['Montserrat'] px-[10px] md:text-[16px] md:pt-[20px] text-[8px]  md:px-[25px]">
-                It involves creating software tailored to meet specific needs or
-                requirements of a business or user.
-              </h1>
-              <Link href="/services">
-                <button className="rounded-[2px] w-[60px]  text-[8px] h-[20px] md:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] md:mt-[25px] mx-[20px] bg-[#7526FE] text-white md:w-[147px] md:h-[49px] md:text-[20px] font-['Montserrat'] font-semibold md:rounded-[4px] smooth-hover">
-                  Read More
-                </button>
-              </Link>
-            </div>
-            <div className="right-[70px] rounded-[9px] w-[107px] h-[158px]  absolute justify-center bg-white  md:rounded-[17px] md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] md:-bottom-[280px] md:h-[387px] md:w-[261px] md:left-[410px] -bottom-[110px] 3xl:left-[600px] ">
-              <Lottie
-                className="absolute md:w-auto w-[100px] -top-[50px] md:-top-[135px] md:-left-[7px]"
-                animationData={animationData}
-              />
-              <div className="md:left-[80px] md:-top-[50px] bg-[#8847FA] absolute md:h-[92px] h-[37px] w-[38px] md:w-[92px] rounded-full left-[32px] -top-[18px] z-1"></div>
-              <Image
-                src="/img/mobile.png"
-                width={52}
-                height={52}
-                alt="mobile"
-                className="md:w-[52px] md:h-[52px] absolute md:left-[100px]  w-[22px] h-[22px] left-[40px] -top-[12px] md:-top-[28px]"
-              />
-              <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
-                Web & Mobile App Development
-              </h1>
-              <h1 className="text-center  font-['Montserrat'] px-[10px] md:text-[16px] md:pt-[20px] text-[8px]  md:px-[25px]">
-                It involves creating applications that can be accessed on both
-                web browsers and mobile devices.
-              </h1>
-              <Link href="/services">
-                <button className="rounded-[2px] w-[60px]  text-[8px] h-[20px] md:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] md:mx-[53px] md:mt-[25px] mx-[20px] bg-[#7526FE] text-white md:w-[147px] md:h-[49px] md:text-[20px] font-['Montserrat'] font-semibold md:rounded-[4px] smooth-hover">
-                  Read More
-                </button>
-              </Link>
-            </div>
-            <div className="hidden md:block absolute justify-center bg-white md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[960px] left-[695px] h-[387px] w-[261px]">
-              <Lottie
-                className="absolute -top-[135px] -left-[7px]"
-                animationData={animationData}
-              />
-              <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
-              <Image
-                src="/img/nano1.png"
-                width={52}
-                height={52}
-                alt="nano"
-                className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
-              />
-              <h1 className="text-center font-semibold font-['Montserrat'] text-[20px] pt-[75px]">
-                IT Consulting & Digital Transformation
-              </h1>
-              <h1 className="text-center  font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
-                It involves guiding businesses in using technology to improve
-                operations and achieve goals.
-              </h1>
-              <Link href="/services">
-                <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] smooth-hover">
-                  Read More
-                </button>
-              </Link>
-            </div>
-            <div className="hidden md:block absolute justify-center bg-white md:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[1315px] left-[980px] h-[387px] w-[261px]">
-              <Lottie
-                className="absolute -top-[135px] -left-[7px]"
-                animationData={animationData}
-              />
-              <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
-              <Image
-                src="/img/shield.png"
-                width={52}
-                height={52}
-                alt="shield"
-                className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
-              />
-              <h1 className="text-center font-semibold font-['Montserrat'] md:text-[20px] md:pt-[75px]">
-                Maintenance, Support<br></br>& Cybersecurity
-              </h1>
-              <h1 className="text-center  font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
-                It involves updates, user assistance, & protection against cyber
-                threats to maintain system integrity and user trust.
-              </h1>
-              <Link href="/services">
-                <button className=" shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] smooth-hover">
-                  Read More
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
+      <Image
+        src="/img/laptop.png"
+        width={52}
+        height={52}
+        alt="laptop"
+        className="absolute w-[22px] h-[22px] left-[40px] -top-[12px]
+                   lg:w-[52px] lg:h-[52px] lg:left-[100px] lg:-top-[28px]"
+      />
+      <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] 
+                     lg:text-[20px] lg:pt-[75px]">
+        Custom Software Development
+      </h1>
+      <h1 className="text-center font-['Montserrat'] px-[10px] text-[8px]
+                     lg:text-[16px] lg:pt-[20px] lg:px-[25px]">
+        It involves creating software tailored to meet specific needs or
+        requirements of a business or user.
+      </h1>
+      <Link href="/services">
+        <button className="rounded-[2px] w-[60px] text-[8px] h-[20px] mx-[20px] bg-[#7526FE] text-white font-['Montserrat'] font-semibold smooth-hover
+                           lg:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] lg:mx-[53px] lg:mt-[25px] lg:w-[147px] lg:h-[49px] lg:text-[20px] lg:rounded-[4px]">
+          Read More
+        </button>
+      </Link>
+    </div>
+    
+    {/* Second Service Card */}
+    <div className="right-[50px] rounded-[9px] w-[107px] h-[158px] absolute justify-center bg-white shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[110px]
+                    md:right-[100px]
+                    lg:rounded-[17px] lg:shadow-[5px_5px_15px] lg:-bottom-[280px] lg:h-[387px] lg:w-[261px] lg:left-[410px] 
+                    3xl:left-[600px]">
+      <Lottie
+        className="absolute w-[100px] -top-[50px] lg:w-auto lg:-top-[135px] lg:-left-[7px]"
+        animationData={animationData}
+      />
+      <div className="bg-[#8847FA] absolute h-[37px] w-[38px] rounded-full left-[32px] -top-[18px] z-1
+                      lg:left-[80px] lg:-top-[50px] lg:h-[92px] lg:w-[92px]"></div>
+      <Image
+        src="/img/mobile.png"
+        width={52}
+        height={52}
+        alt="mobile"
+        className="absolute w-[22px] h-[22px] left-[40px] -top-[12px]
+                   lg:w-[52px] lg:h-[52px] lg:left-[100px] lg:-top-[28px]"
+      />
+      <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] 
+                     lg:text-[20px] lg:pt-[75px]">
+        Web & Mobile App Development
+      </h1>
+      <h1 className="text-center font-['Montserrat'] px-[10px] text-[8px]
+                     lg:text-[16px] lg:pt-[20px] lg:px-[25px]">
+        It involves creating applications that can be accessed on both
+        web browsers and mobile devices.
+      </h1>
+      <Link href="/services">
+        <button className="rounded-[2px] w-[60px] text-[8px] h-[20px] mx-[20px] bg-[#7526FE] text-white font-['Montserrat'] font-semibold smooth-hover
+                           lg:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] lg:mx-[53px] lg:mt-[25px] lg:w-[147px] lg:h-[49px] lg:text-[20px] lg:rounded-[4px]">
+          Read More
+        </button>
+      </Link>
+    </div>
+    
+    {/* Third Service Card - Only shows on larger screens (lg and above) */}
+    <div className="hidden lg:block absolute justify-center bg-white lg:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[960px] left-[695px] h-[387px] w-[261px]">
+      <Lottie
+        className="absolute -top-[135px] -left-[7px]"
+        animationData={animationData}
+      />
+      <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
+      <Image
+        src="/img/nano1.png"
+        width={52}
+        height={52}
+        alt="nano"
+        className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
+      />
+      <h1 className="text-center font-semibold font-['Montserrat'] text-[20px] pt-[75px]">
+        IT Consulting & Digital Transformation
+      </h1>
+      <h1 className="text-center font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
+        It involves guiding businesses in using technology to improve
+        operations and achieve goals.
+      </h1>
+      <Link href="/services">
+        <button className="shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] smooth-hover">
+          Read More
+        </button>
+      </Link>
+    </div>
+    
+    {/* Fourth Service Card - Only shows on extra large screens */}
+    <div className="hidden xl:block absolute justify-center bg-white lg:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -bottom-[280px] rounded-[17px] 3xl:left-[1315px] left-[980px] h-[387px] w-[261px]">
+      <Lottie
+        className="absolute -top-[135px] -left-[7px]"
+        animationData={animationData}
+      />
+      <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-1"></div>
+      <Image
+        src="/img/shield.png"
+        width={52}
+        height={52}
+        alt="shield"
+        className="w-[52px] h-[52px] absolute left-[100px] -top-[28px]"
+      />
+      <h1 className="text-center font-semibold font-['Montserrat'] lg:text-[20px] lg:pt-[75px]">
+        Maintenance, Support<br></br>& Cybersecurity
+      </h1>
+      <h1 className="text-center font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
+        It involves updates, user assistance, & protection against cyber
+        threats to maintain system integrity and user trust.
+      </h1>
+      <Link href="/services">
+        <button className="shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] smooth-hover">
+          Read More
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
       </div>
       <div className="scroll-on-appear section black-section">
         <div className="bg-black w-screen h-[380px] md:h-screen text-white md:mt-[400px] mt-[150px] md:pl-[50px] px-[20px] md:px-0">
@@ -478,7 +526,7 @@ const HomepageCSR = () => {
           <h1 className="md:text-[40px] font-semibold text-center md:px-[270px] text-[14px] px-[50px]">
             Don't miss a byte! Subscribe for the latest in software and tech
           </h1>
-          <div className="flex flex-row md:mt-[40px]">
+          <div className="flex flex-col md:flex-row md:mt-[40px]">
             <div className="md:flex-col md:ml-[100px] md:w-1/3 hidden md:block ">
               <Image
                 src="/img/Jenisys Hero.png"
@@ -572,7 +620,7 @@ const HomepageCSR = () => {
               </div>
               </form>
             </div>
-            <div className="hidden md:block flex-col w-1/2  px-[40px] mt-[40px] 3xl:px-[80px]">
+            <div className="hidden md:block flex-col md:w-1/3  px-[40px] mt-[40px] 3xl:px-[80px]">
           <h1 className="font-['Montserrat'] font-semibold text-[20px] 3xl:text-[35px] ">Advancing Excellence<br className="hidden 3xl:block"></br> Beyond Cost</h1>
         </div>
           </div>
