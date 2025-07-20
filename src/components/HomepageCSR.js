@@ -109,11 +109,24 @@ const HomepageCSR = () => {
               consultation to development, our expertise drives your <br></br>{" "}
               success beyond limits.{" "}
             </h1>
-            <Link href="/about">
-              <button className="md:ml-[10px] md:mt-[30px] bg-[#361CA9] text-white w-[109px] h-[27px]  md:w-[250px] md:h-[67px] top-[420px] absolute  md:relative md:top-0 text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)] holographic-button">
-                Learn More
-              </button>{" "}
-            </Link>
+            <Link href="/about" className="inline-block">
+      <button className="
+        ml-0 mt-4
+        md:ml-[10px] md:mt-[30px] 
+        bg-[#361CA9] text-white 
+        w-[109px] h-[27px] 
+        md:w-[250px] md:h-[67px] 
+        text-[12px] md:text-[24px] 
+        font-['Montserrat'] font-semibold 
+        rounded-[3px] md:rounded-[11px] 
+        shadow-[6px_7px_4px_rgba(0,0,0,0.25)] 
+        holographic-button
+        relative
+        block
+      ">
+        <span className="relative z-10">Learn More</span>
+      </button>
+    </Link>
           </div>
           <video
             className=" absolute md:relative md:top-4 top-[140px] md:w-[660px] 3xl:w-[850px] 3xl:pl-[40px] md:h-[480px] 3xl:mb-[200px] w-auto h-[140px]  md:mb-[80px]"

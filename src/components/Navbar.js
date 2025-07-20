@@ -21,7 +21,6 @@ function Navbar() {
       const scrollTop = window.scrollY;
       setIsScrolled(scrollTop > 0);
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -50,29 +49,29 @@ function Navbar() {
 
   return (
     <>
-      <nav className={`fixed z-10 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-6 h-[80px] shadow-sm bg-white`}>
+      <nav className={`fixed z-10 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 lg:px-8 h-[70px] sm:h-[75px] lg:h-[80px] shadow-sm bg-white`}>
         {/* Logo */}
-        <Link className="flex gap-2" href="/">
+        <Link className="flex gap-2 items-center" href="/">
           <Image
             src="/img/Logo.png"
             alt="Logo"
             width={60}
             height={65}
-            className="md:ml-[50px] md:mb-[8px] md:w-[60px] md:h-[65px] w-[25px] h-[30px]"
+            className="w-[25px] h-[30px] sm:w-[35px] sm:h-[40px] md:w-[45px] md:h-[50px] lg:w-[55px] lg:h-[60px] xl:w-[60px] xl:h-[65px] xl:ml-[50px]"
           />
           <Image
             src="/img/Jenisys Hero.png"
             alt="Jenisys Hero"
             width={180}
             height={50}
-            className="md:mt-[10px] md:-ml-[10px] md:w-[180px] md:h-[50px] mt-[5px] md:mt-0 w-[90px] h-[25px]"
+            className="w-[90px] h-[25px] sm:w-[110px] sm:h-[30px] md:w-[130px] md:h-[35px] lg:w-[150px] lg:h-[40px] xl:w-[180px] xl:h-[50px] xl:-ml-[10px]"
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center">
-          <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] md:mt-[14px] md:ml-[30px]"></div>
-          <div className="3xl:mt-[20px] 3xl:ml-[150px] md:ml-[50px] md:mt-[20px]">
+        {/* Desktop Menu - Hidden on tablets and below */}
+        <div className="hidden xl:flex items-center">
+          <div className="flex gap-4 3xl:ml-[150px] 3xl:mt-[5px] xl:mt-[14px] xl:ml-[30px]"></div>
+          <div className="3xl:mt-[20px] 3xl:ml-[150px] xl:ml-[50px] xl:mt-[20px]">
             {navItems.map((item) => (
               <NavItem key={item.name} href={item.path}>
                 {item.name}
@@ -81,8 +80,21 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Hamburger Icon for Mobile */}
-        <div className="block md:hidden ml-auto">
+        {/* Tablet Menu - Visible on tablets only */}
+        <div className="hidden md:flex xl:hidden items-center">
+          <div className="flex gap-2 lg:gap-3">
+            {navItems.map((item) => (
+              <NavItem key={item.name} href={item.path}>
+                <span className="text-sm lg:text-base whitespace-nowrap">
+                  {item.name}
+                </span>
+              </NavItem>
+            ))}
+          </div>
+        </div>
+
+        {/* Hamburger Icon for Mobile and Small Tablets */}
+        <div className="block md:hidden">
           <div
             className={`hamburger ${isMobileMenuOpen ? "open" : "closed"}`}
             onClick={toggleMobileMenu}
