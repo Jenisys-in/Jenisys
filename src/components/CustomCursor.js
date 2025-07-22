@@ -90,8 +90,12 @@ export default function TechCursor() {
   }, []);
 
   useEffect(() => {
+    let isActive = true;
+    
     // Direct mouse move handler - no delays, instant updates
     const move = (e) => {
+      if (!isActive) return;
+      
       const x = e.clientX;
       const y = e.clientY;
       
@@ -110,71 +114,114 @@ export default function TechCursor() {
       detectBackgroundColor(x, y);
     };
 
-    const handleMouseDown = () => setClicked(true);
-    const handleMouseUp = () => setClicked(false);
+    const handleMouseDown = () => isActive && setClicked(true);
+    const handleMouseUp = () => isActive && setClicked(false);
 
     const setupHoverEvents = () => {
-      const selectors = [
-        { elements: 'button, .cursor-pointer, [role="button"]', type: 'pointer' },
-        { elements: 'a, [role="link"]', type: 'pointer' },
-        { elements: 'input, textarea, [contenteditable]', type: 'text' },
-        { elements: 'code, pre, .cursor-code', type: 'code' }
-      ];
+      // Add a delay to ensure DOM is ready
+      setTimeout(() => {
+        if (!isActive) return;
+        
+        const selectors = [
+          { elements: 'button, .cursor-pointer, [role="button"]', type: 'pointer' },
+          { elements: 'a, [role="link"]', type: 'pointer' },
+          { elements: 'input, textarea, [contenteditable]', type: 'text' },
+          { elements: 'code, pre, .cursor-code', type: 'code' }
+        ];
 
-      const eventListeners = [];
+        selectors.forEach(({ elements, type }) => {
+          try {
+            const nodeList = document.querySelectorAll(elements);
+            nodeList.forEach((el) => {
+              if (!el.dataset.cursorListenerAdded) {
+                const enterHandler = () => {
+                  if (isActive) {
+                    setHovering(true);
+                    setCursorType(type);
+                  }
+                };
+                const leaveHandler = () => {
+                  if (isActive) {
+                    setHovering(false);
+                    setCursorType('default');
+                  }
+                };
 
-      selectors.forEach(({ elements, type }) => {
-        try {
-          document.querySelectorAll(elements).forEach((el) => {
-            const enterHandler = () => {
-              setHovering(true);
-              setCursorType(type);
-            };
-            const leaveHandler = () => {
-              setHovering(false);
-              setCursorType('default');
-            };
-
-            el.addEventListener("mouseenter", enterHandler, { passive: true });
-            el.addEventListener("mouseleave", leaveHandler, { passive: true });
-            
-            eventListeners.push({ el, enterHandler, leaveHandler });
-          });
-        } catch (error) {
-          console.warn(`Failed to setup hover events for selector: ${elements}`, error);
-        }
-      });
-
-      return eventListeners;
+                el.addEventListener("mouseenter", enterHandler, { passive: true });
+                el.addEventListener("mouseleave", leaveHandler, { passive: true });
+                el.dataset.cursorListenerAdded = 'true';
+              }
+            });
+          } catch (error) {
+            console.warn(`Failed to setup hover events for selector: ${elements}`, error);
+          }
+        });
+      }, 100);
     };
 
-    // Hide default cursor
+    // Hide default cursor with fallback
     const originalCursor = document.body.style.cursor;
+    const originalPointerEvents = document.body.style.pointerEvents;
+    
     document.body.style.cursor = 'none';
+    
+    // Ensure cursor is hidden on all elements
+    const hideStyle = document.createElement('style');
+    hideStyle.textContent = `
+      *, *::before, *::after {
+        cursor: none !important;
+      }
+    `;
+    document.head.appendChild(hideStyle);
     
     // Use passive listeners for better performance
     window.addEventListener("mousemove", move, { passive: true });
     window.addEventListener("mousedown", handleMouseDown, { passive: true });
     window.addEventListener("mouseup", handleMouseUp, { passive: true });
     
-    const eventListeners = setupHoverEvents();
+    // Setup hover events with retry mechanism
+    setupHoverEvents();
+    
+    // Also listen for dynamic content changes
+    const observer = new MutationObserver(() => {
+      if (isActive) {
+        setupHoverEvents();
+      }
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
     
     // Start trail animation
-    requestAnimationFrame(animateTrail);
+    let animationId = requestAnimationFrame(animateTrail);
 
     return () => {
+      isActive = false;
+      
+      // Restore original cursor
       document.body.style.cursor = originalCursor;
+      document.body.style.pointerEvents = originalPointerEvents;
+      
+      // Remove style
+      if (hideStyle.parentNode) {
+        hideStyle.parentNode.removeChild(hideStyle);
+      }
+      
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
       
-      eventListeners.forEach(({ el, enterHandler, leaveHandler }) => {
-        try {
-          el.removeEventListener("mouseenter", enterHandler);
-          el.removeEventListener("mouseleave", leaveHandler);
-        } catch (error) {
-          // Element may have been removed from DOM
-        }
+      observer.disconnect();
+      
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+      
+      // Clean up all cursor listener markers
+      document.querySelectorAll('[data-cursor-listener-added]').forEach(el => {
+        delete el.dataset.cursorListenerAdded;
       });
     };
   }, [animateTrail, detectBackgroundColor]);
