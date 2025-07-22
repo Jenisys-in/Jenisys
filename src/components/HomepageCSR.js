@@ -114,6 +114,7 @@ const HomepageCSR = () => {
 <div className="mt-4 md:mt-[30px] md:ml-[10px]">
   <Link href="/about" className="inline-block">
     <button className="
+      
       bg-[#361CA9] text-white 
       w-[109px] h-[27px] md:w-[250px] md:h-[67px]
       text-[12px] md:text-[24px]
