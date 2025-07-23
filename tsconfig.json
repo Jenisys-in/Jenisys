@@ -26,6 +26,6 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/app/Privacy-Policy/page.js", "src/components/CustomCursor.js", "src/components/CustomCursor.js"  ],
   "exclude": ["node_modules"]
 }

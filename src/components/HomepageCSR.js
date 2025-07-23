@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
 import Image from "next/image";
 import Link from "next/link";
+import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from 'lucide-react';
 
 const HomepageCSR = () => {
 
@@ -522,193 +523,181 @@ const HomepageCSR = () => {
           </div>
         </div>
       </div>
-      <div className="scroll-on-appear section white-section">
-        <div className="bg-white font-['Montserrat'] justify-center items-center  mt-[30px] w-screen md:mb-[50px]">
-          <h1 className="md:text-[40px] font-semibold text-center md:px-[270px] text-[14px] px-[50px]">
-            Don't miss a byte! Subscribe for the latest in software and tech
-          </h1>
-          <div className="flex flex-col md:flex-row md:mt-[40px]">
-            <div className="md:flex-col md:ml-[100px] md:w-1/3 hidden md:block ">
-              <Image
-                src="/img/Jenisys Hero.png"
-                width={172}
-                height={50}
-                alt="Jenisys Hero Logo"
-                className="md:w-[172px] md:h-[50px] md:mb-[20px]   "
+      <footer className="scroll-on-appear bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <img 
+                src="/img/Jenisys Hero.png" 
+                alt="Jenisys" 
+                className="h-10 w-auto mb-4 brightness-0 invert"
               />
-              <Link
-                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:pb-[0px]"
-                href="#services"
-              >
-                Services
-              </Link>{" "}
-              <br></br>
-              <Link
-                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mt-[5px] "
-                href="#"
-              >
-                About Us
-              </Link>{" "}
-              <br></br>
-              <Link
-                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
-                href="#"
-              >
-                Blogs
-              </Link>{" "}
-              <br></br>
-              <Link
-                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
-                href="#"
-              >
-                Contact Us
-              </Link>{" "}
-              <br></br>
-              <Link
-                className="text-[#361CA9] font-['Montserrat'] font-medium md:text-[18px] md:mb-[5px] "
-                href="#"
-              >
-                Careers
-              </Link>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Advancing Excellence Beyond Cost
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Delivering innovative solutions that drive business growth and operational excellence through cutting-edge technology and strategic consulting.
+              </p>
             </div>
             
-            <div className="md:flex-col md:w-1/3 md:pr-[0px] pl-[50px] ">
-              <form onSubmit= {handleSubmit}>
-              <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px] mt-[20px] md:mt-0 ">
-                Name
-              </h1>
-              <input
-              name="name"
-              type="text"
-              placeholder="John Doe"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px] " />
-              <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[96px]  ">
-                E- mail
-              </h1>
-              <input 
-              name="email"
-              type="text"
-              placeholder="john.doe@gmail.com"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px]  shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
-              <h1 className="font-['Montserrat'] font-medium md:text-[20px] md:mb-[10px] md:w-[266px] ">
-                Contact Number
-              </h1>
-              <input 
-              name="contactNo"
-              type="text"
-              placeholder="Contact No."
-              value={formData.contactNo}
-              onChange={handleChange}
-              className="pl-[10px] md:w-[373px] text-[20px] md:h-[48px] w-[300px] h-[30px] shadow-[0px_0px_8px_rgba(0,0,0,0.25)] border-[rgba(0,0,0,0.25)] border-[0.5px] mb-[20px]" />
-              <button type="submit" className=" bg-[#361CA9] text-white w-[300px] h-[30px] md:w-[373px] md:h-[53px] md:text-[20px] font-['Montserrat'] font-semibold rounded-[5px] shadow-[0px_0px_4px_rgba(0,0,0,0.25)] holographic-button">
-                Subscribe
-              </button>
-              <div>  
-              {showAlert && (
-              <div className="bg-[#b696fa] border-2 border-[#702eff] justify-center display-flex items-center text-[12px] w-[300px] h-[45px] md:w-[373px] md:h-[65px] md:text-[14px] font-['Montserrat'] text-center rounded-[5px]">
-              <p>You're now subscribed to the newsletter! :D</p>
-              <button onClick={handleCloseAlert}
-              className="mx-[120px] md:mx-[150px] bg-[#361CA9] text-white rounded-[5px] px-[10px] md:mt-[10px]"
-              >Close</button>
+            {/* CTA Button */}
+            <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+              Get Started Today
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Services', href: '#services' },
+                { name: 'About Us', href: '#about' },
+                { name: 'Blog', href: '#blog' },
+                { name: 'Careers', href: '#careers' },
+                { name: 'Case Studies', href: '#case-studies' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                  >
+                    {link.name}
+                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-6">Contact Us</h4>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    123 Business District<br />
+                    Tech Park, Suite 400<br />
+                    Bangalore, Karnataka 560001<br />
+                    India
+                  </p>
+                </div>
               </div>
-              )}
+              
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                <a 
+                  href="tel:+911234567890" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  +91 8240384648
+                </a>
               </div>
-              </form>
+              
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                <a 
+                  href="mailto:info@jenisys.in" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  contact@jenisys.in
+                </a>
+              </div>
             </div>
-            <div className="hidden md:block flex-col md:w-1/3  px-[40px] mt-[40px] 3xl:px-[80px]">
-          <h1 className="font-['Montserrat'] font-semibold text-[20px] 3xl:text-[35px] ">Advancing Excellence<br className="hidden 3xl:block"></br> Beyond Cost</h1>
-        </div>
+          </div>
+
+          {/* Social Media & Newsletter */}
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-6">Stay Connected</h4>
+            
+            {/* Social Media Icons */}
+            <div className="flex gap-4 mb-6">
+              {[
+                { 
+                  name: 'Instagram', 
+                  href: 'https://www.instagram.com/jenisys.in/',
+                  icon: '/img/mdi_instagram.png'
+                },
+                { 
+                  name: 'LinkedIn', 
+                  href: 'https://www.linkedin.com/company/jenisys',
+                  icon: '/img/linkedIn.png'
+                },
+                { 
+                  name: 'Facebook', 
+                  href: 'https://www.facebook.com',
+                  icon: '/img/facebook.png'
+                }
+              ].map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                >
+                  <img 
+                    src={social.icon} 
+                    alt={social.name}
+                    className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
+                  />
+                </a>
+              ))}
+            </div>
+
+            {/* Newsletter Signup */}
+            <div>
+              <p className="text-gray-300 text-sm mb-3">Subscribe to our newsletter</p>
+              <div className="flex gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Your email"
+                  className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                />
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors">
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="bg-white block md:hidden h-[200px] flex flex-row mt-[20px] ml-[60px]">
-        <div className="flex-col  md:w-1/2 ">
-          <Image src="/img/Jenisys Hero.png" width={100} height={30} alt="Jenisys Hero" className="pr-[0px] w-[100px] h-[30px] " />
-          <Link
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
-            href="#services"
-          >
-            Services
-          </Link>{" "}
-          <br></br>
-          <Link
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
-            href="#"
-          >
-            About Us
-          </Link>{" "}
-          <br></br>
-          <Link
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
-            href="#"
-          >
-            Blogs
-          </Link>{" "}
-          <br></br>
-          <Link
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px]  "
-            href="#"
-          >
-            Contact Us
-          </Link>{" "}
-          <br></br>
-          <Link
-            className="text-[#361CA9] font-['Montserrat'] font-medium text-[7px] pl-[5px] "
-            href="#"
-          >
-            Careers
-          </Link>
-        </div>
-        <div className="flex-col w-1/2 pl-[40px] mt-[40px]">
-          <h1 className="font-['Montserrat'] font-semibold text-[10px] ">Advancing Excellence Beyond Cost</h1>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-700">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            {/* Copyright */}
+            <div className="text-gray-400 text-sm">
+              © 2025 Jenisys. All rights reserved.
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex gap-6 text-sm">
+              {[
+                { name: 'Privacy Policy', href: '#privacy' },
+              ].map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-      <div className=" w-screen bg-black md:h-[190px] h-[80px] justify-center items-center ">
-        <h1 className=" font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
-          Follow Us On
-        </h1>
-        <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
-          <a href="https://www.instagram.com/jenisys.in/" target="_blank" rel="noopener noreferrer">
-          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <Image
-              src="/img/mdi_instagram.png"
-              width={34}
-              height={34}
-              alt="instagram"
-              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-            />
-          </div>
-          </a>
-          <a href="https://www.linkedin.com/company/jenisys" target="_blank" rel="noopener noreferrer">
-          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <Image
-              src="/img/linkedIn.png"
-              width={34}
-              height={34}
-              alt="linkedin"
-              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-            />
-          </div>
-          </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          <div className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center">
-            <Image
-              src="/img/facebook.png"
-              width={34}
-              height={34}
-              alt="facebook"
-              className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-            />
-          </div>
-          </a>
-        </div>
-      </div>
+    </footer>
     </div>
   );
 };

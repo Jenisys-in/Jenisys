@@ -5,6 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import "../app/global.css";
+import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from 'lucide-react';
 
 // Lazy load Lottie component for better performance
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
@@ -95,26 +96,7 @@ const servicesData = [
 ];
 
 // Social media links data with SEO attributes
-const socialLinks = [
-  {
-    href: "https://www.instagram.com/jenisys.in/",
-    icon: "/img/mdi_instagram.png",
-    alt: "Follow Jenisys on Instagram - Latest Updates & Tech Insights",
-    platform: "Instagram"
-  },
-  {
-    href: "https://www.linkedin.com/company/jenisys",
-    icon: "/img/linkedIn.png",
-    alt: "Connect with Jenisys on LinkedIn - Professional Network",
-    platform: "LinkedIn"
-  },
-  {
-    href: "https://www.facebook.com",
-    icon: "/img/facebook.png",
-    alt: "Like Jenisys on Facebook - Community & Updates",
-    platform: "Facebook"
-  }
-];
+
 
 // Generate structured data for services
 const generateStructuredData = () => {
@@ -394,34 +376,182 @@ const Services = () => {
         </section>
         
         {/* Social Media Footer */}
-        <footer className="w-screen bg-black md:h-[190px] h-[80px] justify-center items-center">
-          <h2 className="font-['Montserrat'] font-semibold md:text-[26px] text-center text-white md:pt-[30px] pt-[10px] 3xl:text-[32px]">
-            Connect With Jenisys
-          </h2>
-          <nav aria-label="Social media links">
-            <div className="flex flex-row justify-center items-center md:gap-8 md:mt-[20px] mt-[10px] gap-4">
-              {socialLinks.map((social, index) => (
-                <Link
-                  key={index}
+        <footer className="scroll-on-appear bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <img 
+                src="/img/Jenisys Hero.png" 
+                alt="Jenisys" 
+                className="h-10 w-auto mb-4 brightness-0 invert"
+              />
+              <h3 className="text-xl font-bold text-white mb-3">
+                Advancing Excellence Beyond Cost
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Delivering innovative solutions that drive business growth and operational excellence through cutting-edge technology and strategic consulting.
+              </p>
+            </div>
+            
+            {/* CTA Button */}
+            <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+              Get Started Today
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Services', href: '#services' },
+                { name: 'About Us', href: '#about' },
+                { name: 'Blog', href: '#blog' },
+                { name: 'Careers', href: '#careers' },
+                { name: 'Case Studies', href: '#case-studies' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                  >
+                    {link.name}
+                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-6">Contact Us</h4>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    123 Business District<br />
+                    Tech Park, Suite 400<br />
+                    Bangalore, Karnataka 560001<br />
+                    India
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                <a 
+                  href="tel:+911234567890" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  +91 12345 67890
+                </a>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                <a 
+                  href="mailto:info@jenisys.in" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  info@jenisys.in
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Media & Newsletter */}
+          <div>
+            <h4 className="text-white font-semibold text-lg mb-6">Stay Connected</h4>
+            
+            {/* Social Media Icons */}
+            <div className="flex gap-4 mb-6">
+              {[
+                { 
+                  name: 'Instagram', 
+                  href: 'https://www.instagram.com/jenisys.in/',
+                  icon: '/img/mdi_instagram.png'
+                },
+                { 
+                  name: 'LinkedIn', 
+                  href: 'https://www.linkedin.com/company/jenisys',
+                  icon: '/img/linkedIn.png'
+                },
+                { 
+                  name: 'Facebook', 
+                  href: 'https://www.facebook.com',
+                  icon: '/img/facebook.png'
+                }
+              ].map((social) => (
+                <a
+                  key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#A3A3A3] md:h-[50px] md:w-[50px] w-[16px] h-[16px] rounded-full flex justify-center items-center hover:bg-[#8847FA] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-                  aria-label={social.alt}
+                  className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 >
-                  <Image
-                    src={social.icon}
-                    alt={`${social.platform} icon`}
-                    width={34}
-                    height={34}
-                    className="md:h-[34px] md:w-[34px] w-[12px] h-[12px]"
-                    loading="lazy"
+                  <img 
+                    src={social.icon} 
+                    alt={social.name}
+                    className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
                   />
-                </Link>
+                </a>
               ))}
             </div>
-          </nav>
-        </footer>
+
+            {/* Newsletter Signup */}
+            <div>
+              <p className="text-gray-300 text-sm mb-3">Subscribe to our newsletter</p>
+              <div className="flex gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Your email"
+                  className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                />
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors">
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-700">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            {/* Copyright */}
+            <div className="text-gray-400 text-sm">
+              © 2025 Jenisys. All rights reserved.
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex gap-6 text-sm">
+              {[
+                { name: 'Privacy Policy', href: '#privacy' },
+                
+              ].map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
       </main>
     </>
   );
