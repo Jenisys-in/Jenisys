@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import ScrollToTop from '@/components/ScrolltoTop';
 import Preloader from '../components/Preloader';
-import CustomCursor from "../components/CustomCursor";
+
 
 import './global.css';
 
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <CustomCursor />
+        
         {isLoading && <Preloader />}
         <div className={`transition-opacity duration-1000 ${
           isLoading ? "opacity-0" : "opacity-100"
