@@ -94,11 +94,11 @@ function Blog() {
                   <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm leading-relaxed">
-                      123 Business District
+                      Raja Ram mohon roy
                       <br />
-                      Tech Park, Suite 400
+                      Sarani
                       <br />
-                      Bangalore, Karnataka 560001
+                      Serampore, West Bengal 712203
                       <br />
                       India
                     </p>

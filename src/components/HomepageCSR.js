@@ -50,7 +50,7 @@ const testimonials = [
 ];
 
 const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
-  TestimonialCard.displayName = 'TestimonialCard';
+  TestimonialCard.displayName = "TestimonialCard";
   return (
     <div
       className={`
@@ -111,7 +111,7 @@ const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
 });
 
 const HomepageCSR = () => {
-  HomepageCSR.displayName = 'HomepageCSR';
+  HomepageCSR.displayName = "HomepageCSR";
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [slidesToShow, setSlidesToShow] = useState(1);
@@ -671,11 +671,11 @@ const HomepageCSR = () => {
                   <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm leading-relaxed">
-                      123 Business District
+                      Raja Ram mohon roy
                       <br />
-                      Tech Park, Suite 400
+                      Sarani
                       <br />
-                      Bangalore, Karnataka 560001
+                      Serampore, West Bengal 712203
                       <br />
                       India
                     </p>
