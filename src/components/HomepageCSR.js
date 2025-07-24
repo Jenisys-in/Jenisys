@@ -7,7 +7,7 @@ import animationData from "./AnimationLottie.json";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from "lucide-react";
-import "swiper/css";
+
 import { Star, User } from "lucide-react";
 
 const testimonials = [

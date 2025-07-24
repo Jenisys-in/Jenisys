@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -13,19 +17,29 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "strictNullChecks": true,
-    "plugins": [{ "name": "next" }],
-    
-    
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
-    }
+      "@/*": [
+        "*"
+      ]
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/Privacy-Policy/page.tsx", "src/components/CustomCursor.js", "src/components/CustomCursor.js"  ],
-  "exclude": ["node_modules"]
+    "**/*.tsx",
+    "src/app/Privacy-Policy/page.tsx",
+    "src/components/CustomCursor.js",
+    "src/components/CustomCursor.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
