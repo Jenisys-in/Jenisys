@@ -1,11 +1,12 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useRef, useCallback } from "react";
 
 import "../app/global.css";
 import { ArrowRight, ExternalLink, MapPin, Phone, Mail } from "lucide-react";
 
 const PrivacyPolicy = () => {
-  PrivacyPolicy.displayName = 'PrivacyPolicy';
+  PrivacyPolicy.displayName = "PrivacyPolicy";
   return (
     <>
       <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 mt-[85px]">
