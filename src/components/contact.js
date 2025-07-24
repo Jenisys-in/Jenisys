@@ -433,9 +433,18 @@ function Contact() {
 
               {/* Privacy Policy */}
               <p className="font-['Montserrat'] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white mt-6 sm:mt-8 md:mt-10 lg:mt-12 leading-relaxed">
-                For more information, please refer to the{' '}
-                <span className="font-extrabold">Privacy Policy</span> of Jenisys.
-              </p>
+  For more information, please refer to the{' '}
+  <a
+    href="https://jenisys.in/Privacy-Policy"
+    className="font-extrabold underline hover:text-gray-300 transition-colors duration-200"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Privacy Policy
+  </a>{' '}
+  of Jenisys.
+</p>
+
 
               {/* Submit Button */}
               <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12">

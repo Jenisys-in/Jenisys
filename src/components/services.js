@@ -376,7 +376,7 @@ const Services = () => {
         </section>
         
         {/* Social Media Footer */}
-        <footer className="scroll-on-appear bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <footer className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -536,7 +536,7 @@ const Services = () => {
             {/* Legal Links */}
             <div className="flex gap-6 text-sm">
               {[
-                { name: 'Privacy Policy', href: '#privacy' },
+                { name: 'Privacy Policy', href: '/Privacy-Policy' },
                 
               ].map((link) => (
                 <a

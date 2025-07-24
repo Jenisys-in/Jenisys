@@ -89,9 +89,9 @@ const HomepageCSR = () => {
   }, []);
   return (
     
-    <div className="mt-[85px] flex-col relative overflow-x-hidden  snap-mandatory w-full ">
+    <div className="mt-[85px] flex-col relative overflow-x-hidden w-full">
       <div className="section black-section">
-        <div className="scroll-on-appear w-screen md:w-screen  md:px-[40px] px-[50px]  relative md:h-screen h-[500px]  bg-white snap-start  md:flex  md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:gap-8 md:gap-8 3xl:px-[150px]">
+        <div className="scroll-on-appear w-screen md:w-screen  md:px-[40px] px-[50px]  relative md:h-screen h-[500px]  bg-white  md:flex  md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:gap-8 md:gap-8 3xl:px-[150px]">
           <div>
             <Image
               src="/img/Jenisys Hero.png"
@@ -149,7 +149,7 @@ const HomepageCSR = () => {
 
         </div>
       </div>
-      <div className="section snap-start  white-section">
+      <div className="section   white-section">
         <div className="scroll-on-appear w-screen min-h-[650px] md:h-screen bg-black max-md:pl-[20px] md:pl-[60px] px-[50px] md:px-0 md:flex flex flex-col-reverse md:flex-row  text-white">
           <div className="md:flex md:flex-row flex flex-col-reverse">
             <div className="md:flex-col md:w-1/2">
@@ -523,7 +523,7 @@ const HomepageCSR = () => {
           </div>
         </div>
       </div>
-      <footer className="scroll-on-appear bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <footer className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -683,7 +683,7 @@ const HomepageCSR = () => {
             {/* Legal Links */}
             <div className="flex gap-6 text-sm">
               {[
-                { name: 'Privacy Policy', href: '#privacy' },
+                { name: 'Privacy Policy', href: '/Privacy-Policy' },
               ].map((link) => (
                 <a
                   key={link.name}
