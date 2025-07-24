@@ -137,6 +137,7 @@ const AlertMessage = React.memo(({ onClose }) => (
 ));
 
 function Contact() {
+  Contact.displayName = 'Contact';
   const [showAlert, setShowAlert] = useState(false);
   const [formData, setFormData] = useState(FORM_INITIAL_STATE);
   const [error, setError] = useState("");

@@ -5,6 +5,7 @@ import "@fontsource/lexend-exa";
 import Link from "next/link";
 
 const SignUp = () => {
+  SignUp.displayName = 'SignUp';
   return (
     <div className="mt-[35px]  relative flex  items-start text-2xl w-fit max-md:max-w-full min-h-screen">
       <div>

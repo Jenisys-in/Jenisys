@@ -34,9 +34,11 @@ function Blog() {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <img
+                <Image
                   src="/img/Jenisys Hero.png"
                   alt="Jenisys"
+                  width={100}
+                  height={40}
                   className="h-10 w-auto mb-4 brightness-0 invert"
                 />
                 <h3 className="text-xl font-bold text-white mb-3">
@@ -92,11 +94,11 @@ function Blog() {
                   <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm leading-relaxed">
-                      Raja Ram mohon roy
+                      123 Business District
                       <br />
-                      Sarani
+                      Tech Park, Suite 400
                       <br />
-                      Serampore, West Bengal 712203
+                      Bangalore, Karnataka 560001
                       <br />
                       India
                     </p>
@@ -109,17 +111,17 @@ function Blog() {
                     href="tel:+911234567890"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    +91 8240384648
+                    +91 12345 67890
                   </a>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
                   <a
-                    href="mailto:contact@jenisys.in"
+                    href="mailto:info@jenisys.in"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    contact@jenisys.in
+                    info@jenisys.in
                   </a>
                 </div>
               </div>
@@ -157,9 +159,11 @@ function Blog() {
                     rel="noopener noreferrer"
                     className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                   >
-                    <img
+                    <Image
                       src={social.icon}
                       alt={social.name}
+                      width={24}
+                      height={24}
                       className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
                     />
                   </a>

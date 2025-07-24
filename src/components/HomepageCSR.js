@@ -50,6 +50,7 @@ const testimonials = [
 ];
 
 const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
+  TestimonialCard.displayName = 'TestimonialCard';
   return (
     <div
       className={`
@@ -110,6 +111,7 @@ const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
 });
 
 const HomepageCSR = () => {
+  HomepageCSR.displayName = 'HomepageCSR';
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [slidesToShow, setSlidesToShow] = useState(1);
@@ -615,9 +617,11 @@ const HomepageCSR = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <img
+                <Image
                   src="/img/Jenisys Hero.png"
                   alt="Jenisys"
+                  width={100}
+                  height={40}
                   className="h-10 w-auto mb-4 brightness-0 invert"
                 />
                 <h3 className="text-xl font-bold text-white mb-3">
@@ -726,9 +730,11 @@ const HomepageCSR = () => {
                     rel="noopener noreferrer"
                     className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                   >
-                    <img
+                    <Image
                       src={social.icon}
                       alt={social.name}
+                      width={24}
+                      height={24}
                       className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
                     />
                   </a>
@@ -743,6 +749,9 @@ const HomepageCSR = () => {
                     type="email"
                     placeholder="Your email"
                     className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                   <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors">
                     <ArrowRight className="w-4 h-4" />

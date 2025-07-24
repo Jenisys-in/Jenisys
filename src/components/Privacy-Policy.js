@@ -5,6 +5,7 @@ import "../app/global.css";
 import { ArrowRight, ExternalLink, MapPin, Phone, Mail } from "lucide-react";
 
 const PrivacyPolicy = () => {
+  PrivacyPolicy.displayName = 'PrivacyPolicy';
   return (
     <>
       <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 mt-[85px]">
@@ -587,9 +588,11 @@ const PrivacyPolicy = () => {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <img
+                <Image
                   src="/img/Jenisys Hero.png"
                   alt="Jenisys"
+                  width={100}
+                  height={40}
                   className="h-10 w-auto mb-4 brightness-0 invert"
                 />
                 <h3 className="text-xl font-bold text-white mb-3">
@@ -710,9 +713,11 @@ const PrivacyPolicy = () => {
                     rel="noopener noreferrer"
                     className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                   >
-                    <img 
-                      src={social.icon} 
+                    <Image
+                      src={social.icon}
                       alt={social.name}
+                      width={24}
+                      height={24}
                       className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
                     />
                   </a>

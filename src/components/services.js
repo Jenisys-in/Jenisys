@@ -194,6 +194,7 @@ const generateStructuredData = () => {
 
 // SEO-optimized Service Card Component
 const ServiceCard = ({ service, animationData, index }) => {
+  ServiceCard.displayName = 'ServiceCard';
   const isLastCard = index === servicesData.length - 1;
 
   return (
@@ -282,6 +283,7 @@ const ServiceCard = ({ service, animationData, index }) => {
 };
 
 const Services = () => {
+  Services.displayName = 'Services';
   const observerRef = useRef(null);
   const animationDataRef = useRef(null);
 
@@ -484,9 +486,11 @@ const Services = () => {
               {/* Company Info */}
               <div className="lg:col-span-1">
                 <div className="mb-6">
-                  <img
+                  <Image
                     src="/img/Jenisys Hero.png"
                     alt="Jenisys"
+                    width={100}
+                    height={40}
                     className="h-10 w-auto mb-4 brightness-0 invert"
                   />
                   <h3 className="text-xl font-bold text-white mb-3">
@@ -607,11 +611,13 @@ const Services = () => {
                       rel="noopener noreferrer"
                       className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                     >
-                      <img
-                        src={social.icon}
-                        alt={social.name}
-                        className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
-                      />
+                      <Image
+                      src={social.icon}
+                      alt={social.name}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
+                    />
                     </a>
                   ))}
                 </div>

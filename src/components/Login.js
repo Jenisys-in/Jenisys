@@ -5,6 +5,7 @@ import "@fontsource/lexend-exa";
 import Link from "next/link";
 
 const LogIn = () => {
+  LogIn.displayName = 'LogIn';
   return (
     <div className="mt-[85px]  w-full h-screen bg-cover bg-center" style={{ backgroundImage: "url('/img/logbg.png')" }}>
 
