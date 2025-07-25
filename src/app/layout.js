@@ -1,15 +1,16 @@
 "use client";
 
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import ScrollToTop from '@/components/ScrolltoTop';
-import Preloader from '../components/Preloader';
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import ScrollToTop from "@/components/ScrolltoTop";
+import Preloader from "../components/Preloader";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-
-import './global.css';
+import "./global.css";
 
 export default function RootLayout({ children }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,11 +26,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        
         {isLoading && <Preloader />}
-        <div className={`transition-opacity duration-1000 ${
-          isLoading ? "opacity-0" : "opacity-100"
-        }`}>
+        <div
+          className={`transition-opacity duration-1000 ${
+            isLoading ? "opacity-0" : "opacity-100"
+          }`}
+        >
           <Navbar />
           {children}
           <ScrollToTop />

@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import "../app/global.css";
 import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Zap, Rocket, Shield, Users, Code, Lightbulb } from "lucide-react";
 
 import { Star, User } from "lucide-react";
 
@@ -115,6 +118,11 @@ const HomepageCSR = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [slidesToShow, setSlidesToShow] = useState(1);
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const sectionRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hoveredValue, setHoveredValue] = useState(null);
 
   useEffect(() => {
     const updateSlidesToShow = () => {
@@ -243,183 +251,349 @@ const HomepageCSR = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Smooth entrance animation
+    setIsLoaded(true);
+
+    // Mouse tracking for subtle parallax
+    const handleMouseMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      setMousePosition({
+        x: (e.clientX - rect.left) / rect.width,
+        y: (e.clientY - rect.top) / rect.height,
+      });
+    };
+
+    const section = document.getElementById("hero-section");
+    if (section) {
+      section.addEventListener("mousemove", handleMouseMove);
+      return () => section.removeEventListener("mousemove", handleMouseMove);
+    }
+  }, []);
+
+  const missionItems = [
+    {
+      image: "/img/bulb.png",
+      text: "To Empower Businesses with Uncompromised Quality and Innovation.",
+      alt: "bulb",
+    },
+    {
+      image: "/img/nano.png",
+      text: "To Revolutionize Business Growth Through Superior Technology.",
+      alt: "nano",
+    },
+    {
+      image: "/img/arrow.png",
+      text: "To Drive Success with Tailored, High-Quality Digital Solutions.",
+      alt: "arrow",
+    },
+    {
+      image: "/img/success.png",
+      text: "To Create the Future of Business with Relentless Excellence.",
+      alt: "success",
+    },
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const values = [
+    {
+      id: 1,
+      icon: <Code className="w-8 h-8 md:w-10 md:h-10" />,
+      title: "Cutting-Edge Technology",
+      description:
+        "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive digital transformation.",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      id: 2,
+      // Replace Lightbulb from lucide-react with MdLightbulb from react-icons
+      icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10" />,
+      title: "Innovation First",
+      description:
+        "Our team constantly explores emerging technologies like AI, blockchain, and IoT to create groundbreaking solutions for complex challenges.",
+      color: "from-violet-500 to-pink-500",
+    },
+    {
+      id: 3,
+      icon: <Shield className="w-8 h-8 md:w-10 md:h-10" />,
+      title: "Security & Reliability",
+      description:
+        "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure your business continuity.",
+      color: "from-green-500 to-teal-500",
+    },
+    {
+      id: 4,
+      icon: <Users className="w-8 h-8 md:w-10 md:h-10" />,
+      title: "Client-Centric Approach",
+      description:
+        "We partner closely with our clients, understanding their unique needs to deliver personalized tech solutions that exceed expectations.",
+      color: "from-orange-500 to-red-500",
+    },
+  ];
+
   return (
     <div className="mt-[85px] flex-col relative overflow-x-hidden w-full">
-      <div className="section black-section">
-        <div className="scroll-on-appear w-screen md:w-screen md:px-[40px] px-[50px] relative md:h-screen h-[500px] bg-white md:flex md:px-[70px] 3xl:pt-[150px] md:pt-[45px] 3xl:gap-8 md:gap-8 3xl:px-[150px]">
-          <div>
-            <Image
-              src="/img/Jenisys Hero.png"
-              width={460}
-              height={104}
-              alt="Jenisys Hero Logo"
-              className="md:w-[220px] md:h-[50px] 3xl:w-[460px] 3xl:h-[104px] w-[133px] h-[32px]"
-            />
-            <h1 className="font-['Montserrat'] md:text-[40px] pl-[10px] pt-[20px] md:w-auto font-semibold text-[20px]">
-              Revolutionize your business with Jenisys
+      <section className="section white-section relative overflow-hidden bg-white">
+        {/* Optional glow or blurred shape */}
+        <div className="absolute w-[500px] h-[500px] bg-[#7526FE]/10 blur-[120px] rounded-full left-[60%] top-[20%] -z-10" />
+
+        <div className="w-screen px-6 sm:px-8 md:px-[70px] lg:px-[100px] xl:px-[120px] 3xl:px-[150px] py-10 md:py-20 flex flex-col lg:flex-row justify-between items-center lg:h-screen gap-8 sm:gap-10 md:gap-12 lg:gap-16">
+          {/* Left Content */}
+          <div className="text-black w-full lg:flex-1 max-w-full lg:max-w-none">
+            <h1 className="font-['Montserrat'] text-black text-[20px] sm:text-[24px] md:text-[32px] lg:text-[36px] xl:text-[44px] 2xl:text-[52px] 3xl:text-[60px] font-semibold leading-tight sm:leading-[28px] md:leading-[40px] lg:leading-[44px] xl:leading-[48px] 2xl:leading-[56px] 3xl:leading-[64px] mt-6">
+              Revolutionize your business with{" "}
+              <span className="text-[#7042F8]">Jenisys</span>
             </h1>
-            <p className="font-['Montserrat'] text-[11px] md:text-[20px] md:pl-[10px] relative pt-[10px] mt-4">
-              Jenisys: Where Innovation Begins. We craft top-tier <br />
-              software and digital solutions, ensuring your business
-              <br />
-              thrives with unmatched quality and excellence. From
-              <br />
-              consultation to development, our expertise drives your <br />
-              success beyond limits.
+
+            <p className="font-['Montserrat'] text-black text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mt-4 leading-relaxed max-w-full sm:max-w-[500px] md:max-w-[620px] lg:max-w-[580px] xl:max-w-[620px]">
+              Jenisys: Where Innovation Begins. We craft top-tier software and
+              digital solutions, ensuring your business thrives with unmatched
+              quality and excellence. From consultation to development, our
+              expertise drives your success beyond limits.
             </p>
-            <div className="mt-4 md:mt-[30px] md:ml-[10px]">
-              <Link href="/about" className="inline-block">
-                <button className="bg-[#361CA9] text-white w-[109px] h-[27px] md:w-[250px] md:h-[67px] text-[12px] md:text-[24px] font-['Montserrat'] font-semibold rounded-[3px] md:rounded-[11px] shadow-[6px_7px_4px_rgba(0,0,0,0.25)] holographic-button">
+
+            <div className="mt-6">
+              <a href="/about" className="inline-block">
+                <button className="relative bg-[#361CA9] hover:bg-[#4b2ffb] transition duration-300 text-white w-[130px] h-[36px] sm:w-[160px] sm:h-[44px] md:w-[200px] md:h-[55px] lg:w-[220px] lg:h-[60px] xl:w-[240px] xl:h-[65px] 2xl:w-[260px] 2xl:h-[70px] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-semibold rounded-md shadow-lg  overflow-hidden group holographic-button">
                   <span className="relative z-10">Learn More</span>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#4b2ffb] via-[#7042F8] to-[#361CA9] opacity-0 group-hover:opacity-20 transition duration-300" />
                 </button>
-              </Link>
+              </a>
             </div>
           </div>
-          <video
-            className="relative w-full md:w-[660px] 3xl:w-[850px] h-[140px] md:h-[480px] mt-6 md:mt-4 md:mb-[80px] 3xl:mb-[200px]"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-          >
-            <source src="/Home Page Video.mp4" type="video/mp4" />
-          </video>
+
+          {/* Right Content - Video */}
+          <div className="w-full lg:flex-1 flex justify-center lg:justify-end">
+            <video
+              className="rounded-2xl shadow-xl border border-black/10 hover:shadow-purple-400/30 transition-all duration-300 w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[580px] xl:max-w-[660px] 2xl:max-w-[750px] 3xl:max-w-[850px] h-[180px] sm:h-[220px] md:h-[320px] lg:h-[380px] xl:h-[430px] 2xl:h-[460px] 3xl:h-[480px] object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata" // Changed from "auto" to "metadata" for better performance
+            >
+              <source src="/Home Page Video.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
-      </div>
+      </section>
       <div className="section white-section">
-        <div className="scroll-on-appear w-screen min-h-[650px] md:h-screen bg-black max-md:pl-[20px] md:pl-[60px] px-[50px] md:px-0 md:flex flex flex-col-reverse md:flex-row text-white">
-          <div className="md:flex md:flex-row flex flex-col-reverse">
-            <div className="md:flex-col md:w-1/2">
-              <Image
-                src="/img/image 3.png"
-                width={500}
-                height={500}
-                alt="Our Vision"
-                className="md:pt-[40px] w-full pt-[40px] md:w-auto"
-              />
-              <h1 className="font-['Montserrat'] font-extrabold md:text-[32px] md:pt-[30px] pt-[20px] text-[12px]">
+        <div
+          ref={sectionRef}
+          className="scroll-on-appear w-screen min-h-[650px] sm:min-h-[700px] md:min-h-[800px] lg:h-screen bg-black px-5 sm:px-8 md:px-12 lg:pl-[60px] lg:px-0 flex flex-col-reverse lg:flex-row text-white"
+        >
+          <div className="flex flex-col-reverse lg:flex-row w-full">
+            {/* Vision Section */}
+            <div
+              className={`flex flex-col lg:w-1/2 mb-8 lg:mb-0 transform transition-all duration-700 ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
+              }`}
+            >
+              <div className="relative group">
+                <Image
+                  src="/img/image 3.png"
+                  width={500}
+                  height={500}
+                  alt="Our Vision"
+                  className="pt-[20px] sm:pt-[30px] md:pt-[40px] w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] lg:w-auto mx-auto lg:mx-0 transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-[20px] sm:mt-[30px] md:mt-[40px]"></div>
+              </div>
+
+              <h1 className="font-['Montserrat'] font-extrabold text-[14px] sm:text-[18px] md:text-[24px] lg:text-[32px] pt-[15px] sm:pt-[20px] md:pt-[25px] lg:pt-[30px] relative group text-center lg:text-left">
                 Our Vision
+                <div className="absolute bottom-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-0 h-[2px] bg-[#7526FE] transition-all duration-500 group-hover:w-full"></div>
               </h1>
-              <h1 className="font-['Montserrat'] md:text-[20px] md:pt-[0px] text-[11px] 3xl:text-[25px] 3xl:mt-[20px]">
+
+              <p className="font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[20px] 3xl:text-[25px] pt-[10px] sm:pt-[15px] md:pt-[20px] lg:pt-0 3xl:mt-[20px] leading-relaxed opacity-90 hover:opacity-100 transition-opacity duration-300 text-center lg:text-left max-w-[600px] mx-auto lg:mx-0">
                 Our vision is to be the leading transformative technology
                 solutions provider, empowering businesses with innovative
                 digital solutions and driving transformative growth.
-              </h1>
-              <Link href="/about">
-                <button className="w-[102px] h-[29px] bg-[#7526FE] font-['Montserrat'] text-[12px] font-semibold my-2 md:w-[225px] md:h-[60px] md:rounded-[10px] md:text-[24px] md:mb-[20px] md:order-none 3xl:mt-[60px] holographic-button">
-                  Learn More
+              </p>
+
+              <div className="relative group flex justify-center lg:justify-start">
+                <button className="w-[120px] h-[35px] sm:w-[150px] sm:h-[40px] md:w-[180px] md:h-[50px] lg:w-[225px] lg:h-[60px] bg-[#7526FE] font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[18px] lg:text-[24px] font-semibold my-4 sm:my-6 md:my-8 lg:my-2 rounded-[8px] md:rounded-[10px] lg:mb-[20px] 3xl:mt-[60px] relative overflow-hidden transition-all duration-300 hover:bg-[#8a3bff] holographic-button">
+                  <span className="relative z-10 flex items-center justify-center h-full">
+                    Learn More
+                    <ChevronRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                  {/* Subtle shimmer effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 </button>
-              </Link>
+              </div>
             </div>
-            <div className="flex-col md:w-1/2 font-['Montserrat'] md:pt-[30px] order-first md:order-none">
-              <h1 className="md:text-[32px] font-extrabold text-[12px] mb-[10px] md:mb-0">
+
+            {/* Mission Section */}
+            <div
+              className={`flex flex-col lg:w-1/2 font-['Montserrat'] pt-[20px] sm:pt-[25px] md:pt-[30px] lg:pt-[30px] order-first lg:order-none transform transition-all duration-700 delay-200 ${
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
+              }`}
+            >
+              <h1 className="text-[14px] sm:text-[18px] md:text-[24px] lg:text-[32px] font-extrabold mb-[15px] sm:mb-[20px] md:mb-[25px] lg:mb-0 relative group text-center lg:text-left">
                 Our Mission
+                <div className="absolute bottom-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-0 h-[2px] bg-[#7526FE] transition-all duration-500 group-hover:w-full"></div>
               </h1>
-              <div className="flex flex-row items-center">
-                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] mb-[10px] md:mb-0 rounded-[3px] max-pm:w-[54px] w-[53px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <Image
-                    src="/img/bulb.png"
-                    width={52}
-                    height={52}
-                    alt="bulb"
-                    className="md:w-[52px] md:h-[52px] w-[30px] h-[28px] ml-[2.5px] md:ml-0"
-                  />
-                </div>
-                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
-                  To Empower Businesses with Uncompromised Quality and
-                  Innovation.
-                </h1>
-              </div>
-              <div className="flex flex-row items-center">
-                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] mb-[10px] md:mb-0 w-[49px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <Image
-                    src="/img/nano.png"
-                    width={52}
-                    height={52}
-                    alt="nano"
-                    className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
-                  />
-                </div>
-                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
-                  To Revolutionize Business Growth Through Superior Technology.
-                </h1>
-              </div>
-              <div className="flex flex-row items-center">
-                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] mb-[10px] md:mb-0 w-[47px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <Image
-                    src="/img/arrow.png"
-                    width={52}
-                    height={52}
-                    alt="arrow"
-                    className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
-                  />
-                </div>
-                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
-                  To Drive Success with Tailored, High-Quality Digital
-                  Solutions.
-                </h1>
-              </div>
-              <div className="flex flex-row items-center mb-[70px] md:mb-0">
-                <div className="bg-[#A3A3A3] md:rounded-[11px] md:w-[89px] md:h-[89px] rounded-[3px] md:mb-0 w-[47px] h-[47px] md:mt-[30px] flex justify-center items-center">
-                  <Image
-                    src="/img/success.png"
-                    width={52}
-                    height={52}
-                    alt="success"
-                    className="md:w-[52px] md:h-[52px] w-[28px] h-[28px]"
-                  />
-                </div>
-                <h1 className="md:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] text-[11px] md:w-[524px] md:ml-4 ml-2">
-                  To Create the Future of Business with Relentless Excellence.
-                </h1>
+
+              <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-0">
+                {missionItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`flex flex-row items-center group cursor-pointer transition-all duration-300 hover:translate-x-2 ${
+                      hoveredItem === index ? "bg-white/5" : ""
+                    } rounded-lg p-2 -m-2`}
+                    onMouseEnter={() => setHoveredItem(index)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                    style={{
+                      transitionDelay: `${index * 100}ms`,
+                      transform: isVisible
+                        ? "translateX(0)"
+                        : "translateX(-20px)",
+                      opacity: isVisible ? 1 : 0,
+                    }}
+                  >
+                    <div
+                      className={`bg-[#A3A3A3] rounded-[6px] sm:rounded-[8px] md:rounded-[10px] lg:rounded-[11px] w-[45px] h-[40px] sm:w-[55px] sm:h-[50px] md:w-[70px] md:h-[65px] lg:w-[89px] lg:h-[89px] mb-[8px] sm:mb-[10px] md:mb-[12px] lg:mb-0 mt-[15px] sm:mt-[20px] md:mt-[25px] lg:mt-[30px] flex justify-center items-center transition-all duration-300 group-hover:bg-[#b8b8b8] group-hover:scale-105 ${
+                        hoveredItem === index ? "shadow-lg shadow-white/10" : ""
+                      } flex-shrink-0`}
+                    >
+                      <Image
+                        src={item.image}
+                        width={52}
+                        height={52}
+                        alt={item.alt}
+                        className="w-[24px] h-[22px] sm:w-[28px] sm:h-[26px] md:w-[40px] md:h-[38px] lg:w-[52px] lg:h-[52px] transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+
+                    <p className="text-[11px] sm:text-[13px] md:text-[16px] lg:text-[20px] 3xl:text-[25px] 3xl:pt-[15px] ml-3 sm:ml-4 md:ml-4 lg:ml-4 flex-1 transition-all duration-300 group-hover:text-white/90 leading-relaxed max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:max-w-[524px]">
+                      {item.text}
+                    </p>
+
+                    {/* Subtle indicator */}
+                    <div
+                      className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                        hoveredItem === index ? "opacity-100" : ""
+                      } flex-shrink-0`}
+                    >
+                      <div className="w-1 h-6 sm:h-7 md:h-8 lg:h-8 bg-[#7526FE] rounded-full"></div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
+
+        <style jsx>{`
+          .group:hover .group-hover\\:w-full {
+            width: 100%;
+          }
+        `}</style>
       </div>
-      <div className="section black-section">
-        <div className="scroll-on-appear relative flex flex-row bg-white w-screen gap-6 px-[50px] md:px-[70px] md:mt-[80px] mb-[140px] 3xl:mx-[180px]">
-          <div className="flex-col">
-            <h1 className="absolute left-[30px] top-[210px] md:left-0 md:top-0 md:relative w-[285px] h-[42px] md:w-auto md:h-auto text-[16px] md:text-[35px] font-['Montserrat'] font-semibold">
-              Innovative tech solutions for transformative growth
+      <div className="bg-white w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-flex items-center gap-2 mb-6">
+              <Zap className="w-8 h-8 text-blue-600" />
+              <Rocket className="w-8 h-8 text-purple-600" />
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 font-['Montserrat']">
+              Innovative Tech Solutions for
+              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Transformative Growth
+              </span>
             </h1>
-            <h1 className="absolute left-[30px] top-[235px] md:relative md:left-0 md:top-0 w-[215px] h-[14px] text-[12px] md:w-auto md:h-auto md:text-[30px] font-['Montserrat'] pt-[20px] font-extrabold">
-              Our Values
-            </h1>
-            <div className="flex flex-row gap-6">
-              <div className="flex-col">
-                <h1 className="absolute left-[30px] md:left-0 md:top-0 top-[255px] md:relative w-[247px] h-[16px] text-[12px] md:w-auto md:h-auto md:text-[19px] 3xl:text-[27px] font-['Montserrat'] pt-[20px] font-semibold">
-                  Unmatched Quality and Excellence
-                </h1>
-                <h1 className="absolute left-[30px] md:left-0 md:top-0 top-[270px] md:relative w-[350px] h-[16px] text-[12px] md:w-auto md:h-auto md:text-[15px] 3xl:text-[18px] font-['Montserrat'] pt-[20px]">
-                  We pride ourselves on delivering top-
-                  <br className="md:block hidden" />
-                  tier quality and excellence in every
-                  <br className="md:block hidden" /> aspect of our work.
-                </h1>
-              </div>
-              <div className="flex-col">
-                <h1 className="absolute left-[30px] md:left-0 md:top-0 top-[310px] md:relative w-[247px] h-[16px] text-[12px] md:w-auto md:h-auto md:text-[19px] 3xl:text-[27px] font-['Montserrat'] pt-[20px] font-semibold">
-                  Innovation and Creativity
-                </h1>
-                <h1 className="absolute left-[30px] md:left-0 md:top-0 top-[325px] md:relative w-[350px] h-[16px] text-[12px] md:w-auto md:h-auto md:text-[15px] 3xl:text-[18px] font-['Montserrat'] pt-[20px]">
-                  We continuously push the boundaries of{" "}
-                  <br className="md:block hidden" />
-                  innovation and creativity to deliver cutting-
-                  <br className="md:block hidden" />
-                  edge solutions for our clients.
-                </h1>
-              </div>
+
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-1 w-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-800 font-['Montserrat']">
+                Our Values
+              </h2>
+              <div className="h-1 w-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
             </div>
           </div>
-          <Image
-            src="/img/image 4.png"
-            width={330}
-            height={170}
-            alt="Our Values Image"
-            className="w-[330px] h-[170px] md:h-auto md:w-auto absolute md:relative max-pm:left-[30px] pm:left-[50px] top-[30px] md:mr-[70px]"
-          />
+
+          {/* Values Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {values.map((value) => (
+              <div
+                key={value.id}
+                className={`group relative bg-white rounded-2xl p-6 lg:p-8 shadow-lg transition-all duration-700 ease-out transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer border border-gray-100 ${
+                  hoveredValue === value.id ? "scale-[1.02]" : ""
+                }`}
+                onMouseEnter={() => setHoveredValue(value.id)}
+                onMouseLeave={() => setHoveredValue(null)}
+              >
+                {/* Gradient Background Overlay */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-all duration-700 ease-out`}
+                ></div>
+
+                {/* Icon Container */}
+                <div
+                  className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${value.color} text-white mb-6 transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-3`}
+                >
+                  <div className="transition-all duration-700 ease-out">
+                    {value.icon}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-4 font-['Montserrat'] transition-all duration-700 ease-out group-hover:text-gray-800">
+                  {value.title}
+                </h3>
+
+                <p className="text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed font-['Montserrat'] transition-all duration-700 ease-out group-hover:text-gray-700">
+                  {value.description}
+                </p>
+
+                {/* Hover Effect Line */}
+                <div
+                  className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${
+                    value.color
+                  } rounded-b-2xl transition-all duration-700 ease-out ${
+                    hoveredValue === value.id ? "w-full" : "w-0"
+                  }`}
+                ></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Decorative Elements */}
+          <div className="flex justify-center items-center mt-12 md:mt-16 gap-4">
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            <div
+              className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"
+              style={{ animationDelay: "0.2s" }}
+            ></div>
+            <div
+              className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"
+              style={{ animationDelay: "0.4s" }}
+            ></div>
+          </div>
         </div>
       </div>
       <div className="scroll-on-appear section white-section">
