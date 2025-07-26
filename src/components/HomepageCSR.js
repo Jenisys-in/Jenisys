@@ -4,12 +4,25 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import "../app/global.css";
 import Lottie from "lottie-react";
 import animationData from "./AnimationLottie.json";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from "lucide-react";
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Zap, Rocket, Shield, Users, Code, Lightbulb } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Coffee, Beer } from "lucide-react";
+import {
+  Zap,
+  Rocket,
+  Shield,
+  Users,
+  Code,
+  Lightbulb,
+  Wrench,
+} from "lucide-react";
+import { ChevronDown, Monitor, Smartphone, Cloud, UserCog } from "lucide-react";
 
 import { Star, User } from "lucide-react";
 
@@ -113,6 +126,11 @@ const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
   );
 });
 
+const TABS = {
+  SERVICES: "Services",
+  INDUSTRIES: "Industries We Serve",
+};
+
 const HomepageCSR = () => {
   HomepageCSR.displayName = "HomepageCSR";
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -123,6 +141,25 @@ const HomepageCSR = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredValue, setHoveredValue] = useState(null);
+  const [activeTab, setActiveTab] = useState(TABS.SERVICES);
+  const [expandedService, setExpandedService] = useState(null);
+  const [hoveredService, setHoveredService] = useState(null);
+
+  useEffect(() => {
+    // Ensure services tab is selected by default
+    setActiveTab("services");
+
+    // Simulate AOS initialization - make all elements visible
+    setTimeout(() => {
+      const elements = document.querySelectorAll("[data-aos]");
+      elements.forEach((el, index) => {
+        setTimeout(() => {
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        }, index * 100);
+      });
+    }, 100);
+  }, []);
 
   useEffect(() => {
     const updateSlidesToShow = () => {
@@ -347,6 +384,123 @@ const HomepageCSR = () => {
     },
   ];
 
+  const services = [
+    {
+      icon: Monitor,
+      title: "Web Development",
+      description:
+        "Building fast, responsive and scalable web applications with modern technologies like React, Next.js, and Node.js for optimal performance.",
+      link: "/services/web-development",
+    },
+    {
+      icon: Smartphone,
+      title: "App Development",
+      description:
+        "Crafting native and cross-platform mobile applications for Android and iOS with React Native and Flutter frameworks.",
+      link: "/services/app-development",
+    },
+    {
+      icon: Cloud,
+      title: "Cloud Solutions",
+      description:
+        "Deploying scalable cloud infrastructures, DevOps automation, and serverless architectures on AWS, Azure, and Google Cloud.",
+      link: "/services/cloud-solutions",
+    },
+    {
+      icon: Code,
+      title: "Custom Software Development",
+      description:
+        "At Jenisys, we specialize in developing custom software solutions tailored to meet the unique needs of your business. Our team of experienced developers utilizes the latest technologies to create software that aligns perfectly with your specific requirements. Whether you need a comprehensive enterprise solution, a bespoke web application, or a specialized mobile app, we have the expertise to deliver high-quality, scalable, and robust software.",
+      link: "/services/cloud-solutions",
+    },
+    {
+      icon: UserCog,
+      title: "IT consulting",
+      description:
+        "We offer comprehensive IT consulting & digital transformation services to drive innovation & success in your business. Our experts work closely to craft a technology strategy aligned with your goals and provide tailored recommendations for growth & efficiency. We help you embrace digital transformation through process automation, digital tool implementation, and platform integration, ensuring your business remains competitive and efficient in the digital age.",
+      link: "/services/cloud-solutions",
+    },
+    {
+      icon: Wrench,
+      title: "Maintenance & Support ",
+      description:
+        "Jenisys provides comprehensive maintenance, support, and cybersecurity services to ensure the smooth and secure operation of your software systems. Our maintenance and support services offer ongoing updates and technical support to keep your systems running efficiently. On the cybersecurity front, we conduct thorough security assessments, identify vulnerabilities, and implement robust security protocols to protect your systems and data.",
+      link: "/services/cloud-solutions",
+    },
+  ];
+
+  const industries = [
+    {
+      title: "Healthcare",
+      description:
+        "HIPAA-compliant platforms, telemedicine solutions, and patient management systems with advanced security protocols.",
+      icon: "🏥",
+    },
+    {
+      title: "Retail & E-commerce",
+      description:
+        "Custom storefronts, inventory management systems, payment gateways, and analytics dashboards for business growth.",
+      icon: "🛍️",
+    },
+    {
+      title: "Education",
+      description:
+        "Interactive learning management systems, virtual classrooms, and comprehensive student progress tracking platforms.",
+      icon: "🎓",
+    },
+    {
+      title: "Finance & Fintech",
+      description:
+        "Custom accounting platforms, secure payment gateways, and real-time financial analytics dashboards tailored for financial institutions and startups.",
+      icon: "💰",
+    },
+    {
+      title: "Hospitality & Food Services",
+      description:
+        "Restaurant POS systems, online food ordering platforms, and reservation management apps designed to enhance customer experience.",
+      icon: "🍽️",
+    },
+    {
+      title: "Real Estate",
+      description:
+        "Dynamic property listing websites, virtual tours, and CRM systems built for agents and real estate companies to manage sales pipelines.",
+      icon: "🏘️",
+    },
+    {
+      title: "Legal & Professional Services",
+      description:
+        "Case management software, secure document portals, and automated billing systems tailored for law firms and consulting agencies.",
+      icon: "⚖️",
+    },
+    {
+      title: "Travel & Tourism",
+      description:
+        "Custom booking engines, itinerary planners, and mobile apps for travel agencies to enhance customer engagement and streamline operations.",
+      icon: "✈️",
+    },
+    {
+      title: "Media & Entertainment",
+      description:
+        "Interactive content platforms, OTT streaming apps, and event booking systems for creators, studios, and entertainment brands.",
+      icon: "🎬",
+    },
+  ];
+
+  const AnimatedIcon = ({ Icon, isHovered }) => (
+    <div
+      className={`w-16 h-16 mb-6 mx-auto rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-sm transition-all duration-300 ${
+        isHovered ? "scale-110 bg-gray-200 shadow-md" : ""
+      }`}
+    >
+      <Icon
+        size={40}
+        className={`text-gray-700 transition-all duration-300 ${
+          isHovered ? "text-gray-900" : ""
+        }`}
+      />
+    </div>
+  );
+
   return (
     <div className="mt-[85px] flex-col relative overflow-x-hidden w-full">
       <section className="section white-section relative overflow-hidden bg-white">
@@ -408,7 +562,7 @@ const HomepageCSR = () => {
               }`}
             >
               <div className="relative group">
-                <Image
+                <img
                   src="/img/image 3.png"
                   width={500}
                   height={500}
@@ -477,7 +631,7 @@ const HomepageCSR = () => {
                         hoveredItem === index ? "shadow-lg shadow-white/10" : ""
                       } flex-shrink-0`}
                     >
-                      <Image
+                      <img
                         src={item.image}
                         width={52}
                         height={52}
@@ -511,6 +665,34 @@ const HomepageCSR = () => {
           }
         `}</style>
       </div>
+      <section className="w-full px-4 sm:px-8 py-12 space-y-10">
+        {/* Coffee Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="rounded-2xl bg-gradient-to-r from-amber-100 via-white to-amber-100 shadow-xl p-8 sm:p-10 lg:p-14 text-center max-w-5xl mx-auto"
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3 text-2xl sm:text-3xl font-semibold text-gray-800 font-['Montserrat']">
+              <Coffee className="w-7 h-7 text-amber-500" />
+              <span>Schedule a free call over a cup of coffee</span>
+            </div>
+
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-block"
+            >
+              <Button className="bg-amber-500 hover:bg-amber-600 text-white rounded-full px-6 py-3 text-sm sm:text-base shadow-md">
+                Schedule a call
+              </Button>
+            </motion.a>
+          </div>
+        </motion.div>
+      </section>
       <div className="bg-white w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
@@ -596,138 +778,191 @@ const HomepageCSR = () => {
           </div>
         </div>
       </div>
-      <div className="scroll-on-appear section white-section">
-        <div className="pt-[300px] lg:pt-0 relative flex-col" id="services">
-          <Image
+
+      <section className="relative w-full min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-20 overflow-hidden">
+        {/* Background Image - Only until tabs */}
+        <div className="absolute top-0 left-0 w-full h-80 sm:h-96">
+          <img
             src="/img/Services.png"
-            width={1920}
-            height={1080}
-            alt="Services"
-            className="w-full lg:h-auto h-[200px]"
+            alt="Services Background"
+            className="w-full h-full object-cover "
+            style={{ filter: "brightness(1.2) contrast(0.8)" }}
           />
-          <h1 className="text-white text-[12px] w-[224px] h-[15px] lg:w-auto lg:h-auto font-['Montserrat'] font-extrabold absolute bottom-[150px] left-[30px] lg:bottom-[355px] lg:left-[80px] lg:text-[32px] 3xl:bottom-[455px] 3xl:text-[45px]">
-            Our Services
-          </h1>
-          <h1 className="text-[14px] bottom-[95px] left-[30px] lg:w-auto lg:h-auto text-white font-['Montserrat'] font-bold absolute lg:bottom-[200px] lg:left-[80px] lg:text-[44px] 3xl:bottom-[250px] 3xl:text-[50px]">
-            The future is flexible. Partner with <br /> us to outsource Your{" "}
-            <span className="text-[#7F4BED] font-extrabold">Tech Needs</span>
-          </h1>
-          <Link href="/services">
-            <button className="hidden lg:block bg-[#7526FE] text-white w-[250px] h-[67px] text-[24px] font-['Montserrat'] font-semibold rounded-[11px] absolute bottom-[250px] left-[1035px] 3xl:left-[1320px] 3xl:bottom-[300px] holographic-button">
-              Learn More
-            </button>
-          </Link>
+          <div className="absolute inset-0 " />
         </div>
-      </div>
-      <div className="section white-section pt-[125px] pb-[200px] lg:pb-[350px]">
-        <div className="flex-row 3xl:px-[250px] lg:px-[125px] relative">
-          <div className="left-[50px] rounded-[9px] w-[107px] h-[158px] absolute justify-center bg-white shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -top-[110px] md:left-[100px] lg:shadow-[5px_5px_15px] lg:rounded-[17px] lg:-top-[280px] lg:h-[387px] lg:w-[261px] lg:left-[120px] 3xl:left-[250px]">
-            <Lottie
-              className="absolute w-[100px] -top-[50px] lg:w-auto lg:-top-[135px] lg:-left-[7px]"
-              animationData={animationData}
-            />
-            <div className="bg-[#8847FA] absolute h-[37px] w-[38px] rounded-full left-[32px] -top-[18px] z-0 lg:left-[80px] lg:-top-[50px] lg:h-[92px] lg:w-[92px]"></div>
-            <Image
-              src="/img/laptop.png"
-              width={52}
-              height={52}
-              alt="laptop"
-              className="absolute w-[22px] h-[22px] left-[40px] -top-[12px] z-10 lg:w-[52px] lg:h-[52px] lg:left-[100px] lg:-top-[28px]"
-            />
-            <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] lg:text-[20px] lg:pt-[75px]">
-              Custom Software Development
-            </h1>
-            <h1 className="text-center font-['Montserrat'] px-[10px] text-[8px] lg:text-[16px] lg:pt-[20px] lg:px-[25px]">
-              It involves creating software tailored to meet specific needs or
-              requirements of a business or user.
-            </h1>
-            <Link href="/services">
-              <button className="rounded-[2px] w-[60px] text-[8px] h-[20px] mx-[20px] bg-[#7526FE] text-white font-['Montserrat'] font-semibold smooth-hover lg:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] lg:mx-[53px] lg:mt-[25px] lg:w-[147px] lg:h-[49px] lg:text-[20px] lg:rounded-[4px]">
-                Read More
-              </button>
-            </Link>
+
+        {/* Dynamic Background for Tab Content Area */}
+        <div
+          className={`absolute top-80 sm:top-96 left-0 w-full bottom-0 transition-all duration-700 ${
+            activeTab === "industries"
+              ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"
+              : "bg-gradient-to-br from-white via-gray-50 to-slate-50"
+          }`}
+        />
+
+        <div className="max-w-7xl mx-auto relative" style={{ zIndex: 1 }}>
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-['Montserrat'] text-white mb-4">
+              What We Do
+            </h2>
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto font-['Montserrat']">
+              Explore the services we offer and the industries we empower with
+              cutting-edge technology solutions.
+            </p>
           </div>
-          <div className="right-[50px] rounded-[9px] w-[107px] h-[158px] absolute justify-center bg-white shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -top-[110px] md:right-[100px] lg:rounded-[17px] lg:shadow-[5px_5px_15px] lg:-top-[280px] lg:h-[387px] lg:w-[261px] lg:left-[410px] 3xl:left-[600px]">
-            <Lottie
-              className="absolute w-[100px] -top-[50px] lg:w-auto lg:-top-[135px] lg:-left-[7px]"
-              animationData={animationData}
-            />
-            <div className="bg-[#8847FA] absolute h-[37px] w-[38px] rounded-full left-[32px] -top-[18px] z-0 lg:left-[80px] lg:-top-[50px] lg:h-[92px] lg:w-[92px]"></div>
-            <Image
-              src="/img/mobile.png"
-              width={52}
-              height={52}
-              alt="mobile"
-              className="absolute w-[22px] h-[22px] left-[40px] -top-[12px] z-10 lg:w-[52px] lg:h-[52px] lg:left-[100px] lg:-top-[28px]"
-            />
-            <h1 className="pt-[25px] text-[9px] text-center font-semibold font-['Montserrat'] lg:text-[20px] lg:pt-[75px]">
-              Web & Mobile App Development
-            </h1>
-            <h1 className="text-center font-['Montserrat'] px-[10px] text-[8px] lg:text-[16px] lg:pt-[20px] lg:px-[25px]">
-              It involves creating applications that can be accessed on both web
-              browsers and mobile devices.
-            </h1>
-            <Link href="/services">
-              <button className="rounded-[2px] w-[60px] text-[8px] h-[20px] mx-[20px] bg-[#7526FE] text-white font-['Montserrat'] font-semibold smooth-hover lg:shadow-[6px_7px_4px_rgba(0,0,0,0.25)] lg:mx-[53px] lg:mt-[25px] lg:w-[147px] lg:h-[49px] lg:text-[20px] lg:rounded-[4px]">
-                Read More
+
+          {/* Professional Tabs */}
+          <div
+            className="flex justify-center mb-12 sm:mb-16"
+            data-aos="fade-up"
+          >
+            <div className="inline-flex rounded-xl bg-white border border-gray-200 p-1 shadow-lg">
+              <button
+                className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
+                  activeTab === "services"
+                    ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                }`}
+                onClick={() => setActiveTab("services")}
+              >
+                Services Offered
               </button>
-            </Link>
+              <button
+                className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
+                  activeTab === "industries"
+                    ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                }`}
+                onClick={() => setActiveTab("industries")}
+              >
+                Industries We Serve
+              </button>
+            </div>
           </div>
-          <div className="hidden lg:block absolute justify-center bg-white lg:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -top-[280px] rounded-[17px] 3xl:left-[960px] left-[695px] h-[387px] w-[261px]">
-            <Lottie
-              className="absolute -top-[135px] -left-[7px]"
-              animationData={animationData}
-            />
-            <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-0"></div>
-            <Image
-              src="/img/nano1.png"
-              width={52}
-              height={52}
-              alt="nano"
-              className="w-[52px] h-[52px] absolute left-[100px] -top-[28px] z-10"
-            />
-            <h1 className="text-center font-semibold font-['Montserrat'] text-[20px] pt-[75px]">
-              IT Consulting & Digital Transformation
-            </h1>
-            <h1 className="text-center font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
-              It involves guiding businesses in using technology to improve
-              operations and achieve goals.
-            </h1>
-            <Link href="/services">
-              <button className="shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] smooth-hover">
-                Read More
-              </button>
-            </Link>
-          </div>
-          <div className="hidden xl:block absolute justify-center bg-white lg:shadow-[5px_5px_15px] shadow-[3px_3px_15px_rgba(0,0,0,0.40)] -top-[280px] rounded-[17px] 3xl:left-[1315px] left-[980px] h-[387px] w-[261px]">
-            <Lottie
-              className="absolute -top-[135px] -left-[7px]"
-              animationData={animationData}
-            />
-            <div className="bg-[#8847FA] absolute h-[92px] w-[92px] rounded-full left-[80px] -top-[50px] z-0"></div>
-            <Image
-              src="/img/shield.png"
-              width={52}
-              height={52}
-              alt="shield"
-              className="w-[52px] h-[52px] absolute left-[100px] -top-[28px] z-10"
-            />
-            <h1 className="text-center font-semibold font-['Montserrat'] lg:text-[20px] lg:pt-[75px]">
-              Maintenance, Support
-              <br />& Cybersecurity
-            </h1>
-            <h1 className="text-center font-['Montserrat'] text-[16px] pt-[20px] px-[25px]">
-              It involves updates, user assistance, & protection against cyber
-              threats to maintain system integrity and user trust.
-            </h1>
-            <Link href="/services">
-              <button className="shadow-[6px_7px_4px_rgba(0,0,0,0.25)] mx-[53px] mt-[25px] bg-[#7526FE] text-white w-[147px] h-[49px] text-[20px] font-['Montserrat'] font-semibold rounded-[4px] smooth-hover">
-                Read More
-              </button>
-            </Link>
+
+          {/* Tab Content with Smooth Transitions */}
+          <div className="relative min-h-96">
+            {/* Services Content */}
+            <div
+              className={`transition-all duration-700 ease-in-out ${
+                activeTab === "services"
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 translate-y-4 pointer-events-none absolute inset-0"
+              }`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+                {services.map((service, index) => (
+                  <div
+                    key={index}
+                    className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 min-h-[200px] flex flex-col"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                    onMouseEnter={() => setHoveredService(index)}
+                    onMouseLeave={() => setHoveredService(null)}
+                    onClick={() => {
+                      console.log(
+                        "Card clicked, current expanded:",
+                        expandedService,
+                        "clicked index:",
+                        index
+                      );
+                      setExpandedService(
+                        expandedService === index ? null : index
+                      );
+                    }}
+                  >
+                    <div className="text-center flex-grow">
+                      <AnimatedIcon
+                        Icon={service.icon}
+                        isHovered={hoveredService === index}
+                      />
+
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 font-['Montserrat'] flex items-center justify-center gap-2">
+                        {service.title}
+                        <ChevronDown
+                          size={20}
+                          className={`transition-all duration-300 ${
+                            expandedService === index
+                              ? "rotate-180 text-gray-900"
+                              : "text-gray-400 group-hover:text-gray-600"
+                          }`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log("Chevron clicked for index:", index);
+                            setExpandedService(
+                              expandedService === index ? null : index
+                            );
+                          }}
+                        />
+                      </h3>
+                    </div>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ${
+                        expandedService === index
+                          ? "max-h-screen opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="pt-2 text-left border-t border-gray-100 mt-4">
+                        <p className="text-gray-600 text-sm sm:text-base font-['Montserrat'] mb-6 leading-relaxed">
+                          {service.description}
+                        </p>
+
+                        <div className="text-center">
+                          <button
+                            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              console.log("Navigate to:", service.link);
+                            }}
+                          >
+                            Learn More
+                            <ExternalLink size={16} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Industries Content */}
+            <div
+              className={`transition-all duration-700 ease-in-out ${
+                activeTab === "industries"
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 translate-y-4 pointer-events-none absolute inset-0"
+              }`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {industries.map((industry, index) => (
+                  <div
+                    key={index}
+                    className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    <div className="text-4xl sm:text-5xl mb-6 text-center transform group-hover:scale-110 transition-transform duration-300">
+                      {industry.icon}
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 font-['Montserrat'] text-center">
+                      {industry.title}
+                    </h3>
+
+                    <p className="text-gray-600 text-sm sm:text-base font-['Montserrat'] text-center leading-relaxed mb-6">
+                      {industry.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
       <section
         id="testimonials-section"
         className="bg-black w-full px-4 md:px-16 py-20 text-white font-['Montserrat'] overflow-hidden"
@@ -785,6 +1020,35 @@ const HomepageCSR = () => {
           <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-xl"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/5 rounded-full blur-xl"></div>
         </div>
+      </section>
+      <section className="w-full px-4 sm:px-8 py-12 space-y-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="rounded-2xl bg-gradient-to-r from-yellow-100 via-white to-yellow-100 shadow-xl p-8 sm:p-10 lg:p-14 text-center max-w-5xl mx-auto"
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3 text-2xl sm:text-3xl font-semibold text-gray-800 font-['Montserrat']">
+              <Beer className="w-7 h-7 text-yellow-600" />
+              <span>
+                Don’t like coffee? Let’s schedule a free call over a beer
+              </span>
+            </div>
+
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-block"
+            >
+              <Button className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-full px-6 py-3 text-sm sm:text-base shadow-md">
+                Schedule a call
+              </Button>
+            </motion.a>
+          </div>
+        </motion.div>
       </section>
       <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto px-6 py-16">

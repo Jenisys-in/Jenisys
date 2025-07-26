@@ -23,6 +23,13 @@ export default function RootLayout({ children }) {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
+
   return (
     <html lang="en">
       <body>
