@@ -2,17 +2,31 @@
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import "../app/global.css";
-import Lottie from "lottie-react";
-import animationData from "./AnimationLottie.json";
+import { useSwipeable } from "react-swipeable";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  ExternalLink,
+  TrendingUp,
+  Calendar,
+} from "lucide-react";
 import { ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  PanInfo,
+} from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Coffee, Beer } from "lucide-react";
+import { X } from "lucide-react";
 import {
   Zap,
   Rocket,
@@ -22,9 +36,93 @@ import {
   Lightbulb,
   Wrench,
 } from "lucide-react";
-import { ChevronDown, Monitor, Smartphone, Cloud, UserCog } from "lucide-react";
+import {
+  ChevronDown,
+  Monitor,
+  Smartphone,
+  Cloud,
+  UserCog,
+  ChevronLeft,
+} from "lucide-react";
 
 import { Star, User } from "lucide-react";
+
+const caseStudies = [
+  {
+    id: 1,
+    title: "AI-Powered Retail Automation",
+    description:
+      "Developed a smart inventory system that reduced stockouts by 40% for a national retail chain.",
+    industry: "Retail & E-Commerce",
+    fullDetails:
+      "We built a scalable AI system that tracked stock levels across 500+ stores, using predictive analytics to automatically place orders and prevent shortages.",
+    metrics: { improvement: "40%", stores: "500+", timeline: "6 months" },
+    color: "from-blue-500 to-cyan-400",
+    initial: "A",
+  },
+  {
+    id: 2,
+    title: "Telehealth Platform for Remote Areas",
+    description:
+      "Enabled 24/7 virtual consultations and appointment management for rural clinics.",
+    industry: "Healthcare",
+    fullDetails:
+      "Our team delivered a HIPAA-compliant video consultation platform integrated with EHR and prescription modules, increasing access to care in underserved regions.",
+    metrics: { improvement: "300%", stores: "24/7", timeline: "8 months" },
+    color: "from-emerald-500 to-teal-400",
+    initial: "T",
+  },
+  {
+    id: 3,
+    title: "EdTech Learning Suite",
+    description:
+      "Created a scalable LMS used by over 50k students with integrated video and assessments.",
+    industry: "Education",
+    fullDetails:
+      "We designed a modern LMS that supported real-time quizzes, student tracking, and teacher dashboards for a seamless learning experience.",
+    metrics: { improvement: "50k+", stores: "Real-time", timeline: "4 months" },
+    color: "from-violet-500 to-pink-500",
+    initial: "E",
+  },
+  {
+    id: 4,
+    title: "Fintech Payment Gateway",
+    description:
+      "Built a secure, high-speed payment processing system handling $10M+ daily transactions.",
+    industry: "Financial Services",
+    fullDetails:
+      "We developed a robust payment gateway with advanced fraud detection, multi-currency support, and 99.99% uptime. The system processes millions of transactions daily while maintaining PCI DSS compliance and sub-second response times.",
+    metrics: { improvement: "$10M+", stores: "99.99%", timeline: "10 months" },
+    color: "from-orange-500 to-red-400",
+    initial: "F",
+  },
+];
+
+const cardVariants = {
+  initial: { opacity: 0, y: 20, scale: 0.95 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  hover: {
+    y: -8,
+    scale: 1.02,
+    transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
+  },
+};
+
+const modalVariants = {
+  initial: { opacity: 0, scale: 0.9, y: 20 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.9,
+    y: 20,
+    transition: { duration: 0.2, ease: [0.4, 0, 1, 1] },
+  },
+};
 
 const testimonials = [
   {
@@ -144,6 +242,82 @@ const HomepageCSR = () => {
   const [activeTab, setActiveTab] = useState(TABS.SERVICES);
   const [expandedService, setExpandedService] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
+  const [activeStudy, setActiveStudy] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const containerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsToShow, setCardsToShow] = useState(1);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const backgroundY2 = useTransform(scrollYProgress, [0, 1], [-15, 15]);
+  const sectionOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.9, 1],
+    [0, 1, 1, 0]
+  );
+
+  // Handle responsive cards with proper breakpoints
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 480) {
+        setCardsToShow(1); // Mobile phones
+      } else if (width < 768) {
+        setCardsToShow(1); // Large mobile/small tablets
+      } else if (width < 1024) {
+        setCardsToShow(2); // Tablets
+      } else if (width < 1280) {
+        setCardsToShow(2); // Small laptops
+      } else {
+        setCardsToShow(3); // Desktop
+      }
+      setCurrentIndex(0);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, caseStudies.length - cardsToShow);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const totalSlides = maxIndex + 1;
+
+  const backgroundElements = useMemo(
+    () => (
+      <>
+        <motion.div
+          style={{ y: backgroundY }}
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full blur-3xl opacity-40"
+        />
+        <motion.div
+          style={{ y: backgroundY2 }}
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-full blur-3xl opacity-40"
+        />
+      </>
+    ),
+    [backgroundY, backgroundY2]
+  );
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
 
   useEffect(() => {
     // Ensure services tab is selected by default
@@ -501,6 +675,13 @@ const HomepageCSR = () => {
     </div>
   );
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => goToSlide(currentSlide + 1),
+    onSwipedRight: () => goToSlide(currentSlide - 1),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // Enables dragging on desktop too
+  });
+
   return (
     <div className="mt-[85px] flex-col relative overflow-x-hidden w-full">
       <section className="section white-section relative overflow-hidden bg-white">
@@ -562,7 +743,7 @@ const HomepageCSR = () => {
               }`}
             >
               <div className="relative group">
-                <img
+                <Image
                   src="/img/image 3.png"
                   width={500}
                   height={500}
@@ -631,7 +812,7 @@ const HomepageCSR = () => {
                         hoveredItem === index ? "shadow-lg shadow-white/10" : ""
                       } flex-shrink-0`}
                     >
-                      <img
+                      <Image
                         src={item.image}
                         width={52}
                         height={52}
@@ -782,10 +963,11 @@ const HomepageCSR = () => {
       <section className="relative w-full min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-20 overflow-hidden">
         {/* Background Image - Only until tabs */}
         <div className="absolute top-0 left-0 w-full h-80 sm:h-96">
-          <img
+          <Image
             src="/img/Services.png"
             alt="Services Background"
-            className="w-full h-full object-cover "
+            layout="fill"
+            objectFit="cover"
             style={{ filter: "brightness(1.2) contrast(0.8)" }}
           />
           <div className="absolute inset-0 " />
@@ -981,7 +1163,8 @@ const HomepageCSR = () => {
 
         <div className="relative max-w-7xl mx-auto">
           <div
-            className="grid gap-6 md:gap-8 transition-all duration-700 ease-out"
+            {...swipeHandlers}
+            className="grid gap-6 md:gap-8 transition-all duration-700 ease-out cursor-grab"
             style={{
               gridTemplateColumns: `repeat(${slidesToShow}, 1fr)`,
               transform: "translateZ(0)", // Force hardware acceleration
@@ -1027,11 +1210,11 @@ const HomepageCSR = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="rounded-2xl bg-gradient-to-r from-yellow-100 via-white to-yellow-100 shadow-xl p-8 sm:p-10 lg:p-14 text-center max-w-5xl mx-auto"
+          className="rounded-2xl bg-gradient-to-r from-blue-100 via-white to-blue-100 shadow-xl p-8 sm:p-10 lg:p-14 text-center max-w-5xl mx-auto"
         >
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3 text-2xl sm:text-3xl font-semibold text-gray-800 font-['Montserrat']">
-              <Beer className="w-7 h-7 text-yellow-600" />
+              <Beer className="w-7 h-7 text-blue-600" />
               <span>
                 Don’t like coffee? Let’s schedule a free call over a beer
               </span>
@@ -1043,13 +1226,405 @@ const HomepageCSR = () => {
               whileTap={{ scale: 0.98 }}
               className="inline-block"
             >
-              <Button className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-full px-6 py-3 text-sm sm:text-base shadow-md">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-3 text-sm sm:text-base shadow-md">
                 Schedule a call
               </Button>
             </motion.a>
           </div>
         </motion.div>
       </section>
+      <motion.section
+        ref={containerRef}
+        style={{ opacity: sectionOpacity }}
+        className="w-full px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-slate-50 font-['Inter'] relative overflow-hidden"
+      >
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {backgroundElements}
+        </div>
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-7xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-slate-100/80 rounded-full text-sm font-medium text-slate-600 mb-4 sm:mb-6"
+          >
+            <TrendingUp className="w-4 h-4" />
+            Case Studies
+          </motion.div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-tight px-4">
+            <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+              Proven Impact
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+              Through Innovation
+            </span>
+          </h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            className="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed px-4"
+          >
+            Discover how we've transformed businesses across industries with
+            cutting-edge technology solutions.
+          </motion.p>
+        </motion.div>
+
+        {/* Carousel Container */}
+        <div className="max-w-7xl mx-auto relative">
+          {/* Navigation and Indicators - Only show if there are multiple slides */}
+          {totalSlides > 1 && (
+            <div className="flex justify-between items-center mb-6 sm:mb-8 px-2">
+              <div className="flex gap-2">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={prevSlide}
+                  disabled={currentIndex === 0}
+                  className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    currentIndex === 0
+                      ? "bg-slate-100 text-slate-400 cursor-not-allowed"
+                      : "bg-white shadow-md text-slate-700 hover:shadow-lg hover:text-slate-900"
+                  }`}
+                >
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={nextSlide}
+                  disabled={currentIndex >= maxIndex}
+                  className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    currentIndex >= maxIndex
+                      ? "bg-slate-100 text-slate-400 cursor-not-allowed"
+                      : "bg-white shadow-md text-slate-700 hover:shadow-lg hover:text-slate-900"
+                  }`}
+                >
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
+              </div>
+
+              {/* Indicators */}
+              <div className="flex gap-1 sm:gap-2">
+                {Array.from({ length: totalSlides }).map((_, index) => (
+                  <motion.button
+                    key={index}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2 rounded-full transition-all duration-200 ${
+                      index === currentIndex
+                        ? "bg-blue-600 w-6 sm:w-8"
+                        : "bg-slate-300 hover:bg-slate-400 w-2"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Cards Container - Fixed the width calculation issue */}
+          <div className="relative overflow-visible pb-8">
+            <motion.div
+              animate={{
+                x: `-${(currentIndex / cardsToShow) * 100}%`,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 40,
+                mass: 0.8,
+              }}
+              className="flex"
+            >
+              {caseStudies.map((study, index) => (
+                <div
+                  key={study.id}
+                  className="flex-shrink-0 px-2 sm:px-3 lg:px-4 py-2"
+                  style={{ width: `${100 / cardsToShow}%` }}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{
+                      y: -12,
+                      scale: 1.03,
+                      rotateX: 2,
+                      rotateY: 1,
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                    }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    onHoverStart={() => setHoveredCard(study.id)}
+                    onHoverEnd={() => setHoveredCard(null)}
+                    className="group relative cursor-pointer h-full transform-gpu"
+                    onClick={() => setActiveStudy(study)}
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    {/* Glow effect */}
+                    <motion.div
+                      className={`absolute -inset-1 sm:-inset-2 bg-gradient-to-r ${study.color} rounded-2xl sm:rounded-3xl blur-lg opacity-0 transition-opacity duration-500`}
+                      animate={{
+                        opacity: hoveredCard === study.id ? 0.15 : 0,
+                        scale: hoveredCard === study.id ? 1.05 : 1,
+                      }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                    />
+
+                    {/* Card */}
+                    <div className="relative bg-white/95 backdrop-blur-sm border border-slate-200/80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
+                      {/* Header */}
+                      <div
+                        className={`relative h-32 sm:h-40 lg:h-48 bg-gradient-to-br ${study.color} flex items-center justify-center overflow-hidden`}
+                      >
+                        <motion.div
+                          animate={{
+                            rotate: hoveredCard === study.id ? 360 : 0,
+                            scale: hoveredCard === study.id ? 1.1 : 1,
+                          }}
+                          transition={{
+                            duration: 0.6,
+                            ease: [0.25, 0.46, 0.45, 0.94],
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 20,
+                          }}
+                          className="text-white/90 text-3xl sm:text-4xl lg:text-6xl font-bold select-none"
+                        >
+                          {study.initial}
+                        </motion.div>
+
+                        {/* Industry Tag */}
+                        <motion.div
+                          className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 px-2 py-1 sm:px-3 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-slate-700"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {study.industry}
+                        </motion.div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-4 sm:p-5 lg:p-8">
+                        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-slate-800 mb-2 sm:mb-3 transition-colors duration-200 group-hover:text-slate-900 line-clamp-2">
+                          {study.title}
+                        </h3>
+
+                        <p className="text-slate-600 text-sm sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3">
+                          {study.description}
+                        </p>
+
+                        {/* Metrics */}
+                        <div className="grid grid-cols-3 gap-2 sm:gap-4 text-xs text-slate-500 mb-4 sm:mb-6">
+                          <div className="text-center">
+                            <div className="flex items-center justify-center gap-1 mb-1">
+                              <TrendingUp className="w-3 h-3 flex-shrink-0" />
+                            </div>
+                            <div className="font-semibold text-slate-700 text-xs sm:text-sm">
+                              {study.metrics.improvement}
+                            </div>
+                            <div className="text-xs opacity-75">Growth</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="flex items-center justify-center gap-1 mb-1">
+                              <Users className="w-3 h-3 flex-shrink-0" />
+                            </div>
+                            <div className="font-semibold text-slate-700 text-xs sm:text-sm">
+                              {study.metrics.stores}
+                            </div>
+                            <div className="text-xs opacity-75">Scale</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="flex items-center justify-center gap-1 mb-1">
+                              <Calendar className="w-3 h-3 flex-shrink-0" />
+                            </div>
+                            <div className="font-semibold text-slate-700 text-xs sm:text-sm">
+                              {study.metrics.timeline}
+                            </div>
+                            <div className="text-xs opacity-75">Time</div>
+                          </div>
+                        </div>
+
+                        {/* CTA */}
+                        <motion.div
+                          className="flex items-center justify-center gap-2 text-sm font-medium text-slate-700 group-hover:text-slate-900 transition-colors duration-300"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <span className="text-xs sm:text-sm">Learn More</span>
+                          <motion.div
+                            animate={{ x: hoveredCard === study.id ? 4 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                          >
+                            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                          </motion.div>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Touch indicators for mobile */}
+          {totalSlides > 1 && (
+            <div className="flex justify-center mt-6 sm:hidden">
+              <div className="flex gap-2">
+                {Array.from({ length: totalSlides }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      index === currentIndex
+                        ? "bg-blue-600 w-6"
+                        : "bg-slate-300"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Modal */}
+        <AnimatePresence mode="wait">
+          {activeStudy && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+              onClick={() => setActiveStudy(null)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="bg-white max-w-4xl w-full rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05, rotate: 90 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  onClick={() => setActiveStudy(null)}
+                  className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-lg transition-colors duration-200"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
+
+                {/* Header */}
+                <div
+                  className={`relative h-48 sm:h-64 bg-gradient-to-br ${activeStudy.color} flex items-center justify-center overflow-hidden`}
+                >
+                  <div className="text-white/10 text-6xl sm:text-9xl font-bold absolute select-none">
+                    {activeStudy.initial}
+                  </div>
+                  <div className="relative z-10 text-center text-white p-6 sm:p-8">
+                    <motion.h2
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1, duration: 0.25 }}
+                      className="text-xl sm:text-3xl font-bold mb-2"
+                    >
+                      {activeStudy.title}
+                    </motion.h2>
+                    <motion.p
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.15, duration: 0.25 }}
+                      className="text-white/80 text-sm sm:text-base"
+                    >
+                      {activeStudy.industry}
+                    </motion.p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-8">
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                    className="grid grid-cols-3 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8"
+                  >
+                    <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
+                      <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto mb-2" />
+                      <div className="text-lg sm:text-2xl font-bold text-slate-800">
+                        {activeStudy.metrics.improvement}
+                      </div>
+                      <div className="text-xs sm:text-sm text-slate-600">
+                        Improvement
+                      </div>
+                    </div>
+                    <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
+                      <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mx-auto mb-2" />
+                      <div className="text-lg sm:text-2xl font-bold text-slate-800">
+                        {activeStudy.metrics.stores}
+                      </div>
+                      <div className="text-xs sm:text-sm text-slate-600">
+                        Scale
+                      </div>
+                    </div>
+                    <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
+                      <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 mx-auto mb-2" />
+                      <div className="text-lg sm:text-2xl font-bold text-slate-800">
+                        {activeStudy.metrics.timeline}
+                      </div>
+                      <div className="text-xs sm:text-sm text-slate-600">
+                        Timeline
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.15, duration: 0.3 }}
+                  >
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4">
+                      Project Overview
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed mb-6 text-sm sm:text-base">
+                      {activeStudy.fullDetails}
+                    </p>
+
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.15 }}
+                      className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${activeStudy.color} text-white font-medium rounded-xl hover:shadow-lg transition-all duration-200 text-sm sm:text-base`}
+                    >
+                      View Full Case Study
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                    </motion.button>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.section>
       <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
