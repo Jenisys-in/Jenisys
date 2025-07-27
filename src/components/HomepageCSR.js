@@ -24,6 +24,11 @@ import {
   useTransform,
   PanInfo,
 } from "framer-motion";
+import {
+  useDragControls,
+  useMotionValue,
+  useAnimationControls,
+} from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Coffee, Beer } from "lucide-react";
 import { X } from "lucide-react";
@@ -247,6 +252,13 @@ const HomepageCSR = () => {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const carouselRef = useRef(null);
+
+  // Motion values for drag
+  const x = useMotionValue(0);
+  const controls = useAnimationControls();
+  const dragControls = useDragControls();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -277,24 +289,85 @@ const HomepageCSR = () => {
         setCardsToShow(3); // Desktop
       }
       setCurrentIndex(0);
+      x.set(0); // Reset drag position
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [x]);
 
   const maxIndex = Math.max(0, caseStudies.length - cardsToShow);
+  const totalSlides = maxIndex + 1;
+
+  // Calculate the width of each slide as a percentage
+  const slideWidth = 100 / cardsToShow;
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    if (currentIndex < maxIndex) {
+      const newIndex = currentIndex + 1;
+      setCurrentIndex(newIndex);
+      controls.start({
+        x: `-${(newIndex / cardsToShow) * 100}%`,
+        transition: {
+          type: "tween",
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      });
+    }
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    if (currentIndex > 0) {
+      const newIndex = currentIndex - 1;
+      setCurrentIndex(newIndex);
+      controls.start({
+        x: `-${(newIndex / cardsToShow) * 100}%`,
+        transition: {
+          type: "tween",
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      });
+    }
   };
 
-  const totalSlides = maxIndex + 1;
+  const goToCaseSlide = (index) => {
+    setCurrentIndex(index);
+    controls.start({
+      x: `-${(index / cardsToShow) * 100}%`,
+      transition: { type: "tween", duration: 0.4, ease: [0.25, 0.1, 0.25, 1] },
+    });
+  };
+
+  // Handle drag end
+  const handleDragEnd = (event, info) => {
+    setIsDragging(false);
+    const threshold = 50; // Minimum drag distance to trigger slide change
+    const velocity = info.velocity.x;
+    const offset = info.offset.x;
+
+    // Determine if we should change slides based on drag distance and velocity
+    let newIndex = currentIndex;
+
+    if (Math.abs(offset) > threshold || Math.abs(velocity) > 500) {
+      if (offset > 0 && currentIndex > 0) {
+        // Dragged right, go to previous slide
+        newIndex = currentIndex - 1;
+      } else if (offset < 0 && currentIndex < maxIndex) {
+        // Dragged left, go to next slide
+        newIndex = currentIndex + 1;
+      }
+    }
+
+    // Animate to the target position
+    setCurrentIndex(newIndex);
+    controls.start({
+      x: `-${(newIndex / cardsToShow) * 100}%`,
+      transition: { type: "spring", stiffness: 400, damping: 40 },
+    });
+  };
 
   const backgroundElements = useMemo(
     () => (
@@ -1233,6 +1306,7 @@ const HomepageCSR = () => {
           </div>
         </motion.div>
       </section>
+
       <motion.section
         ref={containerRef}
         style={{ opacity: sectionOpacity }}
@@ -1322,7 +1396,7 @@ const HomepageCSR = () => {
                     key={index}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => setCurrentIndex(index)}
+                    onClick={() => goToCaseSlide(index)}
                     className={`h-2 rounded-full transition-all duration-200 ${
                       index === currentIndex
                         ? "bg-blue-600 w-6 sm:w-8"
@@ -1334,19 +1408,26 @@ const HomepageCSR = () => {
             </div>
           )}
 
-          {/* Cards Container - Fixed the width calculation issue */}
-          <div className="relative overflow-visible pb-8">
+          {/* Cards Container with Drag Support - Added padding for hover effect */}
+          <div className="relative overflow-hidden pt-4 pb-12">
             <motion.div
-              animate={{
-                x: `-${(currentIndex / cardsToShow) * 100}%`,
+              ref={carouselRef}
+              animate={controls}
+              initial={{ x: `-${(currentIndex / cardsToShow) * 100}%` }}
+              drag="x"
+              dragControls={dragControls}
+              dragConstraints={{
+                left: `-${(maxIndex / cardsToShow) * 100}%`,
+                right: 0,
               }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 40,
-                mass: 0.8,
+              dragElastic={0.1}
+              onDragStart={() => setIsDragging(true)}
+              onDragEnd={handleDragEnd}
+              className="flex will-change-transform cursor-grab active:cursor-grabbing"
+              style={{
+                transform: `translateZ(0)`,
+                backfaceVisibility: "hidden",
               }}
-              className="flex"
             >
               {caseStudies.map((study, index) => (
                 <div
@@ -1357,32 +1438,40 @@ const HomepageCSR = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{
-                      y: -12,
-                      scale: 1.03,
-                      rotateX: 2,
-                      rotateY: 1,
-                    }}
+                    whileHover={
+                      !isDragging
+                        ? {
+                            y: -12,
+                            scale: 1.02,
+                          }
+                        : {}
+                    }
                     transition={{
-                      duration: 0.4,
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 25,
+                      duration: 0.25,
+                      ease: [0.25, 0.1, 0.25, 1],
                     }}
                     viewport={{ once: true, margin: "-50px" }}
-                    onHoverStart={() => setHoveredCard(study.id)}
+                    onHoverStart={() => !isDragging && setHoveredCard(study.id)}
                     onHoverEnd={() => setHoveredCard(null)}
-                    className="group relative cursor-pointer h-full transform-gpu"
-                    onClick={() => setActiveStudy(study)}
-                    style={{ transformStyle: "preserve-3d" }}
+                    className="group relative cursor-pointer h-full will-change-transform select-none"
+                    onClick={(e) => {
+                      if (!isDragging) {
+                        setActiveStudy(study);
+                      }
+                    }}
+                    style={{
+                      transform: `translateZ(0)`,
+                      backfaceVisibility: "hidden",
+                    }}
                   >
                     {/* Glow effect */}
                     <motion.div
                       className={`absolute -inset-1 sm:-inset-2 bg-gradient-to-r ${study.color} rounded-2xl sm:rounded-3xl blur-lg opacity-0 transition-opacity duration-500`}
                       animate={{
-                        opacity: hoveredCard === study.id ? 0.15 : 0,
-                        scale: hoveredCard === study.id ? 1.05 : 1,
+                        opacity:
+                          hoveredCard === study.id && !isDragging ? 0.15 : 0,
+                        scale:
+                          hoveredCard === study.id && !isDragging ? 1.05 : 1,
                       }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                     />
@@ -1395,8 +1484,10 @@ const HomepageCSR = () => {
                       >
                         <motion.div
                           animate={{
-                            rotate: hoveredCard === study.id ? 360 : 0,
-                            scale: hoveredCard === study.id ? 1.1 : 1,
+                            rotate:
+                              hoveredCard === study.id && !isDragging ? 360 : 0,
+                            scale:
+                              hoveredCard === study.id && !isDragging ? 1.1 : 1,
                           }}
                           transition={{
                             duration: 0.6,
@@ -1413,7 +1504,7 @@ const HomepageCSR = () => {
                         {/* Industry Tag */}
                         <motion.div
                           className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 px-2 py-1 sm:px-3 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-slate-700"
-                          whileHover={{ scale: 1.05 }}
+                          whileHover={!isDragging ? { scale: 1.05 } : {}}
                           transition={{ duration: 0.2 }}
                         >
                           {study.industry}
@@ -1464,12 +1555,15 @@ const HomepageCSR = () => {
                         {/* CTA */}
                         <motion.div
                           className="flex items-center justify-center gap-2 text-sm font-medium text-slate-700 group-hover:text-slate-900 transition-colors duration-300"
-                          whileHover={{ scale: 1.05 }}
+                          whileHover={!isDragging ? { scale: 1.05 } : {}}
                           transition={{ duration: 0.2 }}
                         >
                           <span className="text-xs sm:text-sm">Learn More</span>
                           <motion.div
-                            animate={{ x: hoveredCard === study.id ? 4 : 0 }}
+                            animate={{
+                              x:
+                                hoveredCard === study.id && !isDragging ? 4 : 0,
+                            }}
                             transition={{ duration: 0.3, ease: "easeOut" }}
                           >
                             <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -1490,7 +1584,7 @@ const HomepageCSR = () => {
                 {Array.from({ length: totalSlides }).map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentIndex(index)}
+                    onClick={() => goToCaseSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-200 ${
                       index === currentIndex
                         ? "bg-blue-600 w-6"
@@ -1500,6 +1594,18 @@ const HomepageCSR = () => {
                 ))}
               </div>
             </div>
+          )}
+
+          {/* Drag hint for first-time users */}
+          {totalSlides > 1 && (
+            <motion.div
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ delay: 3, duration: 1 }}
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs text-slate-400 pointer-events-none"
+            >
+              ← Drag to explore →
+            </motion.div>
           )}
         </div>
 
