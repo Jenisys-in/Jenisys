@@ -49,9 +49,7 @@ function Navbar() {
 
   return (
     <>
-      <nav
-        className={`fixed z-10 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 lg:px-8 h-[70px] sm:h-[75px] lg:h-[80px] shadow-sm bg-white`}
-      >
+      <nav className="fixed z-50 top-0 left-0 w-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 lg:px-8 h-[70px] sm:h-[75px] lg:h-[80px] shadow-sm bg-white">
         {/* Logo */}
         <Link className="flex gap-2 items-center" href="/">
           <Image
