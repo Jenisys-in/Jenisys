@@ -15,6 +15,7 @@ import {
   ExternalLink,
   TrendingUp,
   Calendar,
+  Bot,
 } from "lucide-react";
 import { ChevronRight } from "lucide-react";
 import {
@@ -633,6 +634,14 @@ const HomepageCSR = () => {
 
   const services = [
     {
+      icon: Bot, // or Brain, depending on your visual preference
+      title: "AI Automation",
+      description:
+        "Streamlining business operations through intelligent automation solutions using AI models, machine learning, and workflow orchestration to enhance efficiency and reduce manual effort.",
+      link: "/services/ai-automation",
+    },
+
+    {
       icon: Monitor,
       title: "Web Development",
       description:
@@ -657,21 +666,21 @@ const HomepageCSR = () => {
       icon: Code,
       title: "Custom Software Development",
       description:
-        "At Jenisys, we specialize in developing custom software solutions tailored to meet the unique needs of your business. Our team of experienced developers utilizes the latest technologies to create software that aligns perfectly with your specific requirements. Whether you need a comprehensive enterprise solution, a bespoke web application, or a specialized mobile app, we have the expertise to deliver high-quality, scalable, and robust software.",
+        "Tailored software solutions built to match your unique business needs — scalable, secure, and ready to fuel your growth.",
       link: "/services/cloud-solutions",
     },
     {
       icon: UserCog,
       title: "IT consulting",
       description:
-        "We offer comprehensive IT consulting & digital transformation services to drive innovation & success in your business. Our experts work closely to craft a technology strategy aligned with your goals and provide tailored recommendations for growth & efficiency. We help you embrace digital transformation through process automation, digital tool implementation, and platform integration, ensuring your business remains competitive and efficient in the digital age.",
+        "Strategic IT guidance to help you innovate, optimize operations, and make technology work for your business goals.",
       link: "/services/cloud-solutions",
     },
     {
       icon: Wrench,
       title: "Maintenance & Support ",
       description:
-        "Jenisys provides comprehensive maintenance, support, and cybersecurity services to ensure the smooth and secure operation of your software systems. Our maintenance and support services offer ongoing updates and technical support to keep your systems running efficiently. On the cybersecurity front, we conduct thorough security assessments, identify vulnerabilities, and implement robust security protocols to protect your systems and data.",
+        "Reliable ongoing support and maintenance to keep your systems running smoothly, securely, and without interruptions.",
       link: "/services/cloud-solutions",
     },
   ];
@@ -756,7 +765,7 @@ const HomepageCSR = () => {
   });
 
   return (
-    <div className="mt-[85px] flex-col relative overflow-x-hidden w-full">
+    <div className=" flex-col relative overflow-x-hidden w-full">
       <section className="section white-section relative overflow-hidden bg-white">
         {/* Optional glow or blurred shape */}
         <div className="absolute w-[500px] h-[500px] bg-[#7526FE]/10 blur-[120px] rounded-full left-[60%] top-[20%] -z-10" />
