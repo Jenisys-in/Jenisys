@@ -53,12 +53,14 @@ function Navbar() {
   const services = [
     { name: "Web Development", path: "/services/web-development" },
     { name: "Mobile App Development", path: "/services/mobile-development" },
-    { name: "UI/UX Design", path: "/services/ui-ux-design" },
-    { name: "Digital Marketing", path: "/services/digital-marketing" },
     { name: "Cloud Solutions", path: "/services/cloud-solutions" },
     { name: "AI & Machine Learning", path: "/services/ai-ml" },
-    { name: "E-commerce Solutions", path: "/services/ecommerce" },
-    { name: "DevOps & Infrastructure", path: "/services/devops" },
+    {
+      name: "Custom Software Development",
+      path: "/services/Custom-Software-Development",
+    },
+    { name: "IT consulting", path: "/services/IT-consulting" },
+    { name: "Maintenance & Support", path: "/services/Maintenance" },
   ];
 
   const aboutItems = [

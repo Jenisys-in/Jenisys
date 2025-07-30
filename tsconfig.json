@@ -25,19 +25,16 @@
     "baseUrl": "src",
     "paths": {
       "@/*": [
-        "*"
+        "./*"
       ]
     },
     "target": "ES2017"
   },
   "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/Privacy-Policy/page.tsx",
-    "src/components/CustomCursor.js",
-    "src/components/CustomCursor.js"
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

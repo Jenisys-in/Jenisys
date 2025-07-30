@@ -1,4 +1,4 @@
-import IndustriesPage from '../../components/industries';
+import IndustriesPage from '../../components/About-us/industries';
 
 export const metadata = {
   title: "Industries We Serve - Jenisys",

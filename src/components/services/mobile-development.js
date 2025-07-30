@@ -1,0 +1,994 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import {
+  Smartphone,
+  Users,
+  ZapOff,
+  Settings,
+  Star,
+  Layers,
+  Globe,
+  Server,
+  TrendingUp,
+  Heart,
+  Truck,
+  CreditCard,
+  Zap,
+  ShoppingBag,
+  BookOpen,
+  Check,
+  ChevronDown,
+  Code,
+  Upload,
+  RefreshCw,
+  Facebook,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
+
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  ExternalLink,
+  Calendar,
+  Bot,
+} from "lucide-react";
+
+export default function MobileAppLanding() {
+  const [openFAQ, setOpenFAQ] = useState(null);
+  const [showCaseStudy, setShowCaseStudy] = useState(false);
+  const [isVisible, setIsVisible] = useState({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({
+              ...prev,
+              [entry.target.id]: true,
+            }));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleFAQ = (id) => {
+    setOpenFAQ(openFAQ === id ? null : id);
+  };
+
+  const toggleCaseStudy = () => {
+    setShowCaseStudy(!showCaseStudy);
+  };
+
+  return (
+    <div className="bg-gray-50 overflow-x-hidden">
+      {/* Navigation */}
+
+      {/* Hero Section */}
+      <section
+        id="hero"
+        className="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen flex items-center relative overflow-hidden"
+      >
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400 bg-opacity-20 rounded-full blur-3xl animate-bounce"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="text-white">
+            <h1
+              className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 ${
+                isVisible.hero
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              Future-Ready{" "}
+              <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
+                Mobile Apps
+              </span>{" "}
+              Built for Growth
+            </h1>
+            <p
+              className={`text-xl md:text-2xl mb-8 text-gray-200 transition-all duration-1000 delay-200 ${
+                isVisible.hero
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              From idea to App Store — Jenisys designs and develops mobile apps
+              that drive engagement, conversions, and business success.
+            </p>
+            <div
+              className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-400 ${
+                isVisible.hero
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              <button className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+                Request Free App Strategy Session
+              </button>
+              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-indigo-600 transition">
+                Book a Demo
+              </button>
+            </div>
+          </div>
+
+          <div
+            className={`relative transition-all duration-1000 delay-600 ${
+              isVisible.hero
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="bg-gradient-to-br from-gray-700 to-gray-900 rounded-3xl p-8 mx-auto w-80 h-96 shadow-2xl transform hover:scale-105 hover:-rotate-2 transition-all duration-300">
+              <div className="bg-gray-900 rounded-2xl h-full flex items-center justify-center">
+                <div className="text-white text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                    <Smartphone className="w-8 h-8" />
+                  </div>
+                  <div className="text-sm font-semibold">Your App Here</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pain Points Section */}
+      <section id="pain-points" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Common App Development Challenges
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Businesses struggle to find reliable developers, maintain
+              cross-platform parity, and retain users in a crowded app market.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Users,
+                title: "Poor User Retention",
+                description:
+                  "Users abandon apps quickly due to poor UX and performance issues.",
+                gradient: "from-red-50 to-red-100",
+                iconBg: "bg-red-500",
+              },
+              {
+                icon: ZapOff,
+                title: "Laggy Performance",
+                description:
+                  "Apps crash or perform poorly on lower-end devices, losing customers.",
+                gradient: "from-orange-50 to-orange-100",
+                iconBg: "bg-orange-500",
+              },
+              {
+                icon: Settings,
+                title: "Difficult Maintenance",
+                description:
+                  "Complex updates and bug fixes that take weeks instead of days.",
+                gradient: "from-yellow-50 to-yellow-100",
+                iconBg: "bg-yellow-500",
+              },
+              {
+                icon: Star,
+                title: "Low App Store Rating",
+                description:
+                  "Poor ratings hurt discoverability and credibility in app stores.",
+                gradient: "from-purple-50 to-purple-100",
+                iconBg: "bg-purple-500",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`bg-gradient-to-br ${item.gradient} p-8 rounded-3xl hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group`}
+              >
+                <div
+                  className={`w-16 h-16 ${item.iconBg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition`}
+                >
+                  <item.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Development Process */}
+      <section id="process" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our Proven Development Process
+            </h2>
+            <p className="text-xl text-gray-600">
+              From concept to launch, we follow a structured approach that
+              ensures success.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {[
+              {
+                step: 1,
+                title: "Discovery & Strategy",
+                description:
+                  "We dive deep into your business goals, target audience, and market requirements to create a comprehensive app strategy.",
+                gradient: "from-indigo-500 to-purple-500",
+              },
+              {
+                step: 2,
+                title: "Wireframing & Prototyping",
+                description:
+                  "Interactive prototypes help visualize the user journey and validate concepts before development begins.",
+                gradient: "from-purple-500 to-pink-500",
+              },
+              {
+                step: 3,
+                title: "UI/UX Design",
+                description:
+                  "Beautiful, intuitive interfaces designed to maximize user engagement and conversion rates.",
+                gradient: "from-pink-500 to-red-500",
+              },
+              {
+                step: 4,
+                title: "Agile Development",
+                description:
+                  "Transparent, iterative development with regular updates and feedback integration throughout the process.",
+                gradient: "from-red-500 to-orange-500",
+              },
+              {
+                step: 5,
+                title: "Testing & QA",
+                description:
+                  "Comprehensive testing across devices, platforms, and scenarios to ensure flawless performance.",
+                gradient: "from-orange-500 to-yellow-500",
+              },
+              {
+                step: 6,
+                title: "Launch & Support",
+                description:
+                  "App store submission, launch support, and ongoing maintenance to keep your app running smoothly.",
+                gradient: "from-yellow-500 to-green-500",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`flex items-center gap-8 group ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                <div
+                  className={`w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition`}
+                >
+                  {item.step}
+                </div>
+                <div className="flex-1 bg-white p-8 rounded-2xl shadow-lg group-hover:shadow-xl transition">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Offerings */}
+      <section id="offerings" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our Mobile App Development Services
+            </h2>
+            <p className="text-xl text-gray-600">
+              Comprehensive solutions for every mobile app need.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Smartphone,
+                title: "Native App Development",
+                description:
+                  "iOS and Android apps built with platform-specific technologies for optimal performance.",
+                gradient: "from-indigo-50 to-indigo-100",
+                hoverGradient:
+                  "group-hover:from-indigo-500 group-hover:to-purple-500",
+                iconBg: "bg-indigo-500 group-hover:bg-white",
+                iconColor: "text-white group-hover:text-indigo-500",
+              },
+              {
+                icon: Layers,
+                title: "Cross-Platform Apps",
+                description:
+                  "React Native and Flutter apps that work seamlessly across both iOS and Android.",
+                gradient: "from-purple-50 to-purple-100",
+                hoverGradient:
+                  "group-hover:from-purple-500 group-hover:to-pink-500",
+                iconBg: "bg-purple-500 group-hover:bg-white",
+                iconColor: "text-white group-hover:text-purple-500",
+              },
+              {
+                icon: Globe,
+                title: "Progressive Web Apps",
+                description:
+                  "Web-based apps that provide native-like experiences across all devices.",
+                gradient: "from-pink-50 to-pink-100",
+                hoverGradient:
+                  "group-hover:from-pink-500 group-hover:to-red-500",
+                iconBg: "bg-pink-500 group-hover:bg-white",
+                iconColor: "text-white group-hover:text-pink-500",
+              },
+              {
+                icon: Server,
+                title: "Backend Integration",
+                description:
+                  "Robust APIs and backend systems to power your mobile app functionality.",
+                gradient: "from-blue-50 to-blue-100",
+                hoverGradient:
+                  "group-hover:from-blue-500 group-hover:to-indigo-500",
+                iconBg: "bg-blue-500 group-hover:bg-white",
+                iconColor: "text-white group-hover:text-blue-500",
+              },
+              {
+                icon: TrendingUp,
+                title: "App Store Optimization",
+                description:
+                  "ASO strategies to improve discoverability and download rates in app stores.",
+                gradient: "from-green-50 to-green-100",
+                hoverGradient:
+                  "group-hover:from-green-500 group-hover:to-teal-500",
+                iconBg: "bg-green-500 group-hover:bg-white",
+                iconColor: "text-white group-hover:text-green-500",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`group bg-gradient-to-br ${item.gradient} ${item.hoverGradient} p-8 rounded-3xl hover:shadow-xl hover:-translate-y-2 group-hover:text-white transition-all duration-300`}
+              >
+                <div
+                  className={`w-16 h-16 ${item.iconBg} rounded-2xl flex items-center justify-center mb-6 transition-colors`}
+                >
+                  <item.icon
+                    className={`w-8 h-8 ${item.iconColor} transition-colors`}
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 group-hover:text-white transition-colors">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section id="industries" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Industries We Serve
+            </h2>
+            <p className="text-xl text-gray-600">
+              Specialized mobile solutions across high-growth sectors.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Heart,
+                title: "Healthcare",
+                description:
+                  "Patient portals, telemedicine apps, and health tracking solutions.",
+                gradient: "from-red-500 to-pink-500",
+              },
+              {
+                icon: Truck,
+                title: "Logistics & Transportation",
+                description:
+                  "Fleet management, delivery tracking, and route optimization apps.",
+                gradient: "from-blue-500 to-indigo-500",
+              },
+              {
+                icon: CreditCard,
+                title: "FinTech",
+                description:
+                  "Banking apps, payment solutions, and investment platforms.",
+                gradient: "from-green-500 to-teal-500",
+              },
+              {
+                icon: Zap,
+                title: "On-Demand Services",
+                description:
+                  "Food delivery, ride-sharing, and service booking platforms.",
+                gradient: "from-purple-500 to-pink-500",
+              },
+              {
+                icon: ShoppingBag,
+                title: "Retail & E-commerce",
+                description:
+                  "Shopping apps, inventory management, and customer loyalty programs.",
+                gradient: "from-orange-500 to-red-500",
+              },
+              {
+                icon: BookOpen,
+                title: "EdTech",
+                description:
+                  "Learning management systems, educational games, and student portals.",
+                gradient: "from-indigo-500 to-purple-500",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  className={`w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-2xl flex items-center justify-center mb-6`}
+                >
+                  <item.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study */}
+      <section id="case-study" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div
+            className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-12 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+            onClick={toggleCaseStudy}
+          >
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Success Story
+              </h2>
+              <h3 className="text-2xl font-semibold text-indigo-600 mb-4">
+                QuickDeliver App
+              </h3>
+              <p className="text-xl text-gray-700 mb-6">
+                "See how we helped QuickDeliver increase user retention by 35%
+                in 3 months."
+              </p>
+              <button className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition">
+                Read Full Case Study
+              </button>
+            </div>
+
+            {showCaseStudy && (
+              <div className="mt-8 pt-8 border-t border-indigo-200 animate-fade-in">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">
+                      Challenge
+                    </h4>
+                    <p className="text-gray-700 mb-6">
+                      QuickDeliver needed a mobile app to compete with major
+                      delivery services, but their existing platform had poor
+                      user retention and frequent crashes.
+                    </p>
+
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">
+                      Solution
+                    </h4>
+                    <p className="text-gray-700">
+                      We rebuilt their app from scratch using React Native,
+                      implemented real-time tracking, and optimized the user
+                      onboarding flow.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">
+                      Results
+                    </h4>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-700">User Retention</span>
+                        <span className="text-2xl font-bold text-green-500">
+                          +35%
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-700">App Store Rating</span>
+                        <span className="text-2xl font-bold text-green-500">
+                          4.8/5
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-700">
+                          Monthly Active Users
+                        </span>
+                        <span className="text-2xl font-bold text-green-500">
+                          20K+
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-700">Development Time</span>
+                        <span className="text-2xl font-bold text-green-500">
+                          6 weeks
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Jenisys */}
+      <section id="why-choose" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Why Choose Jenisys
+            </h2>
+            <p className="text-xl text-gray-600">
+              The advantages that set us apart from other development agencies.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              "In-House Team of UI/UX + Developers",
+              "Cross-Platform Excellence",
+              "Post-Launch Support Included",
+              "Lightning-Fast Performance",
+              "Transparent, Agile Collaboration",
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">{item}</h3>
+                </div>
+                <p className="text-gray-600">
+                  {index === 0 &&
+                    "Dedicated UI/UX designers and developers working exclusively on your project."}
+                  {index === 1 &&
+                    "Expert knowledge in both native and hybrid app development technologies."}
+                  {index === 2 &&
+                    "Ongoing maintenance, updates, and technical support included with every project."}
+                  {index === 3 &&
+                    "Optimized code and efficient architecture for smooth performance on all devices."}
+                  {index === 4 &&
+                    "Regular updates, clear communication, and agile development methodology."}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="testimonials" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600">
+              Real feedback from successful app launches.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "John Davis",
+                role: "CEO, TechStart",
+                initials: "JD",
+                gradient: "from-indigo-500 to-purple-500",
+                bgGradient: "from-indigo-50 to-purple-50",
+                quote:
+                  "Jenisys delivered our mobile app ahead of schedule and nailed every detail. The user feedback has been incredible!",
+              },
+              {
+                name: "Sarah Miller",
+                role: "Founder, HealthApp",
+                initials: "SM",
+                gradient: "from-green-500 to-teal-500",
+                bgGradient: "from-green-50 to-teal-50",
+                quote:
+                  "The team understood our healthcare requirements perfectly and built an app that our patients absolutely love.",
+              },
+              {
+                name: "Mike Rodriguez",
+                role: "CTO, LogiFlow",
+                initials: "MR",
+                gradient: "from-orange-500 to-red-500",
+                bgGradient: "from-orange-50 to-red-50",
+                quote:
+                  "Outstanding technical expertise! Our logistics app handles thousands of deliveries daily without any issues.",
+              },
+            ].map((testimonial, index) => (
+              <div
+                key={index}
+                className={`bg-gradient-to-br ${testimonial.bgGradient} p-8 rounded-3xl hover:shadow-xl hover:-translate-y-2 transition-all duration-300`}
+              >
+                <div className="flex items-center mb-6">
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-r ${testimonial.gradient} rounded-full flex items-center justify-center text-white font-bold mr-4`}
+                  >
+                    {testimonial.initials}
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic mb-4">
+                  "{testimonial.quote}"
+                </p>
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Everything you need to know about our mobile app development
+              process.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              {
+                id: 1,
+                icon: Smartphone,
+                question: "Do you develop both iOS and Android apps?",
+                answer:
+                  "Yes, we develop native iOS and Android apps, as well as cross-platform solutions using React Native and Flutter. We'll recommend the best approach based on your specific requirements, budget, and timeline.",
+                iconBg: "bg-indigo-100",
+                iconColor: "text-indigo-600",
+              },
+              {
+                id: 2,
+                icon: RefreshCw,
+                question: "Can you upgrade our existing app?",
+                answer:
+                  "Absolutely! We can audit your existing app, identify improvement opportunities, and either enhance the current codebase or rebuild it with modern technologies for better performance and user experience.",
+                iconBg: "bg-purple-100",
+                iconColor: "text-purple-600",
+              },
+              {
+                id: 3,
+                icon: Code,
+                question: "What tech stacks do you use?",
+                answer:
+                  "We use Swift/SwiftUI for iOS, Kotlin/Java for Android, React Native and Flutter for cross-platform development. For backends, we work with Node.js, Python, and cloud services like AWS and Firebase.",
+                iconBg: "bg-green-100",
+                iconColor: "text-green-600",
+              },
+              {
+                id: 4,
+                icon: Upload,
+                question: "Do you handle Play Store/App Store publishing?",
+                answer:
+                  "Yes, we handle the entire app store submission process, including account setup, app store optimization, compliance with guidelines, and managing the review process until your app is live.",
+                iconBg: "bg-orange-100",
+                iconColor: "text-orange-600",
+              },
+            ].map((faq) => (
+              <div
+                key={faq.id}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                <button
+                  className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition"
+                  onClick={() => toggleFAQ(faq.id)}
+                >
+                  <div className="flex items-center">
+                    <div
+                      className={`w-8 h-8 ${faq.iconBg} rounded-full flex items-center justify-center mr-4`}
+                    >
+                      <faq.icon className={`w-4 h-4 ${faq.iconColor}`} />
+                    </div>
+                    <span className="text-xl font-semibold text-gray-900">
+                      {faq.question}
+                    </span>
+                  </div>
+                  <ChevronDown
+                    className={`w-6 h-6 text-gray-400 transform transition-transform ${
+                      openFAQ === faq.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openFAQ === faq.id && (
+                  <div className="px-16 pb-6">
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section
+        id="final-cta"
+        className="py-20 bg-gradient-to-br from-indigo-600 to-purple-600 relative overflow-hidden"
+      >
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-white bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-400 bg-opacity-20 rounded-full blur-3xl animate-bounce"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8">
+            Got an App Idea? <br />
+            <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
+              Let's Build It Together
+            </span>
+          </h2>
+          <p className="text-xl md:text-2xl text-gray-200 mb-12">
+            Get a roadmap, estimate, and consultation — no strings attached.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <button className="bg-white text-indigo-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl">
+              Book a Free Strategy Call
+            </button>
+            <button className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-600 transition-all transform hover:scale-105">
+              Get Free Quote
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky CTA Button */}
+      <div className="fixed bottom-5 right-5 z-50 md:bottom-8 md:right-8">
+        <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold shadow-2xl hover:from-indigo-700 hover:to-purple-700 transition-all transform hover:scale-105 md:px-8 md:py-4">
+          <span className="hidden md:inline">Get Free App Strategy</span>
+          <span className="md:hidden">Get Started</span>
+        </button>
+      </div>
+      <footer className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div className="lg:col-span-1">
+              <div className="mb-6">
+                <Image
+                  src="/img/Jenisys Hero.png"
+                  alt="Jenisys"
+                  width={100}
+                  height={40}
+                  className="h-10 w-auto mb-4 brightness-0 invert"
+                />
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Advancing Excellence Beyond Cost
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Delivering innovative solutions that drive business growth and
+                  operational excellence through cutting-edge technology and
+                  strategic consulting.
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+                Get Started Today
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-white font-semibold text-lg mb-6">
+                Quick Links
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { name: "Services", href: "#services" },
+                  { name: "About Us", href: "#about" },
+                  { name: "Blog", href: "#blog" },
+                  { name: "Careers", href: "#careers" },
+                  { name: "Case Studies", href: "#case-studies" },
+                ].map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                    >
+                      {link.name}
+                      <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Information */}
+            <div>
+              <h4 className="text-white font-semibold text-lg mb-6">
+                Contact Us
+              </h4>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      Raja Ram mohon roy
+                      <br />
+                      Sarani
+                      <br />
+                      Serampore, West Bengal 712203
+                      <br />
+                      India
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <a
+                    href="tel:+911234567890"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    +91 12345 67890
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <a
+                    href="mailto:info@jenisys.in"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    info@jenisys.in
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media & Newsletter */}
+            <div>
+              <h4 className="text-white font-semibold text-lg mb-6">
+                Stay Connected
+              </h4>
+
+              {/* Social Media Icons */}
+              <div className="flex gap-4 mb-6">
+                {[
+                  {
+                    name: "Instagram",
+                    href: "https://www.instagram.com/jenisys.in/",
+                    icon: "/img/mdi_instagram.png",
+                  },
+                  {
+                    name: "LinkedIn",
+                    href: "https://www.linkedin.com/company/jenisys",
+                    icon: "/img/linkedIn.png",
+                  },
+                  {
+                    name: "Facebook",
+                    href: "https://www.facebook.com",
+                    icon: "/img/facebook.png",
+                  },
+                ].map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                  >
+                    <Image
+                      src={social.icon}
+                      alt={social.name}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
+                    />
+                  </a>
+                ))}
+              </div>
+
+              {/* Newsletter Signup */}
+              <div>
+                <p className="text-gray-300 text-sm mb-3">
+                  Subscribe to our newsletter
+                </p>
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                  />
+                  <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors">
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-700">
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              {/* Copyright */}
+              <div className="text-gray-400 text-sm">
+                © 2025 Jenisys. All rights reserved.
+              </div>
+
+              {/* Legal Links */}
+              <div className="flex gap-6 text-sm">
+                {[{ name: "Privacy Policy", href: "/Privacy-Policy" }].map(
+                  (link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                      {link.name}
+                    </a>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

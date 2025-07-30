@@ -1,0 +1,818 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import {
+  Cloud,
+  Shield,
+  Zap,
+  ArrowRight,
+  CheckCircle,
+  Server,
+  Database,
+  Layers,
+  GitBranch,
+  Lock,
+  Users,
+  TrendingUp,
+  Award,
+  ChevronDown,
+  ChevronUp,
+  Play,
+  Pause,
+  Star,
+  Building,
+  Heart,
+  ShoppingCart,
+  CreditCard,
+  Truck,
+  GraduationCap,
+} from "lucide-react";
+
+import { Mail, Phone, MapPin, ExternalLink, Calendar, Bot } from "lucide-react";
+
+const Cloudsln = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+  const [animatedNumbers, setAnimatedNumbers] = useState({
+    cost: 0,
+    data: 0,
+    speed: 0,
+  });
+
+  // Define data arrays first
+  const services = [
+    {
+      icon: Cloud,
+      title: "Cloud Migration",
+      desc: "Seamless AWS, Azure, GCP migrations",
+    },
+    {
+      icon: Server,
+      title: "Infrastructure as a Service",
+      desc: "Scalable IaaS solutions",
+    },
+    {
+      icon: Layers,
+      title: "Platform as a Service",
+      desc: "Complete PaaS management",
+    },
+    {
+      icon: GitBranch,
+      title: "DevOps & Automation",
+      desc: "CI/CD, containerization",
+    },
+    {
+      icon: Database,
+      title: "Multi-cloud Strategies",
+      desc: "Hybrid cloud architecture",
+    },
+    { icon: Shield, title: "Cloud Security", desc: "Compliance & protection" },
+  ];
+
+  const industries = [
+    {
+      icon: Zap,
+      title: "SaaS & Startups",
+      desc: "Scale apps on demand",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      icon: Heart,
+      title: "Healthcare",
+      desc: "Secure health data",
+      color: "from-red-500 to-pink-500",
+    },
+    {
+      icon: ShoppingCart,
+      title: "Retail & E-commerce",
+      desc: "Handle traffic spikes",
+      color: "from-green-500 to-emerald-500",
+    },
+    {
+      icon: CreditCard,
+      title: "Fintech",
+      desc: "Secure transactions",
+      color: "from-yellow-500 to-orange-500",
+    },
+    {
+      icon: Truck,
+      title: "Logistics",
+      desc: "Real-time tracking",
+      color: "from-purple-500 to-violet-500",
+    },
+    {
+      icon: GraduationCap,
+      title: "Education",
+      desc: "Remote learning",
+      color: "from-indigo-500 to-blue-500",
+    },
+  ];
+
+  const workflow = [
+    { title: "Assess", desc: "Analyze current infrastructure" },
+    { title: "Plan", desc: "Design migration strategy" },
+    { title: "Migrate", desc: "Execute seamless transition" },
+    { title: "Deploy", desc: "Launch optimized systems" },
+    { title: "Optimize", desc: "Fine-tune performance" },
+    { title: "Support", desc: "Ongoing maintenance" },
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        "Jenisys migrated our entire database to AWS seamlessly — and we cut 30% off our infra spend.",
+      author: "Sarah Chen",
+      role: "CTO, TechFlow",
+      avatar: "SC",
+    },
+    {
+      quote: "Their DevOps setup improved our deployment speed 10x.",
+      author: "Marcus Rodriguez",
+      role: "Lead Engineer, StartupXYZ",
+      avatar: "MR",
+    },
+    {
+      quote:
+        "Zero downtime migration with 40% cost reduction. Exceptional service.",
+      author: "Lisa Thompson",
+      role: "IT Director, Enterprise Corp",
+      avatar: "LT",
+    },
+  ];
+
+  const faqs = [
+    {
+      q: "Can you migrate our existing system without downtime?",
+      a: "Yes, we use proven strategies like blue-green deployments and rolling updates to ensure zero-downtime migrations.",
+    },
+    {
+      q: "Do you handle both setup and post-deployment maintenance?",
+      a: "Absolutely. We provide end-to-end support from initial migration through ongoing optimization and maintenance.",
+    },
+    {
+      q: "How do you ensure cloud security?",
+      a: "We implement security-first architecture with encryption, access controls, compliance monitoring, and regular security audits.",
+    },
+    {
+      q: "What cloud platforms do you specialize in?",
+      a: "We're certified experts in AWS, Azure, and Google Cloud, with multi-cloud and hybrid strategies.",
+    },
+  ];
+
+  // Animate numbers
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedNumbers({ cost: 40, data: 3, speed: 10 });
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Auto-scroll testimonials
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [isPaused, testimonials.length]);
+
+  const AnimatedNumber = ({ target, suffix = "" }) => {
+    const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        setCurrent((prev) => {
+          if (prev < target) {
+            return Math.min(prev + increment, target);
+          }
+          clearInterval(timer);
+          return target;
+        });
+      }, 30);
+      return () => clearInterval(timer);
+    }, [target]);
+
+    return (
+      <span>
+        {Math.round(current)}
+        {suffix}
+      </span>
+    );
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+        <div className="absolute inset-0 opacity-20"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
+          <div className="text-center">
+            <div className="flex justify-center mb-8">
+              <div className="relative">
+                <Cloud className="w-24 h-24 text-blue-400" />
+                <div className="absolute inset-0 bg-blue-500 blur-xl opacity-20"></div>
+              </div>
+            </div>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+              Scalable. Secure. Cloud-First.
+            </h1>
+            <p className="text-xl lg:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Accelerate innovation and cut infrastructure costs with Jenisys'
+              custom cloud solutions — from migration to management.
+            </p>
+            <button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group">
+              Get a Free Cloud Readiness Assessment
+              <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Go Cloud Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl font-bold text-gray-900 mb-8">
+                Why Go Cloud?
+              </h2>
+              <div className="space-y-6">
+                {[
+                  "Outdated on-prem systems",
+                  "Downtime and data loss risks",
+                  "High hardware costs",
+                  "Lack of scalability",
+                ].map((challenge, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center p-4 bg-red-50 rounded-lg border-l-4 border-red-400"
+                  >
+                    <div className="w-2 h-2 bg-red-400 rounded-full mr-4"></div>
+                    <span className="text-gray-700">{challenge}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-8">
+              <h3 className="text-3xl font-bold text-gray-900">
+                Our Solutions
+              </h3>
+              <div className="space-y-6">
+                {[
+                  { icon: Zap, text: "Auto-scaling architecture" },
+                  { icon: Shield, text: "Reliable disaster recovery" },
+                  { icon: GitBranch, text: "DevOps & CI/CD setup" },
+                  { icon: Lock, text: "Cloud-native security" },
+                ].map((solution, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center p-4 bg-green-50 rounded-lg border-l-4 border-green-400 transform hover:scale-102 transition-transform"
+                  >
+                    <solution.icon className="w-6 h-6 text-green-500 mr-4" />
+                    <span className="text-gray-700 font-medium">
+                      {solution.text}
+                    </span>
+                    <CheckCircle className="w-5 h-5 text-green-500 ml-auto" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cloud Services */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Cloud Services We Offer
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive cloud solutions tailored to your business needs
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, i) => (
+              <div
+                key={i}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
+              >
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 rounded-xl w-fit mb-6 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cloud Architecture Workflow */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Our Cloud Migration Process
+            </h2>
+            <p className="text-xl text-gray-600">
+              A proven 6-step approach to seamless cloud transformation
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {workflow.map((step, i) => (
+              <div key={i} className="relative group">
+                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-6 rounded-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                  <div className="text-2xl font-bold mb-2">{i + 1}</div>
+                  <h3 className="font-bold mb-2">{step.title}</h3>
+                  <p className="text-sm opacity-90">{step.desc}</p>
+                </div>
+                {i < workflow.length - 1 && (
+                  <ArrowRight className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2 text-blue-400 w-8 h-8" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Industries We Serve
+            </h2>
+            <p className="text-xl text-gray-600">
+              Specialized cloud solutions for every sector
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {industries.map((industry, i) => (
+              <div
+                key={i}
+                className={`bg-gradient-to-br ${industry.color} p-8 rounded-2xl text-white transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer`}
+                onClick={() => setActiveTab(i)}
+              >
+                <industry.icon className="w-12 h-12 mb-4" />
+                <h3 className="text-xl font-bold mb-2">{industry.title}</h3>
+                <p className="opacity-90">{industry.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Metrics */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Proven Results</h2>
+            <p className="text-xl opacity-90">
+              Real impact for real businesses
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-12 text-center">
+            <div className="transform hover:scale-105 transition-transform">
+              <div className="text-5xl font-bold mb-4">
+                <AnimatedNumber target={animatedNumbers.cost} suffix="%" />
+              </div>
+              <p className="text-xl opacity-90">
+                Reduced infrastructure costs within 3 months
+              </p>
+            </div>
+            <div className="transform hover:scale-105 transition-transform">
+              <div className="text-5xl font-bold mb-4">
+                <AnimatedNumber target={animatedNumbers.data} suffix="TB+" />
+              </div>
+              <p className="text-xl opacity-90">
+                Sensitive financial data migrated with zero downtime
+              </p>
+            </div>
+            <div className="transform hover:scale-105 transition-transform">
+              <div className="text-5xl font-bold mb-4">
+                <AnimatedNumber target={animatedNumbers.speed} suffix="x" />
+              </div>
+              <p className="text-xl opacity-90">
+                Faster deployment speed with DevOps optimization
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Jenisys */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Why Choose Jenisys?
+            </h2>
+            <p className="text-xl text-gray-600">
+              Your trusted cloud transformation partner
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Award,
+                title: "Certified Cloud Engineers",
+                desc: "AWS, Azure, GCP certified experts",
+              },
+              {
+                icon: Users,
+                title: "End-to-End Support",
+                desc: "From migration to ongoing maintenance",
+              },
+              {
+                icon: Cloud,
+                title: "Multi-Cloud Expertise",
+                desc: "Platform-agnostic solutions",
+              },
+              {
+                icon: Zap,
+                title: "Cloud-Native Development",
+                desc: "Built for the cloud from ground up",
+              },
+              {
+                icon: Shield,
+                title: "Security-First Mindset",
+                desc: "Enterprise-grade protection",
+              },
+              {
+                icon: TrendingUp,
+                title: "Proven Track Record",
+                desc: "100+ successful migrations",
+              },
+            ].map((feature, i) => (
+              <div
+                key={i}
+                className="text-center p-6 rounded-2xl hover:bg-blue-50 transition-colors group"
+              >
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 rounded-full w-fit mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="py-20 bg-gradient-to-br from-slate-100 to-blue-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Our Cloud Stack & Tools
+            </h2>
+            <p className="text-xl text-gray-600">
+              Industry-leading technologies we work with
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
+            {[
+              "AWS",
+              "Azure",
+              "GCP",
+              "Docker",
+              "Kubernetes",
+              "Terraform",
+              "Jenkins",
+              "GitHub",
+            ].map((tech, i) => (
+              <div
+                key={i}
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center"
+              >
+                <div className="text-lg font-bold text-gray-700">{tech}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600">
+              Success stories from our cloud transformations
+            </p>
+          </div>
+          <div className="relative">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-12 rounded-2xl shadow-xl">
+              <div className="flex justify-center mb-8">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-6 h-6 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+              <blockquote className="text-2xl text-gray-700 text-center mb-8 leading-relaxed">
+                "{testimonials[currentTestimonial].quote}"
+              </blockquote>
+              <div className="flex items-center justify-center">
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold mr-4">
+                  {testimonials[currentTestimonial].avatar}
+                </div>
+                <div>
+                  <div className="font-bold text-gray-900">
+                    {testimonials[currentTestimonial].author}
+                  </div>
+                  <div className="text-gray-600">
+                    {testimonials[currentTestimonial].role}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center mt-8 space-x-4">
+              <button
+                onClick={() => setIsPaused(!isPaused)}
+                className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full transition-colors"
+              >
+                {isPaused ? (
+                  <Play className="w-4 h-4" />
+                ) : (
+                  <Pause className="w-4 h-4" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Get answers to common cloud migration questions
+            </p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full p-6 text-left flex justify-between items-center hover:bg-blue-50 transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {faq.q}
+                  </h3>
+                  {openFaq === i ? (
+                    <ChevronUp className="w-5 h-5" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5" />
+                  )}
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-bold mb-6">
+            Ready to Elevate Your Infrastructure?
+          </h2>
+          <p className="text-xl mb-12 opacity-90">
+            Get expert insights and a tailored cloud strategy for your business.
+          </p>
+          <button className="bg-white text-blue-600 px-12 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group">
+            Book Your Free Cloud Consultation
+            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </section>
+
+      {/* Floating CTA */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center">
+          <span className="mr-2">Get Started</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+      </div>
+      <footer className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div className="lg:col-span-1">
+              <div className="mb-6">
+                <Image
+                  src="/img/Jenisys Hero.png"
+                  alt="Jenisys"
+                  width={100}
+                  height={40}
+                  className="h-10 w-auto mb-4 brightness-0 invert"
+                />
+                <h3 className="text-xl font-bold text-white mb-3">
+                  Advancing Excellence Beyond Cost
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Delivering innovative solutions that drive business growth and
+                  operational excellence through cutting-edge technology and
+                  strategic consulting.
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+                Get Started Today
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-white font-semibold text-lg mb-6">
+                Quick Links
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { name: "Services", href: "#services" },
+                  { name: "About Us", href: "#about" },
+                  { name: "Blog", href: "#blog" },
+                  { name: "Careers", href: "#careers" },
+                  { name: "Case Studies", href: "#case-studies" },
+                ].map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                    >
+                      {link.name}
+                      <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Information */}
+            <div>
+              <h4 className="text-white font-semibold text-lg mb-6">
+                Contact Us
+              </h4>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      Raja Ram mohon roy
+                      <br />
+                      Sarani
+                      <br />
+                      Serampore, West Bengal 712203
+                      <br />
+                      India
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <a
+                    href="tel:+911234567890"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    +91 12345 67890
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <a
+                    href="mailto:info@jenisys.in"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    info@jenisys.in
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media & Newsletter */}
+            <div>
+              <h4 className="text-white font-semibold text-lg mb-6">
+                Stay Connected
+              </h4>
+
+              {/* Social Media Icons */}
+              <div className="flex gap-4 mb-6">
+                {[
+                  {
+                    name: "Instagram",
+                    href: "https://www.instagram.com/jenisys.in/",
+                    icon: "/img/mdi_instagram.png",
+                  },
+                  {
+                    name: "LinkedIn",
+                    href: "https://www.linkedin.com/company/jenisys",
+                    icon: "/img/linkedIn.png",
+                  },
+                  {
+                    name: "Facebook",
+                    href: "https://www.facebook.com",
+                    icon: "/img/facebook.png",
+                  },
+                ].map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                  >
+                    <Image
+                      src={social.icon}
+                      alt={social.name}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
+                    />
+                  </a>
+                ))}
+              </div>
+
+              {/* Newsletter Signup */}
+              <div>
+                <p className="text-gray-300 text-sm mb-3">
+                  Subscribe to our newsletter
+                </p>
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                  />
+                  <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors">
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-700">
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              {/* Copyright */}
+              <div className="text-gray-400 text-sm">
+                © 2025 Jenisys. All rights reserved.
+              </div>
+
+              {/* Legal Links */}
+              <div className="flex gap-6 text-sm">
+                {[{ name: "Privacy Policy", href: "/Privacy-Policy" }].map(
+                  (link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                      {link.name}
+                    </a>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Cloudsln;

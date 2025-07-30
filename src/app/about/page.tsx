@@ -1,6 +1,6 @@
 // src/app/about/page.js
 
-import AboutUs from '../../components/about-us';
+import AboutUs from '../../components/About-us/about-us';
 
 export const metadata = {
   title: "About Us - Jenisys",
