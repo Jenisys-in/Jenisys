@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useCallback } from "react";
 
-import "../app/global.css";
+import "../../src/app/global.css";
 import { ArrowRight, ExternalLink, MapPin, Phone, Mail } from "lucide-react";
 
 const PrivacyPolicy = () => {
@@ -757,7 +757,7 @@ const PrivacyPolicy = () => {
               {/* Legal Links */}
               <div className="flex gap-6 text-sm">
                 <a
-                  href="#privacy"
+                  href="/Privacy-Policy"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Privacy Policy

@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 
 import { Mail, Phone, MapPin, ExternalLink, Bot } from "lucide-react";
+import Link from "next/link";
 
 const JenisysAILanding = () => {
   const [activeTab, setActiveTab] = useState("ai");
@@ -1513,13 +1514,13 @@ const JenisysAILanding = () => {
                   { name: "Case Studies", href: "#case-studies" },
                 ].map((link) => (
                   <li key={link.name}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                     >
                       {link.name}
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -1548,22 +1549,22 @@ const JenisysAILanding = () => {
 
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
-                  <a
+                  <Link
                     href="tel:+911234567890"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    +91 12345 67890
-                  </a>
+                    +91 8240384648
+                  </Link>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
-                  <a
-                    href="mailto:info@jenisys.in"
+                  <Link
+                    href="mailto:contact@jenisys.in"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    info@jenisys.in
-                  </a>
+                    contact@jenisys.in
+                  </Link>
                 </div>
               </div>
             </div>
@@ -1593,7 +1594,7 @@ const JenisysAILanding = () => {
                     icon: "/img/facebook.png",
                   },
                 ].map((social) => (
-                  <a
+                  <Link
                     key={social.name}
                     href={social.href}
                     target="_blank"
@@ -1607,7 +1608,7 @@ const JenisysAILanding = () => {
                       height={24}
                       className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
                     />
-                  </a>
+                  </Link>
                 ))}
               </div>
 
@@ -1644,13 +1645,13 @@ const JenisysAILanding = () => {
               <div className="flex gap-6 text-sm">
                 {[{ name: "Privacy Policy", href: "/Privacy-Policy" }].map(
                   (link) => (
-                    <a
+                    <Link
                       key={link.name}
                       href={link.href}
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   )
                 )}
               </div>
