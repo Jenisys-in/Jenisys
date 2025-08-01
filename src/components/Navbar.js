@@ -146,7 +146,7 @@ function Navbar() {
           setActiveDropdown(item.name);
         }
       },
-      [isMobile, item.hasDropdown, item.name, clearHoverTimeout]
+      [isMobile, item.hasDropdown, item.name]
     );
 
     const handleMouseLeave = useCallback(() => {
@@ -164,7 +164,7 @@ function Navbar() {
         e.stopPropagation();
         setActiveDropdown(activeDropdown === item.name ? null : item.name);
       },
-      [activeDropdown, item.name]
+      [item.name]
     );
 
     const handleNavClick = useCallback(() => {

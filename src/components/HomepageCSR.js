@@ -495,7 +495,7 @@ const HomepageCSR = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [uiStates.isVisible, testimonials.length]);
+  }, [uiStates.isVisible]);
 
   // Memoized visible testimonials
   const visibleTestimonials = useMemo(() => {
@@ -548,28 +548,7 @@ const HomepageCSR = () => {
     [formData, handleShowAlert]
   );
 
-  // Scroll observer for animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-          } else {
-            entry.target.classList.remove("active");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "50px" }
-    );
-
-    const elements = document.querySelectorAll(".scroll-on-appear");
-    elements.forEach((element) => observer.observe(element));
-
-    return () => {
-      elements.forEach((element) => observer.unobserve(element));
-    };
-  }, []);
+  
 
   // Mouse tracking with throttling
   useEffect(() => {
@@ -856,7 +835,7 @@ const HomepageCSR = () => {
       <div className="section white-section">
         <div
           ref={sectionRef}
-          className="scroll-on-appear w-screen min-h-[650px] sm:min-h-[700px] md:min-h-[800px] lg:h-screen bg-black px-5 sm:px-8 md:px-12 lg:pl-[60px] lg:px-0 flex flex-col-reverse lg:flex-row text-white"
+          className="w-screen min-h-[650px] sm:min-h-[700px] md:min-h-[800px] lg:h-screen bg-black px-5 sm:px-8 md:px-12 lg:pl-[60px] lg:px-0 flex flex-col-reverse lg:flex-row text-white"
         >
           <div className="flex flex-col-reverse lg:flex-row w-full">
             {/* Vision Section */}
