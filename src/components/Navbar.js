@@ -69,7 +69,7 @@ function Navbar() {
   ];
 
   const navItems = [
-    { name: "Case Studies", path: "/case-studies" },
+    { name: "Case Studies", path: "/case-study" },
     {
       name: "Services",
       path: "/services",
