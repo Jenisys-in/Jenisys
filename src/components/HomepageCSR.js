@@ -9,8 +9,7 @@ import React, {
 } from "react";
 import "../app/global.css";
 import { useSwipeable } from "react-swipeable";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -455,27 +454,7 @@ const HomepageCSR = () => {
     [slideStates.currentIndex, slideStates.cardsToShow, maxIndex, controls]
   );
 
-  // Initialize AOS once
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-    setUIStates((prev) => ({ ...prev, activeTab: "services" }));
-
-    // Simulate AOS initialization
-    const timer = setTimeout(() => {
-      const elements = document.querySelectorAll("[data-aos]");
-      elements.forEach((el, index) => {
-        setTimeout(() => {
-          el.style.opacity = "1";
-          el.style.transform = "translateY(0)";
-        }, index * 100);
-      });
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+  
 
   // Optimized intersection observer
   useEffect(() => {
@@ -895,7 +874,6 @@ const HomepageCSR = () => {
                   height={500}
                   alt="Our Vision"
                   className="pt-[20px] sm:pt-[30px] md:pt-[40px] w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] lg:w-auto mx-auto lg:mx-0 transition-transform duration-300 group-hover:scale-[1.02]"
-                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-[20px] sm:mt-[30px] md:mt-[40px]"></div>
               </div>
@@ -1121,7 +1099,6 @@ const HomepageCSR = () => {
             layout="fill"
             objectFit="cover"
             style={{ filter: "brightness(1.2) contrast(0.8)" }}
-            priority
           />
           <div className="absolute inset-0" />
         </div>
@@ -1135,7 +1112,7 @@ const HomepageCSR = () => {
         />
 
         <div className="max-w-7xl mx-auto relative" style={{ zIndex: 1 }}>
-          <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+          <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-['Montserrat'] text-white mb-4">
               What We Do
             </h2>
@@ -1145,10 +1122,7 @@ const HomepageCSR = () => {
             </p>
           </div>
 
-          <div
-            className="flex justify-center mb-12 sm:mb-16"
-            data-aos="fade-up"
-          >
+          <div className="flex justify-center mb-12 sm:mb-16">
             <div className="inline-flex rounded-xl bg-white border border-gray-200 p-1 shadow-lg">
               <button
                 className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
@@ -1191,8 +1165,6 @@ const HomepageCSR = () => {
                   <div
                     key={index}
                     className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 min-h-[200px] flex flex-col"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
                     onMouseEnter={() =>
                       setUIStates((prev) => ({
                         ...prev,
@@ -1250,11 +1222,12 @@ const HomepageCSR = () => {
                         </p>
 
                         <div className="text-center">
-                          <Link href={service.link} passHref>
-                            <a className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base">
-                              Learn More
-                              <ExternalLink size={16} />
-                            </a>
+                          <Link
+                            href={service.link}
+                            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base"
+                          >
+                            Learn More
+                            <ExternalLink size={16} />
                           </Link>
                         </div>
                       </div>
@@ -1277,8 +1250,6 @@ const HomepageCSR = () => {
                   <div
                     key={index}
                     className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
                   >
                     <div className="text-4xl sm:text-5xl mb-6 text-center transform group-hover:scale-110 transition-transform duration-300">
                       {industry.icon}
