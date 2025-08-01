@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -13,42 +13,87 @@ function Navbar() {
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const pathname = usePathname();
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     // Close any open dropdowns when toggling mobile menu
     setActiveDropdown(null);
-  };
+  }, [isMobileMenuOpen]);
 
-  // Handle scroll effect
+  const clearHoverTimeout = useCallback(() => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+  }, [hoverTimeout]);
+
+  // Handle scroll effect with throttling for better performance
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 0);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          setIsScrolled(scrollTop > 10); // Small threshold to prevent flickering
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdowns when clicking outside (only for desktop)
+  // Close dropdowns when clicking outside or pressing escape
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Only handle outside clicks for desktop
       if (window.innerWidth >= 1024) {
-        setActiveDropdown(null);
-      }
-      if (hoverTimeout) {
-        clearTimeout(hoverTimeout);
-        setHoverTimeout(null);
+        const navbar = document.querySelector("nav");
+        if (navbar && !navbar.contains(event.target)) {
+          setActiveDropdown(null);
+          clearHoverTimeout();
+        }
       }
     };
+
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") {
+        setActiveDropdown(null);
+        setIsMobileMenuOpen(false);
+        clearHoverTimeout();
+      }
+    };
+
     document.addEventListener("click", handleClickOutside);
+    document.addEventListener("keydown", handleEscapeKey);
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      if (hoverTimeout) {
-        clearTimeout(hoverTimeout);
-      }
+      document.removeEventListener("keydown", handleEscapeKey);
+      clearHoverTimeout();
     };
-  }, [hoverTimeout]);
+  }, [clearHoverTimeout]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   const services = [
     { name: "Web Development", path: "/services/web-development" },
@@ -93,43 +138,47 @@ function Navbar() {
       (item.dropdownItems &&
         item.dropdownItems.some((dropItem) => pathname === dropItem.path));
 
-    const handleMouseEnter = (e) => {
-      if (!isMobile && item.hasDropdown) {
-        e.stopPropagation();
-        if (hoverTimeout) {
-          clearTimeout(hoverTimeout);
-          setHoverTimeout(null);
+    const handleMouseEnter = useCallback(
+      (e) => {
+        if (!isMobile && item.hasDropdown) {
+          e.stopPropagation();
+          clearHoverTimeout();
+          setActiveDropdown(item.name);
         }
-        setActiveDropdown(item.name);
-      }
-    };
+      },
+      [isMobile, item.hasDropdown, item.name, clearHoverTimeout]
+    );
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = useCallback(() => {
       if (!isMobile && item.hasDropdown) {
         const timeout = setTimeout(() => {
           setActiveDropdown(null);
-        }, 250);
+        }, 150); // Reduced delay for smoother experience
         setHoverTimeout(timeout);
       }
-    };
+    }, [isMobile, item.hasDropdown]);
 
-    const handleDropdownToggle = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log(
-        "Dropdown toggle clicked:",
-        item.name,
-        "Current active:",
-        activeDropdown
-      );
-      setActiveDropdown(activeDropdown === item.name ? null : item.name);
-    };
+    const handleDropdownToggle = useCallback(
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setActiveDropdown(activeDropdown === item.name ? null : item.name);
+      },
+      [activeDropdown, item.name]
+    );
 
-    const handleNavClick = () => {
+    const handleNavClick = useCallback(() => {
       if (!item.hasDropdown && onClick) {
         onClick();
       }
-    };
+    }, [item.hasDropdown, onClick]);
+
+    const handleDropdownItemClick = useCallback(() => {
+      setActiveDropdown(null);
+      if (isMobile) {
+        setIsMobileMenuOpen(false);
+      }
+    }, [isMobile]);
 
     const isDropdownOpen = activeDropdown === item.name;
 
@@ -144,15 +193,17 @@ function Navbar() {
           <button
             onClick={handleDropdownToggle}
             className={`
-              flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-300 w-full
+              flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200 w-full
               ${isMobile ? "text-lg justify-between" : "text-base"}
               ${
                 isActive
                   ? "text-blue-600 bg-blue-50 font-medium"
                   : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
               }
-              relative group
+              relative group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
             `}
+            aria-expanded={isDropdownOpen}
+            aria-haspopup="true"
           >
             <span>{item.name}</span>
             <ChevronDown
@@ -172,14 +223,14 @@ function Navbar() {
             href={item.path}
             onClick={handleNavClick}
             className={`
-              flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-300
+              flex items-center gap-1 px-4 py-2 rounded-lg transition-all duration-200
               ${isMobile ? "text-lg w-full justify-between" : "text-base"}
               ${
                 isActive
                   ? "text-blue-600 bg-blue-50 font-medium"
                   : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
               }
-              relative group
+              relative group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
             `}
           >
             <span>{item.name}</span>
@@ -196,24 +247,21 @@ function Navbar() {
             className={`
             ${
               isMobile
-                ? `overflow-hidden transition-all duration-300 bg-gray-50 ${
+                ? `overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 ${
                     isDropdownOpen
                       ? "max-h-96 opacity-100"
                       : "max-h-0 opacity-0"
                   }`
-                : `absolute top-full left-0 mt-1 min-w-64 bg-white rounded-xl shadow-lg border border-gray-100 z-50 transform transition-all duration-200 ${
+                : `absolute top-full left-0 mt-2 min-w-64 bg-white rounded-xl shadow-lg border border-gray-100 z-50 transform transition-all duration-200 ease-out ${
                     isDropdownOpen
                       ? "opacity-100 translate-y-0 visible"
-                      : "opacity-0 -translate-y-2 invisible"
+                      : "opacity-0 -translate-y-2 invisible pointer-events-none"
                   }`
             }
           `}
             onMouseEnter={() => {
               if (!isMobile) {
-                if (hoverTimeout) {
-                  clearTimeout(hoverTimeout);
-                  setHoverTimeout(null);
-                }
+                clearHoverTimeout();
                 setActiveDropdown(item.name);
               }
             }}
@@ -221,7 +269,7 @@ function Navbar() {
               if (!isMobile) {
                 const timeout = setTimeout(() => {
                   setActiveDropdown(null);
-                }, 250);
+                }, 150);
                 setHoverTimeout(timeout);
               }
             }}
@@ -231,17 +279,10 @@ function Navbar() {
                 <Link
                   key={dropdownItem.name}
                   href={dropdownItem.path}
-                  onClick={() => {
-                    console.log("Dropdown item clicked:", dropdownItem.name);
-                    // Close dropdown and mobile menu when clicking on dropdown items
-                    setActiveDropdown(null);
-                    if (isMobile) {
-                      setIsMobileMenuOpen(false);
-                    }
-                  }}
+                  onClick={handleDropdownItemClick}
                   className={`
                     block px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 
-                    transition-all duration-200 group
+                    transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
                     ${isMobile ? "text-base" : "text-sm"}
                     ${!isMobile && index === 0 ? "rounded-t-lg" : ""}
                     ${
@@ -270,10 +311,10 @@ function Navbar() {
     <>
       <nav
         className={`
-        fixed z-50 top-0 left-0 w-full transition-all duration-300 
+        fixed z-50 top-0 left-0 w-full transition-all duration-300 ease-out
         ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100"
+            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100"
             : "bg-white shadow-sm"
         }
       `}
@@ -282,7 +323,7 @@ function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link
-              className="flex gap-2 items-center hover:opacity-80 transition-opacity duration-200"
+              className="flex gap-2 items-center hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-lg"
               href="/"
             >
               <Image
@@ -291,6 +332,7 @@ function Navbar() {
                 width={60}
                 height={65}
                 className="w-[25px] h-[30px] sm:w-[35px] sm:h-[40px] md:w-[45px] md:h-[50px] lg:w-[55px] lg:h-[60px]"
+                priority
               />
               <Image
                 src="/img/Jenisys Hero.png"
@@ -298,6 +340,7 @@ function Navbar() {
                 width={180}
                 height={50}
                 className="w-[90px] h-[25px] sm:w-[110px] sm:h-[30px] md:w-[130px] md:h-[35px] lg:w-[150px] lg:h-[40px] xl:w-[180px] xl:h-[50px]"
+                priority
               />
             </Link>
 
@@ -312,7 +355,7 @@ function Navbar() {
             <div className="hidden lg:flex items-center">
               <Link
                 href="/contact"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:scale-105"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Get Started
               </Link>
@@ -321,8 +364,9 @@ function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-3 rounded-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105"
+              className="lg:hidden p-3 rounded-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <X size={28} className="text-gray-700" />
@@ -334,27 +378,19 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu - Moved outside navbar to avoid transparency inheritance */}
+      {/* Mobile Menu */}
       <div
         className={`
-        lg:hidden fixed inset-0 z-40 transform transition-transform duration-300
+        lg:hidden fixed inset-0 z-40 transform transition-transform duration-300 ease-in-out
         ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}
       `}
         style={{ backgroundColor: "#ffffff" }}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-menu"
       >
         <div className="pt-20 pb-6 px-6 overflow-y-auto max-h-screen">
-          {/* Close button inside mobile menu */}
-          <div className="absolute top-4 right-4">
-            <button
-              onClick={toggleMobileMenu}
-              className="p-3 rounded-lg hover:bg-gray-100 transition-all duration-200"
-              aria-label="Close mobile menu"
-            >
-              <X size={28} className="text-gray-700" />
-            </button>
-          </div>
-
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2" id="mobile-menu">
             {navItems.map((item) => (
               <NavItem
                 key={item.name}
@@ -374,7 +410,7 @@ function Navbar() {
             <Link
               href="/contact"
               onClick={toggleMobileMenu}
-              className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Get Started
             </Link>
@@ -385,8 +421,9 @@ function Navbar() {
       {/* Overlay for mobile menu */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black/20 z-30"
+          className="lg:hidden fixed inset-0 bg-black/20 z-30 transition-opacity duration-300"
           onClick={toggleMobileMenu}
+          aria-hidden="true"
         />
       )}
 

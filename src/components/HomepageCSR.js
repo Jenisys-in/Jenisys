@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import "../app/global.css";
 import { useSwipeable } from "react-swipeable";
 import AOS from "aos";
@@ -53,6 +59,7 @@ import {
 
 import { Star, User } from "lucide-react";
 
+// Memoized constants to prevent recreation
 const caseStudies = [
   {
     id: 1,
@@ -104,6 +111,7 @@ const caseStudies = [
   },
 ];
 
+// Optimized motion variants with reduced calculations
 const cardVariants = {
   initial: { opacity: 0, y: 20, scale: 0.95 },
   animate: { opacity: 1, y: 0, scale: 1 },
@@ -145,7 +153,7 @@ const testimonials = [
   },
   {
     quote:
-      "The team at Jenisys went above and beyond to help us redesign our website. Their attention to detail was evident throughout. Our new site not only looks fantastic but also performs flawlessly, thanks to Jenisys’s outstanding work.",
+      "The team at Jenisys went above and beyond to help us redesign our website. Their attention to detail was evident throughout. Our new site not only looks fantastic but also performs flawlessly, thanks to Jenisys's outstanding work.",
     name: "Sophie Nguyen",
     title: "Marketing Director at Pulse Dynamics",
   },
@@ -169,8 +177,30 @@ const testimonials = [
   },
 ];
 
+// Memoized TestimonialCard component with performance optimizations
 const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
-  TestimonialCard.displayName = "TestimonialCard";
+  const cardStyle = useMemo(
+    () => ({
+      transitionDelay: `${index * 150}ms`,
+      backfaceVisibility: "hidden",
+      perspective: "1000px",
+    }),
+    [index]
+  );
+
+  const starElements = useMemo(
+    () =>
+      [...Array(5)].map((_, i) => (
+        <Star
+          key={i}
+          size={16}
+          fill="currentColor"
+          className="drop-shadow-sm"
+        />
+      )),
+    []
+  );
+
   return (
     <div
       className={`
@@ -184,11 +214,7 @@ const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
         will-change-transform
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
       `}
-      style={{
-        transitionDelay: `${index * 150}ms`,
-        backfaceVisibility: "hidden",
-        perspective: "1000px",
-      }}
+      style={cardStyle}
     >
       <div>
         <div className="flex items-center gap-4 mb-6">
@@ -216,19 +242,12 @@ const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-1 text-yellow-400 mt-4">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={16}
-            fill="currentColor"
-            className="drop-shadow-sm"
-          />
-        ))}
-      </div>
+      <div className="flex gap-1 text-yellow-400 mt-4">{starElements}</div>
     </div>
   );
 });
+
+TestimonialCard.displayName = "TestimonialCard";
 
 const TABS = {
   SERVICES: "Services",
@@ -237,26 +256,42 @@ const TABS = {
 
 const HomepageCSR = () => {
   HomepageCSR.displayName = "HomepageCSR";
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [slidesToShow, setSlidesToShow] = useState(1);
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const sectionRef = useRef(null);
+
+  // State management - grouped related states
+  const [slideStates, setSlideStates] = useState({
+    currentSlide: 0,
+    currentIndex: 0,
+    cardsToShow: 1,
+    slidesToShow: 1,
+  });
+
+  const [uiStates, setUIStates] = useState({
+    isVisible: false,
+    isLoaded: false,
+    isDragging: false,
+    hoveredItem: null,
+    hoveredValue: null,
+    hoveredService: null,
+    hoveredCard: null,
+    expandedService: null,
+    activeStudy: null,
+    activeTab: "services",
+    showAlert: false,
+  });
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [hoveredValue, setHoveredValue] = useState(null);
-  const [activeTab, setActiveTab] = useState(TABS.SERVICES);
-  const [expandedService, setExpandedService] = useState(null);
-  const [hoveredService, setHoveredService] = useState(null);
-  const [activeStudy, setActiveStudy] = useState(null);
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    contactNo: "",
+  });
+
+  // Refs
+  const sectionRef = useRef(null);
   const containerRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [cardsToShow, setCardsToShow] = useState(1);
-  const [isDragging, setIsDragging] = useState(false);
   const carouselRef = useRef(null);
 
-  // Motion values for drag
+  // Motion values
   const x = useMotionValue(0);
   const controls = useAnimationControls();
   const dragControls = useDragControls();
@@ -266,6 +301,7 @@ const HomepageCSR = () => {
     offset: ["start end", "end start"],
   });
 
+  // Memoized transforms to prevent recalculation
   const backgroundY = useTransform(scrollYProgress, [0, 1], [20, -20]);
   const backgroundY2 = useTransform(scrollYProgress, [0, 1], [-15, 15]);
   const sectionOpacity = useTransform(
@@ -274,102 +310,7 @@ const HomepageCSR = () => {
     [0, 1, 1, 0]
   );
 
-  // Handle responsive cards with proper breakpoints
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 480) {
-        setCardsToShow(1); // Mobile phones
-      } else if (width < 768) {
-        setCardsToShow(1); // Large mobile/small tablets
-      } else if (width < 1024) {
-        setCardsToShow(2); // Tablets
-      } else if (width < 1280) {
-        setCardsToShow(2); // Small laptops
-      } else {
-        setCardsToShow(3); // Desktop
-      }
-      setCurrentIndex(0);
-      x.set(0); // Reset drag position
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [x]);
-
-  const maxIndex = Math.max(0, caseStudies.length - cardsToShow);
-  const totalSlides = maxIndex + 1;
-
-  // Calculate the width of each slide as a percentage
-  const slideWidth = 100 / cardsToShow;
-
-  const nextSlide = () => {
-    if (currentIndex < maxIndex) {
-      const newIndex = currentIndex + 1;
-      setCurrentIndex(newIndex);
-      controls.start({
-        x: `-${(newIndex / cardsToShow) * 100}%`,
-        transition: {
-          type: "tween",
-          duration: 0.4,
-          ease: [0.25, 0.1, 0.25, 1],
-        },
-      });
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      const newIndex = currentIndex - 1;
-      setCurrentIndex(newIndex);
-      controls.start({
-        x: `-${(newIndex / cardsToShow) * 100}%`,
-        transition: {
-          type: "tween",
-          duration: 0.4,
-          ease: [0.25, 0.1, 0.25, 1],
-        },
-      });
-    }
-  };
-
-  const goToCaseSlide = (index) => {
-    setCurrentIndex(index);
-    controls.start({
-      x: `-${(index / cardsToShow) * 100}%`,
-      transition: { type: "tween", duration: 0.4, ease: [0.25, 0.1, 0.25, 1] },
-    });
-  };
-
-  // Handle drag end
-  const handleDragEnd = (event, info) => {
-    setIsDragging(false);
-    const threshold = 50; // Minimum drag distance to trigger slide change
-    const velocity = info.velocity.x;
-    const offset = info.offset.x;
-
-    // Determine if we should change slides based on drag distance and velocity
-    let newIndex = currentIndex;
-
-    if (Math.abs(offset) > threshold || Math.abs(velocity) > 500) {
-      if (offset > 0 && currentIndex > 0) {
-        // Dragged right, go to previous slide
-        newIndex = currentIndex - 1;
-      } else if (offset < 0 && currentIndex < maxIndex) {
-        // Dragged left, go to next slide
-        newIndex = currentIndex + 1;
-      }
-    }
-
-    // Animate to the target position
-    setCurrentIndex(newIndex);
-    controls.start({
-      x: `-${(newIndex / cardsToShow) * 100}%`,
-      transition: { type: "spring", stiffness: 400, damping: 40 },
-    });
-  };
-
+  // Memoized background elements
   const backgroundElements = useMemo(
     () => (
       <>
@@ -386,19 +327,144 @@ const HomepageCSR = () => {
     [backgroundY, backgroundY2]
   );
 
+  // Optimized resize handler with throttling
+  const handleResize = useCallback(() => {
+    const width = window.innerWidth;
+    let newCardsToShow, newSlidesToShow;
+
+    if (width < 480) {
+      newCardsToShow = 1;
+      newSlidesToShow = 1;
+    } else if (width < 768) {
+      newCardsToShow = 1;
+      newSlidesToShow = 1;
+    } else if (width < 1024) {
+      newCardsToShow = 2;
+      newSlidesToShow = 2;
+    } else if (width < 1280) {
+      newCardsToShow = 2;
+      newSlidesToShow = 2;
+    } else if (width >= 1536) {
+      newCardsToShow = 3;
+      newSlidesToShow = 3;
+    } else {
+      newCardsToShow = 3;
+      newSlidesToShow = 2;
+    }
+
+    setSlideStates((prev) => ({
+      ...prev,
+      cardsToShow: newCardsToShow,
+      slidesToShow: newSlidesToShow,
+      currentIndex: 0,
+    }));
+    x.set(0);
+  }, [x]);
+
+  // Throttled resize handler
+  const throttledResize = useMemo(() => {
+    let timeoutId;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleResize, 100);
+    };
+  }, [handleResize]);
+
+  // Handle responsive cards with proper breakpoints
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", throttledResize);
+    return () => {
+      window.removeEventListener("resize", throttledResize);
+    };
+  }, [handleResize, throttledResize]);
+
+  const maxIndex = Math.max(0, caseStudies.length - slideStates.cardsToShow);
+  const totalSlides = maxIndex + 1;
+
+  // Memoized carousel functions
+  const nextSlide = useCallback(() => {
+    if (slideStates.currentIndex < maxIndex) {
+      const newIndex = slideStates.currentIndex + 1;
+      setSlideStates((prev) => ({ ...prev, currentIndex: newIndex }));
+      controls.start({
+        x: `-${(newIndex / slideStates.cardsToShow) * 100}%`,
+        transition: {
+          type: "tween",
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      });
+    }
+  }, [slideStates.currentIndex, maxIndex, slideStates.cardsToShow, controls]);
+
+  const prevSlide = useCallback(() => {
+    if (slideStates.currentIndex > 0) {
+      const newIndex = slideStates.currentIndex - 1;
+      setSlideStates((prev) => ({ ...prev, currentIndex: newIndex }));
+      controls.start({
+        x: `-${(newIndex / slideStates.cardsToShow) * 100}%`,
+        transition: {
+          type: "tween",
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      });
+    }
+  }, [slideStates.currentIndex, slideStates.cardsToShow, controls]);
+
+  const goToCaseSlide = useCallback(
+    (index) => {
+      setSlideStates((prev) => ({ ...prev, currentIndex: index }));
+      controls.start({
+        x: `-${(index / slideStates.cardsToShow) * 100}%`,
+        transition: {
+          type: "tween",
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      });
+    },
+    [slideStates.cardsToShow, controls]
+  );
+
+  // Handle drag end
+  const handleDragEnd = useCallback(
+    (event, info) => {
+      setUIStates((prev) => ({ ...prev, isDragging: false }));
+      const threshold = 50;
+      const velocity = info.velocity.x;
+      const offset = info.offset.x;
+
+      let newIndex = slideStates.currentIndex;
+
+      if (Math.abs(offset) > threshold || Math.abs(velocity) > 500) {
+        if (offset > 0 && slideStates.currentIndex > 0) {
+          newIndex = slideStates.currentIndex - 1;
+        } else if (offset < 0 && slideStates.currentIndex < maxIndex) {
+          newIndex = slideStates.currentIndex + 1;
+        }
+      }
+
+      setSlideStates((prev) => ({ ...prev, currentIndex: newIndex }));
+      controls.start({
+        x: `-${(newIndex / slideStates.cardsToShow) * 100}%`,
+        transition: { type: "spring", stiffness: 400, damping: 40 },
+      });
+    },
+    [slideStates.currentIndex, slideStates.cardsToShow, maxIndex, controls]
+  );
+
+  // Initialize AOS once
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
-  }, []);
+    setUIStates((prev) => ({ ...prev, activeTab: "services" }));
 
-  useEffect(() => {
-    // Ensure services tab is selected by default
-    setActiveTab("services");
-
-    // Simulate AOS initialization - make all elements visible
-    setTimeout(() => {
+    // Simulate AOS initialization
+    const timer = setTimeout(() => {
       const elements = document.querySelectorAll("[data-aos]");
       elements.forEach((el, index) => {
         setTimeout(() => {
@@ -407,111 +473,103 @@ const HomepageCSR = () => {
         }, index * 100);
       });
     }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const updateSlidesToShow = () => {
-      const width = window.innerWidth;
-      if (width >= 1536) setSlidesToShow(3);
-      else if (width >= 1024) setSlidesToShow(2);
-      else setSlidesToShow(1);
-    };
-
-    updateSlidesToShow();
-    window.addEventListener("resize", updateSlidesToShow);
-    return () => window.removeEventListener("resize", updateSlidesToShow);
-  }, []);
-
+  // Optimized intersection observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setUIStates((prev) => ({ ...prev, isVisible: true }));
+          observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
     );
 
-    const section = document.getElementById("testimonials-section");
-    if (section) observer.observe(section);
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      observer.observe(currentSection);
+    }
 
-    return () => observer.disconnect();
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection);
+      }
+    };
   }, []);
 
+  // Testimonial auto-slide with cleanup
   useEffect(() => {
-    if (!isVisible) return;
+    if (!uiStates.isVisible) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev >= testimonials.length - slidesToShow ? 0 : prev + 1
-      );
+      setSlideStates((prev) => {
+        const nextSlide = prev.currentSlide + 1;
+        return {
+          ...prev,
+          currentSlide: nextSlide >= testimonials.length ? 0 : nextSlide,
+        };
+      });
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isVisible, slidesToShow]);
+  }, [uiStates.isVisible, testimonials.length]);
 
+  // Memoized visible testimonials
   const visibleTestimonials = useMemo(() => {
-    const start = currentSlide;
-    const end = start + slidesToShow;
+    const start = slideStates.currentSlide;
+    const end = start + slideStates.slidesToShow;
     return testimonials.slice(start, end);
-  }, [currentSlide, slidesToShow]);
+  }, [slideStates.currentSlide, slideStates.slidesToShow]);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+  const goToSlide = useCallback((index) => {
+    setSlideStates((prev) => ({ ...prev, currentSlide: index }));
+  }, []);
 
-  const maxSlides = Math.max(0, testimonials.length - slidesToShow);
+  const maxSlides = Math.max(0, testimonials.length - slideStates.slidesToShow);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    contactNo: "",
-  });
+  // Form handlers
+  const handleShowAlert = useCallback(() => {
+    setUIStates((prev) => ({ ...prev, showAlert: true }));
+  }, []);
 
-  const [showAlert, setShowAlert] = useState(false);
-  const handleShowAlert = () => {
-    setShowAlert(true);
-  };
+  const handleCloseAlert = useCallback(() => {
+    setUIStates((prev) => ({ ...prev, showAlert: false }));
+  }, []);
 
-  const handleCloseAlert = () => {
-    setShowAlert(false);
-  };
+  const handleChange = useCallback((e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (!formData.name || !formData.email) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email) {
-      return; // Prevent form submission if required fields are empty
-    }
-
-    try {
-      const response = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        handleShowAlert();
-        setFormData({
-          name: "",
-          email: "",
-          contactNo: "",
+      try {
+        const response = await fetch("/api/newsletter", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         });
-      } else {
-        console.error("Error sending email");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
 
+        if (response.ok) {
+          handleShowAlert();
+          setFormData({ name: "", email: "", contactNo: "" });
+        } else {
+          console.error("Error sending email");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    },
+    [formData, handleShowAlert]
+  );
+
+  // Scroll observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -523,226 +581,229 @@ const HomepageCSR = () => {
           }
         });
       },
-      { threshold: 0.1 } // Adjust threshold to suit the effect you want
+      { threshold: 0.1, rootMargin: "50px" }
     );
 
     const elements = document.querySelectorAll(".scroll-on-appear");
     elements.forEach((element) => observer.observe(element));
 
     return () => {
-      if (elements && elements.length > 0) {
-        elements.forEach((element) => observer.unobserve(element));
-      }
+      elements.forEach((element) => observer.unobserve(element));
     };
   }, []);
 
+  // Mouse tracking with throttling
   useEffect(() => {
-    // Smooth entrance animation
-    setIsLoaded(true);
+    setUIStates((prev) => ({ ...prev, isLoaded: true }));
 
-    // Mouse tracking for subtle parallax
+    let animationFrameId;
     const handleMouseMove = (e) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      setMousePosition({
-        x: (e.clientX - rect.left) / rect.width,
-        y: (e.clientY - rect.top) / rect.height,
+      if (animationFrameId) return;
+
+      animationFrameId = requestAnimationFrame(() => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height,
+        });
+        animationFrameId = null;
       });
     };
 
     const section = document.getElementById("hero-section");
     if (section) {
-      section.addEventListener("mousemove", handleMouseMove);
-      return () => section.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, []);
-
-  const missionItems = [
-    {
-      image: "/img/bulb.png",
-      text: "To Empower Businesses with Uncompromised Quality and Innovation.",
-      alt: "bulb",
-    },
-    {
-      image: "/img/nano.png",
-      text: "To Revolutionize Business Growth Through Superior Technology.",
-      alt: "nano",
-    },
-    {
-      image: "/img/arrow.png",
-      text: "To Drive Success with Tailored, High-Quality Digital Solutions.",
-      alt: "arrow",
-    },
-    {
-      image: "/img/success.png",
-      text: "To Create the Future of Business with Relentless Excellence.",
-      alt: "success",
-    },
-  ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
+      section.addEventListener("mousemove", handleMouseMove, { passive: true });
+      return () => {
+        section.removeEventListener("mousemove", handleMouseMove);
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
         }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      };
     }
-
-    return () => observer.disconnect();
   }, []);
 
-  const values = [
-    {
-      id: 1,
-      icon: <Code className="w-8 h-8 md:w-10 md:h-10" />,
-      title: "Cutting-Edge Technology",
-      description:
-        "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive digital transformation.",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      id: 2,
-      // Replace Lightbulb from lucide-react with MdLightbulb from react-icons
-      icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10" />,
-      title: "Innovation First",
-      description:
-        "Our team constantly explores emerging technologies like AI, blockchain, and IoT to create groundbreaking solutions for complex challenges.",
-      color: "from-violet-500 to-pink-500",
-    },
-    {
-      id: 3,
-      icon: <Shield className="w-8 h-8 md:w-10 md:h-10" />,
-      title: "Security & Reliability",
-      description:
-        "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure your business continuity.",
-      color: "from-green-500 to-teal-500",
-    },
-    {
-      id: 4,
-      icon: <Users className="w-8 h-8 md:w-10 md:h-10" />,
-      title: "Client-Centric Approach",
-      description:
-        "We partner closely with our clients, understanding their unique needs to deliver personalized tech solutions that exceed expectations.",
-      color: "from-orange-500 to-red-500",
-    },
-  ];
+  // Memoized data arrays
+  const missionItems = useMemo(
+    () => [
+      {
+        image: "/img/bulb.png",
+        text: "To Empower Businesses with Uncompromised Quality and Innovation.",
+        alt: "bulb",
+      },
+      {
+        image: "/img/nano.png",
+        text: "To Revolutionize Business Growth Through Superior Technology.",
+        alt: "nano",
+      },
+      {
+        image: "/img/arrow.png",
+        text: "To Drive Success with Tailored, High-Quality Digital Solutions.",
+        alt: "arrow",
+      },
+      {
+        image: "/img/success.png",
+        text: "To Create the Future of Business with Relentless Excellence.",
+        alt: "success",
+      },
+    ],
+    []
+  );
 
-  const services = [
-    {
-      icon: Bot, // or Brain, depending on your visual preference
-      title: "AI Automation",
-      description:
-        "Streamlining business operations through intelligent automation solutions using AI models, machine learning, and workflow orchestration to enhance efficiency and reduce manual effort.",
-      link: "/services/ai-automation",
-    },
+  const values = useMemo(
+    () => [
+      {
+        id: 1,
+        icon: <Code className="w-8 h-8 md:w-10 md:h-10" />,
+        title: "Cutting-Edge Technology",
+        description:
+          "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive digital transformation.",
+        color: "from-blue-500 to-cyan-500",
+      },
+      {
+        id: 2,
+        icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10" />,
+        title: "Innovation First",
+        description:
+          "Our team constantly explores emerging technologies like AI, blockchain, and IoT to create groundbreaking solutions for complex challenges.",
+        color: "from-violet-500 to-pink-500",
+      },
+      {
+        id: 3,
+        icon: <Shield className="w-8 h-8 md:w-10 md:h-10" />,
+        title: "Security & Reliability",
+        description:
+          "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure your business continuity.",
+        color: "from-green-500 to-teal-500",
+      },
+      {
+        id: 4,
+        icon: <Users className="w-8 h-8 md:w-10 md:h-10" />,
+        title: "Client-Centric Approach",
+        description:
+          "We partner closely with our clients, understanding their unique needs to deliver personalized tech solutions that exceed expectations.",
+        color: "from-orange-500 to-red-500",
+      },
+    ],
+    []
+  );
 
-    {
-      icon: Monitor,
-      title: "Web Development",
-      description:
-        "Building fast, responsive and scalable web applications with modern technologies like React, Next.js, and Node.js for optimal performance.",
-      link: "/services/web-development",
-    },
-    {
-      icon: Smartphone,
-      title: "App Development",
-      description:
-        "Crafting native and cross-platform mobile applications for Android and iOS with React Native and Flutter frameworks.",
-      link: "/services/app-development",
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Solutions",
-      description:
-        "Deploying scalable cloud infrastructures, DevOps automation, and serverless architectures on AWS, Azure, and Google Cloud.",
-      link: "/services/cloud-solutions",
-    },
-    {
-      icon: Code,
-      title: "Custom Software Development",
-      description:
-        "Tailored software solutions built to match your unique business needs — scalable, secure, and ready to fuel your growth.",
-      link: "/services/cloud-solutions",
-    },
-    {
-      icon: UserCog,
-      title: "IT consulting",
-      description:
-        "Strategic IT guidance to help you innovate, optimize operations, and make technology work for your business goals.",
-      link: "/services/cloud-solutions",
-    },
-    {
-      icon: Wrench,
-      title: "Maintenance & Support ",
-      description:
-        "Reliable ongoing support and maintenance to keep your systems running smoothly, securely, and without interruptions.",
-      link: "/services/cloud-solutions",
-    },
-  ];
+  const services = useMemo(
+    () => [
+      {
+        icon: Bot,
+        title: "AI Automation",
+        description:
+          "Streamlining business operations through intelligent automation solutions using AI models, machine learning, and workflow orchestration to enhance efficiency and reduce manual effort.",
+        link: "/services/ai-ml",
+      },
+      {
+        icon: Monitor,
+        title: "Web Development",
+        description:
+          "Building fast, responsive and scalable web applications with modern technologies like React, Next.js, and Node.js for optimal performance.",
+        link: "/services/web-development",
+      },
+      {
+        icon: Smartphone,
+        title: "App Development",
+        description:
+          "Crafting native and cross-platform mobile applications for Android and iOS with React Native and Flutter frameworks.",
+        link: "/services/mobile-development",
+      },
+      {
+        icon: Cloud,
+        title: "Cloud Solutions",
+        description:
+          "Deploying scalable cloud infrastructures, DevOps automation, and serverless architectures on AWS, Azure, and Google Cloud.",
+        link: "/services/cloud-solutions",
+      },
+      {
+        icon: Code,
+        title: "Custom Software Development",
+        description:
+          "Tailored software solutions built to match your unique business needs — scalable, secure, and ready to fuel your growth.",
+        link: "/services/Custom-Software-Development",
+      },
+      {
+        icon: UserCog,
+        title: "IT consulting",
+        description:
+          "Strategic IT guidance to help you innovate, optimize operations, and make technology work for your business goals.",
+        link: "/services/IT-consulting",
+      },
+      {
+        icon: Wrench,
+        title: "Maintenance & Support ",
+        description:
+          "Reliable ongoing support and maintenance to keep your systems running smoothly, securely, and without interruptions.",
+        link: "/services/Maintenance",
+      },
+    ],
+    []
+  );
 
-  const industries = [
-    {
-      title: "Healthcare",
-      description:
-        "HIPAA-compliant platforms, telemedicine solutions, and patient management systems with advanced security protocols.",
-      icon: "🏥",
-    },
-    {
-      title: "Retail & E-commerce",
-      description:
-        "Custom storefronts, inventory management systems, payment gateways, and analytics dashboards for business growth.",
-      icon: "🛍️",
-    },
-    {
-      title: "Education",
-      description:
-        "Interactive learning management systems, virtual classrooms, and comprehensive student progress tracking platforms.",
-      icon: "🎓",
-    },
-    {
-      title: "Finance & Fintech",
-      description:
-        "Custom accounting platforms, secure payment gateways, and real-time financial analytics dashboards tailored for financial institutions and startups.",
-      icon: "💰",
-    },
-    {
-      title: "Hospitality & Food Services",
-      description:
-        "Restaurant POS systems, online food ordering platforms, and reservation management apps designed to enhance customer experience.",
-      icon: "🍽️",
-    },
-    {
-      title: "Real Estate",
-      description:
-        "Dynamic property listing websites, virtual tours, and CRM systems built for agents and real estate companies to manage sales pipelines.",
-      icon: "🏘️",
-    },
-    {
-      title: "Legal & Professional Services",
-      description:
-        "Case management software, secure document portals, and automated billing systems tailored for law firms and consulting agencies.",
-      icon: "⚖️",
-    },
-    {
-      title: "Travel & Tourism",
-      description:
-        "Custom booking engines, itinerary planners, and mobile apps for travel agencies to enhance customer engagement and streamline operations.",
-      icon: "✈️",
-    },
-    {
-      title: "Media & Entertainment",
-      description:
-        "Interactive content platforms, OTT streaming apps, and event booking systems for creators, studios, and entertainment brands.",
-      icon: "🎬",
-    },
-  ];
+  const industries = useMemo(
+    () => [
+      {
+        title: "Healthcare",
+        description:
+          "HIPAA-compliant platforms, telemedicine solutions, and patient management systems with advanced security protocols.",
+        icon: "🏥",
+      },
+      {
+        title: "Retail & E-commerce",
+        description:
+          "Custom storefronts, inventory management systems, payment gateways, and analytics dashboards for business growth.",
+        icon: "🛍️",
+      },
+      {
+        title: "Education",
+        description:
+          "Interactive learning management systems, virtual classrooms, and comprehensive student progress tracking platforms.",
+        icon: "🎓",
+      },
+      {
+        title: "Finance & Fintech",
+        description:
+          "Custom accounting platforms, secure payment gateways, and real-time financial analytics dashboards tailored for financial institutions and startups.",
+        icon: "💰",
+      },
+      {
+        title: "Hospitality & Food Services",
+        description:
+          "Restaurant POS systems, online food ordering platforms, and reservation management apps designed to enhance customer experience.",
+        icon: "🍽️",
+      },
+      {
+        title: "Real Estate",
+        description:
+          "Dynamic property listing websites, virtual tours, and CRM systems built for agents and real estate companies to manage sales pipelines.",
+        icon: "🏘️",
+      },
+      {
+        title: "Legal & Professional Services",
+        description:
+          "Case management software, secure document portals, and automated billing systems tailored for law firms and consulting agencies.",
+        icon: "⚖️",
+      },
+      {
+        title: "Travel & Tourism",
+        description:
+          "Custom booking engines, itinerary planners, and mobile apps for travel agencies to enhance customer engagement and streamline operations.",
+        icon: "✈️",
+      },
+      {
+        title: "Media & Entertainment",
+        description:
+          "Interactive content platforms, OTT streaming apps, and event booking systems for creators, studios, and entertainment brands.",
+        icon: "🎬",
+      },
+    ],
+    []
+  );
 
-  const AnimatedIcon = ({ Icon, isHovered }) => (
+  // Memoized AnimatedIcon component
+  const AnimatedIcon = React.memo(({ Icon, isHovered }) => (
     <div
       className={`w-16 h-16 mb-6 mx-auto rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-sm transition-all duration-300 ${
         isHovered ? "scale-110 bg-gray-200 shadow-md" : ""
@@ -755,23 +816,24 @@ const HomepageCSR = () => {
         }`}
       />
     </div>
-  );
+  ));
+
+  AnimatedIcon.displayName = "AnimatedIcon";
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => goToSlide(currentSlide + 1),
-    onSwipedRight: () => goToSlide(currentSlide - 1),
+    onSwipedLeft: () => goToSlide(slideStates.currentSlide + 1),
+    onSwipedRight: () => goToSlide(slideStates.currentSlide - 1),
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Enables dragging on desktop too
+    trackMouse: true,
   });
 
   return (
-    <div className=" flex-col relative overflow-x-hidden w-full">
+    <div className="flex-col relative overflow-x-hidden w-full">
+      {/* Hero Section */}
       <section className="section white-section relative overflow-hidden bg-white">
-        {/* Optional glow or blurred shape */}
         <div className="absolute w-[500px] h-[500px] bg-[#7526FE]/10 blur-[120px] rounded-full left-[60%] top-[20%] -z-10" />
 
         <div className="w-screen px-6 sm:px-8 md:px-[70px] lg:px-[100px] xl:px-[120px] 3xl:px-[150px] py-10 md:py-20 flex flex-col lg:flex-row justify-between items-center lg:h-screen gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-          {/* Left Content */}
           <div className="text-black w-full lg:flex-1 max-w-full lg:max-w-none">
             <h1 className="font-['Montserrat'] text-black text-[20px] sm:text-[24px] md:text-[32px] lg:text-[36px] xl:text-[44px] 2xl:text-[52px] 3xl:text-[60px] font-semibold leading-tight sm:leading-[28px] md:leading-[40px] lg:leading-[44px] xl:leading-[48px] 2xl:leading-[56px] 3xl:leading-[64px] mt-6">
               Revolutionize your business with{" "}
@@ -803,13 +865,15 @@ const HomepageCSR = () => {
               muted
               loop
               playsInline
-              preload="metadata" // Changed from "auto" to "metadata" for better performance
+              preload="metadata"
             >
               <source src="/Home Page Video.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
       </section>
+
+      {/* Vision/Mission Section */}
       <div className="section white-section">
         <div
           ref={sectionRef}
@@ -819,7 +883,7 @@ const HomepageCSR = () => {
             {/* Vision Section */}
             <div
               className={`flex flex-col lg:w-1/2 mb-8 lg:mb-0 transform transition-all duration-700 ${
-                isVisible
+                uiStates.isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-8 opacity-0"
               }`}
@@ -831,8 +895,8 @@ const HomepageCSR = () => {
                   height={500}
                   alt="Our Vision"
                   className="pt-[20px] sm:pt-[30px] md:pt-[40px] w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] lg:w-auto mx-auto lg:mx-0 transition-transform duration-300 group-hover:scale-[1.02]"
+                  priority
                 />
-                {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-[20px] sm:mt-[30px] md:mt-[40px]"></div>
               </div>
 
@@ -853,7 +917,6 @@ const HomepageCSR = () => {
                     Learn More
                     <ChevronRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-                  {/* Subtle shimmer effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 </button>
               </div>
@@ -862,7 +925,7 @@ const HomepageCSR = () => {
             {/* Mission Section */}
             <div
               className={`flex flex-col lg:w-1/2 font-['Montserrat'] pt-[20px] sm:pt-[25px] md:pt-[30px] lg:pt-[30px] order-first lg:order-none transform transition-all duration-700 delay-200 ${
-                isVisible
+                uiStates.isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-8 opacity-0"
               }`}
@@ -877,21 +940,27 @@ const HomepageCSR = () => {
                   <div
                     key={index}
                     className={`flex flex-row items-center group cursor-pointer transition-all duration-300 hover:translate-x-2 ${
-                      hoveredItem === index ? "bg-white/5" : ""
+                      uiStates.hoveredItem === index ? "bg-white/5" : ""
                     } rounded-lg p-2 -m-2`}
-                    onMouseEnter={() => setHoveredItem(index)}
-                    onMouseLeave={() => setHoveredItem(null)}
+                    onMouseEnter={() =>
+                      setUIStates((prev) => ({ ...prev, hoveredItem: index }))
+                    }
+                    onMouseLeave={() =>
+                      setUIStates((prev) => ({ ...prev, hoveredItem: null }))
+                    }
                     style={{
                       transitionDelay: `${index * 100}ms`,
-                      transform: isVisible
+                      transform: uiStates.isVisible
                         ? "translateX(0)"
                         : "translateX(-20px)",
-                      opacity: isVisible ? 1 : 0,
+                      opacity: uiStates.isVisible ? 1 : 0,
                     }}
                   >
                     <div
                       className={`bg-[#A3A3A3] rounded-[6px] sm:rounded-[8px] md:rounded-[10px] lg:rounded-[11px] w-[45px] h-[40px] sm:w-[55px] sm:h-[50px] md:w-[70px] md:h-[65px] lg:w-[89px] lg:h-[89px] mb-[8px] sm:mb-[10px] md:mb-[12px] lg:mb-0 mt-[15px] sm:mt-[20px] md:mt-[25px] lg:mt-[30px] flex justify-center items-center transition-all duration-300 group-hover:bg-[#b8b8b8] group-hover:scale-105 ${
-                        hoveredItem === index ? "shadow-lg shadow-white/10" : ""
+                        uiStates.hoveredItem === index
+                          ? "shadow-lg shadow-white/10"
+                          : ""
                       } flex-shrink-0`}
                     >
                       <Image
@@ -907,10 +976,9 @@ const HomepageCSR = () => {
                       {item.text}
                     </p>
 
-                    {/* Subtle indicator */}
                     <div
                       className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                        hoveredItem === index ? "opacity-100" : ""
+                        uiStates.hoveredItem === index ? "opacity-100" : ""
                       } flex-shrink-0`}
                     >
                       <div className="w-1 h-6 sm:h-7 md:h-8 lg:h-8 bg-[#7526FE] rounded-full"></div>
@@ -921,15 +989,10 @@ const HomepageCSR = () => {
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          .group:hover .group-hover\\:w-full {
-            width: 100%;
-          }
-        `}</style>
       </div>
+
+      {/* Coffee Banner */}
       <section className="w-full px-4 sm:px-8 py-12 space-y-10">
-        {/* Coffee Banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -956,9 +1019,10 @@ const HomepageCSR = () => {
           </div>
         </motion.div>
       </section>
+
+      {/* Values Section */}
       <div className="bg-white w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center gap-2 mb-6">
               <Zap className="w-8 h-8 text-blue-600" />
@@ -981,23 +1045,32 @@ const HomepageCSR = () => {
             </div>
           </div>
 
-          {/* Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {values.map((value) => (
-              <div
+            {values.map((value, index) => (
+              <motion.div
                 key={value.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true, amount: 0.5 }}
                 className={`group relative bg-white rounded-2xl p-6 lg:p-8 shadow-lg transition-all duration-700 ease-out transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer border border-gray-100 ${
-                  hoveredValue === value.id ? "scale-[1.02]" : ""
+                  uiStates.hoveredValue === value.id ? "scale-[1.02]" : ""
                 }`}
-                onMouseEnter={() => setHoveredValue(value.id)}
-                onMouseLeave={() => setHoveredValue(null)}
+                onMouseEnter={() =>
+                  setUIStates((prev) => ({ ...prev, hoveredValue: value.id }))
+                }
+                onMouseLeave={() =>
+                  setUIStates((prev) => ({ ...prev, hoveredValue: null }))
+                }
               >
-                {/* Gradient Background Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-all duration-700 ease-out`}
                 ></div>
 
-                {/* Icon Container */}
                 <div
                   className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${value.color} text-white mb-6 transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-3`}
                 >
@@ -1006,7 +1079,6 @@ const HomepageCSR = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 mb-4 font-['Montserrat'] transition-all duration-700 ease-out group-hover:text-gray-800">
                   {value.title}
                 </h3>
@@ -1015,19 +1087,17 @@ const HomepageCSR = () => {
                   {value.description}
                 </p>
 
-                {/* Hover Effect Line */}
                 <div
                   className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${
                     value.color
                   } rounded-b-2xl transition-all duration-700 ease-out ${
-                    hoveredValue === value.id ? "w-full" : "w-0"
+                    uiStates.hoveredValue === value.id ? "w-full" : "w-0"
                   }`}
                 ></div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Bottom Decorative Elements */}
           <div className="flex justify-center items-center mt-12 md:mt-16 gap-4">
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
             <div
@@ -1042,8 +1112,8 @@ const HomepageCSR = () => {
         </div>
       </div>
 
+      {/* Services/Industries Section */}
       <section className="relative w-full min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-20 overflow-hidden">
-        {/* Background Image - Only until tabs */}
         <div className="absolute top-0 left-0 w-full h-80 sm:h-96">
           <Image
             src="/img/Services.png"
@@ -1051,21 +1121,20 @@ const HomepageCSR = () => {
             layout="fill"
             objectFit="cover"
             style={{ filter: "brightness(1.2) contrast(0.8)" }}
+            priority
           />
-          <div className="absolute inset-0 " />
+          <div className="absolute inset-0" />
         </div>
 
-        {/* Dynamic Background for Tab Content Area */}
         <div
           className={`absolute top-80 sm:top-96 left-0 w-full bottom-0 transition-all duration-700 ${
-            activeTab === "industries"
+            uiStates.activeTab === "industries"
               ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"
               : "bg-gradient-to-br from-white via-gray-50 to-slate-50"
           }`}
         />
 
         <div className="max-w-7xl mx-auto relative" style={{ zIndex: 1 }}>
-          {/* Header */}
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-['Montserrat'] text-white mb-4">
               What We Do
@@ -1076,7 +1145,6 @@ const HomepageCSR = () => {
             </p>
           </div>
 
-          {/* Professional Tabs */}
           <div
             className="flex justify-center mb-12 sm:mb-16"
             data-aos="fade-up"
@@ -1084,33 +1152,36 @@ const HomepageCSR = () => {
             <div className="inline-flex rounded-xl bg-white border border-gray-200 p-1 shadow-lg">
               <button
                 className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
-                  activeTab === "services"
+                  uiStates.activeTab === "services"
                     ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                 }`}
-                onClick={() => setActiveTab("services")}
+                onClick={() =>
+                  setUIStates((prev) => ({ ...prev, activeTab: "services" }))
+                }
               >
                 Services Offered
               </button>
               <button
                 className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
-                  activeTab === "industries"
+                  uiStates.activeTab === "industries"
                     ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                 }`}
-                onClick={() => setActiveTab("industries")}
+                onClick={() =>
+                  setUIStates((prev) => ({ ...prev, activeTab: "industries" }))
+                }
               >
                 Industries We Serve
               </button>
             </div>
           </div>
 
-          {/* Tab Content with Smooth Transitions */}
           <div className="relative min-h-96">
             {/* Services Content */}
             <div
               className={`transition-all duration-700 ease-in-out ${
-                activeTab === "services"
+                uiStates.activeTab === "services"
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 translate-y-4 pointer-events-none absolute inset-0"
               }`}
@@ -1122,24 +1193,27 @@ const HomepageCSR = () => {
                     className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 min-h-[200px] flex flex-col"
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
-                    onMouseEnter={() => setHoveredService(index)}
-                    onMouseLeave={() => setHoveredService(null)}
+                    onMouseEnter={() =>
+                      setUIStates((prev) => ({
+                        ...prev,
+                        hoveredService: index,
+                      }))
+                    }
+                    onMouseLeave={() =>
+                      setUIStates((prev) => ({ ...prev, hoveredService: null }))
+                    }
                     onClick={() => {
-                      console.log(
-                        "Card clicked, current expanded:",
-                        expandedService,
-                        "clicked index:",
-                        index
-                      );
-                      setExpandedService(
-                        expandedService === index ? null : index
-                      );
+                      setUIStates((prev) => ({
+                        ...prev,
+                        expandedService:
+                          prev.expandedService === index ? null : index,
+                      }));
                     }}
                   >
                     <div className="text-center flex-grow">
                       <AnimatedIcon
                         Icon={service.icon}
-                        isHovered={hoveredService === index}
+                        isHovered={uiStates.hoveredService === index}
                       />
 
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 font-['Montserrat'] flex items-center justify-center gap-2">
@@ -1147,16 +1221,17 @@ const HomepageCSR = () => {
                         <ChevronDown
                           size={20}
                           className={`transition-all duration-300 ${
-                            expandedService === index
+                            uiStates.expandedService === index
                               ? "rotate-180 text-gray-900"
                               : "text-gray-400 group-hover:text-gray-600"
                           }`}
                           onClick={(e) => {
                             e.stopPropagation();
-                            console.log("Chevron clicked for index:", index);
-                            setExpandedService(
-                              expandedService === index ? null : index
-                            );
+                            setUIStates((prev) => ({
+                              ...prev,
+                              expandedService:
+                                prev.expandedService === index ? null : index,
+                            }));
                           }}
                         />
                       </h3>
@@ -1164,7 +1239,7 @@ const HomepageCSR = () => {
 
                     <div
                       className={`overflow-hidden transition-all duration-500 ${
-                        expandedService === index
+                        uiStates.expandedService === index
                           ? "max-h-screen opacity-100"
                           : "max-h-0 opacity-0"
                       }`}
@@ -1175,16 +1250,12 @@ const HomepageCSR = () => {
                         </p>
 
                         <div className="text-center">
-                          <button
-                            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              console.log("Navigate to:", service.link);
-                            }}
-                          >
-                            Learn More
-                            <ExternalLink size={16} />
-                          </button>
+                          <Link href={service.link} passHref>
+                            <a className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base">
+                              Learn More
+                              <ExternalLink size={16} />
+                            </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -1196,7 +1267,7 @@ const HomepageCSR = () => {
             {/* Industries Content */}
             <div
               className={`transition-all duration-700 ease-in-out ${
-                activeTab === "industries"
+                uiStates.activeTab === "industries"
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 translate-y-4 pointer-events-none absolute inset-0"
               }`}
@@ -1227,6 +1298,8 @@ const HomepageCSR = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
       <section
         id="testimonials-section"
         className="bg-black w-full px-4 md:px-16 py-20 text-white font-['Montserrat'] overflow-hidden"
@@ -1248,16 +1321,16 @@ const HomepageCSR = () => {
             {...swipeHandlers}
             className="grid gap-6 md:gap-8 transition-all duration-700 ease-out cursor-grab"
             style={{
-              gridTemplateColumns: `repeat(${slidesToShow}, 1fr)`,
-              transform: "translateZ(0)", // Force hardware acceleration
+              gridTemplateColumns: `repeat(${slideStates.slidesToShow}, 1fr)`,
+              transform: "translateZ(0)",
             }}
           >
             {visibleTestimonials.map((testimonial, index) => (
               <TestimonialCard
-                key={`${currentSlide}-${index}`}
+                key={`${slideStates.currentSlide}-${index}`}
                 testimonial={testimonial}
                 index={index}
-                isVisible={isVisible}
+                isVisible={uiStates.isVisible}
               />
             ))}
           </div>
@@ -1270,7 +1343,7 @@ const HomepageCSR = () => {
                 className={`
                 w-3 h-3 rounded-full transition-all duration-300 ease-out
                 ${
-                  currentSlide === index
+                  slideStates.currentSlide === index
                     ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125 shadow-lg"
                     : "bg-gray-600 hover:bg-gray-500"
                 }
@@ -1286,6 +1359,8 @@ const HomepageCSR = () => {
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/5 rounded-full blur-xl"></div>
         </div>
       </section>
+
+      {/* Beer Banner */}
       <section className="w-full px-4 sm:px-8 py-12 space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1298,7 +1373,7 @@ const HomepageCSR = () => {
             <div className="flex items-center gap-3 text-2xl sm:text-3xl font-semibold text-gray-800 font-['Montserrat']">
               <Beer className="w-7 h-7 text-blue-600" />
               <span>
-                Don’t like coffee? Let’s schedule a free call over a beer
+                Don't like coffee? Let's schedule a free call over a beer
               </span>
             </div>
 
@@ -1316,6 +1391,7 @@ const HomepageCSR = () => {
         </motion.div>
       </section>
 
+      {/* Case Studies Section */}
       <motion.section
         ref={containerRef}
         style={{ opacity: sectionOpacity }}
@@ -1366,7 +1442,7 @@ const HomepageCSR = () => {
 
         {/* Carousel Container */}
         <div className="max-w-7xl mx-auto relative">
-          {/* Navigation and Indicators - Only show if there are multiple slides */}
+          {/* Navigation and Indicators */}
           {totalSlides > 1 && (
             <div className="flex justify-between items-center mb-6 sm:mb-8 px-2">
               <div className="flex gap-2">
@@ -1374,9 +1450,9 @@ const HomepageCSR = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={prevSlide}
-                  disabled={currentIndex === 0}
+                  disabled={slideStates.currentIndex === 0}
                   className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
-                    currentIndex === 0
+                    slideStates.currentIndex === 0
                       ? "bg-slate-100 text-slate-400 cursor-not-allowed"
                       : "bg-white shadow-md text-slate-700 hover:shadow-lg hover:text-slate-900"
                   }`}
@@ -1387,9 +1463,9 @@ const HomepageCSR = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={nextSlide}
-                  disabled={currentIndex >= maxIndex}
+                  disabled={slideStates.currentIndex >= maxIndex}
                   className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
-                    currentIndex >= maxIndex
+                    slideStates.currentIndex >= maxIndex
                       ? "bg-slate-100 text-slate-400 cursor-not-allowed"
                       : "bg-white shadow-md text-slate-700 hover:shadow-lg hover:text-slate-900"
                   }`}
@@ -1407,7 +1483,7 @@ const HomepageCSR = () => {
                     whileTap={{ scale: 0.9 }}
                     onClick={() => goToCaseSlide(index)}
                     className={`h-2 rounded-full transition-all duration-200 ${
-                      index === currentIndex
+                      index === slideStates.currentIndex
                         ? "bg-blue-600 w-6 sm:w-8"
                         : "bg-slate-300 hover:bg-slate-400 w-2"
                     }`}
@@ -1417,20 +1493,26 @@ const HomepageCSR = () => {
             </div>
           )}
 
-          {/* Cards Container with Drag Support - Added padding for hover effect */}
+          {/* Cards Container with Drag Support */}
           <div className="relative overflow-hidden pt-4 pb-12">
             <motion.div
               ref={carouselRef}
               animate={controls}
-              initial={{ x: `-${(currentIndex / cardsToShow) * 100}%` }}
+              initial={{
+                x: `-${
+                  (slideStates.currentIndex / slideStates.cardsToShow) * 100
+                }%`,
+              }}
               drag="x"
               dragControls={dragControls}
               dragConstraints={{
-                left: `-${(maxIndex / cardsToShow) * 100}%`,
+                left: `-${(maxIndex / slideStates.cardsToShow) * 100}%`,
                 right: 0,
               }}
               dragElastic={0.1}
-              onDragStart={() => setIsDragging(true)}
+              onDragStart={() =>
+                setUIStates((prev) => ({ ...prev, isDragging: true }))
+              }
               onDragEnd={handleDragEnd}
               className="flex will-change-transform cursor-grab active:cursor-grabbing"
               style={{
@@ -1442,13 +1524,13 @@ const HomepageCSR = () => {
                 <div
                   key={study.id}
                   className="flex-shrink-0 px-2 sm:px-3 lg:px-4 py-2"
-                  style={{ width: `${100 / cardsToShow}%` }}
+                  style={{ width: `${100 / slideStates.cardsToShow}%` }}
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     whileHover={
-                      !isDragging
+                      !uiStates.isDragging
                         ? {
                             y: -12,
                             scale: 1.02,
@@ -1460,12 +1542,23 @@ const HomepageCSR = () => {
                       ease: [0.25, 0.1, 0.25, 1],
                     }}
                     viewport={{ once: true, margin: "-50px" }}
-                    onHoverStart={() => !isDragging && setHoveredCard(study.id)}
-                    onHoverEnd={() => setHoveredCard(null)}
+                    onHoverStart={() =>
+                      !uiStates.isDragging &&
+                      setUIStates((prev) => ({
+                        ...prev,
+                        hoveredCard: study.id,
+                      }))
+                    }
+                    onHoverEnd={() =>
+                      setUIStates((prev) => ({ ...prev, hoveredCard: null }))
+                    }
                     className="group relative cursor-pointer h-full will-change-transform select-none"
                     onClick={(e) => {
-                      if (!isDragging) {
-                        setActiveStudy(study);
+                      if (!uiStates.isDragging) {
+                        setUIStates((prev) => ({
+                          ...prev,
+                          activeStudy: study,
+                        }));
                       }
                     }}
                     style={{
@@ -1478,9 +1571,15 @@ const HomepageCSR = () => {
                       className={`absolute -inset-1 sm:-inset-2 bg-gradient-to-r ${study.color} rounded-2xl sm:rounded-3xl blur-lg opacity-0 transition-opacity duration-500`}
                       animate={{
                         opacity:
-                          hoveredCard === study.id && !isDragging ? 0.15 : 0,
+                          uiStates.hoveredCard === study.id &&
+                          !uiStates.isDragging
+                            ? 0.15
+                            : 0,
                         scale:
-                          hoveredCard === study.id && !isDragging ? 1.05 : 1,
+                          uiStates.hoveredCard === study.id &&
+                          !uiStates.isDragging
+                            ? 1.05
+                            : 1,
                       }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                     />
@@ -1494,9 +1593,15 @@ const HomepageCSR = () => {
                         <motion.div
                           animate={{
                             rotate:
-                              hoveredCard === study.id && !isDragging ? 360 : 0,
+                              uiStates.hoveredCard === study.id &&
+                              !uiStates.isDragging
+                                ? 360
+                                : 0,
                             scale:
-                              hoveredCard === study.id && !isDragging ? 1.1 : 1,
+                              uiStates.hoveredCard === study.id &&
+                              !uiStates.isDragging
+                                ? 1.1
+                                : 1,
                           }}
                           transition={{
                             duration: 0.6,
@@ -1513,7 +1618,9 @@ const HomepageCSR = () => {
                         {/* Industry Tag */}
                         <motion.div
                           className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 px-2 py-1 sm:px-3 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-slate-700"
-                          whileHover={!isDragging ? { scale: 1.05 } : {}}
+                          whileHover={
+                            !uiStates.isDragging ? { scale: 1.05 } : {}
+                          }
                           transition={{ duration: 0.2 }}
                         >
                           {study.industry}
@@ -1564,14 +1671,19 @@ const HomepageCSR = () => {
                         {/* CTA */}
                         <motion.div
                           className="flex items-center justify-center gap-2 text-sm font-medium text-slate-700 group-hover:text-slate-900 transition-colors duration-300"
-                          whileHover={!isDragging ? { scale: 1.05 } : {}}
+                          whileHover={
+                            !uiStates.isDragging ? { scale: 1.05 } : {}
+                          }
                           transition={{ duration: 0.2 }}
                         >
                           <span className="text-xs sm:text-sm">Learn More</span>
                           <motion.div
                             animate={{
                               x:
-                                hoveredCard === study.id && !isDragging ? 4 : 0,
+                                uiStates.hoveredCard === study.id &&
+                                !uiStates.isDragging
+                                  ? 4
+                                  : 0,
                             }}
                             transition={{ duration: 0.3, ease: "easeOut" }}
                           >
@@ -1595,7 +1707,7 @@ const HomepageCSR = () => {
                     key={index}
                     onClick={() => goToCaseSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                      index === currentIndex
+                      index === slideStates.currentIndex
                         ? "bg-blue-600 w-6"
                         : "bg-slate-300"
                     }`}
@@ -1620,14 +1732,16 @@ const HomepageCSR = () => {
 
         {/* Modal */}
         <AnimatePresence mode="wait">
-          {activeStudy && (
+          {uiStates.activeStudy && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
-              onClick={() => setActiveStudy(null)}
+              onClick={() =>
+                setUIStates((prev) => ({ ...prev, activeStudy: null }))
+              }
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -1642,7 +1756,9 @@ const HomepageCSR = () => {
                   whileHover={{ scale: 1.05, rotate: 90 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  onClick={() => setActiveStudy(null)}
+                  onClick={() =>
+                    setUIStates((prev) => ({ ...prev, activeStudy: null }))
+                  }
                   className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-lg transition-colors duration-200"
                 >
                   <X className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -1650,10 +1766,10 @@ const HomepageCSR = () => {
 
                 {/* Header */}
                 <div
-                  className={`relative h-48 sm:h-64 bg-gradient-to-br ${activeStudy.color} flex items-center justify-center overflow-hidden`}
+                  className={`relative h-48 sm:h-64 bg-gradient-to-br ${uiStates.activeStudy.color} flex items-center justify-center overflow-hidden`}
                 >
                   <div className="text-white/10 text-6xl sm:text-9xl font-bold absolute select-none">
-                    {activeStudy.initial}
+                    {uiStates.activeStudy.initial}
                   </div>
                   <div className="relative z-10 text-center text-white p-6 sm:p-8">
                     <motion.h2
@@ -1662,7 +1778,7 @@ const HomepageCSR = () => {
                       transition={{ delay: 0.1, duration: 0.25 }}
                       className="text-xl sm:text-3xl font-bold mb-2"
                     >
-                      {activeStudy.title}
+                      {uiStates.activeStudy.title}
                     </motion.h2>
                     <motion.p
                       initial={{ y: 10, opacity: 0 }}
@@ -1670,7 +1786,7 @@ const HomepageCSR = () => {
                       transition={{ delay: 0.15, duration: 0.25 }}
                       className="text-white/80 text-sm sm:text-base"
                     >
-                      {activeStudy.industry}
+                      {uiStates.activeStudy.industry}
                     </motion.p>
                   </div>
                 </div>
@@ -1686,7 +1802,7 @@ const HomepageCSR = () => {
                     <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
                       <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto mb-2" />
                       <div className="text-lg sm:text-2xl font-bold text-slate-800">
-                        {activeStudy.metrics.improvement}
+                        {uiStates.activeStudy.metrics.improvement}
                       </div>
                       <div className="text-xs sm:text-sm text-slate-600">
                         Improvement
@@ -1695,7 +1811,7 @@ const HomepageCSR = () => {
                     <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
                       <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mx-auto mb-2" />
                       <div className="text-lg sm:text-2xl font-bold text-slate-800">
-                        {activeStudy.metrics.stores}
+                        {uiStates.activeStudy.metrics.stores}
                       </div>
                       <div className="text-xs sm:text-sm text-slate-600">
                         Scale
@@ -1704,7 +1820,7 @@ const HomepageCSR = () => {
                     <div className="text-center p-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl">
                       <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 mx-auto mb-2" />
                       <div className="text-lg sm:text-2xl font-bold text-slate-800">
-                        {activeStudy.metrics.timeline}
+                        {uiStates.activeStudy.metrics.timeline}
                       </div>
                       <div className="text-xs sm:text-sm text-slate-600">
                         Timeline
@@ -1721,14 +1837,14 @@ const HomepageCSR = () => {
                       Project Overview
                     </h3>
                     <p className="text-slate-600 leading-relaxed mb-6 text-sm sm:text-base">
-                      {activeStudy.fullDetails}
+                      {uiStates.activeStudy.fullDetails}
                     </p>
 
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ duration: 0.15 }}
-                      className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${activeStudy.color} text-white font-medium rounded-xl hover:shadow-lg transition-all duration-200 text-sm sm:text-base`}
+                      className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${uiStates.activeStudy.color} text-white font-medium rounded-xl hover:shadow-lg transition-all duration-200 text-sm sm:text-base`}
                     >
                       View Full Case Study
                       <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
