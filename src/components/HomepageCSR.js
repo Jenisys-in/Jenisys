@@ -177,7 +177,7 @@ const testimonials = [
 ];
 
 // Memoized TestimonialCard component with performance optimizations
-const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
+const TestimonialCard = ({ testimonial, index, isVisible }) => {
   const cardStyle = useMemo(
     () => ({
       transitionDelay: `${index * 150}ms`,
@@ -244,7 +244,7 @@ const TestimonialCard = React.memo(({ testimonial, index, isVisible }) => {
       <div className="flex gap-1 text-yellow-400 mt-4">{starElements}</div>
     </div>
   );
-});
+};
 
 TestimonialCard.displayName = "TestimonialCard";
 
@@ -254,8 +254,6 @@ const TABS = {
 };
 
 const HomepageCSR = () => {
-  HomepageCSR.displayName = "HomepageCSR";
-
   // State management - grouped related states
   const [slideStates, setSlideStates] = useState({
     currentSlide: 0,
@@ -284,11 +282,18 @@ const HomepageCSR = () => {
     email: "",
     contactNo: "",
   });
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    contactNo: "",
+  });
 
   // Refs
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
   const carouselRef = useRef(null);
+  const resizeTimeoutRef = useRef(null);
+  const heroSectionRef = useRef(null);
 
   // Motion values
   const x = useMotionValue(0);
@@ -360,13 +365,12 @@ const HomepageCSR = () => {
     x.set(0);
   }, [x]);
 
-  // Throttled resize handler
-  const throttledResize = useMemo(() => {
-    let timeoutId;
-    return () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleResize, 100);
-    };
+  // Throttled resize handler - fixed dependency issue
+  const throttledResize = useCallback(() => {
+    if (resizeTimeoutRef.current) {
+      clearTimeout(resizeTimeoutRef.current);
+    }
+    resizeTimeoutRef.current = setTimeout(handleResize, 100);
   }, [handleResize]);
 
   // Handle responsive cards with proper breakpoints
@@ -376,7 +380,7 @@ const HomepageCSR = () => {
     return () => {
       window.removeEventListener("resize", throttledResize);
     };
-  }, [handleResize, throttledResize]);
+  }, [throttledResize]);
 
   const maxIndex = Math.max(0, caseStudies.length - slideStates.cardsToShow);
   const totalSlides = maxIndex + 1;
@@ -499,7 +503,14 @@ const HomepageCSR = () => {
   const visibleTestimonials = useMemo(() => {
     const start = slideStates.currentSlide;
     const end = start + slideStates.slidesToShow;
-    return testimonials.slice(start, end);
+    const sliced = testimonials.slice(start, end);
+    if (sliced.length < slideStates.slidesToShow) {
+      return [
+        ...sliced,
+        ...testimonials.slice(0, slideStates.slidesToShow - sliced.length),
+      ];
+    }
+    return sliced;
   }, [slideStates.currentSlide, slideStates.slidesToShow]);
 
   const goToSlide = useCallback((index) => {
@@ -521,29 +532,66 @@ const HomepageCSR = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
 
+  // Enhanced form validation
+  const validateEmail = useCallback((email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }, []);
+
+  const validatePhone = useCallback((phone) => {
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    return !phone || phoneRegex.test(phone.replace(/\s/g, ""));
+  }, []);
+
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      if (!formData.name || !formData.email) return;
+      const errors = {};
+      if (!formData.name?.trim()) {
+        errors.name = "Name is required";
+      }
+      if (!formData.email?.trim()) {
+        errors.email = "Email is required";
+      } else if (!validateEmail(formData.email)) {
+        errors.email = "Please enter a valid email address";
+      }
+      if (formData.contactNo && !validatePhone(formData.contactNo)) {
+        errors.contactNo = "Please enter a valid phone number";
+      }
+
+      if (Object.keys(errors).length > 0) {
+        setFormErrors(errors);
+        return;
+      }
+
+      setFormErrors({ name: "", email: "", contactNo: "" });
 
       try {
         const response = await fetch("/api/newsletter", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            contactNo: formData.contactNo?.trim() || "",
+          }),
         });
 
         if (response.ok) {
           handleShowAlert();
           setFormData({ name: "", email: "", contactNo: "" });
         } else {
-          console.error("Error sending email");
+          const errorData = await response.json().catch(() => ({}));
+          console.error(
+            "Error sending email:",
+            errorData.message || "Unknown error"
+          );
         }
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Network error:", error.message);
       }
     },
-    [formData, handleShowAlert]
+    [formData, handleShowAlert, validateEmail, validatePhone]
   );
 
   // Scroll observer for animations
@@ -578,16 +626,18 @@ const HomepageCSR = () => {
       if (animationFrameId) return;
 
       animationFrameId = requestAnimationFrame(() => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
-        });
+        if (e.currentTarget) {
+          const rect = e.currentTarget.getBoundingClientRect();
+          setMousePosition({
+            x: (e.clientX - rect.left) / rect.width,
+            y: (e.clientY - rect.top) / rect.height,
+          });
+        }
         animationFrameId = null;
       });
     };
 
-    const section = document.getElementById("hero-section");
+    const section = heroSectionRef.current;
     if (section) {
       section.addEventListener("mousemove", handleMouseMove, { passive: true });
       return () => {
@@ -780,7 +830,7 @@ const HomepageCSR = () => {
   );
 
   // Memoized AnimatedIcon component
-  const AnimatedIcon = React.memo(({ Icon, isHovered }) => (
+  const AnimatedIcon = ({ Icon, isHovered }) => (
     <div
       className={`w-16 h-16 mb-6 mx-auto rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-sm transition-all duration-300 ${
         isHovered ? "scale-110 bg-gray-200 shadow-md" : ""
@@ -793,7 +843,7 @@ const HomepageCSR = () => {
         }`}
       />
     </div>
-  ));
+  );
 
   AnimatedIcon.displayName = "AnimatedIcon";
 
@@ -807,7 +857,11 @@ const HomepageCSR = () => {
   return (
     <div className="flex-col relative overflow-x-hidden w-full">
       {/* Hero Section */}
-      <section className="section white-section relative overflow-hidden bg-white">
+      <section
+        ref={heroSectionRef}
+        id="hero-section"
+        className="section white-section relative overflow-hidden bg-white"
+      >
         <div className="absolute w-[500px] h-[500px] bg-[#7526FE]/10 blur-[120px] rounded-full left-[60%] top-[20%] -z-10" />
 
         <div className="w-screen px-6 sm:px-8 md:px-[70px] lg:px-[100px] xl:px-[120px] 3xl:px-[150px] py-10 md:py-20 flex flex-col lg:flex-row justify-between items-center lg:h-screen gap-8 sm:gap-10 md:gap-12 lg:gap-16">
@@ -1020,7 +1074,6 @@ const HomepageCSR = () => {
               <div className="h-1 w-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
             </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {values.map((value, index) => (
               <motion.div
@@ -1032,10 +1085,9 @@ const HomepageCSR = () => {
                   delay: index * 0.1,
                   ease: "easeOut",
                 }}
+                whileHover={{ y: -12, scale: 1.02 }}
                 viewport={{ once: true, amount: 0.5 }}
-                className={`group relative bg-white rounded-2xl p-6 lg:p-8 shadow-lg transition-all duration-700 ease-out transform hover:-translate-y-3 hover:shadow-2xl cursor-pointer border border-gray-100 ${
-                  uiStates.hoveredValue === value.id ? "scale-[1.02]" : ""
-                }`}
+                className={`group relative bg-white rounded-2xl p-6 lg:p-8 shadow-lg cursor-pointer border border-gray-100`}
                 onMouseEnter={() =>
                   setUIStates((prev) => ({ ...prev, hoveredValue: value.id }))
                 }
@@ -1073,7 +1125,6 @@ const HomepageCSR = () => {
               </motion.div>
             ))}
           </div>
-
           <div className="flex justify-center items-center mt-12 md:mt-16 gap-4">
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
             <div
@@ -1957,7 +2008,18 @@ const HomepageCSR = () => {
                 <p className="text-gray-300 text-sm mb-3">
                   Subscribe to our newsletter
                 </p>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2">
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                  {formErrors.name && (
+                    <p className="text-red-500 text-xs">{formErrors.name}</p>
+                  )}
                   <input
                     type="email"
                     placeholder="Your email"
@@ -1966,7 +2028,13 @@ const HomepageCSR = () => {
                     value={formData.email}
                     onChange={handleChange}
                   />
-                  <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors">
+                  {formErrors.email && (
+                    <p className="text-red-500 text-xs">{formErrors.email}</p>
+                  )}
+                  <button
+                    onClick={handleSubmit}
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors"
+                  >
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -2000,5 +2068,8 @@ const HomepageCSR = () => {
     </div>
   );
 };
+
+// Set displayName after component definition
+HomepageCSR.displayName = "HomepageCSR";
 
 export default HomepageCSR;
