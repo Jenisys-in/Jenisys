@@ -1,30 +1,409 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import "../app/global.css";
-import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from "lucide-react";
 
-function Blog() {
-  return (
-    <div className="min-h-screen flex flex-col mt-[85px]">
-      {/* Main Content */}
-      <div className="flex-1 flex justify-center items-center py-16">
-        <div className="border-2 flex flex-col justify-center items-center p-32 rounded-[90px] hover:shadow-[#361CA9] hover:shadow-lg transition duration-300">
-          <Link href="/">
-            <Image
-              src="/img/Jenisys Hero.png"
-              alt="logo"
-              width={500}
-              height={150}
-              className="md:shadow-2xl hover:shadow-[#361CA9] transition duration-300 aspect-auto"
-            />
-          </Link>
-          <h1 className="font-['Montserrat'] md:text-[1.5rem] text-center md:mt-16">
-            This page is currently under construction. Stay tuned!
-          </h1>
+import { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ExternalLink, MapPin, Phone, Mail } from "lucide-react";
+
+import {
+  ChevronRightIcon,
+  MagnifyingGlassIcon,
+  CalendarIcon,
+  ClockIcon,
+  XMarkIcon,
+  StarIcon,
+} from "@heroicons/react/24/outline";
+
+// Mock blog data
+const mockBlogs = [
+  {
+    id: 1,
+    title: "The Future of AI in Business: Transforming Industries in 2025",
+    slug: "future-ai-business-2025",
+    excerpt:
+      "Discover how artificial intelligence is revolutionizing business operations and creating new opportunities across industries.",
+    thumbnail: "/img/blog_1.jpeg",
+    author: { name: "Sarah Chen", image: "/api/placeholder/40/40" },
+    date: "2025-07-28",
+    readingTime: "8 min read",
+    tags: ["AI", "Business", "Technology"],
+    category: "Technology",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "Cloud Migration Strategies for Modern Startups",
+    slug: "cloud-migration-strategies-startups",
+    excerpt:
+      "Learn essential cloud migration strategies that help startups scale efficiently while maintaining security and performance.",
+    thumbnail: "/img/blog_2.png",
+    author: { name: "Michael Rodriguez", image: "/api/placeholder/40/40" },
+    date: "2025-07-25",
+    readingTime: "6 min read",
+    tags: ["Cloud", "Startups", "DevOps"],
+    category: "Development",
+    featured: false,
+  },
+  {
+    id: 3,
+    title: "Building Scalable React Applications: Best Practices Guide",
+    slug: "scalable-react-applications-guide",
+    excerpt:
+      "Master the art of building scalable React applications with proven architectural patterns and performance optimization techniques.",
+    thumbnail: "/img/blog_3.png",
+    author: { name: "Emma Thompson", image: "/api/placeholder/40/40" },
+    date: "2025-07-22",
+    readingTime: "12 min read",
+    tags: ["React", "Development", "Performance"],
+    category: "Development",
+    featured: true,
+  },
+  {
+    id: 4,
+    title: "Cybersecurity Trends Every CTO Should Know",
+    slug: "cybersecurity-trends-cto-2025",
+    excerpt:
+      "Stay ahead of emerging cybersecurity threats and learn about the latest security frameworks that protect modern businesses.",
+    thumbnail: "/img/blog_4.png",
+    author: { name: "David Kumar", image: "/api/placeholder/40/40" },
+    date: "2025-07-20",
+    readingTime: "10 min read",
+    tags: ["Security", "Leadership", "Technology"],
+    category: "Security",
+    featured: false,
+  },
+  {
+    id: 5,
+    title: "Digital Transformation Success Stories from Fortune 500",
+    slug: "digital-transformation-fortune-500",
+    excerpt:
+      "Explore real-world digital transformation case studies and learn how enterprise companies are leveraging technology for growth.",
+    thumbnail: "/img/blog_5.png",
+    author: { name: "Lisa Park", image: "/api/placeholder/40/40" },
+    date: "2025-07-18",
+    readingTime: "15 min read",
+    tags: ["Digital Transformation", "Enterprise", "Case Studies"],
+    category: "Business",
+    featured: true,
+  },
+  {
+    id: 6,
+    title: "API Design Principles for Modern Web Applications",
+    slug: "api-design-principles-modern-web",
+    excerpt:
+      "Learn fundamental API design principles that create robust, scalable, and developer-friendly web services.",
+    thumbnail: "/img/blog_6.png",
+    author: { name: "Alex Johnson", image: "/api/placeholder/40/40" },
+    date: "2025-07-15",
+    readingTime: "7 min read",
+    tags: ["API", "Development", "Architecture"],
+    category: "Development",
+    featured: false,
+  },
+];
+
+const POSTS_PER_PAGE = 6;
+
+export default function Blog() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Filter blogs based on search term only
+  const filteredBlogs = useMemo(() => {
+    return mockBlogs.filter((blog) => {
+      const matchesSearch =
+        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.author.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.tags.some((tag) =>
+          tag.toLowerCase().includes(searchTerm.toLowerCase())
+        ) ||
+        blog.category.toLowerCase().includes(searchTerm.toLowerCase());
+
+      return matchesSearch;
+    });
+  }, [searchTerm]);
+
+  const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE);
+  const currentBlogs = filteredBlogs.slice(0, currentPage * POSTS_PER_PAGE);
+
+  const handleLoadMore = async () => {
+    if (currentPage < totalPages) {
+      setIsLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setCurrentPage((prev) => prev + 1);
+      setIsLoading(false);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  // Reset pagination when search changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  const BlogCard = ({ blog, index }) => (
+    <Link href={`/blog/${blog.slug}`}>
+      <motion.article
+        layout
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -30 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group border border-gray-100 flex flex-col cursor-pointer ${
+          blog.featured ? "ring-2 ring-blue-200" : ""
+        }`}
+      >
+        {blog.featured && (
+          <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
+            <StarIcon className="w-3 h-3 mr-1" />
+            Featured
+          </div>
+        )}
+
+        {/* Blog Image */}
+        <div className="relative overflow-hidden h-56">
+          <img
+            src={blog.thumbnail}
+            alt={blog.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
-      </div>
+
+        {/* Blog Content */}
+        <div className="p-6 flex flex-col justify-between flex-1">
+          <div>
+            {/* Category & Tags */}
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <span className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs px-3 py-1 rounded-full font-semibold">
+                {blog.category}
+              </span>
+              {blog.tags.slice(0, 2).map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Blog Title */}
+            <h2 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 text-xl lg:text-2xl">
+              {blog.title}
+            </h2>
+
+            {/* Blog Excerpt */}
+            <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+              {blog.excerpt}
+            </p>
+          </div>
+
+          <div>
+            {/* Author Info */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="text-sm">
+                <p className="text-gray-900">
+                  <span className="font-semibold">Author:</span>{" "}
+                  {blog.author.name}
+                </p>
+              </div>
+            </div>
+
+            {/* Meta Info */}
+            <div className="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+              <div className="flex items-center space-x-1">
+                <CalendarIcon className="w-4 h-4" />
+                <span>{formatDate(blog.date)}</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <ClockIcon className="w-4 h-4" />
+                <span>{blog.readingTime}</span>
+              </div>
+            </div>
+
+            {/* Read More Indicator */}
+            <div className="inline-flex items-center text-blue-600 font-semibold group-hover:text-purple-600 transition-all duration-300 group-hover:translate-x-1">
+              Read More
+              <ChevronRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+          </div>
+        </div>
+      </motion.article>
+    </Link>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-24 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
+          <svg
+            className="absolute inset-0 w-full h-full"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <pattern
+                id="grid"
+                width="32"
+                height="32"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 32 0 L 0 0 0 32"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              Insights & Innovation from{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                Jenisys
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Explore cutting-edge articles, expert insights, and innovative
+              ideas that drive digital transformation and business growth.
+            </p>
+
+            {/* Enhanced Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div className="relative group">
+                <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6 group-focus-within:text-blue-400 transition-colors" />
+                <input
+                  type="text"
+                  placeholder="Search articles, authors, or topics..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-16 py-4 text-lg rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:bg-white/15 transition-all duration-300"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm("")}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  >
+                    <XMarkIcon className="w-5 h-5" />
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Results Summary */}
+      <section className="py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <p className="text-gray-600">
+              Showing{" "}
+              <span className="font-semibold">{currentBlogs.length}</span> of{" "}
+              <span className="font-semibold">{filteredBlogs.length}</span>{" "}
+              articles
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Grid Section */}
+      <section className="pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {filteredBlogs.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+                <MagnifyingGlassIcon className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                No articles found
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Try adjusting your search terms to find what you're looking for.
+              </p>
+              <button
+                onClick={() => setSearchTerm("")}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+              >
+                View All Articles
+              </button>
+            </motion.div>
+          ) : (
+            <>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {currentBlogs.map((blog, index) => (
+                    <BlogCard key={blog.id} blog={blog} index={index} />
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Load More Button */}
+              {currentPage < totalPages && (
+                <div className="text-center mt-16">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleLoadMore}
+                    disabled={isLoading}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-4 rounded-2xl font-semibold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center space-x-2">
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Loading More Articles...</span>
+                      </div>
+                    ) : (
+                      `Load More Articles (${
+                        filteredBlogs.length - currentBlogs.length
+                      } remaining)`
+                    )}
+                  </motion.button>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -220,5 +599,3 @@ function Blog() {
     </div>
   );
 }
-
-export default Blog;
