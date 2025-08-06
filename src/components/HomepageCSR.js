@@ -1145,9 +1145,11 @@ const HomepageCSR = () => {
           <Image
             src="/img/Services.png"
             alt="Services Background"
-            layout="fill"
-            objectFit="cover"
-            style={{ filter: "brightness(1.2) contrast(0.8)" }}
+            fill
+            style={{
+              filter: "brightness(1.2) contrast(0.8)",
+              objectFit: "cover",
+            }}
           />
           <div className="absolute inset-0" />
         </div>
