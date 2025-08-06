@@ -1,12 +1,13 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import ScrollToTop from "@/components/ScrolltoTop";
 import Preloader from "../components/Preloader";
+import ScrollToTop from "@/components/ScrolltoTop";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -18,8 +19,7 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 700); // Adjust the timing as needed
-
+    }, 700);
     return () => clearTimeout(timer);
   }, []);
 
@@ -43,6 +43,8 @@ export default function RootLayout({ children }) {
           {children}
           <ScrollToTop />
         </div>
+
+        {/* ✅ Vercel integrations */}
         <SpeedInsights />
         <Analytics />
       </body>
