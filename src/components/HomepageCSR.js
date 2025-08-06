@@ -380,7 +380,7 @@ const HomepageCSR = () => {
     return () => {
       window.removeEventListener("resize", throttledResize);
     };
-  }, [throttledResize]);
+  }, [handleResize, throttledResize]);
 
   const maxIndex = Math.max(0, caseStudies.length - slideStates.cardsToShow);
   const totalSlides = maxIndex + 1;
@@ -497,7 +497,7 @@ const HomepageCSR = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [uiStates.isVisible, testimonials.length]);
+  }, [uiStates.isVisible]);
 
   // Memoized visible testimonials
   const visibleTestimonials = useMemo(() => {
@@ -879,12 +879,12 @@ const HomepageCSR = () => {
             </p>
 
             <div className="mt-6">
-              <a href="/about" className="inline-block">
+              <Link href="/about" className="inline-block">
                 <button className="relative bg-[#361CA9] hover:bg-[#4b2ffb] transition duration-300 text-white w-[130px] h-[36px] sm:w-[160px] sm:h-[44px] md:w-[200px] md:h-[55px] lg:w-[220px] lg:h-[60px] xl:w-[240px] xl:h-[65px] 2xl:w-[260px] 2xl:h-[70px] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-semibold rounded-md shadow-lg  overflow-hidden group holographic-button">
                   <span className="relative z-10">Learn More</span>
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#4b2ffb] via-[#7042F8] to-[#361CA9] opacity-0 group-hover:opacity-20 transition duration-300" />
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -930,10 +930,10 @@ const HomepageCSR = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-[20px] sm:mt-[30px] md:mt-[40px]"></div>
               </div>
 
-              <h1 className="font-['Montserrat'] font-extrabold text-[14px] sm:text-[18px] md:text-[24px] lg:text-[32px] pt-[15px] sm:pt-[20px] md:pt-[25px] lg:pt-[30px] relative group text-center lg:text-left">
+              <h2 className="font-['Montserrat'] font-extrabold text-[14px] sm:text-[18px] md:text-[24px] lg:text-[32px] pt-[15px] sm:pt-[20px] md:pt-[25px] lg:pt-[30px] relative group text-center lg:text-left">
                 Our Vision
                 <div className="absolute bottom-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-0 h-[2px] bg-[#7526FE] transition-all duration-500 group-hover:w-full"></div>
-              </h1>
+              </h2>
 
               <p className="font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[20px] 3xl:text-[25px] pt-[10px] sm:pt-[15px] md:pt-[20px] lg:pt-0 3xl:mt-[20px] leading-relaxed opacity-90 hover:opacity-100 transition-opacity duration-300 text-center lg:text-left max-w-[600px] mx-auto lg:mx-0">
                 Our vision is to be the leading transformative technology
@@ -960,10 +960,10 @@ const HomepageCSR = () => {
                   : "translate-y-8 opacity-0"
               }`}
             >
-              <h1 className="text-[14px] sm:text-[18px] md:text-[24px] lg:text-[32px] font-extrabold mb-[15px] sm:mb-[20px] md:mb-[25px] lg:mb-0 relative group text-center lg:text-left">
+              <h2 className="text-[14px] sm:text-[18px] md:text-[24px] lg:text-[32px] font-extrabold mb-[15px] sm:mb-[20px] md:mb-[25px] lg:mb-0 relative group text-center lg:text-left">
                 Our Mission
                 <div className="absolute bottom-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-0 h-[2px] bg-[#7526FE] transition-all duration-500 group-hover:w-full"></div>
-              </h1>
+              </h2>
 
               <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-0">
                 {missionItems.map((item, index) => (
@@ -1059,12 +1059,12 @@ const HomepageCSR = () => {
               <Rocket className="w-8 h-8 text-purple-600" />
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 font-['Montserrat']">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 font-['Montserrat']">
               Innovative Tech Solutions for
               <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Transformative Growth
               </span>
-            </h1>
+            </h2>
 
             <div className="flex items-center justify-center gap-4 mb-8">
               <div className="h-1 w-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -1325,11 +1325,11 @@ const HomepageCSR = () => {
         className="bg-black w-full px-4 md:px-16 py-20 text-white font-['Montserrat'] overflow-hidden"
       >
         <div className="text-center mb-16">
-          <h1 className="text-[14px] md:text-[32px] font-bold uppercase tracking-widest mb-4">
+          <h2 className="text-[14px] md:text-[32px] font-bold uppercase tracking-widest mb-4">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Testimonials
             </span>
-          </h1>
+          </h2>
           <p className="text-[16px] md:text-[24px] 3xl:text-[32px] font-semibold mt-4 max-w-4xl mx-auto text-gray-300 leading-relaxed">
             Real stories from our clients showcasing our dedication to
             impactful, high-performance solutions.

@@ -4,6 +4,7 @@ export const metadata = {
   title: "AI & Machine Learning Services - Jenisys",
   description:
     "Unlock business potential with Jenisys AI and Machine Learning services — from automation to intelligent analytics and custom AI solutions built to scale.",
+  keywords: ["AI services", "machine learning solutions", "intelligent automation", "custom AI development"],
 };
 
 export default function AIMachineLearningRoute() {

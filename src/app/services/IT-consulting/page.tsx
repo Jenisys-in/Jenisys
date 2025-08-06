@@ -4,6 +4,7 @@ export const metadata = {
   title: "IT Consulting Services - Jenisys",
   description:
     "Jenisys provides expert IT consulting to help businesses optimize tech strategies, enhance security, and ensure scalable, future-ready infrastructure and operations.",
+  keywords: ["IT consulting", "tech strategy", "cybersecurity consulting", "scalable infrastructure"],
 };
 
 export default function ITConsultingRoute() {

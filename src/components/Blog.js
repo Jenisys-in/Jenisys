@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ExternalLink, MapPin, Phone, Mail } from "lucide-react";
-
 import {
   ChevronRightIcon,
   MagnifyingGlassIcon,
@@ -14,243 +13,236 @@ import {
   XMarkIcon,
   StarIcon,
 } from "@heroicons/react/24/outline";
-
-// Mock blog data
-const mockBlogs = [
-  {
-    id: 1,
-    title: "The Future of AI in Business: Transforming Industries in 2025",
-    slug: "future-ai-business-2025",
-    excerpt:
-      "Discover how artificial intelligence is revolutionizing business operations and creating new opportunities across industries.",
-    thumbnail: "/img/blog_1.jpeg",
-    author: { name: "Sarah Chen", image: "/api/placeholder/40/40" },
-    date: "2025-07-28",
-    readingTime: "8 min read",
-    tags: ["AI", "Business", "Technology"],
-    category: "Technology",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Cloud Migration Strategies for Modern Startups",
-    slug: "cloud-migration-strategies-startups",
-    excerpt:
-      "Learn essential cloud migration strategies that help startups scale efficiently while maintaining security and performance.",
-    thumbnail: "/img/blog_2.png",
-    author: { name: "Michael Rodriguez", image: "/api/placeholder/40/40" },
-    date: "2025-07-25",
-    readingTime: "6 min read",
-    tags: ["Cloud", "Startups", "DevOps"],
-    category: "Development",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "Building Scalable React Applications: Best Practices Guide",
-    slug: "scalable-react-applications-guide",
-    excerpt:
-      "Master the art of building scalable React applications with proven architectural patterns and performance optimization techniques.",
-    thumbnail: "/img/blog_3.png",
-    author: { name: "Emma Thompson", image: "/api/placeholder/40/40" },
-    date: "2025-07-22",
-    readingTime: "12 min read",
-    tags: ["React", "Development", "Performance"],
-    category: "Development",
-    featured: true,
-  },
-  {
-    id: 4,
-    title: "Cybersecurity Trends Every CTO Should Know",
-    slug: "cybersecurity-trends-cto-2025",
-    excerpt:
-      "Stay ahead of emerging cybersecurity threats and learn about the latest security frameworks that protect modern businesses.",
-    thumbnail: "/img/blog_4.png",
-    author: { name: "David Kumar", image: "/api/placeholder/40/40" },
-    date: "2025-07-20",
-    readingTime: "10 min read",
-    tags: ["Security", "Leadership", "Technology"],
-    category: "Security",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Digital Transformation Success Stories from Fortune 500",
-    slug: "digital-transformation-fortune-500",
-    excerpt:
-      "Explore real-world digital transformation case studies and learn how enterprise companies are leveraging technology for growth.",
-    thumbnail: "/img/blog_5.png",
-    author: { name: "Lisa Park", image: "/api/placeholder/40/40" },
-    date: "2025-07-18",
-    readingTime: "15 min read",
-    tags: ["Digital Transformation", "Enterprise", "Case Studies"],
-    category: "Business",
-    featured: true,
-  },
-  {
-    id: 6,
-    title: "API Design Principles for Modern Web Applications",
-    slug: "api-design-principles-modern-web",
-    excerpt:
-      "Learn fundamental API design principles that create robust, scalable, and developer-friendly web services.",
-    thumbnail: "/img/blog_6.png",
-    author: { name: "Alex Johnson", image: "/api/placeholder/40/40" },
-    date: "2025-07-15",
-    readingTime: "7 min read",
-    tags: ["API", "Development", "Architecture"],
-    category: "Development",
-    featured: false,
-  },
-];
+import { useDebounce } from "use-debounce";
+import { blogs as allBlogs } from "@/lib/blogData";
 
 const POSTS_PER_PAGE = 6;
 
+const categories = ["All", "Technology", "Development", "Business", "Security"];
+
 export default function Blog() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalBlogs, setTotalBlogs] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
+  const [filterKey, setFilterKey] = useState(0);
 
-  // Filter blogs based on search term only
-  const filteredBlogs = useMemo(() => {
-    return mockBlogs.filter((blog) => {
-      const matchesSearch =
-        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        blog.author.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        blog.tags.some((tag) =>
-          tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ) ||
-        blog.category.toLowerCase().includes(searchTerm.toLowerCase());
+  const filterAndPaginateBlogs = useCallback(() => {
+    setIsLoading(true);
 
-      return matchesSearch;
-    });
-  }, [searchTerm]);
+    let filteredBlogs = allBlogs;
 
-  const totalPages = Math.ceil(filteredBlogs.length / POSTS_PER_PAGE);
-  const currentBlogs = filteredBlogs.slice(0, currentPage * POSTS_PER_PAGE);
-
-  const handleLoadMore = async () => {
-    if (currentPage < totalPages) {
-      setIsLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      setCurrentPage((prev) => prev + 1);
-      setIsLoading(false);
+    if (debouncedSearchTerm) {
+      filteredBlogs = filteredBlogs.filter(
+        (blog) =>
+          blog.title
+            .toLowerCase()
+            .includes(debouncedSearchTerm.toLowerCase()) ||
+          blog.author.name
+            .toLowerCase()
+            .includes(debouncedSearchTerm.toLowerCase()) ||
+          blog.tags.some((tag) =>
+            tag.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+          )
+      );
     }
-  };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+    if (activeCategory !== "All") {
+      filteredBlogs = filteredBlogs.filter(
+        (blog) => blog.category === activeCategory
+      );
+    }
 
-  // Reset pagination when search changes
+    setTotalBlogs(filteredBlogs.length);
+    setTotalPages(Math.ceil(filteredBlogs.length / POSTS_PER_PAGE));
+    setBlogs(filteredBlogs.slice(0, currentPage * POSTS_PER_PAGE));
+    setIsLoading(false);
+  }, [debouncedSearchTerm, activeCategory, currentPage]);
+
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm]);
+    setFilterKey((prev) => prev + 1);
+    filterAndPaginateBlogs();
+  }, [debouncedSearchTerm, activeCategory, filterAndPaginateBlogs]);
 
-  const BlogCard = ({ blog, index }) => (
-    <Link href={`/blog/${blog.slug}`}>
-      <motion.article
-        layout
-        initial={{ opacity: 0, y: 30 }}
+  useEffect(() => {
+    filterAndPaginateBlogs();
+  }, [currentPage, filterAndPaginateBlogs]);
+
+  const handleLoadMore = useCallback(() => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  }, [currentPage, totalPages]);
+
+  const handleCategoryChange = useCallback(
+    (category) => {
+      if (category !== activeCategory) {
+        setActiveCategory(category);
+      }
+    },
+    [activeCategory]
+  );
+
+  const handleClearSearch = useCallback(() => {
+    setSearchTerm("");
+  }, []);
+
+  const formatDate = useCallback((dateString) => {
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    } catch (error) {
+      return "Invalid date";
+    }
+  }, []);
+
+  const BlogCard = useMemo(() => {
+    const CardComponent = ({ blog, index }) => (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -30 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group border border-gray-100 flex flex-col cursor-pointer ${
-          blog.featured ? "ring-2 ring-blue-200" : ""
-        }`}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{
+          duration: 0.3,
+          delay: index * 0.05,
+          ease: "easeOut",
+        }}
+        className="h-full"
       >
-        {blog.featured && (
-          <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
-            <StarIcon className="w-3 h-3 mr-1" />
-            Featured
-          </div>
-        )}
+        <Link href={`/blog/${blog.slug}`} className="block h-full">
+          <article
+            className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col h-full cursor-pointer ${
+              blog.featured ? "ring-2 ring-blue-200" : ""
+            }`}
+          >
+            {blog.featured && (
+              <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
+                <StarIcon className="w-3 h-3 mr-1" />
+                Featured
+              </div>
+            )}
 
-        {/* Blog Image */}
-        <div className="relative overflow-hidden h-56">
-          <Image
-            src={blog.thumbnail}
-            alt={blog.title}
-            width={500}
-            height={300}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-
-        {/* Blog Content */}
-        <div className="p-6 flex flex-col justify-between flex-1">
-          <div>
-            {/* Category & Tags */}
-            <div className="flex flex-wrap items-center gap-2 mb-4">
-              <span className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs px-3 py-1 rounded-full font-semibold">
-                {blog.category}
-              </span>
-              {blog.tags.slice(0, 2).map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md"
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="relative overflow-hidden h-56 flex-shrink-0">
+              <Image
+                src={blog.thumbnail || "/img/default-blog.jpg"}
+                alt={blog.title || "Blog post"}
+                width={500}
+                height={300}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
-            {/* Blog Title */}
-            <h2 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 text-xl lg:text-2xl">
-              {blog.title}
-            </h2>
+            <div className="p-6 flex flex-col justify-between flex-1">
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs px-3 py-1 rounded-full font-semibold">
+                    {blog.category || "Uncategorized"}
+                  </span>
+                  {blog.tags?.slice(0, 2).map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-            {/* Blog Excerpt */}
-            <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
-              {blog.excerpt}
-            </p>
-          </div>
+                <h2 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 text-xl lg:text-2xl line-clamp-2">
+                  {blog.title || "Untitled"}
+                </h2>
 
-          <div>
-            {/* Author Info */}
-            <div className="flex items-center justify-between mb-4">
-              <div className="text-sm">
-                <p className="text-gray-900">
-                  <span className="font-semibold">Author:</span>{" "}
-                  {blog.author.name}
+                <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                  {blog.excerpt || "No excerpt available."}
                 </p>
               </div>
-            </div>
 
-            {/* Meta Info */}
-            <div className="flex items-center text-sm text-gray-500 mb-4 space-x-4">
-              <div className="flex items-center space-x-1">
-                <CalendarIcon className="w-4 h-4" />
-                <span>{formatDate(blog.date)}</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <ClockIcon className="w-4 h-4" />
-                <span>{blog.readingTime}</span>
+              <div className="mt-auto">
+                {blog.author?.name && (
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-sm">
+                      <p className="text-gray-900">
+                        <span className="font-semibold">Author:</span>{" "}
+                        {blog.author.name}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+                  <div className="flex items-center space-x-1">
+                    <CalendarIcon className="w-4 h-4" />
+                    <span>{formatDate(blog.date)}</span>
+                  </div>
+                  {blog.readingTime && (
+                    <div className="flex items-center space-x-1">
+                      <ClockIcon className="w-4 h-4" />
+                      <span>{blog.readingTime}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="inline-flex items-center text-blue-600 font-semibold group-hover:text-purple-600 transition-all duration-300 group-hover:translate-x-1">
+                  Read More
+                  <ChevronRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
               </div>
             </div>
+          </article>
+        </Link>
+      </motion.div>
+    );
+    CardComponent.displayName = "BlogCard";
+    return CardComponent;
+  }, [formatDate]);
 
-            {/* Read More Indicator */}
-            <div className="inline-flex items-center text-blue-600 font-semibold group-hover:text-purple-600 transition-all duration-300 group-hover:translate-x-1">
-              Read More
-              <ChevronRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+  const LoadingSkeleton = () => {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <div
+            key={`skeleton-${index}`}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+          >
+            <div className="h-56 bg-gray-200 animate-pulse" />
+            <div className="p-6">
+              <div className="flex gap-2 mb-4">
+                <div className="h-6 bg-gray-200 rounded-full w-20 animate-pulse" />
+                <div className="h-6 bg-gray-200 rounded-md w-16 animate-pulse" />
+              </div>
+              <div className="h-8 bg-gray-200 rounded mb-3 animate-pulse" />
+              <div className="space-y-2 mb-4">
+                <div className="h-4 bg-gray-200 rounded animate-pulse" />
+                <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse" />
+              </div>
+              <div className="h-4 bg-gray-200 rounded w-1/2 mb-4 animate-pulse" />
+              <div className="flex gap-4 mb-4">
+                <div className="h-4 bg-gray-200 rounded w-20 animate-pulse" />
+                <div className="h-4 bg-gray-200 rounded w-16 animate-pulse" />
+              </div>
+              <div className="h-4 bg-gray-200 rounded w-24 animate-pulse" />
             </div>
           </div>
-        </div>
-      </motion.article>
-    </Link>
-  );
+        ))}
+      </div>
+    );
+  };
+  LoadingSkeleton.displayName = "LoadingSkeleton";
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-24 overflow-hidden">
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
           <svg
@@ -283,18 +275,17 @@ export default function Blog() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               Insights & Innovation from{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
                 Jenisys
               </span>
-            </h1>
+            </h2>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
               Explore cutting-edge articles, expert insights, and innovative
               ideas that drive digital transformation and business growth.
             </p>
 
-            {/* Enhanced Search Bar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -312,7 +303,7 @@ export default function Blog() {
                 />
                 {searchTerm && (
                   <button
-                    onClick={() => setSearchTerm("")}
+                    onClick={handleClearSearch}
                     className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
                   >
                     <XMarkIcon className="w-5 h-5" />
@@ -324,24 +315,48 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Results Summary */}
-      <section className="py-8">
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <p className="text-gray-600">
-              Showing{" "}
-              <span className="font-semibold">{currentBlogs.length}</span> of{" "}
-              <span className="font-semibold">{filteredBlogs.length}</span>{" "}
-              articles
-            </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                disabled={isLoading}
+                className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  activeCategory === category
+                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
+                    : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
+
+          {!isLoading && (
+            <div className="flex items-center justify-between mb-8">
+              <p className="text-gray-600">
+                Showing <span className="font-semibold">{blogs.length}</span> of{" "}
+                <span className="font-semibold">{totalBlogs}</span> articles
+                {(searchTerm || activeCategory !== "All") && (
+                  <span className="text-sm text-gray-500 ml-2">
+                    {searchTerm && `for "${searchTerm}"`}
+                    {searchTerm && activeCategory !== "All" && " in "}
+                    {activeCategory !== "All" && `${activeCategory}`}
+                  </span>
+                )}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Blog Grid Section */}
       <section className="pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredBlogs.length === 0 ? (
+          {isLoading ? (
+            <LoadingSkeleton />
+          ) : blogs.length === 0 ? (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -354,10 +369,14 @@ export default function Blog() {
                 No articles found
               </h3>
               <p className="text-gray-600 mb-6">
-                Try adjusting your search terms to find what you're looking for.
+                Try adjusting your search terms or category filter to find what
+                you're looking for.
               </p>
               <button
-                onClick={() => setSearchTerm("")}
+                onClick={() => {
+                  setSearchTerm("");
+                  setActiveCategory("All");
+                }}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
               >
                 View All Articles
@@ -365,40 +384,30 @@ export default function Blog() {
             </motion.div>
           ) : (
             <>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                  {currentBlogs.map((blog, index) => (
-                    <BlogCard key={blog.id} blog={blog} index={index} />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <AnimatePresence key={filterKey} mode="popLayout">
+                  {blogs.map((blog, index) => (
+                    <BlogCard
+                      key={`${blog.id}-${filterKey}`}
+                      blog={blog}
+                      index={index}
+                    />
                   ))}
-                </motion.div>
-              </AnimatePresence>
+                </AnimatePresence>
+              </div>
 
-              {/* Load More Button */}
               {currentPage < totalPages && (
                 <div className="text-center mt-16">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleLoadMore}
-                    disabled={isLoading}
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-4 rounded-2xl font-semibold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-4 rounded-2xl font-semibold hover:shadow-xl transition-all duration-300"
                   >
-                    {isLoading ? (
-                      <div className="flex items-center space-x-2">
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Loading More Articles...</span>
-                      </div>
-                    ) : (
-                      `Load More Articles (${
-                        filteredBlogs.length - currentBlogs.length
-                      } remaining)`
-                    )}
+                    {`Load More (${Math.max(
+                      0,
+                      totalBlogs - blogs.length
+                    )} remaining)`}
                   </motion.button>
                 </div>
               )}
@@ -407,12 +416,9 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
                 <Image
@@ -432,14 +438,12 @@ export default function Blog() {
                 </p>
               </div>
 
-              {/* CTA Button */}
               <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
                 Get Started Today
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h4 className="text-white font-semibold text-lg mb-6">
                 Quick Links
@@ -465,7 +469,6 @@ export default function Blog() {
               </ul>
             </div>
 
-            {/* Contact Information */}
             <div>
               <h4 className="text-white font-semibold text-lg mb-6">
                 Contact Us
@@ -508,13 +511,11 @@ export default function Blog() {
               </div>
             </div>
 
-            {/* Social Media & Newsletter */}
             <div>
               <h4 className="text-white font-semibold text-lg mb-6">
                 Stay Connected
               </h4>
 
-              {/* Social Media Icons */}
               <div className="flex gap-4 mb-6">
                 {[
                   {
@@ -551,7 +552,6 @@ export default function Blog() {
                 ))}
               </div>
 
-              {/* Newsletter Signup */}
               <div>
                 <p className="text-gray-300 text-sm mb-3">
                   Subscribe to our newsletter
@@ -571,16 +571,13 @@ export default function Blog() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-700">
           <div className="max-w-7xl mx-auto px-6 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              {/* Copyright */}
               <div className="text-gray-400 text-sm">
                 © 2025 Jenisys. All rights reserved.
               </div>
 
-              {/* Legal Links */}
               <div className="flex gap-6 text-sm">
                 {[{ name: "Privacy Policy", href: "/Privacy-Policy" }].map(
                   (link) => (

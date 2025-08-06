@@ -284,12 +284,12 @@ const AboutUsRedesign = () => {
               isVisible.hero ? "fade-in-up" : "opacity-0 translate-y-10"
             }`}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 font-['Montserrat']">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 font-['Montserrat']">
               About{" "}
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Jenisys
               </span>
-            </h1>
+            </h2>
 
             <div className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-semibold text-slate-200 mb-6 sm:mb-8 min-h-12 sm:min-h-16 flex items-center justify-center">
               <span className="text-center">

@@ -612,13 +612,15 @@ const ITConsultingPage = () => {
                     "{testimonial.quote}"
                   </p>
                   <div className="flex items-center">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={64}
-                      height={64}
-                      className="w-16 h-16 rounded-full mr-4 object-cover ring-2 ring-purple-200 group-hover:ring-purple-400 transition-all duration-300"
-                    />
+                    {testimonial.image && (
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-full mr-4 object-cover ring-2 ring-purple-200 group-hover:ring-purple-400 transition-all duration-300"
+                      />
+                    )}
                     <div>
                       <div className="font-bold text-gray-900 text-lg group-hover:text-purple-600 transition-colors">
                         {testimonial.name}
