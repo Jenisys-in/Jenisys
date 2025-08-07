@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "../Footer";
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -1346,6 +1347,8 @@ components:
           </div>
         </div>
       </section>
+      {/* Footer Component */}
+      <Footer />
     </div>
   );
 }

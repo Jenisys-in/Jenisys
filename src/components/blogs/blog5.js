@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "../Footer";
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -762,34 +763,8 @@ const DigitalTransformationBlog = () => {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <footer className="py-12 bg-gray-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">
-              Transform Your Enterprise Today
-            </h3>
-            <p className="text-gray-300 mb-8">
-              Join industry leaders in building digital-first organizations that
-              drive sustainable growth and innovation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300">
-                Schedule Strategy Session
-              </button>
-              <button className="border border-gray-600 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300">
-                View Case Studies
-              </button>
-            </div>
-            <div className="mt-8 pt-8 border-t border-gray-700 text-gray-400 text-sm">
-              <p>
-                &copy; 2025 Jenisys. All rights reserved. | Digital
-                Transformation Experts
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer Component */}
+      <Footer />
     </div>
   );
 };

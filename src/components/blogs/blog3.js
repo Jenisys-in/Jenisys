@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "../Footer";
 import { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -814,7 +815,8 @@ function App() {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Footer Component */}
+      <Footer />
 
       {/* Scroll to Top Button */}
       {scrollProgress > 20 && (

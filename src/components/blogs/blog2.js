@@ -1,5 +1,5 @@
 "use client";
-
+import Footer from "../Footer";
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -835,7 +835,8 @@ aws autoscaling put-scaling-policy \\
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer Component */}
+        <Footer />
       </div>
     </div>
   );

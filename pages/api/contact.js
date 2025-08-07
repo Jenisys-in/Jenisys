@@ -1,13 +1,11 @@
+import clientPromise from "../../lib/mongodb";
 import { mailOptions, transporter } from "../../config/nodemailer";
 
 const CONTACT_MESSAGE_FIELDS = {
-    firstname : 'First Name',
-    lastname : 'Last Name',
-    email : 'E-Mail',
-    contactNo : 'Contact No',
-    msg : 'Message',
-    personalData:'I authorize Jenisys to use my personal data to reach out to me.',
-    marketting:'I would like to recieve updates regarding products and services of Jenisys.',
+  name: "Name",
+  email: "E-Mail",
+  number: "Contact No",
+  msg: "Message",
 };
 
 const generateEmailContent = (data) => {
@@ -29,11 +27,21 @@ const generateEmailContent = (data) => {
 const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
-    if (!data.firstname || !data.lastname || !data.email || !data.msg) {
+    if (!data.name || !data.email) {
       return res.status(400).send({ message: "Bad request: Missing fields" });
     }
 
     try {
+      const client = await clientPromise;
+      const db = client.db("jenisys"); // Use your database name here
+
+      // Save to database
+      await db.collection("contacts").insertOne({
+        ...data,
+        createdAt: new Date(),
+      });
+
+      // Send email
       await transporter.sendMail({
         ...mailOptions,
         ...generateEmailContent(data),
@@ -42,12 +50,13 @@ const handler = async (req, res) => {
 
       return res.status(200).json({ success: true });
     } catch (err) {
-      console.log("Error sending email:", err);
-      return res.status(400).json({ message: "Error sending email", error: err.message });
+      console.log("Error:", err);
+      return res
+        .status(400)
+        .json({ message: "Error processing request", error: err.message });
     }
   }
   return res.status(400).json({ message: "Bad request: Invalid method" });
 };
-
 
 export default handler;

@@ -1,9 +1,8 @@
 import { mailOptions, transporter } from "../../config/nodemailer";
 
 const CONTACT_MESSAGE_FIELDS = {
-    name : "Name",
-    email : "Email",
-    contactNo : "Contact Number",
+  name: "Name",
+  email: "Email",
 };
 
 const generateEmailContent = (data) => {
@@ -25,7 +24,7 @@ const generateEmailContent = (data) => {
 const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
-    if (!data.name || !data.email || !data.contactNo ) {
+    if (!data.name || !data.email) {
       return res.status(400).send({ message: "Bad request: Missing fields" });
     }
 
@@ -39,11 +38,12 @@ const handler = async (req, res) => {
       return res.status(200).json({ success: true });
     } catch (err) {
       console.log("Error sending email:", err);
-      return res.status(400).json({ message: "Error sending email", error: err.message });
+      return res
+        .status(400)
+        .json({ message: "Error sending email", error: err.message });
     }
   }
   return res.status(400).json({ message: "Bad request: Invalid method" });
 };
-
 
 export default handler;
