@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect, useRef } from "react";
 import {
   ChevronDown,
@@ -37,6 +38,7 @@ import {
 } from "lucide-react";
 
 const JenisysAILanding = () => {
+  const { openCalendar } = useCalendar();
   const [activeTab, setActiveTab] = useState("ai");
   const [visibleSection, setVisibleSection] = useState("");
   const [counters, setCounters] = useState({ time: 0, accuracy: 0, roi: 0 });
@@ -1106,7 +1108,10 @@ const JenisysAILanding = () => {
                   </div>
                 </div>
 
-                <button className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 mb-4">
+                <button
+                  onClick={openCalendar}
+                  className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 mb-4"
+                >
                   <Calendar className="inline-block w-5 h-5 mr-2" />
                   Book Your Free AI Strategy Session
                   <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />

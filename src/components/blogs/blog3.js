@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -14,6 +15,7 @@ import {
 } from "lucide-react";
 
 export default function ScalableReactBlog() {
+  const { openCalendar } = useCalendar();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("");
   const [expandedCode, setExpandedCode] = useState({});

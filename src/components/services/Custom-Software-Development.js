@@ -1,6 +1,6 @@
 "use client";
 import Footer from "../Footer";
-
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, {
   useState,
   useEffect,
@@ -31,6 +31,7 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, ExternalLink, Bot } from "lucide-react";
 
 const Jenisyssftdev = () => {
+  const { openCalendar } = useCalendar();
   const [isVisible, setIsVisible] = useState({});
   const [activeStep, setActiveStep] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -1058,7 +1059,7 @@ const Jenisyssftdev = () => {
                 </div>
 
                 <button
-                  type="submit"
+                  onClick={openCalendar}
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg hover:shadow-lg transform hover:scale-[1.01] transition-all duration-200 font-semibold text-lg"
                 >
                   Schedule Free Consultation

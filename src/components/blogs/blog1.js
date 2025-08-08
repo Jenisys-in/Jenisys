@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import {
   ChevronRight,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 
 const AIBlogPage = () => {
+  const { openCalendar } = useCalendar();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -1020,7 +1022,10 @@ const AIChat = () => {
                 <Download className="mr-2 w-5 h-5" />
                 Download Free Canvas
               </button>
-              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-indigo-600 transition-all duration-300 flex items-center justify-center">
+              <button
+                onClick={openCalendar}
+                className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-indigo-600 transition-all duration-300 flex items-center justify-center"
+              >
                 <ArrowRight className="mr-2 w-5 h-5" />
                 Schedule Consultation
               </button>

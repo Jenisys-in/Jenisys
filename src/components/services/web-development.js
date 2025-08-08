@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
@@ -29,6 +30,7 @@ import {
 } from "lucide-react";
 
 export default function WebDevelopmentPage() {
+  const { openCalendar } = useCalendar();
   const [activeStep, setActiveStep] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -206,7 +208,10 @@ export default function WebDevelopmentPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+              <button
+                onClick={openCalendar}
+                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+              >
                 Get a Free Consultation
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -565,7 +570,10 @@ export default function WebDevelopmentPage() {
             business results for your company.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="group bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+            <button
+              onClick={openCalendar}
+              className="group bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+            >
               Schedule a Free Strategy Call
               <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>

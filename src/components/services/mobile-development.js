@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "../Footer";
-
+import { useCalendar } from "@/contexts/CalendarContext";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
@@ -41,6 +41,7 @@ import {
 } from "lucide-react";
 
 export default function MobileAppLanding() {
+  const { openCalendar } = useCalendar();
   const [openFAQ, setOpenFAQ] = useState(null);
   const [showCaseStudy, setShowCaseStudy] = useState(false);
   const [isVisible, setIsVisible] = useState({});
@@ -121,11 +122,11 @@ export default function MobileAppLanding() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <button className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+              <button
+                onClick={openCalendar}
+                className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105"
+              >
                 Request Free App Strategy Session
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-indigo-600 transition">
-                Book a Demo
               </button>
             </div>
           </div>
@@ -784,10 +785,16 @@ export default function MobileAppLanding() {
             Get a roadmap, estimate, and consultation — no strings attached.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="bg-white text-indigo-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl">
+            <button
+              onClick={openCalendar}
+              className="bg-white text-indigo-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+            >
               Book a Free Strategy Call
             </button>
-            <button className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-600 transition-all transform hover:scale-105">
+            <button
+              onClick={openCalendar}
+              className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-600 transition-all transform hover:scale-105"
+            >
               Get Free Quote
             </button>
           </div>

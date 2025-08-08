@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import {
   Shield,
@@ -24,6 +25,7 @@ import Image from "next/image";
 import { Mail, MapPin, ExternalLink, Calendar, Bot } from "lucide-react";
 
 const MaintenanceSupport = () => {
+  const { openCalendar } = useCalendar();
   const [selectedPlan, setSelectedPlan] = useState("standard");
   const [openFaq, setOpenFaq] = useState(null);
   const [isVisible, setIsVisible] = useState({});
@@ -181,10 +183,16 @@ const MaintenanceSupport = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+              <button
+                onClick={openCalendar}
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+              >
                 Start a Support Plan
               </button>
-              <button className="px-8 py-4 border-2 border-purple-400 hover:bg-purple-400/10 rounded-lg font-semibold text-lg transition-all duration-300">
+              <button
+                onClick={openCalendar}
+                className="px-8 py-4 border-2 border-purple-400 hover:bg-purple-400/10 rounded-lg font-semibold text-lg transition-all duration-300"
+              >
                 Talk to an Expert
               </button>
             </div>
@@ -620,7 +628,10 @@ const MaintenanceSupport = () => {
             Don't wait for problems to occur. Get proactive support that keeps
             your business running smoothly.
           </p>
-          <button className="px-8 py-4 bg-white text-purple-600 font-semibold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+          <button
+            onClick={openCalendar}
+            className="px-8 py-4 bg-white text-purple-600 font-semibold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+          >
             Book a Free Maintenance Assessment
           </button>
         </div>

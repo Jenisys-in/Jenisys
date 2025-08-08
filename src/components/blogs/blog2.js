@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -16,6 +17,7 @@ import {
 } from "lucide-react";
 
 export default function CloudMigrationBlog() {
+  const { openCalendar } = useCalendar();
   const [darkMode, setDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("");
@@ -705,7 +707,10 @@ aws autoscaling put-scaling-policy \\
                       <Download className="w-5 h-5" />
                       Download Free Checklist
                     </button>
-                    <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-600 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2">
+                    <button
+                      onClick={openCalendar}
+                      className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-600 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                    >
                       Schedule Consultation
                       <ArrowRight className="w-5 h-5" />
                     </button>

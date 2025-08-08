@@ -1,6 +1,7 @@
 "use client";
 import Footer from "../Footer";
 import React, { useState, useEffect } from "react";
+import { useCalendar } from "@/contexts/CalendarContext";
 import Image from "next/image";
 import {
   ChevronRight,
@@ -25,6 +26,7 @@ import {
 } from "lucide-react";
 
 const IndustriesPage = () => {
+  const { openCalendar } = useCalendar();
   const [activeTab, setActiveTab] = useState(0);
   const [isVisible, setIsVisible] = useState({});
 
@@ -602,7 +604,10 @@ const IndustriesPage = () => {
               Get Started Today
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
-            <button className="border border-gray-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-200">
+            <button
+              onClick={openCalendar}
+              className="border border-gray-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-200"
+            >
               Schedule a Consultation
             </button>
           </div>

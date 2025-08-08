@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
@@ -32,6 +33,7 @@ import {
 import { Mail, Phone, MapPin, ExternalLink, Calendar, Bot } from "lucide-react";
 
 const Cloudsln = () => {
+  const { openCalendar } = useCalendar();
   const [activeTab, setActiveTab] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -225,7 +227,10 @@ const Cloudsln = () => {
               Accelerate innovation and cut infrastructure costs with Jenisys'
               custom cloud solutions — from migration to management.
             </p>
-            <button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group">
+            <button
+              onClick={openCalendar}
+              className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group"
+            >
               Get a Free Cloud Readiness Assessment
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -607,7 +612,10 @@ const Cloudsln = () => {
           <p className="text-xl mb-12 opacity-90">
             Get expert insights and a tailored cloud strategy for your business.
           </p>
-          <button className="bg-white text-blue-600 px-12 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group">
+          <button
+            onClick={openCalendar}
+            className="bg-white text-blue-600 px-12 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group"
+          >
             Book Your Free Cloud Consultation
             <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>

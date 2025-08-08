@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect, useRef } from "react";
 import {
   ChevronRight,
@@ -30,6 +31,7 @@ import Image from "next/image";
 import { ExternalLink, Calendar, Bot } from "lucide-react";
 
 const ITConsultingPage = () => {
+  const { openCalendar } = useCalendar();
   const [activeStep, setActiveStep] = useState(0);
   const [isVisible, setIsVisible] = useState({});
   const [selectedService, setSelectedService] = useState(null);
@@ -269,7 +271,10 @@ const ITConsultingPage = () => {
                 cutting-edge technology.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 relative overflow-hidden">
+                <button
+                  onClick={openCalendar}
+                  className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 relative overflow-hidden"
+                >
                   <span className="relative z-10 flex items-center justify-center">
                     Get Your Free Consultation
                     <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
@@ -790,13 +795,19 @@ const ITConsultingPage = () => {
               results.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="group bg-white text-purple-600 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+              <button
+                onClick={openCalendar}
+                className="group bg-white text-purple-600 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+              >
                 <span className="flex items-center justify-center">
                   Book a Strategy Call
                   <Phone className="w-5 h-5 ml-3 group-hover:rotate-12 transition-transform duration-300" />
                 </span>
               </button>
-              <button className="group border-2 border-white text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105">
+              <button
+                onClick={openCalendar}
+                className="group border-2 border-white text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
+              >
                 <span className="flex items-center justify-center">
                   Get a Custom IT Plan
                   <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />

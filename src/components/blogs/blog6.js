@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 
 export default function APIDesignBlog() {
+  const { openCalendar } = useCalendar();
   const [activeSection, setActiveSection] = useState("");
   const [copiedCode, setCopiedCode] = useState("");
   const [showDecisionTree, setShowDecisionTree] = useState(false);
@@ -1309,7 +1311,10 @@ components:
                 <BookOpen className="w-5 h-5" />
                 <span>Download API Checklist</span>
               </button>
-              <button className="px-8 py-4 border border-white/30 font-semibold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center space-x-2">
+              <button
+                onClick={openCalendar}
+                className="px-8 py-4 border border-white/30 font-semibold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center space-x-2"
+              >
                 <ExternalLink className="w-5 h-5" />
                 <span>Schedule Consultation</span>
               </button>

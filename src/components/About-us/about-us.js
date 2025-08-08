@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 
 import React, { useState, useEffect, useRef } from "react";
 import {
@@ -28,6 +29,7 @@ import {
 import Image from "next/image";
 
 const AboutUsRedesign = () => {
+  const { openCalendar } = useCalendar();
   const [activeValue, setActiveValue] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -713,7 +715,10 @@ const AboutUsRedesign = () => {
               Start Your Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105">
+            <button
+              onClick={openCalendar}
+              className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
+            >
               Schedule a Consultation
             </button>
           </div>

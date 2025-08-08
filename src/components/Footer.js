@@ -90,10 +90,12 @@ const Footer = () => {
             </div>
 
             {/* CTA Button */}
-            <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
-              Get Started Today
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link href="/contact">
+              <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+                Get Started Today
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
 
           {/* Quick Links */}
@@ -103,7 +105,6 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {[
-                { name: "Services", href: "#services" },
                 { name: "About Us", href: "#about" },
                 { name: "Blog", href: "#blog" },
                 { name: "Careers", href: "#careers" },

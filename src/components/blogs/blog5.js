@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "../Footer";
+import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
@@ -101,6 +102,7 @@ const caseStudies = [
 ];
 
 const DigitalTransformationBlog = () => {
+  const { openCalendar } = useCalendar();
   const [expandedSections, setExpandedSections] = useState({});
   const [readingProgress, setReadingProgress] = useState(0);
   const [activeFilter, setActiveFilter] = useState("all");
@@ -656,7 +658,10 @@ const DigitalTransformationBlog = () => {
                 <Download className="w-5 h-5" />
                 <span>Download Framework Guide</span>
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center justify-center space-x-2">
+              <button
+                onClick={openCalendar}
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center justify-center space-x-2"
+              >
                 <ArrowRight className="w-5 h-5" />
                 <span>Free Consultation</span>
               </button>

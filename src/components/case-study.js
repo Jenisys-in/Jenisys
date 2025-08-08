@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useCalendar } from "@/contexts/CalendarContext";
 import Image from "next/image";
 import {
   ExternalLink,
@@ -389,6 +390,7 @@ const caseStudies = [
 ];
 
 export default function CaseStudiesPage() {
+  const { openCalendar } = useCalendar();
   const [selectedCase, setSelectedCase] = useState(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -800,7 +802,10 @@ export default function CaseStudiesPage() {
                       Start Similar Project
                       <ExternalLink className="w-4 h-4 inline ml-2" />
                     </button>
-                    <button className="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-xl font-semibold hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105">
+                    <button
+                      onClick={openCalendar}
+                      className="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-xl font-semibold hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105"
+                    >
                       Schedule Consultation
                     </button>
                   </div>
@@ -831,7 +836,10 @@ export default function CaseStudiesPage() {
               Start Your Project
               <ExternalLink className="w-5 h-5 inline ml-2" />
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105">
+            <button
+              onClick={openCalendar}
+              className="border-2 border-white text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
+            >
               Schedule Consultation
             </button>
           </div>
