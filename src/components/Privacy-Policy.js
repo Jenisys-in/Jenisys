@@ -575,7 +575,7 @@ const PrivacyPolicy = () => {
                 This privacy policy is effective as of 2024-07-22 and will
                 remain in effect except with respect to any changes in its
                 provisions in the future, which will be in effect immediately
-                after being posted on this page.
+                after being posted on this page
               </p>
             </div>
           </div>
