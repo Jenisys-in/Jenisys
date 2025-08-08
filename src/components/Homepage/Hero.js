@@ -80,6 +80,7 @@ const Hero = () => {
             preload="metadata"
           >
             <source src="/Home Page Video.mp4" type="video/mp4" />
+            <source src="/Home-Page-Video.webm" type="video/webm" />
           </video>
         </div>
       </div>
