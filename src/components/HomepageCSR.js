@@ -6,6 +6,7 @@ import React, {
   useMemo,
   useRef,
   useCallback,
+  memo,
 } from "react";
 import "../app/global.css";
 import { useSwipeable } from "react-swipeable";
@@ -25,13 +26,7 @@ import {
   Bot,
 } from "lucide-react";
 import { ChevronRight } from "lucide-react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-  PanInfo,
-} from "framer-motion";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import {
   useDragControls,
   useMotionValue,
@@ -196,7 +191,7 @@ const TABS = {
   INDUSTRIES: "Industries We Serve",
 };
 
-const HomepageCSR = () => {
+const HomepageCSR = memo(() => {
   // State management - grouped related states
   const [slideStates, setSlideStates] = useState({
     currentSlide: 0,
@@ -240,36 +235,38 @@ const HomepageCSR = () => {
   const controls = useAnimationControls();
   const dragControls = useDragControls();
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  const sectionOpacity = useMotionValue(0);
 
-  // Memoized transforms to prevent recalculation
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const backgroundY2 = useTransform(scrollYProgress, [0, 1], [-15, 15]);
-  const sectionOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.9, 1],
-    [0, 1, 1, 0]
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        sectionOpacity.set(entry.isIntersecting ? 1 : 0);
+      },
+      { threshold: [0, 0.1, 0.9, 1] }
+    );
+
+    const currentContainer = containerRef.current;
+    if (currentContainer) {
+      observer.observe(currentContainer);
+    }
+
+    return () => {
+      if (currentContainer) {
+        observer.unobserve(currentContainer);
+      }
+    };
+  }, [sectionOpacity]);
   const { openCalendar } = useCalendar();
 
   // Memoized background elements
   const backgroundElements = useMemo(
     () => (
       <>
-        <motion.div
-          style={{ y: backgroundY }}
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full blur-3xl opacity-40"
-        />
-        <motion.div
-          style={{ y: backgroundY2 }}
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-full blur-3xl opacity-40"
-        />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full blur-3xl opacity-40" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-full blur-3xl opacity-40" />
       </>
     ),
-    [backgroundY, backgroundY2]
+    []
   );
 
   // Optimized resize handler with throttling
@@ -762,11 +759,13 @@ const HomepageCSR = () => {
 
       <CoffeeBanner />
 
-      <Values
-        values={values}
-        hoveredValue={uiStates.hoveredValue}
-        setUIStates={setUIStates}
-      />
+      <div className="will-change-transform">
+        <Values
+          values={values}
+          hoveredValue={uiStates.hoveredValue}
+          setUIStates={setUIStates}
+        />
+      </div>
 
       <ServicesIndustries
         services={services}
@@ -778,41 +777,44 @@ const HomepageCSR = () => {
         AnimatedIcon={AnimatedIcon}
       />
 
-      <Testimonials
-        testimonials={testimonials}
-        slideStates={slideStates}
-        goToSlide={goToSlide}
-        isVisible={uiStates.isVisible}
-        maxSlides={maxSlides}
-        visibleTestimonials={visibleTestimonials}
-      />
+      <div className="will-change-transform">
+        <Testimonials
+          testimonials={testimonials}
+          slideStates={slideStates}
+          goToSlide={goToSlide}
+          isVisible={uiStates.isVisible}
+          maxSlides={maxSlides}
+          visibleTestimonials={visibleTestimonials}
+        />
+      </div>
 
       <BeerBanner />
 
-      <CaseStudies
-        caseStudies={caseStudies}
-        slideStates={slideStates}
-        uiStates={uiStates}
-        setUIStates={setUIStates}
-        prevSlide={prevSlide}
-        nextSlide={nextSlide}
-        goToCaseSlide={goToCaseSlide}
-        handleDragEnd={handleDragEnd}
-        carouselRef={carouselRef}
-        controls={controls}
-        dragControls={dragControls}
-        maxIndex={maxIndex}
-        totalSlides={totalSlides}
-        containerRef={containerRef}
-        sectionOpacity={sectionOpacity}
-        backgroundElements={backgroundElements}
-      />
+      <div className="will-change-transform">
+        <CaseStudies
+          caseStudies={caseStudies}
+          slideStates={slideStates}
+          uiStates={uiStates}
+          setUIStates={setUIStates}
+          prevSlide={prevSlide}
+          nextSlide={nextSlide}
+          goToCaseSlide={goToCaseSlide}
+          handleDragEnd={handleDragEnd}
+          carouselRef={carouselRef}
+          controls={controls}
+          dragControls={dragControls}
+          maxIndex={maxIndex}
+          totalSlides={totalSlides}
+          containerRef={containerRef}
+          sectionOpacity={sectionOpacity}
+          backgroundElements={backgroundElements}
+        />
+      </div>
       <Footer />
     </div>
   );
-};
+});
 
-// Set displayName after component definition
 HomepageCSR.displayName = "HomepageCSR";
 
 export default HomepageCSR;

@@ -205,7 +205,10 @@
   }
 }
 
-
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
 
 @layer base {
   * {
@@ -215,9 +218,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-  
-
-
-
-  
