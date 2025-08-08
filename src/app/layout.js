@@ -56,6 +56,9 @@ const MainLayout = ({ children }) => {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo1.png" />
+      </head>
       <body>
         <CalendarProvider>
           <MainLayout>{children}</MainLayout>
