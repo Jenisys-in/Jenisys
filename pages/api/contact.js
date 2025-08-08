@@ -32,26 +32,21 @@ const handler = async (req, res) => {
     }
 
     try {
-      console.log("Contact API: Entered try block.");
       const client = await clientPromise;
       const db = client.db("jenisys"); // Use your database name here
 
       // Save to database
-      console.log("Contact API: Attempting to save to database...");
       await db.collection("contacts").insertOne({
         ...data,
         createdAt: new Date(),
       });
-      console.log("Contact API: Successfully saved to database.");
 
       // Send email
-      console.log("Contact API: Attempting to send email...");
       await transporter.sendMail({
         ...mailOptions,
         ...generateEmailContent(data),
         subject: "New Contact Message",
       });
-      console.log("Contact API: Successfully sent email.");
 
       return res.status(200).json({ success: true });
     } catch (err) {

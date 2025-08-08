@@ -312,9 +312,6 @@ function Contact() {
       setError("");
 
       try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
         const { firstname, lastname, contactNo, ...rest } = formData;
         const submitData = {
           name: `${firstname} ${lastname}`.trim(),
@@ -322,13 +319,26 @@ function Contact() {
           ...rest,
         };
 
-        console.log("Form submitted:", submitData);
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submitData),
+        });
 
-        // Simulate success
+        if (!response.ok) {
+          throw new Error("Server responded with an error.");
+        }
+
+        // Handle success
         handleShowAlert();
         setFormData(FORM_INITIAL_STATE);
       } catch (error) {
-        setError("Network error. Please check your connection and try again.");
+        console.error("Submission error:", error);
+        setError(
+          "There was an error submitting your message. Please try again."
+        );
       } finally {
         setIsSubmitting(false);
       }
