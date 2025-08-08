@@ -733,4 +733,6 @@ const AboutUsRedesign = memo(() => {
   );
 });
 
+AboutUsRedesign.displayName = "AboutUsRedesign";
+
 export default AboutUsRedesign;
