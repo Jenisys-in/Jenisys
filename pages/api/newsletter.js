@@ -22,6 +22,14 @@ const generateEmailContent = (data) => {
 };
 
 const handler = async (req, res) => {
+  // --- VERCEL DEBUGGING ---
+  console.log("EMAIL variable:", process.env.EMAIL);
+  console.log(
+    "EMAIL_PASS variable exists:",
+    process.env.EMAIL_PASS ? "Yes" : "No"
+  );
+  // --- END VERCEL DEBUGGING ---
+
   if (req.method === "POST") {
     const data = req.body;
     if (!data.name || !data.email) {
