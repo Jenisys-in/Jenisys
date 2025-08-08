@@ -41,19 +41,14 @@ const handler = async (req, res) => {
         createdAt: new Date(),
       });
 
-      // Respond to the user quickly
-      res.status(200).json({ success: true });
+      // Send email
+      await transporter.sendMail({
+        ...mailOptions,
+        ...generateEmailContent(data),
+        subject: "New Contact Message",
+      });
 
-      // Send email in the background
-      transporter
-        .sendMail({
-          ...mailOptions,
-          ...generateEmailContent(data),
-          subject: "New Contact Message",
-        })
-        .catch((err) => {
-          console.error("Failed to send contact email:", err);
-        });
+      return res.status(200).json({ success: true });
     } catch (err) {
       console.log("Error:", err);
       return res
