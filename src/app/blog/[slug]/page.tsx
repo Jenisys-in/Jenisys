@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
     return notFound();
   }
 
+  const imageUrl = `https://www.jenisys.in${blog.thumbnail}`;
   return {
     title: blog.title,
     description: blog.description,
@@ -23,8 +24,28 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: blog.title,
       description: blog.description,
-      type: 'article',
+      url: `https://www.jenisys.in/blog/${slug}`,
+      siteName: "Jenisys",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+      locale: "en_US",
+      type: "article",
       author: blog.author,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.description,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: `https://www.jenisys.in/blog/${slug}`,
     },
   };
 }

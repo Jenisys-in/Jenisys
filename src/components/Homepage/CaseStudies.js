@@ -476,15 +476,17 @@ const CaseStudies = ({
                     {uiStates.activeStudy.fullDetails}
                   </p>
 
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.15 }}
-                    className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${uiStates.activeStudy.color} text-white font-medium rounded-xl hover:shadow-lg transition-all duration-200 text-sm sm:text-base`}
-                  >
-                    View Full Case Study
-                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                  </motion.button>
+                  <a href="/case-study">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.15 }}
+                      className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${uiStates.activeStudy.color} text-white font-medium rounded-xl hover:shadow-lg transition-all duration-200 text-sm sm:text-base`}
+                    >
+                      View Full Case Study
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                    </motion.button>
+                  </a>
                 </motion.div>
               </div>
             </motion.div>

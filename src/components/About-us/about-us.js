@@ -2,7 +2,7 @@
 import Footer from "../Footer";
 import { useCalendar } from "@/contexts/CalendarContext";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import {
   ChevronRight,
   Users,
@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-const AboutUsRedesign = () => {
+const AboutUsRedesign = memo(() => {
   const { openCalendar } = useCalendar();
   const [activeValue, setActiveValue] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -170,20 +170,25 @@ const AboutUsRedesign = () => {
     { number: "24/7", label: "Support Available" },
   ];
 
-  // Typewriter effect
   useEffect(() => {
-    if (isTyping && typedText.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1));
-      }, 100);
-      return () => clearTimeout(timeout);
-    } else if (typedText.length === fullText.length) {
-      setIsTyping(false);
-    }
-  }, [typedText, isTyping]);
+    let animationFrameId;
+    let timeoutId;
 
-  // Intersection Observer for animations
-  useEffect(() => {
+    const type = () => {
+      setTypedText((prev) => {
+        if (prev.length < fullText.length) {
+          return fullText.slice(0, prev.length + 1);
+        }
+        setIsTyping(false);
+        return prev;
+      });
+      animationFrameId = requestAnimationFrame(type);
+    };
+
+    if (isTyping) {
+      animationFrameId = requestAnimationFrame(type);
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -201,7 +206,6 @@ const AboutUsRedesign = () => {
     const elements = document.querySelectorAll("[data-animate-id]");
     elements.forEach((el) => observer.observe(el));
 
-    // Fallback: Make everything visible after 2 seconds
     const fallbackTimer = setTimeout(() => {
       const allIds = Array.from(elements).map((el) =>
         el.getAttribute("data-animate-id")
@@ -211,19 +215,17 @@ const AboutUsRedesign = () => {
       setIsVisible(visibilityObj);
     }, 2000);
 
-    return () => {
-      observer.disconnect();
-      clearTimeout(fallbackTimer);
-    };
-  }, []);
-
-  // Auto-rotate testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
+    const testimonialInterval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      clearTimeout(fallbackTimer);
+      clearInterval(testimonialInterval);
+      observer.disconnect();
+    };
+  }, [isTyping, fullText, testimonials.length]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
@@ -307,16 +309,13 @@ const AboutUsRedesign = () => {
               excel in the digital age.
             </p>
 
-            <button
-              onClick={() => {
-                const el = document.getElementById("our-journey");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
+            <a
+              href="#our-journey"
               className="group bg-gradient-to-r from-purple-500 via-violet-600 to-indigo-700 hover:from-purple-600 hover:via-violet-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-800/50 flex items-center gap-3 mx-auto"
             >
               Discover Our Journey
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
         </div>
 
@@ -328,7 +327,7 @@ const AboutUsRedesign = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white will-change-transform">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
@@ -452,7 +451,7 @@ const AboutUsRedesign = () => {
       {/* Timeline Section */}
       <section
         id="our-journey"
-        className="py-12 sm:py-16 lg:py-20 bg-gray-900 text-white scroll-mt-[120px]"
+        className="py-12 sm:py-16 lg:py-20 bg-gray-900 text-white scroll-mt-[120px] will-change-transform"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
@@ -518,7 +517,7 @@ const AboutUsRedesign = () => {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white will-change-transform">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="values-header"
@@ -574,7 +573,7 @@ const AboutUsRedesign = () => {
       </section>
 
       {/* Technology Stack */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 will-change-transform">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="tech-header"
@@ -621,7 +620,7 @@ const AboutUsRedesign = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
+      <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white will-change-transform">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="testimonial-header"
@@ -711,10 +710,13 @@ const AboutUsRedesign = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-3 justify-center group">
+            <a
+              href="/contact"
+              className="bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-3 justify-center group"
+            >
               Start Your Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
             <button
               onClick={openCalendar}
               className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
@@ -729,6 +731,6 @@ const AboutUsRedesign = () => {
       <Footer />
     </div>
   );
-};
+});
 
 export default AboutUsRedesign;

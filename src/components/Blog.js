@@ -160,9 +160,9 @@ export default function Blog() {
                   ))}
                 </div>
 
-                <h2 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 text-xl lg:text-2xl line-clamp-2">
+                <h3 className="font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300 text-xl lg:text-2xl line-clamp-2">
                   {blog.title || "Untitled"}
-                </h2>
+                </h3>
 
                 <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
                   {blog.excerpt || "No excerpt available."}

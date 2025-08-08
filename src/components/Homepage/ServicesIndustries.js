@@ -21,6 +21,7 @@ const ServicesIndustries = ({
           src="/img/Services.png"
           alt="Services Background"
           fill
+          priority
           style={{
             filter: "brightness(1.2) contrast(0.8)",
             objectFit: "cover",

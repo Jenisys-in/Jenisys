@@ -45,13 +45,15 @@ const VisionMission = ({
             </p>
 
             <div className="relative group flex justify-center lg:justify-start">
-              <button className="w-[120px] h-[35px] sm:w-[150px] sm:h-[40px] md:w-[180px] md:h-[50px] lg:w-[225px] lg:h-[60px] bg-[#7526FE] font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[18px] lg:text-[24px] font-semibold my-4 sm:my-6 md:my-8 lg:my-2 rounded-[8px] md:rounded-[10px] lg:mb-[20px] 3xl:mt-[60px] relative overflow-hidden transition-all duration-300 hover:bg-[#8a3bff] holographic-button">
-                <span className="relative z-10 flex items-center justify-center h-full">
-                  Learn More
-                  <ChevronRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-              </button>
+              <a href="/about">
+                <button className="w-[120px] h-[35px] sm:w-[150px] sm:h-[40px] md:w-[180px] md:h-[50px] lg:w-[225px] lg:h-[60px] bg-[#7526FE] font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[18px] lg:text-[24px] font-semibold my-4 sm:my-6 md:my-8 lg:my-2 rounded-[8px] md:rounded-[10px] lg:mb-[20px] 3xl:mt-[60px] relative overflow-hidden transition-all duration-300 hover:bg-[#8a3bff] holographic-button">
+                  <span className="relative z-10 flex items-center justify-center h-full">
+                    Learn More
+                    <ChevronRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                </button>
+              </a>
             </div>
           </div>
 

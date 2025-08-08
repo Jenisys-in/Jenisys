@@ -78,9 +78,10 @@ const Hero = () => {
             loop
             playsInline
             preload="metadata"
+            title="Jenisys Homepage Video"
           >
             <source src="/Home Page Video.mp4" type="video/mp4" />
-            <source src="/Home-Page-Video.webm" type="video/webm" />
+            <source src="/Home Page Video.webm" type="video/webm" />
           </video>
         </div>
       </div>
