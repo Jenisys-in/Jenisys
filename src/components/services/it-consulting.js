@@ -1,5 +1,6 @@
 "use client";
 import Footer from "../Footer";
+import Link from "next/link";
 import { useCalendar } from "@/contexts/CalendarContext";
 import React, { useState, useEffect, useRef } from "react";
 import {
@@ -281,12 +282,14 @@ const ITConsultingPage = () => {
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                 </button>
-                <button className="group border-2 border-purple-300 text-purple-700 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
-                  <span className="flex items-center justify-center">
-                    View Our Process
-                    <Zap className="w-5 h-5 ml-3 group-hover:rotate-12 transition-transform duration-300" />
-                  </span>
-                </button>
+                <Link href="#our-process">
+                  <button className="group border-2 border-purple-300 text-purple-700 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
+                    <span className="flex items-center justify-center">
+                      View Our Process
+                      <Zap className="w-5 h-5 ml-3 group-hover:rotate-12 transition-transform duration-300" />
+                    </span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -511,7 +514,7 @@ const ITConsultingPage = () => {
       </section>
 
       {/* Process Timeline */}
-      <section id="process" className="py-32 relative">
+      <section id="our-process" className="py-32 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">

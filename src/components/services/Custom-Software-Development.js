@@ -34,7 +34,6 @@ const Jenisyssftdev = () => {
   const { openCalendar } = useCalendar();
   const [isVisible, setIsVisible] = useState({});
   const [activeStep, setActiveStep] = useState(0);
-  const [showModal, setShowModal] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   // Ensure we're on the client side
@@ -235,29 +234,6 @@ const Jenisyssftdev = () => {
   );
   OptimizedCard.displayName = "OptimizedCard";
 
-  // Handle form submission
-  const handleFormSubmit = useCallback((e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-    setShowModal(false);
-  }, []);
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [showModal]);
-
-  const openModal = useCallback(() => setShowModal(true), []);
-  const closeModal = useCallback(() => setShowModal(false), []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
@@ -290,7 +266,7 @@ const Jenisyssftdev = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
-                onClick={openModal}
+                onClick={openCalendar}
                 className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
               >
                 Start Your Project
@@ -893,7 +869,7 @@ const Jenisyssftdev = () => {
 
           <div className="text-center mt-16">
             <button
-              onClick={openModal}
+              onClick={openCalendar}
               className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200"
             >
               Get Free Project Consultation
@@ -923,16 +899,12 @@ const Jenisyssftdev = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <button
-              onClick={openModal}
+              onClick={openCalendar}
               className="group bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
             >
               <Calendar className="mr-3 w-5 h-5" />
               Book Free Strategy Call
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
-
-            <button className="border-2 border-white/50 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-200 backdrop-blur-sm">
-              View Portfolio
             </button>
           </div>
 
@@ -954,125 +926,6 @@ const Jenisyssftdev = () => {
           </div>
         </div>
       </section>
-
-      {/* Optimized Contact Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full relative overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors duration-200"
-              >
-                <X size={24} />
-              </button>
-              <h3 className="text-2xl font-bold mb-2">
-                Let's Build Something Amazing
-              </h3>
-              <p className="text-blue-100">
-                Schedule your free consultation today
-              </p>
-            </div>
-
-            <form onSubmit={handleFormSubmit} className="p-8">
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                      placeholder="John"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                      placeholder="Doe"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Work Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="john@company.com"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Your Company"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Project Type
-                  </label>
-                  <select
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    required
-                  >
-                    <option value="">Select a project type</option>
-                    <option value="custom-development">
-                      Custom Software Development
-                    </option>
-                    <option value="mvp">MVP Development</option>
-                    <option value="integration">System Integration</option>
-                    <option value="modernization">
-                      Legacy System Modernization
-                    </option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Tell us about your project
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Describe your project requirements, timeline, and goals..."
-                    required
-                  />
-                </div>
-
-                <button
-                  onClick={openCalendar}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg hover:shadow-lg transform hover:scale-[1.01] transition-all duration-200 font-semibold text-lg"
-                >
-                  Schedule Free Consultation
-                </button>
-              </div>
-
-              <p className="text-center text-gray-500 text-sm mt-6">
-                We'll respond within 24 hours with next steps
-              </p>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* Optimized Custom Styles */}
       <style jsx>{`

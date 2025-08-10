@@ -162,7 +162,7 @@ function Navbar() {
       (e) => {
         e.preventDefault();
         e.stopPropagation();
-        setActiveDropdown(activeDropdown === item.name ? null : item.name);
+        setActiveDropdown((prev) => (prev === item.name ? null : item.name));
       },
       [item.name]
     );

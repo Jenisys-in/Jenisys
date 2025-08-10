@@ -215,10 +215,6 @@ export default function WebDevelopmentPage() {
                 Get a Free Consultation
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="group border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300">
-                <Play className="inline-block mr-2 w-5 h-5" />
-                View Our Work
-              </button>
             </div>
 
             {/* Animated Code Visual */}

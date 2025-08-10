@@ -105,19 +105,19 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {[
-                { name: "About Us", href: "#about" },
-                { name: "Blog", href: "#blog" },
-                { name: "Careers", href: "#careers" },
-                { name: "Case Studies", href: "#case-studies" },
+                { name: "About", href: "/about" },
+                { name: "Blog", href: "/blog" },
+                { name: "Case Study", href: "/case-study" },
+                { name: "Career", href: "/career" },
               ].map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
                     {link.name}
                     <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
