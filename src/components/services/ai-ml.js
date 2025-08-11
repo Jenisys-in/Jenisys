@@ -16,7 +16,6 @@ import {
   Truck,
   CheckCircle,
   ArrowRight,
-  Play,
   Star,
   Calendar,
   Shield,
@@ -26,25 +25,13 @@ import {
   Cpu,
   Database,
   Cloud,
-  Lock,
-  Mail,
-  Phone,
-  MapPin,
-  ExternalLink,
-  Bot,
-  Instagram,
-  Linkedin,
-  Facebook,
 } from "lucide-react";
 
 const JenisysAILanding = () => {
   const { openCalendar } = useCalendar();
   const [activeTab, setActiveTab] = useState("ai");
-  const [visibleSection, setVisibleSection] = useState("");
   const [counters, setCounters] = useState({ time: 0, accuracy: 0, roi: 0 });
-  const [expandedCase, setExpandedCase] = useState(null);
   const [expandedFaq, setExpandedFaq] = useState(null);
-  const [email, setEmail] = useState("");
 
   // Cost calculator states
   const [costCalculator, setCostCalculator] = useState({
@@ -55,121 +42,135 @@ const JenisysAILanding = () => {
   });
   const [calculatedCost, setCalculatedCost] = useState({ min: 25, max: 75 });
 
+  // refs
+  const rootRef = useRef(null);
   const heroRef = useRef(null);
   const statsRef = useRef(null);
-  const lenisRef = useRef(null);
 
-  // Initialize Lenis smooth scrolling
+  // track if stats animated to avoid repeating
+  const statsAnimatedRef = useRef(false);
+  const rAFRef = useRef(null);
+
+  // -- Scoped scroll animation observer --
   useEffect(() => {
-    // Simple smooth scroll implementation (Lenis-like behavior)
-    const smoothScroll = {
-      init() {
-        document.documentElement.style.scrollBehavior = "smooth";
+    const rootEl = rootRef.current;
+    if (!rootEl) return;
 
-        // Add custom smooth scrolling for better performance
-        let ticking = false;
+    // Respect user's reduced motion preference
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-        const updateScroll = () => {
-          ticking = false;
-        };
+    const elements = Array.from(rootEl.querySelectorAll("[data-animate]"));
 
-        const requestTick = () => {
-          if (!ticking) {
-            requestAnimationFrame(updateScroll);
-            ticking = true;
-          }
-        };
+    // apply initial state
+    elements.forEach((el) => {
+      el.classList.add("opacity-0", "translate-y-8");
+      // allow custom animation delay via style attribute already set inline
+      el.style.transition = "opacity 0.7s ease-out, transform 0.7s ease-out";
+    });
 
-        window.addEventListener("scroll", requestTick, { passive: true });
-
-        return () => {
-          window.removeEventListener("scroll", requestTick);
-        };
-      },
-    };
-
-    const cleanup = smoothScroll.init();
-    return cleanup;
-  }, []);
-
-  // Scroll animation observer
-  useEffect(() => {
-    const animatedSections = document.querySelectorAll("[data-animate]");
+    if (prefersReducedMotion) {
+      // If reduced motion, remove animations and make elements visible
+      elements.forEach((el) => {
+        el.classList.remove("opacity-0", "translate-y-8");
+      });
+      return;
+    }
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, obs) => {
         entries.forEach((entry) => {
+          const target = entry.target;
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
-            entry.target.classList.remove("opacity-0", "translate-y-8");
+            // add class to animate and unobserve target (one-time)
+            target.classList.add("animate-fade-in-up");
+            target.classList.remove("opacity-0", "translate-y-8");
+            obs.unobserve(target);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
+        threshold: 0.12,
+        rootMargin: "0px 0px -80px 0px",
       }
     );
 
-    animatedSections.forEach((section) => {
-      section.classList.add(
-        "opacity-0",
-        "translate-y-8",
-        "transition-all",
-        "duration-700"
-      );
-      observer.observe(section);
-    });
+    elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      // clear any leftover inline transitions
+      elements.forEach((el) => {
+        el.style.transition = "";
+      });
+    };
   }, []);
 
-  // Animated counter effect
+  // -- Stats animated counter -- runs once when statsRef intersects --
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.target === statsRef.current) {
-            // Animate counters
-            const duration = 2000;
-            const startTime = Date.now();
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-            const animate = () => {
-              const elapsed = Date.now() - startTime;
+    if (!statsRef.current || prefersReducedMotion) return;
+
+    const el = statsRef.current;
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsAnimatedRef.current) {
+            statsAnimatedRef.current = true;
+            obs.unobserve(el);
+
+            // animate counters tightly controlled via rAF
+            const duration = 1800;
+            const start = performance.now();
+
+            const animate = (now) => {
+              const elapsed = now - start;
               const progress = Math.min(elapsed / duration, 1);
 
+              // Using eased progress (easeOutCubic)
+              const eased = 1 - Math.pow(1 - progress, 3);
+
               setCounters({
-                time: Math.floor(40 * progress),
-                accuracy: Math.floor(98 * progress),
-                roi: Math.floor(50 * progress),
+                time: Math.floor(40 * eased),
+                accuracy: Math.floor(98 * eased),
+                roi: Math.floor(50 * eased),
               });
 
               if (progress < 1) {
-                requestAnimationFrame(animate);
+                rAFRef.current = requestAnimationFrame(animate);
+              } else {
+                // finalize
+                setCounters({ time: 40, accuracy: 98, roi: 50 });
+                rAFRef.current = null;
               }
             };
 
-            animate();
+            rAFRef.current = requestAnimationFrame(animate);
           }
         });
       },
       { threshold: 0.5 }
     );
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
+    observer.observe(el);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (rAFRef.current) cancelAnimationFrame(rAFRef.current);
+      rAFRef.current = null;
+    };
   }, []);
 
-  // Cost calculator logic
+  // Cost calculator logic (stays the same but cleaned)
   useEffect(() => {
     const calculateCost = () => {
       let baseMin = 15;
       let baseMax = 45;
 
-      // Industry multiplier
       const industryMultipliers = {
         "E-commerce & Retail": 1.0,
         "Healthcare & Life Sciences": 1.4,
@@ -179,7 +180,6 @@ const JenisysAILanding = () => {
         "SaaS & Technology": 1.2,
       };
 
-      // Solution type multiplier
       const solutionMultipliers = {
         "Predictive Analytics": 1.0,
         "Recommendation Engine": 1.2,
@@ -189,14 +189,12 @@ const JenisysAILanding = () => {
         "Chatbot & Virtual Assistant": 0.8,
       };
 
-      // Complexity multiplier
       const complexityMultipliers = {
         "MVP/Proof of Concept": 0.6,
         "Production-Ready Solution": 1.0,
         "Enterprise Integration": 1.8,
       };
 
-      // Timeline multiplier (rush jobs cost more)
       const timelineMultipliers = {
         "3-6 weeks (Fast Track)": 1.3,
         "2-3 months (Standard)": 1.0,
@@ -204,12 +202,12 @@ const JenisysAILanding = () => {
         "6+ months (Enterprise)": 1.2,
       };
 
-      const industryMult = industryMultipliers[costCalculator.industry] || 1.0;
+      const industryMult = industryMultipliers[costCalculator.industry] ?? 1.0;
       const solutionMult =
-        solutionMultipliers[costCalculator.solutionType] || 1.0;
+        solutionMultipliers[costCalculator.solutionType] ?? 1.0;
       const complexityMult =
-        complexityMultipliers[costCalculator.complexity] || 1.0;
-      const timelineMult = timelineMultipliers[costCalculator.timeline] || 1.0;
+        complexityMultipliers[costCalculator.complexity] ?? 1.0;
+      const timelineMult = timelineMultipliers[costCalculator.timeline] ?? 1.0;
 
       const finalMin = Math.round(
         baseMin * industryMult * solutionMult * complexityMult * timelineMult
@@ -224,26 +222,19 @@ const JenisysAILanding = () => {
     calculateCost();
   }, [costCalculator]);
 
-  const handleCostCalculatorChange = (field, value) => {
-    setCostCalculatore((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      // Handle newsletter signup
-      alert(`Thank you for subscribing with ${email}!`);
-      setEmail("");
-    }
-  };
-
+  // improved scroll helper (smooth)
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+    const rootEl = rootRef.current || document;
+    const element =
+      rootEl.querySelector(`#${sectionId}`) ||
+      document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      // fallback: try global document
+      const fallback = document.getElementById(sectionId);
+      if (fallback)
+        fallback.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -276,47 +267,6 @@ const JenisysAILanding = () => {
     },
   ];
 
-  const caseStudies = [
-    {
-      id: 1,
-      title: "Retail client improved AOV by 37%",
-      description:
-        "Implemented AI-powered recommendation engine that increased average order value through personalized product suggestions.",
-      metrics: "37% AOV increase, 24% conversion rate improvement",
-    },
-    {
-      id: 2,
-      title: "Healthcare client reduced diagnostic time by 28%",
-      description:
-        "Deployed computer vision AI for medical imaging analysis, significantly reducing time to diagnosis.",
-      metrics: "28% faster diagnosis, 95% accuracy rate",
-    },
-    {
-      id: 3,
-      title: "Built internal GPT-like chatbot for enterprise support",
-      description:
-        "Custom LLM integration reduced support ticket volume and improved customer satisfaction scores.",
-      metrics: "60% reduction in tickets, 92% satisfaction score",
-    },
-  ];
-
-  const techStack = [
-    "TensorFlow",
-    "PyTorch",
-    "OpenAI",
-    "HuggingFace",
-    "LangChain",
-    "Rasa",
-    "Zapier",
-    "Make.com",
-    "UIPath",
-    "Vertex AI",
-    "Firebase",
-    "AWS SageMaker",
-    "Azure ML Studio",
-    "Google Cloud AI",
-  ];
-
   const faqs = [
     {
       q: "How do I know AI is right for my business?",
@@ -341,7 +291,10 @@ const JenisysAILanding = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
+    <div
+      ref={rootRef}
+      className="min-h-screen bg-gray-900 text-white overflow-hidden"
+    >
       {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes fade-in-up {
@@ -384,7 +337,7 @@ const JenisysAILanding = () => {
       `}</style>
 
       {/* Animated Background */}
-      <div className="fixed inset-0 opacity-10 pointer-events-none">
+      <div className="fixed inset-0 opacity-10 pointer-events-none" aria-hidden>
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20"></div>
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -428,7 +381,10 @@ const JenisysAILanding = () => {
           </button>
 
           {/* Floating AI Animation */}
-          <div className="absolute top-20 right-20 w-20 h-20 bg-blue-500/20 rounded-full animate-bounce hidden lg:block">
+          <div
+            className="absolute top-20 right-20 w-20 h-20 bg-blue-500/20 rounded-full animate-bounce hidden lg:block"
+            aria-hidden
+          >
             <Brain className="w-10 h-10 text-blue-400 m-5" />
           </div>
         </div>
@@ -507,7 +463,7 @@ const JenisysAILanding = () => {
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             <div className="min-h-[400px]">
               {activeTab === "ai" && (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
                     {
                       icon: TrendingUp,
@@ -543,7 +499,7 @@ const JenisysAILanding = () => {
                     <div
                       key={index}
                       className="group p-6 bg-gray-700/50 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      style={{ animationDelay: `${index * 80}ms` }}
                     >
                       <item.icon className="w-12 h-12 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
                       <h3 className="font-semibold mb-2">{item.title}</h3>
@@ -554,7 +510,7 @@ const JenisysAILanding = () => {
               )}
 
               {activeTab === "automation" && (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
                     {
                       icon: Zap,
@@ -590,7 +546,7 @@ const JenisysAILanding = () => {
                     <div
                       key={index}
                       className="group p-6 bg-gray-700/50 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105"
-                      style={{ animationDelay: `${index * 100}ms` }}
+                      style={{ animationDelay: `${index * 80}ms` }}
                     >
                       <item.icon className="w-12 h-12 text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
                       <h3 className="font-semibold mb-2">{item.title}</h3>
@@ -620,7 +576,7 @@ const JenisysAILanding = () => {
               <div
                 key={index}
                 className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 cursor-pointer"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * 80}ms` }}
               >
                 <industry.icon className="w-12 h-12 text-blue-400 mb-4 group-hover:scale-110 transition-transform mx-auto" />
                 <h3 className="font-semibold mb-2 text-center">
@@ -711,7 +667,7 @@ const JenisysAILanding = () => {
               <div
                 key={index}
                 className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-                style={{ animationDelay: `${index * 200}ms` }}
+                style={{ animationDelay: `${index * 120}ms` }}
               >
                 <div
                   className={`inline-block px-3 py-1 rounded-full text-sm mb-4 ${
@@ -782,12 +738,13 @@ const JenisysAILanding = () => {
               <div
                 key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-blue-500/30"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * 80}ms` }}
               >
                 <button
                   onClick={() =>
                     setExpandedFaq(expandedFaq === index ? null : index)
                   }
+                  aria-expanded={expandedFaq === index}
                   className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-700/30 transition-colors"
                 >
                   <h3 className="font-semibold pr-4">{faq.q}</h3>
