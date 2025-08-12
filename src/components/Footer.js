@@ -198,13 +198,15 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 >
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
-                  />
+                  {social.icon && (
+                    <Image
+                      src={social.icon}
+                      alt={social.name}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
+                    />
+                  )}
                 </a>
               ))}
             </div>

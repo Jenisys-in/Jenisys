@@ -59,11 +59,16 @@ const Hero = () => {
             expertise drives your success beyond limits.
           </p>
 
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col sm:flex-row gap-4">
             <Link href="/about" className="inline-block">
-              <button className="relative bg-[#361CA9] hover:bg-[#4b2ffb] transition duration-300 text-white w-[130px] h-[36px] sm:w-[160px] sm:h-[44px] md:w-[200px] md:h-[55px] lg:w-[220px] lg:h-[60px] xl:w-[240px] xl:h-[65px] 2xl:w-[260px] 2xl:h-[70px] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-semibold rounded-md shadow-lg  overflow-hidden group holographic-button">
+              <button className="relative bg-[#361CA9] hover:bg-[#4b2ffb] transition duration-300 text-white w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group holographic-button">
                 <span className="relative z-10">Learn More</span>
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#4b2ffb] via-[#7042F8] to-[#361CA9] opacity-0 group-hover:opacity-20 transition duration-300" />
+              </button>
+            </Link>
+            <Link href="/quote" className="inline-block">
+              <button className="relative bg-white hover:bg-gray-100 transition duration-300 text-[#361CA9] border border-[#361CA9] w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group">
+                <span className="relative z-10">Get a Free Quote</span>
               </button>
             </Link>
           </div>

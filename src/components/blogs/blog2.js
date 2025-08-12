@@ -773,27 +773,6 @@ aws autoscaling put-scaling-policy \\
                   </nav>
                 </div>
 
-                {/* Author Bio */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">
-                      TP
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-gray-100">
-                        Tuhin Pal
-                      </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        Cloud Solutions Architect
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Expert in cloud migration strategies with 8+ years helping
-                    startups scale their infrastructure efficiently.
-                  </p>
-                </div>
-
                 {/* Related Articles */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
                   <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">

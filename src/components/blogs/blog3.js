@@ -640,44 +640,6 @@ function App() {
                 </div>
               </section>
 
-              {/* Author & Metadata */}
-              <section className="mb-16">
-                <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 rounded-xl p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      TP
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                        Tuhin Pal
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        Senior React Developer & Architecture Consultant
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-500">
-                        Published on August 5, 2025
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Tuhin is a React specialist with 8+ years of experience
-                    building scalable web applications. He has helped dozens of
-                    startups and enterprises optimize their React architectures
-                    for performance and maintainability.
-                  </p>
-
-                  <div className="flex gap-4">
-                    <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                      Follow on LinkedIn
-                    </button>
-                    <button className="px-4 py-2 bg-gray-800 dark:bg-gray-600 text-white rounded-lg hover:bg-gray-900 dark:hover:bg-gray-500 transition-colors">
-                      View GitHub
-                    </button>
-                  </div>
-                </div>
-              </section>
-
               {/* Related Articles */}
               <section className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">

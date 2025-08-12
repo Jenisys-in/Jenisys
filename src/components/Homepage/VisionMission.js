@@ -97,7 +97,7 @@ const VisionMission = ({
                     } flex-shrink-0`}
                   >
                     <Image
-                      src={item.image}
+                      src={item.image ? item.image : ""}
                       width={52}
                       height={52}
                       alt={item.alt}

@@ -1324,34 +1324,7 @@ components:
       </section>
 
       {/* Author & Meta */}
-      <section className="py-12 bg-slate-100">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  TP
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-800">Tuhin Pal</h3>
-                  <p className="text-slate-600">
-                    Senior API Architect & Technical Writer
-                  </p>
-                  <p className="text-sm text-slate-500 mt-1">
-                    Published on August 5, 2025 • 15 min read
-                  </p>
-                </div>
-              </div>
-              <p className="text-slate-600">
-                Tuhin has over 10 years of experience designing scalable APIs
-                for Fortune 500 companies. He specializes in modern web
-                architectures, microservices, and developer experience
-                optimization.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
       {/* Footer Component */}
       <Footer />
     </div>

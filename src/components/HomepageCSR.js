@@ -61,12 +61,15 @@ const Hero = dynamic(() => import("./Homepage/Hero"));
 const VisionMission = dynamic(() => import("./Homepage/VisionMission"));
 const CoffeeBanner = dynamic(() => import("./Homepage/CoffeeBanner"));
 const Values = dynamic(() => import("./Homepage/Values"));
+const Process = dynamic(() => import("./Process"));
 const ServicesIndustries = dynamic(() =>
   import("./Homepage/ServicesIndustries")
 );
+const TechStack = dynamic(() => import("./TechStack"));
 const Testimonials = dynamic(() => import("./Homepage/Testimonials"));
 const BeerBanner = dynamic(() => import("./Homepage/BeerBanner"));
 const CaseStudies = dynamic(() => import("./Homepage/CaseStudies"));
+const BlogSection = dynamic(() => import("./Homepage/BlogSection"));
 
 // Memoized constants to prevent recreation
 const caseStudies = [
@@ -767,6 +770,10 @@ const HomepageCSR = memo(() => {
         />
       </div>
 
+      <div className="will-change-transform">
+        <Process />
+      </div>
+
       <ServicesIndustries
         services={services}
         industries={industries}
@@ -776,6 +783,10 @@ const HomepageCSR = memo(() => {
         expandedService={uiStates.expandedService}
         AnimatedIcon={AnimatedIcon}
       />
+
+      <div className="will-change-transform">
+        <TechStack />
+      </div>
 
       <div className="will-change-transform">
         <Testimonials
@@ -810,6 +821,7 @@ const HomepageCSR = memo(() => {
           backgroundElements={backgroundElements}
         />
       </div>
+      <BlogSection />
       <Footer />
     </div>
   );

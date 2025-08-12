@@ -715,59 +715,6 @@ const DigitalTransformationBlog = () => {
         </div>
       </section>
 
-      {/* Author & About */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
-                <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-4xl font-bold">
-                  TP
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Tuhin Pal
-                  </h3>
-                  <p className="text-blue-600 font-semibold mb-4">
-                    Digital Transformation Strategist | Jenisys
-                  </p>
-                  <p className="text-gray-600 leading-relaxed mb-4">
-                    With over 15 years of experience guiding enterprise
-                    transformations, Tuhin has helped Fortune 500 companies
-                    navigate complex digital journeys. He specializes in
-                    cloud-first strategies, AI implementation, and
-                    organizational change management.
-                  </p>
-                  <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a
-                      href="#"
-                      className="text-blue-600 hover:text-blue-800 flex items-center space-x-2"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>LinkedIn</span>
-                    </a>
-                    <a
-                      href="#"
-                      className="text-blue-600 hover:text-blue-800 flex items-center space-x-2"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Twitter</span>
-                    </a>
-                    <a
-                      href="#"
-                      className="text-blue-600 hover:text-blue-800 flex items-center space-x-2"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>More Articles</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer Component */}
       <Footer />
     </div>
