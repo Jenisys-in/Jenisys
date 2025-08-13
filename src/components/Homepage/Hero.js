@@ -48,15 +48,15 @@ const Hero = () => {
       <div className="w-screen px-6 sm:px-8 md:px-[70px] lg:px-[100px] xl:px-[120px] 3xl:px-[150px] py-10 md:py-20 flex flex-col lg:flex-row justify-between items-center lg:h-screen gap-8 sm:gap-10 md:gap-12 lg:gap-16">
         <div className="text-black w-full lg:flex-1 max-w-full lg:max-w-none">
           <h1 className="font-['Montserrat'] text-black text-[20px] sm:text-[24px] md:text-[32px] lg:text-[36px] xl:text-[44px] 2xl:text-[52px] 3xl:text-[60px] font-semibold leading-tight sm:leading-[28px] md:leading-[40px] lg:leading-[44px] xl:leading-[48px] 2xl:leading-[56px] 3xl:leading-[64px] mt-6">
-            Revolutionize your business with{" "}
-            <span className="text-[#7042F8]">Jenisys</span>
+            We Don’t Just Build Software — We Build Your{" "}
+            <span className="text-[#7042F8]">Competitive Advantage</span>
           </h1>
 
           <p className="font-['Montserrat'] text-black text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mt-4 leading-relaxed max-w-full sm:max-w-[500px] md:max-w-[620px] lg:max-w-[580px] xl:max-w-[620px]">
-            Jenisys: Where Innovation Begins. We craft top-tier software and
-            digital solutions, ensuring your business thrives with unmatched
-            quality and excellence. From consultation to development, our
-            expertise drives your success beyond limits.
+            From startups to enterprises, Jenisys delivers custom software,
+            apps, and automation that cut costs, boost productivity, and open
+            new revenue streams. We combine innovation with speed to turn your
+            ideas into profitable realities — faster than you thought possible.
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
@@ -68,7 +68,7 @@ const Hero = () => {
             </Link>
             <Link href="/quote" className="inline-block">
               <button className="relative bg-white hover:bg-gray-100 transition duration-300 text-[#361CA9] border border-[#361CA9] w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group">
-                <span className="relative z-10">Get a Free Quote</span>
+                <span className="relative z-10">Get Your Free Growth Plan</span>
               </button>
             </Link>
           </div>

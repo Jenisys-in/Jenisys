@@ -581,12 +581,6 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* Sticky CTA */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
-          <span className="font-semibold">Get Started</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
-      </div>
 
       <Footer />
     </div>

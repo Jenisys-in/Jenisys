@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
@@ -63,6 +64,24 @@ export default function RootLayout({ children }) {
         <CalendarProvider>
           <MainLayout>{children}</MainLayout>
         </CalendarProvider>
+
+        <Script strategy="lazyOnload">
+          {`
+            var Tawk_API=Tawk_API||{};
+            Tawk_API.onLoad = function(){
+                Tawk_API.minimize();
+            };
+            var Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/689bd92ae0fd9f192a113749/1j2gcgjin';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+          `}
+        </Script>
       </body>
     </html>
   );

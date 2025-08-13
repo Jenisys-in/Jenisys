@@ -802,12 +802,7 @@ export default function MobileAppLanding() {
       </section>
 
       {/* Sticky CTA Button */}
-      <div className="fixed bottom-5 right-5 z-50 md:bottom-8 md:right-8">
-        <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold shadow-2xl hover:from-indigo-700 hover:to-purple-700 transition-all transform hover:scale-105 md:px-8 md:py-4">
-          <span className="hidden md:inline">Get Free App Strategy</span>
-          <span className="md:hidden">Get Started</span>
-        </button>
-      </div>
+
       <Footer />
     </div>
   );

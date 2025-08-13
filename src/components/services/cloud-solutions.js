@@ -623,12 +623,7 @@ const Cloudsln = () => {
       </section>
 
       {/* Floating CTA */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center">
-          <span className="mr-2">Get Started</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
-      </div>
+
       <Footer />
     </div>
   );
