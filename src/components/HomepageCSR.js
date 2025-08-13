@@ -61,7 +61,7 @@ const Hero = dynamic(() => import("./Homepage/Hero"));
 const VisionMission = dynamic(() => import("./Homepage/VisionMission"));
 const CoffeeBanner = dynamic(() => import("./Homepage/CoffeeBanner"));
 const Values = dynamic(() => import("./Homepage/Values"));
-const Process = dynamic(() => import("./Process"));
+const Process = memo(dynamic(() => import("./Process"), { ssr: false }));
 const ServicesIndustries = dynamic(() =>
   import("./Homepage/ServicesIndustries")
 );
@@ -770,9 +770,7 @@ const HomepageCSR = memo(() => {
         />
       </div>
 
-      <div className="will-change-transform">
-        <Process />
-      </div>
+      <Process />
 
       <ServicesIndustries
         services={services}

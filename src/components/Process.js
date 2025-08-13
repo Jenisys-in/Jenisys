@@ -9,105 +9,88 @@ const processSteps = [
     icon: Eye,
     title: "Discovery & Strategy",
     description:
-      "We start by understanding your vision, goals, and target audience. Together, we define the scope, create a roadmap, and craft a winning strategy.",
+      "We begin by understanding your vision, goals, and audience. Together, we define the roadmap and strategy to ensure success.",
   },
   {
     icon: Pencil,
     title: "UI/UX Design",
     description:
-      "Our designers create beautiful, user-friendly interfaces. We build wireframes, mockups, and prototypes to visualize the perfect user journey.",
+      "We design intuitive, user-focused experiences with wireframes and prototypes to align with your vision.",
   },
   {
     icon: Code,
     title: "Development",
     description:
-      "Our expert developers turn designs into reality with cutting-edge technologies, following agile practices for flexibility and speed.",
+      "Our team builds robust, scalable, and efficient solutions using modern technologies.",
   },
   {
     icon: Rocket,
     title: "Testing & Deployment",
     description:
-      "We test rigorously for performance, security, and usability before deploying to a scalable cloud infrastructure.",
+      "We conduct rigorous testing for performance and security, followed by a smooth deployment.",
   },
   {
     icon: ShieldCheck,
     title: "Quality Assurance",
     description:
-      "Our QA team ensures your product meets the highest quality standards across devices and platforms.",
+      "Every product undergoes strict quality checks to meet the highest industry standards.",
   },
   {
     icon: LifeBuoy,
     title: "Maintenance & Support",
     description:
-      "We keep your solution secure, up-to-date, and optimized — with ongoing support from our dedicated team.",
+      "We provide ongoing support, updates, and improvements to keep your product performing.",
   },
 ];
 
 const Process = () => {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
-      {/* Decorative background shapes */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-72 h-72 bg-purple-200 rounded-full blur-3xl opacity-30 -top-20 -left-20"></div>
-        <div className="absolute w-72 h-72 bg-blue-200 rounded-full blur-3xl opacity-30 bottom-0 right-0"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold text-gray-800"
-          >
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight">
             Our Development Process
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto"
-          >
-            A proven, transparent, and client-focused approach — turning your
-            ideas into impactful digital solutions.
-          </motion.p>
-        </div>
+          </h2>
+          <p className="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">
+            A transparent, step-by-step approach to building impactful digital
+            solutions.
+          </p>
+        </motion.div>
 
-        {/* Process grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Steps */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {processSteps.map((step, index) => {
             const Icon = step.icon;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative group p-8 bg-white/80 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="group"
               >
-                {/* Step number */}
-                <div className="absolute -top-4 -left-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white w-12 h-12 flex items-center justify-center font-bold rounded-full shadow-lg">
-                  {index + 1}
-                </div>
-
                 {/* Icon */}
-                <div className="flex items-center justify-center mb-6">
-                  <div className="p-4 rounded-full bg-purple-100 group-hover:bg-purple-200 transition-colors duration-300">
-                    <Icon className="w-10 h-10 text-purple-700" />
+                <div className="flex justify-center mb-6">
+                  <div className="p-4 rounded-full border border-gray-200 bg-gradient-to-b from-gray-50 to-white shadow-sm group-hover:shadow-md transition-shadow duration-300">
+                    <Icon className="w-8 h-8 text-indigo-600" />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-semibold text-center mb-4 text-gray-800">
+                <h3 className="text-xl font-medium text-gray-800 text-center mb-3">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 text-center leading-relaxed">
+                <p className="text-gray-500 text-center leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
