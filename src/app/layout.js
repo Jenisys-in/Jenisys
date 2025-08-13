@@ -65,7 +65,7 @@ export default function RootLayout({ children }) {
           <MainLayout>{children}</MainLayout>
         </CalendarProvider>
 
-        <Script strategy="lazyOnload">
+        <Script id="tawk-to-script" strategy="lazyOnload">
           {`
             var Tawk_API=Tawk_API||{};
             Tawk_API.onLoad = function(){

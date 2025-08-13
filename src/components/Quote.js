@@ -41,10 +41,10 @@ const Quote = () => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (formData.service) {
-      nextStep();
+    if (currentStep === 0 && formData.service) {
+      setCurrentStep(1);
     }
-  }, [formData.service]);
+  }, [currentStep, formData.service]);
 
   const nextStep = () => {
     if (validateStep()) {
