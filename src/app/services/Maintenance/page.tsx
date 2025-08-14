@@ -34,6 +34,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/Maintenance",
+  },
+  name: "Maintenance & Support Services",
+  description:
+    "Ensure uninterrupted performance and reliability with Jenisys' Maintenance & Support services — from bug fixes to system updates and ongoing technical support.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function MaintenanceRoute() {
-  return <MaintenanceSupport />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <MaintenanceSupport />
+    </>
+  );
 }

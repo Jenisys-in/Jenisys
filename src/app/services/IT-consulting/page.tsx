@@ -34,6 +34,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/IT-consulting",
+  },
+  name: "IT Consulting Services",
+  description:
+    "Jenisys provides expert IT consulting to help businesses optimize tech strategies, enhance security, and ensure scalable, future-ready infrastructure and operations.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function ITConsultingRoute() {
-  return <ITConsultingPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ITConsultingPage />
+    </>
+  );
 }

@@ -34,6 +34,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/cloud-solutions",
+  },
+  name: "Cloud Services",
+  description:
+    "Jenisys offers secure, scalable cloud solutions to help businesses streamline operations, reduce infrastructure costs, and enhance agility with modern cloud technologies.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function CloudRoute() {
-  return <Cloudsln />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Cloudsln />
+    </>
+  );
 }

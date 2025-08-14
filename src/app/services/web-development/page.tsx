@@ -36,6 +36,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/web-development",
+  },
+  name: "Web Development Services",
+  description:
+    "Discover how Jenisys crafts modern, scalable, and high-performing websites tailored to your business goals through expert web development services.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function WebDevelopmentRoute() {
-  return <WebDevelopmentPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <WebDevelopmentPage />
+    </>
+  );
 }

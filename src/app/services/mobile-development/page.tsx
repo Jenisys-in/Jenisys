@@ -37,6 +37,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/mobile-development",
+  },
+  name: "App Development Services",
+  description:
+    "Discover how Jenisys builds modern, scalable, and high-performing mobile apps tailored to your business goals through expert app development services.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function MobileDevelopmentRoute() {
-  return <MobileAppLanding />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <MobileAppLanding />
+    </>
+  );
 }

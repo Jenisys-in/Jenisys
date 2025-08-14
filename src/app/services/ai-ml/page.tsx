@@ -34,6 +34,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/ai-ml",
+  },
+  name: "AI & Machine Learning Services",
+  description:
+    "Unlock business potential with Jenisys AI and Machine Learning services — from automation to intelligent analytics and custom AI solutions built to scale.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function AIMachineLearningRoute() {
-  return <JenisysAILanding />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <JenisysAILanding />
+    </>
+  );
 }

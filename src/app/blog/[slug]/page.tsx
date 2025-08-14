@@ -37,6 +37,8 @@ export async function generateMetadata({ params }) {
       locale: "en_US",
       type: "article",
       author: blog.author,
+      publishedTime: blog.date,
+      modifiedTime: blog.dateModified,
     },
     twitter: {
       card: "summary_large_image",
@@ -66,6 +68,7 @@ export default async function BlogPostPage({ params }) {
     '@type': 'BlogPosting',
     headline: blog.title,
     description: blog.description,
+    image: `https://www.jenisys.in${blog.thumbnail}`,
     author: {
       '@type': 'Organization',
       name: blog.author,
@@ -78,7 +81,8 @@ export default async function BlogPostPage({ params }) {
         url: 'https://www.jenisys.in/logo1.png',
       },
     },
-    datePublished: new Date().toISOString(),
+    datePublished: blog.date,
+    dateModified: blog.dateModified,
   };
 
   return (

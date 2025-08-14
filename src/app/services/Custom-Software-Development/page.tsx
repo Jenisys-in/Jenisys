@@ -34,6 +34,31 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.jenisys.in/services/Custom-Software-Development",
+  },
+  name: "Custom Software Development",
+  description:
+    "Jenisys builds tailored software solutions that fit your business needs — from enterprise systems to scalable custom platforms, ensuring high performance and long-term value.",
+  provider: {
+    "@type": "Organization",
+    name: "Jenisys",
+    url: "https://www.jenisys.in/",
+  },
+};
+
 export default function CustomSoftwareDevelopmentRoute() {
-  return <Jenisyssftdev />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Jenisyssftdev />
+    </>
+  );
 }
