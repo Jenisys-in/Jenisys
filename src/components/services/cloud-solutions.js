@@ -48,7 +48,7 @@ const Cloudsln = () => {
   const services = [
     {
       icon: Cloud,
-      title: "Cloud Migration",
+      title: "Auto-Scaling Architecture",
       desc: "Seamless AWS, Azure, GCP migrations",
     },
     {
@@ -221,11 +221,13 @@ const Cloudsln = () => {
               </div>
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-              Scalable. Secure. Cloud-First.
+              Unlock a Faster, Smarter, and More Secure Business.
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Accelerate innovation and cut infrastructure costs with Jenisys'
-              custom cloud solutions — from migration to management.
+              Stop overpaying for outdated hardware and start leveraging the
+              power of the cloud. We provide custom cloud solutions—from
+              seamless migration to ongoing management—that accelerate
+              innovation, boost security, and slash your infrastructure costs.
             </p>
             <button
               onClick={openCalendar}
@@ -241,6 +243,15 @@ const Cloudsln = () => {
       {/* Why Go Cloud Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Are Your On-Premises Systems Holding You Back?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Outdated infrastructure isn't just an expense; it's a liability.
+              It can slow you down, expose you to risk, and limit your growth.
+            </p>
+          </div>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl font-bold text-gray-900 mb-8">
@@ -296,10 +307,11 @@ const Cloudsln = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Cloud Services We Offer
+              Our Cloud Solutions: Built for the Future
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive cloud solutions tailored to your business needs
+              We design, build, and manage cloud solutions that give you a
+              competitive edge.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -610,7 +622,9 @@ const Cloudsln = () => {
             Ready to Elevate Your Infrastructure?
           </h2>
           <p className="text-xl mb-12 opacity-90">
-            Get expert insights and a tailored cloud strategy for your business.
+            Your future is in the cloud. Let's build a strategy to get you
+            there. Get expert insights and a tailored cloud roadmap for your
+            business.
           </p>
           <button
             onClick={openCalendar}

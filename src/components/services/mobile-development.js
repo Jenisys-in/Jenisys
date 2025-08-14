@@ -3,6 +3,7 @@
 import Footer from "../Footer";
 import { useCalendar } from "@/contexts/CalendarContext";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import {
   Smartphone,
@@ -99,11 +100,11 @@ export default function MobileAppLanding() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              Future-Ready{" "}
+              Your{" "}
               <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
-                Mobile Apps
+                App Idea
               </span>{" "}
-              Built for Growth
+              Built to Succeed
             </h1>
             <p
               className={`text-xl md:text-2xl mb-8 text-gray-200 transition-all duration-1000 delay-200 ${
@@ -112,8 +113,9 @@ export default function MobileAppLanding() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              From idea to App Store — Jenisys designs and develops mobile apps
-              that drive engagement, conversions, and business success.
+              A great app doesn’t just get downloaded—it gets used. We turn your
+              vision into a powerful, future-ready mobile app that drives
+              engagement, revenue, and lasting business growth.
             </p>
             <div
               className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-400 ${
@@ -157,11 +159,11 @@ export default function MobileAppLanding() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Common App Development Challenges
+              Don't Let Common App Problems Kill Your Idea
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Businesses struggle to find reliable developers, maintain
-              cross-platform parity, and retain users in a crowded app market.
+              Launching an app is a major investment. Don't risk it with these
+              common challenges:
             </p>
           </div>
 
@@ -169,33 +171,33 @@ export default function MobileAppLanding() {
             {[
               {
                 icon: Users,
-                title: "Poor User Retention",
+                title: "Users Abandoning Your App?",
                 description:
-                  "Users abandon apps quickly due to poor UX and performance issues.",
+                  "A poor user experience (UX) and frustrating performance issues can lead to low user retention and negative reviews.",
                 gradient: "from-red-50 to-red-100",
                 iconBg: "bg-red-500",
               },
               {
                 icon: ZapOff,
-                title: "Laggy Performance",
+                title: "Worrying About Poor Performance?",
                 description:
-                  "Apps crash or perform poorly on lower-end devices, losing customers.",
+                  "An app that crashes or lags on different devices loses user trust and makes your brand look unprofessional.",
                 gradient: "from-orange-50 to-orange-100",
                 iconBg: "bg-orange-500",
               },
               {
                 icon: Settings,
-                title: "Difficult Maintenance",
+                title: "Trapped in Maintenance Nightmares?",
                 description:
-                  "Complex updates and bug fixes that take weeks instead of days.",
+                  "Complex code and difficult updates can turn a simple fix into a costly, time-consuming headache.",
                 gradient: "from-yellow-50 to-yellow-100",
                 iconBg: "bg-yellow-500",
               },
               {
                 icon: Star,
-                title: "Low App Store Rating",
+                title: "Struggling to Be Found?",
                 description:
-                  "Poor ratings hurt discoverability and credibility in app stores.",
+                  "Without a solid App Store Optimization (ASO) strategy, your app can get lost in a crowded market.",
                 gradient: "from-purple-50 to-purple-100",
                 iconBg: "bg-purple-500",
               },
@@ -217,6 +219,11 @@ export default function MobileAppLanding() {
             ))}
           </div>
         </div>
+        <div className="max-w-4xl mx-auto text-center mb-5 mt-16">
+          <p className="text-xl text-gray-600">
+            We solve these problems before they even start.
+          </p>
+        </div>
       </section>
 
       {/* Development Process */}
@@ -224,11 +231,11 @@ export default function MobileAppLanding() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Proven Development Process
+              Our Proven Process: From Idea to App Store
             </h2>
             <p className="text-xl text-gray-600">
-              From concept to launch, we follow a structured approach that
-              ensures success.
+              We guide you through a transparent and collaborative process
+              designed to ensure your app is a success from day one.
             </p>
           </div>
 
@@ -238,43 +245,29 @@ export default function MobileAppLanding() {
                 step: 1,
                 title: "Discovery & Strategy",
                 description:
-                  "We dive deep into your business goals, target audience, and market requirements to create a comprehensive app strategy.",
+                  "We don't just build what you ask for; we build what you need. We dive deep into your business goals and market to create a strategic roadmap for your app.",
                 gradient: "from-indigo-500 to-purple-500",
               },
               {
                 step: 2,
-                title: "Wireframing & Prototyping",
+                title: "Design & User Experience",
                 description:
-                  "Interactive prototypes help visualize the user journey and validate concepts before development begins.",
+                  "Our UI/UX experts design intuitive, beautiful interfaces that are proven to maximize user engagement and satisfaction.",
                 gradient: "from-purple-500 to-pink-500",
               },
               {
                 step: 3,
-                title: "UI/UX Design",
+                title: "Agile Development",
                 description:
-                  "Beautiful, intuitive interfaces designed to maximize user engagement and conversion rates.",
+                  "You’re in the loop every step of the way. Our agile approach means you get regular updates and can provide feedback, ensuring the final product is perfect.",
                 gradient: "from-pink-500 to-red-500",
               },
               {
                 step: 4,
-                title: "Agile Development",
+                title: "Launch & Post-Launch Support",
                 description:
-                  "Transparent, iterative development with regular updates and feedback integration throughout the process.",
+                  "We handle everything from App Store submission to ongoing maintenance and support, so you can focus on your business.",
                 gradient: "from-red-500 to-orange-500",
-              },
-              {
-                step: 5,
-                title: "Testing & QA",
-                description:
-                  "Comprehensive testing across devices, platforms, and scenarios to ensure flawless performance.",
-                gradient: "from-orange-500 to-yellow-500",
-              },
-              {
-                step: 6,
-                title: "Launch & Support",
-                description:
-                  "App store submission, launch support, and ongoing maintenance to keep your app running smoothly.",
-                gradient: "from-yellow-500 to-green-500",
               },
             ].map((item, index) => (
               <div
@@ -308,7 +301,7 @@ export default function MobileAppLanding() {
               Our Mobile App Development Services
             </h2>
             <p className="text-xl text-gray-600">
-              Comprehensive solutions for every mobile app need.
+              We offer a complete suite of services to fit your specific needs.
             </p>
           </div>
 
@@ -318,7 +311,7 @@ export default function MobileAppLanding() {
                 icon: Smartphone,
                 title: "Native App Development",
                 description:
-                  "iOS and Android apps built with platform-specific technologies for optimal performance.",
+                  "For the fastest, most powerful experience, we build dedicated apps for both iOS and Android.",
                 gradient: "from-indigo-50 to-indigo-100",
                 hoverGradient:
                   "group-hover:from-indigo-500 group-hover:to-purple-500",
@@ -329,7 +322,7 @@ export default function MobileAppLanding() {
                 icon: Layers,
                 title: "Cross-Platform Apps",
                 description:
-                  "React Native and Flutter apps that work seamlessly across both iOS and Android.",
+                  "Reach a wider audience quickly with a single codebase for both iOS and Android using technologies like React Native and Flutter.",
                 gradient: "from-purple-50 to-purple-100",
                 hoverGradient:
                   "group-hover:from-purple-500 group-hover:to-pink-500",
@@ -340,7 +333,7 @@ export default function MobileAppLanding() {
                 icon: Globe,
                 title: "Progressive Web Apps",
                 description:
-                  "Web-based apps that provide native-like experiences across all devices.",
+                  "Offer your users a native-like experience directly from their browser, a cost-effective way to get started.",
                 gradient: "from-pink-50 to-pink-100",
                 hoverGradient:
                   "group-hover:from-pink-500 group-hover:to-red-500",
@@ -351,7 +344,7 @@ export default function MobileAppLanding() {
                 icon: Server,
                 title: "Backend Integration",
                 description:
-                  "Robust APIs and backend systems to power your mobile app functionality.",
+                  "We build powerful, scalable APIs and backend systems to ensure your app can handle any demand.",
                 gradient: "from-blue-50 to-blue-100",
                 hoverGradient:
                   "group-hover:from-blue-500 group-hover:to-indigo-500",
@@ -362,7 +355,7 @@ export default function MobileAppLanding() {
                 icon: TrendingUp,
                 title: "App Store Optimization",
                 description:
-                  "ASO strategies to improve discoverability and download rates in app stores.",
+                  "We optimize your app store listing to improve its discoverability and increase your download rates.",
                 gradient: "from-green-50 to-green-100",
                 hoverGradient:
                   "group-hover:from-green-500 group-hover:to-teal-500",
@@ -568,11 +561,10 @@ export default function MobileAppLanding() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              "In-House Team of UI/UX + Developers",
+              "Dedicated In-House Team",
               "Cross-Platform Excellence",
-              "Post-Launch Support Included",
-              "Lightning-Fast Performance",
-              "Transparent, Agile Collaboration",
+              "Transparent & Agile Process",
+              "Post-Launch Support",
             ].map((item, index) => (
               <div
                 key={index}
@@ -586,15 +578,13 @@ export default function MobileAppLanding() {
                 </div>
                 <p className="text-gray-600">
                   {index === 0 &&
-                    "Dedicated UI/UX designers and developers working exclusively on your project."}
+                    "You work directly with our expert UI/UX designers and developers who are personally invested in your project's success."}
                   {index === 1 &&
-                    "Expert knowledge in both native and hybrid app development technologies."}
+                    "We have deep expertise in both native and hybrid app technologies, so we can recommend the best solution for your business goals."}
                   {index === 2 &&
-                    "Ongoing maintenance, updates, and technical support included with every project."}
+                    "We provide regular updates and clear communication, so you always know where your project stands."}
                   {index === 3 &&
-                    "Optimized code and efficient architecture for smooth performance on all devices."}
-                  {index === 4 &&
-                    "Regular updates, clear communication, and agile development methodology."}
+                    "Our partnership doesn’t end at launch. We provide ongoing maintenance and support to keep your app running smoothly and securely."}
                 </p>
               </div>
             ))}
@@ -782,7 +772,9 @@ export default function MobileAppLanding() {
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-200 mb-12">
-            Get a roadmap, estimate, and consultation — no strings attached.
+            It all starts with a conversation. Let's discuss your vision, and
+            we’ll provide you with a clear roadmap and an estimate—no strings
+            attached.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <button
@@ -791,12 +783,11 @@ export default function MobileAppLanding() {
             >
               Book a Free Strategy Call
             </button>
-            <button
-              onClick={openCalendar}
-              className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-600 transition-all transform hover:scale-105"
-            >
-              Get Free Quote
-            </button>
+            <Link href="/quote" className="inline-block">
+              <button className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-600 transition-all transform hover:scale-105">
+                Get Free Quote
+              </button>
+            </Link>
           </div>
         </div>
       </section>

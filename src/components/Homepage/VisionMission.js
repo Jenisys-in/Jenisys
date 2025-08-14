@@ -39,9 +39,9 @@ const VisionMission = ({
             </h2>
 
             <p className="font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[20px] 3xl:text-[25px] pt-[10px] sm:pt-[15px] md:pt-[20px] lg:pt-0 3xl:mt-[20px] leading-relaxed opacity-90 hover:opacity-100 transition-opacity duration-300 text-center lg:text-left max-w-[600px] mx-auto lg:mx-0">
-              Our vision is to be the leading transformative technology
-              solutions provider, empowering businesses with innovative digital
-              solutions and driving transformative growth.
+              To be the trusted partner for businesses seeking transformative
+              custom software. We empower growth by turning innovative ideas
+              into powerful, effective technology.
             </p>
 
             <div className="relative group flex justify-center lg:justify-start">

@@ -554,22 +554,22 @@ const HomepageCSR = memo(() => {
     () => [
       {
         image: "/img/bulb.png",
-        text: "To Empower Businesses with Uncompromised Quality and Innovation.",
+        text: "Build custom software for your business's unique growth.",
         alt: "bulb",
       },
       {
         image: "/img/nano.png",
-        text: "To Revolutionize Business Growth Through Superior Technology.",
+        text: "Drive innovation with AI to solve your toughest challenges.",
         alt: "nano",
       },
       {
         image: "/img/arrow.png",
-        text: "To Drive Success with Tailored, High-Quality Digital Solutions.",
+        text: "Deliver reliable, high-quality products on time and on budget.",
         alt: "arrow",
       },
       {
         image: "/img/success.png",
-        text: "To Create the Future of Business with Relentless Excellence.",
+        text: "Be your trusted partner from concept to long-term success.",
         alt: "success",
       },
     ],
@@ -583,7 +583,7 @@ const HomepageCSR = memo(() => {
         icon: <Code className="w-8 h-8 md:w-10 md:h-10" />,
         title: "Cutting-Edge Technology",
         description:
-          "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive digital transformation.",
+          "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive real digital transformation.",
         color: "from-blue-500 to-cyan-500",
       },
       {
@@ -591,7 +591,7 @@ const HomepageCSR = memo(() => {
         icon: <Lightbulb className="w-8 h-8 md:w-10 md:h-10" />,
         title: "Innovation First",
         description:
-          "Our team constantly explores emerging technologies like AI, blockchain, and IoT to create groundbreaking solutions for complex challenges.",
+          "We constantly explore emerging technologies like AI and automation to create groundbreaking solutions for your most complex challenges.",
         color: "from-violet-500 to-pink-500",
       },
       {
@@ -599,7 +599,7 @@ const HomepageCSR = memo(() => {
         icon: <Shield className="w-8 h-8 md:w-10 md:h-10" />,
         title: "Security & Reliability",
         description:
-          "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure your business continuity.",
+          "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure seamless business continuity.",
         color: "from-green-500 to-teal-500",
       },
       {
@@ -607,7 +607,7 @@ const HomepageCSR = memo(() => {
         icon: <Users className="w-8 h-8 md:w-10 md:h-10" />,
         title: "Client-Centric Approach",
         description:
-          "We partner closely with our clients, understanding their unique needs to deliver personalized tech solutions that exceed expectations.",
+          "We partner closely with our clients, understanding your unique needs to deliver personalized tech solutions that consistently exceed your expectations.",
         color: "from-orange-500 to-red-500",
       },
     ],

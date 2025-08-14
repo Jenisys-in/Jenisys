@@ -70,15 +70,15 @@ export default function WebDevelopmentPage() {
 
   const processSteps = [
     {
-      title: "Discovery & Consultation",
+      title: "Discovery & Strategy",
       description: "Understanding your business goals and requirements",
     },
     {
-      title: "Wireframing & UI/UX",
+      title: "Design & User Experience",
       description: "Creating user-centered designs and prototypes",
     },
     {
-      title: "Frontend & Backend Development",
+      title: "Development & Integration",
       description: "Building with modern technologies and best practices",
     },
     {
@@ -99,22 +99,26 @@ export default function WebDevelopmentPage() {
     {
       icon: <Zap className="w-8 h-8" />,
       title: "Blazing Fast Performance",
-      description: "Optimized for speed with 95+ PageSpeed scores",
+      description:
+        "Our websites are built with a focus on speed and efficiency, delivering exceptional user experience and top SEO rankings.",
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
       title: "Mobile-First, Fully Responsive",
-      description: "Perfect experience across all devices and screen sizes",
+      description:
+        "We ensure your site looks and performs flawlessly on every device, giving you a competitive edge in a mobile-first world.",
     },
     {
       icon: <Code className="w-8 h-8" />,
       title: "Easy to Manage",
-      description: "User-friendly CMS and custom backend solutions",
+      description:
+        "Our solutions are built on a solid foundation, ready to grow with your business while protecting your data.",
     },
     {
       icon: <Shield className="w-8 h-8" />,
       title: "Secure and Scalable",
-      description: "Built with security best practices and growth in mind",
+      description:
+        "We build user-friendly content management systems (CMS) that put you in control, making updates and changes simple and intuitive.",
     },
   ];
 
@@ -166,11 +170,11 @@ export default function WebDevelopmentPage() {
   ];
 
   const painPoints = [
-    "Slow-loading website hurting user experience",
-    "Poor mobile experience losing customers",
-    "Low conversion rates despite traffic",
+    "Losing Customers to Frustration? A slow-loading, clunky website is the fastest way to lose a potential client.",
+    "Struggling to Be Seen? A poorly built site can be invisible to search engines, wasting your marketing efforts.",
+    "Wasting Your Time? Outdated backends make simple content updates a nightmare.",
     "Difficult to maintain and update content",
-    "No room for growth or customization",
+    "Stuck in a Box? A rigid platform with no room for growth or customization can stifle your future plans.",
   ];
 
   return (
@@ -196,14 +200,16 @@ export default function WebDevelopmentPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                Custom-Built Websites That{" "}
+                Stop Wishing for a Better Website.{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                  Elevate Your Brand
+                  Start Building One.
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                We design and develop high-performance websites tailored to your
-                business goals using cutting-edge technologies.
+                Your website is more than just a digital brochure; it’s your
+                hardest-working employee. We design and build high-performance,
+                conversion-focused websites that capture leads, elevate your
+                brand, and turn visitors into customers.
               </p>
             </div>
 
@@ -212,7 +218,7 @@ export default function WebDevelopmentPage() {
                 onClick={openCalendar}
                 className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
               >
-                Get a Free Consultation
+                Schedule a Free Strategy Call
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
@@ -252,10 +258,11 @@ export default function WebDevelopmentPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Is Your Website Holding You Back?
+              Is Your Website an Asset or a Liability?
             </h2>
             <p className="text-xl text-gray-600">
-              Don't let these common problems cost you customers and revenue
+              Many websites are silently costing their owners customers and
+              revenue. Do any of these sound familiar?
             </p>
           </div>
 
@@ -281,6 +288,11 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <p className="text-xl text-gray-600">
+          If you answered yes to any of these, it's time for a change.
+        </p>
+      </div>
 
       {/* Process Section */}
       <section
@@ -291,11 +303,12 @@ export default function WebDevelopmentPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Proven Development Process
+              Our Proven Process: Websites That Deliver
             </h2>
             <p className="text-xl text-gray-600">
-              From concept to launch, we follow a structured approach that
-              delivers results
+              We follow a structured, transparent process to ensure your project
+              is delivered on time, on budget, and with a clear focus on
+              results.
             </p>
           </div>
 
@@ -455,20 +468,18 @@ export default function WebDevelopmentPage() {
               Why Choose Jenisys?
             </h2>
             <p className="text-xl text-gray-600">
-              We go beyond just building websites - we create digital
-              experiences that drive results
+              When you choose us, you're not just hiring developers. You're
+              partnering with a team dedicated to your success.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
             <div className="space-y-6">
               {[
-                "Industry-focused design approach",
-                "SEO + performance-optimized builds",
-                "Comprehensive post-launch support",
-                "Modern tech stack (Next.js, Headless CMS)",
-                "Conversion rate optimization",
-                "Mobile-first development",
+                "Results-Focused: We optimize every build for performance, conversions, and SEO.",
+                "Expert Partnership: We use modern, robust technology (Next.js, Headless CMS) and provide comprehensive post-launch support.",
+                "Strategic Design: Our design approach is focused on your industry and your unique business goals.",
+                "Transparent Process: We keep you informed and involved from the first call to the final launch and beyond.",
               ].map((item, index) => (
                 <div
                   key={index}
@@ -559,11 +570,11 @@ export default function WebDevelopmentPage() {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Build Something Amazing?
+            Ready to Build a Website that Works for You?
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-            Let's create a website that not only looks stunning but drives real
-            business results for your company.
+            Let's discuss how a custom-built website can become your most
+            powerful growth engine.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button

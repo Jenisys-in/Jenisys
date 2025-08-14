@@ -37,35 +37,35 @@ const AboutUsRedesign = memo(() => {
   const [isVisible, setIsVisible] = useState({});
   const observerRef = useRef(null);
 
-  const fullText = "Where Innovation Meets Excellence";
+  const fullText = "Where Partnership Meets Performance";
 
   const coreValues = [
     {
       icon: <Heart className="w-6 h-6 md:w-8 md:h-8" />,
       title: "Customer Centric Approach",
       description:
-        "We put your business needs first, always. Our team is dedicated to providing personalized solutions that are tailored to your unique goals and challenges.",
+        "We don't just build solutions; we build relationships. Your business needs and goals are always our top priority",
       color: "from-rose-400 to-pink-500",
     },
     {
       icon: <Award className="w-6 h-6 md:w-8 md:h-8" />,
       title: "Unmatched Expertise",
       description:
-        "Our team comprises industry experts with years of experience in software development and digital solutions across various industries.",
+        "Our team consists of seasoned experts with deep industry experience, ensuring your project is in the hands of the best.",
       color: "from-indigo-400 to-blue-500",
     },
     {
       icon: <Lightbulb className="w-6 h-6 md:w-8 md:h-8" />,
       title: "Continuous Innovation",
       description:
-        "We believe in pushing boundaries and challenging the status quo with cutting-edge technology that gives you a competitive edge.",
+        "We are committed to pushing boundaries and leveraging cutting-edge technology to give you a true competitive edge.",
       color: "from-emerald-400 to-teal-500",
     },
     {
       icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />,
       title: "Value Driven Services",
       description:
-        "We prioritize delivering exceptional quality and impactful results, ensuring clients receive significant benefits that enhance their business outcomes.",
+        "We focus on delivering tangible results and impactful benefits, ensuring our work always enhances your business outcomes.",
       color: "from-amber-400 to-orange-500",
     },
   ];
@@ -75,31 +75,31 @@ const AboutUsRedesign = memo(() => {
       year: "2020",
       title: "Founded",
       description:
-        "Jenisys was born with a vision to transform businesses through technology",
+        "Jenisys was born with a mission to transform businesses through technology.",
     },
     {
       year: "2021",
       title: "First Major Client",
       description:
-        "Delivered our first enterprise-level solution, setting the foundation for excellence",
+        "We delivered our first enterprise-level solution, setting a new standard for excellence.",
     },
     {
       year: "2022",
       title: "Team Expansion",
       description:
-        "Grew our expert team to 25+ professionals across multiple domains",
+        "Grew our expert team to over 15 professionals, expanding our capabilities across key domains.",
     },
     {
       year: "2023",
       title: "Global Reach",
       description:
-        "Extended our services internationally, serving clients across 3 continents",
+        "Extended our services, successfully delivering projects to clients across three continents.",
     },
     {
       year: "2024",
       title: "Innovation Hub",
       description:
-        "Established our innovation lab focusing on AI and emerging technologies",
+        "Established a dedicated innovation lab to push the boundaries of AI and emerging technologies.",
     },
   ];
 
@@ -304,16 +304,18 @@ const AboutUsRedesign = memo(() => {
             </div>
 
             <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4">
-              We are the architects of innovation, dedicated to delivering
-              top-tier software and digital solutions that empower businesses to
-              excel in the digital age.
+              We're not just a tech company; we're your partner in growth. At
+              Jenisys, we build custom software and digital solutions designed
+              to help businesses like yours thrive. We believe that the right
+              technology, built with care and expertise, can be the ultimate
+              advantage.
             </p>
 
             <a
               href="#our-journey"
               className="group bg-gradient-to-r from-purple-500 via-violet-600 to-indigo-700 hover:from-purple-600 hover:via-violet-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-800/50 flex items-center gap-3 mx-auto"
             >
-              Discover Our Journey
+              Discover How We Partner with You
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
@@ -371,18 +373,16 @@ const AboutUsRedesign = memo(() => {
 
               <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed">
                 <p className="text-base sm:text-lg">
-                  At Jenisys, we are more than just a tech company—we are your
-                  partners in digital transformation. Founded with a vision to
-                  bridge the gap between innovative technology and business
-                  success, we have grown into a trusted name in the industry.
+                  At Jenisys, we're a team of passionate developers, designers,
+                  and strategists. We founded this company on a simple belief:
+                  that every business deserves access to world-class technology
+                  without the impersonal experience of a giant corporation.
                 </p>
 
                 <p className="text-base sm:text-lg">
-                  Our journey began with a simple belief: that every business
-                  deserves access to cutting-edge technology solutions that
-                  drive growth, enhance efficiency, and create lasting value.
-                  Today, we continue to uphold this belief through every project
-                  we undertake.
+                  Our journey has been about building strong relationships and
+                  delivering innovative solutions that create real, lasting
+                  value for our clients.
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-4 sm:pt-6">
