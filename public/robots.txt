@@ -7,3 +7,4 @@ Host: https://www.jenisys.in
 
 # Sitemaps
 Sitemap: https://www.jenisys.in/sitemap.xml
+Sitemap: https://www.jenisys.in/sitemap-0.xml
