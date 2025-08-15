@@ -46,13 +46,15 @@ const Preloader = ({ onComplete }) => {
     >
       <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden">
         {videoError ? (
-          <Image
-            src="/logo1.png"
-            alt="Jenisys Logo"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
+          <div className="preloader-logo-wrapper">
+            <Image
+              src="/logo1.png"
+              alt="Jenisys Logo"
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+          </div>
         ) : (
           <video
             ref={videoRef}
