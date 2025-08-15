@@ -80,31 +80,31 @@ const Jenisyssftdev = () => {
     () => [
       {
         title: "Discovery & Strategy",
-        desc: "Deep dive into your business requirements and technical constraints",
+        desc: "We start with a deep dive into your business to truly understand your goals, challenges, and vision",
         icon: <Database className="w-8 h-8" />,
         color: "from-blue-500 to-cyan-500",
       },
       {
         title: "Architecture Design",
-        desc: "Scalable system design and technology stack selection",
+        desc: "We design a scalable, secure system and select the perfect technology stack to ensure long-term success",
         icon: <Layers className="w-8 h-8" />,
         color: "from-purple-500 to-pink-500",
       },
       {
         title: "Agile Development",
-        desc: "Iterative development with continuous feedback loops",
+        desc: "Our iterative, sprint-based approach keeps you in the loop, allowing for continuous feedback and adaptation",
         icon: <Code2 className="w-8 h-8" />,
         color: "from-green-500 to-emerald-500",
       },
       {
         title: "Quality Assurance",
-        desc: "Comprehensive testing and performance optimization",
+        desc: "We perform rigorous testing to guarantee a bug-free, high-performance, and secure final product",
         icon: <Shield className="w-8 h-8" />,
         color: "from-orange-500 to-red-500",
       },
       {
         title: "Deployment & Monitoring",
-        desc: "Cloud deployment with real-time monitoring and support",
+        desc: "We handle the entire deployment process and provide ongoing support and real-time monitoring to ensure everything runs smoothly",
         icon: <Globe className="w-8 h-8" />,
         color: "from-indigo-500 to-blue-500",
       },
@@ -118,10 +118,11 @@ const Jenisyssftdev = () => {
         company: "TechFlow Industries",
         industry: "Manufacturing",
         challenge:
-          "Legacy inventory system causing 40% operational delays and $500K annual losses",
+          "A legacy inventory system was causing significant delays and costing the company over $500K annually",
         solution:
-          "AI-powered supply chain management platform with predictive analytics",
-        outcome: "65% faster processing, $1.2M cost savings, 99.9% uptime",
+          "We built an AI-powered supply chain management platform with predictive analytics",
+        outcome:
+          "The result was a 65% increase in processing efficiency, over $1.2M in annual savings, and a system with 99.9% uptime",
         metrics: { efficiency: "+65%", savings: "$1.2M", uptime: "99.9%" },
         tech: ["React", "Node.js", "MongoDB", "AWS"],
         gradient: "from-blue-600 to-purple-600",
@@ -130,11 +131,11 @@ const Jenisyssftdev = () => {
         company: "RetailHub Network",
         industry: "Retail",
         challenge:
-          "Fragmented systems across 50+ locations with no unified visibility",
+          "Fragmented systems across 50+ locations meant a lack of unified data and visibility",
         solution:
-          "Microservices architecture with real-time dashboard and mobile apps",
+          "We developed a microservices architecture with a real-time dashboard and custom mobile apps for store managers",
         outcome:
-          "80% improved decision-making speed, 45% reduction in operational costs",
+          " Decision-making speed improved by 80%, and operational costs were reduced by 45% across the entire network",
         metrics: { speed: "+80%", cost: "-45%", locations: "50+" },
         tech: ["Next.js", "PostgreSQL", "Redis", "Docker"],
         gradient: "from-green-600 to-blue-600",
@@ -143,10 +144,11 @@ const Jenisyssftdev = () => {
         company: "FinanceCore Startup",
         industry: "FinTech",
         challenge:
-          "Needed enterprise-grade MVP for Series A fundraising in 4 months",
+          "Needed an enterprise-grade MVP to secure Series A funding in just four months",
         solution:
-          "Rapid prototyping with scalable architecture and regulatory compliance",
-        outcome: "Secured $5M Series A, acquired 10K+ users in first quarter",
+          "We built a rapid prototype with a scalable architecture and all necessary regulatory compliance",
+        outcome:
+          "The startup successfully secured $5M in Series A funding and acquired over 10K users in its first quarter",
         metrics: { funding: "$5M", users: "10K+", time: "4mo" },
         tech: ["TypeScript", "Prisma", "Stripe", "Auth0"],
         gradient: "from-purple-600 to-pink-600",
@@ -254,14 +256,15 @@ const Jenisyssftdev = () => {
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
               Build Software That
               <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                Transforms Business
+                Doesn't Just Work—It Wins
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Custom enterprise solutions that scale with your vision. From MVP
-              to market leader, we build the technology that powers your
-              success.
+              In today's market, off-the-shelf software is no longer enough. We
+              build custom, enterprise-grade solutions that are an exact match
+              for your vision. From your first MVP to a market-leading platform,
+              we provide the technology that powers your success.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -329,8 +332,9 @@ const Jenisyssftdev = () => {
               <span className="block text-red-600">Holding You Back?</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Transform operational bottlenecks into competitive advantages with
-              custom solutions designed for your unique business challenges.
+              If your business is being constrained by outdated, clunky, or
+              generic software, it's time for a change. Let's turn your
+              operational bottlenecks into a competitive advantage.
             </p>
           </div>
 
@@ -338,25 +342,25 @@ const Jenisyssftdev = () => {
             {[
               {
                 title: "Legacy System Modernization",
-                desc: "Replace outdated infrastructure with modern, scalable solutions",
+                desc: "Replace outdated infrastructure with a modern, scalable solution that's easy to use and built to last.",
                 impact: "Up to 70% efficiency gain",
                 color: "from-red-500 to-orange-500",
               },
               {
                 title: "Custom Workflow Automation",
-                desc: "Eliminate manual processes with intelligent automation",
+                desc: "Eliminate time-consuming manual processes with intelligent automation, freeing up your team to focus on what matters most.",
                 impact: "Save 20+ hours per week",
                 color: "from-blue-500 to-cyan-500",
               },
               {
                 title: "Data Integration & Analytics",
-                desc: "Unify disparate systems for actionable insights",
+                desc: "Unify your disparate systems to get a single source of truth and the actionable insights you need to make smart decisions.",
                 impact: "90% faster reporting",
                 color: "from-purple-500 to-pink-500",
               },
               {
                 title: "Scalable MVP Development",
-                desc: "Launch market-ready products with growth-focused architecture",
+                desc: "Launch a market-ready product fast with a growth-focused architecture that will impress investors and delight your first customers.",
                 impact: "3x faster time-to-market",
                 color: "from-green-500 to-emerald-500",
               },
@@ -419,15 +423,16 @@ const Jenisyssftdev = () => {
               Our Proven Methodology
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              From Concept to
+              From Idea to
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 {" "}
-                Launch
+                Impact
               </span>
             </h2>
             <p className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
-              A battle-tested process that delivers results on time and within
-              budget, refined through 200+ successful projects.
+              We use a battle-tested process, refined over 200+ successful
+              projects, to ensure your software is delivered on time and on
+              budget.
             </p>
           </div>
 
@@ -756,13 +761,12 @@ const Jenisyssftdev = () => {
               Flexible Engagement Models
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-              Choose What Works
+              Choose What's Best for You
               <span className="block text-orange-600">Best for You</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              From rapid prototypes to enterprise-scale solutions, we adapt our
-              approach to match your timeline, budget, and business
-              requirements.
+              Whether you need a quick prototype or a long-term development
+              partner, we have a model that fits your needs.
             </p>
           </div>
 
@@ -770,7 +774,7 @@ const Jenisyssftdev = () => {
             {[
               {
                 title: "Fixed Scope Project",
-                desc: "Perfect for well-defined requirements with clear deliverables",
+                desc: "Ideal for well-defined projects like MVPs or system migrations. We provide a fixed timeline and budget with clear deliverables",
                 features: [
                   "Detailed project specification",
                   "Fixed timeline & budget",
@@ -783,7 +787,7 @@ const Jenisyssftdev = () => {
               },
               {
                 title: "Agile Development",
-                desc: "Flexible approach for evolving requirements and iterative development",
+                desc: "Best for projects with evolving requirements. We use a flexible, sprint-based approach with continuous feedback to adapt as we go",
                 features: [
                   "Sprint-based development",
                   "Regular feedback cycles",
@@ -797,7 +801,7 @@ const Jenisyssftdev = () => {
               },
               {
                 title: "Dedicated Team",
-                desc: "Extended development team integrated with your organization",
+                desc: "Perfect for long-term partnerships. We provide an extended team of developers who integrate seamlessly with your organization",
                 features: [
                   "Full-time dedicated developers",
                   "Direct team integration",

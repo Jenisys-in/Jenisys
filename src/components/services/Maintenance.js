@@ -57,7 +57,7 @@ const MaintenanceSupport = () => {
     {
       icon: Clock,
       title: "24/7 Technical Support",
-      desc: "Round-the-clock assistance from our expert team whenever you need it.",
+      desc: "Our experts are available around the clock to assist you whenever you need it.",
     },
     {
       icon: Zap,
@@ -67,27 +67,27 @@ const MaintenanceSupport = () => {
     {
       icon: RefreshCw,
       title: "Performance Optimization",
-      desc: "Continuous monitoring and tuning for peak system performance.",
+      desc: "We continuously monitor and tune your systems for peak performance and speed.",
     },
     {
       icon: Lock,
       title: "Security Patching",
-      desc: "Regular security updates and vulnerability assessments.",
+      desc: "We regularly apply security updates and run vulnerability assessments to protect your data.",
     },
     {
       icon: Eye,
       title: "System Monitoring",
-      desc: "Proactive monitoring with real-time alerts and notifications.",
+      desc: "Our proactive monitoring with real-time alerts ensures we know about issues the moment they arise.",
     },
     {
       icon: RefreshCw,
       title: "Software Updates",
-      desc: "Keep your platforms current with the latest features and fixes.",
+      desc: "We keep your platforms current with the latest features and security fixes.",
     },
     {
       icon: Database,
       title: "Backup & Recovery",
-      desc: "Automated backups and disaster recovery planning.",
+      desc: "We implement automated backups and disaster recovery plans to safeguard your business.",
     },
     {
       icon: Puzzle,
@@ -173,13 +173,15 @@ const MaintenanceSupport = () => {
               We Don't Just Build.
               <br />
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                We Maintain. We Support.
+                We Ensure Your Business Never Stops.
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-              Round-the-clock technical support and proactive maintenance to
-              keep your business running smoothly.
+              You've invested in great software. Now, protect that investment.
+              Our round-the-clock support and proactive maintenance keep your
+              systems running flawlessly, so you can focus on growing your
+              business without worrying about downtime.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -205,10 +207,11 @@ const MaintenanceSupport = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Maintenance & Support Matters
+              Why Proper Support Isn't Optional
             </h2>
             <p className="text-xl text-gray-600">
-              Don't let technical issues slow down your business growth
+              Don't let technical issues and security risks derail your business
+              growth.
             </p>
           </div>
 
@@ -216,13 +219,13 @@ const MaintenanceSupport = () => {
             {/* Problems */}
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-red-600 mb-6">
-                Without Proper Support:
+                The Risk of Waiting:
               </h3>
               <div className="space-y-4">
                 {[
-                  "System downtimes cost revenue",
-                  "Outdated tech creates vulnerabilities",
-                  "Security loopholes expose data",
+                  "Revenue Loss: Every minute of system downtime costs you money.",
+                  "Security Threats: Outdated software and unpatched vulnerabilities are an open invitation for a data breach.",
+                  "Productivity Dips: Manual troubleshooting and frequent bugs slow your team down.",
                 ].map((problem, idx) => (
                   <div key={idx} className="flex items-start space-x-3">
                     <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-0.5">
@@ -237,13 +240,13 @@ const MaintenanceSupport = () => {
             {/* Solutions */}
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-green-600 mb-6">
-                With Jenisys Support:
+                The Jenisys Advantage:
               </h3>
               <div className="space-y-4">
                 {[
-                  "24/7 proactive monitoring",
-                  "Regular updates & patches",
-                  "Dedicated support team",
+                  "Proactive Monitoring: We catch issues before they impact your business.",
+                  "Guaranteed Reliability: We ensure your systems are always up-to-date and secure.",
+                  "Peace of Mind: You get a dedicated team of experts ready to help 24/7.",
                 ].map((solution, idx) => (
                   <div key={idx} className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-green-500 mt-0.5" />
@@ -264,7 +267,7 @@ const MaintenanceSupport = () => {
               What We Cover
             </h2>
             <p className="text-xl text-gray-600">
-              Comprehensive support across all your technical needs
+              We provide comprehensive support for all your technical needs.
             </p>
           </div>
 
@@ -295,10 +298,13 @@ const MaintenanceSupport = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Free Maintenance Included
+              Your Free Maintenance Period
             </h2>
             <p className="text-xl text-gray-600">
-              Every Jenisys project comes with complimentary maintenance
+              Every project we build includes complimentary maintenance and
+              support for a period of 6 months to 1 year. This ensures a
+              seamless transition and gives you time to fully experience the
+              value we provide.
             </p>
           </div>
 
@@ -489,7 +495,7 @@ const MaintenanceSupport = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Support Process</h2>
             <p className="text-xl text-blue-100">
-              Simple, efficient, and reliable
+              We make support simple, efficient, and reliable.
             </p>
           </div>
 
@@ -498,22 +504,22 @@ const MaintenanceSupport = () => {
               {
                 step: "01",
                 title: "Onboarding & Audit",
-                desc: "Comprehensive system assessment and setup",
+                desc: "We perform a comprehensive assessment to understand your systems and set up our monitoring",
               },
               {
                 step: "02",
                 title: "24/7 Monitoring",
-                desc: "Continuous monitoring with real-time alerts",
+                desc: "We continuously monitor your systems with real-time alerts",
               },
               {
                 step: "03",
                 title: "Ongoing Maintenance",
-                desc: "Regular updates, patches, and optimizations",
+                desc: "We handle regular updates, patches, and optimizations",
               },
               {
                 step: "04",
                 title: "Emergency Response",
-                desc: "Immediate action when issues arise",
+                desc: "When a critical issue arises, we take immediate action to resolve it",
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center relative">
@@ -622,11 +628,11 @@ const MaintenanceSupport = () => {
       <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-4">
-            Ensure 24/7 Stability with Jenisys
+            Don't wait for problems to occur
           </h2>
           <p className="text-xl mb-8 text-purple-100">
-            Don't wait for problems to occur. Get proactive support that keeps
-            your business running smoothly.
+            Get proactive support that keeps your business running smoothly and
+            securely.
           </p>
           <button
             onClick={openCalendar}

@@ -368,15 +368,17 @@ const JenisysAILanding = () => {
           </h1>
 
           <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-            From intelligent insights to workflow automation, we build scalable
-            AI solutions that transform the way you work.
+            Stop guessing and start predicting. We build scalable AI and
+            automation solutions that transform the way you work, giving you
+            intelligent insights, boosting efficiency, and creating powerful new
+            revenue streams.
           </p>
 
           <button
             onClick={() => scrollToSection("cta")}
             className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
           >
-            Book a Free AI Consultation
+            Book a Free AI Strategy Session
             <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
 
@@ -468,22 +470,22 @@ const JenisysAILanding = () => {
                     {
                       icon: TrendingUp,
                       title: "Predictive Analytics",
-                      desc: "Forecast trends and outcomes with advanced ML models",
+                      desc: "Forecast trends and outcomes with advanced models to make smarter business decisions.",
                     },
                     {
                       icon: Target,
                       title: "Recommendation Engines",
-                      desc: "Personalized suggestions that drive engagement",
+                      desc: "Drive engagement and sales with personalized product suggestions.",
                     },
                     {
                       icon: MessageSquare,
                       title: "Natural Language Processing",
-                      desc: "Extract insights from text and documents",
+                      desc: "Extract valuable insights from unstructured text, documents, and customer feedback.",
                     },
                     {
                       icon: Eye,
                       title: "Computer Vision",
-                      desc: "Analyze images and video with AI",
+                      desc: "Analyze images and video with AI to improve quality control, security, and medical diagnostics.",
                     },
                     {
                       icon: Database,
@@ -493,7 +495,7 @@ const JenisysAILanding = () => {
                     {
                       icon: Cpu,
                       title: "Generative AI Integration",
-                      desc: "GPT, Claude, and custom LLM implementations",
+                      desc: "Implement cutting-edge AI models like GPT and Claude to supercharge your content creation, customer support, and more.",
                     },
                   ].map((item, index) => (
                     <div
@@ -598,7 +600,8 @@ const JenisysAILanding = () => {
             Proven AI Solutions That Drive Results
           </h2>
           <p className="text-xl text-gray-400 text-center mb-12 max-w-3xl mx-auto">
-            Real transformations from our AI implementations across industries
+            We have a track record of delivering real transformations across
+            diverse industries.
           </p>
 
           <div className="grid lg:grid-cols-2 gap-8">
@@ -606,11 +609,13 @@ const JenisysAILanding = () => {
               {
                 industry: "E-commerce",
                 title: "AI-Powered Product Recommendations",
-                before: "Random product suggestions, 2.1% conversion rate",
-                after: "Personalized ML recommendations, 3.2% conversion rate",
+                before:
+                  "Generic product suggestions were failing to engage customers and increase sales.",
+                after:
+                  "We increased conversion rates by over 52%, leading to a significant boost in revenue and a 31% higher average order value.",
                 improvement: "+52% revenue increase",
                 description:
-                  "Built deep learning recommendation engine using collaborative filtering and content-based algorithms, processing 10M+ customer interactions daily.",
+                  "We built a custom deep-learning recommendation engine that processed over 10 million customer interactions daily.",
                 metrics: [
                   "52% revenue boost",
                   "31% higher AOV",
@@ -621,11 +626,13 @@ const JenisysAILanding = () => {
               {
                 industry: "Healthcare",
                 title: "Medical Imaging AI Diagnostics",
-                before: "Manual radiology review, 4-6 hour turnaround",
-                after: "AI-assisted diagnosis, 45-minute turnaround",
+                before:
+                  "Manual X-ray analysis led to long patient wait times and high costs.",
+                after:
+                  "Diagnosis time was reduced by 87%, freeing up radiologists and cutting costs by 40%.",
                 improvement: "+87% faster diagnosis",
                 description:
-                  "Developed computer vision model for chest X-ray analysis, achieving 96% accuracy and dramatically reducing patient wait times.",
+                  "We developed a computer vision model that analyzed chest X-rays with 96% accuracy, dramatically speeding up the diagnostic process.",
                 metrics: [
                   "87% faster processing",
                   "96% diagnostic accuracy",
@@ -636,11 +643,13 @@ const JenisysAILanding = () => {
               {
                 industry: "Manufacturing",
                 title: "Predictive Maintenance AI",
-                before: "Reactive maintenance, 23% unexpected downtime",
-                after: "AI-predicted maintenance, 4% unexpected downtime",
+                before:
+                  "Unscheduled equipment failures were causing significant downtime and revenue loss.",
+                after:
+                  "We implemented an IoT sensor network with an AI model that could predict equipment failures up to 72 hours in advance.",
                 improvement: "+$2.3M saved annually",
                 description:
-                  "IoT sensor network with ML algorithms predicting equipment failures 72 hours in advance, optimizing maintenance schedules.",
+                  "Unexpected downtime was reduced by 83%, saving the company over $2.3 million annually.",
                 metrics: [
                   "83% downtime reduction",
                   "$2.3M annual savings",
@@ -651,11 +660,13 @@ const JenisysAILanding = () => {
               {
                 industry: "Financial Services",
                 title: "Real-time Fraud Detection",
-                before: "Rule-based detection, 12% false positives",
-                after: "ML fraud detection, 2.1% false positives",
+                before:
+                  "Rule-based fraud detection was slow and resulted in a high number of false positives.",
+                after:
+                  "Fraud detection accuracy improved by 94%, preventing millions in losses and reducing false positives by over 80%.",
                 improvement: "+94% accuracy improvement",
                 description:
-                  "Advanced anomaly detection using ensemble methods and deep learning, processing 500K+ transactions per second.",
+                  "We built an advanced anomaly detection system that processed over 500,000 transactions per second.",
                 metrics: [
                   "94% better accuracy",
                   "0.03s processing time",
@@ -783,8 +794,8 @@ const JenisysAILanding = () => {
             AI Project Cost Estimator
           </h2>
           <p className="text-xl text-gray-400 text-center mb-12">
-            Get an instant estimate for your AI project based on your specific
-            requirements
+            Ready to see what's possible? Use our estimator to get an idea of
+            the investment and potential returns for your AI project.
           </p>
 
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">

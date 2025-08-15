@@ -49,7 +49,22 @@ const Cloudsln = () => {
     {
       icon: Cloud,
       title: "Auto-Scaling Architecture",
-      desc: "Seamless AWS, Azure, GCP migrations",
+      desc: "Your infrastructure grows and shrinks with your needs, so you only pay for what you use",
+    },
+    {
+      icon: GitBranch,
+      title: "DevOps & Automation",
+      desc: "Automate your development pipeline with CI/CD to achieve faster deployment and seamless updates",
+    },
+    {
+      icon: Database,
+      title: "Disaster Recovery",
+      desc: "We build reliable systems that protect your data and ensure zero downtime",
+    },
+    {
+      icon: Shield,
+      title: "Cloud-Native Security",
+      desc: "We integrate enterprise-grade security from day one to protect your data and ensure compliance",
     },
     {
       icon: Server,
@@ -61,17 +76,6 @@ const Cloudsln = () => {
       title: "Platform as a Service",
       desc: "Complete PaaS management",
     },
-    {
-      icon: GitBranch,
-      title: "DevOps & Automation",
-      desc: "CI/CD, containerization",
-    },
-    {
-      icon: Database,
-      title: "Multi-cloud Strategies",
-      desc: "Hybrid cloud architecture",
-    },
-    { icon: Shield, title: "Cloud Security", desc: "Compliance & protection" },
   ];
 
   const industries = [
@@ -114,12 +118,27 @@ const Cloudsln = () => {
   ];
 
   const workflow = [
-    { title: "Assess", desc: "Analyze current infrastructure" },
-    { title: "Plan", desc: "Design migration strategy" },
-    { title: "Migrate", desc: "Execute seamless transition" },
+    {
+      title: "Assess",
+      desc: " We start by analyzing your current infrastructure to understand your unique needs and goals.",
+    },
+    {
+      title: "Plan",
+      desc: "We design a custom migration strategy that minimizes risk and downtime.",
+    },
+    {
+      title: "Migrate",
+      desc: "Our experts execute a seamless transition to your new cloud environment.",
+    },
     { title: "Deploy", desc: "Launch optimized systems" },
-    { title: "Optimize", desc: "Fine-tune performance" },
-    { title: "Support", desc: "Ongoing maintenance" },
+    {
+      title: "Optimize",
+      desc: "We fine-tune your systems for maximum performance and cost efficiency.",
+    },
+    {
+      title: "Support",
+      desc: "We provide ongoing maintenance and support to keep you running smoothly.",
+    },
   ];
 
   const testimonials = [
@@ -392,9 +411,12 @@ const Cloudsln = () => {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Proven Results</h2>
+            <h2 className="text-4xl font-bold mb-6">
+              Real Results for Real Businesses
+            </h2>
             <p className="text-xl opacity-90">
-              Real impact for real businesses
+              We don't just talk about the benefits of the cloud—we deliver
+              them.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-12 text-center">
@@ -403,7 +425,7 @@ const Cloudsln = () => {
                 <AnimatedNumber target={animatedNumbers.cost} suffix="%" />
               </div>
               <p className="text-xl opacity-90">
-                Reduced infrastructure costs within 3 months
+                Reduced infrastructure costs within 3 months of migration
               </p>
             </div>
             <div className="transform hover:scale-105 transition-transform">
@@ -419,7 +441,7 @@ const Cloudsln = () => {
                 <AnimatedNumber target={animatedNumbers.speed} suffix="x" />
               </div>
               <p className="text-xl opacity-90">
-                Faster deployment speed with DevOps optimization
+                Faster deployment speeds with a custom DevOps and CI/CD setup
               </p>
             </div>
           </div>
@@ -434,7 +456,8 @@ const Cloudsln = () => {
               Why Choose Jenisys?
             </h2>
             <p className="text-xl text-gray-600">
-              Your trusted cloud transformation partner
+              When you partner with us, you're choosing a team that is genuinely
+              invested in your success.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

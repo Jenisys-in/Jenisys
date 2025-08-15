@@ -22,19 +22,12 @@ const MainLayout = ({ children }) => {
   const { isCalendarOpen, closeCalendar } = useCalendar();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 700);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
     <>
-      {isLoading && <Preloader />}
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <div
         className={`transition-opacity duration-1000 ${
           isLoading ? "opacity-0" : "opacity-100"

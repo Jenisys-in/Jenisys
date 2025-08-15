@@ -129,29 +129,32 @@ const ITConsultingPage = () => {
   const processSteps = [
     {
       title: "Discovery",
-      description: "We analyze your current IT landscape and business needs",
+      description:
+        "We start by deeply understanding your current IT landscape and business goals",
       icon: <Search className="w-16 h-16" />,
     },
     {
       title: "Strategy Planning",
       description:
-        "Develop a customized roadmap for your digital transformation",
+        "We develop a customized roadmap for your digital transformation that's aligned with your vision",
       icon: <ClipboardList className="w-16 h-16" />,
     },
     {
       title: "Implementation",
       description:
-        "Execute the plan with minimal disruption to your operations",
+        "Our experts execute the plan seamlessly, with minimal disruption to your daily operations",
       icon: <Zap className="w-16 h-16" />,
     },
     {
       title: "Optimization",
-      description: "Fine-tune systems for maximum performance and efficiency",
+      description:
+        "We fine-tune your systems for maximum performance, efficiency, and return on investment",
       icon: <Target className="w-16 h-16" />,
     },
     {
       title: "Ongoing Support",
-      description: "Continuous monitoring and support to ensure success",
+      description:
+        "We provide continuous monitoring and support to ensure your success continues long after launch",
       icon: <Shield className="w-16 h-16" />,
     },
   ];
@@ -267,9 +270,10 @@ const ITConsultingPage = () => {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Strategic, scalable, and personalized IT solutions that
-                accelerate your business growth and optimize operations with
-                cutting-edge technology.
+                Your IT should be a growth engine, not a bottleneck. We provide
+                expert IT consulting that delivers tangible results, helping you
+                modernize your infrastructure, enhance security, and accelerate
+                business growth with a clear, strategic roadmap.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <button
@@ -332,14 +336,16 @@ const ITConsultingPage = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Stop Struggling with
+                Is Your IT
                 <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                  IT Challenges
+                  Holding You Back?
                 </span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                We solve the problems that hold your business back from reaching
-                its full potential
+                Outdated technology, security risks, and inefficient processes
+                can silently cost your business time and money. We solve the
+                problems that are holding you back from reaching your full
+                potential.
               </p>
             </div>
 
@@ -678,7 +684,7 @@ const ITConsultingPage = () => {
                         Deep Domain Expertise
                       </h3>
                       <p className="text-gray-600">
-                        15+ years of experience across multiple industries and
+                        Years of experience across multiple industries and
                         technologies
                       </p>
                     </div>
@@ -693,8 +699,8 @@ const ITConsultingPage = () => {
                         End-to-End Service
                       </h3>
                       <p className="text-gray-600">
-                        From strategy to implementation to ongoing support - we
-                        handle it all
+                        We are your single point of contact—from the initial
+                        strategy to implementation and ongoing support
                       </p>
                     </div>
                   </div>
@@ -708,8 +714,8 @@ const ITConsultingPage = () => {
                         Transparent Pricing
                       </h3>
                       <p className="text-gray-600">
-                        No hidden costs or surprise fees - clear pricing from
-                        day one
+                        We believe in honest partnerships, which means clear
+                        pricing from day one with no hidden fees or surprises
                       </p>
                     </div>
                   </div>
@@ -723,8 +729,8 @@ const ITConsultingPage = () => {
                         Agile Methodology
                       </h3>
                       <p className="text-gray-600">
-                        Flexible, iterative approach that adapts to your
-                        changing needs
+                        Our flexible approach adapts to your evolving needs,
+                        ensuring your solution is always a perfect fit
                       </p>
                     </div>
                   </div>
@@ -793,9 +799,8 @@ const ITConsultingPage = () => {
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-purple-100 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Get a free consultation and discover how we can accelerate your
-              business growth with strategic IT solutions that deliver real
-              results.
+              Get a free consultation and discover how a strategic IT plan can
+              accelerate your business growth and deliver real results
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
