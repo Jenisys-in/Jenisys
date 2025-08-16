@@ -1,5 +1,6 @@
 import clientPromise from "../../lib/mongodb";
 import { mailOptions, transporter } from "../../config/nodemailer";
+import { Client } from "@hubspot/api-client";
 
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
@@ -51,6 +52,32 @@ const handler = async (req, res) => {
         ...generateEmailContent(data),
         subject: "New Contact Message",
       });
+
+      // Create HubSpot contact
+      try {
+        const hubspotClient = new Client({
+          accessToken: process.env.HUBSPOT_ACCESS_TOKEN,
+        });
+
+        const properties = {
+          firstname: data.firstname,
+          lastname: data.lastname,
+          email: data.email,
+          phone: data.number,
+          company: data.company,
+          project_type: data.projectType,
+          budget: data.budget,
+          timeline: data.timeline,
+          contact_message: data.msg,
+        };
+
+        await hubspotClient.crm.contacts.basicApi.create({
+          properties,
+        });
+      } catch (hubspotErr) {
+        console.log("HubSpot Error:", hubspotErr);
+        // Do not block the request if HubSpot fails
+      }
 
       return res.status(200).json({ success: true });
     } catch (err) {

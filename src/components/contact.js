@@ -378,7 +378,7 @@ function Contact() {
   const handleChange = useCallback(
     (e) => {
       const { name, value } = e.target;
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value || "" }));
       if (errors[name]) {
         const error = validateField(name, value, formData);
         setErrors((prev) => ({ ...prev, [name]: error }));
@@ -434,6 +434,8 @@ function Contact() {
         const { firstname, lastname, contactNo, ...rest } = formData;
         const submitData = {
           name: `${firstname} ${lastname}`.trim(),
+          firstname,
+          lastname,
           number: contactNo,
           ...rest,
         };
