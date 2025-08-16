@@ -5,6 +5,10 @@ const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
   email: "E-Mail",
   number: "Contact No",
+  company: "Company",
+  projectType: "Project Type",
+  budget: "Budget",
+  timeline: "Timeline",
   msg: "Message",
 };
 

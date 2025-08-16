@@ -9,10 +9,43 @@ const FORM_INITIAL_STATE = {
   lastname: "",
   email: "",
   contactNo: "",
+  company: "",
+  projectType: "",
+  budget: "",
+  timeline: "",
   msg: "",
   personalData: false,
-  marketting: false,
+  marketing: false,
 };
+
+const PROJECT_TYPES = [
+  { value: "", label: "Select Project Type" },
+  { value: "web-development", label: "Web Development" },
+  { value: "mobile-app", label: "Mobile App Development" },
+  { value: "ai-ml", label: "AI/ML Solutions" },
+  { value: "cloud-services", label: "Cloud Services" },
+  { value: "consulting", label: "Technology Consulting" },
+  { value: "other", label: "Other" },
+];
+
+const BUDGET_RANGES = [
+  { value: "", label: "Select Budget Range" },
+  { value: "under-10k", label: "Under $10,000" },
+  { value: "10k-25k", label: "$10,000 - $25,000" },
+  { value: "25k-50k", label: "$25,000 - $50,000" },
+  { value: "50k-100k", label: "$50,000 - $100,000" },
+  { value: "100k-plus", label: "$100,000+" },
+  { value: "not-sure", label: "Not Sure Yet" },
+];
+
+const TIMELINE_OPTIONS = [
+  { value: "", label: "Select Timeline" },
+  { value: "asap", label: "ASAP (Rush Job)" },
+  { value: "1-month", label: "Within 1 Month" },
+  { value: "3-months", label: "Within 3 Months" },
+  { value: "6-months", label: "Within 6 Months" },
+  { value: "flexible", label: "Timeline is Flexible" },
+];
 
 const CONTACT_INFO = [
   {
@@ -67,6 +100,30 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const validateField = (name, value, formData) => {
+  switch (name) {
+    case "email":
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(value) ? "" : "Please enter a valid email address";
+    case "contactNo":
+      if (!value) return "";
+      const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+      return phoneRegex.test(value.replace(/\s/g, ""))
+        ? ""
+        : "Please enter a valid phone number";
+    case "firstname":
+      return value.trim().length >= 2
+        ? ""
+        : "First name must be at least 2 characters";
+    case "msg":
+      return value.trim().length >= 10
+        ? ""
+        : "Please provide at least 10 characters describing your project";
+    default:
+      return "";
+  }
+};
+
 // Enhanced Checkbox Component
 const CustomCheckbox = React.memo(
   ({ id, name, checked, onChange, label, required = false }) => (
@@ -120,31 +177,17 @@ const FormInput = React.memo(
     placeholder,
     value,
     onChange,
+    onBlur,
+    error,
     required = false,
     rows = null,
   }) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [hasError, setHasError] = useState(false);
 
     const handleFocus = () => setIsFocused(true);
-    const handleBlur = (e) => {
-      setIsFocused(false);
-      if (required && !e.target.value.trim()) {
-        setHasError(true);
-      } else {
-        setHasError(false);
-      }
-    };
-
-    const handleInputChange = (e) => {
-      onChange(e);
-      if (hasError && e.target.value.trim()) {
-        setHasError(false);
-      }
-    };
 
     const inputClasses = `w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 text-white placeholder-gray-300 focus:outline-none focus:ring-0 pb-2 transition-all duration-300 ${
-      hasError
+      error
         ? "border-red-400 focus:border-red-400"
         : isFocused
         ? "border-blue-400 focus:border-blue-400"
@@ -162,9 +205,9 @@ const FormInput = React.memo(
             name={name}
             placeholder={placeholder}
             value={value}
-            onChange={handleInputChange}
+            onChange={onChange}
             onFocus={handleFocus}
-            onBlur={handleBlur}
+            onBlur={onBlur}
             required={required}
             rows={rows}
             className={`${inputClasses} resize-none`}
@@ -175,16 +218,66 @@ const FormInput = React.memo(
             name={name}
             placeholder={placeholder}
             value={value}
-            onChange={handleInputChange}
+            onChange={onChange}
             onFocus={handleFocus}
-            onBlur={handleBlur}
+            onBlur={onBlur}
             required={required}
             className={inputClasses}
           />
         )}
-        {hasError && (
+        {error && (
           <p className="text-red-400 text-xs sm:text-sm font-medium animate-pulse">
-            This field is required
+            {error}
+          </p>
+        )}
+      </div>
+    );
+  }
+);
+
+// Enhanced Select Component
+const FormSelect = React.memo(
+  ({ label, name, value, onChange, onBlur, error, required, options }) => {
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = () => setIsFocused(true);
+
+    const selectClasses = `w-full text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-transparent border-b-2 text-white placeholder-gray-300 focus:outline-none focus:ring-0 pb-2 transition-all duration-300 ${
+      error
+        ? "border-red-400 focus:border-red-400"
+        : isFocused
+        ? "border-blue-400 focus:border-blue-400"
+        : "border-white focus:border-white hover:border-gray-300"
+    }`;
+
+    return (
+      <div className="space-y-2 sm:space-y-3 md:space-y-4">
+        <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+          {label}
+          {required && <span className="text-red-400 ml-1">*</span>}
+        </h3>
+        <select
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={handleFocus}
+          onBlur={onBlur}
+          required={required}
+          className={selectClasses}
+        >
+          {options.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className="bg-gray-800 text-white"
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+        {error && (
+          <p className="text-red-400 text-xs sm:text-sm font-medium animate-pulse">
+            {error}
           </p>
         )}
       </div>
@@ -270,7 +363,7 @@ const AlertMessage = React.memo(({ onClose }) => (
 function Contact() {
   const [showAlert, setShowAlert] = useState(false);
   const [formData, setFormData] = useState(FORM_INITIAL_STATE);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Memoized callbacks to prevent unnecessary re-renders
@@ -282,16 +375,32 @@ function Contact() {
     setShowAlert(false);
   }, []);
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  }, []);
+  const handleChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      if (errors[name]) {
+        const error = validateField(name, value, formData);
+        setErrors((prev) => ({ ...prev, [name]: error }));
+      }
+    },
+    [errors, formData]
+  );
+
+  const handleBlur = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      const error = validateField(name, value, formData);
+      setErrors((prev) => ({ ...prev, [name]: error }));
+    },
+    [formData]
+  );
 
   const handleCheckboxChange = useCallback((e) => {
     const { name, checked } = e.target;
     setFormData((prev) => ({ ...prev, [name]: checked }));
     if (name === "personalData" && checked) {
-      setError("");
+      setErrors((prev) => ({ ...prev, personalData: "" }));
     }
   }, []);
 
@@ -301,15 +410,25 @@ function Contact() {
         e.preventDefault();
       }
 
-      if (!formData.firstname || !formData.email || !formData.personalData) {
-        if (!formData.personalData) {
-          setError("Please agree to our data usage policy to proceed!");
+      const validationErrors = Object.keys(formData).reduce((acc, key) => {
+        const error = validateField(key, formData[key], formData);
+        if (error) {
+          acc[key] = error;
         }
+        return acc;
+      }, {});
+
+      if (!formData.personalData) {
+        validationErrors.personalData = "You must agree to the privacy policy.";
+      }
+
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
         return;
       }
 
       setIsSubmitting(true);
-      setError("");
+      setErrors({});
 
       try {
         const { firstname, lastname, contactNo, ...rest } = formData;
@@ -336,9 +455,10 @@ function Contact() {
         setFormData(FORM_INITIAL_STATE);
       } catch (error) {
         console.error("Submission error:", error);
-        setError(
-          "There was an error submitting your message. Please try again."
-        );
+        setErrors({
+          submit:
+            "There was an error submitting your message. Please try again.",
+        });
       } finally {
         setIsSubmitting(false);
       }
@@ -426,13 +546,14 @@ function Contact() {
 
       <div className="flex overflow-hidden flex-col justify-center bg-white mt-12 xs:mt-16 sm:mt-20 md:mt-24 lg:mt-0">
         <header className="text-center scroll-on-appear mt-8 sm:mt-12 md:mt-16 lg:mt-20 font-['Montserrat'] text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold tracking-tighter leading-tight text-black px-4">
-          <h1>Contact Us</h1>
+          <h1>Let's Build Something Amazing Together</h1>
         </header>
 
         <div className="scroll-on-appear mt-6 sm:mt-8 md:mt-10 lg:mt-11 mb-6 sm:mb-8 md:mb-10 font-['Montserrat'] text-sm sm:text-base md:text-lg font-semibold tracking-tight leading-6 sm:leading-7 md:leading-8 text-black max-w-4xl mx-auto text-center px-4 sm:px-6 md:px-8">
-          If you have any questions about our services, want to discuss a
-          potential collaboration, or just need advice on your tech strategy,
-          our team is here to help. Get in touch with us today.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto px-4">
+            Ready to transform your ideas into reality? Our team is here to help
+            you succeed.
+          </p>
         </div>
 
         {/* Contact Info Section */}
@@ -470,14 +591,12 @@ function Contact() {
             className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0"
           />
           <h2 className="font-['Montserrat'] text-sm xs:text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[35px] font-bold ml-3 sm:ml-4 leading-tight">
-            Request Service Assistance
+            Tell Us About Your Project
           </h2>
         </section>
 
         <p className="font-['Montserrat'] text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 font-semibold leading-relaxed">
-          We've powered growth and impactful change across all industries, and
-          we're ready to turn your vision into reality. Tell us a bit about
-          yourself, and we'll set things in motion.
+          The more details you provide, the better we can help you
         </p>
 
         <div className="w-full">
@@ -491,6 +610,8 @@ function Contact() {
                   placeholder="John"
                   value={formData.firstname}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.firstname}
                   required
                 />
 
@@ -500,15 +621,19 @@ function Contact() {
                   placeholder="Doe"
                   value={formData.lastname}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.lastname}
                 />
 
                 <FormInput
                   label="E-Mail"
                   type="email"
                   name="email"
-                  placeholder="john.doe@gmail.com"
+                  placeholder="john.doe@company.com"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.email}
                   required
                 />
 
@@ -516,19 +641,63 @@ function Contact() {
                   label="Contact Number"
                   type="tel"
                   name="contactNo"
-                  placeholder="Contact Number"
+                  placeholder="+1 (555) 123-4567"
                   value={formData.contactNo}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.contactNo}
+                />
+
+                <FormInput
+                  label="Company"
+                  name="company"
+                  placeholder="Your Company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.company}
+                />
+
+                <FormSelect
+                  label="Project Type"
+                  name="projectType"
+                  value={formData.projectType}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.projectType}
+                  options={PROJECT_TYPES}
+                />
+
+                <FormSelect
+                  label="Budget"
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.budget}
+                  options={BUDGET_RANGES}
+                />
+
+                <FormSelect
+                  label="Timeline"
+                  name="timeline"
+                  value={formData.timeline}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.timeline}
+                  options={TIMELINE_OPTIONS}
                 />
 
                 {/* Message - Full Width */}
                 <div className="lg:col-span-2">
                   <FormInput
-                    label="How can we help you?"
+                    label="Tell us about your project"
                     name="msg"
-                    placeholder="Write your message"
+                    placeholder="Describe your project, goals, and any specific requirements..."
                     value={formData.msg}
                     onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={errors.msg}
                     required
                     rows={3}
                   />
@@ -547,9 +716,14 @@ function Contact() {
                 />
 
                 {/* Error Message */}
-                {error && (
+                {errors.submit && (
                   <p className="text-red-400 text-xs sm:text-sm md:text-base font-medium animate-pulse bg-red-100/10 p-3 rounded-lg border border-red-400/30">
-                    ⚠️ {error}
+                    ⚠️ {errors.submit}
+                  </p>
+                )}
+                {errors.personalData && (
+                  <p className="text-red-400 text-xs sm:text-sm md:text-base font-medium animate-pulse">
+                    {errors.personalData}
                   </p>
                 )}
 
@@ -588,7 +762,7 @@ function Contact() {
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-20 animate-pulse"></div>
                   )}
                   <span className="relative z-10">
-                    {isSubmitting ? "Sending... " : "Send "}
+                    {isSubmitting ? "Sending... " : "Get in Touch"}
                   </span>
                 </button>
               </div>
@@ -624,5 +798,6 @@ SocialLink.displayName = "SocialLink";
 AlertMessage.displayName = "AlertMessage";
 CustomCheckbox.displayName = "CustomCheckbox";
 FormInput.displayName = "FormInput";
+FormSelect.displayName = "FormSelect";
 
 export default React.memo(Contact);
