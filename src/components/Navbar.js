@@ -334,14 +334,9 @@ function Navbar() {
                 className="w-[25px] h-[30px] sm:w-[35px] sm:h-[40px] md:w-[45px] md:h-[50px] lg:w-[55px] lg:h-[60px]"
                 priority
               />
-              <Image
-                src="/img/Jenisys Hero.png"
-                alt="Jenisys Hero"
-                width={180}
-                height={50}
-                className="w-[90px] h-[25px] sm:w-[110px] sm:h-[30px] md:w-[130px] md:h-[35px] lg:w-[150px] lg:h-[40px] xl:w-[180px] xl:h-[50px]"
-                priority
-              />
+              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-800 font-montserrat">
+                JENISYS
+              </h1>
             </Link>
 
             {/* Desktop Menu */}

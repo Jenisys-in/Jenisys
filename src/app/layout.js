@@ -16,6 +16,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import "./global.css";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
 
 const MainLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +55,7 @@ const MainLayout = ({ children }) => {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} font-sans`}>
       <head>
         <link rel="icon" href="/logo1.png" />
       </head>

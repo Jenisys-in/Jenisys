@@ -72,13 +72,9 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <Image
-                src="/img/Jenisys Hero.png"
-                alt="Jenisys"
-                width={100}
-                height={40}
-                className="h-10 w-auto mb-4 brightness-0 invert"
-              />
+              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white font-montserrat mb-4">
+                JENISYS
+              </h1>
               <h3 className="text-xl font-bold text-white mb-3">
                 Advancing Excellence Beyond Cost
               </h3>

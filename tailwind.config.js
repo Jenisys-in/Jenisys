@@ -21,6 +21,9 @@ module.exports = {
       "3xl": "1920px",
     },
     extend: {
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)"],
+      },
       colors: {
         purpleCustom: "#361CA9", // Custom named color, no override of default 'purple'
         background: "hsl(var(--background))",
