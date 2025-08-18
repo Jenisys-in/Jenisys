@@ -20,30 +20,30 @@ const FORM_INITIAL_STATE = {
 
 const PROJECT_TYPES = [
   { value: "", label: "Select Project Type" },
-  { value: "web-development", label: "Web Development" },
-  { value: "mobile-app", label: "Mobile App Development" },
-  { value: "ai-ml", label: "AI/ML Solutions" },
-  { value: "cloud-services", label: "Cloud Services" },
+  { value: "web_development", label: "Web Development" },
+  { value: "mobile_app", label: "Mobile App Development" },
+  { value: "ai_ml", label: "AI/ML Solutions" },
+  { value: "cloud_services", label: "Cloud Services" },
   { value: "consulting", label: "Technology Consulting" },
   { value: "other", label: "Other" },
 ];
 
 const BUDGET_RANGES = [
   { value: "", label: "Select Budget Range" },
-  { value: "under-10k", label: "Under $10,000" },
-  { value: "10k-25k", label: "$10,000 - $25,000" },
-  { value: "25k-50k", label: "$25,000 - $50,000" },
-  { value: "50k-100k", label: "$50,000 - $100,000" },
-  { value: "100k-plus", label: "$100,000+" },
-  { value: "not-sure", label: "Not Sure Yet" },
+  { value: "under_10k", label: "Under $10,000" },
+  { value: "10k_25k", label: "$10,000 - $25,000" },
+  { value: "25k_50k", label: "$25,000 - $50,000" },
+  { value: "50k_100k", label: "$50,000 - $100,000" },
+  { value: "100k_plus", label: "$100,000+" },
+  { value: "not_sure", label: "Not Sure Yet" },
 ];
 
 const TIMELINE_OPTIONS = [
   { value: "", label: "Select Timeline" },
   { value: "asap", label: "ASAP (Rush Job)" },
-  { value: "1-month", label: "Within 1 Month" },
-  { value: "3-months", label: "Within 3 Months" },
-  { value: "6-months", label: "Within 6 Months" },
+  { value: "1_month", label: "Within 1 Month" },
+  { value: "3_months", label: "Within 3 Months" },
+  { value: "6_months", label: "Within 6 Months" },
   { value: "flexible", label: "Timeline is Flexible" },
 ];
 

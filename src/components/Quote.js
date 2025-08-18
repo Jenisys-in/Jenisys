@@ -40,12 +40,6 @@ const Quote = () => {
   });
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    if (currentStep === 0 && formData.service) {
-      setCurrentStep(1);
-    }
-  }, [currentStep, formData.service]);
-
   const nextStep = () => {
     if (validateStep()) {
       setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
@@ -116,6 +110,7 @@ const Quote = () => {
                   key={service}
                   onClick={() => {
                     setFormData({ ...formData, service });
+                    setCurrentStep(1);
                     setErrors({});
                   }}
                   className={`p-4 rounded-lg border-2 text-center transition-all duration-200 ${
