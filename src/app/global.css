@@ -53,6 +53,13 @@
           }
         }
 
+        /* Tawk.to mobile visibility */
+        @media (max-width: 768px) {
+          #tawk-to-widget {
+            display: block !important;
+          }
+        }
+
 
 
 
