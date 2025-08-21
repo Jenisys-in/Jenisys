@@ -57,7 +57,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${montserrat.variable} font-sans`}>
       <head>
-        <link rel="icon" href="/logo1.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/logo1.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              url: "https://www.jenisys.in",
+              logo: "https://www.jenisys.in/logo1.png",
+            }),
+          }}
+        />
       </head>
       <body>
         <CalendarProvider>
