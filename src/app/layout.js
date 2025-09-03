@@ -57,9 +57,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${montserrat.variable} font-sans`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/logo2.svg" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/img/logo2.svg" sizes="any" />
+        <link rel="icon" href="/img/logo2.svg" type="image/svg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

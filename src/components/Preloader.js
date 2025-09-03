@@ -9,6 +9,7 @@ const Preloader = ({ onComplete }) => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
+      video.playbackRate = 1.5; // Speed up the video
       video.play().catch(() => {
         setVideoError(true);
       });

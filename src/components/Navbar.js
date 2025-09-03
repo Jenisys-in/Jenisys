@@ -336,7 +336,7 @@ function Navbar() {
                 />
               </div>
               <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-800 font-montserrat">
-                JENISYS
+                Jenisys
               </h1>
             </Link>
 
