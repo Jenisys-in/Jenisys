@@ -23,7 +23,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys Careers - Work With Us",
@@ -37,7 +37,7 @@ export const metadata = {
     title: "Careers at Jenisys - Join Our Innovative Tech Team",
     description:
       "Explore exciting career opportunities at Jenisys. We are looking for talented professionals in software development, AI, cloud, and more to shape the future of technology.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/career",

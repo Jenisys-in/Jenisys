@@ -13,7 +13,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - IT Consulting Services",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "IT Consulting Services - Jenisys",
     description:
       "Jenisys provides expert IT consulting to help businesses optimize tech strategies, enhance security, and ensure scalable, future-ready infrastructure and operations.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/services/IT-consulting",

@@ -326,14 +326,15 @@ function Navbar() {
               className="flex gap-2 items-center hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-lg"
               href="/"
             >
-              <Image
-                src="/img/Logo.png"
-                alt="Logo"
-                width={60}
-                height={65}
-                className="w-[25px] h-[30px] sm:w-[35px] sm:h-[40px] md:w-[45px] md:h-[50px] lg:w-[55px] lg:h-[60px]"
-                priority
-              />
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+                <Image
+                  src="/img/logo2.svg"
+                  alt="Logo"
+                  fill
+                  style={{ objectFit: "contain" }}
+                  priority
+                />
+              </div>
               <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-800 font-montserrat">
                 JENISYS
               </h1>

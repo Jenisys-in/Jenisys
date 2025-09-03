@@ -586,7 +586,7 @@ function Contact() {
         {/* Form Section */}
         <section className="flex items-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
           <Image
-            src="/img/Logo.png"
+            src="/img/logo2.svg"
             alt="Jenisys Logo"
             width={80}
             height={75}

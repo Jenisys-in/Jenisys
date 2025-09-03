@@ -23,7 +23,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys Startup Partnership Program",
@@ -37,7 +37,7 @@ export const metadata = {
     title: "Startup Partnership Program - Jenisys",
     description:
       "Partner with Jenisys to accelerate your startup's growth. Get access to affordable or equity-based development, mentorship, and strategic guidance to turn your vision into reality.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/startup-partnership",

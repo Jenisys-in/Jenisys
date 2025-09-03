@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }) {
       name: 'Jenisys',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.jenisys.in/logo1.png',
+        url: 'https://www.jenisys.in/logo2.svg',
       },
     },
     datePublished: blog.date,

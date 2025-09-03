@@ -15,7 +15,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Web Development Services",
@@ -29,7 +29,7 @@ export const metadata = {
     title: "Web Development Services - Jenisys",
     description:
       "Discover how Jenisys crafts modern, scalable, and high-performing websites tailored to your business goals through expert web development services.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/services/web-development",

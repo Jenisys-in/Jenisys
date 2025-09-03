@@ -13,7 +13,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Custom Software Development",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Custom Software Development - Jenisys",
     description:
       "Jenisys builds tailored software solutions that fit your business needs — from enterprise systems to scalable custom platforms, ensuring high performance and long-term value.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/services/Custom-Software-Development",

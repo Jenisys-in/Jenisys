@@ -13,7 +13,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Software Development Company",
@@ -26,7 +26,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "About Us - Jenisys",
     description: "Learn more about Jenisys, a tech incubator providing top-tier software and digital solutions. Discover our mission, vision, and core values.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/about",

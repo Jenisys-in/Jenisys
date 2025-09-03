@@ -13,7 +13,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Cloud Services",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Cloud Services - Jenisys",
     description:
       "Jenisys offers secure, scalable cloud solutions to help businesses streamline operations, reduce infrastructure costs, and enhance agility with modern cloud technologies.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/services/cloud-solutions",

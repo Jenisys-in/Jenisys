@@ -29,7 +29,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Leading Software Development Company",
@@ -43,7 +43,7 @@ export const metadata = {
     title: "Jenisys | Custom Software, Web & Mobile App Development Company",
     description:
       "Jenisys provides web, mobile, AI/ML, cloud, custom software, IT consulting, and maintenance services to accelerate business growth for startups and enterprises.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
     site: "@JenisysTech",
   },
   alternates: { canonical: "https://www.jenisys.in" },
@@ -66,7 +66,7 @@ export default function Page() {
           "@type": "Organization",
           "name": "Jenisys",
           "url": "https://www.jenisys.in",
-          "logo": "https://www.jenisys.in/img/Logo.png",
+          "logo": "https://www.jenisys.in/img/logo2.svg",
           "sameAs": [
             "https://www.linkedin.com/company/jenisys",
             "https://twitter.com/JenisysTech"
@@ -90,7 +90,7 @@ export default function Page() {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           "name": "Jenisys",
-          "image": "https://www.jenisys.in/img/Logo.png",
+          "image": "https://www.jenisys.in/img/logo2.svg",
           "@id": "https://www.jenisys.in",
           "url": "https://www.jenisys.in",
           "telephone": "+91 8240384648",

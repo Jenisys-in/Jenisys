@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - App Development Services",
@@ -30,7 +30,7 @@ export const metadata = {
     title: "App Development Services - Jenisys",
     description:
       "Discover how Jenisys builds modern, scalable, and high-performing mobile apps tailored to your business goals through expert app development services.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/services/mobile-development",

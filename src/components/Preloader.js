@@ -48,7 +48,7 @@ const Preloader = ({ onComplete }) => {
         {videoError ? (
           <div className="preloader-logo-wrapper">
             <Image
-              src="/logo1.png"
+              src="/logo2.svg"
               alt="Jenisys Logo"
               layout="fill"
               objectFit="cover"
@@ -66,8 +66,8 @@ const Preloader = ({ onComplete }) => {
             preload="auto"
             onError={() => setVideoError(true)}
           >
-            <source src="/preloader.webm" type="video/webm" />
-            <source src="/preloader.mp4" type="video/mp4" />
+            <source src="/preloader2.webm" type="video/webm" />
+            <source src="/preloader2.mp4" type="video/mp4" />
           </video>
         )}
       </div>

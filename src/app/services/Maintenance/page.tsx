@@ -13,7 +13,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Maintenance & Support Services",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Maintenance & Support Services - Jenisys",
     description:
       "Ensure uninterrupted performance and reliability with Jenisys' Maintenance & Support services — from bug fixes to system updates and ongoing technical support.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/services/Maintenance",

@@ -12,7 +12,7 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/Logo.png",
+        url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Get a Free Quote",
@@ -26,7 +26,7 @@ export const metadata = {
     title: "Get a Free Quote - Jenisys",
     description:
       "Ready to start your project? Get a free quote from Jenisys for high-quality software development services.",
-    images: ["https://www.jenisys.in/img/Logo.png"],
+    images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
     canonical: "https://www.jenisys.in/quote",

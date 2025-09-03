@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${montserrat.variable} font-sans`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/logo1.png" type="image/png" />
+        <link rel="icon" href="/logo2.svg" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
@@ -67,7 +67,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               url: "https://www.jenisys.in",
-              logo: "https://www.jenisys.in/logo1.png",
+              logo: "https://www.jenisys.in/logo2.svg",
             }),
           }}
         />
