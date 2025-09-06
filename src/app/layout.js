@@ -57,8 +57,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${montserrat.variable} font-sans`}>
       <head>
-        <link rel="icon" href="/img/logo2.svg" sizes="any" />
-        <link rel="icon" href="/img/logo2.svg" type="image/svg" />
+        <link rel="icon" href="/logo2.svg" sizes="any" />
+        <link rel="icon" href="/logo2.svg" type="image/svg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               url: "https://www.jenisys.in",
-              logo: "https://www.jenisys.in/logo2.svg",
+              logo: "https://www.jenisys.in/img/logo2.svg",
             }),
           }}
         />
