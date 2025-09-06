@@ -1,6 +1,7 @@
 // src/app/services/mobile-development/page.tsx
 
 import MobileAppLanding from '@/components/services/mobile-development';
+import Script from "next/script";
 
 
 export const metadata = {
@@ -57,10 +58,12 @@ const jsonLd = {
 export default function MobileDevelopmentRoute() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script
+  id="service-jsonld"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
       <MobileAppLanding />
     </>
   );

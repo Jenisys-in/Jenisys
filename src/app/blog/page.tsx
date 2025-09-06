@@ -1,4 +1,5 @@
 import Blog from '@/components/Blog';
+import Script from "next/script";
 
 export const metadata = {
   title: "Blog - Jenisys",

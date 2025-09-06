@@ -1,4 +1,5 @@
 import StartupPartnership from '@/components/startup-partnership';
+import Script from "next/script";
 
 export const metadata = {
   title: "Startup Partnership Program - Jenisys",

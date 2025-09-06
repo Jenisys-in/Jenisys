@@ -1,6 +1,7 @@
 // src/app/services/web-development/page.tsx
 
 import WebDevelopmentPage from '@/components/services/web-development';
+import Script from "next/script";
 
 export const metadata = {
   title: "Web Development Services - Jenisys",
@@ -56,10 +57,12 @@ const jsonLd = {
 export default function WebDevelopmentRoute() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script
+  id="service-jsonld"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
       <WebDevelopmentPage />
     </>
   );

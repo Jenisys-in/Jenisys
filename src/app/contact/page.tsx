@@ -3,6 +3,7 @@
 // src/app/contact/page.js
 
 import Contact from '../../components/contact';
+import Script from "next/script";
 
 
 export const metadata = {

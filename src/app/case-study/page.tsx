@@ -1,4 +1,5 @@
 import CaseStudiesPage from '@/components/case-study';
+import Script from "next/script";
 
 export const metadata = {
   title: "Case Studies - Jenisys",

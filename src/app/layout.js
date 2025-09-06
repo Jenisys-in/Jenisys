@@ -1,81 +1,79 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import Script from "next/script";
-
-import Navbar from "@/components/Navbar";
-import Preloader from "@/components/Preloader";
-import ScrollToTop from "@/components/ScrolltoTop";
-
-import CalendarModal from "@/components/CalendarModal";
-import { CalendarProvider, useCalendar } from "@/contexts/CalendarContext";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 import "./global.css";
 import { Montserrat } from "next/font/google";
+import Script from "next/script";
+import { CalendarProvider } from "@/contexts/CalendarContext";
+import ClientLayout from "@/components/ClientLayout";
 
+// ✅ Montserrat font
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
 
-const MainLayout = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const { isCalendarOpen, closeCalendar } = useCalendar();
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
-
-  return (
-    <>
-      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
-      <div
-        className={`transition-opacity duration-1000 ${
-          isLoading ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        <Navbar />
-        {children}
-        <ScrollToTop />
-      </div>
-
-      <CalendarModal isOpen={isCalendarOpen} onClose={closeCalendar} />
-
-      {/* ✅ Vercel integrations */}
-      <SpeedInsights />
-      <Analytics />
-    </>
-  );
+// ✅ SEO metadata (server component can export this)
+export const metadata = {
+  metadataBase: new URL("https://www.jenisys.in"),
+  title: "Jenisys – Transforming Technology Into Business Advantage",
+  description:
+    "Jenisys helps businesses grow through automation, cloud solutions, AI/ML, and custom software development.",
+  alternates: {
+    canonical: "https://www.jenisys.in",
+  },
+  icons: {
+    icon: [{ url: "/logo2.svg", type: "image/svg+xml" }],
+  },
+  openGraph: {
+    title: "Jenisys – Transforming Technology Into Business Advantage",
+    description:
+      "Jenisys helps businesses grow through automation, cloud solutions, AI/ML, and custom software development.",
+    url: "https://www.jenisys.in",
+    siteName: "Jenisys",
+    images: [
+      {
+        url: "https://www.jenisys.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jenisys – Transforming Technology Into Business Advantage",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jenisys – Transforming Technology Into Business Advantage",
+    description:
+      "Jenisys helps businesses grow through automation, cloud solutions, AI/ML, and custom software development.",
+    images: ["https://www.jenisys.in/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${montserrat.variable} font-sans`}>
-      <head>
-        <link rel="icon" href="/logo2.svg" sizes="any" />
-        <link rel="icon" href="/logo2.svg" type="image/svg" />
-        <script
+      <body>
+        <CalendarProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </CalendarProvider>
+
+        {/* JSON-LD Organization Schema */}
+        <Script
+          id="org-jsonld"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              name: "Jenisys",
               url: "https://www.jenisys.in",
               logo: "https://www.jenisys.in/img/logo2.svg",
+              sameAs: ["https://www.linkedin.com/company/jenisys"],
             }),
           }}
         />
-      </head>
-      <body>
-        <CalendarProvider>
-          <MainLayout>{children}</MainLayout>
-        </CalendarProvider>
 
+        {/* Tawk.to chat widget */}
         <Script id="tawk-to-script" strategy="lazyOnload">
           {`
             var Tawk_API = Tawk_API || {};

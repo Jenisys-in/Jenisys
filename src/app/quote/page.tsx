@@ -1,4 +1,5 @@
 import Quote from '@/components/Quote';
+import Script from "next/script";
 
 export const metadata = {
   title: "Get a Free Quote - Jenisys",

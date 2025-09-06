@@ -1,4 +1,5 @@
 import MaintenanceSupport from '@/components/services/Maintenance';
+import Script from "next/script";
 
 export const metadata = {
   title: "Maintenance & Support Services - Jenisys",
@@ -54,10 +55,12 @@ const jsonLd = {
 export default function MaintenanceRoute() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script
+  id="service-jsonld"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
       <MaintenanceSupport />
     </>
   );

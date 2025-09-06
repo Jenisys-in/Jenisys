@@ -1,4 +1,5 @@
 import Jenisyssftdev from '@/components/services/Custom-Software-Development';
+import Script from "next/script";
 
 export const metadata = {
   title: "Custom Software Development - Jenisys",
@@ -54,10 +55,12 @@ const jsonLd = {
 export default function CustomSoftwareDevelopmentRoute() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script
+  id="service-jsonld"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
       <Jenisyssftdev />
     </>
   );

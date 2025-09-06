@@ -1,4 +1,5 @@
 import JenisysAILanding from '@/components/services/ai-ml';
+import Script from "next/script";
 
 export const metadata = {
   title: "AI & Machine Learning Services - Jenisys",
@@ -54,8 +55,10 @@ const jsonLd = {
 export default function AIMachineLearningRoute() {
   return (
     <>
-      <script
+      <Script
+        id="service-jsonld"
         type="application/ld+json"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <JenisysAILanding />

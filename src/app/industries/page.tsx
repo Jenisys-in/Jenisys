@@ -1,4 +1,5 @@
 import IndustriesPage from '../../components/About-us/industries';
+import Script from "next/script";
 
 export const metadata = {
   title: "Industries We Serve - Jenisys",

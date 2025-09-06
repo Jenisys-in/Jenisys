@@ -1,4 +1,5 @@
 import Cloudsln from '@/components/services/cloud-solutions';
+import Script from "next/script";
 
 export const metadata = {
   title: "Cloud Services - Jenisys",
@@ -54,10 +55,12 @@ const jsonLd = {
 export default function CloudRoute() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script
+  id="service-jsonld"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+/>
       <Cloudsln />
     </>
   );

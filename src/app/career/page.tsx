@@ -1,4 +1,5 @@
 import CareerHome from '@/components/career/career_home';
+import Script from "next/script";
 
 export const metadata = {
   title: "Careers at Jenisys - Join Our Innovative Tech Team",
