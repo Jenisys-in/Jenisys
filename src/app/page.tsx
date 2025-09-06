@@ -56,7 +56,7 @@ export default function Page() {
           logo: "https://www.jenisys.in/img/logo2.svg",
           sameAs: [
             "https://www.linkedin.com/company/jenisys",
-            "https://twitter.com/JenisysTech",
+            "https://www.instagram.com/jenisys.in/",
           ],
           contactPoint: {
             "@type": "ContactPoint",
