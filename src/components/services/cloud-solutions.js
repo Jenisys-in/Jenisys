@@ -366,7 +366,7 @@ const Cloudsln = () => {
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
             {workflow.map((step, i) => (
               <div key={i} className="relative group">
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-6 rounded-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-6 rounded-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full">
                   <div className="text-2xl font-bold mb-2">{i + 1}</div>
                   <h3 className="font-bold mb-2">{step.title}</h3>
                   <p className="text-sm opacity-90">{step.desc}</p>

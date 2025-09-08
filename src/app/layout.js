@@ -20,7 +20,11 @@ export const metadata = {
     canonical: "https://www.jenisys.in",
   },
   icons: {
-    icon: [{ url: "/logo2.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/logo2.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
   },
   openGraph: {
     title: "Jenisys – Transforming Technology Into Business Advantage",
