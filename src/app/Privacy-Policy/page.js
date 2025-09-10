@@ -2,6 +2,7 @@
 
 import PrivacyPolicy from '../../components/Privacy-Policy';
 
+
 export const metadata = {
   title: "Privacy Policy - Jenisys",
   description: "Privacy Policy and Cookie Policy for Jenisys - Software Development and Technology Consulting Company",
