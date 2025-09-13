@@ -6,16 +6,19 @@ import Meeting from "../../../../models/Meeting";
 
 // Google Calendar API setup
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
-const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+const GOOGLE_CREDENTIALS = process.env.GOOGLE_CREDENTIALS;
+const CREDENTIALS = GOOGLE_CREDENTIALS ? JSON.parse(GOOGLE_CREDENTIALS) : null;
 
-const auth = new google.auth.JWT(
-  CREDENTIALS.client_email,
-  null,
-  CREDENTIALS.private_key,
-  SCOPES
-);
+const auth = CREDENTIALS
+  ? new google.auth.JWT(
+      CREDENTIALS.client_email,
+      null,
+      CREDENTIALS.private_key,
+      SCOPES
+    )
+  : null;
 
-const calendar = google.calendar({ version: "v3", auth });
+const calendar = auth ? google.calendar({ version: "v3", auth }) : null;
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -28,6 +31,15 @@ const transporter = nodemailer.createTransport({
 
 export async function PUT(req, { params }) {
   try {
+    if (!calendar) {
+      console.error(
+        "Google Calendar API not initialized. Check GOOGLE_CREDENTIALS."
+      );
+      return NextResponse.json(
+        { message: "Internal Server Error" },
+        { status: 500 }
+      );
+    }
     const apiKey = req.headers.get("x-api-key");
     if (apiKey !== process.env.NEXT_PUBLIC_ADMIN_API_KEY) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
@@ -96,6 +108,15 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(req, { params }) {
   try {
+    if (!calendar) {
+      console.error(
+        "Google Calendar API not initialized. Check GOOGLE_CREDENTIALS."
+      );
+      return NextResponse.json(
+        { message: "Internal Server Error" },
+        { status: 500 }
+      );
+    }
     const apiKey = req.headers.get("x-api-key");
     if (apiKey !== process.env.NEXT_PUBLIC_ADMIN_API_KEY) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
