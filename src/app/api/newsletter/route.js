@@ -1,4 +1,5 @@
-import { mailOptions, transporter } from "../../config/nodemailer";
+import { NextResponse } from "next/server";
+import { mailOptions, transporter } from "../../../../config/nodemailer";
 
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
@@ -21,29 +22,28 @@ const generateEmailContent = (data) => {
   };
 };
 
-const handler = async (req, res) => {
-  if (req.method === "POST") {
-    const data = req.body;
-    if (!data.name || !data.email) {
-      return res.status(400).send({ message: "Bad request: Missing fields" });
-    }
-
-    try {
-      await transporter.sendMail({
-        ...mailOptions,
-        ...generateEmailContent(data),
-        subject: "Newsletter Applicant Message",
-      });
-
-      return res.status(200).json({ success: true });
-    } catch (err) {
-      console.log("Error sending email:", err);
-      return res
-        .status(400)
-        .json({ message: "Error sending email", error: err.message });
-    }
+export async function POST(req) {
+  const data = await req.json();
+  if (!data.name || !data.email) {
+    return NextResponse.json(
+      { message: "Bad request: Missing fields" },
+      { status: 400 }
+    );
   }
-  return res.status(400).json({ message: "Bad request: Invalid method" });
-};
 
-export default handler;
+  try {
+    await transporter.sendMail({
+      ...mailOptions,
+      ...generateEmailContent(data),
+      subject: "Newsletter Applicant Message",
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.log("Error sending email:", err);
+    return NextResponse.json(
+      { message: "Error sending email", error: err.message },
+      { status: 400 }
+    );
+  }
+}

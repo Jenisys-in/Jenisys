@@ -10,6 +10,11 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    GOOGLE_CREDENTIALS: process.env.GOOGLE_CREDENTIALS,
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_PASS: process.env.EMAIL_PASS,
+  },
 };
 
 export default nextConfig;

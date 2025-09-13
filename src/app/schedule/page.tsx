@@ -1,3 +1,7 @@
-export default function SchedulePage() {
-  return <div>Scheduler test</div>;
+import JenisysScheduler from '@/components/scheduler/JenisysScheduler';
+
+function App() {
+  return <JenisysScheduler />;
 }
+
+export default App;
