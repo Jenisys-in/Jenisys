@@ -6,16 +6,19 @@ import Meeting from "../../../models/Meeting";
 
 // Google Calendar API setup
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
-const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+const GOOGLE_CREDENTIALS = process.env.GOOGLE_CREDENTIALS;
+const CREDENTIALS = GOOGLE_CREDENTIALS ? JSON.parse(GOOGLE_CREDENTIALS) : null;
 
-const auth = new google.auth.JWT(
-  CREDENTIALS.client_email,
-  null,
-  CREDENTIALS.private_key,
-  SCOPES
-);
+const auth = CREDENTIALS
+  ? new google.auth.JWT(
+      CREDENTIALS.client_email,
+      null,
+      CREDENTIALS.private_key,
+      SCOPES
+    )
+  : null;
 
-const calendar = google.calendar({ version: "v3", auth });
+const calendar = auth ? google.calendar({ version: "v3", auth }) : null;
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -28,6 +31,15 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req) {
   try {
+    if (!calendar) {
+      console.error(
+        "Google Calendar API not initialized. Check GOOGLE_CREDENTIALS."
+      );
+      return NextResponse.json(
+        { message: "Internal Server Error" },
+        { status: 500 }
+      );
+    }
     const { eventType, date, time, timezone, user } = await req.json();
 
     const startDateTime = new Date(`${date} ${time}`);
