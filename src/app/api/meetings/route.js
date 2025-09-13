@@ -5,7 +5,7 @@ import Meeting from "../../../models/Meeting";
 export async function GET(req) {
   try {
     const apiKey = req.headers.get("x-api-key");
-    if (apiKey !== process.env.NEXT_PUBLIC_ADMIN_API_KEY) {
+    if (apiKey !== process.env.ADMIN_API_KEY) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
