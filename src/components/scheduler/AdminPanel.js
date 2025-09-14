@@ -16,7 +16,7 @@ const AdminPanel = () => {
     try {
       setIsLoading(true);
       const res = await fetch("/api/meetings", {
-        headers: { "x-api-key": process.env.ADMIN_API_KEY || "" },
+        headers: { "x-api-key": process.env.NEXT_PUBLIC_ADMIN_API_KEY || "" },
       });
       if (!res.ok) {
         throw new Error("Failed to fetch meetings");
@@ -39,7 +39,7 @@ const AdminPanel = () => {
       try {
         const res = await fetch(`/api/meetings/${meetingId}`, {
           method: "DELETE",
-          headers: { "x-api-key": process.env.ADMIN_API_KEY || "" },
+          headers: { "x-api-key": process.env.NEXT_PUBLIC_ADMIN_API_KEY || "" },
         });
         if (!res.ok) throw new Error("Failed to cancel meeting");
         fetchMeetings();
@@ -55,7 +55,7 @@ const AdminPanel = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.ADMIN_API_KEY || "",
+          "x-api-key": process.env.NEXT_PUBLIC_ADMIN_API_KEY || "",
         },
         body: JSON.stringify({ startTime, endTime }),
       });
