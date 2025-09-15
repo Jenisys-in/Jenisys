@@ -4,13 +4,27 @@ import Meeting from "../../../models/Meeting";
 
 export async function GET(req) {
   try {
-    const apiKey = req.headers.get("x-api-key");
-    if (apiKey !== process.env.NEXT_PUBLIC_ADMIN_API_KEY) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
+    const { searchParams } = new URL(req.url);
+    const date = searchParams.get("date");
 
     await connectMongoose();
-    const meetings = await Meeting.find().sort({ startTime: -1 });
+
+    let query = {};
+    if (date) {
+      // Treat the incoming date as UTC
+      const startOfDay = new Date(`${date}T00:00:00.000Z`);
+      const endOfDay = new Date(`${date}T23:59:59.999Z`);
+
+      query = {
+        startTime: {
+          $gte: startOfDay,
+          $lt: endOfDay,
+        },
+      };
+    }
+
+    const meetings = await Meeting.find(query).sort({ startTime: 1 });
+
     return NextResponse.json({ meetings });
   } catch (error) {
     console.error("Error fetching meetings:", error);

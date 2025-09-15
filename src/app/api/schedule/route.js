@@ -1,30 +1,29 @@
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
-import { connectMongoDB } from "../../../../lib/mongodb";
+import connectMongoose from "../../../../lib/mongoose";
 import Meeting from "../../../models/Meeting";
 
 // Google Calendar API setup
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
-const GOOGLE_CREDENTIALS = process.env.GOOGLE_CREDENTIALS;
-const CREDENTIALS = GOOGLE_CREDENTIALS ? JSON.parse(GOOGLE_CREDENTIALS) : null;
+const { OAuth2 } = google.auth;
+const oAuth2Client = new OAuth2(
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET,
+  process.env.REDIRECT_URI
+);
 
-const auth = CREDENTIALS
-  ? new google.auth.JWT(
-      CREDENTIALS.client_email,
-      null,
-      CREDENTIALS.private_key,
-      SCOPES
-    )
-  : null;
+oAuth2Client.setCredentials({
+  refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+});
 
-const calendar = auth ? google.calendar({ version: "v3", auth }) : null;
+const calendar = google.calendar({ version: "v3", auth: oAuth2Client });
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER,
+    user: process.env.EMAIL,
     pass: process.env.EMAIL_PASS,
   },
 });
@@ -40,9 +39,11 @@ export async function POST(req) {
         { status: 500 }
       );
     }
-    const { eventType, date, time, timezone, user } = await req.json();
+    const { eventType, time, timezone, user } = await req.json();
 
-    const startDateTime = new Date(`${date} ${time}`);
+    // The `time` parameter from the client contains the full date and time info.
+    const startDateTime = new Date(time);
+
     const endDateTime = new Date(
       startDateTime.getTime() + eventType.duration * 60000
     );
@@ -86,7 +87,7 @@ export async function POST(req) {
     const meetLink = calendarResponse.data.hangoutLink;
     const googleCalendarEventId = calendarResponse.data.id;
 
-    await connectMongoDB();
+    await connectMongoose();
     await Meeting.create({
       userName: user.name,
       userEmail: user.email,
@@ -105,7 +106,7 @@ export async function POST(req) {
 
     // Send confirmation email
     await transporter.sendMail({
-      from: `"Jenisys" <${process.env.EMAIL_USER}>`,
+      from: `"Jenisys" <${process.env.EMAIL}>`,
       to: user.email,
       subject: `Confirmation: Your ${eventType.name} is scheduled!`,
       html: `

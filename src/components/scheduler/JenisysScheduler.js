@@ -43,6 +43,7 @@ const JenisysScheduler = () => {
   });
   const [isBooked, setIsBooked] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
+  const [bookedSlots, setBookedSlots] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentMonthOffset, setCurrentMonthOffset] = useState(0);
   const [meetingLink, setMeetingLink] = useState("");
@@ -106,6 +107,33 @@ const JenisysScheduler = () => {
     const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setSelectedTimezone(userTimezone);
   }, []);
+
+  useEffect(() => {
+    const fetchBookedSlots = async () => {
+      if (selectedDate) {
+        setIsLoading(true);
+        try {
+          const year = selectedDate.getFullYear();
+          const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+          const day = String(selectedDate.getDate()).padStart(2, "0");
+          const dateString = `${year}-${month}-${day}`;
+          const response = await fetch(`/api/meetings?date=${dateString}`);
+          if (response.ok) {
+            const data = await response.json();
+            const fetchedSlots = data.meetings.map(
+              (meeting) => new Date(meeting.startTime)
+            );
+            setBookedSlots(fetchedSlots);
+            console.log("Fetched Booked Slots:", fetchedSlots);
+          }
+        } catch (error) {
+          console.error("Failed to fetch booked slots:", error);
+        }
+        setIsLoading(false);
+      }
+    };
+    fetchBookedSlots();
+  }, [selectedDate]);
 
   // Generate available dates with better logic
   const generateAvailableDates = () => {
@@ -173,13 +201,20 @@ const JenisysScheduler = () => {
             continue;
           }
 
-          slots.push(slotTime);
+          // Check for conflicts with booked slots
+          const isBooked = bookedSlots.some(
+            (bookedTime) => bookedTime.getTime() === slotTime.getTime()
+          );
+
+          if (!isBooked) {
+            slots.push(slotTime);
+          }
         }
       }
 
       return slots.slice(0, 16); // Limit to reasonable number of slots
     },
-    [selectedEventType]
+    [selectedEventType, bookedSlots]
   );
 
   useEffect(() => {
@@ -250,7 +285,6 @@ const JenisysScheduler = () => {
         },
         body: JSON.stringify({
           eventType: selectedEventType,
-          date: selectedDate,
           time: selectedTime,
           timezone: selectedTimezone,
           user: userInfo,
@@ -288,15 +322,31 @@ const JenisysScheduler = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4 sm:p-6 text-white">
         <div className="max-w-2xl w-full bg-gray-800 bg-opacity-50 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 scale-100 backdrop-blur-lg border border-gray-700">
-          <div className="bg-gradient-to-r from-green-500 to-teal-500 p-8 text-center relative">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-8 text-center relative">
             <div className="absolute inset-0 bg-black bg-opacity-20"></div>
             <div className="relative">
-              <div className="w-24 h-24 bg-white bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6 ring-4 ring-white ring-opacity-20">
-                <Check className="w-12 h-12" />
+              <div
+                className="
+  relative 
+  w-28 h-28 
+  rounded-full 
+  bg-gradient-to-br from-green-500/20 to-green-500/10 
+  flex items-center justify-center 
+  mx-auto mb-6
+  ring-4 ring-green-500/30
+  shadow-lg shadow-green-500/20
+  animate-pulse
+"
+              >
+                {/* subtle radial highlight */}
+                <div className="absolute inset-0 rounded-full bg-white/5 blur-md"></div>
+
+                <Check className="w-14 h-14 text-green-500 drop-shadow-[0_0_6px_rgba(34,197,94,0.6)]" />
               </div>
-              <h2 className="text-4xl font-bold mb-3">Meeting Scheduled!</h2>
-              <p className="text-green-200 text-lg">
-                Confirmation sent to {userInfo.email}
+
+              <h2 className="text-4xl font-bold mb-3">Booking Confirmed!</h2>
+              <p className="text-blue-200 text-lg">
+                Your meeting has been successfully scheduled.
               </p>
             </div>
           </div>
@@ -360,11 +410,7 @@ const JenisysScheduler = () => {
                 className="flex-1 bg-gray-700 text-gray-200 py-4 px-6 rounded-xl font-semibold hover:bg-gray-600 transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <Calendar className="w-5 h-5" />
-                <span>Schedule Another</span>
-              </button>
-              <button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
-                <Plus className="w-5 h-5" />
-                <span>Add to Calendar</span>
+                <span>Schedule Another Meeting</span>
               </button>
             </div>
           </div>
