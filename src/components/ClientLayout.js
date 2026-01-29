@@ -9,6 +9,7 @@ import Preloader from "@/components/Preloader";
 import ScrollToTop from "@/components/ScrolltoTop";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import CalendarModal from "@/components/CalendarModal";
+import CookieConsent from "@/components/CookieConsent";
 import { useCalendar } from "@/contexts/CalendarContext";
 
 import AOS from "aos";
@@ -38,6 +39,9 @@ const ClientLayout = ({ children }) => {
       </div>
 
       <CalendarModal isOpen={isCalendarOpen} onClose={closeCalendar} />
+      
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
 
       {/* Vercel integrations */}
       <SpeedInsights />

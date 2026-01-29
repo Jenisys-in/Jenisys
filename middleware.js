@@ -6,7 +6,32 @@ import { NextResponse } from "next/server";
  * If the host starts with schedule.jenisys.in it rewrites the URL to /schedule,
  * so your /app/schedule/page.tsx is served instead of the homepage.
  */
+// Basic in-memory rate limiter (per-instance)
+const rateLimit = new Map();
+
 export function middleware(req) {
+  const ip = req.headers.get("x-forwarded-for") || "unknown";
+  const now = Date.now();
+  const windowMs = 60 * 1000; // 1 minute
+  
+  // Clean up old entries
+  if (rateLimit.has(ip) && rateLimit.get(ip).resetTime < now) {
+    rateLimit.delete(ip);
+  }
+
+  const limitData = rateLimit.get(ip) || { count: 0, resetTime: now + windowMs };
+  
+  // Stricter limit for API routes (20 req/min), lenient for others (100 req/min)
+  const isApi = req.nextUrl.pathname.startsWith("/api/");
+  const limit = isApi ? 20 : 100;
+
+  if (limitData.count >= limit) {
+    return new NextResponse("Too Many Requests", { status: 429 });
+  }
+
+  limitData.count++;
+  rateLimit.set(ip, limitData);
+
   const host = req.headers.get("host") || "";
   const url = req.nextUrl.clone();
 

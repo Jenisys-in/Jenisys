@@ -24,11 +24,18 @@ const generateEmailContent = (data) => {
 
 export async function POST(req) {
   const data = await req.json();
-  if (!data.name || !data.email) {
-    return NextResponse.json(
-      { message: "Bad request: Missing fields" },
-      { status: 400 }
-    );
+
+  if (!data.name || !data.email || typeof data.name !== 'string' || typeof data.email !== 'string') {
+    return NextResponse.json({ message: "Invalid input" }, { status: 400 });
+  }
+
+  if (data.name.length > 50 || data.email.length > 100) {
+    return NextResponse.json({ message: "Input too long" }, { status: 400 });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(data.email)) {
+    return NextResponse.json({ message: "Invalid email format" }, { status: 400 });
   }
 
   try {
