@@ -31,7 +31,7 @@ export const metadata = {
     images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
-    canonical: "https://www.jenisys.in/services/Maintenance",
+    canonical: "./",
   },
 };
 
@@ -56,11 +56,11 @@ export default function MaintenanceRoute() {
   return (
     <>
       <Script
-  id="service-jsonld"
-  type="application/ld+json"
-  strategy="beforeInteractive"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-/>
+        id="service-jsonld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <MaintenanceSupport />
     </>
   );

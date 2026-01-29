@@ -31,7 +31,7 @@ export const metadata = {
     images: ["https://www.jenisys.in/img/logo2.svg"],
   },
   alternates: {
-    canonical: "https://www.jenisys.in/services/ai-ml",
+    canonical: "./",
   },
 };
 

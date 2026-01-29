@@ -17,7 +17,7 @@ export const metadata = {
   description:
     "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
   alternates: {
-    canonical: "https://www.jenisys.in",
+    canonical: "./",
   },
   icons: {
     icon: [
