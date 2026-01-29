@@ -2,17 +2,14 @@ import Home from '../components/Homepage';
 import Script from 'next/script';
 
 export const metadata = {
-  title: "Jenisys | Custom Software, Web & Mobile App Development Company",
+  title: "Jenisys | AI & Custom Software Development Company",
   description:
-    "Jenisys is a top-rated IT consulting and software development company in the USA, specializing in web, mobile, AI/ML, cloud solutions, digital transformation, and startup-friendly tech partnerships.",
-  keywords:
-    "custom software development, web development company, mobile app development, AI and machine learning services, cloud solutions, IT consulting services, digital transformation, startup tech partner, enterprise software solutions, automation software, maintenance and support, Jenisys technology solutions",
-  robots: "index, follow",
+    "Jenisys is a premium software agency specializing in AI automation, custom web/mobile apps, and cloud engineering for startups and enterprises.",
   alternates: { canonical: "https://www.jenisys.in" },
   openGraph: {
-    title: "Jenisys | Custom Software, Web & Mobile App Development Company",
+    title: "Jenisys | AI & Custom Software Development Company",
     description:
-      "Transform your business with Jenisys – experts in web, mobile, AI/ML, cloud solutions, custom software, IT consulting, and maintenance. Scalable, modern digital systems for startups and enterprises.",
+      "Transform your business with Jenisys – Expert AI automation, cloud architecture, and custom software development for modern enterprises.",
     url: "https://www.jenisys.in",
     siteName: "Jenisys",
     images: [
@@ -20,7 +17,7 @@ export const metadata = {
         url: "https://www.jenisys.in/img/logo2.svg",
         width: 1200,
         height: 630,
-        alt: "Jenisys - Leading Software Development Company",
+        alt: "Jenisys - Premium Software Agency",
       },
     ],
     locale: "en_US",
@@ -28,9 +25,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jenisys | Custom Software, Web & Mobile App Development Company",
+    title: "Jenisys | AI & Custom Software Development Company",
     description:
-      "Jenisys provides web, mobile, AI/ML, cloud, custom software, IT consulting, and maintenance services to accelerate business growth for startups and enterprises.",
+      "Jenisys provides top-tier AI, mobile, and web development services to accelerate business growth globally.",
     images: ["https://www.jenisys.in/img/logo2.svg"],
     site: "@JenisysTech",
   },
@@ -60,9 +57,9 @@ export default function Page() {
           ],
           contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+1-XXX-XXX-XXXX",
+            telephone: "+1-XXX-XXX-XXXX", // Ideally replace with real US number if available, or remove if strictly online
             contactType: "customer service",
-            areaServed: "US",
+            areaServed: ["US", "GB", "CA", "AU"],
             availableLanguage: ["English"],
           },
           description:
@@ -70,7 +67,7 @@ export default function Page() {
         })}
       </Script>
 
-      {/* LocalBusiness Schema */}
+      {/* ProfessionalService Schema (Broader than LocalBusiness) */}
       <Script id="jenisys-local-schema" type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -88,6 +85,15 @@ export default function Page() {
             addressRegion: "West Bengal",
             postalCode: "712203",
             addressCountry: "IN",
+          },
+          areaServed: {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 22.75,
+              "longitude": 88.34
+            },
+            "geoRadius": "10000000" // Indicating global/wide reach
           },
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",

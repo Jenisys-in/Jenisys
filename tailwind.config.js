@@ -1,3 +1,4 @@
+// Tailwind CSS v4 detects content automatically. This file may not be needed for basic setups, but kept for legacy theme extensions.
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],

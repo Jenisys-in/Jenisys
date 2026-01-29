@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "@/components/Navbar";
 import Preloader from "@/components/Preloader";
 import ScrollToTop from "@/components/ScrolltoTop";
+import SmoothScrolling from "@/components/SmoothScrolling";
 import CalendarModal from "@/components/CalendarModal";
 import { useCalendar } from "@/contexts/CalendarContext";
 
@@ -29,9 +30,11 @@ const ClientLayout = ({ children }) => {
           isLoading ? "opacity-0" : "opacity-100"
         }`}
       >
-        <Navbar />
-        {children}
-        <ScrollToTop />
+        <SmoothScrolling>
+          <Navbar />
+          {children}
+          <ScrollToTop />
+        </SmoothScrolling>
       </div>
 
       <CalendarModal isOpen={isCalendarOpen} onClose={closeCalendar} />

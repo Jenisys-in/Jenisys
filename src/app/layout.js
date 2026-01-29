@@ -13,9 +13,9 @@ const montserrat = Montserrat({
 // ✅ SEO metadata (server component can export this)
 export const metadata = {
   metadataBase: new URL("https://www.jenisys.in"),
-  title: "Jenisys – Transforming Technology Into Business Advantage",
+  title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
   description:
-    "Jenisys helps businesses grow through automation, cloud solutions, AI/ML, and custom software development.",
+    "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
   alternates: {
     canonical: "https://www.jenisys.in",
   },
@@ -27,9 +27,9 @@ export const metadata = {
     apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
   },
   openGraph: {
-    title: "Jenisys – Transforming Technology Into Business Advantage",
+    title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
     description:
-      "Jenisys helps businesses grow through automation, cloud solutions, AI/ML, and custom software development.",
+      "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
     url: "https://www.jenisys.in",
     siteName: "Jenisys",
     images: [
@@ -37,7 +37,7 @@ export const metadata = {
         url: "https://www.jenisys.in/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Jenisys – Transforming Technology Into Business Advantage",
+        alt: "Jenisys – AI & Software Development Agency",
       },
     ],
     locale: "en_US",
@@ -45,9 +45,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jenisys – Transforming Technology Into Business Advantage",
+    title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
     description:
-      "Jenisys helps businesses grow through automation, cloud solutions, AI/ML, and custom software development.",
+      "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
     images: ["https://www.jenisys.in/og-image.jpg"],
   },
 };
@@ -72,7 +72,19 @@ export default function RootLayout({ children }) {
               name: "Jenisys",
               url: "https://www.jenisys.in",
               logo: "https://www.jenisys.in/img/logo2.svg",
+              description: "AI Software Agency providing enterprise custom solutions.",
               sameAs: ["https://www.linkedin.com/company/jenisys"],
+              areaServed: {
+                "@type": "Country",
+                name: "United States"
+              },
+              contactPoint: {
+                 "@type": "ContactPoint",
+                 "marketingTitle": "Sales & Support",
+                 "contactType": "sales", 
+                 "areaServed": ["US", "GB", "CA", "IN"],
+                 "availableLanguage": "English"
+              }
             }),
           }}
         />
