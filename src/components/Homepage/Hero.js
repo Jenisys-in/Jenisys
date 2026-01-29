@@ -60,16 +60,16 @@ const Hero = () => {
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
-            <Link href="/about" className="inline-block">
-              <button className="relative bg-[#361CA9] hover:bg-[#4b2ffb] transition duration-300 text-white w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group holographic-button">
+            <Link href="/about" className="inline-block" aria-label="Learn more about Jenisys">
+              <div className="relative bg-[#361CA9] hover:bg-[#4b2ffb] transition duration-300 text-white w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group holographic-button cursor-pointer">
                 <span className="relative z-10">Learn More</span>
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#4b2ffb] via-[#7042F8] to-[#361CA9] opacity-0 group-hover:opacity-20 transition duration-300" />
-              </button>
+              </div>
             </Link>
-            <Link href="/quote" className="inline-block">
-              <button className="relative bg-white hover:bg-gray-100 transition duration-300 text-[#361CA9] border border-[#361CA9] w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group">
+            <Link href="/quote" className="inline-block" aria-label="Get your free growth plan">
+              <div className="relative bg-white hover:bg-gray-100 transition duration-300 text-[#361CA9] border border-[#361CA9] w-full sm:w-auto px-8 py-4 text-center text-lg font-semibold rounded-md shadow-lg overflow-hidden group cursor-pointer">
                 <span className="relative z-10">Get Your Free Growth Plan</span>
-              </button>
+              </div>
             </Link>
           </div>
         </div>

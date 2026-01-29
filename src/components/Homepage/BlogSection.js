@@ -48,6 +48,7 @@ const BlogSection = () => {
                 <Link
                   href={`/blog/${post.slug}`}
                   className="flex items-center gap-2 text-[#361CA9] font-semibold hover:underline"
+                  aria-label={`Read full article: ${post.title}`}
                 >
                   Read More <ArrowRight size={18} />
                 </Link>

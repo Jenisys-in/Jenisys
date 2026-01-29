@@ -1,5 +1,5 @@
 import "./global.css";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import Script from "next/script";
 import { CalendarProvider } from "@/contexts/CalendarContext";
 import ClientLayout from "@/components/ClientLayout";
@@ -8,6 +8,14 @@ import ClientLayout from "@/components/ClientLayout";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
+  display: "swap", // Ensure swap is used
+});
+
+// ✅ Inter font (for better performance on body text)
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 // ✅ SEO metadata (server component can export this)
@@ -54,7 +62,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} font-sans`}>
+    <html lang="en" className={`${montserrat.variable} ${inter.variable} font-sans`}>
       <body>
         <CalendarProvider>
           <ClientLayout>{children}</ClientLayout>
@@ -91,10 +99,10 @@ export default function RootLayout({ children }) {
 
         {/* Google tag (gtag.js) */}
         <Script
-          async
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-LKJG71PLQ4"
         />
-        <Script id="google-analytics">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

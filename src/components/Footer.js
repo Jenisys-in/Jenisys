@@ -72,12 +72,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white font-montserrat mb-4">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white font-montserrat mb-4">
                 JENISYS
-              </h1>
-              <h3 className="text-xl font-bold text-white mb-3">
+              </h2>
+              <p className="text-xl font-bold text-white mb-3">
                 Advancing Excellence Beyond Cost
-              </h3>
+              </p>
               <p className="text-gray-300 text-sm leading-relaxed">
                 Delivering innovative solutions that drive business growth and
                 operational excellence through cutting-edge technology and
@@ -87,10 +87,10 @@ const Footer = () => {
 
             {/* CTA Button */}
             <Link href="/contact">
-              <button className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+              <div className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 cursor-pointer">
                 Get Started Today
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </div>
             </Link>
           </div>
 
@@ -239,6 +239,7 @@ const Footer = () => {
                   onClick={handleSubmit}
                   disabled={isSubmitting}
                   className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50"
+                  aria-label="Subscribe to newsletter"
                 >
                   {isSubmitting ? "..." : <ArrowRight className="w-4 h-4" />}
                 </button>

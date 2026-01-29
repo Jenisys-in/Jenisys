@@ -96,6 +96,7 @@ const CaseStudies = ({
                     ? "bg-slate-100 text-slate-400 cursor-not-allowed"
                     : "bg-white shadow-md text-slate-700 hover:shadow-lg hover:text-slate-900"
                 }`}
+                aria-label="Previous case study"
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
@@ -109,6 +110,7 @@ const CaseStudies = ({
                     ? "bg-slate-100 text-slate-400 cursor-not-allowed"
                     : "bg-white shadow-md text-slate-700 hover:shadow-lg hover:text-slate-900"
                 }`}
+                aria-label="Next case study"
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
@@ -127,6 +129,7 @@ const CaseStudies = ({
                       ? "bg-blue-600 w-6 sm:w-8"
                       : "bg-slate-300 hover:bg-slate-400 w-2"
                   }`}
+                  aria-label={`Go to case study slide ${index + 1}`}
                 />
               ))}
             </div>
@@ -396,6 +399,7 @@ const CaseStudies = ({
                   setUIStates((prev) => ({ ...prev, activeStudy: null }))
                 }
                 className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-lg transition-colors duration-200"
+                aria-label="Close case study details"
               >
                 <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>

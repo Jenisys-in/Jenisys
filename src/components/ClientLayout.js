@@ -32,7 +32,7 @@ const ClientLayout = ({ children }) => {
       >
         <SmoothScrolling>
           <Navbar />
-          {children}
+          <main>{children}</main>
           <ScrollToTop />
         </SmoothScrolling>
       </div>
