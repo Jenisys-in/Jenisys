@@ -27,15 +27,24 @@ const Preloader = ({ onComplete }) => {
       setTimeout(() => {
         setIsVisible(false);
         onComplete?.();
-      }, 500); // Match this with transition duration
+      }, 500); // Transition duration
     };
 
-    if (document.readyState === "complete") {
-      handlePageLoad();
+    // Fallback: If page takes too long, force hide after 2.5s
+    const fallbackTimer = setTimeout(handlePageLoad, 2500);
+
+    // Primary: Hide when DOM is ready (interactive) or if already complete
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+       // Small delay to ensure at least some branding time
+       setTimeout(handlePageLoad, 1500);
     } else {
-      window.addEventListener("load", handlePageLoad);
-      return () => window.removeEventListener("load", handlePageLoad);
+       window.addEventListener("DOMContentLoaded", () => setTimeout(handlePageLoad, 1500));
     }
+
+    return () => {
+      clearTimeout(fallbackTimer);
+      window.removeEventListener("DOMContentLoaded", handlePageLoad);
+    };
   }, [onComplete]);
 
   if (!isVisible) return null;

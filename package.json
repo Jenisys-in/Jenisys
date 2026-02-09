@@ -59,7 +59,9 @@
     "tailwindcss": "^4.1.18"
   },
   "browserslist": [
-    "defaults",
-    "not IE 11"
+    "supermarket",
+    "> 0.2%",
+    "not dead",
+    "not op_mini all"
   ]
 }

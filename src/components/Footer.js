@@ -96,9 +96,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-6">
+            <h3 className="text-white font-semibold text-lg mb-6">
               Quick Links
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {[
                 { name: "About", href: "/about" },
@@ -121,9 +121,9 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-6">
+            <h3 className="text-white font-semibold text-lg mb-6">
               Contact Us
-            </h4>
+            </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
@@ -164,9 +164,9 @@ const Footer = () => {
 
           {/* Social Media & Newsletter */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-6">
+            <h3 className="text-white font-semibold text-lg mb-6">
               Stay Connected
-            </h4>
+            </h3>
 
             {/* Social Media Icons */}
             <div className="flex gap-4 mb-6">

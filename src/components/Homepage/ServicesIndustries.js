@@ -154,7 +154,7 @@ const ServicesIndustries = ({
                           className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base"
                           aria-label={`Learn more about ${service.title}`}
                         >
-                          Learn More
+                          Learn More <span className="sr-only">about {service.title}</span>
                           <ExternalLink size={16} />
                         </Link>
                       </div>

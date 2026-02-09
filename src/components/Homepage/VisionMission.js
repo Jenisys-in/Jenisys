@@ -28,7 +28,7 @@ const VisionMission = ({
                 width={500}
                 height={500}
                 alt="Our Vision"
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 500px"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 700px"
                 className="pt-[20px] sm:pt-[30px] md:pt-[40px] w-full max-w-[400px] sm:max-w-[450px] md:max-w-[500px] lg:w-auto mx-auto lg:mx-0 transition-transform duration-300 group-hover:scale-[1.02]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-[20px] sm:mt-[30px] md:mt-[40px]"></div>
@@ -102,7 +102,7 @@ const VisionMission = ({
                       width={52}
                       height={52}
                       alt={item.alt}
-                      className="w-[24px] h-[22px] sm:w-[28px] sm:h-[26px] md:w-[40px] md:h-[38px] lg:w-[52px] lg:h-[52px] transition-transform duration-300 group-hover:scale-110"
+                      className="w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] md:w-[40px] md:h-[40px] lg:w-[52px] lg:h-[52px] transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
 

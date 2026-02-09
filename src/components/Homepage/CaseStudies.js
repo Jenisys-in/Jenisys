@@ -350,6 +350,7 @@ const CaseStudies = ({
                       ? "bg-blue-600 w-6"
                       : "bg-slate-300"
                   }`}
+                  aria-label={`Go to case study slide ${index + 1}`}
                 />
               ))}
             </div>

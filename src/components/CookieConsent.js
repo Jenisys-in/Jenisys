@@ -86,7 +86,7 @@ const CookieConsent = () => {
             </div>
             
             {/* Disclaimer */}
-            <div className="mt-4 pt-4 border-t border-white/5 text-xs text-slate-500 text-center">
+            <div className="mt-4 pt-4 border-t border-white/5 text-xs text-slate-400 text-center">
               By clicking "Accept All", you agree to our <Link href="/Privacy-Policy" className="text-purple-400 hover:text-purple-300 hover:underline transition-colors">Privacy Policy</Link>
             </div>
           </div>

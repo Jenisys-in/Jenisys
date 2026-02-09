@@ -83,6 +83,7 @@ const Hero = () => {
             loop
             playsInline
             preload="metadata"
+            poster="/img/logo2.svg"
             title="Jenisys Homepage Video"
           >
             <source src="/Home Page Video.mp4" type="video/mp4" />
