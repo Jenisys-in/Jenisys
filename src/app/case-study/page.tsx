@@ -1,11 +1,17 @@
-import CaseStudiesPage from '@/components/case-study';
-import Script from "next/script";
+import CaseStudiesPage from "@/components/case-study";
 
 export const metadata = {
-  title: "Case Studies - Jenisys",
+  title: "Build Logs & Case Studies — Jenisys",
   description:
-    "Explore real-world case studies showcasing how Jenisys has helped businesses across industries succeed through custom digital solutions and technology innovation.",
-  keywords: ["case studies", "digital solutions", "business success stories", "technology innovation"],
+    "Real engineering builds, experiments, and technical breakdowns from the Jenisys engineering team. No marketing fluff — just systems, decisions, and lessons.",
+  keywords: [
+    "case studies",
+    "engineering",
+    "build logs",
+    "architecture",
+    "software development",
+    "technical analysis",
+  ],
 };
 
 export default function CaseStudiesRoute() {
