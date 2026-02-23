@@ -265,7 +265,7 @@ const ITConsultingPage = () => {
               </div>
               <h1 className="text-6xl md:text-8xl font-bold text-gray-900 mb-8 leading-tight">
                 Expert IT Consulting
-                <span className="block bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-pulse">
+                <span className="block bg-gradient-to-r from-[#4F46E5] via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-pulse">
                   That Delivers Results
                 </span>
               </h1>
@@ -278,7 +278,7 @@ const ITConsultingPage = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <button
                   onClick={openCalendar}
-                  className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 relative overflow-hidden"
+                  className="group bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 relative overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Get Your Free Consultation
@@ -317,7 +317,7 @@ const ITConsultingPage = () => {
                 data-animate
               >
                 <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-purple-100/50 hover:border-purple-300/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
-                  <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
                     {metric.value}
                   </div>
                   <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -337,7 +337,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Is Your IT
-                <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
                   Holding You Back?
                 </span>
               </h2>
@@ -404,13 +404,13 @@ const ITConsultingPage = () => {
                 id="solutions"
                 data-animate
               >
-                <h3 className="text-3xl font-bold text-purple-600 mb-8 flex items-center">
+                <h3 className="text-3xl font-bold text-[#7C3AED] mb-8 flex items-center">
                   <CheckCircle2 className="w-8 h-8 mr-4" />
                   Our Solutions
                 </h3>
                 <div className="space-y-6">
                   <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-purple-500 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-purple-600 transition-colors">
+                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#7C3AED] transition-colors">
                       Modern Infrastructure
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
@@ -419,7 +419,7 @@ const ITConsultingPage = () => {
                     </p>
                   </div>
                   <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-purple-500 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-purple-600 transition-colors">
+                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#7C3AED] transition-colors">
                       Robust Security
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
@@ -428,7 +428,7 @@ const ITConsultingPage = () => {
                     </p>
                   </div>
                   <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-purple-500 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-purple-600 transition-colors">
+                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#7C3AED] transition-colors">
                       Process Automation
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
@@ -476,10 +476,10 @@ const ITConsultingPage = () => {
                     setSelectedService(selectedService === index ? null : index)
                   }
                 >
-                  <div className="text-purple-600 mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                  <div className="text-[#7C3AED] mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#7C3AED] transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -500,7 +500,7 @@ const ITConsultingPage = () => {
                             key={idx}
                             className="flex items-center text-gray-600"
                           >
-                            <CheckCircle className="w-5 h-5 text-purple-500 mr-3 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 text-[#7C3AED] mr-3 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -508,7 +508,7 @@ const ITConsultingPage = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center text-purple-600 font-semibold mt-6 group-hover:translate-x-3 transition-all duration-300">
+                  <div className="flex items-center text-[#7C3AED] font-semibold mt-6 group-hover:translate-x-3 transition-all duration-300">
                     Learn More{" "}
                     <ChevronRight className="w-5 h-5 ml-2 group-hover:rotate-90 transition-transform duration-300" />
                   </div>
@@ -526,7 +526,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Our Proven
-                <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
                   Process
                 </span>
               </h2>
@@ -561,10 +561,10 @@ const ITConsultingPage = () => {
                     }`}
                   >
                     <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-10 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 transform hover:-translate-y-3 border border-purple-100/50">
-                      <div className="text-purple-600 mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                      <div className="text-[#7C3AED] mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
                         {step.icon}
                       </div>
-                      <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
+                      <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#7C3AED] transition-colors">
                         {step.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed text-lg">
@@ -590,7 +590,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 What Our Clients
-                <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
                   Say About Us
                 </span>
               </h2>
@@ -636,7 +636,7 @@ const ITConsultingPage = () => {
                       />
                     )}
                     <div>
-                      <div className="font-bold text-gray-900 text-lg group-hover:text-purple-600 transition-colors">
+                      <div className="font-bold text-gray-900 text-lg group-hover:text-[#7C3AED] transition-colors">
                         {testimonial.name}
                       </div>
                       <div className="text-gray-600">
@@ -788,8 +788,8 @@ const ITConsultingPage = () => {
 
       {/* CTA Section */}
       <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700"></div>
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#4F46E5] via-blue-600 to-indigo-700"></div>
+        <div className="absolute inset-0 bg-[#0F172A]/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
@@ -805,7 +805,7 @@ const ITConsultingPage = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={openCalendar}
-                className="group bg-white text-purple-600 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                className="group bg-white text-[#7C3AED] px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
               >
                 <span className="flex items-center justify-center">
                   Book a Strategy Call
@@ -814,7 +814,7 @@ const ITConsultingPage = () => {
               </button>
               <button
                 onClick={openCalendar}
-                className="group border-2 border-white text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
+                className="group border-2 border-white text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-[#7C3AED] transition-all duration-300 transform hover:scale-105"
               >
                 <span className="flex items-center justify-center">
                   Get a Custom IT Plan
@@ -833,7 +833,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Frequently Asked
-                <span className="block bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
                   Questions
                 </span>
               </h2>
@@ -859,11 +859,11 @@ const ITConsultingPage = () => {
                     className="w-full p-8 text-left flex items-center justify-between hover:bg-purple-50/50 transition-all duration-300 rounded-3xl"
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   >
-                    <span className="font-bold text-gray-900 text-lg md:text-xl group-hover:text-purple-600 transition-colors">
+                    <span className="font-bold text-gray-900 text-lg md:text-xl group-hover:text-[#7C3AED] transition-colors">
                       {faq.question}
                     </span>
                     <ChevronRight
-                      className={`w-6 h-6 text-purple-500 transition-all duration-300 ${
+                      className={`w-6 h-6 text-[#7C3AED] transition-all duration-300 ${
                         openFaq === index
                           ? "rotate-90 scale-125"
                           : "group-hover:scale-110"

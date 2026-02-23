@@ -52,7 +52,7 @@ const Preloader = ({ onComplete }) => {
   return (
     <div
       id="preloader"
-      className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center transition-opacity duration-500"
+      className="fixed inset-0 bg-[#0F172A] z-50 flex flex-col items-center justify-center transition-opacity duration-500"
     >
       <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden">
         {videoError ? (

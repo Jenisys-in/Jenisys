@@ -14,8 +14,8 @@ const BlogSection = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800">From the Blog</h2>
-          <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
+          <h2 className="text-[30px] font-semibold text-[#111827]">From the Blog</h2>
+          <p className="text-base text-[#374151] mt-4 max-w-3xl mx-auto leading-[1.65]">
             Stay up-to-date with the latest industry trends, insights, and news
             from our team of experts.
           </p>
@@ -24,7 +24,7 @@ const BlogSection = () => {
           {latestPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+              className="ds-card overflow-hidden"
             >
               <Link href={`/blog/${post.slug}`}>
                 <Image
@@ -32,22 +32,22 @@ const BlogSection = () => {
                   alt={post.title}
                   width={600}
                   height={400}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-48 object-cover ds-image"
                 />
               </Link>
               <div className="p-6">
-                <p className="text-sm text-gray-500 mb-2">{post.date}</p>
-                <h3 className="text-xl font-semibold mb-4">
+                <p className="text-sm text-[#6B7280] mb-2">{post.date}</p>
+                <h3 className="text-xl font-semibold text-[#111827] mb-4">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="hover:text-[#361CA9]"
+                    className="hover:text-[#4F46E5] transition-colors"
                   >
                     {post.title}
                   </Link>
                 </h3>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="flex items-center gap-2 text-[#361CA9] font-semibold hover:underline"
+                  className="flex items-center gap-2 text-[#4F46E5] font-semibold hover:underline"
                   aria-label={`Read full article: ${post.title}`}
                 >
                   Read More <span className="sr-only">about {post.title}</span> <ArrowRight size={18} />
@@ -58,7 +58,7 @@ const BlogSection = () => {
         </div>
         <div className="text-center mt-12">
           <Link href="/blog">
-            <button className="px-8 py-4 bg-[#361CA9] text-white font-semibold rounded-lg hover:bg-[#4b2ffb] transition-colors duration-300">
+            <button className="ds-btn-primary px-8 py-4">
               View All Posts
             </button>
           </Link>

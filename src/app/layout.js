@@ -18,21 +18,60 @@ const inter = Inter({
   display: "swap",
 });
 
+// ✅ Viewport metadata (for mobile browsers and Safari)
+export const viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 // ✅ SEO metadata (server component can export this)
 export const metadata = {
   metadataBase: new URL("https://www.jenisys.in"),
   title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
   description:
     "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
+  applicationName: "Jenisys",
+  authors: [{ name: "Jenisys Team", url: "https://www.jenisys.in" }],
+  generator: "Next.js",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: "./",
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/logo2.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/logo2.svg",
+        color: "#4F46E5",
+      },
+    ],
+  },
+  appleWebApp: {
+    title: "Jenisys",
+    statusBarStyle: "default",
+    capable: true,
   },
   openGraph: {
     title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
@@ -50,6 +89,7 @@ export const metadata = {
     ],
     locale: "en_US",
     type: "website",
+    emails: ["contact@jenisys.in"],
   },
   twitter: {
     card: "summary_large_image",
@@ -82,15 +122,15 @@ export default function RootLayout({ children }) {
               logo: "https://www.jenisys.in/img/logo2.svg",
               description: "AI Software Agency providing enterprise custom solutions.",
               sameAs: ["https://www.linkedin.com/company/jenisys"],
-              areaServed: {
-                "@type": "Country",
-                name: "United States"
-              },
+              areaServed: [
+                { "@type": "Country", name: "Australia" },
+                { "@type": "Country", name: "United States" }
+              ],
               contactPoint: {
                  "@type": "ContactPoint",
                  "marketingTitle": "Sales & Support",
                  "contactType": "sales", 
-                 "areaServed": ["US", "GB", "CA", "IN"],
+                 "areaServed": ["US", "AU", "GB", "CA", "IN"],
                  "availableLanguage": "English"
               }
             }),

@@ -115,7 +115,7 @@ const Quote = () => {
                   }}
                   className={`p-4 rounded-lg border-2 text-center transition-all duration-200 ${
                     formData.service === service
-                      ? "bg-[#361CA9] text-white border-[#361CA9]"
+                      ? "bg-[#4F46E5] text-white border-[#4F46E5]"
                       : "bg-white hover:bg-gray-50 border-gray-200"
                   }`}
                 >
@@ -151,7 +151,7 @@ const Quote = () => {
                   setFormData({ ...formData, details: e.target.value })
                 }
                 placeholder="Describe your project, goals, and any specific requirements."
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#361CA9]"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4F46E5]"
                 rows="4"
               />
               {errors.details && (
@@ -171,7 +171,7 @@ const Quote = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, budget: e.target.value })
                 }
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#361CA9]"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4F46E5]"
               >
                 <option value="">Select a budget range</option>
                 <option value="under-5k">{"<"} $5,000</option>
@@ -199,7 +199,7 @@ const Quote = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#361CA9]"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4F46E5]"
             />
             {errors.name && <p className="text-red-500">{errors.name}</p>}
             <input
@@ -209,7 +209,7 @@ const Quote = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#361CA9]"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4F46E5]"
             />
             {errors.email && <p className="text-red-500">{errors.email}</p>}
             <input
@@ -219,7 +219,7 @@ const Quote = () => {
               onChange={(e) =>
                 setFormData({ ...formData, company: e.target.value })
               }
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#361CA9]"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4F46E5]"
             />
           </motion.div>
         );
@@ -253,7 +253,7 @@ const Quote = () => {
           </h2>
           <div className="w-full bg-gray-200 rounded-full h-2 mb-8">
             <div
-              className="bg-[#361CA9] h-2 rounded-full transition-all duration-300"
+              className="bg-[#4F46E5] h-2 rounded-full transition-all duration-300"
               style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
             />
           </div>
@@ -273,7 +273,7 @@ const Quote = () => {
               {currentStep < 2 ? (
                 <button
                   onClick={nextStep}
-                  className="flex items-center gap-2 px-6 py-3 bg-[#361CA9] text-white rounded-lg hover:bg-[#4b2ffb]"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#4F46E5] text-white rounded-lg hover:bg-[#3730A3]"
                 >
                   Next
                   <ArrowRight size={18} />

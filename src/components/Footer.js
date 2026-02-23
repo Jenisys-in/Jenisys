@@ -15,27 +15,16 @@ const Footer = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
-    if (!formData.name?.trim()) {
-      errors.name = "Name is required";
-    }
-    if (!formData.email?.trim()) {
-      errors.email = "Email is required";
-    } else if (!validateEmail(formData.email)) {
-      errors.email = "Please enter a valid email address";
-    }
+    if (!formData.name?.trim()) errors.name = "Name is required";
+    if (!formData.email?.trim()) errors.email = "Email is required";
+    else if (!validateEmail(formData.email)) errors.email = "Please enter a valid email address";
 
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
+    if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
 
     setFormErrors({ name: "", email: "" });
     setIsSubmitting(true);
@@ -46,18 +35,15 @@ const Footer = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
         setShowAlert(true);
         setFormData({ name: "", email: "" });
-        setTimeout(() => setShowAlert(false), 3000); // Hide alert after 3 seconds
+        setTimeout(() => setShowAlert(false), 3000);
       } else {
         const errorData = await response.json().catch(() => ({}));
-        setFormErrors({
-          api: errorData.message || "Submission failed. Please try again.",
-        });
+        setFormErrors({ api: errorData.message || "Submission failed. Please try again." });
       }
-    } catch (error) {
+    } catch {
       setFormErrors({ api: "Network error. Please try again." });
     } finally {
       setIsSubmitting(false);
@@ -65,7 +51,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <footer className="bg-[#0F172A]">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -75,19 +61,18 @@ const Footer = () => {
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white font-montserrat mb-4">
                 JENISYS
               </h2>
-              <p className="text-xl font-bold text-white mb-3">
+              <p className="text-lg font-semibold text-white mb-3">
                 Advancing Excellence Beyond Cost
               </p>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-[#E5E7EB] text-sm leading-relaxed">
                 Delivering innovative solutions that drive business growth and
                 operational excellence through cutting-edge technology and
                 strategic consulting.
               </p>
             </div>
 
-            {/* CTA Button */}
             <Link href="/contact">
-              <div className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 cursor-pointer">
+              <div className="ds-btn-primary w-fit group">
                 Get Started Today
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -109,7 +94,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-[#E5E7EB] hover:text-white transition-colors duration-200 flex items-center gap-2 group"
                   >
                     {link.name}
                     <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -126,9 +111,11 @@ const Footer = () => {
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                <div className="ds-icon-container-dark w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 bg-white/10">
+                  <MapPin className="w-4 h-4 text-white" />
+                </div>
                 <div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-[#E5E7EB] text-sm leading-relaxed">
                     Raja Ram mohon roy
                     <br />
                     Sarani
@@ -141,20 +128,24 @@ const Footer = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                <div className="ds-icon-container-dark w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/10">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
                 <a
                   href="tel:+918240384648"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-[#E5E7EB] hover:text-white transition-colors"
                 >
                   +91 8240384648
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                <div className="ds-icon-container-dark w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/10">
+                  <Mail className="w-4 h-4 text-white" />
+                </div>
                 <a
                   href="mailto:contact@jenisys.in"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-[#E5E7EB] hover:text-white transition-colors"
                 >
                   contact@jenisys.in
                 </a>
@@ -168,87 +159,72 @@ const Footer = () => {
               Stay Connected
             </h3>
 
-            {/* Social Media Icons */}
             <div className="flex gap-4 mb-6">
               {[
-                {
-                  name: "Instagram",
-                  href: "https://www.instagram.com/jenisys.in/",
-                  icon: "/img/mdi_instagram.png",
-                },
-                {
-                  name: "LinkedIn",
-                  href: "https://www.linkedin.com/company/jenisys",
-                  icon: "/img/linkedIn.png",
-                },
-                {
-                  name: "Facebook",
-                  href: "https://www.facebook.com",
-                  icon: "/img/facebook.png",
-                },
+                { name: "Instagram", href: "https://www.instagram.com/jenisys.in/", icon: "/img/mdi_instagram.png" },
+                { name: "LinkedIn", href: "https://www.linkedin.com/company/jenisys", icon: "/img/linkedIn.png" },
+                { name: "Facebook", href: "https://www.facebook.com", icon: "/img/facebook.png" },
               ].map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-gray-700 hover:bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                  className="group bg-white/10 hover:bg-[#4F46E5] w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
                 >
-                  {social.icon && (
-                    <Image
-                      src={social.icon}
-                      alt={social.name}
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all"
-                    />
-                  )}
+                  <Image
+                    src={social.icon}
+                    alt={social.name}
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 brightness-0 invert transition-all"
+                  />
                 </a>
               ))}
             </div>
 
             {/* Newsletter Signup */}
             <div>
-              <p className="text-gray-300 text-sm mb-3">
+              <p className="text-[#E5E7EB] text-sm mb-3">
                 Subscribe to our newsletter
               </p>
               <div className="flex flex-col gap-2">
                 <input
                   type="text"
                   placeholder="Your name"
-                  className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                  className="flex-1 px-3 py-2 bg-[#111827] text-white rounded-lg border border-[#374151] focus:border-[#4F46E5] focus:outline-none focus:ring-1 focus:ring-[#4F46E5] text-sm transition-colors"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                 />
                 {formErrors.name && (
-                  <p className="text-red-500 text-xs">{formErrors.name}</p>
+                  <p className="text-red-400 text-xs">{formErrors.name}</p>
                 )}
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:border-purple-500 focus:outline-none text-sm"
+                  className="flex-1 px-3 py-2 bg-[#111827] text-white rounded-lg border border-[#374151] focus:border-[#4F46E5] focus:outline-none focus:ring-1 focus:ring-[#4F46E5] text-sm transition-colors"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                 />
                 {formErrors.email && (
-                  <p className="text-red-500 text-xs">{formErrors.email}</p>
+                  <p className="text-red-400 text-xs">{formErrors.email}</p>
                 )}
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50"
+                  className="ds-btn-primary py-2 px-4 text-sm disabled:opacity-50"
                   aria-label="Subscribe to newsletter"
                 >
                   {isSubmitting ? "..." : <ArrowRight className="w-4 h-4" />}
                 </button>
               </div>
               {formErrors.api && (
-                <p className="text-red-500 text-xs mt-2">{formErrors.api}</p>
+                <p className="text-red-400 text-xs mt-2">{formErrors.api}</p>
               )}
               {showAlert && (
-                <p className="text-green-500 text-xs mt-2">
+                <p className="text-emerald-400 text-xs mt-2">
                   Thank you for subscribing!
                 </p>
               )}
@@ -258,22 +234,19 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-[#374151]">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            {/* Copyright */}
-            <div className="text-gray-400 text-sm">
+            <div className="text-[#6B7280] text-sm">
               © 2025 Jenisys. All rights reserved.
             </div>
-
-            {/* Legal Links */}
             <div className="flex gap-6 text-sm">
               {[{ name: "Privacy Policy", href: "/Privacy-Policy" }].map(
                 (link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-[#6B7280] hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </a>

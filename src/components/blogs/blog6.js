@@ -43,7 +43,7 @@ export default function APIDesignBlog() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#0F172A] via-blue-900 to-indigo-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjciLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
 
         <div className="container mx-auto px-4 py-20 relative z-10">
@@ -56,13 +56,13 @@ export default function APIDesignBlog() {
               patterns and best practices
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <span className="px-4 py-2 bg-blue-600/20 rounded-full text-blue-200 backdrop-blur-sm">
+              <span className="px-4 py-2 bg-[#4F46E5]/20 rounded-full text-blue-200 backdrop-blur-sm">
                 REST
               </span>
               <span className="px-4 py-2 bg-green-600/20 rounded-full text-green-200 backdrop-blur-sm">
                 GraphQL
               </span>
-              <span className="px-4 py-2 bg-purple-600/20 rounded-full text-purple-200 backdrop-blur-sm">
+              <span className="px-4 py-2 bg-[#4F46E5]/20 rounded-full text-purple-200 backdrop-blur-sm">
                 JWT/OAuth
               </span>
               <span className="px-4 py-2 bg-orange-600/20 rounded-full text-orange-200 backdrop-blur-sm">
@@ -119,7 +119,7 @@ export default function APIDesignBlog() {
               </div>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-[#4F46E5] rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-slate-700">
                     Implement robust authentication (JWT for stateless, OAuth
                     for third-party) and always use HTTPS
@@ -150,7 +150,7 @@ export default function APIDesignBlog() {
                   <button
                     key={link.id}
                     onClick={() => scrollToSection(link.id)}
-                    className="px-3 py-1 bg-white border border-slate-200 rounded text-sm text-slate-600 hover:text-blue-600 hover:border-blue-200 transition-colors"
+                    className="px-3 py-1 bg-white border border-slate-200 rounded text-sm text-slate-600 hover:text-[#4F46E5] hover:border-blue-200 transition-colors"
                   >
                     {link.title}
                   </button>
@@ -171,7 +171,7 @@ export default function APIDesignBlog() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Code className="w-8 h-8 text-blue-600" />
+                  <Code className="w-8 h-8 text-[#4F46E5]" />
                 </div>
                 <h3 className="font-semibold mb-3 text-slate-800">
                   Developer Experience
@@ -195,7 +195,7 @@ export default function APIDesignBlog() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="w-8 h-8 text-purple-600" />
+                  <Globe className="w-8 h-8 text-[#7C3AED]" />
                 </div>
                 <h3 className="font-semibold mb-3 text-slate-800">
                   Scalability
@@ -222,7 +222,7 @@ export default function APIDesignBlog() {
             <div className="mb-12">
               <button
                 onClick={() => setShowDecisionTree(!showDecisionTree)}
-                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all"
+                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#4F46E5] to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all"
               >
                 <span>Interactive Decision Tree</span>
                 {showDecisionTree ? (
@@ -1033,7 +1033,7 @@ components:
 
               <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
                 <h3 className="text-xl font-semibold mb-4 text-slate-800 flex items-center">
-                  <Shield className="w-5 h-5 text-blue-600 mr-2" />
+                  <Shield className="w-5 h-5 text-[#4F46E5] mr-2" />
                   Rate Limiting
                 </h3>
                 <ul className="space-y-2 text-slate-600">
@@ -1296,7 +1296,7 @@ components:
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+      <section className="py-16 bg-gradient-to-br from-[#4F46E5] to-indigo-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">
@@ -1307,7 +1307,7 @@ components:
               better APIs today
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2">
+              <button className="px-8 py-4 bg-white text-[#4F46E5] font-semibold rounded-lg hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2">
                 <BookOpen className="w-5 h-5" />
                 <span>Download API Checklist</span>
               </button>

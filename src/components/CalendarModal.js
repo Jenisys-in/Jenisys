@@ -14,7 +14,7 @@ const CalendarModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 bg-[#0F172A] bg-opacity-50 flex items-center justify-center">
       <div className="bg-white rounded-2xl w-[90%] max-w-3xl shadow-lg p-6 relative">
         <button
           onClick={onClose}

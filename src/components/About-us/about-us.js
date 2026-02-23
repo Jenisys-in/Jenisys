@@ -274,7 +274,7 @@ const AboutUsRedesign = memo(() => {
       <section className="relative min-h-screen flex flex-col justify-start pt-[100px] pb-[40px] overflow-hidden px-4 sm:px-6">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
-          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-[#0F172A]/30"></div>
 
           {/* Purple Glow Blobs */}
           <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-20 sm:w-36 h-20 sm:h-36 bg-purple-400/30 rounded-full blur-2xl animate-pulse"></div>
@@ -313,7 +313,7 @@ const AboutUsRedesign = memo(() => {
 
             <a
               href="#our-journey"
-              className="group bg-gradient-to-r from-purple-500 via-violet-600 to-indigo-700 hover:from-purple-600 hover:via-violet-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-800/50 flex items-center gap-3 mx-auto"
+              className="group bg-gradient-to-r from-purple-500 via-violet-600 to-indigo-700 hover:from-[#4F46E5] hover:via-violet-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-800/50 flex items-center gap-3 mx-auto"
             >
               Discover How We Partner with You
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
@@ -343,7 +343,7 @@ const AboutUsRedesign = memo(() => {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-indigo-600 mb-2 group-hover:text-blue-600 transition-colors">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-indigo-600 mb-2 group-hover:text-[#4F46E5] transition-colors">
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium text-sm sm:text-base">
@@ -417,7 +417,7 @@ const AboutUsRedesign = memo(() => {
               }`}
             >
               <div className="relative">
-                <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-8 shadow-2xl">
+                <div className="bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] rounded-2xl p-8 shadow-2xl">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-white">
                     <div className="text-center transition duration-300 hover:scale-105">
                       <Target className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 text-purple-200" />
@@ -463,7 +463,7 @@ const AboutUsRedesign = memo(() => {
             }`}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-['Montserrat']">
-              Our <span className="text-purple-400">Journey</span>
+              Our <span className="text-[#7C3AED]">Journey</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
               From humble beginnings to industry leadership, here's how we've
@@ -494,7 +494,7 @@ const AboutUsRedesign = memo(() => {
                     }`}
                   >
                     <div className="bg-gray-800 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 group hover:scale-105">
-                      <div className="text-purple-400 font-bold text-lg sm:text-xl mb-2">
+                      <div className="text-[#7C3AED] font-bold text-lg sm:text-xl mb-2">
                         {milestone.year}
                       </div>
                       <h3 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-purple-300 transition-colors">
@@ -584,7 +584,7 @@ const AboutUsRedesign = memo(() => {
             }`}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 font-['Montserrat']">
-              Our <span className="text-purple-600">Technology Stack</span>
+              Our <span className="text-[#7C3AED]">Technology Stack</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               We leverage cutting-edge technologies to build robust, scalable,
@@ -603,7 +603,7 @@ const AboutUsRedesign = memo(() => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 text-center border border-gray-200 hover:border-purple-300">
-                  <div className="text-purple-600 mb-4 group-hover:text-blue-600 transition-colors flex justify-center">
+                  <div className="text-[#7C3AED] mb-4 group-hover:text-[#4F46E5] transition-colors flex justify-center">
                     {tech.icon}
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">
@@ -694,7 +694,7 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white">
         <div
           data-animate-id="cta"
           className={`max-w-4xl mx-auto text-center px-4 sm:px-6 transition-all duration-1000 ${
@@ -712,14 +712,14 @@ const AboutUsRedesign = memo(() => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-3 justify-center group"
+              className="bg-white text-[#7C3AED] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-3 justify-center group"
             >
               Start Your Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <button
               onClick={openCalendar}
-              className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
+              className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-[#7C3AED] transition-all duration-300 transform hover:scale-105"
             >
               Schedule a Consultation
             </button>

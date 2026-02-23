@@ -30,7 +30,7 @@ function NewBlog() {
   };
 
   return (
-    <div className="mt-[90px] pt-[20px] self-stretch bg-gradient-to-br from-purple-600 to-blue-600 flex flex-col lg:flex-row min-h-screen">
+    <div className="mt-[90px] pt-[20px] self-stretch bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] flex flex-col lg:flex-row min-h-screen">
       {/* Left Section */}
       <div className="pl-[20px] flex-col relative lg:w-1/3">
         <input

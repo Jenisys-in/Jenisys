@@ -125,7 +125,7 @@ const Jenisyssftdev = () => {
           "The result was a 65% increase in processing efficiency, over $1.2M in annual savings, and a system with 99.9% uptime",
         metrics: { efficiency: "+65%", savings: "$1.2M", uptime: "99.9%" },
         tech: ["React", "Node.js", "MongoDB", "AWS"],
-        gradient: "from-blue-600 to-purple-600",
+        gradient: "from-[#4F46E5] to-[#7C3AED]",
       },
       {
         company: "RetailHub Network",
@@ -138,7 +138,7 @@ const Jenisyssftdev = () => {
           " Decision-making speed improved by 80%, and operational costs were reduced by 45% across the entire network",
         metrics: { speed: "+80%", cost: "-45%", locations: "50+" },
         tech: ["Next.js", "PostgreSQL", "Redis", "Docker"],
-        gradient: "from-green-600 to-blue-600",
+        gradient: "from-green-600 to-[#4F46E5]",
       },
       {
         company: "FinanceCore Startup",
@@ -151,7 +151,7 @@ const Jenisyssftdev = () => {
           "The startup successfully secured $5M in Series A funding and acquired over 10K users in its first quarter",
         metrics: { funding: "$5M", users: "10K+", time: "4mo" },
         tech: ["TypeScript", "Prisma", "Stripe", "Auth0"],
-        gradient: "from-purple-600 to-pink-600",
+        gradient: "from-[#4F46E5] to-pink-600",
       },
     ],
     []
@@ -255,7 +255,7 @@ const Jenisyssftdev = () => {
 
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
               Build Software That
-              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#4F46E5] via-[#7C3AED] to-blue-800 bg-clip-text text-transparent">
                 Doesn't Just Work—It Wins
               </span>
             </h1>
@@ -270,7 +270,7 @@ const Jenisyssftdev = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
                 onClick={openCalendar}
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
+                className="group bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -403,7 +403,7 @@ const Jenisyssftdev = () => {
       {/* Development Process */}
       <section
         id="process"
-        className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden"
+        className="py-24 bg-gradient-to-br from-[#0F172A] via-blue-900 to-[#0F172A] text-white relative overflow-hidden"
         data-animate
       >
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -549,11 +549,11 @@ const Jenisyssftdev = () => {
                         <h3 className="text-2xl font-bold text-gray-900">
                           {study.company}
                         </h3>
-                        <span className="text-blue-600 font-medium">
+                        <span className="text-[#4F46E5] font-medium">
                           {study.industry}
                         </span>
                       </div>
-                      <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" />
+                      <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-[#4F46E5] transition-colors duration-200" />
                     </div>
 
                     <div className="mb-6">
@@ -567,8 +567,8 @@ const Jenisyssftdev = () => {
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="font-semibold text-blue-600 mb-3 flex items-center">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-2" />
+                      <h4 className="font-semibold text-[#4F46E5] mb-3 flex items-center">
+                        <div className="w-2 h-2 bg-[#4F46E5] rounded-full mr-2" />
                         Solution
                       </h4>
                       <p className="text-gray-600 leading-relaxed">
@@ -627,7 +627,7 @@ const Jenisyssftdev = () => {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
               Built for Scale,
-              <span className="block text-purple-600">Designed for Growth</span>
+              <span className="block text-[#7C3AED]">Designed for Growth</span>
             </h2>
           </div>
 
@@ -673,7 +673,7 @@ const Jenisyssftdev = () => {
       >
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#4F46E5]/5 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -883,9 +883,9 @@ const Jenisyssftdev = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-[#0F172A] via-blue-900 to-purple-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5]/10 to-[#7C3AED]/10" />
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -918,7 +918,7 @@ const Jenisyssftdev = () => {
               <div className="text-blue-200">Support Available</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-purple-400 mb-2">
+              <div className="text-2xl font-bold text-[#7C3AED] mb-2">
                 6 weeks
               </div>
               <div className="text-blue-200">Average MVP Delivery</div>

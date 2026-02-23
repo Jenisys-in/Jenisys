@@ -287,7 +287,7 @@ const FormSelect = React.memo(
 
 // Memoized components for better performance
 const ContactInfoCard = React.memo(({ icon, title, content, alt }) => (
-  <div className="flex flex-col items-center px-4 transform hover:scale-105 transition-all duration-300 hover:bg-black/20 rounded-lg py-4">
+  <div className="flex flex-col items-center px-4 transform hover:scale-105 transition-all duration-300 hover:bg-[#0F172A]/20 rounded-lg py-4">
     <div className="bg-white p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
       <Image
         src={icon}
@@ -328,7 +328,7 @@ const LocationPin = React.memo(({ name, position }) => (
 const SocialLink = React.memo(({ href, icon, alt, name }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="group">
     <div className="bg-gray-600 w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-[50px] md:h-[50px] rounded-full flex justify-center items-center hover:bg-gray-500 transition-all duration-300 transform hover:scale-110 hover:rotate-6 shadow-lg hover:shadow-xl relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <Image
         src={icon}
         alt={alt}
@@ -352,7 +352,7 @@ const AlertMessage = React.memo(({ onClose }) => (
       </p>
       <button
         onClick={onClose}
-        className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 sm:px-6 sm:py-2 rounded-lg text-sm sm:text-base hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-4 py-2 sm:px-6 sm:py-2 rounded-lg text-sm sm:text-base hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
       >
         Close
       </button>
@@ -566,7 +566,7 @@ function Contact() {
         </section>
 
         {/* Location Section */}
-        <section className="bg-black py-8 sm:py-12 md:py-16 text-white text-center">
+        <section className="bg-[#0F172A] py-8 sm:py-12 md:py-16 text-white text-center">
           <h2 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 px-4">
             We're located at
           </h2>
@@ -602,7 +602,7 @@ function Contact() {
         </p>
 
         <div className="w-full">
-          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16 bg-gradient-to-r from-black from-30% via-purple-900 via-74% to-blue-600 to-95% gradient-animate">
+          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16 bg-gradient-to-r from-black from-30% via-purple-900 via-74% to-[#4F46E5] to-95% gradient-animate">
             <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16">
               {/* Form Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
@@ -761,7 +761,7 @@ function Contact() {
                   className="bg-white text-black font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[36px] font-semibold px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-3 sm:py-4 md:py-5 lg:py-6 xl:py-8 rounded-full sm:rounded-2xl md:rounded-3xl lg:rounded-[48px] hover:shadow-lg hover:shadow-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 hover:bg-gradient-to-r hover:from-white hover:to-gray-100 relative overflow-hidden"
                 >
                   {isSubmitting && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-20 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] opacity-20 animate-pulse"></div>
                   )}
                   <span className="relative z-10">
                     {isSubmitting ? "Sending... " : "Get in Touch"}
@@ -773,7 +773,7 @@ function Contact() {
         </div>
 
         {/* Footer Social Section */}
-        <footer className="w-full bg-black py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
+        <footer className="w-full bg-[#0F172A] py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
           <h3 className="font-['Montserrat'] font-semibold text-lg sm:text-xl md:text-2xl lg:text-[26px] xl:text-[32px] text-center text-white mb-4 sm:mb-6 md:mb-8">
             Follow Us On
           </h3>
@@ -784,7 +784,7 @@ function Contact() {
 
         {/* Alert Modal */}
         {showAlert && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="fixed inset-0 bg-[#0F172A] bg-opacity-70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
             <AlertMessage onClose={handleCloseAlert} />
           </div>
         )}

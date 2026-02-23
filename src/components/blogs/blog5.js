@@ -36,7 +36,7 @@ const caseStudies = [
       investment: "$13B+ AI Investment",
       growth: "73% Cloud Growth",
     },
-    color: "from-blue-600 to-indigo-600",
+    color: "from-[#4F46E5] to-indigo-600",
     icon: <Cloud className="w-8 h-8" />,
   },
   {
@@ -81,7 +81,7 @@ const caseStudies = [
       content: "105 Productions Planned",
       speed: "16 Months to 100M",
     },
-    color: "from-purple-600 to-pink-600",
+    color: "from-[#4F46E5] to-pink-600",
     icon: <PlayCircle className="w-8 h-8" />,
   },
   {
@@ -240,14 +240,14 @@ const DigitalTransformationBlog = () => {
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
         <div
-          className="h-full bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300"
+          className="h-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] transition-all duration-300"
           style={{ width: `${readingProgress}%` }}
         ></div>
       </div>
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-[#0F172A]/20"></div>
         <div className="relative container mx-auto px-4 py-20 lg:py-32">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -310,7 +310,7 @@ const DigitalTransformationBlog = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Users className="w-6 h-6 text-blue-500 mt-1" />
+                    <Users className="w-6 h-6 text-[#4F46E5] mt-1" />
                     <p className="text-gray-700">
                       <strong>Leadership Focus:</strong> CEO-driven initiatives
                       show 3x better outcomes than IT-led transformations
@@ -326,7 +326,7 @@ const DigitalTransformationBlog = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <BarChart3 className="w-6 h-6 text-purple-500 mt-1" />
+                    <BarChart3 className="w-6 h-6 text-[#7C3AED] mt-1" />
                     <p className="text-gray-700">
                       <strong>Technology Investment:</strong> $10B+ average
                       annual tech spending drives competitive advantage
@@ -348,7 +348,7 @@ const DigitalTransformationBlog = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <Globe className="w-12 h-12 text-[#4F46E5] mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-4">
                   Scale & Resources
                 </h3>
@@ -366,7 +366,7 @@ const DigitalTransformationBlog = () => {
                 </p>
               </div>
               <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <Users className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <Users className="w-12 h-12 text-[#7C3AED] mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-4">Talent Access</h3>
                 <p className="text-gray-600">
                   Ability to attract top-tier technology talent and partner with
@@ -394,7 +394,7 @@ const DigitalTransformationBlog = () => {
                   onClick={() => setActiveFilter(industry)}
                   className={`px-4 py-2 rounded-full capitalize font-medium transition-all duration-300 ${
                     activeFilter === industry
-                      ? "bg-blue-600 text-white shadow-lg"
+                      ? "bg-[#4F46E5] text-white shadow-lg"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 >
@@ -523,7 +523,7 @@ const DigitalTransformationBlog = () => {
             </h2>
             <div className="grid md:grid-cols-4 gap-6 mb-12">
               <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
-                <div className="text-3xl font-bold text-blue-600 mb-2">
+                <div className="text-3xl font-bold text-[#4F46E5] mb-2">
                   15-25%
                 </div>
                 <div className="text-gray-700 font-medium">Revenue Growth</div>
@@ -535,7 +535,7 @@ const DigitalTransformationBlog = () => {
                 <div className="text-gray-700 font-medium">Cost Reduction</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100">
-                <div className="text-3xl font-bold text-purple-600 mb-2">
+                <div className="text-3xl font-bold text-[#7C3AED] mb-2">
                   50-70%
                 </div>
                 <div className="text-gray-700 font-medium">
@@ -583,7 +583,7 @@ const DigitalTransformationBlog = () => {
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-purple-500 rounded-full"></div>
+                  <div className="w-4 h-4 bg-[#4F46E5] rounded-full"></div>
                   <div className="flex-1">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">
@@ -610,7 +610,7 @@ const DigitalTransformationBlog = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <Bot className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
+                <Bot className="w-12 h-12 text-[#4F46E5] mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-3">
                   AI-First Operations
                 </h3>
@@ -628,7 +628,7 @@ const DigitalTransformationBlog = () => {
                 </p>
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <TrendingUp className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <TrendingUp className="w-12 h-12 text-[#7C3AED] mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-3">
                   Sustainability Focus
                 </h3>

@@ -32,6 +32,7 @@ export async function generateMetadata({ params }) {
           width: 1200,
           height: 630,
           alt: blog.title,
+          type: "image/jpeg",
         },
       ],
       locale: "en_US",

@@ -1,8 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+
+/* ============================================
+   ENTERPRISE DESIGN SYSTEM — Custom Properties
+   ============================================ */
+
+:root {
+  /* Primary */
+  --ds-primary: #4F46E5;
+  --ds-primary-hover: #3730A3;
+  --ds-accent: #7C3AED;
+
+  /* Backgrounds */
+  --ds-bg-main: #FFFFFF;
+  --ds-bg-section: #F9FAFB;
+  --ds-bg-alt: #F3F4F6;
+  --ds-bg-dark: #0F172A;
+  --ds-bg-dark-surface: #111827;
+
+  /* Borders */
+  --ds-border: #E5E7EB;
+
+  /* Text */
+  --ds-text-primary: #111827;
+  --ds-text-body: #374151;
+  --ds-text-muted: #6B7280;
+  --ds-text-on-dark: #E5E7EB;
+
+  /* Gradient */
+  --ds-gradient: linear-gradient(135deg, #4F46E5, #7C3AED);
+
+  /* Shadows */
+  --ds-shadow-card: 0 1px 2px rgba(0, 0, 0, .04);
+  --ds-shadow-card-hover: 0 12px 24px rgba(0, 0, 0, .08);
+
+  /* Radius */
+  --ds-radius-card: 16px;
+  --ds-radius-btn: 8px;
+
+  /* Spacing scale: 8, 16, 24, 32, 48, 64, 96 */
+}
 
 @theme {
   --breakpoint-min: 393px;
@@ -11,7 +50,7 @@
 
   --font-montserrat: var(--font-montserrat);
 
-  --color-purpleCustom: #361CA9;
+  --color-purpleCustom: #4F46E5;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -47,8 +86,6 @@
   --color-chart-4: hsl(var(--chart-4));
   --color-chart-5: hsl(var(--chart-5));
 
-  --background-image-radial-gradient: radial-gradient(circle, #5A54A4, #2D248F);
-
   --tracking-negative-3: -0.03em;
   --leading-120: 1.2;
 
@@ -57,56 +94,191 @@
   --radius-sm: calc(var(--radius) - 4px);
 }
 
+/* ============================================
+   BASE LAYER
+   ============================================ */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 14% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 10%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 14% 10%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 263 70% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 239 84% 67%;
+    --chart-1: 239 84% 67%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ============================================
+   ENTERPRISE CARD SYSTEM
+   ============================================ */
+
+.ds-card {
+  background: var(--ds-bg-main);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-card);
+  box-shadow: var(--ds-shadow-card);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ds-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ds-shadow-card-hover);
+}
+
+/* ============================================
+   BUTTON SYSTEM
+   ============================================ */
+
+.ds-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--ds-primary);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--ds-radius-btn);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ds-btn-primary:hover {
+  background: var(--ds-primary-hover);
+}
+
+.ds-btn-primary:focus-visible {
+  outline: 2px solid var(--ds-primary);
+  outline-offset: 2px;
+}
+
+.ds-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--ds-primary);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--ds-radius-btn);
+  border: 1px solid var(--ds-primary);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ds-btn-secondary:hover {
+  background: rgba(79, 70, 229, 0.06);
+}
+
+.ds-btn-secondary:focus-visible {
+  outline: 2px solid var(--ds-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   ICON SYSTEM
+   ============================================ */
+
+.ds-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--ds-primary);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.ds-icon-container:hover {
+  transform: scale(1.05);
+}
+
+.ds-icon-container-dark {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* ============================================
+   GRADIENT UTILITIES
+   ============================================ */
+
+.ds-gradient-bg {
+  background: var(--ds-gradient);
+}
+
+.ds-gradient-text {
+  background: var(--ds-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-filter: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ============================================
+   IMAGE TREATMENT
+   ============================================ */
+
+.ds-image {
+  filter: contrast(1.05) saturate(0.95);
+}
+
+.ds-image-dark-overlay {
+  position: relative;
+}
+
+.ds-image-dark-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  pointer-events: none;
+}
+
+/* ============================================
+   SCROLL / TRANSITION UTILITIES
+   ============================================ */
 
 .transition-opacity {
-  transition: opacity 1s ease-in-out;
-  -webkit-transition: opacity 1s ease-in-out;
-  /* Safari */
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
 
-
-
-.Button:hover span {
-  width: 100%;
-}
-
-
-
-.bg-white {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.transition-color {
-  transition: background-color 0.1s ease;
-}
-
-
-
-
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .nav-link {
-    font-size: 16px;
-    padding: 10px 16px;
-    margin: 0 4px;
-  }
-}
-
-/* Tawk.to mobile visibility */
-@media (max-width: 768px) {
-  #tawk-to-widget {
-    display: block !important;
-  }
-}
-
-
-
-
-/* Scroll-on-Appear Effect */
 .scroll-on-appear {
   opacity: 0;
   transform: translateY(20px);
@@ -118,180 +290,22 @@
   transform: translateY(0);
 }
 
-/* Holographic Button Hover Effect - Universal */
-.holographic-button {
-  background: linear-gradient(45deg, #361CA9, #7c3aed, #361CA9);
-  background-size: 200% 200%;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+/* ============================================
+   PERFORMANCE HELPERS
+   ============================================ */
 
-/* Holographic sweep effect */
-.holographic-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 70%);
-  transform: translateX(-100%) skewX(-15deg);
-  transition: transform 0.8s;
-}
-
-.holographic-button:hover {
-  background-position: 100% 100%;
-  animation: hologram 0.8s ease-in-out;
-}
-
-.holographic-button:hover::after {
-  transform: translateX(100%) skewX(-15deg);
-}
-
-@keyframes hologram {
-
-  0%,
-  100% {
-    filter: hue-rotate(0deg);
-  }
-
-  50% {
-    filter: hue-rotate(90deg);
-  }
-}
-
-/* Smooth Cool Button Hover Effect - Universal */
-.smooth-hover {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1;
-}
-
-.smooth-hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transition: left 0.5s ease;
-  z-index: -1;
-}
-
-.smooth-hover:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 12px 24px rgba(54, 28, 169, 0.3),
-    0 6px 12px rgba(54, 28, 169, 0.2);
-  background: linear-gradient(135deg, #4a2fd4, #361CA9);
-}
-
-.smooth-hover:hover::before {
-  left: 100%;
-}
-
-.smooth-hover:active {
-  transform: translateY(-1px);
-  transition: all 0.1s ease;
-}
-
-
-
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-}
-
-/* Performance optimizations */
 .will-change-transform {
   will-change: transform;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* ============================================
+   PRELOADER
+   ============================================ */
 
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@keyframes grid-move {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-
-  100% {
-    background-position: 60px 60px, 60px 60px;
-  }
-}
-
-.animate-gridMove {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: grid-move 20s linear infinite;
+.preloader-logo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes pulseDot {
@@ -311,51 +325,58 @@
   animation: pulseDot 1.4s ease-in-out infinite;
 }
 
-.preloader-logo-wrapper {
-  position: relative;
+/* ============================================
+   RESPONSIVE NAV
+   ============================================ */
+
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 16px;
+    padding: 10px 16px;
+    margin: 0 4px;
+  }
+}
+
+/* Tawk.to mobile */
+@media (max-width: 768px) {
+  #tawk-to-widget {
+    display: block !important;
+  }
+}
+
+/* ============================================
+   BUTTON HOVER (simple, kept for legacy compat)
+   ============================================ */
+
+.Button:hover span {
   width: 100%;
-  height: 100%;
 }
 
-/* Premium Ambient Glow - Optimized */
-.ambient-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(54, 28, 169, 0.04) 40%, transparent 70%);
-  filter: blur(80px);
-  /* Heavy blur can be expensive */
-  z-index: -1;
-  pointer-events: none;
-  /* Use transform3d to force hardware acceleration */
-  transform: translate3d(0, 0, 0);
-  will-change: transform, opacity;
-  animation: glow-pulse 10s ease-in-out infinite alternate;
+.bg-white {
+  background-color: rgba(255, 255, 255, 1);
 }
 
-@keyframes glow-pulse {
-  0% {
-    opacity: 0.5;
-    transform: scale(1) translate3d(0, 0, 0);
-  }
-
-  100% {
-    opacity: 0.8;
-    transform: scale(1.05) translate3d(0, 0, 0);
-  }
+.transition-color {
+  transition: background-color 0.1s ease;
 }
 
-/* Enhanced Glassmorphism */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* ============================================
+   LEGACY COMPAT: holographic-button (stripped down)
+   ============================================ */
+
+.holographic-button {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
 }
 
-.glass-panel:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+.smooth-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.smooth-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.15);
 }

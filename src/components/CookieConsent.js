@@ -40,7 +40,7 @@ const CookieConsent = () => {
           {/* Glassmorphic Container */}
           <div className="relative overflow-hidden rounded-t-2xl sm:rounded-2xl border-t sm:border border-white/10 bg-slate-900/90 sm:bg-slate-900/80 backdrop-blur-xl shadow-2xl p-5 sm:p-6">
             {/* Background Gradient Orbs */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#4F46E5]/20 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10">
@@ -61,7 +61,7 @@ const CookieConsent = () => {
                   <div className="flex flex-col sm:flex-row gap-3">
                     <button
                       onClick={handleAccept}
-                      className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white text-sm font-semibold py-2.5 px-4 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-200 flex items-center justify-center gap-2 group border border-transparent"
+                      className="flex-1 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] hover:from-purple-500 hover:to-blue-500 text-white text-sm font-semibold py-2.5 px-4 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-200 flex items-center justify-center gap-2 group border border-transparent"
                     >
                       <Check className="w-4 h-4" />
                       Accept All
@@ -87,7 +87,7 @@ const CookieConsent = () => {
             
             {/* Disclaimer */}
             <div className="mt-4 pt-4 border-t border-white/5 text-xs text-slate-400 text-center">
-              By clicking "Accept All", you agree to our <Link href="/Privacy-Policy" className="text-purple-400 hover:text-purple-300 hover:underline transition-colors">Privacy Policy</Link>
+              By clicking "Accept All", you agree to our <Link href="/Privacy-Policy" className="text-[#7C3AED] hover:text-purple-300 hover:underline transition-colors">Privacy Policy</Link>
             </div>
           </div>
         </motion.div>

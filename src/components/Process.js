@@ -45,7 +45,7 @@ const processSteps = [
 
 const Process = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-[#F3F4F6]">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Section Header */}
         <motion.div
@@ -55,10 +55,10 @@ const Process = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight">
+          <h2 className="text-[30px] md:text-4xl font-semibold text-[#111827] tracking-tight">
             Our Development Process
           </h2>
-          <p className="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">
+          <p className="text-base text-[#6B7280] mt-4 max-w-2xl mx-auto leading-[1.65]">
             A transparent, step-by-step approach to building impactful digital
             solutions.
           </p>
@@ -79,18 +79,18 @@ const Process = () => {
               >
                 {/* Icon */}
                 <div className="flex justify-center mb-6">
-                  <div className="p-4 rounded-full border border-gray-200 bg-gradient-to-b from-gray-50 to-white shadow-sm group-hover:shadow-md transition-shadow duration-300">
-                    <Icon className="w-8 h-8 text-indigo-600" />
+                  <div className="ds-icon-container w-14 h-14">
+                    <Icon className="w-6 h-6" />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-medium text-gray-800 text-center mb-3">
+                <h3 className="text-xl font-medium text-[#111827] text-center mb-3">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-500 text-center leading-relaxed">
+                <p className="text-[#6B7280] text-center leading-[1.65]">
                   {step.description}
                 </p>
               </motion.div>

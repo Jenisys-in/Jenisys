@@ -8,9 +8,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
-  safelist: [
-    // Add any arbitrary color classes you want to guarantee generation here, if needed
-  ],
+  safelist: [],
   theme: {
     screens: {
       min: "393px",
@@ -26,7 +24,22 @@ module.exports = {
         montserrat: ["var(--font-montserrat)"],
       },
       colors: {
-        purpleCustom: "#361CA9", // Custom named color, no override of default 'purple'
+        // Enterprise Design System Colors
+        dsPrimary: "#4F46E5",
+        dsPrimaryHover: "#3730A3",
+        dsAccent: "#7C3AED",
+        dsBgSection: "#F9FAFB",
+        dsBgAlt: "#F3F4F6",
+        dsBgDark: "#0F172A",
+        dsBgDarkSurface: "#111827",
+        dsBorder: "#E5E7EB",
+        dsTextPrimary: "#111827",
+        dsTextBody: "#374151",
+        dsTextMuted: "#6B7280",
+        dsTextOnDark: "#E5E7EB",
+
+        // Legacy compat
+        purpleCustom: "#4F46E5",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -67,9 +80,6 @@ module.exports = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
-      },
-      backgroundImage: {
-        "radial-gradient": "radial-gradient(circle, #5A54A4, #2D248F)",
       },
       letterSpacing: {
         "negative-3": "-0.03em",

@@ -75,51 +75,29 @@ const BlogSection = dynamic(() => import("./Homepage/BlogSection"));
 const caseStudies = [
   {
     id: 1,
-    title: "AI-Powered Retail Automation",
+    slug: "nsw-sopa-adjudication-platform",
+    title: "Adjudication Registry Platform for NSW Building & Construction",
     description:
-      "Developed a smart inventory system that reduced stockouts by 40% for a national retail chain.",
-    industry: "Retail & E-Commerce",
+      "Replaced a manual, paper-driven claims process with structured digital workflows under the NSW SOPA framework — cutting processing time from 18 days to 6.",
+    industry: "Government / Construction",
     fullDetails:
-      "We built a scalable AI system that tracked stock levels across 500+ stores, using predictive analytics to automatically place orders and prevent shortages.",
-    metrics: { improvement: "40%", stores: "500+", timeline: "6 months" },
-    color: "from-blue-500 to-cyan-400",
-    initial: "A",
+      "Built a web-based adjudication registry system aligned with the NSW Building and Construction Industry Security of Payment Act. The platform models the adjudication lifecycle as a state machine with statutory deadline enforcement, role-based access for claimants, respondents, and ANAs, and secure document handling for construction files up to 200MB.",
+    metrics: { improvement: "67% faster", scale: "Multiple ANAs", timeline: "7 months" },
+    color: "from-[#4F46E5] to-[#7C3AED]",
+    initial: "N",
   },
   {
     id: 2,
-    title: "Telehealth Platform for Remote Areas",
+    slug: "us-saas-subscription-billing-platform",
+    title: "Subscription & Billing Platform for US SaaS Company",
     description:
-      "Enabled 24/7 virtual consultations and appointment management for rural clinics.",
-    industry: "Healthcare",
+      "Custom billing system that replaced manual spreadsheet reconciliation — reducing monthly close from 2 days to 4 hours and cutting billing support tickets by 80%.",
+    industry: "SaaS / B2B",
     fullDetails:
-      "Our team delivered a HIPAA-compliant video consultation platform integrated with EHR and prescription modules, increasing access to care in underserved regions.",
-    metrics: { improvement: "300%", stores: "24/7", timeline: "8 months" },
-    color: "from-emerald-500 to-teal-400",
-    initial: "T",
-  },
-  {
-    id: 3,
-    title: "EdTech Learning Suite",
-    description:
-      "Created a scalable LMS used by over 50k students with integrated video and assessments.",
-    industry: "Education",
-    fullDetails:
-      "We designed a modern LMS that supported real-time quizzes, student tracking, and teacher dashboards for a seamless learning experience.",
-    metrics: { improvement: "50k+", stores: "Real-time", timeline: "4 months" },
-    color: "from-violet-500 to-pink-500",
-    initial: "E",
-  },
-  {
-    id: 4,
-    title: "Fintech Payment Gateway",
-    description:
-      "Built a secure, high-speed payment processing system handling $10M+ daily transactions.",
-    industry: "Financial Services",
-    fullDetails:
-      "We developed a robust payment gateway with advanced fraud detection, multi-currency support, and 99.99% uptime. The system processes millions of transactions daily while maintaining PCI DSS compliance and sub-second response times.",
-    metrics: { improvement: "$10M+", stores: "99.99%", timeline: "10 months" },
-    color: "from-orange-500 to-red-400",
-    initial: "F",
+      "Built a billing service layer between the product and Stripe that handles subscription lifecycle management, usage-based metering with 15-minute granularity, proration for every plan change scenario, dunning workflows, and real-time revenue dashboards. Maintained a local state mirror with nightly reconciliation for sub-millisecond read latency.",
+    metrics: { improvement: "80% fewer tickets", scale: "1,200+ accounts", timeline: "5 months" },
+    color: "from-[#4F46E5] to-[#7C3AED]",
+    initial: "S",
   },
 ];
 
@@ -153,39 +131,39 @@ const modalVariants = {
 const testimonials = [
   {
     quote:
-      "Working with Jenisys has been a game-changer for our tech startup. Their innovative approach to web development and deep understanding of our needs resulted in a seamless, high-performance website that has significantly boosted our client engagement.",
-    name: "Emily Carter",
-    title: "CEO of InnovateTech",
+      "We came in with a messy spreadsheet and a tight deadline. They didn't just build the platform — they helped us rethink the entire workflow. Six months later, our processing time dropped by two-thirds.",
+    name: "Rajesh",
+    title: "Operations Lead",
   },
   {
     quote:
-      "Jenisys transformed our vision into reality with their exceptional software development skills. Their expertise in creating user-friendly applications and their commitment to delivering top-notch solutions made our collaboration a pleasure.",
-    name: "James Thompson",
-    title: "CTO of BrightFuture Solutions",
+      "What impressed me was the questions they asked before writing a single line of code. They understood the regulatory constraints better than vendors who'd been in our space for years.",
+    name: "Sarah",
+    title: "Program Director",
   },
   {
     quote:
-      "The team at Jenisys went above and beyond to help us redesign our website. Their attention to detail was evident throughout. Our new site not only looks fantastic but also performs flawlessly, thanks to Jenisys's outstanding work.",
-    name: "Sophie Nguyen",
-    title: "Marketing Director at Pulse Dynamics",
+      "Our billing was held together with duct tape — manual exports, a shared Google Sheet, two days every month just to close books. They replaced all of it in five months. Finance actually enjoys month-end now.",
+    name: "David",
+    title: "Head of Finance",
   },
   {
     quote:
-      "We chose Jenisys for their reputation for delivering high-quality tech solutions, and they exceeded our expectations. Their support has been invaluable, and we highly recommend their services.",
-    name: "Michael Johnson",
-    title: "Founder of Quantum Innovations",
+      "I've worked with agencies that overcommit and underdeliver. Jenisys was the opposite — they flagged scope risks early, communicated tradeoffs clearly, and shipped on time.",
+    name: "Priya",
+    title: "CTO, Series B Startup",
   },
   {
-    name: "Lisa Wang",
-    title: "VP Product, NextGen Solutions",
     quote:
-      "They delivered beyond our wildest dreams. The combination of creativity and technical prowess resulted in a product that truly stands out in the market.",
+      "They treated our project like their own product. When we hit an edge case with payment proration mid-cycle, they built a dedicated test suite instead of patching around it.",
+    name: "Marcus",
+    title: "Engineering Manager",
   },
   {
-    name: "James Miller",
-    title: "Operations Manager, ScaleUp Corp",
     quote:
-      "Remarkable problem-solving skills and innovative solutions. They transformed our operations and significantly improved our efficiency and productivity.",
+      "Most teams either understand the tech or the business. These folks do both. They pushed back on features that didn't add value and suggested things we hadn't considered.",
+    name: "Ananya",
+    title: "Product Owner",
   },
 ];
 
@@ -265,8 +243,8 @@ const HomepageCSR = memo(() => {
   const backgroundElements = useMemo(
     () => (
       <>
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full blur-3xl opacity-40" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-full blur-3xl opacity-40" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#4F46E5]/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#7C3AED]/5 rounded-full blur-3xl" />
       </>
     ),
     []
@@ -584,7 +562,7 @@ const HomepageCSR = memo(() => {
         title: "Cutting-Edge Technology",
         description:
           "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive real digital transformation.",
-        color: "from-blue-500 to-cyan-500",
+        color: "from-[#4F46E5] to-[#7C3AED]",
       },
       {
         id: 2,
@@ -592,7 +570,7 @@ const HomepageCSR = memo(() => {
         title: "Innovation First",
         description:
           "We constantly explore emerging technologies like AI and automation to create groundbreaking solutions for your most complex challenges.",
-        color: "from-violet-500 to-pink-500",
+        color: "from-[#4F46E5] to-[#7C3AED]",
       },
       {
         id: 3,
@@ -600,7 +578,7 @@ const HomepageCSR = memo(() => {
         title: "Security & Reliability",
         description:
           "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure seamless business continuity.",
-        color: "from-green-500 to-teal-500",
+        color: "from-[#4F46E5] to-[#7C3AED]",
       },
       {
         id: 4,
@@ -608,7 +586,7 @@ const HomepageCSR = memo(() => {
         title: "Client-Centric Approach",
         description:
           "We partner closely with our clients, understanding your unique needs to deliver personalized tech solutions that consistently exceed your expectations.",
-        color: "from-orange-500 to-red-500",
+        color: "from-[#4F46E5] to-[#7C3AED]",
       },
     ],
     []
@@ -732,15 +710,13 @@ const HomepageCSR = memo(() => {
   // Memoized AnimatedIcon component
   const AnimatedIcon = ({ Icon, isHovered }) => (
     <div
-      className={`w-16 h-16 mb-6 mx-auto rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-sm transition-all duration-300 ${
-        isHovered ? "scale-110 bg-gray-200 shadow-md" : ""
+      className={`w-14 h-14 mb-6 mx-auto rounded-xl bg-[#4F46E5]/8 flex items-center justify-center transition-all duration-300 ${
+        isHovered ? "scale-105 bg-[#4F46E5]/12" : ""
       }`}
     >
       <Icon
-        size={40}
-        className={`text-gray-700 transition-all duration-300 ${
-          isHovered ? "text-gray-900" : ""
-        }`}
+        size={28}
+        className={`text-[#4F46E5] transition-all duration-300`}
       />
     </div>
   );

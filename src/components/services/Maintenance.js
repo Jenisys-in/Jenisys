@@ -159,10 +159,10 @@ const MaintenanceSupport = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-[#0F172A]/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center space-y-8">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-500/20 rounded-full border border-purple-400/30">
+            <div className="inline-flex items-center px-4 py-2 bg-[#4F46E5]/20 rounded-full border border-purple-400/30">
               <Shield className="h-4 w-4 mr-2" />
               <span className="text-sm font-medium">
                 99.9% Uptime Guarantee
@@ -187,7 +187,7 @@ const MaintenanceSupport = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 onClick={openCalendar}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                className="px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] hover:from-purple-700 hover:to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
               >
                 Start a Support Plan
               </button>
@@ -280,7 +280,7 @@ const MaintenanceSupport = () => {
                 }`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <service.icon className="h-12 w-12 text-purple-600 mb-4" />
+                <service.icon className="h-12 w-12 text-[#7C3AED] mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {service.title}
                 </h3>
@@ -377,7 +377,7 @@ const MaintenanceSupport = () => {
               </div>
 
               <div className="relative">
-                <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+                <div className="bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] rounded-2xl p-8 text-white">
                   <h4 className="text-2xl font-bold mb-4">
                     What Happens After?
                   </h4>
@@ -433,7 +433,7 @@ const MaintenanceSupport = () => {
                 className="relative bg-white rounded-2xl shadow-xl p-8 border-2 border-purple-500 scale-105"
               >
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Premium Support
                   </span>
                 </div>
@@ -442,7 +442,7 @@ const MaintenanceSupport = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {plan.name}
                   </h3>
-                  <div className="text-4xl font-bold text-purple-600 mb-2">
+                  <div className="text-4xl font-bold text-[#7C3AED] mb-2">
                     {plan.price}
                   </div>
                   {plan.price !== "Custom" && (
@@ -475,7 +475,7 @@ const MaintenanceSupport = () => {
                 </div>
 
                 <Link href="/contact">
-                  <button className="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg transform hover:scale-105">
+                  <button className="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white hover:shadow-lg transform hover:scale-105">
                     Contact Us
                   </button>
                 </Link>
@@ -529,7 +529,7 @@ const MaintenanceSupport = () => {
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p className="text-blue-100">{item.desc}</p>
                 {idx < 3 && (
-                  <ArrowRight className="hidden md:block absolute top-8 -right-4 h-6 w-6 text-purple-400" />
+                  <ArrowRight className="hidden md:block absolute top-8 -right-4 h-6 w-6 text-[#7C3AED]" />
                 )}
               </div>
             ))}
@@ -611,7 +611,7 @@ const MaintenanceSupport = () => {
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -625,7 +625,7 @@ const MaintenanceSupport = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-4">
             Don't wait for problems to occur
@@ -636,7 +636,7 @@ const MaintenanceSupport = () => {
           </p>
           <button
             onClick={openCalendar}
-            className="px-8 py-4 bg-white text-purple-600 font-semibold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            className="px-8 py-4 bg-white text-[#7C3AED] font-semibold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
           >
             Book a Free Maintenance Assessment
           </button>
@@ -684,7 +684,7 @@ const MaintenanceSupport = () => {
 
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
-        <button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold shadow-lg">
+        <button className="w-full bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white py-3 rounded-lg font-semibold shadow-lg">
           Get Support Now
         </button>
       </div>

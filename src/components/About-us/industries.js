@@ -44,7 +44,7 @@ const IndustriesPage = () => {
       metrics: "35% ↑ Conversions • 50% ↓ Inventory Costs • 280% ROI",
       costSaving:
         "Save $50K-200K annually on inventory management and lost sales recovery",
-      color: "from-purple-600 to-blue-600",
+      color: "from-[#4F46E5] to-[#4F46E5]",
     },
     {
       name: "Healthcare",
@@ -100,7 +100,7 @@ const IndustriesPage = () => {
       metrics: "75% ↑ Deal Speed • 60% ↑ Lead Conversion • 290% ROI",
       costSaving:
         "Reduce operational costs by $80K-400K annually through automation",
-      color: "from-blue-500 to-purple-600",
+      color: "from-blue-500 to-[#7C3AED]",
     },
     {
       name: "Travel & Hospitality",
@@ -114,7 +114,7 @@ const IndustriesPage = () => {
       metrics: "50% ↑ Direct Bookings • 35% ↑ Revenue • 400% ROI",
       costSaving:
         "Eliminate $100K-600K in third-party booking fees and retention costs",
-      color: "from-cyan-500 to-blue-600",
+      color: "from-cyan-500 to-[#4F46E5]",
     },
     {
       name: "Legal & Professional Services",
@@ -128,7 +128,7 @@ const IndustriesPage = () => {
       metrics: "80% ↑ Document Speed • 95% ↑ Billing Accuracy • 275% ROI",
       costSaving:
         "Recover $75K-350K annually in lost billable hours and billing errors",
-      color: "from-indigo-500 to-purple-600",
+      color: "from-indigo-500 to-[#7C3AED]",
     },
     {
       name: "Media & Entertainment",
@@ -267,7 +267,7 @@ const IndustriesPage = () => {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Industries We{" "}
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
                 Serve
               </span>
             </h1>
@@ -278,7 +278,7 @@ const IndustriesPage = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="#our-solution">
-                <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+                <button className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200">
                   Explore Our Solutions
                 </button>
               </Link>
@@ -317,7 +317,7 @@ const IndustriesPage = () => {
                     onClick={() => setActiveTab(index)}
                     className={`flex items-center px-4 py-2 rounded-full font-medium transition-all duration-200 ${
                       activeTab === index
-                        ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
+                        ? "bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white shadow-lg"
                         : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
                     }`}
                   >
@@ -348,7 +348,7 @@ const IndustriesPage = () => {
                 <div className="space-y-4">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <Code className="w-6 h-6 text-blue-600" />
+                      <Code className="w-6 h-6 text-[#4F46E5]" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900">
                       Jenisys Solution
@@ -393,7 +393,7 @@ const IndustriesPage = () => {
 
                   <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
                     <div className="flex items-center mb-3">
-                      <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3">
+                      <div className="w-8 h-8 bg-[#4F46E5] rounded-full flex items-center justify-center mr-3">
                         <Target className="w-5 h-5 text-white" />
                       </div>
                       <h4 className="text-lg font-bold text-purple-800">
@@ -432,7 +432,7 @@ const IndustriesPage = () => {
                   key={index}
                   className="text-center p-6 rounded-xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] rounded-full flex items-center justify-center mx-auto mb-4">
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -493,7 +493,7 @@ const IndustriesPage = () => {
 
       {/* Empowering Startups Section */}
       <section
-        className="py-20 bg-gradient-to-br from-purple-600 to-blue-600 text-white"
+        className="py-20 bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] text-white"
         id="startups"
         data-animate
       >
@@ -585,7 +585,7 @@ const IndustriesPage = () => {
 
           <div className="text-center mt-12">
             <Link href="/startup-partnership">
-              <button className="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+              <button className="bg-white text-[#7C3AED] px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200">
                 Apply for Partnership
               </button>
             </Link>
@@ -604,7 +604,7 @@ const IndustriesPage = () => {
             automate workflows, and scale faster than ever.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center">
+            <button className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center">
               Get Started Today
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>

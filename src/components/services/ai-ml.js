@@ -338,9 +338,9 @@ const JenisysAILanding = () => {
 
       {/* Animated Background */}
       <div className="fixed inset-0 opacity-10 pointer-events-none" aria-hidden>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-cyan-600/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#4F46E5]/20 via-[#7C3AED]/20 to-cyan-600/20"></div>
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       {/* Hero Section */}
@@ -352,10 +352,10 @@ const JenisysAILanding = () => {
       >
         <div className="max-w-6xl mx-auto text-center z-10">
           <div className="mb-8 flex justify-center space-x-4 flex-wrap gap-2">
-            <div className="bg-blue-600/20 px-3 py-1 rounded-full text-sm border border-blue-500/30">
+            <div className="bg-[#4F46E5]/20 px-3 py-1 rounded-full text-sm border border-[#4F46E5]/30">
               AWS Partner
             </div>
-            <div className="bg-purple-600/20 px-3 py-1 rounded-full text-sm border border-purple-500/30">
+            <div className="bg-[#4F46E5]/20 px-3 py-1 rounded-full text-sm border border-purple-500/30">
               Azure Certified
             </div>
             <div className="bg-cyan-600/20 px-3 py-1 rounded-full text-sm border border-cyan-500/30">
@@ -376,7 +376,7 @@ const JenisysAILanding = () => {
 
           <button
             onClick={() => scrollToSection("cta")}
-            className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+            className="group bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
           >
             Book a Free AI Strategy Session
             <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
@@ -401,7 +401,7 @@ const JenisysAILanding = () => {
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
+            <div className="text-center bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-[#4F46E5]/50 transition-all duration-300">
               <div className="text-5xl font-bold text-blue-400 mb-2">
                 {counters.time}%
               </div>
@@ -409,13 +409,13 @@ const JenisysAILanding = () => {
               <Clock className="w-8 h-8 text-blue-400 mx-auto mt-4" />
             </div>
             <div className="text-center bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-              <div className="text-5xl font-bold text-purple-400 mb-2">
+              <div className="text-5xl font-bold text-[#7C3AED] mb-2">
                 {counters.accuracy}%+
               </div>
               <div className="text-gray-300">
                 Prediction accuracy for enterprise clients
               </div>
-              <Target className="w-8 h-8 text-purple-400 mx-auto mt-4" />
+              <Target className="w-8 h-8 text-[#7C3AED] mx-auto mt-4" />
             </div>
             <div className="text-center bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300">
               <div className="text-5xl font-bold text-cyan-400 mb-2">
@@ -441,7 +441,7 @@ const JenisysAILanding = () => {
                 onClick={() => setActiveTab("ai")}
                 className={`px-4 md:px-6 py-3 rounded-lg transition-all duration-300 ${
                   activeTab === "ai"
-                    ? "bg-blue-600 text-white shadow-lg"
+                    ? "bg-[#4F46E5] text-white shadow-lg"
                     : "text-gray-400 hover:text-white hover:bg-gray-700/50"
                 }`}
               >
@@ -452,7 +452,7 @@ const JenisysAILanding = () => {
                 onClick={() => setActiveTab("automation")}
                 className={`px-4 md:px-6 py-3 rounded-lg transition-all duration-300 ${
                   activeTab === "automation"
-                    ? "bg-purple-600 text-white shadow-lg"
+                    ? "bg-[#4F46E5] text-white shadow-lg"
                     : "text-gray-400 hover:text-white hover:bg-gray-700/50"
                 }`}
               >
@@ -550,7 +550,7 @@ const JenisysAILanding = () => {
                       className="group p-6 bg-gray-700/50 rounded-xl hover:bg-gray-700 transition-all duration-300 hover:scale-105"
                       style={{ animationDelay: `${index * 80}ms` }}
                     >
-                      <item.icon className="w-12 h-12 text-purple-400 mb-4 group-hover:scale-110 transition-transform" />
+                      <item.icon className="w-12 h-12 text-[#7C3AED] mb-4 group-hover:scale-110 transition-transform" />
                       <h3 className="font-semibold mb-2">{item.title}</h3>
                       <p className="text-gray-400">{item.desc}</p>
                     </div>
@@ -577,7 +577,7 @@ const JenisysAILanding = () => {
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-[#4F46E5]/50 transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <industry.icon className="w-12 h-12 text-blue-400 mb-4 group-hover:scale-110 transition-transform mx-auto" />
@@ -683,11 +683,11 @@ const JenisysAILanding = () => {
                 <div
                   className={`inline-block px-3 py-1 rounded-full text-sm mb-4 ${
                     useCase.color === "blue"
-                      ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
+                      ? "bg-[#4F46E5]/20 text-blue-400 border border-[#4F46E5]/30"
                       : useCase.color === "green"
                       ? "bg-green-600/20 text-green-400 border border-green-500/30"
                       : useCase.color === "purple"
-                      ? "bg-purple-600/20 text-purple-400 border border-purple-500/30"
+                      ? "bg-[#4F46E5]/20 text-[#7C3AED] border border-purple-500/30"
                       : "bg-red-600/20 text-red-400 border border-red-500/30"
                   }`}
                 >
@@ -748,7 +748,7 @@ const JenisysAILanding = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-blue-500/30"
+                className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-300 hover:border-[#4F46E5]/30"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <button
@@ -806,7 +806,7 @@ const JenisysAILanding = () => {
                     Select Your Industry
                   </label>
                   <select
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4F46E5] transition-colors"
                     value={costCalculator.industry}
                     onChange={(e) =>
                       setCostCalculator((prev) => ({
@@ -829,7 +829,7 @@ const JenisysAILanding = () => {
                     AI Solution Type
                   </label>
                   <select
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4F46E5] transition-colors"
                     value={costCalculator.solutionType}
                     onChange={(e) =>
                       setCostCalculator((prev) => ({
@@ -872,7 +872,7 @@ const JenisysAILanding = () => {
                               complexity: e.target.value,
                             }))
                           }
-                          className="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500"
+                          className="w-4 h-4 text-[#4F46E5] bg-gray-700 border-gray-600 focus:ring-[#4F46E5]"
                         />
                         <span className="text-gray-300">{option}</span>
                       </label>
@@ -885,7 +885,7 @@ const JenisysAILanding = () => {
                     Timeline Requirements
                   </label>
                   <select
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4F46E5] transition-colors"
                     value={costCalculator.timeline}
                     onChange={(e) =>
                       setCostCalculator((prev) => ({
@@ -902,7 +902,7 @@ const JenisysAILanding = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-xl p-6 border border-blue-500/30">
+              <div className="bg-gradient-to-br from-[#4F46E5]/20 to-[#7C3AED]/20 rounded-xl p-6 border border-[#4F46E5]/30">
                 <h3 className="text-2xl font-bold mb-6 text-center">
                   Estimated Investment
                 </h3>
@@ -952,7 +952,7 @@ const JenisysAILanding = () => {
 
                 <button
                   onClick={() => scrollToSection("cta")}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                  className="w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-blue-700 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
                 >
                   Get Detailed Quote
                 </button>
@@ -965,7 +965,7 @@ const JenisysAILanding = () => {
       {/* Enhanced Final CTA */}
       <section
         id="cta"
-        className="py-20 px-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20"
+        className="py-20 px-4 bg-gradient-to-r from-[#4F46E5]/20 to-[#7C3AED]/20"
         data-animate
       >
         <div className="max-w-6xl mx-auto">
@@ -990,7 +990,7 @@ const JenisysAILanding = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-400">
+                    <div className="text-2xl font-bold text-[#7C3AED]">
                       98%
                     </div>
                     <div className="text-gray-400 text-sm">
@@ -1044,7 +1044,7 @@ const JenisysAILanding = () => {
 
               {/* Right side - CTA Form */}
               <div className="p-8 lg:p-12">
-                <div className="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                <div className="w-20 h-20 bg-[#4F46E5]/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
                   <Brain className="w-10 h-10 text-blue-400" />
                 </div>
 
@@ -1078,7 +1078,7 @@ const JenisysAILanding = () => {
 
                 <button
                   onClick={openCalendar}
-                  className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 mb-4"
+                  className="group w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 mb-4"
                 >
                   <Calendar className="inline-block w-5 h-5 mr-2" />
                   Book Your Free AI Strategy Session

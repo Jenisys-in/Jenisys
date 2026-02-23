@@ -111,14 +111,14 @@ const TechStack = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-[#F9FAFB]">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800">
+          <h2 className="text-[30px] font-semibold text-[#111827]">
             Our Technology Stack
           </h2>
-          <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
+          <p className="text-base text-[#374151] mt-4 max-w-3xl mx-auto leading-[1.65]">
             We leverage the best technologies in the industry to build scalable,
             high-performance, and secure solutions for our clients.
           </p>
@@ -132,8 +132,8 @@ const TechStack = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-5 py-2 rounded-full font-semibold transition-all duration-300 ${
                 activeCategory === category
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 hover:bg-blue-100"
+                  ? "bg-[#4F46E5] text-white"
+                  : "bg-white border border-[#E5E7EB] text-[#6B7280] hover:text-[#4F46E5] hover:border-[#4F46E5]/30"
               }`}
             >
               {category}
@@ -151,16 +151,16 @@ const TechStack = () => {
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, rotate: 2 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+              className="ds-card flex flex-col items-center justify-center p-6 cursor-pointer"
               title={`Proficiency: ${tech.level}`}
             >
               <div style={{ color: tech.color }} className="text-5xl">
                 {tech.icon}
               </div>
-              <p className="mt-4 text-lg font-semibold text-gray-700">
+              <p className="mt-4 text-base font-semibold text-[#111827]">
                 {tech.name}
               </p>
-              <span className="text-sm text-gray-500">{tech.level}</span>
+              <span className="text-sm text-[#6B7280]">{tech.level}</span>
             </motion.div>
           ))}
         </div>

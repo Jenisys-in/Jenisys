@@ -83,7 +83,7 @@ export default function MobileAppLanding() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen flex items-center relative overflow-hidden"
+        className="bg-gradient-to-br from-indigo-600 to-[#7C3AED] min-h-screen flex items-center relative overflow-hidden"
       >
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
@@ -199,7 +199,7 @@ export default function MobileAppLanding() {
                 description:
                   "Without a solid App Store Optimization (ASO) strategy, your app can get lost in a crowded market.",
                 gradient: "from-purple-50 to-purple-100",
-                iconBg: "bg-purple-500",
+                iconBg: "bg-[#4F46E5]",
               },
             ].map((item, index) => (
               <div
@@ -326,8 +326,8 @@ export default function MobileAppLanding() {
                 gradient: "from-purple-50 to-purple-100",
                 hoverGradient:
                   "group-hover:from-purple-500 group-hover:to-pink-500",
-                iconBg: "bg-purple-500 group-hover:bg-white",
-                iconColor: "text-white group-hover:text-purple-500",
+                iconBg: "bg-[#4F46E5] group-hover:bg-white",
+                iconColor: "text-white group-hover:text-[#7C3AED]",
               },
               {
                 icon: Globe,
@@ -349,7 +349,7 @@ export default function MobileAppLanding() {
                 hoverGradient:
                   "group-hover:from-blue-500 group-hover:to-indigo-500",
                 iconBg: "bg-blue-500 group-hover:bg-white",
-                iconColor: "text-white group-hover:text-blue-500",
+                iconColor: "text-white group-hover:text-[#4F46E5]",
               },
               {
                 icon: TrendingUp,
@@ -698,7 +698,7 @@ export default function MobileAppLanding() {
                 answer:
                   "Absolutely! We can audit your existing app, identify improvement opportunities, and either enhance the current codebase or rebuild it with modern technologies for better performance and user experience.",
                 iconBg: "bg-purple-100",
-                iconColor: "text-purple-600",
+                iconColor: "text-[#7C3AED]",
               },
               {
                 id: 3,
@@ -757,7 +757,7 @@ export default function MobileAppLanding() {
       {/* Final CTA */}
       <section
         id="final-cta"
-        className="py-20 bg-gradient-to-br from-indigo-600 to-purple-600 relative overflow-hidden"
+        className="py-20 bg-gradient-to-br from-indigo-600 to-[#7C3AED] relative overflow-hidden"
       >
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-white bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>

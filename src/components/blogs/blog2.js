@@ -207,9 +207,9 @@ export default function CloudMigrationBlog() {
         <section className="relative bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 py-20 overflow-hidden">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-4 -right-4 w-72 h-72 bg-indigo-300 dark:bg-indigo-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 animate-pulse"></div>
+            <div className="absolute -top-4 -right-4 w-72 h-72 bg-indigo-300 dark:bg-[#4F46E5] rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 animate-pulse"></div>
             <div className="absolute -bottom-8 -left-4 w-72 h-72 bg-cyan-300 dark:bg-cyan-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-300 dark:bg-[#4F46E5] rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,11 +223,11 @@ export default function CloudMigrationBlog() {
                   roadmap that saves costs while accelerating growth.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <button className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
+                  <button className="px-8 py-4 bg-[#4F46E5] hover:bg-[#3730A3] text-white rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
                     <Download className="w-5 h-5" />
                     Free Readiness Checklist
                   </button>
-                  <button className="px-8 py-4 border-2 border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900 rounded-lg font-semibold transition-all duration-200">
+                  <button className="px-8 py-4 border-2 border-indigo-600 dark:border-indigo-400 text-[#4F46E5] dark:text-[#4F46E5] hover:bg-indigo-50 dark:hover:bg-[#4F46E5]/20 rounded-lg font-semibold transition-all duration-200">
                     Read Guide
                   </button>
                 </div>
@@ -236,11 +236,11 @@ export default function CloudMigrationBlog() {
               {/* Cloud Animation */}
               <div className="relative">
                 <div className="relative z-10">
-                  <Cloud className="w-32 h-32 text-indigo-400 mx-auto animate-bounce" />
+                  <Cloud className="w-32 h-32 text-[#4F46E5] mx-auto animate-bounce" />
                   <div className="absolute top-8 left-8 w-16 h-16 bg-cyan-400 dark:bg-cyan-500 rounded-lg flex items-center justify-center animate-pulse">
                     <Server className="w-8 h-8 text-white" />
                   </div>
-                  <div className="absolute top-16 right-4 w-12 h-12 bg-purple-400 dark:bg-purple-500 rounded-lg flex items-center justify-center animate-pulse animation-delay-1000">
+                  <div className="absolute top-16 right-4 w-12 h-12 bg-purple-400 dark:bg-[#4F46E5] rounded-lg flex items-center justify-center animate-pulse animation-delay-1000">
                     <Zap className="w-6 h-6 text-white" />
                   </div>
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-green-400 dark:bg-green-500 rounded-lg flex items-center justify-center animate-pulse animation-delay-2000">
@@ -318,7 +318,7 @@ export default function CloudMigrationBlog() {
                     </p>
                   </div>
                   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-                    <Shield className="w-12 h-12 text-blue-500 mb-4" />
+                    <Shield className="w-12 h-12 text-[#4F46E5] mb-4" />
                     <h3 className="text-xl font-semibold mb-2">
                       Enterprise Security
                     </h3>
@@ -350,7 +350,7 @@ export default function CloudMigrationBlog() {
 
                 <div className="overflow-x-auto">
                   <table className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                    <thead className="bg-indigo-600 dark:bg-indigo-700 text-white">
+                    <thead className="bg-[#4F46E5] dark:bg-indigo-700 text-white">
                       <tr>
                         <th className="px-6 py-4 text-left font-semibold">
                           Strategy
@@ -378,7 +378,7 @@ export default function CloudMigrationBlog() {
                           key={index}
                           className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                         >
-                          <td className="px-6 py-4 font-semibold text-indigo-600 dark:text-indigo-400">
+                          <td className="px-6 py-4 font-semibold text-[#4F46E5] dark:text-[#4F46E5]">
                             {item.name}
                           </td>
                           <td className="px-6 py-4 text-gray-700 dark:text-gray-300">
@@ -422,7 +422,7 @@ export default function CloudMigrationBlog() {
                 </h2>
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                    <h3 className="text-xl font-semibold mb-4 text-indigo-600 dark:text-indigo-400">
+                    <h3 className="text-xl font-semibold mb-4 text-[#4F46E5] dark:text-[#4F46E5]">
                       Greenfield SaaS
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -449,7 +449,7 @@ export default function CloudMigrationBlog() {
                   </div>
 
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                    <h3 className="text-xl font-semibold mb-4 text-indigo-600 dark:text-indigo-400">
+                    <h3 className="text-xl font-semibold mb-4 text-[#4F46E5] dark:text-[#4F46E5]">
                       Fintech with Compliance
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -475,7 +475,7 @@ export default function CloudMigrationBlog() {
                   </div>
 
                   <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                    <h3 className="text-xl font-semibold mb-4 text-indigo-600 dark:text-indigo-400">
+                    <h3 className="text-xl font-semibold mb-4 text-[#4F46E5] dark:text-[#4F46E5]">
                       AI/ML Workloads
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -508,11 +508,11 @@ export default function CloudMigrationBlog() {
                   8-Step Migration Roadmap
                 </h2>
                 <div className="relative">
-                  <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-indigo-300 dark:bg-indigo-600"></div>
+                  <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-indigo-300 dark:bg-[#4F46E5]"></div>
                   <div className="space-y-8">
                     {roadmapSteps.map((step, index) => (
                       <div key={index} className="relative flex items-start">
-                        <div className="flex-shrink-0 w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        <div className="flex-shrink-0 w-16 h-16 bg-[#4F46E5] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                           {step.step}
                         </div>
                         <div className="ml-6 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 flex-1">
@@ -520,7 +520,7 @@ export default function CloudMigrationBlog() {
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                               {step.title}
                             </h3>
-                            <span className="text-sm text-indigo-600 dark:text-indigo-400 font-medium">
+                            <span className="text-sm text-[#4F46E5] dark:text-[#4F46E5] font-medium">
                               {step.duration}
                             </span>
                           </div>
@@ -575,21 +575,21 @@ export default function CloudMigrationBlog() {
                       </h3>
                       <ul className="space-y-3">
                         <li className="flex items-start gap-3">
-                          <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                          <Shield className="w-5 h-5 text-[#4F46E5] mt-0.5 flex-shrink-0" />
                           <div>
                             <strong>Budget Alerts:</strong> Set up proactive
                             cost monitoring
                           </div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                          <Shield className="w-5 h-5 text-[#4F46E5] mt-0.5 flex-shrink-0" />
                           <div>
                             <strong>Resource Tagging:</strong> Track costs by
                             team, project, environment
                           </div>
                         </li>
                         <li className="flex items-start gap-3">
-                          <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                          <Shield className="w-5 h-5 text-[#4F46E5] mt-0.5 flex-shrink-0" />
                           <div>
                             <strong>Right-sizing:</strong> Regularly review and
                             optimize instance sizes
@@ -703,13 +703,13 @@ aws autoscaling put-scaling-policy \\
                     started with confidence.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="px-8 py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
+                    <button className="px-8 py-4 bg-white text-[#4F46E5] rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
                       <Download className="w-5 h-5" />
                       Download Free Checklist
                     </button>
                     <button
                       onClick={openCalendar}
-                      className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-indigo-600 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                      className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-[#4F46E5] rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                     >
                       Schedule Consultation
                       <ArrowRight className="w-5 h-5" />
@@ -730,43 +730,43 @@ aws autoscaling put-scaling-policy \\
                   <nav className="space-y-2">
                     <a
                       href="#why-migrate"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       Why Startups Migrate
                     </a>
                     <a
                       href="#seven-rs"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       7 R's Framework
                     </a>
                     <a
                       href="#strategy-patterns"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       Strategy Patterns
                     </a>
                     <a
                       href="#roadmap"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       Migration Roadmap
                     </a>
                     <a
                       href="#finops"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       Cost Optimization
                     </a>
                     <a
                       href="#seo"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       SEO Protection
                     </a>
                     <a
                       href="#faq"
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="block text-sm text-gray-600 dark:text-gray-300 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
                     >
                       FAQ
                     </a>

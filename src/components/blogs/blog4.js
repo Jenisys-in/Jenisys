@@ -344,7 +344,7 @@ const CybersecurityBlog = () => {
         <header className="fixed top-0 left-0 right-0 z-40 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center space-x-2">
-              <Shield className="w-6 h-6 text-blue-500" />
+              <Shield className="w-6 h-6 text-[#4F46E5]" />
               <span className="font-bold text-gray-900 dark:text-white">
                 Jenisys
               </span>
@@ -394,7 +394,7 @@ const CybersecurityBlog = () => {
         id="hero"
         className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-purple-800 text-white pt-16 lg:pt-0"
       >
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-[#0F172A]/30"></div>
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24 lg:py-32">
           <div className="text-center">
             <div className="flex justify-center mb-6 lg:mb-8">
@@ -419,7 +419,7 @@ const CybersecurityBlog = () => {
               <div className="bg-blue-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
                 📊 $10.5T Global Cybercrime Damage
               </div>
-              <div className="bg-purple-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
+              <div className="bg-[#4F46E5]/20 backdrop-blur-sm px-3 py-2 rounded-full">
                 🤖 AI-Powered Attacks Rising 300%
               </div>
               <div className="bg-pink-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
@@ -435,7 +435,7 @@ const CybersecurityBlog = () => {
         {/* Executive Summary - Now integrated into flow, not sticky */}
         <section className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-6 lg:p-8">
           <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-            <Signal className="w-6 h-6 lg:w-8 lg:h-8 mr-3 text-blue-500" />
+            <Signal className="w-6 h-6 lg:w-8 lg:h-8 mr-3 text-[#4F46E5]" />
             Executive Summary
             <span className="ml-3 text-xs lg:text-sm bg-red-100 text-red-800 px-2 py-1 rounded-full">
               Critical Reading
@@ -566,7 +566,7 @@ const CybersecurityBlog = () => {
         {/* Security Metrics & KPIs */}
         <section id="metrics" className="space-y-6 lg:space-y-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white flex items-center">
-            <Activity className="w-8 h-8 lg:w-10 lg:h-10 mr-3 lg:mr-4 text-indigo-500" />
+            <Activity className="w-8 h-8 lg:w-10 lg:h-10 mr-3 lg:mr-4 text-[#4F46E5]" />
             Security Metrics & Performance Indicators
           </h2>
 
@@ -814,7 +814,7 @@ const CybersecurityBlog = () => {
         {/* Future Trends */}
         <section id="future-trends" className="space-y-6 lg:space-y-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white flex items-center">
-            <Globe className="w-8 h-8 lg:w-10 lg:h-10 mr-3 lg:mr-4 text-cyan-500" />
+            <Globe className="w-8 h-8 lg:w-10 lg:h-10 mr-3 lg:mr-4 text-[#4F46E5]" />
             Looking Ahead: 2026-2030 Security Predictions
           </h2>
 
@@ -825,36 +825,36 @@ const CybersecurityBlog = () => {
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start space-x-2 lg:space-x-3">
-                  <Cpu className="w-4 h-4 lg:w-5 lg:h-5 text-cyan-600 mt-1 flex-shrink-0" />
+                  <Cpu className="w-4 h-4 lg:w-5 lg:h-5 text-[#4F46E5] mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-sm lg:text-base text-cyan-700 dark:text-cyan-300">
                       Neuromorphic Computing Security
                     </div>
-                    <div className="text-xs lg:text-sm text-cyan-600 dark:text-cyan-400">
+                    <div className="text-xs lg:text-sm text-[#4F46E5] dark:text-cyan-400">
                       Brain-inspired computing architectures will require new
                       security paradigms
                     </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-2 lg:space-x-3">
-                  <Network className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600 mt-1 flex-shrink-0" />
+                  <Network className="w-4 h-4 lg:w-5 lg:h-5 text-[#4F46E5] mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-sm lg:text-base text-blue-700 dark:text-blue-300">
                       6G Network Security
                     </div>
-                    <div className="text-xs lg:text-sm text-blue-600 dark:text-blue-400">
+                    <div className="text-xs lg:text-sm text-[#4F46E5] dark:text-blue-400">
                       Ultra-low latency networks will enable new attack vectors
                       and defenses
                     </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-2 lg:space-x-3">
-                  <Eye className="w-4 h-4 lg:w-5 lg:h-5 text-indigo-600 mt-1 flex-shrink-0" />
+                  <Eye className="w-4 h-4 lg:w-5 lg:h-5 text-[#4F46E5] mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-sm lg:text-base text-indigo-700 dark:text-indigo-300">
                       Extended Reality (XR) Security
                     </div>
-                    <div className="text-xs lg:text-sm text-indigo-600 dark:text-indigo-400">
+                    <div className="text-xs lg:text-sm text-[#4F46E5] dark:text-[#4F46E5]">
                       AR/VR environments will create new privacy and security
                       challenges
                     </div>
@@ -869,12 +869,12 @@ const CybersecurityBlog = () => {
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start space-x-2 lg:space-x-3">
-                  <FileText className="w-4 h-4 lg:w-5 lg:h-5 text-purple-600 mt-1 flex-shrink-0" />
+                  <FileText className="w-4 h-4 lg:w-5 lg:h-5 text-[#7C3AED] mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-sm lg:text-base text-purple-700 dark:text-purple-300">
                       AI Governance Frameworks
                     </div>
-                    <div className="text-xs lg:text-sm text-purple-600 dark:text-purple-400">
+                    <div className="text-xs lg:text-sm text-[#7C3AED] dark:text-[#7C3AED]">
                       New regulations governing AI system security and bias
                       prevention
                     </div>
@@ -923,7 +923,7 @@ const CybersecurityBlog = () => {
                 <div className="font-semibold text-sm lg:text-base text-blue-800 dark:text-blue-200">
                   Adaptability
                 </div>
-                <div className="text-xs lg:text-sm text-blue-600 dark:text-blue-400">
+                <div className="text-xs lg:text-sm text-[#4F46E5] dark:text-blue-400">
                   Build flexible security architectures
                 </div>
               </div>
@@ -939,7 +939,7 @@ const CybersecurityBlog = () => {
                 <div className="font-semibold text-sm lg:text-base text-purple-800 dark:text-purple-200">
                   Innovation
                 </div>
-                <div className="text-xs lg:text-sm text-purple-600 dark:text-purple-400">
+                <div className="text-xs lg:text-sm text-[#7C3AED] dark:text-[#7C3AED]">
                   Embrace emerging security technologies
                 </div>
               </div>
@@ -948,8 +948,8 @@ const CybersecurityBlog = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white p-8 lg:p-12 rounded-2xl lg:rounded-3xl text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/10"></div>
+        <section className="bg-gradient-to-r from-[#4F46E5] via-[#7C3AED] to-pink-600 text-white p-8 lg:p-12 rounded-2xl lg:rounded-3xl text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[#0F172A]/10"></div>
           <div className="relative">
             <h2 className="text-2xl lg:text-4xl font-bold mb-4 lg:mb-6">
               Ready to Transform Your Security Posture?
@@ -980,13 +980,13 @@ const CybersecurityBlog = () => {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-6 lg:px-8 py-3 lg:py-4 rounded-lg lg:rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 flex items-center justify-center shadow-lg text-sm lg:text-base">
+              <button className="bg-white text-[#4F46E5] px-6 lg:px-8 py-3 lg:py-4 rounded-lg lg:rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 flex items-center justify-center shadow-lg text-sm lg:text-base">
                 <Download className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                 Download Security Checklist
               </button>
               <button
                 onClick={openCalendar}
-                className="border-2 border-white text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg lg:rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center text-sm lg:text-base"
+                className="border-2 border-white text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg lg:rounded-xl font-semibold hover:bg-white hover:text-[#4F46E5] transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center text-sm lg:text-base"
               >
                 <Calendar className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                 Schedule Consultation

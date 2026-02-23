@@ -14,10 +14,11 @@ export const metadata = {
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/img/logo2.svg",
+        url: "https://www.jenisys.in/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Jenisys - Premium Software Agency",
+        type: "image/jpeg",
       },
     ],
     locale: "en_US",
@@ -28,13 +29,10 @@ export const metadata = {
     title: "Jenisys | AI & Custom Software Development Company",
     description:
       "Jenisys provides top-tier AI, mobile, and web development services to accelerate business growth globally.",
-    images: ["https://www.jenisys.in/img/logo2.svg"],
+    images: ["https://www.jenisys.in/og-image.jpg"],
     site: "@JenisysTech",
   },
   metadataBase: new URL("https://www.jenisys.in"),
-  verification: {
-    google: "google-site-verification-code",
-  },
 };
 
 export default function Page() {
@@ -59,7 +57,7 @@ export default function Page() {
             "@type": "ContactPoint",
             telephone: "+1-XXX-XXX-XXXX", // Ideally replace with real US number if available, or remove if strictly online
             contactType: "customer service",
-            areaServed: ["US", "GB", "CA", "AU"],
+            areaServed: ["US", "AU", "GB", "CA", "IN"],
             availableLanguage: ["English"],
           },
           description:

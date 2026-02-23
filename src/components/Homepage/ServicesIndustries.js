@@ -23,39 +23,39 @@ const ServicesIndustries = ({
           fill
           priority
           style={{
-            filter: "brightness(1.2) contrast(0.8)",
+            filter: "brightness(0.7) contrast(1.05) saturate(0.95)",
             objectFit: "cover",
           }}
         />
-        <div className="absolute inset-0" />
+        <div className="absolute inset-0 bg-[#0F172A]/65" />
       </div>
 
       <div
         className={`absolute top-80 sm:top-96 left-0 w-full bottom-0 transition-all duration-700 ${
           activeTab === "industries"
-            ? "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"
-            : "bg-gradient-to-br from-white via-gray-50 to-slate-50"
+            ? "bg-[#F3F4F6]"
+            : "bg-[#F9FAFB]"
         }`}
       />
 
       <div className="max-w-7xl mx-auto relative" style={{ zIndex: 1 }}>
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-['Montserrat'] text-white mb-4">
+          <h2 className="text-[30px] sm:text-4xl lg:text-5xl font-semibold font-['Montserrat'] text-white mb-4">
             What We Do
           </h2>
-          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto font-['Montserrat']">
+          <p className="text-base sm:text-lg text-[#E5E7EB] max-w-2xl mx-auto font-['Montserrat']">
             Explore the services we offer and the industries we empower with
             cutting-edge technology solutions.
           </p>
         </div>
 
         <div className="flex justify-center mb-12 sm:mb-16">
-          <div className="inline-flex rounded-xl bg-white border border-gray-200 p-1 shadow-lg">
+          <div className="inline-flex rounded-xl bg-white border border-[#E5E7EB] p-1 shadow-sm">
             <button
               className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeTab === "services"
-                  ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  ? "bg-[#4F46E5] text-white shadow-md"
+                  : "text-[#6B7280] hover:text-[#111827] hover:bg-[#F9FAFB]"
               }`}
               onClick={() =>
                 setUIStates((prev) => ({ ...prev, activeTab: "services" }))
@@ -66,8 +66,8 @@ const ServicesIndustries = ({
             <button
               className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeTab === "industries"
-                  ? "bg-gray-900 text-white shadow-md transform scale-[1.02]"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  ? "bg-[#4F46E5] text-white shadow-md"
+                  : "text-[#6B7280] hover:text-[#111827] hover:bg-[#F9FAFB]"
               }`}
               onClick={() =>
                 setUIStates((prev) => ({ ...prev, activeTab: "industries" }))
@@ -91,7 +91,7 @@ const ServicesIndustries = ({
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 min-h-[200px] flex flex-col"
+                  className="ds-card group relative p-6 sm:p-8 cursor-pointer min-h-[200px] flex flex-col"
                   onMouseEnter={() =>
                     setUIStates((prev) => ({
                       ...prev,
@@ -115,14 +115,14 @@ const ServicesIndustries = ({
                       isHovered={hoveredService === index}
                     />
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 font-['Montserrat'] flex items-center justify-center gap-2">
+                    <h3 className="text-xl sm:text-[22px] font-semibold text-[#111827] mb-3 font-['Montserrat'] flex items-center justify-center gap-2">
                       {service.title}
                       <ChevronDown
                         size={20}
                         className={`transition-all duration-300 ${
                           expandedService === index
-                            ? "rotate-180 text-gray-900"
-                            : "text-gray-400 group-hover:text-gray-600"
+                            ? "rotate-180 text-[#4F46E5]"
+                            : "text-[#6B7280] group-hover:text-[#374151]"
                         }`}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -143,15 +143,15 @@ const ServicesIndustries = ({
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="pt-2 text-left border-t border-gray-100 mt-4">
-                      <p className="text-gray-600 text-sm sm:text-base font-['Montserrat'] mb-6 leading-relaxed">
+                    <div className="pt-2 text-left border-t border-[#E5E7EB] mt-4">
+                      <p className="text-[#374151] text-sm sm:text-base font-['Montserrat'] mb-6 leading-[1.65]">
                         {service.description}
                       </p>
 
                       <div className="text-center">
                         <Link
                           href={service.link}
-                          className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-lg font-semibold transition-all duration-300 hover:bg-gray-800 hover:shadow-lg text-sm sm:text-base"
+                          className="ds-btn-primary text-sm px-5 py-2.5"
                           aria-label={`Learn more about ${service.title}`}
                         >
                           Learn More <span className="sr-only">about {service.title}</span>
@@ -177,17 +177,17 @@ const ServicesIndustries = ({
               {industries.map((industry, index) => (
                 <div
                   key={index}
-                  className="group relative p-6 sm:p-8 bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  className="ds-card group relative p-6 sm:p-8"
                 >
-                  <div className="text-4xl sm:text-5xl mb-6 text-center transform group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-4xl sm:text-5xl mb-6 text-center transform group-hover:scale-105 transition-transform duration-300">
                     {industry.icon}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 font-['Montserrat'] text-center">
+                  <h3 className="text-xl sm:text-[22px] font-semibold text-[#111827] mb-4 font-['Montserrat'] text-center">
                     {industry.title}
                   </h3>
 
-                  <p className="text-gray-600 text-sm sm:text-base font-['Montserrat'] text-center leading-relaxed mb-6">
+                  <p className="text-[#374151] text-sm sm:text-base font-['Montserrat'] text-center leading-[1.65] mb-6">
                     {industry.description}
                   </p>
                 </div>
