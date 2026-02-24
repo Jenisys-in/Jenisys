@@ -112,9 +112,9 @@ const CaseStudies = ({
                 }))
               }
             >
-              {/* Glow effect */}
+              {/* Glow effect — hidden on mobile to prevent WebKit black-square artefacts */}
               <motion.div
-                className={`absolute -inset-2 bg-gradient-to-r ${study.color} rounded-3xl blur-lg opacity-0 transition-opacity duration-500`}
+                className={`absolute -inset-2 bg-gradient-to-r ${study.color} rounded-3xl blur-lg opacity-0 transition-opacity duration-500 hidden md:block`}
                 animate={{
                   opacity: uiStates.hoveredCard === study.id ? 0.15 : 0,
                   scale: uiStates.hoveredCard === study.id ? 1.05 : 1,
