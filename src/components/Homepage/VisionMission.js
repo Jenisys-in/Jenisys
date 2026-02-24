@@ -44,7 +44,7 @@ const VisionMission = ({
             </p>
 
             <div className="relative group flex justify-center lg:justify-start">
-              <Link href="/about">
+              <Link href="/about" aria-label="Learn more about Jenisys and our vision">
                 <button className="w-[120px] h-[35px] sm:w-[150px] sm:h-[40px] md:w-[180px] md:h-[50px] lg:w-[225px] lg:h-[60px] bg-[#4F46E5] hover:bg-[#3730A3] font-['Montserrat'] text-[12px] sm:text-[14px] md:text-[18px] lg:text-[24px] font-semibold my-4 sm:my-6 md:my-8 lg:my-2 rounded-lg lg:mb-[20px] 3xl:mt-[60px] transition-colors duration-200 text-white">
                   <span className="flex items-center justify-center h-full">
                     Learn More

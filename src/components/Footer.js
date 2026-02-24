@@ -237,7 +237,7 @@ const Footer = () => {
       <div className="border-t border-[#374151]">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-[#6B7280] text-sm">
+            <div className="text-[#9CA3AF] text-sm">
               © 2025 Jenisys. All rights reserved.
             </div>
             <div className="flex gap-6 text-sm">
@@ -246,7 +246,7 @@ const Footer = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-[#6B7280] hover:text-white transition-colors duration-200"
+                    className="text-[#9CA3AF] hover:text-white underline underline-offset-4 transition-colors duration-200"
                   >
                     {link.name}
                   </a>

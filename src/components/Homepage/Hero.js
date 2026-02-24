@@ -159,22 +159,14 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Copy */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#4F46E5]/8 rounded-full text-sm font-medium text-[#4F46E5] mb-6"
+            <div
+              className="animate-fade-in-up inline-flex items-center gap-2 px-3 py-1.5 bg-[#4F46E5]/8 rounded-full text-sm font-medium text-[#4F46E5] mb-6"
             >
               <Sparkles className="w-4 h-4" />
               Built for scale
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="font-['Montserrat'] text-[#111827] text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] xl:text-[54px] font-semibold leading-[1.15] tracking-tight"
-            >
+            <h1 className="animate-fade-in-up font-['Montserrat'] text-[#111827] text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] xl:text-[54px] font-semibold leading-[1.15] tracking-tight">
               Ship products that actually{" "}
               <span
                 className="bg-clip-text text-transparent"
@@ -182,17 +174,12 @@ const Hero = () => {
               >
                 move the needle
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-6 text-[#374151] text-base sm:text-lg leading-[1.7] max-w-lg"
-            >
+            <p className="animate-fade-in-up mt-6 text-[#374151] text-base sm:text-lg leading-[1.7] max-w-lg" style={{ animationDelay: '100ms' }}>
               From custom software to AI automation — we partner with ambitious
               teams to build technology that drives real business outcomes.
-            </motion.p>
+            </p>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
