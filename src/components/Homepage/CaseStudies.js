@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   TrendingUp,
@@ -104,7 +105,7 @@ const CaseStudies = ({
               onHoverEnd={() =>
                 setUIStates((prev) => ({ ...prev, hoveredCard: null }))
               }
-              className="group relative cursor-pointer will-change-transform"
+              className="group relative cursor-pointer"
               onClick={() =>
                 setUIStates((prev) => ({
                   ...prev,
@@ -320,7 +321,7 @@ const CaseStudies = ({
                     {uiStates.activeStudy.fullDetails}
                   </p>
 
-                  <a href={`/case-study/${uiStates.activeStudy.slug || ''}`}>
+                  <Link href={`/case-study/${uiStates.activeStudy.slug || ''}`}>
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -330,7 +331,7 @@ const CaseStudies = ({
                       View Full Case Study
                       <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                     </motion.button>
-                  </a>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

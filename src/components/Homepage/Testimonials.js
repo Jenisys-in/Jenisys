@@ -30,7 +30,6 @@ const TestimonialCard = ({ testimonial, index, isVisible }) => {
         h-full flex flex-col justify-between
         transform transition-all duration-500 ease-out
         hover:border-[#4F46E5]/30
-        will-change-transform
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
       `}
       style={cardStyle}

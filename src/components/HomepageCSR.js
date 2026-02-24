@@ -738,7 +738,7 @@ const HomepageCSR = memo(() => {
 
       <CoffeeBanner />
 
-      <div className="will-change-transform">
+      <div>
         <Values
           values={values}
           hoveredValue={uiStates.hoveredValue}
@@ -758,11 +758,11 @@ const HomepageCSR = memo(() => {
         AnimatedIcon={AnimatedIcon}
       />
 
-      <div className="will-change-transform">
+      <div>
         <TechStack />
       </div>
 
-      <div className="will-change-transform">
+      <div>
         <Testimonials
           testimonials={testimonials}
           slideStates={slideStates}
@@ -775,7 +775,7 @@ const HomepageCSR = memo(() => {
 
       <BeerBanner />
 
-      <div className="will-change-transform">
+      <div>
         <CaseStudies
           caseStudies={caseStudies}
           slideStates={slideStates}

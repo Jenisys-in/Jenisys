@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navbar from "@/components/Navbar";
-import Preloader from "@/components/Preloader";
 import ScrollToTop from "@/components/ScrolltoTop";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import CalendarModal from "@/components/CalendarModal";
@@ -16,7 +15,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ClientLayout = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
   const { isCalendarOpen, closeCalendar } = useCalendar();
 
   useEffect(() => {
@@ -25,12 +23,7 @@ const ClientLayout = ({ children }) => {
 
   return (
     <>
-      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
-      <div
-        className={`transition-opacity duration-1000 ${
-          isLoading ? "opacity-0" : "opacity-100"
-        }`}
-      >
+      <div>
         <SmoothScrolling>
           <Navbar />
           <main>{children}</main>

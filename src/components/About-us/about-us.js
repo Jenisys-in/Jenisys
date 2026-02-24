@@ -329,7 +329,7 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white will-change-transform">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, index) => (
@@ -451,7 +451,7 @@ const AboutUsRedesign = memo(() => {
       {/* Timeline Section */}
       <section
         id="our-journey"
-        className="py-12 sm:py-16 lg:py-20 bg-gray-900 text-white scroll-mt-[120px] will-change-transform"
+        className="py-12 sm:py-16 lg:py-20 bg-gray-900 text-white scroll-mt-[120px]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
@@ -517,7 +517,7 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white will-change-transform">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="values-header"
@@ -573,7 +573,7 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* Technology Stack */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 will-change-transform">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="tech-header"
@@ -620,7 +620,7 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white will-change-transform">
+      <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="testimonial-header"

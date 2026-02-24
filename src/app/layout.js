@@ -155,13 +155,6 @@ export default function RootLayout({ children }) {
         <Script id="tawk-to-script" strategy="lazyOnload">
           {`
             var Tawk_API = Tawk_API || {};
-            Tawk_API.onBeforeLoad = function() {
-                Tawk_API.hideWidget();
-            };
-            Tawk_API.onLoad = function() {
-                Tawk_API.showWidget();
-                Tawk_API.minimize();
-            };
             var Tawk_LoadStart = new Date();
             (function() {
                 var s1 = document.createElement("script"),
