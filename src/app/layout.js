@@ -152,6 +152,7 @@ export default function RootLayout({ children }) {
         </Script>
 
         {/* Tawk.to chat widget */}
+                {/* Tawk.to chat widget */}
         <Script id="tawk-to-script" strategy="afterInteractive">
           {`
             var Tawk_API = Tawk_API || {};
@@ -167,7 +168,11 @@ export default function RootLayout({ children }) {
             })();
           `}
         </Script>
+
       </body>
     </html>
   );
 }
+
+
+

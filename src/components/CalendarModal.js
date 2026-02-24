@@ -24,7 +24,7 @@ const CalendarModal = ({ isOpen, onClose }) => {
         </button>
         <div className="w-full h-[600px]">
           <iframe
-            src="https://calendly.com/jenisysinfo/discovery-call" // Replace with your actual Calendly or booking link
+            src="https://calendly.com/tuhindas2724/30min" // Replace with your actual Calendly or booking link
             width="100%"
             height="100%"
             frameBorder="0"
