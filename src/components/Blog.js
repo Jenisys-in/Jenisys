@@ -32,9 +32,13 @@ export default function Blog() {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
   const [filterKey, setFilterKey] = useState(0);
 
+  const sortedBlogs = useMemo(() => {
+    return [...allBlogs].sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, []);
+
   const filterAndPaginateBlogs = useCallback(() => {
     setIsLoading(true);
-    let filteredBlogs = allBlogs;
+    let filteredBlogs = sortedBlogs;
     if (debouncedSearchTerm) {
       filteredBlogs = filteredBlogs.filter(
         (blog) =>
@@ -50,13 +54,13 @@ export default function Blog() {
     setTotalPages(Math.ceil(filteredBlogs.length / POSTS_PER_PAGE));
     setBlogs(filteredBlogs.slice(0, currentPage * POSTS_PER_PAGE));
     setIsLoading(false);
-  }, [debouncedSearchTerm, activeCategory, currentPage]);
+  }, [debouncedSearchTerm, activeCategory, currentPage, sortedBlogs]);
 
   useEffect(() => {
     setCurrentPage(1);
     setFilterKey((prev) => prev + 1);
-    filterAndPaginateBlogs();
-  }, [debouncedSearchTerm, activeCategory, filterAndPaginateBlogs]);
+    // filterAndPaginateBlogs will be called by the other useEffect when currentPage resets to 1
+  }, [debouncedSearchTerm, activeCategory]);
 
   useEffect(() => {
     filterAndPaginateBlogs();

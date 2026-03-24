@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { blogs } from "../../lib/blogData";
 
 const BlogSection = () => {
-  const latestPosts = blogs.slice(0, 3);
+  const latestPosts = [...blogs].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
 
   return (
     <section className="py-20 bg-white">

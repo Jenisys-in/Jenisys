@@ -57,8 +57,8 @@ import { Star, User } from "lucide-react";
 import Footer from "./Footer";
 import dynamic from "next/dynamic";
 
-const Hero = dynamic(() => import("./Homepage/Hero"));
-const VisionMission = dynamic(() => import("./Homepage/VisionMission"));
+import Hero from "./Homepage/Hero";
+import VisionMission from "./Homepage/VisionMission";
 const CoffeeBanner = dynamic(() => import("./Homepage/CoffeeBanner"));
 const Values = dynamic(() => import("./Homepage/Values"));
 const Process = memo(dynamic(() => import("./Process"), { ssr: false }));
