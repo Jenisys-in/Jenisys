@@ -152,6 +152,8 @@
   }
 
   html {
+    background-color: #050a1c;
+    overflow-x: clip;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
@@ -161,7 +163,7 @@
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* Respect user preference for reduced motion */
@@ -658,6 +660,10 @@ body {
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 .j-glow-signal { box-shadow: 0 0 0 1px rgba(20, 226, 249, 0.55), 0 0 36px rgba(20, 226, 249, 0.25), 0 30px 60px -20px rgba(0, 0, 0, 0.7); }
+.j-stagger { transform: rotateX(6deg); }
+@media (min-width: 768px) {
+  .j-stagger { transform: rotateX(6deg) translateX(calc(var(--i, 0) * 12px)); }
+}
 .j-floor {
   background-image:
     linear-gradient(to right, rgba(76, 141, 255, 0.16) 1px, transparent 1px),

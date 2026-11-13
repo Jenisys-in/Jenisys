@@ -1,37 +1,25 @@
 // middleware.js
 import { NextResponse } from "next/server";
 
-/**
- * This middleware checks the incoming request's host.
- * If the host starts with schedule.jenisys.in it rewrites the URL to /schedule,
- * so your /app/schedule/page.tsx is served instead of the homepage.
- */
-// Basic in-memory rate limiter (per-instance)
+// Basic in-memory rate limiter for /api/* (per instance). Also rewrites
+// schedule.jenisys.in to /schedule and fixes the old /Privacy-Policy URL.
 const rateLimit = new Map();
 
 export function middleware(req) {
-  const ip = (req.headers.get("x-forwarded-for") || "unknown").split(",")[0].trim();
-  const now = Date.now();
-  const windowMs = 60 * 1000; // 1 minute
-  
-  // Clean up old entries
-  if (rateLimit.has(ip) && rateLimit.get(ip).resetTime < now) {
-    rateLimit.delete(ip);
+  // Rate-limit the form APIs only (spam protection). Pages are static and Vercel's
+  // platform DDoS protection covers them; counting page views here would throttle
+  // fast browsing and crawlers, because Next.js prefetches every on-screen link.
+  if (req.nextUrl.pathname.startsWith("/api/")) {
+    const ip = (req.headers.get("x-forwarded-for") || "unknown").split(",")[0].trim();
+    const now = Date.now();
+    const entry = rateLimit.get(ip);
+    const data = entry && entry.resetTime > now ? entry : { count: 0, resetTime: now + 60 * 1000 };
+    if (data.count >= 20) {
+      return new NextResponse("Too Many Requests", { status: 429 });
+    }
+    data.count++;
+    rateLimit.set(ip, data);
   }
-
-  const limitData = rateLimit.get(ip) || { count: 0, resetTime: now + windowMs };
-  
-  // Stricter limit for API routes (20 req/min), lenient for pages (300 req/min).
-  // Static assets are excluded by the matcher below, so one page view counts once.
-  const isApi = req.nextUrl.pathname.startsWith("/api/");
-  const limit = isApi ? 20 : 300;
-
-  if (limitData.count >= limit) {
-    return new NextResponse("Too Many Requests", { status: 429 });
-  }
-
-  limitData.count++;
-  rateLimit.set(ip, limitData);
 
   // Old capitalised URL → lowercase canonical. Exact, case-sensitive match here, because
   // next.config redirects match case-insensitively and would loop on this pair.
