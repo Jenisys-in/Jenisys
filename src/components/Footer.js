@@ -23,7 +23,6 @@ const heading = "j-eyebrow mb-5";
 const Footer = () => {
   return (
     <footer className="j-night relative overflow-hidden border-t border-line">
-      {/* Oversized wordmark — the ribbon's light fading out at the bottom of every page */}
       <div className="j-wrap pt-20 pb-12">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -97,12 +96,6 @@ const Footer = () => {
             Privacy Policy
           </Link>
         </div>
-      </div>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none select-none font-display font-bold leading-none tracking-[-0.06em] text-center text-[22vw] -mb-[5vw] bg-gradient-to-b from-raised to-void bg-clip-text text-transparent"
-      >
-        Jenisys
       </div>
     </footer>
   );

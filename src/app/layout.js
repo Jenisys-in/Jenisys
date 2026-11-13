@@ -147,6 +147,14 @@ export default function RootLayout({ children }) {
           {`
             var Tawk_API = Tawk_API || {};
             var Tawk_LoadStart = new Date();
+            // Keep the chat bubble clear of the mobile "Start a Project" bar and the page edges.
+            Tawk_API.customStyle = {
+              visibility: {
+                desktop: { position: 'br', xOffset: 24, yOffset: 24 },
+                mobile: { position: 'br', xOffset: 12, yOffset: 88 }
+              },
+              zIndex: 45
+            };
             (function() {
                 var s1 = document.createElement("script"),
                     s0 = document.getElementsByTagName("script")[0];
