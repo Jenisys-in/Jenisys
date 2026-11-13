@@ -8,13 +8,6 @@ export const hero = {
   proof: ["Government & enterprise clients", "End-to-end — design to deployment", "Australia & US — open worldwide"],
 };
 
-// Figures are verbatim from the published case studies. Gain labels approved by the owner.
-export const outcomes = [
-  { eyebrow: "NSW · Government / Construction", what: "Claims processing time", before: "18 days", after: 6, unit: " days", gain: "Two-thirds faster", href: "/case-study/nsw-sopa-adjudication-platform" },
-  { eyebrow: "US · SaaS billing", what: "Monthly close", before: "2 days", after: 4, unit: " hrs", gain: "Close in an afternoon", href: "/case-study/us-saas-subscription-billing-platform" },
-  { eyebrow: "US · SaaS billing", what: "Billing support tickets", before: null, after: 80, prefix: "−", unit: "%", gain: "Measured after launch", href: "/case-study/us-saas-subscription-billing-platform" },
-];
-
 export const caseStudiesIntro = {
   titleA: "Proven Impact",
   titleB: "Through Innovation",
