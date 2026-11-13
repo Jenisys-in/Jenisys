@@ -1,5 +1,4 @@
 import Home from '../components/Homepage';
-import Script from 'next/script';
 
 export const metadata = {
   title: "Jenisys | AI & Custom Software Development Company",
@@ -40,34 +39,8 @@ export default function Page() {
     <>
       <Home />
 
-      {/* Organization Schema */}
-      <Script id="jenisys-schema" type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "@id": "https://www.jenisys.in#organization",
-          name: "Jenisys",
-          url: "https://www.jenisys.in",
-          logo: "https://www.jenisys.in/img/logo2.svg",
-          sameAs: [
-            "https://www.linkedin.com/company/jenisys",
-            "https://www.instagram.com/jenisys.in/",
-          ],
-          contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+1-XXX-XXX-XXXX", // Ideally replace with real US number if available, or remove if strictly online
-            contactType: "customer service",
-            areaServed: ["US", "AU", "GB", "CA", "IN"],
-            availableLanguage: ["English"],
-          },
-          description:
-            "Jenisys is a leading IT consulting and software development company offering web, mobile, AI/ML, cloud, custom software, IT consulting, and maintenance services for startups and enterprises.",
-        })}
-      </Script>
-
       {/* ProfessionalService Schema (Broader than LocalBusiness) */}
-      <Script id="jenisys-local-schema" type="application/ld+json">
-        {JSON.stringify({
+      <script id="jenisys-local-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           "@id": "https://www.jenisys.in#local",
@@ -105,12 +78,11 @@ export default function Page() {
             opens: "09:00",
             closes: "18:00",
           },
-        })}
-      </Script>
+        }) }}
+      />
 
       {/* Services Schema */}
-      <Script id="jenisys-services-schema" type="application/ld+json">
-        {JSON.stringify({
+      <script id="jenisys-services-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
             {
@@ -148,7 +120,7 @@ export default function Page() {
             {
               "@type": "Service",
               name: "Custom Software Development",
-              url: "https://www.jenisys.in/services/custom-software-development",
+              url: "https://www.jenisys.in/services/Custom-Software-Development",
               description:
                 "We provide tailored software solutions to meet unique business requirements, improve efficiency, and scale growth.",
               provider: { "@id": "https://www.jenisys.in#organization" },
@@ -156,7 +128,7 @@ export default function Page() {
             {
               "@type": "Service",
               name: "IT Consulting",
-              url: "https://www.jenisys.in/services/it-consulting",
+              url: "https://www.jenisys.in/services/IT-consulting",
               description:
                 "We offer expert IT consulting to guide digital transformation, optimize technology, and achieve strategic goals.",
               provider: { "@id": "https://www.jenisys.in#organization" },
@@ -164,14 +136,14 @@ export default function Page() {
             {
               "@type": "Service",
               name: "Maintenance and Support",
-              url: "https://www.jenisys.in/services/maintenance",
+              url: "https://www.jenisys.in/services/Maintenance",
               description:
                 "We provide reliable maintenance and support services to ensure software and systems operate smoothly and securely.",
               provider: { "@id": "https://www.jenisys.in#organization" },
             },
           ],
-        })}
-      </Script>
+        }) }}
+      />
     </>
   );
 }

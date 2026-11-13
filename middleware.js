@@ -10,7 +10,7 @@ import { NextResponse } from "next/server";
 const rateLimit = new Map();
 
 export function middleware(req) {
-  const ip = req.headers.get("x-forwarded-for") || "unknown";
+  const ip = (req.headers.get("x-forwarded-for") || "unknown").split(",")[0].trim();
   const now = Date.now();
   const windowMs = 60 * 1000; // 1 minute
   
@@ -21,9 +21,10 @@ export function middleware(req) {
 
   const limitData = rateLimit.get(ip) || { count: 0, resetTime: now + windowMs };
   
-  // Stricter limit for API routes (20 req/min), lenient for others (100 req/min)
+  // Stricter limit for API routes (20 req/min), lenient for pages (300 req/min).
+  // Static assets are excluded by the matcher below, so one page view counts once.
   const isApi = req.nextUrl.pathname.startsWith("/api/");
-  const limit = isApi ? 20 : 100;
+  const limit = isApi ? 20 : 300;
 
   if (limitData.count >= limit) {
     return new NextResponse("Too Many Requests", { status: 429 });
@@ -43,3 +44,8 @@ export function middleware(req) {
 
   return NextResponse.next();
 }
+
+// Run only on pages and API routes — never on build assets, images or files in /public.
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.*\\.xml|brand/|img/|.*\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|mp4|webm|woff2?)$).*)"],
+};

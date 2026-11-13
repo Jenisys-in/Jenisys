@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, X, Check } from "lucide-react";
 import Link from "next/link";
 
@@ -28,47 +27,46 @@ const CookieConsent = () => {
   };
 
   return (
-    <AnimatePresence>
+    <>
       {isVisible && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        <div
+          role="dialog"
+          aria-label="Cookie consent"
+          style={{ animation: "j-cookie-in 240ms cubic-bezier(.2,.8,.2,1) both" }}
           className="fixed bottom-0 left-0 right-0 sm:left-auto sm:right-6 sm:bottom-6 md:right-8 md:bottom-8 z-[100] w-full sm:max-w-md"
         >
           {/* Glassmorphic Container */}
-          <div className="relative overflow-hidden rounded-t-2xl sm:rounded-2xl border-t sm:border border-white/10 bg-slate-900/90 sm:bg-slate-900/80 backdrop-blur-xl shadow-2xl p-5 sm:p-6">
+          <div className="relative overflow-hidden rounded-t-2xl sm:rounded-2xl border-t sm:border border-line bg-deep/95 sm:bg-deep/90 backdrop-blur-xl shadow-2xl px-4 py-3.5 sm:p-6">
             {/* Background Gradient Orbs */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#4F46E5]/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#1652D9]/20 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl border border-white/5 shadow-inner hidden sm:block">
-                  <Cookie className="w-6 h-6 text-purple-300" />
+                <div className="p-3 bg-gradient-to-br from-blue-500/20 to-blue-500/20 rounded-xl border border-white/5 shadow-inner hidden sm:block">
+                  <Cookie className="w-6 h-6 text-signal" />
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                    <span className="sm:hidden"><Cookie className="w-5 h-5 text-purple-300 inline" /></span>
+                  <h3 className="text-[15px] sm:text-lg font-semibold text-ink mb-1 sm:mb-2 flex items-center gap-2">
+                    <span className="sm:hidden"><Cookie className="w-5 h-5 text-signal inline" /></span>
                     We use cookies
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                  <p className="text-[13px] sm:text-sm text-ink-muted leading-snug sm:leading-relaxed mb-3 sm:mb-6">
                     We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-row gap-2 sm:gap-3">
                     <button
                       onClick={handleAccept}
-                      className="flex-1 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] hover:from-purple-500 hover:to-blue-500 text-white text-sm font-semibold py-2.5 px-4 rounded-lg shadow-lg shadow-purple-900/20 transition-all duration-200 flex items-center justify-center gap-2 group border border-transparent"
+                      className="flex-1 bg-volt-day hover:bg-volt text-white text-sm font-semibold py-2 sm:py-2.5 px-4 rounded-lg shadow-lg shadow-blue-900/20 transition-all duration-200 flex items-center justify-center gap-2 group border border-transparent"
                     >
                       <Check className="w-4 h-4" />
                       Accept All
                     </button>
                     <button
                       onClick={handleDecline}
-                      className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white text-sm font-medium py-2.5 px-4 rounded-lg transition-all duration-200"
+                      className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-ink-muted hover:text-ink text-sm font-medium py-2 sm:py-2.5 px-4 rounded-lg transition-all duration-200"
                     >
                       Decline
                     </button>
@@ -86,13 +84,13 @@ const CookieConsent = () => {
             </div>
             
             {/* Disclaimer */}
-            <div className="mt-4 pt-4 border-t border-white/5 text-xs text-slate-400 text-center">
-              By clicking "Accept All", you agree to our <Link href="/Privacy-Policy" className="text-[#7C3AED] hover:text-purple-300 hover:underline transition-colors">Privacy Policy</Link>
+            <div className="mt-3 pt-3 sm:mt-4 sm:pt-4 border-t border-line text-[11px] sm:text-xs text-ink-muted text-center">
+              By clicking "Accept All", you agree to our <Link href="/Privacy-Policy" className="text-signal underline underline-offset-2 hover:text-ink transition-colors">Privacy Policy</Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

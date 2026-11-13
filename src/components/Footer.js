@@ -1,260 +1,106 @@
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, ArrowRight, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import NewsletterForm from "./NewsletterForm";
+
+const quickLinks = [
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
+  { name: "Case Study", href: "/case-study" },
+  { name: "Career", href: "/career" },
+];
+
+const socials = [
+  { name: "Instagram", href: "https://www.instagram.com/jenisys.in/" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/jenisys" },
+  { name: "Facebook", href: "https://www.facebook.com" },
+];
+
+const heading = "j-eyebrow mb-5";
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: "", email: "" });
-  const [formErrors, setFormErrors] = useState({ name: "", email: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errors = {};
-    if (!formData.name?.trim()) errors.name = "Name is required";
-    if (!formData.email?.trim()) errors.email = "Email is required";
-    else if (!validateEmail(formData.email)) errors.email = "Please enter a valid email address";
-
-    if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
-
-    setFormErrors({ name: "", email: "" });
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        setShowAlert(true);
-        setFormData({ name: "", email: "" });
-        setTimeout(() => setShowAlert(false), 3000);
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        setFormErrors({ api: errorData.message || "Submission failed. Please try again." });
-      }
-    } catch {
-      setFormErrors({ api: "Network error. Please try again." });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <footer className="bg-[#0F172A]">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="mb-6">
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-white font-montserrat mb-4">
-                JENISYS
-              </h2>
-              <p className="text-lg font-semibold text-white mb-3">
-                Advancing Excellence Beyond Cost
-              </p>
-              <p className="text-[#E5E7EB] text-sm leading-relaxed">
-                Delivering innovative solutions that drive business growth and
-                operational excellence through cutting-edge technology and
-                strategic consulting.
-              </p>
-            </div>
-
-            <Link href="/contact">
-              <div className="ds-btn-primary w-fit group">
-                Get Started Today
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
+    <footer className="j-night relative overflow-hidden border-t border-line">
+      {/* Oversized wordmark — the ribbon's light fading out at the bottom of every page */}
+      <div className="j-wrap pt-20 pb-12">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Jenisys home">
+              <Image src="/brand/jenisys-mark-64.png" alt="" width={40} height={40} />
+              <span className="font-display text-2xl font-semibold tracking-[-0.02em]">JENISYS</span>
+            </Link>
+            <p className="mt-5 font-display text-xl text-ink">Advancing Excellence Beyond Cost</p>
+            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-ink-muted">
+              Delivering innovative solutions that drive business growth and operational excellence through
+              cutting-edge technology and strategic consulting.
+            </p>
+            <Link href="/contact" className="j-btn j-btn-secondary mt-7">
+              Get Started Today <span className="j-arrow">→</span>
             </Link>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { name: "About", href: "/about" },
-                { name: "Blog", href: "/blog" },
-                { name: "Case Study", href: "/case-study" },
-                { name: "Career", href: "/career" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[#E5E7EB] hover:text-white transition-colors duration-200 flex items-center gap-2 group"
-                  >
-                    {link.name}
-                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <nav aria-label="Quick Links" className="lg:col-span-2">
+            <h2 className={heading}>Quick Links</h2>
+            <ul className="flex flex-col gap-3">
+              {quickLinks.map((l) => (
+                <li key={l.name}>
+                  <Link href={l.href} className="text-ink-muted transition-colors duration-150 hover:text-ink">
+                    {l.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact Information */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">
-              Contact Us
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="ds-icon-container-dark w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 bg-white/10">
-                  <MapPin className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-[#E5E7EB] text-sm leading-relaxed">
-                    Raja Ram mohon roy
-                    <br />
-                    Sarani
-                    <br />
-                    Serampore, West Bengal 712203
-                    <br />
-                    India
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="ds-icon-container-dark w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/10">
-                  <Phone className="w-4 h-4 text-white" />
-                </div>
-                <a
-                  href="tel:+918240384648"
-                  className="text-[#E5E7EB] hover:text-white transition-colors"
-                >
-                  +91 8240384648
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="ds-icon-container-dark w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/10">
-                  <Mail className="w-4 h-4 text-white" />
-                </div>
-                <a
-                  href="mailto:contact@jenisys.in"
-                  className="text-[#E5E7EB] hover:text-white transition-colors"
-                >
-                  contact@jenisys.in
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Media & Newsletter */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">
-              Stay Connected
-            </h3>
-
-            <div className="flex gap-4 mb-6">
-              {[
-                { name: "Instagram", href: "https://www.instagram.com/jenisys.in/", icon: "/img/mdi_instagram.png" },
-                { name: "LinkedIn", href: "https://www.linkedin.com/company/jenisys", icon: "/img/linkedIn.png" },
-                { name: "Facebook", href: "https://www.facebook.com", icon: "/img/facebook.png" },
-              ].map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-white/10 hover:bg-[#4F46E5] w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
-                >
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    width={20}
-                    height={20}
-                    className="w-5 h-5 brightness-0 invert transition-all"
-                  />
-                </a>
-              ))}
-            </div>
-
-            {/* Newsletter Signup */}
-            <div>
-              <p className="text-[#E5E7EB] text-sm mb-3">
-                Subscribe to our newsletter
+          <div className="lg:col-span-3">
+            <h2 className={heading}>Contact Us</h2>
+            <address className="not-italic flex flex-col gap-4 text-[15px] text-ink-muted">
+              <p className="leading-relaxed">
+                Raja Ram mohon roy
+                <br />
+                Sarani
+                <br />
+                Serampore, West Bengal 712203
+                <br />
+                India
               </p>
-              <div className="flex flex-col gap-2">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="flex-1 px-3 py-2 bg-[#111827] text-white rounded-lg border border-[#374151] focus:border-[#4F46E5] focus:outline-none focus:ring-1 focus:ring-[#4F46E5] text-sm transition-colors"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                {formErrors.name && (
-                  <p className="text-red-400 text-xs">{formErrors.name}</p>
-                )}
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 px-3 py-2 bg-[#111827] text-white rounded-lg border border-[#374151] focus:border-[#4F46E5] focus:outline-none focus:ring-1 focus:ring-[#4F46E5] text-sm transition-colors"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                {formErrors.email && (
-                  <p className="text-red-400 text-xs">{formErrors.email}</p>
-                )}
-                <button
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                  className="ds-btn-primary py-2 px-4 text-sm disabled:opacity-50"
-                  aria-label="Subscribe to newsletter"
-                >
-                  {isSubmitting ? "..." : <ArrowRight className="w-4 h-4" />}
-                </button>
-              </div>
-              {formErrors.api && (
-                <p className="text-red-400 text-xs mt-2">{formErrors.api}</p>
-              )}
-              {showAlert && (
-                <p className="text-emerald-400 text-xs mt-2">
-                  Thank you for subscribing!
-                </p>
-              )}
-            </div>
+              <a href="tel:+918240384648" className="font-mono text-ink transition-colors duration-150 hover:text-signal">
+                +91 8240384648
+              </a>
+              <a href="mailto:contact@jenisys.in" className="font-mono text-ink transition-colors duration-150 hover:text-signal">
+                contact@jenisys.in
+              </a>
+            </address>
           </div>
+
+          <div className="lg:col-span-3">
+            <h2 className={heading}>Stay Connected</h2>
+            <ul className="mb-7 flex flex-wrap gap-x-5 gap-y-2">
+              {socials.map((s) => (
+                <li key={s.name}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="j-link text-[15px]">
+                    {s.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mb-3 text-[15px] text-ink">Subscribe to our newsletter</p>
+            <NewsletterForm />
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-3 border-t border-line pt-6 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Jenisys. All rights reserved.</p>
+          <Link href="/Privacy-Policy" className="transition-colors duration-150 hover:text-ink">
+            Privacy Policy
+          </Link>
         </div>
       </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-[#374151]">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-[#9CA3AF] text-sm">
-              © 2025 Jenisys. All rights reserved.
-            </div>
-            <div className="flex gap-6 text-sm">
-              {[{ name: "Privacy Policy", href: "/Privacy-Policy" }].map(
-                (link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-[#9CA3AF] hover:text-white underline underline-offset-4 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                )
-              )}
-            </div>
-          </div>
-        </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none font-display font-bold leading-none tracking-[-0.06em] text-center text-[22vw] -mb-[5vw] bg-gradient-to-b from-raised to-void bg-clip-text text-transparent"
+      >
+        Jenisys
       </div>
     </footer>
   );

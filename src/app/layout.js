@@ -1,26 +1,26 @@
 import "./global.css";
-import { Montserrat, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { CalendarProvider } from "@/contexts/CalendarContext";
 import ClientLayout from "@/components/ClientLayout";
 
-// ✅ Montserrat font
-const montserrat = Montserrat({
+// Brand type system — see docs/brand/brand-system.md §5
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap", // Ensure swap is used
-});
-
-// ✅ Inter font (for better performance on body text)
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-bricolage",
   display: "swap",
+});
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 // ✅ Viewport metadata (for mobile browsers and Safari)
 export const viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#050a1c",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -57,20 +57,13 @@ export const metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/logo2.svg", type: "image/svg+xml" },
+      { url: "/brand/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
     apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/logo2.svg",
-        color: "#4F46E5",
-      },
-    ],
   },
   appleWebApp: {
     title: "Jenisys",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     capable: true,
   },
   openGraph: {
@@ -102,37 +95,47 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${inter.variable} font-sans`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${bricolage.variable} ${geist.variable} ${geistMono.variable}`} data-scroll-behavior="smooth">
       <body>
         <CalendarProvider>
           <ClientLayout>{children}</ClientLayout>
         </CalendarProvider>
 
-        {/* JSON-LD Organization Schema */}
-        <Script
-          id="org-jsonld"
+        {/* JSON-LD Organization Schema — rendered once, site-wide */}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": "https://www.jenisys.in#organization",
               name: "Jenisys",
               url: "https://www.jenisys.in",
-              logo: "https://www.jenisys.in/img/logo2.svg",
-              description: "AI Software Agency providing enterprise custom solutions.",
-              sameAs: ["https://www.linkedin.com/company/jenisys"],
-              areaServed: [
-                { "@type": "Country", name: "Australia" },
-                { "@type": "Country", name: "United States" }
+              logo: "https://www.jenisys.in/apple-touch-icon.png",
+              email: "contact@jenisys.in",
+              telephone: "+91 8240384648",
+              description:
+                "Jenisys is a leading IT consulting and software development company offering web, mobile, AI/ML, cloud, custom software, IT consulting, and maintenance services for startups and enterprises.",
+              sameAs: [
+                "https://www.linkedin.com/company/jenisys",
+                "https://www.instagram.com/jenisys.in/",
               ],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Raja Ram mohon roy Sarani",
+                addressLocality: "Serampore",
+                addressRegion: "West Bengal",
+                postalCode: "712203",
+                addressCountry: "IN",
+              },
+              areaServed: ["US", "AU", "GB", "CA", "IN"],
               contactPoint: {
-                 "@type": "ContactPoint",
-                 "marketingTitle": "Sales & Support",
-                 "contactType": "sales", 
-                 "areaServed": ["US", "AU", "GB", "CA", "IN"],
-                 "availableLanguage": "English"
-              }
+                "@type": "ContactPoint",
+                contactType: "sales",
+                email: "contact@jenisys.in",
+                areaServed: ["US", "AU", "GB", "CA", "IN"],
+                availableLanguage: "English",
+              },
             }),
           }}
         />
@@ -152,7 +155,6 @@ export default function RootLayout({ children }) {
         </Script>
 
         {/* Tawk.to chat widget */}
-                {/* Tawk.to chat widget */}
         <Script id="tawk-to-script" strategy="lazyOnload">
           {`
             var Tawk_API = Tawk_API || {};

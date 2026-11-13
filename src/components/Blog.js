@@ -100,7 +100,7 @@ export default function Blog() {
         <Link href={`/blog/${blog.slug}`} className="block h-full">
           <article className="ds-card overflow-hidden flex flex-col h-full cursor-pointer group">
             {blog.featured && (
-              <div className="absolute top-4 left-4 z-10 bg-[#4F46E5] text-white px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+              <div className="absolute top-4 left-4 z-10 bg-[#1652D9] text-white px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
                 <StarIcon className="w-3 h-3" />
                 Featured
               </div>
@@ -120,21 +120,21 @@ export default function Blog() {
             <div className="p-6 flex flex-col justify-between flex-1">
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-2 mb-4">
-                  <span className="bg-[#4F46E5]/8 text-[#4F46E5] text-xs px-3 py-1 rounded-full font-semibold">
+                  <span className="bg-[#1652D9]/8 text-[#1652D9] text-xs px-3 py-1 rounded-full font-semibold">
                     {blog.category || "Uncategorized"}
                   </span>
                   {blog.tags?.slice(0, 2).map((tag) => (
-                    <span key={tag} className="bg-[#F3F4F6] text-[#6B7280] text-xs px-2 py-1 rounded-md">
+                    <span key={tag} className="bg-[#F3F4F6] text-[#4A5578] text-xs px-2 py-1 rounded-md">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="font-semibold text-[#111827] mb-3 group-hover:text-[#4F46E5] transition-colors duration-300 text-xl line-clamp-2">
+                <h3 className="font-semibold text-[#0A1230] mb-3 group-hover:text-[#1652D9] transition-colors duration-300 text-xl line-clamp-2">
                   {blog.title || "Untitled"}
                 </h3>
 
-                <p className="text-[#374151] mb-4 leading-[1.65] line-clamp-3 text-sm">
+                <p className="text-[#2E3858] mb-4 leading-[1.65] line-clamp-3 text-sm">
                   {blog.excerpt || "No excerpt available."}
                 </p>
               </div>
@@ -143,14 +143,14 @@ export default function Blog() {
                 {blog.author?.name && (
                   <div className="flex items-center justify-between mb-4">
                     <div className="text-sm">
-                      <p className="text-[#111827]">
+                      <p className="text-[#0A1230]">
                         <span className="font-semibold">Author:</span> {blog.author.name}
                       </p>
                     </div>
                   </div>
                 )}
 
-                <div className="flex items-center text-sm text-[#6B7280] mb-4 space-x-4">
+                <div className="flex items-center text-sm text-[#4A5578] mb-4 space-x-4">
                   <div className="flex items-center space-x-1">
                     <CalendarIcon className="w-4 h-4" />
                     <span>{formatDate(blog.date)}</span>
@@ -163,7 +163,7 @@ export default function Blog() {
                   )}
                 </div>
 
-                <div className="inline-flex items-center text-[#4F46E5] font-semibold group-hover:text-[#3730A3] transition-all duration-300 group-hover:translate-x-1">
+                <div className="inline-flex items-center text-[#1652D9] font-semibold group-hover:text-[#1B2AA0] transition-all duration-300 group-hover:translate-x-1">
                   Read More
                   <ChevronRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -203,7 +203,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative bg-[#0F172A] text-white py-24 overflow-hidden">
+      <section className="relative bg-[#050A1C] text-white py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{
           backgroundImage: `radial-gradient(circle, #fff 1px, transparent 1px)`,
           backgroundSize: "24px 24px",
@@ -216,7 +216,7 @@ export default function Blog() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight text-white font-['Montserrat']">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight text-white font-display">
               Insights & Innovation
             </h2>
             <p className="text-lg md:text-xl text-[#E5E7EB] mb-12 max-w-3xl mx-auto leading-[1.65]">
@@ -230,16 +230,16 @@ export default function Blog() {
               className="max-w-2xl mx-auto"
             >
               <div className="relative group">
-                <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#6B7280] w-6 h-6 group-focus-within:text-[#4F46E5] transition-colors" />
+                <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#4A5578] w-6 h-6 group-focus-within:text-[#1652D9] transition-colors" />
                 <input
                   type="text"
                   placeholder="Search articles, authors, or topics..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-16 py-4 text-base rounded-xl bg-white/8 backdrop-blur-sm border border-white/15 text-white placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all duration-300"
+                  className="w-full pl-12 pr-16 py-4 text-base rounded-xl bg-white/8 backdrop-blur-sm border border-white/15 text-white placeholder-[#4A5578] focus:outline-none focus:ring-2 focus:ring-[#1652D9] focus:border-transparent transition-all duration-300"
                 />
                 {searchTerm && (
-                  <button onClick={handleClearSearch} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#6B7280] hover:text-white transition-colors">
+                  <button onClick={handleClearSearch} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#4A5578] hover:text-white transition-colors">
                     <XMarkIcon className="w-5 h-5" />
                   </button>
                 )}
@@ -260,8 +260,8 @@ export default function Blog() {
                 disabled={isLoading}
                 className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 disabled:opacity-50 ${
                   activeCategory === category
-                    ? "bg-[#4F46E5] text-white"
-                    : "bg-white text-[#6B7280] hover:text-[#4F46E5] border border-[#E5E7EB] hover:border-[#4F46E5]/30"
+                    ? "bg-[#1652D9] text-white"
+                    : "bg-white text-[#4A5578] hover:text-[#1652D9] border border-[#E5E7EB] hover:border-[#1652D9]/30"
                 }`}
               >
                 {category}
@@ -271,11 +271,11 @@ export default function Blog() {
 
           {!isLoading && (
             <div className="flex items-center justify-between">
-              <p className="text-[#6B7280] text-sm">
-                Showing <span className="font-semibold text-[#111827]">{blogs.length}</span> of{" "}
-                <span className="font-semibold text-[#111827]">{totalBlogs}</span> articles
+              <p className="text-[#4A5578] text-sm">
+                Showing <span className="font-semibold text-[#0A1230]">{blogs.length}</span> of{" "}
+                <span className="font-semibold text-[#0A1230]">{totalBlogs}</span> articles
                 {(searchTerm || activeCategory !== "All") && (
-                  <span className="text-[#6B7280] ml-2">
+                  <span className="text-[#4A5578] ml-2">
                     {searchTerm && `for "${searchTerm}"`}
                     {searchTerm && activeCategory !== "All" && " in "}
                     {activeCategory !== "All" && `${activeCategory}`}
@@ -295,10 +295,10 @@ export default function Blog() {
           ) : blogs.length === 0 ? (
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center py-20">
               <div className="w-20 h-20 mx-auto mb-6 bg-[#F3F4F6] rounded-full flex items-center justify-center">
-                <MagnifyingGlassIcon className="w-10 h-10 text-[#6B7280]" />
+                <MagnifyingGlassIcon className="w-10 h-10 text-[#4A5578]" />
               </div>
-              <h3 className="text-2xl font-semibold text-[#111827] mb-4">No articles found</h3>
-              <p className="text-[#6B7280] mb-6">
+              <h3 className="text-2xl font-semibold text-[#0A1230] mb-4">No articles found</h3>
+              <p className="text-[#4A5578] mb-6">
                 Try adjusting your search terms or category filter.
               </p>
               <button
@@ -336,16 +336,16 @@ export default function Blog() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20" style={{ background: "linear-gradient(135deg, #4F46E5, #7C3AED)" }}>
+      <section className="py-20" style={{ background: "linear-gradient(135deg, #1652D9, #0A7590)" }}>
         <div className="max-w-3xl mx-auto px-6 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4 font-['Montserrat']">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4 font-display">
             Ready to build something great?
           </h2>
           <p className="text-white/80 text-lg mb-8 leading-[1.65]">
             Let's discuss how we can help transform your business with technology.
           </p>
           <Link href="/contact">
-            <button className="bg-white text-[#4F46E5] font-semibold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2 shadow-lg">
+            <button className="bg-white text-[#1652D9] font-semibold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2 shadow-lg">
               Start a Conversation
               <ArrowRight className="w-4 h-4" />
             </button>

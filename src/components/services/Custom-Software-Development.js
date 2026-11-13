@@ -88,7 +88,7 @@ const Jenisyssftdev = () => {
         title: "Architecture Design",
         desc: "We design a scalable, secure system and select the perfect technology stack to ensure long-term success",
         icon: <Layers className="w-8 h-8" />,
-        color: "from-purple-500 to-pink-500",
+        color: "from-blue-500 to-pink-500",
       },
       {
         title: "Agile Development",
@@ -106,7 +106,7 @@ const Jenisyssftdev = () => {
         title: "Deployment & Monitoring",
         desc: "We handle the entire deployment process and provide ongoing support and real-time monitoring to ensure everything runs smoothly",
         icon: <Globe className="w-8 h-8" />,
-        color: "from-indigo-500 to-blue-500",
+        color: "from-blue-500 to-blue-500",
       },
     ],
     []
@@ -125,7 +125,7 @@ const Jenisyssftdev = () => {
           "The result was a 65% increase in processing efficiency, over $1.2M in annual savings, and a system with 99.9% uptime",
         metrics: { efficiency: "+65%", savings: "$1.2M", uptime: "99.9%" },
         tech: ["React", "Node.js", "MongoDB", "AWS"],
-        gradient: "from-[#4F46E5] to-[#7C3AED]",
+        gradient: "from-[#1652D9] to-[#0A7590]",
       },
       {
         company: "RetailHub Network",
@@ -138,7 +138,7 @@ const Jenisyssftdev = () => {
           " Decision-making speed improved by 80%, and operational costs were reduced by 45% across the entire network",
         metrics: { speed: "+80%", cost: "-45%", locations: "50+" },
         tech: ["Next.js", "PostgreSQL", "Redis", "Docker"],
-        gradient: "from-green-600 to-[#4F46E5]",
+        gradient: "from-green-600 to-[#1652D9]",
       },
       {
         company: "FinanceCore Startup",
@@ -151,7 +151,7 @@ const Jenisyssftdev = () => {
           "The startup successfully secured $5M in Series A funding and acquired over 10K users in its first quarter",
         metrics: { funding: "$5M", users: "10K+", time: "4mo" },
         tech: ["TypeScript", "Prisma", "Stripe", "Auth0"],
-        gradient: "from-[#4F46E5] to-pink-600",
+        gradient: "from-[#1652D9] to-pink-600",
       },
     ],
     []
@@ -242,20 +242,20 @@ const Jenisyssftdev = () => {
       <section className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
         {/* Simplified Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-blue-400/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-pink-400/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-medium text-blue-700 mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-100 rounded-full text-sm font-medium text-blue-700 mb-8">
               <Zap className="w-4 h-4 mr-2" />
               Trusted by 200+ companies worldwide
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
               Build Software That
-              <span className="block bg-gradient-to-r from-[#4F46E5] via-[#7C3AED] to-blue-800 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#1652D9] via-[#0A7590] to-blue-800 bg-clip-text text-transparent">
                 Doesn't Just Work—It Wins
               </span>
             </h1>
@@ -270,7 +270,7 @@ const Jenisyssftdev = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
                 onClick={openCalendar}
-                className="group bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
+                className="group bg-gradient-to-r from-[#1652D9] to-[#0A7590] text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -291,7 +291,7 @@ const Jenisyssftdev = () => {
                 icon: <Zap className="w-8 h-8" />,
                 title: "Rapid Deployment",
                 desc: "Get to market faster with our proven development methodology",
-                gradient: "from-purple-500 to-pink-500",
+                gradient: "from-blue-500 to-pink-500",
               },
               {
                 icon: <Shield className="w-8 h-8" />,
@@ -356,7 +356,7 @@ const Jenisyssftdev = () => {
                 title: "Data Integration & Analytics",
                 desc: "Unify your disparate systems to get a single source of truth and the actionable insights you need to make smart decisions.",
                 impact: "90% faster reporting",
-                color: "from-purple-500 to-pink-500",
+                color: "from-blue-500 to-pink-500",
               },
               {
                 title: "Scalable MVP Development",
@@ -403,7 +403,7 @@ const Jenisyssftdev = () => {
       {/* Development Process */}
       <section
         id="process"
-        className="py-24 bg-gradient-to-br from-[#0F172A] via-blue-900 to-[#0F172A] text-white relative overflow-hidden"
+        className="py-24 bg-gradient-to-br from-[#050A1C] via-blue-900 to-[#050A1C] text-white relative overflow-hidden"
         data-animate
       >
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -424,7 +424,7 @@ const Jenisyssftdev = () => {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
               From Idea to
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
                 {" "}
                 Impact
               </span>
@@ -440,7 +440,7 @@ const Jenisyssftdev = () => {
           <div className="relative">
             <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-white/20 rounded-full">
               <div
-                className="h-full bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transition-all duration-1000 ease-out"
+                className="h-full bg-gradient-to-r from-blue-400 to-blue-400 rounded-full transition-all duration-1000 ease-out"
                 style={{
                   width: `${((activeStep + 1) / processSteps.length) * 100}%`,
                 }}
@@ -466,7 +466,7 @@ const Jenisyssftdev = () => {
                     }`}
                     onMouseEnter={() => setActiveStep(index)}
                   >
-                    <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                    <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
                       {index + 1}
                     </div>
 
@@ -480,7 +480,7 @@ const Jenisyssftdev = () => {
                     <p className="text-blue-200 leading-relaxed">{step.desc}</p>
 
                     {activeStep === index && (
-                      <div className="absolute bottom-4 left-8 w-12 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
+                      <div className="absolute bottom-4 left-8 w-12 h-1 bg-gradient-to-r from-blue-400 to-blue-400 rounded-full" />
                     )}
                   </div>
                 </OptimizedCard>
@@ -497,7 +497,7 @@ const Jenisyssftdev = () => {
               { number: "24/7", label: "Support Coverage" },
             ].map((stat, index) => (
               <div key={index} className="group">
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform duration-200">
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform duration-200">
                   {stat.number}
                 </div>
                 <div className="text-blue-200">{stat.label}</div>
@@ -549,11 +549,11 @@ const Jenisyssftdev = () => {
                         <h3 className="text-2xl font-bold text-gray-900">
                           {study.company}
                         </h3>
-                        <span className="text-[#4F46E5] font-medium">
+                        <span className="text-[#1652D9] font-medium">
                           {study.industry}
                         </span>
                       </div>
-                      <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-[#4F46E5] transition-colors duration-200" />
+                      <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-[#1652D9] transition-colors duration-200" />
                     </div>
 
                     <div className="mb-6">
@@ -567,8 +567,8 @@ const Jenisyssftdev = () => {
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="font-semibold text-[#4F46E5] mb-3 flex items-center">
-                        <div className="w-2 h-2 bg-[#4F46E5] rounded-full mr-2" />
+                      <h4 className="font-semibold text-[#1652D9] mb-3 flex items-center">
+                        <div className="w-2 h-2 bg-[#1652D9] rounded-full mr-2" />
                         Solution
                       </h4>
                       <p className="text-gray-600 leading-relaxed">
@@ -621,13 +621,13 @@ const Jenisyssftdev = () => {
       <section className="py-24 bg-white" data-animate>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-sm font-medium text-purple-700 mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-sm font-medium text-blue-700 mb-6">
               <Layers className="w-4 h-4 mr-2" />
               Enterprise-Grade Features
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
               Built for Scale,
-              <span className="block text-[#7C3AED]">Designed for Growth</span>
+              <span className="block text-[#0A7590]">Designed for Growth</span>
             </h2>
           </div>
 
@@ -642,9 +642,9 @@ const Jenisyssftdev = () => {
                 } transition-all duration-500`}
                 delay={index * 80}
               >
-                <div className="group bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-purple-200 transition-colors duration-200 h-full">
+                <div className="group bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 transition-colors duration-200 h-full">
                   <div className="flex items-start">
-                    <div className="flex-shrink-0 p-3 bg-purple-100 rounded-xl group-hover:bg-purple-200 transition-colors duration-200">
+                    <div className="flex-shrink-0 p-3 bg-blue-100 rounded-xl group-hover:bg-blue-200 transition-colors duration-200">
                       {feature.icon}
                     </div>
                     <div className="ml-6 flex-1">
@@ -668,12 +668,12 @@ const Jenisyssftdev = () => {
 
       {/* Testimonials */}
       <section
-        className="py-24 bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900 text-white relative overflow-hidden"
+        className="py-24 bg-gradient-to-br from-blue-900 via-blue-900 to-blue-900 text-white relative overflow-hidden"
         data-animate
       >
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#4F46E5]/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#1652D9]/5 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -684,7 +684,7 @@ const Jenisyssftdev = () => {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
               Trusted by Industry
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
                 Leaders
               </span>
             </h2>
@@ -716,7 +716,7 @@ const Jenisyssftdev = () => {
                   </blockquote>
 
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       {testimonial.avatar}
                     </div>
                     <div>
@@ -796,7 +796,7 @@ const Jenisyssftdev = () => {
                 ],
                 best: "Best for: Product Development, Ongoing Enhancement",
                 icon: <Zap className="w-6 h-6" />,
-                color: "from-purple-500 to-pink-500",
+                color: "from-blue-500 to-pink-500",
                 featured: true,
               },
               {
@@ -825,12 +825,12 @@ const Jenisyssftdev = () => {
                 <div
                   className={`bg-white rounded-2xl shadow-lg border-2 h-full relative overflow-hidden hover:shadow-xl transition-shadow duration-200 ${
                     model.featured
-                      ? "border-purple-200 scale-[1.02]"
+                      ? "border-blue-200 scale-[1.02]"
                       : "border-gray-100"
                   }`}
                 >
                   {model.featured && (
-                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center py-2 text-sm font-semibold">
+                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-500 to-pink-500 text-white text-center py-2 text-sm font-semibold">
                       Most Popular
                     </div>
                   )}
@@ -883,15 +883,15 @@ const Jenisyssftdev = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-[#0F172A] via-blue-900 to-purple-900 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-[#050A1C] via-blue-900 to-blue-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5]/10 to-[#7C3AED]/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1652D9]/10 to-[#0A7590]/10" />
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
             Ready to Transform
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
               Your Business?
             </span>
           </h2>
@@ -904,7 +904,7 @@ const Jenisyssftdev = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <button
               onClick={openCalendar}
-              className="group bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
+              className="group bg-gradient-to-r from-blue-500 to-blue-500 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200 inline-flex items-center"
             >
               <Calendar className="mr-3 w-5 h-5" />
               Book Free Strategy Call
@@ -918,7 +918,7 @@ const Jenisyssftdev = () => {
               <div className="text-blue-200">Support Available</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-[#7C3AED] mb-2">
+              <div className="text-2xl font-bold text-[#0A7590] mb-2">
                 6 weeks
               </div>
               <div className="text-blue-200">Average MVP Delivery</div>
@@ -951,7 +951,7 @@ const Jenisyssftdev = () => {
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, #2563eb, #7c3aed);
+          background: linear-gradient(to bottom, #2563eb, #0A7590);
         }
 
         /* Optimized animations with better performance */

@@ -52,7 +52,7 @@ const AboutUsRedesign = memo(() => {
       title: "Unmatched Expertise",
       description:
         "Our team consists of seasoned experts with deep industry experience, ensuring your project is in the hands of the best.",
-      color: "from-indigo-400 to-blue-500",
+      color: "from-blue-400 to-blue-500",
     },
     {
       icon: <Lightbulb className="w-6 h-6 md:w-8 md:h-8" />,
@@ -273,13 +273,13 @@ const AboutUsRedesign = memo(() => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-start pt-[100px] pb-[40px] overflow-hidden px-4 sm:px-6">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
-          <div className="absolute inset-0 bg-[#0F172A]/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-900 to-blue-900"></div>
+          <div className="absolute inset-0 bg-[#050A1C]/30"></div>
 
           {/* Purple Glow Blobs */}
-          <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-20 sm:w-36 h-20 sm:h-36 bg-purple-400/30 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-20 sm:w-36 h-20 sm:h-36 bg-blue-400/30 rounded-full blur-2xl animate-pulse"></div>
           <div className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-32 sm:w-60 h-32 sm:h-60 bg-fuchsia-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-40 sm:w-72 h-40 sm:h-72 bg-violet-500/10 rounded-full blur-[100px] animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 left-1/2 w-40 sm:w-72 h-40 sm:h-72 bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-500"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-[80px]">
@@ -289,9 +289,9 @@ const AboutUsRedesign = memo(() => {
               isVisible.hero ? "fade-in-up" : "opacity-0 translate-y-10"
             }`}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 font-['Montserrat']">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 font-display">
               About{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
                 Jenisys
               </span>
             </h1>
@@ -313,7 +313,7 @@ const AboutUsRedesign = memo(() => {
 
             <a
               href="#our-journey"
-              className="group bg-gradient-to-r from-purple-500 via-violet-600 to-indigo-700 hover:from-[#4F46E5] hover:via-violet-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-800/50 flex items-center gap-3 mx-auto"
+              className="group bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-[#1652D9] hover:via-blue-700 hover:to-blue-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-blue-800/50 flex items-center gap-3 mx-auto"
             >
               Discover How We Partner with You
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
@@ -343,7 +343,7 @@ const AboutUsRedesign = memo(() => {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-indigo-600 mb-2 group-hover:text-[#4F46E5] transition-colors">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 mb-2 group-hover:text-[#1652D9] transition-colors">
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium text-sm sm:text-base">
@@ -367,8 +367,8 @@ const AboutUsRedesign = memo(() => {
                   : "opacity-0 -translate-x-12"
               }`}
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 font-['Montserrat']">
-                Who We <span className="text-indigo-600">Are</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 font-display">
+                Who We <span className="text-blue-600">Are</span>
               </h2>
 
               <div className="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed">
@@ -417,14 +417,14 @@ const AboutUsRedesign = memo(() => {
               }`}
             >
               <div className="relative">
-                <div className="bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] rounded-2xl p-8 shadow-2xl">
+                <div className="bg-gradient-to-br from-[#1652D9] to-[#1652D9] rounded-2xl p-8 shadow-2xl">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-white">
                     <div className="text-center transition duration-300 hover:scale-105">
-                      <Target className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 text-purple-200" />
+                      <Target className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 text-blue-200" />
                       <h3 className="text-lg sm:text-xl font-bold mb-2">
                         Our Mission
                       </h3>
-                      <p className="text-sm text-purple-100">
+                      <p className="text-sm text-blue-100">
                         To empower businesses with innovative technology
                         solutions that drive sustainable growth and competitive
                         advantage.
@@ -462,8 +462,8 @@ const AboutUsRedesign = memo(() => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-['Montserrat']">
-              Our <span className="text-[#7C3AED]">Journey</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-display">
+              Our <span className="text-[#0A7590]">Journey</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
               From humble beginnings to industry leadership, here's how we've
@@ -472,7 +472,7 @@ const AboutUsRedesign = memo(() => {
           </div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-blue-500 hidden md:block"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-blue-500 hidden md:block"></div>
 
             <div className="space-y-8 sm:space-y-12">
               {milestones.map((milestone, index) => (
@@ -493,11 +493,11 @@ const AboutUsRedesign = memo(() => {
                       index % 2 === 0 ? "sm:pr-12 sm:text-right" : "sm:pl-12"
                     }`}
                   >
-                    <div className="bg-gray-800 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 group hover:scale-105">
-                      <div className="text-[#7C3AED] font-bold text-lg sm:text-xl mb-2">
+                    <div className="bg-gray-800 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-blue-500 transition-all duration-300 group hover:scale-105">
+                      <div className="text-[#0A7590] font-bold text-lg sm:text-xl mb-2">
                         {milestone.year}
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-purple-300 transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors">
                         {milestone.title}
                       </h3>
                       <p className="text-gray-300 text-sm sm:text-base">
@@ -506,7 +506,7 @@ const AboutUsRedesign = memo(() => {
                     </div>
                   </div>
 
-                  <div className="absolute left-2.5 sm:left-1/2 sm:transform sm:-translate-x-1/2 w-3 h-3 sm:w-6 sm:h-6 bg-indigo-400 rounded-full border-2 sm:border-4 border-gray-900 z-10 flex-shrink-0 mt-6"></div>
+                  <div className="absolute left-2.5 sm:left-1/2 sm:transform sm:-translate-x-1/2 w-3 h-3 sm:w-6 sm:h-6 bg-blue-400 rounded-full border-2 sm:border-4 border-gray-900 z-10 flex-shrink-0 mt-6"></div>
 
                   <div className="flex-1 hidden sm:block"></div>
                 </div>
@@ -527,8 +527,8 @@ const AboutUsRedesign = memo(() => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 font-['Montserrat']">
-              Our Core <span className="text-indigo-600">Values</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 font-display">
+              Our Core <span className="text-blue-600">Values</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               The principles that guide every decision we make and every
@@ -583,8 +583,8 @@ const AboutUsRedesign = memo(() => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 font-['Montserrat']">
-              Our <span className="text-[#7C3AED]">Technology Stack</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 font-display">
+              Our <span className="text-[#0A7590]">Technology Stack</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               We leverage cutting-edge technologies to build robust, scalable,
@@ -602,8 +602,8 @@ const AboutUsRedesign = memo(() => {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 text-center border border-gray-200 hover:border-purple-300">
-                  <div className="text-[#7C3AED] mb-4 group-hover:text-[#4F46E5] transition-colors flex justify-center">
+                <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 text-center border border-gray-200 hover:border-blue-300">
+                  <div className="text-[#0A7590] mb-4 group-hover:text-[#1652D9] transition-colors flex justify-center">
                     {tech.icon}
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">
@@ -620,7 +620,7 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
+      <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-900 to-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div
             data-animate-id="testimonial-header"
@@ -630,10 +630,10 @@ const AboutUsRedesign = memo(() => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-['Montserrat']">
-              What Our <span className="text-purple-300">Clients Say</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-display">
+              What Our <span className="text-blue-300">Clients Say</span>
             </h2>
-            <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
               Don't just take our word for it. Here's what our clients have to
               say about working with us.
             </p>
@@ -649,7 +649,7 @@ const AboutUsRedesign = memo(() => {
                     : "opacity-0 scale-95"
                 }`}
               >
-                <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-indigo-300 mx-auto mb-4 sm:mb-6" />
+                <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-blue-300 mx-auto mb-4 sm:mb-6" />
 
                 <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed mb-6 sm:mb-8 text-slate-100">
                   "{testimonials[currentTestimonial].content}"
@@ -669,7 +669,7 @@ const AboutUsRedesign = memo(() => {
                 <div className="text-base sm:text-lg font-semibold text-white mb-1">
                   {testimonials[currentTestimonial].name}
                 </div>
-                <div className="text-purple-300 text-sm sm:text-base">
+                <div className="text-blue-300 text-sm sm:text-base">
                   {testimonials[currentTestimonial].role},{" "}
                   {testimonials[currentTestimonial].company}
                 </div>
@@ -682,7 +682,7 @@ const AboutUsRedesign = memo(() => {
                     onClick={() => setCurrentTestimonial(index)}
                     className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                       index === currentTestimonial
-                        ? "bg-purple-400"
+                        ? "bg-blue-400"
                         : "bg-white/30 hover:bg-white/50"
                     }`}
                   />
@@ -694,17 +694,17 @@ const AboutUsRedesign = memo(() => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white">
         <div
           data-animate-id="cta"
           className={`max-w-4xl mx-auto text-center px-4 sm:px-6 transition-all duration-1000 ${
             isVisible.cta ? "fade-in-up" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-['Montserrat']">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 font-display">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-lg sm:text-xl mb-8 sm:mb-10 text-purple-100">
+          <p className="text-lg sm:text-xl mb-8 sm:mb-10 text-blue-100">
             Let's discuss how we can help you achieve your digital
             transformation goals and drive your business forward.
           </p>
@@ -712,14 +712,14 @@ const AboutUsRedesign = memo(() => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="bg-white text-[#7C3AED] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-3 justify-center group"
+              className="bg-white text-[#0A7590] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center gap-3 justify-center group"
             >
               Start Your Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <button
               onClick={openCalendar}
-              className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-[#7C3AED] transition-all duration-300 transform hover:scale-105"
+              className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-[#0A7590] transition-all duration-300 transform hover:scale-105"
             >
               Schedule a Consultation
             </button>

@@ -107,13 +107,13 @@ const Cloudsln = () => {
       icon: Truck,
       title: "Logistics",
       desc: "Real-time tracking",
-      color: "from-purple-500 to-violet-500",
+      color: "from-blue-500 to-blue-500",
     },
     {
       icon: GraduationCap,
       title: "Education",
       desc: "Remote learning",
-      color: "from-indigo-500 to-blue-500",
+      color: "from-blue-500 to-blue-500",
     },
   ];
 
@@ -229,7 +229,7 @@ const Cloudsln = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-blue-900 to-indigo-900 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#050A1C] via-blue-900 to-blue-900 text-white">
         <div className="absolute inset-0 opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
           <div className="text-center">
@@ -239,7 +239,7 @@ const Cloudsln = () => {
                 <div className="absolute inset-0 bg-blue-500 blur-xl opacity-20"></div>
               </div>
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Unlock a Faster, Smarter, and More Secure Business.
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed">
@@ -250,7 +250,7 @@ const Cloudsln = () => {
             </p>
             <button
               onClick={openCalendar}
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-[#4F46E5] hover:to-indigo-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group"
+              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-[#1652D9] hover:to-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group"
             >
               Get a Free Cloud Readiness Assessment
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -322,7 +322,7 @@ const Cloudsln = () => {
       </section>
 
       {/* Cloud Services */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -339,7 +339,7 @@ const Cloudsln = () => {
                 key={i}
                 className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
               >
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 rounded-xl w-fit mb-6 group-hover:scale-110 transition-transform">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-xl w-fit mb-6 group-hover:scale-110 transition-transform">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -366,7 +366,7 @@ const Cloudsln = () => {
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
             {workflow.map((step, i) => (
               <div key={i} className="relative group">
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-6 rounded-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full">
+                <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-2xl text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full">
                   <div className="text-2xl font-bold mb-2">{i + 1}</div>
                   <h3 className="font-bold mb-2">{step.title}</h3>
                   <p className="text-sm opacity-90">{step.desc}</p>
@@ -408,7 +408,7 @@ const Cloudsln = () => {
       </section>
 
       {/* Case Study Metrics */}
-      <section className="py-20 bg-gradient-to-r from-[#4F46E5] to-indigo-700 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1652D9] to-blue-700 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">
@@ -497,7 +497,7 @@ const Cloudsln = () => {
                 key={i}
                 className="text-center p-6 rounded-2xl hover:bg-blue-50 transition-colors group"
               >
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 rounded-full w-fit mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-full w-fit mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -555,7 +555,7 @@ const Cloudsln = () => {
             </p>
           </div>
           <div className="relative">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-12 rounded-2xl shadow-xl">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-50 p-12 rounded-2xl shadow-xl">
               <div className="flex justify-center mb-8">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -568,7 +568,7 @@ const Cloudsln = () => {
                 "{testimonials[currentTestimonial].quote}"
               </blockquote>
               <div className="flex items-center justify-center">
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold mr-4">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold mr-4">
                   {testimonials[currentTestimonial].avatar}
                 </div>
                 <div>
@@ -584,7 +584,7 @@ const Cloudsln = () => {
             <div className="flex justify-center mt-8 space-x-4">
               <button
                 onClick={() => setIsPaused(!isPaused)}
-                className="bg-blue-500 hover:bg-[#4F46E5] text-white p-2 rounded-full transition-colors"
+                className="bg-blue-500 hover:bg-[#1652D9] text-white p-2 rounded-full transition-colors"
               >
                 {isPaused ? (
                   <Play className="w-4 h-4" />
@@ -639,7 +639,7 @@ const Cloudsln = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-[#4F46E5] to-indigo-700 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1652D9] to-blue-700 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold mb-6">
             Ready to Elevate Your Infrastructure?
@@ -651,7 +651,7 @@ const Cloudsln = () => {
           </p>
           <button
             onClick={openCalendar}
-            className="bg-white text-[#4F46E5] px-12 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group"
+            className="bg-white text-[#1652D9] px-12 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto group"
           >
             Book Your Free Cloud Consultation
             <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />

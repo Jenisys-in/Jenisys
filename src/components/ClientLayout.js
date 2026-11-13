@@ -1,42 +1,31 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Navbar from "@/components/Navbar";
-import ScrollToTop from "@/components/ScrolltoTop";
-import SmoothScrolling from "@/components/SmoothScrolling";
-import CalendarModal from "@/components/CalendarModal";
-import CookieConsent from "@/components/CookieConsent";
 import { useCalendar } from "@/contexts/CalendarContext";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+// Non-critical UI loads after the page is interactive.
+const CalendarModal = dynamic(() => import("@/components/CalendarModal"), { ssr: false });
+const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+const StickyCta = dynamic(() => import("@/components/StickyCta"), { ssr: false });
 
 const ClientLayout = ({ children }) => {
   const { isCalendarOpen, closeCalendar } = useCalendar();
 
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
-
   return (
     <>
-      <div>
-        <SmoothScrolling>
-          <Navbar />
-          <main>{children}</main>
-          <ScrollToTop />
-        </SmoothScrolling>
-      </div>
+      <Navbar />
+      <main id="main">{children}</main>
+      <StickyCta />
 
-      <CalendarModal isOpen={isCalendarOpen} onClose={closeCalendar} />
-      
-      {/* Cookie Consent Banner */}
+      {isCalendarOpen && <CalendarModal isOpen={isCalendarOpen} onClose={closeCalendar} />}
+
       <CookieConsent />
 
-      {/* Vercel integrations */}
       <SpeedInsights />
       <Analytics />
     </>

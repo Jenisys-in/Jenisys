@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <main
       className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-white px-4 py-12"
-      style={{ background: "linear-gradient(135deg, #4F46E5, #7C3AED)" }}
+      style={{ background: "linear-gradient(135deg, #1652D9, #0A7590)" }}
     >
       <motion.h1
         initial={{ scale: 0.8, opacity: 0 }}
@@ -36,7 +36,7 @@ export default function NotFound() {
       >
         <Link
           href="/"
-          className="inline-flex items-center px-6 py-3 bg-white text-[#4F46E5] font-semibold rounded-lg shadow-md hover:bg-white/90 transition-all duration-200"
+          className="inline-flex items-center px-6 py-3 bg-white text-[#1652D9] font-semibold rounded-lg shadow-md hover:bg-white/90 transition-all duration-200"
         >
           <ArrowLeft className="mr-2" /> Back to Home
         </Link>

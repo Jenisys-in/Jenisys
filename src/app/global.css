@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
@@ -9,28 +8,28 @@
 
 :root {
   /* Primary */
-  --ds-primary: #4F46E5;
-  --ds-primary-hover: #3730A3;
-  --ds-accent: #7C3AED;
+  --ds-primary: #1652D9;
+  --ds-primary-hover: #1B2AA0;
+  --ds-accent: #0A7590;
 
   /* Backgrounds */
   --ds-bg-main: #FFFFFF;
-  --ds-bg-section: #F9FAFB;
-  --ds-bg-alt: #F3F4F6;
-  --ds-bg-dark: #0F172A;
-  --ds-bg-dark-surface: #111827;
+  --ds-bg-section: #F5F7FC;
+  --ds-bg-alt: #EAEFF8;
+  --ds-bg-dark: #050A1C;
+  --ds-bg-dark-surface: #0A1330;
 
   /* Borders */
-  --ds-border: #E5E7EB;
+  --ds-border: #D5DCE8;
 
   /* Text */
-  --ds-text-primary: #111827;
-  --ds-text-body: #374151;
-  --ds-text-muted: #6B7280;
+  --ds-text-primary: #0A1230;
+  --ds-text-body: #2E3858;
+  --ds-text-muted: #4A5578;
   --ds-text-on-dark: #E5E7EB;
 
   /* Gradient */
-  --ds-gradient: linear-gradient(135deg, #4F46E5, #7C3AED);
+  --ds-gradient: linear-gradient(120deg, #1B2AA0, #1652D9 55%, #0A7590);
 
   /* Shadows */
   --ds-shadow-card: 0 1px 2px rgba(0, 0, 0, .04);
@@ -48,9 +47,30 @@
   --breakpoint-pm: 430px;
   --breakpoint-3xl: 1920px;
 
-  --font-montserrat: var(--font-montserrat);
+  --font-montserrat: var(--font-bricolage), system-ui, sans-serif;
 
-  --color-purpleCustom: #4F46E5;
+  --color-purpleCustom: #1652D9;
+
+  /* ===== Jenisys brand system (docs/brand/brand-system.md) — Night values ===== */
+  --color-void: #050a1c;
+  --color-deep: #0a1330;
+  --color-raised: #111d45;
+  --color-line: #22305f;
+  --color-ink: #edf2ff;
+  --color-ink-muted: #98a5c9;
+  --color-navy: #1b2aa0;
+  --color-volt: #4c8dff;
+  --color-volt-day: #1652d9;
+  --color-signal: #14e2f9;
+  --color-signal-day: #0a7590;
+  --color-flare: #ffb23f;
+  --color-on-flare: #0a1230;
+  --color-gain: #3ee59c;
+  --color-alert: #ff7a70;
+  --font-display: var(--font-bricolage), "Geist", system-ui, sans-serif;
+  --font-sans: var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ease-light: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -101,25 +121,25 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 14% 10%;
+    --foreground: 228 66% 11%;
     --card: 0 0% 100%;
     --card-foreground: 220 14% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 220 14% 10%;
-    --primary: 239 84% 67%;
+    --primary: 222 82% 47%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 14% 96%;
     --secondary-foreground: 220 14% 10%;
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
-    --accent: 263 70% 58%;
+    --accent: 192 87% 30%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 239 84% 67%;
-    --chart-1: 239 84% 67%;
+    --ring: 222 82% 47%;
+    --chart-1: 222 82% 47%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
@@ -430,4 +450,169 @@
 .smooth-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(79, 70, 229, 0.15);
+}
+/* ============================================
+   JENISYS BRAND LAYER (Night-first)
+   ============================================ */
+
+body {
+  font-family: var(--font-sans);
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+.j-night {
+  background: var(--color-void);
+  color: var(--color-ink);
+  color-scheme: dark;
+}
+
+.j-wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+}
+@media (min-width: 768px) {
+  .j-wrap { padding-inline: 32px; }
+}
+
+.j-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-signal);
+}
+
+.j-h1 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(42px, 6.4vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.j-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 3.6vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+.j-h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 1.8vw, 24px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.j-lead {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  max-width: 60ch;
+}
+
+/* Buttons */
+.j-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition: box-shadow 160ms var(--ease-light), transform 160ms var(--ease-light),
+    border-color 160ms var(--ease-light), color 160ms var(--ease-light), background-color 160ms var(--ease-light);
+}
+.j-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px #14e2f9, 0 0 24px rgba(20, 226, 249, 0.35);
+}
+.j-btn-primary {
+  background: var(--color-flare);
+  color: var(--color-on-flare);
+}
+.j-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 32px rgba(255, 178, 63, 0.35);
+}
+.j-btn-secondary {
+  border: 1px solid var(--color-ink-muted);
+  color: var(--color-ink);
+}
+.j-btn-secondary:hover {
+  border-color: var(--color-signal);
+  color: var(--color-signal);
+}
+.j-btn .j-arrow {
+  font-family: var(--font-mono);
+  transition: transform 160ms var(--ease-light);
+}
+.j-btn:hover .j-arrow { transform: translateX(3px); }
+
+.j-link {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 160ms var(--ease-light), color 160ms var(--ease-light);
+}
+.j-link:hover { color: var(--color-signal); text-decoration-color: var(--color-signal); }
+
+/* The light edge: 1px Ribbon gradient on featured panels */
+.j-light-edge { position: relative; }
+.j-light-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1b2aa0 15%, #4c8dff 50%, #14e2f9 85%, transparent);
+  transform-origin: left;
+  transition: transform 240ms var(--ease-light), opacity 240ms var(--ease-light);
+}
+.j-panel {
+  background: var(--color-raised);
+  border-radius: 24px;
+  transition: box-shadow 240ms var(--ease-light);
+}
+.j-panel:hover { box-shadow: 0 0 0 1px rgba(20, 226, 249, 0.5), 0 0 40px rgba(20, 226, 249, 0.12); }
+
+.j-rule { border-top: 1px solid var(--color-line); }
+
+/* Scroll reveal — content stays readable at rest (opacity never 0) */
+.j-reveal {
+  transform: translateY(14px);
+  transition: transform 420ms var(--ease-light);
+}
+.j-reveal.is-in { transform: none; }
+@keyframes j-cookie-in { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Grid of light — subtle hero backdrop */
+.j-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(34, 48, 95, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 48, 95, 0.45) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, #000 20%, transparent 75%);
+}
+
+/* Infinite marquee (tech stack) */
+@keyframes j-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.j-marquee { animation: j-marquee 40s linear infinite; }
+.j-marquee:hover { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .j-reveal { transform: none; }
+  .j-marquee { animation: none; }
 }
