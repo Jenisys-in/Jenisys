@@ -616,3 +616,31 @@ body {
   .j-reveal { transform: none; }
   .j-marquee { animation: none; }
 }
+
+/* Day theme — long-form reading (legal, articles). Brand system §4 */
+.j-day {
+  --day-bg: #f5f7fc;
+  --day-surface: #ffffff;
+  --day-line: #d5dce8;
+  --day-ink: #0a1230;
+  --day-muted: #4a5578;
+  --day-volt: #1652d9;
+  background: var(--day-bg);
+  color: var(--day-ink);
+  color-scheme: light;
+}
+.j-legal { font-size: 17px; line-height: 1.75; color: var(--day-muted); }
+.j-legal-head { padding-bottom: 32px; margin-bottom: 40px; border-bottom: 1px solid var(--day-line); }
+.j-legal-head h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.03em; color: var(--day-ink); }
+.j-legal-head p { margin-top: 10px; }
+.j-legal-head p:last-child { font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--day-volt); }
+.j-legal section { margin-top: 40px; }
+.j-legal h2 { font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.25; letter-spacing: -0.015em; color: var(--day-ink); margin-bottom: 14px; scroll-margin-top: 96px; }
+.j-legal h3 { font-weight: 600; font-size: 17px; color: var(--day-ink); margin: 20px 0 8px; }
+.j-legal p + p { margin-top: 14px; }
+.j-legal ul { list-style: disc; padding-left: 22px; margin: 12px 0; display: flex; flex-direction: column; gap: 6px; }
+.j-legal strong { color: var(--day-ink); font-weight: 600; }
+.j-legal a { color: var(--day-volt); text-decoration: underline; text-underline-offset: 3px; }
+.j-legal-box { background: var(--day-surface); border: 1px solid var(--day-line); border-radius: 16px; padding: 24px; }
+.j-legal-box h3 { margin-top: 0; }
+.j-legal > div > div:last-child { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--day-line); font-size: 14px; }

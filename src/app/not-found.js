@@ -1,50 +1,30 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import Footer from "@/components/Footer";
+
+export const metadata = { title: "Page not found — Jenisys", robots: { index: false } };
 
 export default function NotFound() {
   return (
-    <main
-      className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-white px-4 py-12"
-      style={{ background: "linear-gradient(135deg, #1652D9, #0A7590)" }}
-    >
-      <motion.h1
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="text-[7rem] font-semibold leading-none z-10"
-      >
-        404
-      </motion.h1>
-
-      <motion.p
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-xl sm:text-2xl text-white/80 text-center mb-6 z-10"
-      >
-        Sorry, the page you're looking for doesn't exist.
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        className="z-10"
-      >
-        <Link
-          href="/"
-          className="inline-flex items-center px-6 py-3 bg-white text-[#1652D9] font-semibold rounded-lg shadow-md hover:bg-white/90 transition-all duration-200"
-        >
-          <ArrowLeft className="mr-2" /> Back to Home
-        </Link>
-      </motion.div>
-
-      <div className="absolute bottom-6 text-sm text-white/50 z-10">
-        © {new Date().getFullYear()} Jenisys Technologies
+    <>
+    <section className="j-night relative isolate overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0 -z-10 j-grid-bg" />
+      <div className="j-wrap flex min-h-[70vh] flex-col items-start justify-center py-24">
+        <p className="j-eyebrow mb-6">Error 404</p>
+        <h1 className="font-display text-[clamp(96px,18vw,220px)] font-bold leading-none tracking-[-0.06em] bg-gradient-to-r from-navy via-volt to-signal bg-clip-text text-transparent">
+          404
+        </h1>
+        <p className="j-lead mt-6">Sorry, the page you&apos;re looking for doesn&apos;t exist.</p>
+        <div className="mt-10 flex flex-wrap gap-3">
+          <Link href="/" className="j-btn j-btn-primary">
+            <span className="j-arrow" aria-hidden="true">←</span> Back to Home
+          </Link>
+          <Link href="/case-study" className="j-btn j-btn-secondary">
+            See Our Work
+          </Link>
+        </div>
       </div>
-    </main>
+    </section>
+    <Footer />
+    </>
   );
 }
