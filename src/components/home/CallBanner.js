@@ -11,15 +11,16 @@ export default function CallBanner() {
         style={{ background: "radial-gradient(closest-side, rgba(20,226,249,.22), rgba(27,42,160,.35) 50%, transparent)" }}
       />
       <div className="j-wrap text-left md:text-center">
-        <h2 id="call-title" className="j-h2 mx-auto max-w-3xl">Schedule a free call over a cup of coffee</h2>
-        <p className="mx-auto mt-5 max-w-xl text-[17px] text-ink-muted">Don&apos;t like coffee? Let&apos;s schedule a free call over a beer</p>
+        <p className="j-eyebrow mb-4">Your next step</p>
+        <h2 id="call-title" className="j-h2 mx-auto max-w-3xl">Book a free 30-minute call</h2>
+        <p className="j-lead mx-auto mt-5">Tell us what you want to build or automate. You’ll leave with a clear next step and a price range, even if we’re not the right fit.</p>
         <div className="mt-10 flex flex-wrap gap-3 md:justify-center">
-          <Link href="/contact" className="j-btn j-btn-primary">
-            Start a Project <span className="j-arrow">→</span>
-          </Link>
-          <CalendarButton className="j-btn j-btn-secondary">Schedule a call</CalendarButton>
+          <CalendarButton className="j-btn j-btn-primary">
+            Book a free call <span className="j-arrow">→</span>
+          </CalendarButton>
+          <Link href="/contact" className="j-btn j-btn-secondary">Start a Project</Link>
         </div>
-        <p className="mt-10 font-mono text-[13px] text-ink-muted">Government &amp; enterprise clients · Australia &amp; US — open worldwide</p>
+        <p className="mt-10 font-mono text-[13px] text-ink-muted">Schedule a free call over a cup of coffee · Offices in Atlanta and Kolkata</p>
       </div>
     </section>
   );

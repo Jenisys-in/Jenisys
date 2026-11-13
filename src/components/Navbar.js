@@ -6,26 +6,19 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 const services = [
-  { name: "Web Development", path: "/services/web-development" },
-  { name: "Mobile App Development", path: "/services/mobile-development" },
-  { name: "Cloud Solutions", path: "/services/cloud-solutions" },
-  { name: "AI & Machine Learning", path: "/services/ai-ml" },
-  { name: "Custom Software Development", path: "/services/Custom-Software-Development" },
-  { name: "IT consulting", path: "/services/IT-consulting" },
-  { name: "Maintenance & Support", path: "/services/Maintenance" },
-];
-
-const aboutItems = [
-  { name: "Learn About Us", path: "/about" },
-  { name: "Industries We Serve", path: "/industries" },
+  { name: "AI Automation", path: "/services/ai-automation", note: "For service businesses" },
+  { name: "MVP Development", path: "/services/mvp-development", note: "For founders" },
+  { name: "Discovery Sprint", path: "/services/discovery-sprint", note: "Scope + fixed quote in 5 days" },
+  { name: "Support & Maintenance", path: "/services/support", note: "Monthly plans" },
 ];
 
 const navItems = [
-  { name: "Case Studies", path: "/case-study" },
   { name: "Services", path: "/services", dropdownItems: services },
-  { name: "About Us", path: "/about", dropdownItems: aboutItems },
+  { name: "Pricing", path: "/pricing" },
+  { name: "Case Studies", path: "/case-study" },
+  { name: "About", path: "/about" },
   { name: "Blog", path: "/blog" },
-  { name: "Contact Us", path: "/contact" },
+  { name: "Contact", path: "/contact" },
 ];
 
 function isItemActive(item, pathname) {
@@ -92,7 +85,10 @@ function DesktopItem({ item, pathname, open, setOpen }) {
                   pathname === d.path ? "text-ink bg-raised" : "text-ink-muted hover:text-ink hover:bg-raised"
                 }`}
               >
-                {d.name}
+                <span>
+                  <span className="block">{d.name}</span>
+                  {d.note && <span className="block font-mono text-[11px] text-ink-muted">{d.note}</span>}
+                </span>
                 <span className="font-mono text-signal opacity-0 -translate-x-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-x-0">
                   →
                 </span>

@@ -237,13 +237,13 @@ export default function Blog8() {
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-[#1652D9]/20 text-[#A5B4FC] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#1652D9]/20 text-[#14E2F9] text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <Bot className="w-4 h-4" />
               AI Automation · Business Operations · ROI
             </div>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight">
               AI Automation for Small Business:{" "}
-              <span className="text-[#818CF8]">What It Actually Costs,</span>
+              <span className="text-[#4C8DFF]">What It Actually Costs,</span>
               <span className="block mt-2">What It Actually Returns</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-3xl">
@@ -417,7 +417,7 @@ export default function Blog8() {
                 ))}
               </div>
               <div className="bg-[#050A1C] text-white rounded-2xl p-8">
-                <h3 className="font-bold text-[#A5B4FC] mb-4">The Practical Rule</h3>
+                <h3 className="font-bold text-[#14E2F9] mb-4">The Practical Rule</h3>
                 <p className="text-sm text-slate-300 leading-relaxed mb-4">
                   If a task involves the same steps every time and someone could write those steps down as a checklist — it can be automated. If the outcome changes based on context (e.g. a customer replied with a complaint vs. a question) — that is where AI layers in.
                 </p>

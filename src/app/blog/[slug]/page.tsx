@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
     title: blog.title,
     description: blog.description,
     keywords: blog.keywords,
-    author: blog.author,
+    authors: [{ name: blog.author?.name || "Jenisys" }],
     openGraph: {
       title: blog.title,
       description: blog.description,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
       ],
       locale: "en_US",
       type: "article",
-      author: blog.author,
+      authors: [blog.author?.name || "Jenisys"],
       publishedTime: blog.date,
       modifiedTime: blog.dateModified,
     },
@@ -72,14 +72,15 @@ export default async function BlogPostPage({ params }) {
     image: `https://www.jenisys.in${blog.thumbnail}`,
     author: {
       '@type': 'Organization',
-      name: blog.author,
+      name: blog.author?.name || 'Jenisys',
     },
+    mainEntityOfPage: `https://www.jenisys.in/blog/${blog.slug}`,
     publisher: {
       '@type': 'Organization',
       name: 'Jenisys',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.jenisys.in/logo2.svg',
+        url: 'https://www.jenisys.in/apple-touch-icon.png',
       },
     },
     datePublished: blog.date,

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import CountUp from "./CountUp";
-import { outcomes } from "./data";
+import { outcomes as all } from "@/lib/outcomes";
+
+const outcomes = all.map((o) => ({ ...o, href: `/case-study/${o.slug}` }));
 
 // The signature proof element (brand system §7).
 export default function Outcomes() {

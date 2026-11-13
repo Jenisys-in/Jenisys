@@ -1,7 +1,8 @@
 import { testimonials, testimonialsIntro } from "./data";
 
 export default function Testimonials() {
-  const [lead, ...rest] = testimonials;
+  const [lead, ...others] = testimonials;
+  const rest = [others[2], others[4]];
   return (
     <section className="j-night bg-deep border-y border-line py-24 md:py-32" aria-labelledby="testimonials-title">
       <div className="j-wrap">
@@ -21,9 +22,9 @@ export default function Testimonials() {
           </figcaption>
         </figure>
 
-        <ul className="mt-6 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-6">
+        <ul className="mt-6 grid gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-2">
           {rest.map((t, i) => (
-            <li key={t.name} className={`flex flex-col bg-deep p-7 md:p-8 ${i < 2 ? "lg:col-span-3" : "lg:col-span-2"} ${i === rest.length - 1 ? "md:col-span-2 lg:col-span-2" : ""}`}>
+            <li key={t.name} className={`flex flex-col bg-deep p-7 md:p-8 `}>
               <blockquote className="text-[16px] leading-relaxed text-ink">“{t.quote}”</blockquote>
               <p className="mt-auto pt-6 font-mono text-[13px] text-ink-muted">
                 <span className="text-ink">{t.name}</span> · {t.title}

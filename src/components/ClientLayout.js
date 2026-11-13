@@ -11,6 +11,7 @@ import { useCalendar } from "@/contexts/CalendarContext";
 // Non-critical UI loads after the page is interactive.
 const CalendarModal = dynamic(() => import("@/components/CalendarModal"), { ssr: false });
 const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+const ConsentScripts = dynamic(() => import("@/components/ConsentScripts"), { ssr: false });
 const StickyCta = dynamic(() => import("@/components/StickyCta"), { ssr: false });
 
 const ClientLayout = ({ children }) => {
@@ -25,6 +26,7 @@ const ClientLayout = ({ children }) => {
       {isCalendarOpen && <CalendarModal isOpen={isCalendarOpen} onClose={closeCalendar} />}
 
       <CookieConsent />
+      <ConsentScripts />
 
       <SpeedInsights />
       <Analytics />

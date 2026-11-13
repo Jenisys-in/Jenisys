@@ -1,27 +1,29 @@
 import Footer from "./Footer";
 import Hero from "./home/Hero";
 import Outcomes from "./home/Outcomes";
+import Offers from "./home/Offers";
+import HowItWorks from "./home/HowItWorks";
 import CaseStudies from "./home/CaseStudies";
-import Services from "./home/Services";
-import Process from "./home/Process";
+import Promises from "./home/Promises";
+import PricingPreview from "./home/PricingPreview";
 import Testimonials from "./home/Testimonials";
-import About from "./home/About";
-import TechStack from "./home/TechStack";
-import CallBanner from "./home/CallBanner";
+import Faq from "./home/Faq";
 import BlogTeaser from "./home/BlogTeaser";
+import CallBanner from "./home/CallBanner";
 
-// Server-rendered home page. Order follows the conversion rules: proof before catalogue.
+// The home page is a pitch: promise → proof → offer → process → evidence → price → objections → ask.
 export default function Home() {
   return (
     <div className="j-night">
       <Hero />
       <Outcomes />
+      <Offers />
+      <HowItWorks />
       <CaseStudies />
-      <Services />
-      <Process />
+      <Promises />
+      <PricingPreview />
       <Testimonials />
-      <About />
-      <TechStack />
+      <Faq />
       <BlogTeaser />
       <CallBanner />
       <Footer />

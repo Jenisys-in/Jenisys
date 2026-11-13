@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongodb";
+import { insertRow } from "@/lib/supabase-server";
 import { mailOptions, transporter } from "../../../../config/nodemailer";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -74,39 +74,45 @@ export async function POST(req) {
       resumeUrl = uploadResponse.secure_url;
     }
 
-    const client = await clientPromise;
-    const db = client.db("jenisys");
-
-    const talent = await db.collection("talent-pool").insertOne({
+    await insertRow("talent_pool", {
       name,
       email,
-      message,
-      resumeUrl,
-      createdAt: new Date(),
+      message: message || null,
+      resume_url: resumeUrl || null,
     });
 
     // Send email to admin
-    await transporter.sendMail({
-      ...mailOptions,
-      ...generateAdminEmailContent({
-        name,
-        email,
-        message,
-        resumeUrl,
-      }),
-      subject: "New Talent Pool Submission",
-    });
+    // A failed notification email must not lose the lead: the record is already saved.
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        ...generateAdminEmailContent({
+          name,
+          email,
+          message,
+          resumeUrl,
+        }),
+        subject: "New Talent Pool Submission",
+      });
+    } catch (mailErr) {
+      console.error("Notification email failed:", mailErr?.message || mailErr);
+    }
 
     // Send confirmation email to applicant
-    await transporter.sendMail({
-      ...mailOptions,
-      to: email, // Override the 'to' field to send to the applicant
-      ...generateApplicantEmailContent({ name }),
-      subject: "Thank You for Joining Our Talent Pool!",
-    });
+    // A failed notification email must not lose the lead: the record is already saved.
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        to: email, // Override the 'to' field to send to the applicant
+        ...generateApplicantEmailContent({ name }),
+        subject: "Thank You for Joining Our Talent Pool!",
+      });
+    } catch (mailErr) {
+      console.error("Notification email failed:", mailErr?.message || mailErr);
+    }
 
     return NextResponse.json(
-      { message: "Successfully joined talent pool.", talent },
+      { message: "Successfully joined talent pool." },
       { status: 201 }
     );
   } catch (error) {

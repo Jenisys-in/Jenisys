@@ -15,6 +15,25 @@ const nextConfig = {
     EMAIL_USER: process.env.EMAIL_USER,
     EMAIL_PASS: process.env.EMAIL_PASS,
   },
+  async redirects() {
+    const to = (source, destination) => ({ source, destination, permanent: true });
+    return [
+      to("/services/ai-ml", "/services/ai-automation"),
+      to("/services/web-development", "/services/mvp-development"),
+      to("/services/mobile-development", "/services/mvp-development"),
+      to("/services/cloud-solutions", "/services/mvp-development"),
+      to("/services/Custom-Software-Development", "/services/mvp-development"),
+      to("/services/custom-software-development", "/services/mvp-development"),
+      to("/services/IT-consulting", "/services/discovery-sprint"),
+      to("/services/it-consulting", "/services/discovery-sprint"),
+      to("/services/Maintenance", "/services/support"),
+      to("/services/maintenance", "/services/support"),
+      to("/industries", "/services"),
+      to("/startup-partnership", "/services/mvp-development"),
+      to("/quote", "/contact"),
+      to("/privacy-policy", "/Privacy-Policy"),
+    ];
+  },
   async headers() {
     return [
       {

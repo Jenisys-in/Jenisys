@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongodb";
+import { insertRow } from "@/lib/supabase-server";
 import { mailOptions, transporter } from "../../../../config/nodemailer";
 import { Client } from "@hubspot/api-client";
 
@@ -14,14 +14,20 @@ const CONTACT_MESSAGE_FIELDS = {
   msg: "Message",
 };
 
-const generateEmailContent = (data) => {
+const escapeHtml = (v) =>
+  String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+const generateEmailContent = (raw) => {
+  const data = Object.fromEntries(
+    Object.entries(raw).filter(([key, val]) => CONTACT_MESSAGE_FIELDS[key] && val !== "" && val != null)
+  );
   const stringData = Object.entries(data).reduce(
     (str, [key, val]) =>
       (str += `${CONTACT_MESSAGE_FIELDS[key]}: \n${val} \n \n`),
     ""
   );
   const htmlData = Object.entries(data).reduce((str, [key, val]) => {
-    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${val}</p>`);
+    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${escapeHtml(val)}</p>`);
   }, "");
 
   return {
@@ -49,21 +55,35 @@ export async function POST(req) {
   }
 
   try {
-    const client = await clientPromise;
-    const db = client.db("jenisys"); // Use your database name here
-
-    // Save to database
-    await db.collection("contacts").insertOne({
-      ...data,
-      createdAt: new Date(),
+    // Save to database (Supabase). Known fields get columns; the full submission is kept in payload.
+    const known = Object.fromEntries(
+      Object.keys(CONTACT_MESSAGE_FIELDS)
+        .filter((k) => data[k] !== undefined && data[k] !== null)
+        .map((k) => [k, String(data[k]).slice(0, 2000)])
+    );
+    await insertRow("contacts", {
+      name: known.name,
+      email: known.email,
+      phone: known.number || null,
+      company: known.company || null,
+      project_type: known.projectType || null,
+      budget: known.budget || null,
+      timeline: known.timeline || null,
+      message: known.msg || null,
+      payload: known,
     });
 
     // Send email
-    await transporter.sendMail({
-      ...mailOptions,
-      ...generateEmailContent(data),
-      subject: "New Contact Message",
-    });
+    // A failed notification email must not lose the lead: the record is already saved.
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        ...generateEmailContent(data),
+        subject: "New Contact Message",
+      });
+    } catch (mailErr) {
+      console.error("Notification email failed:", mailErr?.message || mailErr);
+    }
 
     // Create HubSpot contact
     try {

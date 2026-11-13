@@ -1,44 +1,38 @@
-"use client";
-import Image from "next/image";
-import React, { useEffect, useRef, useCallback } from "react";
 import Footer from "./Footer";
 
-import "../../src/app/global.css";
-import { ArrowRight, ExternalLink, MapPin, Phone, Mail } from "lucide-react";
 
 const PrivacyPolicy = () => {
-  PrivacyPolicy.displayName = "PrivacyPolicy";
   return (
     <>
-      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 mt-[85px]">
-        <div className="max-w-4xl mx-auto">
+      <div className="j-day">
+        <article className="j-legal j-wrap max-w-3xl py-16 md:py-24">
           <div>
             {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <header className="j-legal-head">
+              <h1>
                 Privacy Policy
               </h1>
-              <p className="text-lg text-gray-600">
+              <p>
                 Jenisys Software Development & Technology Consulting
               </p>
-              <p className="text-sm text-gray-500 mt-2">
+              <p>
                 Last updated: 2024-07-22
               </p>
-            </div>
+            </header>
 
             {/* Terms */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 1. Terms
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 By accessing and using the website www.jenisys.in (the
                 "Service") operated by Jenisys ("us", "we", or "our"), you
                 accept and agree to be bound by the terms and provision of this
                 agreement. These terms apply to the entire website and any email
                 or other type of communication between you and Jenisys.
               </p>
-              <p className="text-gray-700">
+              <p>
                 If you do not agree to abide by the above, please do not use
                 this service. We reserve the right to change these terms at any
                 time without prior notice.
@@ -46,17 +40,17 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Use License */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 2. Use License
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Permission is granted to temporarily download one copy of the
                 materials on Jenisys's website for personal, non-commercial
                 transitory viewing only. This is the grant of a license, not a
                 transfer of title, and under this license you may not:
               </p>
-              <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
+              <ul>
                 <li>modify or copy the materials</li>
                 <li>
                   use the materials for any commercial purpose or for any public
@@ -71,7 +65,7 @@ const PrivacyPolicy = () => {
                   materials
                 </li>
               </ul>
-              <p className="text-gray-700">
+              <p>
                 This license shall automatically terminate if you violate any of
                 these restrictions and may be terminated by Jenisys at any time.
                 Upon terminating your viewing of these materials or upon the
@@ -82,17 +76,17 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Disclaimer */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 3. Disclaimer
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 The information on this website is provided on an "as is" basis.
                 To the fullest extent permitted by law, this Company excludes
                 all representations, warranties, conditions and terms whether
                 express or implied, statutory or otherwise.
               </p>
-              <p className="text-gray-700">
+              <p>
                 Jenisys provides software development and technology consulting
                 services. While we strive to provide accurate and up-to-date
                 information about our services, we make no warranties or
@@ -104,11 +98,11 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Limitations */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 4. Limitations
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 In no event shall Jenisys or its suppliers be liable for any
                 damages (including, without limitation, damages for loss of data
                 or profit, or due to business interruption) arising out of the
@@ -117,7 +111,7 @@ const PrivacyPolicy = () => {
                 been notified orally or in writing of the possibility of such
                 damage.
               </p>
-              <p className="text-gray-700">
+              <p>
                 Because some jurisdictions do not allow limitations on implied
                 warranties, or limitations of liability for consequential or
                 incidental damages, these limitations may not apply to you. Our
@@ -128,17 +122,17 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Accuracy of Materials */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 5. Accuracy of Materials
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 The materials appearing on Jenisys's website could include
                 technical, typographical, or photographic errors. Jenisys does
                 not warrant that any of the materials on its website are
                 accurate, complete, or current.
               </p>
-              <p className="text-gray-700">
+              <p>
                 Jenisys may make changes to the materials contained on its
                 website at any time without notice. However, Jenisys does not
                 make any commitment to update the materials. Information about
@@ -149,17 +143,17 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Links */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 6. Links
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Jenisys has not reviewed all of the sites linked to our Internet
                 website and is not responsible for the contents of any such
                 linked site. The inclusion of any link does not imply
                 endorsement by Jenisys of the site.
               </p>
-              <p className="text-gray-700">
+              <p>
                 Use of any such linked website is at the user's own risk. We may
                 provide links to third-party tools, frameworks, or services that
                 we use in our development process, but we are not responsible
@@ -168,16 +162,16 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Modifications */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 7. Modifications
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Jenisys may revise these terms of service for its website at any
                 time without notice. By using this website, you are agreeing to
                 be bound by the then current version of these terms of service.
               </p>
-              <p className="text-gray-700">
+              <p>
                 We will notify users of any material changes to this privacy
                 policy by posting the updated policy on our website and updating
                 the "Last updated" date. Your continued use of our services
@@ -187,17 +181,17 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Privacy and Cookies Policy */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 8. Privacy and Cookies Policy
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Your privacy is important to us. This Privacy Policy explains
                 how Jenisys collects, uses, and protects your information when
                 you visit our website or use our software development and
                 technology consulting services.
               </p>
-              <p className="text-gray-700">
+              <p>
                 We are committed to ensuring that your privacy is protected and
                 that we comply with applicable data protection laws, including
                 the General Data Protection Regulation (GDPR) where applicable.
@@ -205,25 +199,25 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Data Controller */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 9. Data Controller
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Jenisys acts as the data controller for personal data collected
                 through our website and services. Our contact information is:
               </p>
-              <div className="bg-gray-100 p-4 rounded-lg">
-                <p className="text-gray-700">
+              <div className="j-legal-box">
+                <p>
                   <strong>Company:</strong> Jenisys
                 </p>
-                <p className="text-gray-700">
+                <p>
                   <strong>Website:</strong> www.jenisys.in
                 </p>
-                <p className="text-gray-700">
+                <p>
                   <strong>Email:</strong> contact@jenisys.in
                 </p>
-                <p className="text-gray-700">
+                <p>
                   <strong>Business Type:</strong> Software Development and
                   Technology Consulting
                 </p>
@@ -231,14 +225,14 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Purposes of Processing */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 10. Purposes of the Processing of Personal Data
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 We process your personal data for the following purposes:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>
                   <strong>Service Provision:</strong> To provide software
                   development, web applications, mobile apps, and technology
@@ -272,15 +266,15 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Legal Basis */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 11. Legal Basis of the Processing
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 We process your personal data based on the following legal
                 grounds:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>
                   <strong>Contract Performance:</strong> Processing necessary
                   for the performance of contracts for software development and
@@ -307,14 +301,14 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Recipients */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 12. Recipients of Personal Data
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 We may share your personal data with:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>
                   <strong>Service Providers:</strong> Cloud hosting providers,
                   payment processors, and development tools
@@ -336,21 +330,21 @@ const PrivacyPolicy = () => {
                   acquisition, or business transfer
                 </li>
               </ul>
-              <p className="text-gray-700 mt-4">
+              <p>
                 We do not sell, rent, or trade your personal data to third
                 parties for marketing purposes.
               </p>
             </section>
 
             {/* Period of Processing */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 13. Period of Processing
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 We retain your personal data for the following periods:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>
                   <strong>Client Data:</strong> For the duration of the contract
                   plus 7 years for legal and accounting purposes
@@ -370,24 +364,24 @@ const PrivacyPolicy = () => {
                   limitations expires
                 </li>
               </ul>
-              <p className="text-gray-700 mt-4">
+              <p>
                 Data will be securely deleted or anonymized when no longer
                 needed for the specified purposes.
               </p>
             </section>
 
             {/* Transfer Outside EEA */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 14. Transfer of Your Personal Data Outside the European Economic
                 Area
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Some of our service providers may be located outside the
                 European Economic Area (EEA). When we transfer personal data
                 outside the EEA, we ensure appropriate safeguards are in place:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>Adequacy decisions by the European Commission</li>
                 <li>
                   Standard Contractual Clauses approved by the European
@@ -396,21 +390,21 @@ const PrivacyPolicy = () => {
                 <li>Binding Corporate Rules</li>
                 <li>Certification schemes and codes of conduct</li>
               </ul>
-              <p className="text-gray-700 mt-4">
+              <p>
                 We regularly review our international transfers to ensure they
                 meet current data protection requirements.
               </p>
             </section>
 
             {/* Rights */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 15. What Are Your Rights?
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 Under data protection laws, you have the following rights:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>
                   <strong>Right of Access:</strong> Request a copy of your
                   personal data we hold
@@ -444,27 +438,27 @@ const PrivacyPolicy = () => {
                   with your local data protection authority
                 </li>
               </ul>
-              <p className="text-gray-700 mt-4">
+              <p>
                 To exercise these rights, contact us at contact@jenisys.in. We
                 will respond within one month.
               </p>
             </section>
 
             {/* Cookies */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 16. Cookies and Similar Technologies
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 We use cookies and similar technologies to enhance your
                 experience on our website. Cookies are small text files stored
                 on your device when you visit our website.
               </p>
 
-              <h3 className="text-xl font-medium text-gray-900 mb-3">
+              <h3>
                 Types of Cookies We Use:
               </h3>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
+              <ul>
                 <li>
                   <strong>Essential Cookies:</strong> Necessary for website
                   functionality and cannot be disabled
@@ -483,15 +477,15 @@ const PrivacyPolicy = () => {
                 </li>
               </ul>
 
-              <h3 className="text-xl font-medium text-gray-900 mb-3">
+              <h3>
                 Managing Cookies:
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p>
                 You can control cookies through your browser settings. However,
                 disabling certain cookies may affect website functionality. Most
                 browsers allow you to:
               </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <ul>
                 <li>View cookies stored on your device</li>
                 <li>Block cookies from specific websites</li>
                 <li>Block third-party cookies</li>
@@ -501,21 +495,21 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Data Security */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <section>
+              <h2>
                 17. Data Security
               </h2>
-              <p className="text-gray-700 mb-4">
+              <p>
                 We implement appropriate technical and organizational measures
                 to protect your personal data against unauthorized access,
                 alteration, disclosure, or destruction. Our security measures
                 include:
               </p>
 
-              <h3 className="text-xl font-medium text-gray-900 mb-3">
+              <h3>
                 Technical Measures:
               </h3>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
+              <ul>
                 <li>SSL/TLS encryption for data transmission</li>
                 <li>Encryption of sensitive data at rest</li>
                 <li>Regular security updates and patches</li>
@@ -524,10 +518,10 @@ const PrivacyPolicy = () => {
                 <li>Regular security assessments and penetration testing</li>
               </ul>
 
-              <h3 className="text-xl font-medium text-gray-900 mb-3">
+              <h3>
                 Organizational Measures:
               </h3>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
+              <ul>
                 <li>Access controls and user authentication</li>
                 <li>Employee training on data protection</li>
                 <li>Confidentiality agreements with staff and contractors</li>
@@ -536,7 +530,7 @@ const PrivacyPolicy = () => {
                 <li>Privacy by design in software development</li>
               </ul>
 
-              <p className="text-gray-700 mt-4">
+              <p>
                 While we strive to protect your personal data, no method of
                 transmission over the Internet or electronic storage is 100%
                 secure. We cannot guarantee absolute security but will notify
@@ -545,23 +539,23 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Contact Information */}
-            <section className="mb-8">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <h3 className="text-xl font-medium text-gray-900 mb-3">
+            <section>
+              <div className="j-legal-box">
+                <h3>
                   Contact Us
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p>
                   If you have any questions about this Privacy Policy or how we
                   handle your personal data, please contact us:
                 </p>
-                <div className="space-y-2">
-                  <p className="text-gray-700">
+                <div>
+                  <p>
                     <strong>Email:</strong> contact@jenisys.in
                   </p>
-                  <p className="text-gray-700">
+                  <p>
                     <strong>Website:</strong> www.jenisys.in
                   </p>
-                  <p className="text-gray-700">
+                  <p>
                     <strong>Business:</strong> Software Development and
                     Technology Consulting
                   </p>
@@ -570,8 +564,8 @@ const PrivacyPolicy = () => {
             </section>
 
             {/* Footer */}
-            <div className="text-center pt-8 border-t border-gray-200">
-              <p className="text-sm text-gray-500">
+            <div>
+              <p>
                 This privacy policy is effective as of 2024-07-22 and will
                 remain in effect except with respect to any changes in its
                 provisions in the future, which will be in effect immediately
@@ -579,7 +573,7 @@ const PrivacyPolicy = () => {
               </p>
             </div>
           </div>
-        </div>
+        </article>
       </div>
 
       {/* Footer Component */}

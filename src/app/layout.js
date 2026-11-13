@@ -140,19 +140,7 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Google tag (gtag.js) */}
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-LKJG71PLQ4"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-LKJG71PLQ4');
-          `}
-        </Script>
+        {/* Google Analytics and Apollo load from ConsentScripts, only after cookie consent. */}
 
         {/* Tawk.to chat widget */}
         <Script id="tawk-to-script" strategy="lazyOnload">
@@ -168,16 +156,6 @@ export default function RootLayout({ children }) {
                 s1.setAttribute('crossorigin','*');
                 s0.parentNode.insertBefore(s1, s0);
             })();
-          `}
-        </Script>
-
-        {/* Apollo Integration */}
-        <Script id="apollo-tracker" strategy="lazyOnload">
-          {`
-            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-            o.onload=function(){window.trackingFunctions.onLoad({appId:"69aebe8fb50a1b0021786848"})},
-            document.head.appendChild(o)}initApollo();
           `}
         </Script>
 

@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="max-w-[46rem]">
           <p className="j-eyebrow mb-6 flex items-center gap-3">
             <span className="inline-block h-px w-8 bg-gradient-to-r from-navy via-volt to-signal" aria-hidden="true" />
-            {hero.proof[0]}
+            AI automation · MVP development
           </p>
           <h1 id="hero-title" className="j-h1 text-ink">
             {hero.titleStart} <span className="relative whitespace-nowrap text-ink">{hero.titleEnd}<span aria-hidden="true" className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-navy via-volt to-signal" /></span>
@@ -35,7 +35,10 @@ export default function Hero() {
               See Our Work
             </Link>
           </div>
-          <ul className="mt-12 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-x-8 font-mono text-[13px] text-ink-muted">
+          <p className="mt-6 font-mono text-[13px] text-ink-muted">
+            AI automations from <span className="text-ink">$1,500</span> · MVPs from <span className="text-ink">$7,500</span> · fixed quotes
+          </p>
+          <ul className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-x-8 font-mono text-[13px] text-ink-muted">
             {hero.proof.slice(1).map((p) => (
               <li key={p} className="flex items-center gap-2.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_10px_#14e2f9]" aria-hidden="true" />

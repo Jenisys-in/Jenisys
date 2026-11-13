@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import CaseStudyDetail from "@/components/case-study-detail";
 import { entries } from "@/lib/case-study-data";
 
@@ -61,7 +62,7 @@ export default async function CaseStudyDetailRoute({ params }) {
     const entry = entries.find((e) => e.slug === slug);
 
     if (!entry) {
-        return null;
+        notFound();
     }
 
     const jsonLd = {
@@ -79,12 +80,22 @@ export default async function CaseStudyDetailRoute({ params }) {
             name: "Jenisys",
             logo: {
                 "@type": "ImageObject",
-                url: "https://www.jenisys.in/logo2.svg",
+                url: "https://www.jenisys.in/apple-touch-icon.png",
             },
         },
         datePublished: entry.date,
         proficiencyLevel: "Expert",
         dependencies: entry.stack.join(", "),
+        mainEntityOfPage: `https://www.jenisys.in/case-study/${entry.slug}`,
+    };
+    const breadcrumbLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.jenisys.in" },
+            { "@type": "ListItem", position: 2, name: "Case Studies", item: "https://www.jenisys.in/case-study" },
+            { "@type": "ListItem", position: 3, name: entry.title, item: `https://www.jenisys.in/case-study/${entry.slug}` },
+        ],
     };
 
     return (
@@ -92,6 +103,10 @@ export default async function CaseStudyDetailRoute({ params }) {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
             <CaseStudyDetail slug={slug} />
         </>
