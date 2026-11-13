@@ -82,24 +82,34 @@ export async function POST(req) {
     });
 
     // Send email to admin
-    await transporter.sendMail({
-      ...mailOptions,
-      ...generateAdminEmailContent({
-        name,
-        email,
-        message,
-        resumeUrl,
-      }),
-      subject: "New Talent Pool Submission",
-    });
+    // A failed notification email must not lose the lead: the record is already saved.
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        ...generateAdminEmailContent({
+          name,
+          email,
+          message,
+          resumeUrl,
+        }),
+        subject: "New Talent Pool Submission",
+      });
+    } catch (mailErr) {
+      console.error("Notification email failed:", mailErr?.message || mailErr);
+    }
 
     // Send confirmation email to applicant
-    await transporter.sendMail({
-      ...mailOptions,
-      to: email, // Override the 'to' field to send to the applicant
-      ...generateApplicantEmailContent({ name }),
-      subject: "Thank You for Joining Our Talent Pool!",
-    });
+    // A failed notification email must not lose the lead: the record is already saved.
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        to: email, // Override the 'to' field to send to the applicant
+        ...generateApplicantEmailContent({ name }),
+        subject: "Thank You for Joining Our Talent Pool!",
+      });
+    } catch (mailErr) {
+      console.error("Notification email failed:", mailErr?.message || mailErr);
+    }
 
     return NextResponse.json(
       { message: "Successfully joined talent pool." },

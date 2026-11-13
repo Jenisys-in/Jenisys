@@ -74,11 +74,16 @@ export async function POST(req) {
     });
 
     // Send email
-    await transporter.sendMail({
-      ...mailOptions,
-      ...generateEmailContent(data),
-      subject: "New Contact Message",
-    });
+    // A failed notification email must not lose the lead: the record is already saved.
+    try {
+      await transporter.sendMail({
+        ...mailOptions,
+        ...generateEmailContent(data),
+        subject: "New Contact Message",
+      });
+    } catch (mailErr) {
+      console.error("Notification email failed:", mailErr?.message || mailErr);
+    }
 
     // Create HubSpot contact
     try {
