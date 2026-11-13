@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-6 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Jenisys. All rights reserved.</p>
-          <Link href="/Privacy-Policy" className="transition-colors duration-150 hover:text-ink">
+          <Link href="/privacy-policy" className="transition-colors duration-150 hover:text-ink">
             Privacy Policy
           </Link>
         </div>
