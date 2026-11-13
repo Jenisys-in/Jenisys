@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongodb";
+import { insertRow } from "@/lib/supabase-server";
 import { mailOptions, transporter } from "../../../../config/nodemailer";
 import { Client } from "@hubspot/api-client";
 
@@ -49,13 +49,22 @@ export async function POST(req) {
   }
 
   try {
-    const client = await clientPromise;
-    const db = client.db("jenisys"); // Use your database name here
-
-    // Save to database
-    await db.collection("contacts").insertOne({
-      ...data,
-      createdAt: new Date(),
+    // Save to database (Supabase). Known fields get columns; the full submission is kept in payload.
+    const known = Object.fromEntries(
+      Object.keys(CONTACT_MESSAGE_FIELDS)
+        .filter((k) => data[k] !== undefined && data[k] !== null)
+        .map((k) => [k, String(data[k]).slice(0, 2000)])
+    );
+    await insertRow("contacts", {
+      name: known.name,
+      email: known.email,
+      phone: known.number || null,
+      company: known.company || null,
+      project_type: known.projectType || null,
+      budget: known.budget || null,
+      timeline: known.timeline || null,
+      message: known.msg || null,
+      payload: known,
     });
 
     // Send email

@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
-import connectMongoose from "../../../../../lib/mongoose";
-import Meeting from "../../../../models/Meeting";
+import { getMeeting, updateMeeting, isAdmin } from "@/lib/meetings";
 
 // Google Calendar API setup
 const SCOPES = ["https://www.googleapis.com/auth/calendar"];
@@ -40,17 +39,14 @@ export async function PUT(req, { params }) {
         { status: 500 }
       );
     }
-    const apiKey = req.headers.get("x-api-key");
-    if (apiKey !== process.env.NEXT_PUBLIC_ADMIN_API_KEY) {
+    if (!isAdmin(req)) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await params;
     const { startTime, endTime } = await req.json();
 
-    await connectMongoose();
-
-    const meeting = await Meeting.findById(id);
+    const meeting = await getMeeting(id);
     if (!meeting) {
       return NextResponse.json(
         { message: "Meeting not found" },
@@ -69,10 +65,14 @@ export async function PUT(req, { params }) {
     });
 
     // Update meeting in database
+    await updateMeeting(id, {
+      start_time: new Date(startTime).toISOString(),
+      end_time: new Date(endTime).toISOString(),
+      status: "Rescheduled",
+    });
     meeting.startTime = startTime;
     meeting.endTime = endTime;
     meeting.status = "Rescheduled";
-    await meeting.save();
 
     // Send reschedule confirmation email
     await transporter.sendMail({
@@ -117,16 +117,13 @@ export async function DELETE(req, { params }) {
         { status: 500 }
       );
     }
-    const apiKey = req.headers.get("x-api-key");
-    if (apiKey !== process.env.NEXT_PUBLIC_ADMIN_API_KEY) {
+    if (!isAdmin(req)) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await params;
 
-    await connectMongoose();
-
-    const meeting = await Meeting.findById(id);
+    const meeting = await getMeeting(id);
     if (!meeting) {
       return NextResponse.json(
         { message: "Meeting not found" },
@@ -141,8 +138,8 @@ export async function DELETE(req, { params }) {
     });
 
     // Update meeting status in database
+    await updateMeeting(id, { status: "Cancelled" });
     meeting.status = "Cancelled";
-    await meeting.save();
 
     // Send cancellation email
     await transporter.sendMail({

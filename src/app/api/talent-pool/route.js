@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongodb";
+import { insertRow } from "@/lib/supabase-server";
 import { mailOptions, transporter } from "../../../../config/nodemailer";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -74,15 +74,11 @@ export async function POST(req) {
       resumeUrl = uploadResponse.secure_url;
     }
 
-    const client = await clientPromise;
-    const db = client.db("jenisys");
-
-    const talent = await db.collection("talent-pool").insertOne({
+    await insertRow("talent_pool", {
       name,
       email,
-      message,
-      resumeUrl,
-      createdAt: new Date(),
+      message: message || null,
+      resume_url: resumeUrl || null,
     });
 
     // Send email to admin
@@ -106,7 +102,7 @@ export async function POST(req) {
     });
 
     return NextResponse.json(
-      { message: "Successfully joined talent pool.", talent },
+      { message: "Successfully joined talent pool." },
       { status: 201 }
     );
   } catch (error) {

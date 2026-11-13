@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
-import { MongoClient } from "mongodb";
+import { insertRow } from "@/lib/supabase-server";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -8,15 +8,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
-
 export async function POST(req) {
   try {
-    await client.connect();
-    const database = client.db("jenisys");
-    const collection = database.collection("startup_partnerships");
-
     const formData = await req.formData();
     const pitchDeck = formData.get("pitchDeck");
 
@@ -42,11 +35,11 @@ export async function POST(req) {
       }
     }
 
-    const finalFormData = { ...extractedFormData };
-    finalFormData.pitchDeckUrl = pitchDeckUrl;
-    finalFormData.createdAt = new Date();
-
-    await collection.insertOne(finalFormData);
+    await insertRow("startup_partnerships", {
+      email: typeof extractedFormData.email === "string" ? extractedFormData.email : null,
+      pitch_deck_url: pitchDeckUrl || null,
+      payload: extractedFormData,
+    });
 
     return NextResponse.json({
       message: "Application submitted successfully!",
@@ -57,7 +50,5 @@ export async function POST(req) {
       { message: "Error submitting application" },
       { status: 500 }
     );
-  } finally {
-    await client.close();
   }
 }
