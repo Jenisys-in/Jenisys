@@ -292,7 +292,7 @@ function Contact() {
                     </label>
                     <p className="text-xs text-ink-muted">
                       For more information, please refer to the{" "}
-                      <Link href="/Privacy-Policy" className="j-link">
+                      <Link href="/privacy-policy" className="j-link">
                         Privacy Policy
                       </Link>{" "}
                       of Jenisys.

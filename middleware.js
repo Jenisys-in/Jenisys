@@ -33,6 +33,14 @@ export function middleware(req) {
   limitData.count++;
   rateLimit.set(ip, limitData);
 
+  // Old capitalised URL → lowercase canonical. Exact, case-sensitive match here, because
+  // next.config redirects match case-insensitively and would loop on this pair.
+  if (req.nextUrl.pathname === "/Privacy-Policy") {
+    const to = req.nextUrl.clone();
+    to.pathname = "/privacy-policy";
+    return NextResponse.redirect(to, 308);
+  }
+
   const host = req.headers.get("host") || "";
   const url = req.nextUrl.clone();
 

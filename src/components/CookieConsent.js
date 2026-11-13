@@ -85,7 +85,7 @@ const CookieConsent = () => {
             
             {/* Disclaimer */}
             <div className="mt-3 pt-3 sm:mt-4 sm:pt-4 border-t border-line text-[11px] sm:text-xs text-ink-muted text-center">
-              By clicking "Accept All", you agree to our <Link href="/Privacy-Policy" className="text-signal underline underline-offset-2 hover:text-ink transition-colors">Privacy Policy</Link>
+              By clicking "Accept All", you agree to our <Link href="/privacy-policy" className="text-signal underline underline-offset-2 hover:text-ink transition-colors">Privacy Policy</Link>
             </div>
           </div>
         </div>

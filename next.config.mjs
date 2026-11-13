@@ -31,7 +31,6 @@ const nextConfig = {
       to("/industries", "/services"),
       to("/startup-partnership", "/services/mvp-development"),
       to("/quote", "/contact"),
-      to("/privacy-policy", "/Privacy-Policy"),
     ];
   },
   async headers() {

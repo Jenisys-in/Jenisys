@@ -1,5 +1,3 @@
-// src/app/Privacy-Policy/page.js
-
 import PrivacyPolicy from '../../components/Privacy-Policy';
 
 
@@ -8,6 +6,7 @@ export const metadata = {
   description: "Privacy Policy and Cookie Policy for Jenisys - Software Development and Technology Consulting Company",
   keywords: "privacy policy, data protection, cookies, GDPR, Jenisys, software development",
   robots: "index, follow",
+  alternates: { canonical: "https://www.jenisys.in/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {
