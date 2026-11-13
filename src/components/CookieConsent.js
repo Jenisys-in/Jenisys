@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from "react";
 import { Cookie, X, Check } from "lucide-react";
 import Link from "next/link";
+import { readConsent, writeConsent } from "@/lib/consent";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Check if user has already made a choice
-    const consent = localStorage.getItem("cookieConsent");
-    if (consent === null) {
+    if (readConsent() === null) {
       // Small delay for better UX
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
@@ -17,12 +17,12 @@ const CookieConsent = () => {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("cookieConsent", "true");
+    writeConsent(true);
     setIsVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("cookieConsent", "false");
+    writeConsent(false);
     setIsVisible(false);
   };
 
