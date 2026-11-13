@@ -41,47 +41,6 @@ export const caseStudies = [
   },
 ];
 
-export const servicesIntro = {
-  eyebrow: "What We Do",
-  lead: "Explore the services we offer and the industries we empower with cutting-edge technology solutions.",
-};
-
-export const services = [
-  { title: "AI Automation", description: "Streamlining business operations through intelligent automation solutions using AI models, machine learning, and workflow orchestration to enhance efficiency and reduce manual effort.", link: "/services/ai-ml" },
-  { title: "Web Development", description: "Building fast, responsive and scalable web applications with modern technologies like React, Next.js, and Node.js for optimal performance.", link: "/services/web-development" },
-  { title: "App Development", description: "Crafting native and cross-platform mobile applications for Android and iOS with React Native and Flutter frameworks.", link: "/services/mobile-development" },
-  { title: "Cloud Solutions", description: "Deploying scalable cloud infrastructures, DevOps automation, and serverless architectures on AWS, Azure, and Google Cloud.", link: "/services/cloud-solutions" },
-  { title: "Custom Software Development", description: "Tailored software solutions built to match your unique business needs — scalable, secure, and ready to fuel your growth.", link: "/services/Custom-Software-Development" },
-  { title: "IT consulting", description: "Strategic IT guidance to help you innovate, optimize operations, and make technology work for your business goals.", link: "/services/IT-consulting" },
-  { title: "Maintenance & Support", description: "Reliable ongoing support and maintenance to keep your systems running smoothly, securely, and without interruptions.", link: "/services/Maintenance" },
-];
-
-export const industries = [
-  { title: "Healthcare", description: "HIPAA-compliant platforms, telemedicine solutions, and patient management systems with advanced security protocols." },
-  { title: "Retail & E-commerce", description: "Custom storefronts, inventory management systems, payment gateways, and analytics dashboards for business growth." },
-  { title: "Education", description: "Interactive learning management systems, virtual classrooms, and comprehensive student progress tracking platforms." },
-  { title: "Finance & Fintech", description: "Custom accounting platforms, secure payment gateways, and real-time financial analytics dashboards tailored for financial institutions and startups." },
-  { title: "Hospitality & Food Services", description: "Restaurant POS systems, online food ordering platforms, and reservation management apps designed to enhance customer experience." },
-  { title: "Real Estate", description: "Dynamic property listing websites, virtual tours, and CRM systems built for agents and real estate companies to manage sales pipelines." },
-  { title: "Legal & Professional Services", description: "Case management software, secure document portals, and automated billing systems tailored for law firms and consulting agencies." },
-  { title: "Travel & Tourism", description: "Custom booking engines, itinerary planners, and mobile apps for travel agencies to enhance customer engagement and streamline operations." },
-  { title: "Media & Entertainment", description: "Interactive content platforms, OTT streaming apps, and event booking systems for creators, studios, and entertainment brands." },
-];
-
-export const processIntro = {
-  title: "Our Development Process",
-  lead: "A transparent, step-by-step approach to building impactful digital solutions.",
-};
-
-export const process = [
-  { title: "Discovery & Strategy", description: "We begin by understanding your vision, goals, and audience. Together, we define the roadmap and strategy to ensure success." },
-  { title: "UI/UX Design", description: "We design intuitive, user-focused experiences with wireframes and prototypes to align with your vision." },
-  { title: "Development", description: "Our team builds robust, scalable, and efficient solutions using modern technologies." },
-  { title: "Testing & Deployment", description: "We conduct rigorous testing for performance and security, followed by a smooth deployment." },
-  { title: "Quality Assurance", description: "Every product undergoes strict quality checks to meet the highest industry standards." },
-  { title: "Maintenance & Support", description: "We provide ongoing support, updates, and improvements to keep your product performing." },
-];
-
 export const testimonialsIntro = {
   title: "Testimonials",
   lead: "Real stories from our clients showcasing our dedication to impactful, high-performance solutions.",
@@ -95,32 +54,6 @@ export const testimonials = [
   { quote: "They treated our project like their own product. When we hit an edge case with payment proration mid-cycle, they built a dedicated test suite instead of patching around it.", name: "Marcus", title: "Engineering Manager" },
   { quote: "Most teams either understand the tech or the business. These folks do both. They pushed back on features that didn't add value and suggested things we hadn't considered.", name: "Ananya", title: "Product Owner" },
 ];
-
-export const vision =
-  "To be the trusted partner for businesses seeking transformative custom software. We empower growth by turning innovative ideas into powerful, effective technology.";
-
-export const mission = [
-  "Build custom software for your business's unique growth.",
-  "Drive innovation with AI to solve your toughest challenges.",
-  "Deliver reliable, high-quality products on time and on budget.",
-  "Be your trusted partner from concept to long-term success.",
-];
-
-export const valuesIntro = { eyebrow: "Our Values", titleA: "Innovative Tech Solutions for", titleB: "Transformative Growth" };
-
-export const values = [
-  { title: "Cutting-Edge Technology", description: "We leverage the latest technologies and frameworks to build scalable, future-proof solutions that drive real digital transformation." },
-  { title: "Innovation First", description: "We constantly explore emerging technologies like AI and automation to create groundbreaking solutions for your most complex challenges." },
-  { title: "Security & Reliability", description: "Every solution we build prioritizes robust security, data protection, and 99.9% uptime to ensure seamless business continuity." },
-  { title: "Client-Centric Approach", description: "We partner closely with our clients, understanding your unique needs to deliver personalized tech solutions that consistently exceed your expectations." },
-];
-
-export const techIntro = {
-  title: "Our Technology Stack",
-  lead: "We leverage the best technologies in the industry to build scalable, high-performance, and secure solutions for our clients.",
-};
-
-export const tech = ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "Node.js", "Express.js", "GraphQL", "Python", "MongoDB", "PostgreSQL", "Redis", "Docker", "Kubernetes", "Git", "AWS", "Figma", "Jest"];
 
 export const blogIntro = {
   title: "From the Blog",

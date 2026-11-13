@@ -1,0 +1,17 @@
+# Jenisys
+
+> Jenisys is a software agency with offices in Atlanta (USA) and Kolkata (India). We build fixed-price AI automations for service businesses and MVPs for founders.
+
+## Services
+- [AI Automation](https://www.jenisys.in/services/ai-automation): lead follow-up, document and invoice processing, AI assistants, reporting. From $1,500.
+- [MVP Development](https://www.jenisys.in/services/mvp-development): web and mobile MVPs on Next.js, React Native and Flutter. From $7,500.
+- [Discovery Sprint](https://www.jenisys.in/services/discovery-sprint): scope, prototype and fixed quote in 5 working days. $499, credited in full.
+- [Support & Maintenance](https://www.jenisys.in/services/support): monthly plans from $499.
+- [Pricing](https://www.jenisys.in/pricing)
+
+## Proof
+- [NSW adjudication registry](https://www.jenisys.in/case-study/nsw-sopa-adjudication-platform): claims processing cut from 18 days to 6.
+- [US SaaS billing platform](https://www.jenisys.in/case-study/us-saas-subscription-billing-platform): monthly close from 2 days to 4 hours; billing tickets down 80%.
+
+## Contact
+- [Contact](https://www.jenisys.in/contact) · contact@jenisys.in

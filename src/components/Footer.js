@@ -4,6 +4,8 @@ import Image from "next/image";
 import NewsletterForm from "./NewsletterForm";
 
 const quickLinks = [
+  { name: "Services", href: "/services" },
+  { name: "Pricing", href: "/pricing" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
   { name: "Case Study", href: "/case-study" },

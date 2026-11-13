@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "lint": "next lint"
   },
   "dependencies": {
     "@fontsource/lexend-exa": "^5.2.9",
@@ -30,7 +29,6 @@
     "lucide-react": "^0.563.0",
     "multiparty": "^4.2.3",
     "next": "^16.1.6",
-    "next-sitemap": "^4.2.3",
     "nodemailer": "^7.0.6",
     "react": "^19.2.4",
     "react-calendly": "^4.4.0",

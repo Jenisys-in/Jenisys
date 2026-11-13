@@ -644,3 +644,45 @@ body {
 .j-legal-box { background: var(--day-surface); border: 1px solid var(--day-line); border-radius: 16px; padding: 24px; }
 .j-legal-box h3 { margin-top: 0; }
 .j-legal > div > div:last-child { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--day-line); font-size: 14px; }
+
+/* ============================================
+   3D SCENES (code-drawn visuals; no image weight)
+   ============================================ */
+.j-scene { perspective: 1400px; perspective-origin: 50% 30%; }
+.j-stage {
+  transform-style: preserve-3d;
+  transform: rotateX(calc(14deg + var(--ry, 0deg))) rotateY(calc(-18deg + var(--rx, 0deg))) rotateZ(3deg);
+  transition: transform 600ms var(--ease-light);
+}
+.j-layer { transform-style: preserve-3d; }
+.j-z1 { transform: translateZ(24px); }
+.j-z2 { transform: translateZ(48px); }
+.j-z3 { transform: translateZ(80px); }
+.j-card3d {
+  background: linear-gradient(160deg, rgba(17, 29, 69, 0.95), rgba(10, 19, 48, 0.95));
+  border: 1px solid rgba(76, 141, 255, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.j-glow-signal { box-shadow: 0 0 0 1px rgba(20, 226, 249, 0.55), 0 0 36px rgba(20, 226, 249, 0.25), 0 30px 60px -20px rgba(0, 0, 0, 0.7); }
+.j-floor {
+  background-image:
+    linear-gradient(to right, rgba(76, 141, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(76, 141, 255, 0.16) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(closest-side, #000 40%, transparent);
+}
+.j-skel { background: rgba(152, 165, 201, 0.18); border-radius: 6px; }
+.j-skel-strong { background: rgba(152, 165, 201, 0.32); border-radius: 6px; }
+
+@keyframes j-travel { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+.j-packet { offset-rotate: 0deg; animation: j-travel 4.2s var(--ease-light) infinite; }
+@keyframes j-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.j-float { animation: j-float 6s ease-in-out infinite; }
+@keyframes j-pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(20, 226, 249, 0.45); } 100% { box-shadow: 0 0 0 14px rgba(20, 226, 249, 0); } }
+.j-pulse { animation: j-pulse-ring 2.4s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .j-packet, .j-float, .j-pulse { animation: none; }
+  .j-stage { transition: none; }
+}

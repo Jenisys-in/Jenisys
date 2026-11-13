@@ -1,4 +1,5 @@
 import TechnicalFitEvaluation from "@/components/evaluate/TechnicalFitEvaluation";
+import Footer from "@/components/Footer";
 import Script from "next/script";
 
 export const metadata = {
@@ -55,6 +56,7 @@ export default function EvaluatePage() {
     return (
         <>
             <TechnicalFitEvaluation />
+            <Footer />
             <Script
                 id="evaluate-jsonld"
                 type="application/ld+json"

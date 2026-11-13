@@ -21,21 +21,21 @@ const FORM_INITIAL_STATE = {
 
 const PROJECT_TYPES = [
   { value: "", label: "Select Project Type" },
-  { value: "web_development", label: "Web Development" },
-  { value: "mobile_app", label: "Mobile App Development" },
-  { value: "ai_ml", label: "AI/ML Solutions" },
-  { value: "cloud_services", label: "Cloud Services" },
-  { value: "consulting", label: "Technology Consulting" },
+  { value: "ai_automation", label: "AI Automation" },
+  { value: "mvp", label: "MVP / App Development" },
+  { value: "discovery_sprint", label: "Discovery Sprint" },
+  { value: "support", label: "Support & Maintenance" },
+  { value: "custom", label: "Custom project" },
   { value: "other", label: "Other" },
 ];
 
 const BUDGET_RANGES = [
   { value: "", label: "Select Budget Range" },
-  { value: "under_10k", label: "Under $10,000" },
-  { value: "10k_25k", label: "$10,000 - $25,000" },
-  { value: "25k_50k", label: "$25,000 - $50,000" },
-  { value: "50k_100k", label: "$50,000 - $100,000" },
-  { value: "100k_plus", label: "$100,000+" },
+  { value: "under_2500", label: "Under $2,500" },
+  { value: "2500_7500", label: "$2,500 - $7,500" },
+  { value: "7500_15k", label: "$7,500 - $15,000" },
+  { value: "15k_50k", label: "$15,000 - $50,000" },
+  { value: "50k_plus", label: "$50,000+" },
   { value: "not_sure", label: "Not Sure Yet" },
 ];
 

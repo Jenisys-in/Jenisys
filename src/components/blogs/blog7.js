@@ -171,13 +171,13 @@ export default function Blog7() {
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-[#1652D9]/20 text-[#A5B4FC] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#1652D9]/20 text-[#14E2F9] text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <Shield className="w-4 h-4" />
               NSW Construction Law · Payment Security
             </div>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight">
               NSW SOPA: Why Most Contractors{" "}
-              <span className="text-[#818CF8]">Lose Money They Are Owed</span>
+              <span className="text-[#4C8DFF]">Lose Money They Are Owed</span>
               <span className="block mt-2">— And How to Stop It</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-3xl">
@@ -318,7 +318,7 @@ export default function Blog7() {
                 The Act covers all parties in the construction chain: principal → main contractor → subcontractor → sub-subcontractor → supplier. Everyone who does construction work or supplies goods and services to a construction project is protected.
               </p>
               <div className="bg-[#050A1C] text-white rounded-2xl p-8 mb-6">
-                <h3 className="text-lg font-bold mb-4 text-[#A5B4FC]">Key Rights Under NSW SOPA</h3>
+                <h3 className="text-lg font-bold mb-4 text-[#14E2F9]">Key Rights Under NSW SOPA</h3>
                 <div className="space-y-3">
                   {[
                     { right: "Right to make a payment claim on each reference date — regardless of contract payment terms" },
@@ -491,7 +491,7 @@ export default function Blog7() {
                 {USE_CASES.map((uc) => (
                   <div key={uc.role} className="bg-white border border-slate-200 rounded-2xl overflow-hidden ds-card">
                     <div className="bg-[#050A1C] px-6 py-4">
-                      <span className="text-[#818CF8] font-bold text-sm uppercase tracking-widest">{uc.role}</span>
+                      <span className="text-[#4C8DFF] font-bold text-sm uppercase tracking-widest">{uc.role}</span>
                       <p className="text-white text-sm mt-1">{uc.scenario}</p>
                     </div>
                     <div className="p-6 grid md:grid-cols-3 gap-6">
