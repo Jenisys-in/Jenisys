@@ -67,7 +67,7 @@ export default function ServicePage({ slug }) {
             <p className="j-eyebrow mb-6">What you get</p>
             <ul className="j-scene flex flex-col gap-4">
               {offer.outcomes.map((o, i) => (
-                <li key={o} className="j-card3d flex gap-4 p-5" style={{ transform: `rotateX(6deg) translateX(${i * 12}px)` }}>
+                <li key={o} className="j-card3d j-stagger flex gap-4 p-5" style={{ "--i": i }}>
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-navy via-volt to-signal text-white">
                     <Check size={18} />
                   </span>

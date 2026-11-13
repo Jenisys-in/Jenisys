@@ -35,7 +35,7 @@ function OfferRow({ offer, visual, flip }) {
 
 export default function Offers() {
   return (
-    <section className="j-night py-24 md:py-32" aria-labelledby="offers-title">
+    <section className="j-night overflow-x-clip py-24 md:py-32" aria-labelledby="offers-title">
       <div className="j-wrap">
         <p className="j-eyebrow mb-4">What we build</p>
         <h2 id="offers-title" className="j-h2 max-w-3xl">Two ways we help businesses grow</h2>
