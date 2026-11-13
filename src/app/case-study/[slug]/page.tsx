@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { clampDescription } from "@/lib/seo";
 import CaseStudyDetail from "@/components/case-study-detail";
 import { entries } from "@/lib/case-study-data";
 
@@ -19,8 +20,8 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-        title: `${entry.title} — Jenisys Case Study`,
-        description: entry.summary,
+        title: `${entry.title} | Jenisys`,
+        description: clampDescription(entry.summary),
         keywords: [
             entry.type,
             entry.industry,
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }) {
             "engineering",
         ],
         openGraph: {
-            title: `${entry.title} — Jenisys Case Study`,
-            description: entry.summary,
+            title: `${entry.title} | Jenisys`,
+            description: clampDescription(entry.summary),
             url: `https://www.jenisys.in/case-study/${slug}`,
             siteName: "Jenisys",
             images: [
@@ -47,8 +48,8 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             card: "summary_large_image",
-            title: `${entry.title} — Jenisys Case Study`,
-            description: entry.summary,
+            title: `${entry.title} | Jenisys`,
+            description: clampDescription(entry.summary),
             images: ["https://www.jenisys.in/og-image.jpg"],
         },
         alternates: {
@@ -69,7 +70,7 @@ export default async function CaseStudyDetailRoute({ params }) {
         "@context": "https://schema.org",
         "@type": "TechArticle",
         headline: entry.title,
-        description: entry.summary,
+        description: clampDescription(entry.summary),
         image: "https://www.jenisys.in/og-image.jpg",
         author: {
             "@type": "Organization",

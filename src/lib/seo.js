@@ -42,3 +42,11 @@ export const serviceSeo = {
       "Monthly maintenance for websites, apps and automations from $499 a month: security updates, monitoring, bug fixes and small changes.",
   },
 };
+
+// Trims text to a search-friendly length (~155 chars) at a word boundary.
+export function clampDescription(text, max = 155) {
+  const t = String(text || "").replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max - 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:\-–—]$/, "") + "…";
+}

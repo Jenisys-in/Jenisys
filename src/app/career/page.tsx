@@ -1,49 +1,13 @@
 import CareerHome from '@/components/career/career_home';
+import { pageMeta } from "@/lib/seo";
 import Script from "next/script";
 
-export const metadata = {
-  title: "Careers at Jenisys - Join Our Innovative Tech Team",
+export const metadata = pageMeta({
+  title: "Careers at Jenisys: Join Our Talent Pool",
   description:
-    "Explore exciting career opportunities at Jenisys. We are looking for talented professionals in software development, AI, cloud, and more to shape the future of technology.",
-  keywords: [
-    "Jenisys careers",
-    "software development jobs",
-    "AI jobs",
-    "cloud computing careers",
-    "IT jobs",
-    "technology careers",
-    "join Jenisys",
-    "developer jobs",
-    "tech startup jobs"
-  ],
-  openGraph: {
-    title: "Careers at Jenisys - Join Our Innovative Tech Team",
-    description:
-      "Explore exciting career opportunities at Jenisys. We are looking for talented professionals in software development, AI, cloud, and more to shape the future of technology.",
-    url: "https://www.jenisys.in/career",
-    siteName: "Jenisys",
-    images: [
-      {
-        url: "https://www.jenisys.in/img/logo2.svg",
-        width: 1200,
-        height: 630,
-        alt: "Jenisys Careers - Work With Us",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Careers at Jenisys - Join Our Innovative Tech Team",
-    description:
-      "Explore exciting career opportunities at Jenisys. We are looking for talented professionals in software development, AI, cloud, and more to shape the future of technology.",
-    images: ["https://www.jenisys.in/img/logo2.svg"],
-  },
-  alternates: {
-    canonical: "https://www.jenisys.in/career",
-  },
-};
+    "Remote-friendly engineering and product roles at Jenisys. No open roles right now, so join our talent pool and hear first when one opens.",
+  path: "/career",
+});
 
 export default function CareerRoute() {
   return <CareerHome />;

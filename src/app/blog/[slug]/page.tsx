@@ -1,4 +1,5 @@
 import { blogs } from '@/lib/blogData';
+import { clampDescription } from "@/lib/seo";
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -18,12 +19,12 @@ export async function generateMetadata({ params }) {
   const imageUrl = `https://www.jenisys.in${blog.thumbnail}`;
   return {
     title: blog.title,
-    description: blog.description,
+    description: clampDescription(blog.description),
     keywords: blog.keywords,
     authors: [{ name: blog.author?.name || "Jenisys" }],
     openGraph: {
       title: blog.title,
-      description: blog.description,
+      description: clampDescription(blog.description),
       url: `https://www.jenisys.in/blog/${slug}`,
       siteName: "Jenisys",
       images: [
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: "summary_large_image",
       title: blog.title,
-      description: blog.description,
+      description: clampDescription(blog.description),
       images: [imageUrl],
     },
     alternates: {
@@ -68,7 +69,7 @@ export default async function BlogPostPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: blog.title,
-    description: blog.description,
+    description: clampDescription(blog.description),
     image: `https://www.jenisys.in${blog.thumbnail}`,
     author: {
       '@type': 'Organization',
