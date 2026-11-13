@@ -14,14 +14,20 @@ const CONTACT_MESSAGE_FIELDS = {
   msg: "Message",
 };
 
-const generateEmailContent = (data) => {
+const escapeHtml = (v) =>
+  String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+const generateEmailContent = (raw) => {
+  const data = Object.fromEntries(
+    Object.entries(raw).filter(([key, val]) => CONTACT_MESSAGE_FIELDS[key] && val !== "" && val != null)
+  );
   const stringData = Object.entries(data).reduce(
     (str, [key, val]) =>
       (str += `${CONTACT_MESSAGE_FIELDS[key]}: \n${val} \n \n`),
     ""
   );
   const htmlData = Object.entries(data).reduce((str, [key, val]) => {
-    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${val}</p>`);
+    return (str += `<h3 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h3><p class="form-answer" align="left">${escapeHtml(val)}</p>`);
   }, "");
 
   return {
