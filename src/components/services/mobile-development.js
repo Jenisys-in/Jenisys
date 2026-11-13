@@ -83,12 +83,12 @@ export default function MobileAppLanding() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="bg-gradient-to-br from-indigo-600 to-[#7C3AED] min-h-screen flex items-center relative overflow-hidden"
+        className="bg-gradient-to-br from-blue-600 to-[#0A7590] min-h-screen flex items-center relative overflow-hidden"
       >
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-white bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400 bg-opacity-20 rounded-full blur-3xl animate-bounce"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-400 bg-opacity-20 rounded-full blur-3xl animate-bounce"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -126,7 +126,7 @@ export default function MobileAppLanding() {
             >
               <button
                 onClick={openCalendar}
-                className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105"
+                className="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105"
               >
                 Request Free App Strategy Session
               </button>
@@ -143,7 +143,7 @@ export default function MobileAppLanding() {
             <div className="bg-gradient-to-br from-gray-700 to-gray-900 rounded-3xl p-8 mx-auto w-80 h-96 shadow-2xl transform hover:scale-105 hover:-rotate-2 transition-all duration-300">
               <div className="bg-gray-900 rounded-2xl h-full flex items-center justify-center">
                 <div className="text-white text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                     <Smartphone className="w-8 h-8" />
                   </div>
                   <div className="text-sm font-semibold">Your App Here</div>
@@ -198,8 +198,8 @@ export default function MobileAppLanding() {
                 title: "Struggling to Be Found?",
                 description:
                   "Without a solid App Store Optimization (ASO) strategy, your app can get lost in a crowded market.",
-                gradient: "from-purple-50 to-purple-100",
-                iconBg: "bg-[#4F46E5]",
+                gradient: "from-blue-50 to-blue-100",
+                iconBg: "bg-[#1652D9]",
               },
             ].map((item, index) => (
               <div
@@ -246,14 +246,14 @@ export default function MobileAppLanding() {
                 title: "Discovery & Strategy",
                 description:
                   "We don't just build what you ask for; we build what you need. We dive deep into your business goals and market to create a strategic roadmap for your app.",
-                gradient: "from-indigo-500 to-purple-500",
+                gradient: "from-blue-500 to-blue-500",
               },
               {
                 step: 2,
                 title: "Design & User Experience",
                 description:
                   "Our UI/UX experts design intuitive, beautiful interfaces that are proven to maximize user engagement and satisfaction.",
-                gradient: "from-purple-500 to-pink-500",
+                gradient: "from-blue-500 to-pink-500",
               },
               {
                 step: 3,
@@ -312,22 +312,22 @@ export default function MobileAppLanding() {
                 title: "Native App Development",
                 description:
                   "For the fastest, most powerful experience, we build dedicated apps for both iOS and Android.",
-                gradient: "from-indigo-50 to-indigo-100",
+                gradient: "from-blue-50 to-blue-100",
                 hoverGradient:
-                  "group-hover:from-indigo-500 group-hover:to-purple-500",
-                iconBg: "bg-indigo-500 group-hover:bg-white",
-                iconColor: "text-white group-hover:text-indigo-500",
+                  "group-hover:from-blue-500 group-hover:to-blue-500",
+                iconBg: "bg-blue-500 group-hover:bg-white",
+                iconColor: "text-white group-hover:text-blue-500",
               },
               {
                 icon: Layers,
                 title: "Cross-Platform Apps",
                 description:
                   "Reach a wider audience quickly with a single codebase for both iOS and Android using technologies like React Native and Flutter.",
-                gradient: "from-purple-50 to-purple-100",
+                gradient: "from-blue-50 to-blue-100",
                 hoverGradient:
-                  "group-hover:from-purple-500 group-hover:to-pink-500",
-                iconBg: "bg-[#4F46E5] group-hover:bg-white",
-                iconColor: "text-white group-hover:text-[#7C3AED]",
+                  "group-hover:from-blue-500 group-hover:to-pink-500",
+                iconBg: "bg-[#1652D9] group-hover:bg-white",
+                iconColor: "text-white group-hover:text-[#0A7590]",
               },
               {
                 icon: Globe,
@@ -347,9 +347,9 @@ export default function MobileAppLanding() {
                   "We build powerful, scalable APIs and backend systems to ensure your app can handle any demand.",
                 gradient: "from-blue-50 to-blue-100",
                 hoverGradient:
-                  "group-hover:from-blue-500 group-hover:to-indigo-500",
+                  "group-hover:from-blue-500 group-hover:to-blue-500",
                 iconBg: "bg-blue-500 group-hover:bg-white",
-                iconColor: "text-white group-hover:text-[#4F46E5]",
+                iconColor: "text-white group-hover:text-[#1652D9]",
               },
               {
                 icon: TrendingUp,
@@ -412,7 +412,7 @@ export default function MobileAppLanding() {
                 title: "Logistics & Transportation",
                 description:
                   "Fleet management, delivery tracking, and route optimization apps.",
-                gradient: "from-blue-500 to-indigo-500",
+                gradient: "from-blue-500 to-blue-500",
               },
               {
                 icon: CreditCard,
@@ -426,7 +426,7 @@ export default function MobileAppLanding() {
                 title: "On-Demand Services",
                 description:
                   "Food delivery, ride-sharing, and service booking platforms.",
-                gradient: "from-purple-500 to-pink-500",
+                gradient: "from-blue-500 to-pink-500",
               },
               {
                 icon: ShoppingBag,
@@ -440,7 +440,7 @@ export default function MobileAppLanding() {
                 title: "EdTech",
                 description:
                   "Learning management systems, educational games, and student portals.",
-                gradient: "from-indigo-500 to-purple-500",
+                gradient: "from-blue-500 to-blue-500",
               },
             ].map((item, index) => (
               <div
@@ -466,27 +466,27 @@ export default function MobileAppLanding() {
       <section id="case-study" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div
-            className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-12 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+            className="bg-gradient-to-br from-blue-50 to-blue-50 rounded-3xl p-12 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
             onClick={toggleCaseStudy}
           >
             <div className="text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Success Story
               </h2>
-              <h3 className="text-2xl font-semibold text-indigo-600 mb-4">
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">
                 QuickDeliver App
               </h3>
               <p className="text-xl text-gray-700 mb-6">
                 "See how we helped QuickDeliver increase user retention by 35%
                 in 3 months."
               </p>
-              <button className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition">
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
                 Read Full Case Study
               </button>
             </div>
 
             {showCaseStudy && (
-              <div className="mt-8 pt-8 border-t border-indigo-200 animate-fade-in">
+              <div className="mt-8 pt-8 border-t border-blue-200 animate-fade-in">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-xl font-bold text-gray-900 mb-4">
@@ -610,8 +610,8 @@ export default function MobileAppLanding() {
                 name: "John Davis",
                 role: "CEO, TechStart",
                 initials: "JD",
-                gradient: "from-indigo-500 to-purple-500",
-                bgGradient: "from-indigo-50 to-purple-50",
+                gradient: "from-blue-500 to-blue-500",
+                bgGradient: "from-blue-50 to-blue-50",
                 quote:
                   "Jenisys delivered our mobile app ahead of schedule and nailed every detail. The user feedback has been incredible!",
               },
@@ -688,8 +688,8 @@ export default function MobileAppLanding() {
                 question: "Do you develop both iOS and Android apps?",
                 answer:
                   "Yes, we develop native iOS and Android apps, as well as cross-platform solutions using React Native and Flutter. We'll recommend the best approach based on your specific requirements, budget, and timeline.",
-                iconBg: "bg-indigo-100",
-                iconColor: "text-indigo-600",
+                iconBg: "bg-blue-100",
+                iconColor: "text-blue-600",
               },
               {
                 id: 2,
@@ -697,8 +697,8 @@ export default function MobileAppLanding() {
                 question: "Can you upgrade our existing app?",
                 answer:
                   "Absolutely! We can audit your existing app, identify improvement opportunities, and either enhance the current codebase or rebuild it with modern technologies for better performance and user experience.",
-                iconBg: "bg-purple-100",
-                iconColor: "text-[#7C3AED]",
+                iconBg: "bg-blue-100",
+                iconColor: "text-[#0A7590]",
               },
               {
                 id: 3,
@@ -757,11 +757,11 @@ export default function MobileAppLanding() {
       {/* Final CTA */}
       <section
         id="final-cta"
-        className="py-20 bg-gradient-to-br from-indigo-600 to-[#7C3AED] relative overflow-hidden"
+        className="py-20 bg-gradient-to-br from-blue-600 to-[#0A7590] relative overflow-hidden"
       >
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-white bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-400 bg-opacity-20 rounded-full blur-3xl animate-bounce"></div>
+          <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-400 bg-opacity-20 rounded-full blur-3xl animate-bounce"></div>
         </div>
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
@@ -779,12 +779,12 @@ export default function MobileAppLanding() {
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <button
               onClick={openCalendar}
-              className="bg-white text-indigo-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+              className="bg-white text-blue-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
             >
               Book a Free Strategy Call
             </button>
             <Link href="/quote" className="inline-block">
-              <button className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-indigo-600 transition-all transform hover:scale-105">
+              <button className="border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105">
                 Get Free Quote
               </button>
             </Link>

@@ -158,11 +158,11 @@ const MaintenanceSupport = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
-        <div className="absolute inset-0 bg-[#0F172A]/20"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-900 to-blue-900 text-white">
+        <div className="absolute inset-0 bg-[#050A1C]/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center space-y-8">
-            <div className="inline-flex items-center px-4 py-2 bg-[#4F46E5]/20 rounded-full border border-purple-400/30">
+            <div className="inline-flex items-center px-4 py-2 bg-[#1652D9]/20 rounded-full border border-blue-400/30">
               <Shield className="h-4 w-4 mr-2" />
               <span className="text-sm font-medium">
                 99.9% Uptime Guarantee
@@ -172,7 +172,7 @@ const MaintenanceSupport = () => {
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
               We Don't Just Build.
               <br />
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
                 We Ensure Your Business Never Stops.
               </span>
             </h1>
@@ -187,13 +187,13 @@ const MaintenanceSupport = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 onClick={openCalendar}
-                className="px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] hover:from-purple-700 hover:to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                className="px-8 py-4 bg-gradient-to-r from-[#1652D9] to-[#1652D9] hover:from-blue-700 hover:to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
               >
                 Start a Support Plan
               </button>
               <button
                 onClick={openCalendar}
-                className="px-8 py-4 border-2 border-purple-400 hover:bg-purple-400/10 rounded-lg font-semibold text-lg transition-all duration-300"
+                className="px-8 py-4 border-2 border-blue-400 hover:bg-blue-400/10 rounded-lg font-semibold text-lg transition-all duration-300"
               >
                 Talk to an Expert
               </button>
@@ -275,12 +275,12 @@ const MaintenanceSupport = () => {
             {services.map((service, idx) => (
               <div
                 key={idx}
-                className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-purple-500 ${
+                className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-blue-500 ${
                   isVisible["services"] ? "animate-fade-in-up" : "opacity-0"
                 }`}
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <service.icon className="h-12 w-12 text-[#7C3AED] mb-4" />
+                <service.icon className="h-12 w-12 text-[#0A7590] mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {service.title}
                 </h3>
@@ -294,7 +294,7 @@ const MaintenanceSupport = () => {
       </section>
 
       {/* Free Maintenance Period */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -308,7 +308,7 @@ const MaintenanceSupport = () => {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-purple-200">
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-blue-200">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-flex items-center px-4 py-2 bg-green-100 rounded-full border border-green-300 mb-6">
@@ -377,11 +377,11 @@ const MaintenanceSupport = () => {
               </div>
 
               <div className="relative">
-                <div className="bg-gradient-to-br from-[#4F46E5] to-[#4F46E5] rounded-2xl p-8 text-white">
+                <div className="bg-gradient-to-br from-[#1652D9] to-[#1652D9] rounded-2xl p-8 text-white">
                   <h4 className="text-2xl font-bold mb-4">
                     What Happens After?
                   </h4>
-                  <p className="text-purple-100 mb-6">
+                  <p className="text-blue-100 mb-6">
                     As your free maintenance period concludes, we'll work with
                     you to create a tailored support plan that matches your
                     business needs and budget.
@@ -430,10 +430,10 @@ const MaintenanceSupport = () => {
             {Object.entries(plans).map(([key, plan]) => (
               <div
                 key={key}
-                className="relative bg-white rounded-2xl shadow-xl p-8 border-2 border-purple-500 scale-105"
+                className="relative bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-500 scale-105"
               >
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Premium Support
                   </span>
                 </div>
@@ -442,7 +442,7 @@ const MaintenanceSupport = () => {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {plan.name}
                   </h3>
-                  <div className="text-4xl font-bold text-[#7C3AED] mb-2">
+                  <div className="text-4xl font-bold text-[#0A7590] mb-2">
                     {plan.price}
                   </div>
                   {plan.price !== "Custom" && (
@@ -475,7 +475,7 @@ const MaintenanceSupport = () => {
                 </div>
 
                 <Link href="/contact">
-                  <button className="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white hover:shadow-lg transform hover:scale-105">
+                  <button className="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white hover:shadow-lg transform hover:scale-105">
                     Contact Us
                   </button>
                 </Link>
@@ -489,7 +489,7 @@ const MaintenanceSupport = () => {
       <section
         id="process"
         data-animate
-        className="py-20 bg-gradient-to-br from-purple-900 to-blue-900 text-white"
+        className="py-20 bg-gradient-to-br from-blue-900 to-blue-900 text-white"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -523,13 +523,13 @@ const MaintenanceSupport = () => {
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center relative">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p className="text-blue-100">{item.desc}</p>
                 {idx < 3 && (
-                  <ArrowRight className="hidden md:block absolute top-8 -right-4 h-6 w-6 text-[#7C3AED]" />
+                  <ArrowRight className="hidden md:block absolute top-8 -right-4 h-6 w-6 text-[#0A7590]" />
                 )}
               </div>
             ))}
@@ -564,7 +564,7 @@ const MaintenanceSupport = () => {
                   "{testimonial.quote}"
                 </blockquote>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -611,7 +611,7 @@ const MaintenanceSupport = () => {
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#1652D9] to-[#1652D9] rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -625,18 +625,18 @@ const MaintenanceSupport = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-4">
             Don't wait for problems to occur
           </h2>
-          <p className="text-xl mb-8 text-purple-100">
+          <p className="text-xl mb-8 text-blue-100">
             Get proactive support that keeps your business running smoothly and
             securely.
           </p>
           <button
             onClick={openCalendar}
-            className="px-8 py-4 bg-white text-[#7C3AED] font-semibold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            className="px-8 py-4 bg-white text-[#0A7590] font-semibold text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
           >
             Book a Free Maintenance Assessment
           </button>
@@ -684,7 +684,7 @@ const MaintenanceSupport = () => {
 
       {/* Sticky Mobile CTA */}
       <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
-        <button className="w-full bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white py-3 rounded-lg font-semibold shadow-lg">
+        <button className="w-full bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white py-3 rounded-lg font-semibold shadow-lg">
           Get Support Now
         </button>
       </div>

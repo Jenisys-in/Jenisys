@@ -53,7 +53,7 @@ const AIBlogPage = () => {
     <div className={isDarkMode ? "dark" : ""}>
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 h-1 bg-[#4F46E5] z-50 transition-all duration-300"
+        className="fixed top-0 left-0 h-1 bg-[#1652D9] z-50 transition-all duration-300"
         style={{ width: `${scrollProgress}%` }}
       />
 
@@ -67,7 +67,7 @@ const AIBlogPage = () => {
 
       <article className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
         {/* Hero Section */}
-        <section className="relative isolate bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] text-white overflow-hidden">
+        <section className="relative isolate bg-gradient-to-br from-[#1652D9] to-[#0A7590] text-white overflow-hidden">
           <div
             className="absolute inset-0 opacity-20"
             style={{
@@ -91,13 +91,13 @@ const AIBlogPage = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => jumpToSection("tldr")}
-                    className="px-8 py-4 bg-white text-[#4F46E5] font-semibold rounded-xl hover:bg-[#4F46E5]/5 transition-all duration-300 flex items-center justify-center"
+                    className="px-8 py-4 bg-white text-[#1652D9] font-semibold rounded-xl hover:bg-[#1652D9]/5 transition-all duration-300 flex items-center justify-center"
                   >
                     Read Summary <ChevronRight className="ml-2 w-5 h-5" />
                   </button>
                   <button
                     onClick={() => jumpToSection("cta")}
-                    className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-[#4F46E5] transition-all duration-300 flex items-center justify-center"
+                    className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-[#1652D9] transition-all duration-300 flex items-center justify-center"
                   >
                     Get Strategy Canvas <Download className="ml-2 w-5 h-5" />
                   </button>
@@ -107,27 +107,27 @@ const AIBlogPage = () => {
               <div className="hidden lg:block">
                 <div className="relative">
                   <div className="w-96 h-96 mx-auto">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] rounded-full opacity-20 animate-pulse"></div>
-                    <div className="absolute inset-4 bg-[#4F46E5] rounded-full opacity-30"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#1652D9] to-[#0A7590] rounded-full opacity-20 animate-pulse"></div>
+                    <div className="absolute inset-4 bg-[#1652D9] rounded-full opacity-30"></div>
                     <div className="absolute inset-8 bg-white rounded-full flex items-center justify-center">
-                      <Bot className="w-32 h-32 text-[#4F46E5]" />
+                      <Bot className="w-32 h-32 text-[#1652D9]" />
                     </div>
 
                     {/* Floating Icons */}
                     <div className="absolute top-0 right-0 bg-white rounded-full p-3 shadow-lg animate-bounce">
-                      <Brain className="w-6 h-6 text-[#4F46E5]" />
+                      <Brain className="w-6 h-6 text-[#1652D9]" />
                     </div>
                     <div
                       className="absolute bottom-0 left-0 bg-white rounded-full p-3 shadow-lg animate-bounce"
                       style={{ animationDelay: "0.5s" }}
                     >
-                      <Cpu className="w-6 h-6 text-[#4F46E5]" />
+                      <Cpu className="w-6 h-6 text-[#1652D9]" />
                     </div>
                     <div
                       className="absolute top-1/2 left-0 bg-white rounded-full p-3 shadow-lg animate-bounce"
                       style={{ animationDelay: "1s" }}
                     >
-                      <BarChart3 className="w-6 h-6 text-[#4F46E5]" />
+                      <BarChart3 className="w-6 h-6 text-[#1652D9]" />
                     </div>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const AIBlogPage = () => {
             <div className="max-w-4xl mx-auto">
               <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
                 <h2 className="text-2xl font-bold mb-6 flex items-center">
-                  <span className="bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 text-[#4F46E5] dark:text-[#4F46E5] px-3 py-1 rounded-full text-sm font-medium mr-3">
+                  <span className="bg-[#1652D9]/8 dark:bg-[#1652D9]/15 text-[#1652D9] dark:text-[#1652D9] px-3 py-1 rounded-full text-sm font-medium mr-3">
                     TL;DR
                   </span>
                   Executive Summary
@@ -194,31 +194,31 @@ const AIBlogPage = () => {
                 <div className="mt-8 flex flex-wrap gap-2">
                   <button
                     onClick={() => jumpToSection("finance")}
-                    className="px-4 py-2 bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 text-[#4F46E5] dark:text-[#4F46E5] rounded-lg hover:bg-[#4F46E5]/12 dark:hover:bg-[#4F46E5]/20 transition-colors"
+                    className="px-4 py-2 bg-[#1652D9]/8 dark:bg-[#1652D9]/15 text-[#1652D9] dark:text-[#1652D9] rounded-lg hover:bg-[#1652D9]/12 dark:hover:bg-[#1652D9]/20 transition-colors"
                   >
                     Finance
                   </button>
                   <button
                     onClick={() => jumpToSection("healthcare")}
-                    className="px-4 py-2 bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 text-[#4F46E5] dark:text-[#4F46E5] rounded-lg hover:bg-[#4F46E5]/12 dark:hover:bg-[#4F46E5]/20 transition-colors"
+                    className="px-4 py-2 bg-[#1652D9]/8 dark:bg-[#1652D9]/15 text-[#1652D9] dark:text-[#1652D9] rounded-lg hover:bg-[#1652D9]/12 dark:hover:bg-[#1652D9]/20 transition-colors"
                   >
                     Healthcare
                   </button>
                   <button
                     onClick={() => jumpToSection("manufacturing")}
-                    className="px-4 py-2 bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 text-[#4F46E5] dark:text-[#4F46E5] rounded-lg hover:bg-[#4F46E5]/12 dark:hover:bg-[#4F46E5]/20 transition-colors"
+                    className="px-4 py-2 bg-[#1652D9]/8 dark:bg-[#1652D9]/15 text-[#1652D9] dark:text-[#1652D9] rounded-lg hover:bg-[#1652D9]/12 dark:hover:bg-[#1652D9]/20 transition-colors"
                   >
                     Manufacturing
                   </button>
                   <button
                     onClick={() => jumpToSection("retail")}
-                    className="px-4 py-2 bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 text-[#4F46E5] dark:text-[#4F46E5] rounded-lg hover:bg-[#4F46E5]/12 dark:hover:bg-[#4F46E5]/20 transition-colors"
+                    className="px-4 py-2 bg-[#1652D9]/8 dark:bg-[#1652D9]/15 text-[#1652D9] dark:text-[#1652D9] rounded-lg hover:bg-[#1652D9]/12 dark:hover:bg-[#1652D9]/20 transition-colors"
                   >
                     Retail
                   </button>
                   <button
                     onClick={() => jumpToSection("media")}
-                    className="px-4 py-2 bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 text-[#4F46E5] dark:text-[#4F46E5] rounded-lg hover:bg-[#4F46E5]/12 dark:hover:bg-[#4F46E5]/20 transition-colors"
+                    className="px-4 py-2 bg-[#1652D9]/8 dark:bg-[#1652D9]/15 text-[#1652D9] dark:text-[#1652D9] rounded-lg hover:bg-[#1652D9]/12 dark:hover:bg-[#1652D9]/20 transition-colors"
                   >
                     Media
                   </button>
@@ -345,7 +345,7 @@ const AIBlogPage = () => {
               >
                 <div className="flex items-center mb-6">
                   <div className="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-xl mr-4">
-                    <Factory className="w-8 h-8 text-[#4F46E5] dark:text-blue-400" />
+                    <Factory className="w-8 h-8 text-[#1652D9] dark:text-blue-400" />
                   </div>
                   <h3 className="text-2xl font-bold">Manufacturing</h3>
                 </div>
@@ -389,8 +389,8 @@ const AIBlogPage = () => {
                 className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700"
               >
                 <div className="flex items-center mb-6">
-                  <div className="bg-purple-100 dark:bg-purple-900/50 p-3 rounded-xl mr-4">
-                    <ShoppingCart className="w-8 h-8 text-[#7C3AED] dark:text-[#7C3AED]" />
+                  <div className="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-xl mr-4">
+                    <ShoppingCart className="w-8 h-8 text-[#0A7590] dark:text-[#0A7590]" />
                   </div>
                   <h3 className="text-2xl font-bold">Retail</h3>
                 </div>
@@ -405,7 +405,7 @@ const AIBlogPage = () => {
 
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-[#4F46E5] rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1652D9] rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>Dynamic Pricing:</strong> AI-powered pricing
                       strategies that optimize for demand, competition, and
@@ -413,7 +413,7 @@ const AIBlogPage = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-[#4F46E5] rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1652D9] rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>Virtual Shopping Assistants:</strong>{" "}
                       Conversational AI providing personalized product
@@ -421,7 +421,7 @@ const AIBlogPage = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-[#4F46E5] rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-[#1652D9] rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>Omnichannel Experience:</strong> Seamless customer
                       journeys across online, mobile, and physical touchpoints
@@ -498,8 +498,8 @@ const AIBlogPage = () => {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
-                <div className="bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 p-4 rounded-xl w-fit mb-6">
-                  <Bot className="w-8 h-8 text-[#4F46E5] dark:text-[#4F46E5]" />
+                <div className="bg-[#1652D9]/8 dark:bg-[#1652D9]/15 p-4 rounded-xl w-fit mb-6">
+                  <Bot className="w-8 h-8 text-[#1652D9] dark:text-[#1652D9]" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">
                   Agentic AI & Autonomous Workflows
@@ -512,8 +512,8 @@ const AIBlogPage = () => {
               </div>
 
               <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
-                <div className="bg-[#4F46E5]/8 dark:bg-[#4F46E5]/15 p-4 rounded-xl w-fit mb-6">
-                  <Cpu className="w-8 h-8 text-[#4F46E5] dark:text-sky-400" />
+                <div className="bg-[#1652D9]/8 dark:bg-[#1652D9]/15 p-4 rounded-xl w-fit mb-6">
+                  <Cpu className="w-8 h-8 text-[#1652D9] dark:text-sky-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">
                   Custom Silicon & Edge Inference
@@ -542,8 +542,8 @@ const AIBlogPage = () => {
 
             <div className="grid md:grid-cols-2 gap-8 mt-8">
               <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
-                <div className="bg-purple-100 dark:bg-purple-900/50 p-4 rounded-xl w-fit mb-6">
-                  <Shield className="w-8 h-8 text-[#7C3AED] dark:text-[#7C3AED]" />
+                <div className="bg-blue-100 dark:bg-blue-900/50 p-4 rounded-xl w-fit mb-6">
+                  <Shield className="w-8 h-8 text-[#0A7590] dark:text-[#0A7590]" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">
                   Responsible AI & Governance
@@ -663,7 +663,7 @@ const AIBlogPage = () => {
                     <div className="text-green-600 dark:text-green-400">
                       BUILD
                     </div>
-                    <div className="text-[#4F46E5] dark:text-blue-400">BUY</div>
+                    <div className="text-[#1652D9] dark:text-blue-400">BUY</div>
                   </div>
 
                   <div className="space-y-3">
@@ -678,7 +678,7 @@ const AIBlogPage = () => {
                     <div className="grid grid-cols-3 gap-4 items-center text-sm">
                       <div className="font-medium">Infrastructure & MLOps</div>
                       <div className="text-center text-slate-400">-</div>
-                      <div className="text-center text-[#4F46E5] dark:text-blue-400">
+                      <div className="text-center text-[#1652D9] dark:text-blue-400">
                         ✓
                       </div>
                     </div>
@@ -694,7 +694,7 @@ const AIBlogPage = () => {
                     <div className="grid grid-cols-3 gap-4 items-center text-sm">
                       <div className="font-medium">General AI Capabilities</div>
                       <div className="text-center text-slate-400">-</div>
-                      <div className="text-center text-[#4F46E5] dark:text-blue-400">
+                      <div className="text-center text-[#1652D9] dark:text-blue-400">
                         ✓
                       </div>
                     </div>
@@ -702,7 +702,7 @@ const AIBlogPage = () => {
                     <div className="grid grid-cols-3 gap-4 items-center text-sm">
                       <div className="font-medium">Data Processing Tools</div>
                       <div className="text-center text-slate-400">-</div>
-                      <div className="text-center text-[#4F46E5] dark:text-blue-400">
+                      <div className="text-center text-[#1652D9] dark:text-blue-400">
                         ✓
                       </div>
                     </div>
@@ -790,7 +790,7 @@ const AIBlogPage = () => {
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
                 <h3 className="text-2xl font-bold mb-6 flex items-center">
-                  <Code className="w-6 h-6 mr-3 text-[#4F46E5] dark:text-[#4F46E5]" />
+                  <Code className="w-6 h-6 mr-3 text-[#1652D9] dark:text-[#1652D9]" />
                   Next.js + Tailwind Implementation
                 </h3>
 
@@ -819,21 +819,21 @@ const AIChat = () => {
 
                 <div className="mt-6 space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>Performance:</strong> Use Next.js dynamic imports
                       and React.lazy for code splitting
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>Accessibility:</strong> Implement proper ARIA
                       labels and keyboard navigation
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>Dark Mode:</strong> Use Tailwind's dark: variant
                       with system preference detection
@@ -867,7 +867,7 @@ const AIChat = () => {
                   </div>
 
                   <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
-                    <h4 className="font-semibold mb-3 text-[#4F46E5] dark:text-blue-400">
+                    <h4 className="font-semibold mb-3 text-[#1652D9] dark:text-blue-400">
                       CSS Bundle
                     </h4>
                     <div className="flex items-center justify-between mb-2">
@@ -885,14 +885,14 @@ const AIChat = () => {
                   </div>
 
                   <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700">
-                    <h4 className="font-semibold mb-3 text-[#7C3AED] dark:text-[#7C3AED]">
+                    <h4 className="font-semibold mb-3 text-[#0A7590] dark:text-[#0A7590]">
                       LCP Target
                     </h4>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm">&lt; 2.5s</span>
                       <div className="w-32 bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                         <div
-                          className="bg-[#4F46E5] h-2 rounded-full"
+                          className="bg-[#1652D9] h-2 rounded-full"
                           style={{ width: "85%" }}
                         ></div>
                       </div>
@@ -982,7 +982,7 @@ const AIChat = () => {
         {/* CTA Section */}
         <section
           id="cta"
-          className="py-20 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] text-white"
+          className="py-20 bg-gradient-to-br from-[#1652D9] to-[#0A7590] text-white"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -1018,13 +1018,13 @@ const AIChat = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-[#4F46E5] font-semibold rounded-xl hover:bg-[#4F46E5]/5 transition-all duration-300 flex items-center justify-center">
+              <button className="px-8 py-4 bg-white text-[#1652D9] font-semibold rounded-xl hover:bg-[#1652D9]/5 transition-all duration-300 flex items-center justify-center">
                 <Download className="mr-2 w-5 h-5" />
                 Download Free Canvas
               </button>
               <button
                 onClick={openCalendar}
-                className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-[#4F46E5] transition-all duration-300 flex items-center justify-center"
+                className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-[#1652D9] transition-all duration-300 flex items-center justify-center"
               >
                 <ArrowRight className="mr-2 w-5 h-5" />
                 Schedule Consultation

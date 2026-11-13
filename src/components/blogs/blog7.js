@@ -56,8 +56,8 @@ const MISTAKES = [
     icon: Shield,
     title: "Ignoring the Payment Schedule Deadline",
     body: "The respondent has 10 business days to issue a payment schedule. If you (as respondent) miss this, you are liable for the full claimed amount — even if the claim is inflated or incorrect.",
-    color: "bg-purple-50 border-purple-200",
-    iconColor: "text-purple-500",
+    color: "bg-blue-50 border-blue-200",
+    iconColor: "text-blue-500",
   },
   {
     icon: DollarSign,
@@ -156,12 +156,12 @@ export default function Blog7() {
     <div className="min-h-screen bg-white">
       {/* Scroll Progress */}
       <div
-        className="fixed top-0 left-0 h-1 bg-[#4F46E5] z-50 transition-all duration-150"
+        className="fixed top-0 left-0 h-1 bg-[#1652D9] z-50 transition-all duration-150"
         style={{ width: `${scrollProgress}%` }}
       />
 
       {/* ── HERO ── */}
-      <section className="relative bg-[#0F172A] text-white overflow-hidden">
+      <section className="relative bg-[#050A1C] text-white overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.06]"
           style={{
@@ -171,7 +171,7 @@ export default function Blog7() {
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-[#4F46E5]/20 text-[#A5B4FC] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#1652D9]/20 text-[#A5B4FC] text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <Shield className="w-4 h-4" />
               NSW Construction Law · Payment Security
             </div>
@@ -230,7 +230,7 @@ export default function Blog7() {
                     onClick={() => jumpTo(item.id)}
                     className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeSection === item.id
-                        ? "bg-[#4F46E5]/8 text-[#4F46E5] border-l-2 border-[#4F46E5]"
+                        ? "bg-[#1652D9]/8 text-[#1652D9] border-l-2 border-[#1652D9]"
                         : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                   >
@@ -239,8 +239,8 @@ export default function Blog7() {
                 ))}
               </nav>
 
-              <div className="mt-8 p-4 bg-[#4F46E5]/6 rounded-xl border border-[#4F46E5]/15">
-                <p className="text-sm font-semibold text-[#4F46E5] mb-2">Need help now?</p>
+              <div className="mt-8 p-4 bg-[#1652D9]/6 rounded-xl border border-[#1652D9]/15">
+                <p className="text-sm font-semibold text-[#1652D9] mb-2">Need help now?</p>
                 <p className="text-xs text-slate-500 mb-3">Book a 30-min SOPA audit and we will map every deadline across your active contracts.</p>
                 <button
                   onClick={openCalendar}
@@ -258,7 +258,7 @@ export default function Blog7() {
             {/* TL;DR */}
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 mb-16">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <span className="bg-[#4F46E5] text-white text-xs font-bold px-3 py-1 rounded-full">TL;DR</span>
+                <span className="bg-[#1652D9] text-white text-xs font-bold px-3 py-1 rounded-full">TL;DR</span>
                 Four things every contractor must know
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
@@ -269,7 +269,7 @@ export default function Blog7() {
                   "Jenisys builds automated SOPA compliance systems that track every deadline, generate compliant documents, and protect your cash flow.",
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-[#4F46E5] mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#1652D9] mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-slate-600 leading-relaxed">{point}</p>
                   </div>
                 ))}
@@ -297,7 +297,7 @@ export default function Blog7() {
                   { icon: AlertTriangle, label: "Claims that fail due to procedural errors", value: "38%", sub: "Source: AICA adjudication data 2024" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-white border border-slate-200 rounded-xl p-6 text-center ds-card">
-                    <stat.icon className="w-8 h-8 text-[#4F46E5] mx-auto mb-3" />
+                    <stat.icon className="w-8 h-8 text-[#1652D9] mx-auto mb-3" />
                     <div className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</div>
                     <p className="text-sm font-medium text-slate-700 mb-1">{stat.label}</p>
                     <p className="text-xs text-slate-400">{stat.sub}</p>
@@ -317,7 +317,7 @@ export default function Blog7() {
               <p className="text-base text-slate-600 leading-relaxed mb-6">
                 The Act covers all parties in the construction chain: principal → main contractor → subcontractor → sub-subcontractor → supplier. Everyone who does construction work or supplies goods and services to a construction project is protected.
               </p>
-              <div className="bg-[#0F172A] text-white rounded-2xl p-8 mb-6">
+              <div className="bg-[#050A1C] text-white rounded-2xl p-8 mb-6">
                 <h3 className="text-lg font-bold mb-4 text-[#A5B4FC]">Key Rights Under NSW SOPA</h3>
                 <div className="space-y-3">
                   {[
@@ -328,7 +328,7 @@ export default function Blog7() {
                     { right: "Right to enforce the adjudication determination as a court judgment without further litigation" },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-[#4F46E5] flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">{i + 1}</div>
+                      <div className="w-5 h-5 rounded-full bg-[#1652D9] flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">{i + 1}</div>
                       <p className="text-sm text-slate-300 leading-relaxed">{item.right}</p>
                     </div>
                   ))}
@@ -349,11 +349,11 @@ export default function Blog7() {
               </p>
               <div className="space-y-4">
                 {[
-                  { step: "1", title: "Reference Date Arrives", detail: "The date specified in the contract (or last day of month if no date). Your right to make a payment claim is activated.", time: "Day 0", color: "bg-[#4F46E5]", warn: false },
-                  { step: "2", title: "Serve Payment Claim", detail: "Serve a compliant payment claim on the respondent. Must be in writing, identify the construction work, state the claimed amount, and include the SOPA endorsement.", time: "Day 1–3", color: "bg-[#4F46E5]", warn: false },
+                  { step: "1", title: "Reference Date Arrives", detail: "The date specified in the contract (or last day of month if no date). Your right to make a payment claim is activated.", time: "Day 0", color: "bg-[#1652D9]", warn: false },
+                  { step: "2", title: "Serve Payment Claim", detail: "Serve a compliant payment claim on the respondent. Must be in writing, identify the construction work, state the claimed amount, and include the SOPA endorsement.", time: "Day 1–3", color: "bg-[#1652D9]", warn: false },
                   { step: "3", title: "Respondent Issues Payment Schedule", detail: "Respondent has 10 business days to issue a payment schedule. Must state the scheduled payment amount and — if less than claimed — the reasons for withholding.", time: "Day 10 deadline", color: "bg-orange-500", warn: true },
-                  { step: "4", title: "Claimant Lodges Adjudication Application", detail: "If no schedule received, or the scheduled amount is disputed, claimant has 10 business days to lodge with a registered adjudicator.", time: "Day 10–20", color: "bg-[#4F46E5]", warn: false },
-                  { step: "5", title: "Adjudicator Makes Determination", detail: "Adjudicator has 10 business days from acceptance (or longer if agreed) to issue a written determination.", time: "Day 20–30", color: "bg-[#4F46E5]", warn: false },
+                  { step: "4", title: "Claimant Lodges Adjudication Application", detail: "If no schedule received, or the scheduled amount is disputed, claimant has 10 business days to lodge with a registered adjudicator.", time: "Day 10–20", color: "bg-[#1652D9]", warn: false },
+                  { step: "5", title: "Adjudicator Makes Determination", detail: "Adjudicator has 10 business days from acceptance (or longer if agreed) to issue a written determination.", time: "Day 20–30", color: "bg-[#1652D9]", warn: false },
                   { step: "6", title: "Payment Due", detail: "Respondent must pay the adjudicated amount within 5 business days. Non-payment allows claimant to obtain a judgment debt or suspend work.", time: "Day 35", color: "bg-green-500", warn: false },
                 ].map((item, i, arr) => (
                   <div key={i} className="flex gap-4">
@@ -414,8 +414,8 @@ export default function Blog7() {
                   { icon: TrendingUp, title: "Dispute Escalation Workflow", body: "When a payment schedule is not received on time, the system flags it immediately and generates the adjudication application package — ready to lodge within 24 hours." },
                 ].map((f) => (
                   <div key={f.title} className="flex gap-4 p-5 bg-white border border-slate-200 rounded-xl ds-card">
-                    <div className="w-10 h-10 bg-[#4F46E5]/8 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <f.icon className="w-5 h-5 text-[#4F46E5]" />
+                    <div className="w-10 h-10 bg-[#1652D9]/8 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <f.icon className="w-5 h-5 text-[#1652D9]" />
                     </div>
                     <div>
                       <h3 className="font-bold text-slate-900 mb-1">{f.title}</h3>
@@ -441,7 +441,7 @@ export default function Blog7() {
                   { value: "0", label: "Adjudication claims filed against Jenisys clients", sub: "In 18 months of operating the compliance system" },
                   { value: "14 hrs/wk", label: "Finance team hours saved per week", sub: "By eliminating manual deadline tracking across contracts" },
                 ].map((s) => (
-                  <div key={s.label} className="bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] text-white rounded-2xl p-6">
+                  <div key={s.label} className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] text-white rounded-2xl p-6">
                     <div className="text-4xl font-bold mb-2">{s.value}</div>
                     <div className="text-sm font-semibold text-white/90 mb-1">{s.label}</div>
                     <div className="text-xs text-white/60">{s.sub}</div>
@@ -456,7 +456,7 @@ export default function Blog7() {
                       <tr className="border-b border-slate-200">
                         <th className="text-left py-2 pr-4 font-semibold text-slate-700">Cost / Benefit</th>
                         <th className="text-right py-2 font-semibold text-slate-700">Without Jenisys</th>
-                        <th className="text-right py-2 font-semibold text-[#4F46E5]">With Jenisys</th>
+                        <th className="text-right py-2 font-semibold text-[#1652D9]">With Jenisys</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
@@ -470,7 +470,7 @@ export default function Blog7() {
                         <tr key={row.item}>
                           <td className="py-2.5 pr-4 text-slate-600">{row.item}</td>
                           <td className="text-right py-2.5 text-slate-500">{row.a}</td>
-                          <td className="text-right py-2.5 font-semibold text-[#4F46E5]">{row.b}</td>
+                          <td className="text-right py-2.5 font-semibold text-[#1652D9]">{row.b}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -490,7 +490,7 @@ export default function Blog7() {
               <div className="space-y-6">
                 {USE_CASES.map((uc) => (
                   <div key={uc.role} className="bg-white border border-slate-200 rounded-2xl overflow-hidden ds-card">
-                    <div className="bg-[#0F172A] px-6 py-4">
+                    <div className="bg-[#050A1C] px-6 py-4">
                       <span className="text-[#818CF8] font-bold text-sm uppercase tracking-widest">{uc.role}</span>
                       <p className="text-white text-sm mt-1">{uc.scenario}</p>
                     </div>
@@ -500,7 +500,7 @@ export default function Blog7() {
                         <p className="text-sm text-slate-600 leading-relaxed">{uc.problem}</p>
                       </div>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-[#4F46E5] mb-2">Jenisys Solution</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-[#1652D9] mb-2">Jenisys Solution</p>
                         <p className="text-sm text-slate-600 leading-relaxed">{uc.solution}</p>
                       </div>
                       <div>
@@ -515,7 +515,7 @@ export default function Blog7() {
 
             {/* CTA */}
             <section id="cta" className="mb-16 scroll-mt-24">
-              <div className="bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-2xl p-10 text-white text-center">
+              <div className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] rounded-2xl p-10 text-white text-center">
                 <h2 className="text-3xl font-bold mb-4">Get a Free SOPA Compliance Audit</h2>
                 <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
                   In 30 minutes, we map every active contract, identify every reference date, and flag any claims you are currently entitled to make. No commitment. No obligation.
@@ -523,7 +523,7 @@ export default function Blog7() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={openCalendar}
-                    className="bg-white text-[#4F46E5] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
+                    className="bg-white text-[#1652D9] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
                   >
                     Book a Free Audit <ArrowRight className="w-5 h-5" />
                   </button>
@@ -593,7 +593,7 @@ export default function Blog7() {
               <span>·</span>
               <span>By <span className="font-semibold text-slate-600">Jenisys</span></span>
               <span>·</span>
-              <Link href="/blog" className="text-[#4F46E5] hover:underline">← All Articles</Link>
+              <Link href="/blog" className="text-[#1652D9] hover:underline">← All Articles</Link>
             </div>
           </article>
         </div>

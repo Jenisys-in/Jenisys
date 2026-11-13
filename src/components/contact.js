@@ -159,7 +159,7 @@ const CustomCheckbox = React.memo(
       </div>
       <label
         htmlFor={id}
-        className="text-white font-['Montserrat'] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-relaxed cursor-pointer group-hover:text-gray-100 transition-colors duration-200"
+        className="text-white font-display text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-relaxed cursor-pointer group-hover:text-gray-100 transition-colors duration-200"
       >
         {label}
         {required && <span className="text-red-400 ml-1">*</span>}
@@ -196,7 +196,7 @@ const FormInput = React.memo(
 
     return (
       <div className="space-y-2 sm:space-y-3 md:space-y-4">
-        <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+        <h3 className="font-display text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
           {label}
           {required && <span className="text-red-400 ml-1">*</span>}
         </h3>
@@ -252,7 +252,7 @@ const FormSelect = React.memo(
 
     return (
       <div className="space-y-2 sm:space-y-3 md:space-y-4">
-        <h3 className="font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
+        <h3 className="font-display text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] font-semibold text-white">
           {label}
           {required && <span className="text-red-400 ml-1">*</span>}
         </h3>
@@ -287,7 +287,7 @@ const FormSelect = React.memo(
 
 // Memoized components for better performance
 const ContactInfoCard = React.memo(({ icon, title, content, alt }) => (
-  <div className="flex flex-col items-center px-4 transform hover:scale-105 transition-all duration-300 hover:bg-[#0F172A]/20 rounded-lg py-4">
+  <div className="flex flex-col items-center px-4 transform hover:scale-105 transition-all duration-300 hover:bg-[#050A1C]/20 rounded-lg py-4">
     <div className="bg-white p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
       <Image
         src={icon}
@@ -328,7 +328,7 @@ const LocationPin = React.memo(({ name, position }) => (
 const SocialLink = React.memo(({ href, icon, alt, name }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="group">
     <div className="bg-gray-600 w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-[50px] md:h-[50px] rounded-full flex justify-center items-center hover:bg-gray-500 transition-all duration-300 transform hover:scale-110 hover:rotate-6 shadow-lg hover:shadow-xl relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1652D9] to-[#1652D9] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <Image
         src={icon}
         alt={alt}
@@ -352,7 +352,7 @@ const AlertMessage = React.memo(({ onClose }) => (
       </p>
       <button
         onClick={onClose}
-        className="bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-4 py-2 sm:px-6 sm:py-2 rounded-lg text-sm sm:text-base hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        className="bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white px-4 py-2 sm:px-6 sm:py-2 rounded-lg text-sm sm:text-base hover:from-blue-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
       >
         Close
       </button>
@@ -547,11 +547,11 @@ function Contact() {
       `}</style>
 
       <div className="flex overflow-hidden flex-col justify-center bg-white mt-12 xs:mt-16 sm:mt-20 md:mt-24 lg:mt-0">
-        <header className="text-center scroll-on-appear mt-8 sm:mt-12 md:mt-16 lg:mt-20 font-['Montserrat'] text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold tracking-tighter leading-tight text-black px-4">
+        <header className="text-center scroll-on-appear mt-8 sm:mt-12 md:mt-16 lg:mt-20 font-display text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold tracking-tighter leading-tight text-black px-4">
           <h1>Let's Build Something Amazing Together</h1>
         </header>
 
-        <div className="scroll-on-appear mt-6 sm:mt-8 md:mt-10 lg:mt-11 mb-6 sm:mb-8 md:mb-10 font-['Montserrat'] text-sm sm:text-base md:text-lg font-semibold tracking-tight leading-6 sm:leading-7 md:leading-8 text-black max-w-4xl mx-auto text-center px-4 sm:px-6 md:px-8">
+        <div className="scroll-on-appear mt-6 sm:mt-8 md:mt-10 lg:mt-11 mb-6 sm:mb-8 md:mb-10 font-display text-sm sm:text-base md:text-lg font-semibold tracking-tight leading-6 sm:leading-7 md:leading-8 text-black max-w-4xl mx-auto text-center px-4 sm:px-6 md:px-8">
           <p className="text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Ready to transform your ideas into reality? Our team is here to help
             you succeed.
@@ -559,14 +559,14 @@ function Contact() {
         </div>
 
         {/* Contact Info Section */}
-        <section className="w-full bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 gradient-animate py-8 sm:py-12 md:py-16 text-white">
+        <section className="w-full bg-gradient-to-r from-gray-900 via-blue-900 to-blue-900 gradient-animate py-8 sm:py-12 md:py-16 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 text-center">
             {contactInfoCards}
           </div>
         </section>
 
         {/* Location Section */}
-        <section className="bg-[#0F172A] py-8 sm:py-12 md:py-16 text-white text-center">
+        <section className="bg-[#050A1C] py-8 sm:py-12 md:py-16 text-white text-center">
           <h2 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 px-4">
             We're located at
           </h2>
@@ -592,17 +592,17 @@ function Contact() {
             height={75}
             className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0"
           />
-          <h2 className="font-['Montserrat'] text-sm xs:text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[35px] font-bold ml-3 sm:ml-4 leading-tight">
+          <h2 className="font-display text-sm xs:text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[35px] font-bold ml-3 sm:ml-4 leading-tight">
             Tell Us About Your Project
           </h2>
         </section>
 
-        <p className="font-['Montserrat'] text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 font-semibold leading-relaxed">
+        <p className="font-display text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[30px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 font-semibold leading-relaxed">
           The more details you provide, the better we can help you
         </p>
 
         <div className="w-full">
-          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16 bg-gradient-to-r from-black from-30% via-purple-900 via-74% to-[#4F46E5] to-95% gradient-animate">
+          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16 bg-gradient-to-r from-black from-30% via-blue-900 via-74% to-[#1652D9] to-95% gradient-animate">
             <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16">
               {/* Form Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
@@ -739,7 +739,7 @@ function Contact() {
               </div>
 
               {/* Privacy Policy */}
-              <p className="font-['Montserrat'] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white mt-6 sm:mt-8 md:mt-10 lg:mt-12 leading-relaxed">
+              <p className="font-display text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white mt-6 sm:mt-8 md:mt-10 lg:mt-12 leading-relaxed">
                 For more information, please refer to the{" "}
                 <a
                   href="https://jenisys.in/Privacy-Policy"
@@ -758,10 +758,10 @@ function Contact() {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="bg-white text-black font-['Montserrat'] text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[36px] font-semibold px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-3 sm:py-4 md:py-5 lg:py-6 xl:py-8 rounded-full sm:rounded-2xl md:rounded-3xl lg:rounded-[48px] hover:shadow-lg hover:shadow-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 hover:bg-gradient-to-r hover:from-white hover:to-gray-100 relative overflow-hidden"
+                  className="bg-white text-black font-display text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-[36px] font-semibold px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-3 sm:py-4 md:py-5 lg:py-6 xl:py-8 rounded-full sm:rounded-2xl md:rounded-3xl lg:rounded-[48px] hover:shadow-lg hover:shadow-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 hover:bg-gradient-to-r hover:from-white hover:to-gray-100 relative overflow-hidden"
                 >
                   {isSubmitting && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] opacity-20 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#1652D9] to-[#1652D9] opacity-20 animate-pulse"></div>
                   )}
                   <span className="relative z-10">
                     {isSubmitting ? "Sending... " : "Get in Touch"}
@@ -773,8 +773,8 @@ function Contact() {
         </div>
 
         {/* Footer Social Section */}
-        <footer className="w-full bg-[#0F172A] py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
-          <h3 className="font-['Montserrat'] font-semibold text-lg sm:text-xl md:text-2xl lg:text-[26px] xl:text-[32px] text-center text-white mb-4 sm:mb-6 md:mb-8">
+        <footer className="w-full bg-[#050A1C] py-8 sm:py-12 md:py-16 flex flex-col justify-center items-center">
+          <h3 className="font-display font-semibold text-lg sm:text-xl md:text-2xl lg:text-[26px] xl:text-[32px] text-center text-white mb-4 sm:mb-6 md:mb-8">
             Follow Us On
           </h3>
           <div className="flex flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8">
@@ -784,7 +784,7 @@ function Contact() {
 
         {/* Alert Modal */}
         {showAlert && (
-          <div className="fixed inset-0 bg-[#0F172A] bg-opacity-70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="fixed inset-0 bg-[#050A1C] bg-opacity-70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
             <AlertMessage onClose={handleCloseAlert} />
           </div>
         )}

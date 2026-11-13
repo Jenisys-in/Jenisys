@@ -60,9 +60,9 @@ const BUSINESS_TYPES = [
     icon: Briefcase,
     type: "Agency",
     example: "Digital marketing agency, 12 clients",
-    color: "border-purple-200 bg-purple-50",
-    iconBg: "bg-purple-100",
-    iconColor: "text-purple-600",
+    color: "border-blue-200 bg-blue-50",
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
     problems: [
       "Monthly reports assembled manually — 6 hrs/client",
       "Client onboarding requires 18 back-and-forth emails",
@@ -80,9 +80,9 @@ const BUSINESS_TYPES = [
     icon: BarChart3,
     type: "SaaS",
     example: "B2B SaaS, 300 MRR customers",
-    color: "border-indigo-200 bg-indigo-50",
-    iconBg: "bg-indigo-100",
-    iconColor: "text-indigo-600",
+    color: "border-blue-200 bg-blue-50",
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
     problems: [
       "Trial-to-paid conversion handled manually by SDRs",
       "Churn detected too late — after the user has gone quiet",
@@ -222,12 +222,12 @@ export default function Blog8() {
     <div className="min-h-screen bg-white">
       {/* Scroll Progress */}
       <div
-        className="fixed top-0 left-0 h-1 bg-[#4F46E5] z-50 transition-all duration-150"
+        className="fixed top-0 left-0 h-1 bg-[#1652D9] z-50 transition-all duration-150"
         style={{ width: `${scrollProgress}%` }}
       />
 
       {/* ── HERO ── */}
-      <section className="relative bg-[#0F172A] text-white overflow-hidden">
+      <section className="relative bg-[#050A1C] text-white overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.06]"
           style={{
@@ -237,7 +237,7 @@ export default function Blog8() {
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-[#4F46E5]/20 text-[#A5B4FC] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#1652D9]/20 text-[#A5B4FC] text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <Bot className="w-4 h-4" />
               AI Automation · Business Operations · ROI
             </div>
@@ -296,7 +296,7 @@ export default function Blog8() {
                     onClick={() => jumpTo(item.id)}
                     className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeSection === item.id
-                        ? "bg-[#4F46E5]/8 text-[#4F46E5] border-l-2 border-[#4F46E5]"
+                        ? "bg-[#1652D9]/8 text-[#1652D9] border-l-2 border-[#1652D9]"
                         : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                   >
@@ -305,8 +305,8 @@ export default function Blog8() {
                 ))}
               </nav>
 
-              <div className="mt-8 p-4 bg-[#4F46E5]/6 rounded-xl border border-[#4F46E5]/15">
-                <p className="text-sm font-semibold text-[#4F46E5] mb-2">Not sure where to start?</p>
+              <div className="mt-8 p-4 bg-[#1652D9]/6 rounded-xl border border-[#1652D9]/15">
+                <p className="text-sm font-semibold text-[#1652D9] mb-2">Not sure where to start?</p>
                 <p className="text-xs text-slate-500 mb-3">We map your highest-ROI automation opportunities in a free 30-min session.</p>
                 <button onClick={openCalendar} className="w-full ds-btn-primary text-sm py-2.5">
                   Book Free Audit
@@ -321,7 +321,7 @@ export default function Blog8() {
             {/* TL;DR */}
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 mb-16">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <span className="bg-[#4F46E5] text-white text-xs font-bold px-3 py-1 rounded-full">TL;DR</span>
+                <span className="bg-[#1652D9] text-white text-xs font-bold px-3 py-1 rounded-full">TL;DR</span>
                 The four things this article proves
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
@@ -332,7 +332,7 @@ export default function Blog8() {
                   "Businesses that automate lead follow-up alone recover $18,000–$40,000/year in revenue that was previously going cold.",
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-[#4F46E5] mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#1652D9] mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-slate-600 leading-relaxed">{point}</p>
                   </div>
                 ))}
@@ -358,7 +358,7 @@ export default function Blog8() {
                   { icon: Clock, value: "23 hrs/wk", label: "Lost to manual tasks", color: "text-red-500" },
                   { icon: Mail, value: "40%", label: "Leads that go cold due to no follow-up", color: "text-orange-500" },
                   { icon: DollarSign, value: "$53K/yr", label: "Cost of manual overhead (typical)", color: "text-yellow-600" },
-                  { icon: RefreshCw, value: "6.2 apps", label: "Average tools used that don't talk to each other", color: "text-[#4F46E5]" },
+                  { icon: RefreshCw, value: "6.2 apps", label: "Average tools used that don't talk to each other", color: "text-[#1652D9]" },
                 ].map((s) => (
                   <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-5 text-center ds-card">
                     <s.icon className={`w-7 h-7 ${s.color} mx-auto mb-2`} />
@@ -403,12 +403,12 @@ export default function Blog8() {
                     title: "Fully Autonomous Workflows",
                     body: "End-to-end processes that run without human intervention: from lead capture to qualified meeting booked, from invoice sent to payment reconciled. Built on the first two layers.",
                     tag: "Scale phase",
-                    tagColor: "bg-purple-100 text-purple-700",
+                    tagColor: "bg-blue-100 text-blue-700",
                   },
                 ].map((l) => (
                   <div key={l.title} className="bg-white border border-slate-200 rounded-xl p-6 ds-card">
-                    <div className="w-10 h-10 bg-[#4F46E5]/8 rounded-lg flex items-center justify-center mb-4">
-                      <l.icon className="w-5 h-5 text-[#4F46E5]" />
+                    <div className="w-10 h-10 bg-[#1652D9]/8 rounded-lg flex items-center justify-center mb-4">
+                      <l.icon className="w-5 h-5 text-[#1652D9]" />
                     </div>
                     <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${l.tagColor} mb-3 inline-block`}>{l.tag}</span>
                     <h3 className="font-bold text-slate-900 mb-2">{l.title}</h3>
@@ -416,7 +416,7 @@ export default function Blog8() {
                   </div>
                 ))}
               </div>
-              <div className="bg-[#0F172A] text-white rounded-2xl p-8">
+              <div className="bg-[#050A1C] text-white rounded-2xl p-8">
                 <h3 className="font-bold text-[#A5B4FC] mb-4">The Practical Rule</h3>
                 <p className="text-sm text-slate-300 leading-relaxed mb-4">
                   If a task involves the same steps every time and someone could write those steps down as a checklist — it can be automated. If the outcome changes based on context (e.g. a customer replied with a complaint vs. a question) — that is where AI layers in.
@@ -447,7 +447,7 @@ export default function Blog8() {
                         <p className="text-xs text-slate-500">{bt.example}</p>
                       </div>
                       <div className="ml-auto text-right">
-                        <div className="text-2xl font-bold text-[#4F46E5]">{bt.roi}</div>
+                        <div className="text-2xl font-bold text-[#1652D9]">{bt.roi}</div>
                         <div className="text-xs text-slate-500">{bt.roiNote}</div>
                       </div>
                     </div>
@@ -464,12 +464,12 @@ export default function Blog8() {
                         </ul>
                       </div>
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-[#4F46E5] mb-3">Automations + Outcomes</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-[#1652D9] mb-3">Automations + Outcomes</p>
                         <ul className="space-y-3">
                           {bt.automations.map((a, i) => (
                             <li key={i} className="text-sm">
                               <div className="flex items-start gap-2">
-                                <CheckCircle className="w-4 h-4 text-[#4F46E5] mt-0.5 flex-shrink-0" />
+                                <CheckCircle className="w-4 h-4 text-[#1652D9] mt-0.5 flex-shrink-0" />
                                 <span className="text-slate-700">{a.label}</span>
                               </div>
                               <div className="ml-6 text-xs font-semibold text-green-600 mt-0.5">→ {a.saving}</div>
@@ -512,7 +512,7 @@ export default function Blog8() {
                         <td className="px-5 py-4 text-slate-600">{row.hrs}</td>
                         <td className="px-5 py-4 text-slate-600">{row.labour}</td>
                         <td className="px-5 py-4 text-slate-600">{row.revenue}</td>
-                        <td className="px-5 py-4 font-bold text-[#4F46E5]">{row.roi}</td>
+                        <td className="px-5 py-4 font-bold text-[#1652D9]">{row.roi}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -532,7 +532,7 @@ export default function Blog8() {
               <div className="space-y-4">
                 {PRIORITY_AUTOMATIONS.map((item) => (
                   <div key={item.rank} className="flex gap-5 p-6 bg-white border border-slate-200 rounded-xl ds-card">
-                    <div className="text-3xl font-black text-[#4F46E5]/20 leading-none flex-shrink-0 w-10">{item.rank}</div>
+                    <div className="text-3xl font-black text-[#1652D9]/20 leading-none flex-shrink-0 w-10">{item.rank}</div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2 flex-wrap">
                         <h3 className="font-bold text-slate-900">{item.area}</h3>
@@ -571,7 +571,7 @@ export default function Blog8() {
                   {
                     phase: "Months 2–3",
                     title: "Core Operations",
-                    color: "bg-[#4F46E5]",
+                    color: "bg-[#1652D9]",
                     items: [
                       "Onboarding workflow operating",
                       "Reporting automated — zero manual pulls",
@@ -583,7 +583,7 @@ export default function Blog8() {
                   {
                     phase: "Month 4+",
                     title: "Scale & AI Layer",
-                    color: "bg-purple-600",
+                    color: "bg-blue-600",
                     items: [
                       "AI lead scoring based on behaviour",
                       "Personalised sequences by segment",
@@ -627,7 +627,7 @@ export default function Blog8() {
                     <tr>
                       <th className="text-left px-5 py-4 font-bold text-slate-700">Factor</th>
                       <th className="text-center px-5 py-4 font-bold text-blue-600">Off-the-Shelf Tools</th>
-                      <th className="text-center px-5 py-4 font-bold text-[#4F46E5]">Custom System</th>
+                      <th className="text-center px-5 py-4 font-bold text-[#1652D9]">Custom System</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -659,7 +659,7 @@ export default function Blog8() {
 
             {/* CTA */}
             <section id="cta" className="mb-16 scroll-mt-24">
-              <div className="bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-2xl p-10 text-white text-center">
+              <div className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] rounded-2xl p-10 text-white text-center">
                 <h2 className="text-3xl font-bold mb-4">Book a Free Automation Audit</h2>
                 <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
                   In 30 minutes, we identify the top 5 automation opportunities in your business, calculate the projected ROI for each, and give you a prioritised action plan — whether you work with us or not.
@@ -667,7 +667,7 @@ export default function Blog8() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={openCalendar}
-                    className="bg-white text-[#4F46E5] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
+                    className="bg-white text-[#1652D9] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
                   >
                     Book the Free Audit <ArrowRight className="w-5 h-5" />
                   </button>
@@ -737,7 +737,7 @@ export default function Blog8() {
               <span>·</span>
               <span>By <span className="font-semibold text-slate-600">Jenisys</span></span>
               <span>·</span>
-              <Link href="/blog" className="text-[#4F46E5] hover:underline">← All Articles</Link>
+              <Link href="/blog" className="text-[#1652D9] hover:underline">← All Articles</Link>
             </div>
           </article>
         </div>

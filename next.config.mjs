@@ -42,7 +42,7 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://embed.tawk.to https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.jenisys.in https://images.unsplash.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.tawk.to wss://*.tawk.to https://api.hubspot.com; frame-src 'self' https://calendly.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://embed.tawk.to https://cdn.jsdelivr.net https://assets.apollo.io https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://www.jenisys.in https://*.tawk.to https://*.google-analytics.com https://images.unsplash.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.apollo.io https://vitals.vercel-insights.com https://*.tawk.to wss://*.tawk.to https://api.hubspot.com; frame-src 'self' https://calendly.com;",
           },
         ],
       },

@@ -182,17 +182,17 @@ export default function WebDevelopmentPage() {
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 to-[#7C3AED] transition-all duration-300"
+          className="h-full bg-gradient-to-r from-blue-500 to-[#0A7590] transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-blue-50 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-bounce"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-bounce"></div>
           <div className="absolute top-40 left-40 w-80 h-80 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-ping"></div>
         </div>
 
@@ -201,7 +201,7 @@ export default function WebDevelopmentPage() {
             <div className="mb-8">
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Stop Wishing for a Better Website.{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#7C3AED]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1652D9] to-[#0A7590]">
                   Start Building One.
                 </span>
               </h1>
@@ -216,7 +216,7 @@ export default function WebDevelopmentPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
                 onClick={openCalendar}
-                className="group bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="group bg-gradient-to-r from-[#1652D9] to-[#0A7590] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
               >
                 Schedule a Free Strategy Call
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -325,10 +325,10 @@ export default function WebDevelopmentPage() {
                   style={{ transitionDelay: `${index * 150}ms` }}
                   onMouseEnter={() => setActiveStep(index)}
                 >
-                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-500 to-[#7C3AED] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-500 to-[#0A7590] rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#4F46E5] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#1652D9] transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-gray-600">{step.description}</p>
@@ -355,14 +355,14 @@ export default function WebDevelopmentPage() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`group p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 transition-all duration-500 transform hover:scale-105 ${
+                className={`group p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-50 hover:from-blue-100 hover:to-blue-100 transition-all duration-500 transform hover:scale-105 ${
                   isVisible["features"]
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="text-[#4F46E5] mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-[#1652D9] mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -421,7 +421,7 @@ export default function WebDevelopmentPage() {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`p-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 ${
+                className={`p-8 bg-gradient-to-br from-blue-50 to-blue-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 ${
                   isVisible["testimonials"]
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
@@ -440,7 +440,7 @@ export default function WebDevelopmentPage() {
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-[#7C3AED] rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-[#0A7590] rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
@@ -500,7 +500,7 @@ export default function WebDevelopmentPage() {
             <div className="relative">
               <div className="bg-white p-8 rounded-2xl shadow-xl transform rotate-3 hover:rotate-6 transition-transform duration-500">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-[#4F46E5] mb-2">
+                  <div className="text-4xl font-bold text-[#1652D9] mb-2">
                     250+
                   </div>
                   <p className="text-gray-600">Websites Built</p>
@@ -508,7 +508,7 @@ export default function WebDevelopmentPage() {
               </div>
               <div className="bg-white p-8 rounded-2xl shadow-xl absolute top-20 right-0 transform -rotate-3 hover:-rotate-6 transition-transform duration-500">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-[#7C3AED] mb-2">
+                  <div className="text-4xl font-bold text-[#0A7590] mb-2">
                     95%
                   </div>
                   <p className="text-gray-600">Client Satisfaction</p>
@@ -567,7 +567,7 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1652D9] to-[#0A7590] text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Build a Website that Works for You?
@@ -579,12 +579,12 @@ export default function WebDevelopmentPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={openCalendar}
-              className="group bg-white text-[#4F46E5] px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="group bg-white text-[#1652D9] px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300"
             >
               Schedule a Free Strategy Call
               <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="group border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#4F46E5] transition-all duration-300">
+            <button className="group border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#1652D9] transition-all duration-300">
               See Our Pricing
             </button>
           </div>

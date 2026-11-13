@@ -52,18 +52,18 @@ export default function ScalableReactBlog() {
     >
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-indigo-400 via-cyan-400 to-blue-500 opacity-70 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 opacity-70 z-50 transition-all duration-300"
         style={{ width: `${scrollProgress}%` }}
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-cyan-700 to-indigo-500 text-white">
-        <div className="absolute inset-0 bg-[#0F172A]/10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 via-cyan-700 to-blue-500 text-white">
+        <div className="absolute inset-0 bg-[#050A1C]/10"></div>
 
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400/20 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-16 h-16 bg-indigo-300/20 rounded-full animate-bounce"></div>
+          <div className="absolute top-40 right-20 w-16 h-16 bg-blue-300/20 rounded-full animate-bounce"></div>
           <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-blue-300/20 rounded-full animate-ping"></div>
         </div>
 
@@ -86,7 +86,7 @@ export default function ScalableReactBlog() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
                 onClick={() => jumpToSection("tldr")}
-                className="px-8 py-3 bg-white text-[#4F46E5] rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-200"
+                className="px-8 py-3 bg-white text-[#1652D9] rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-200"
               >
                 Get Started
               </button>
@@ -114,7 +114,7 @@ export default function ScalableReactBlog() {
               </h3>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
                   <span className="text-gray-700 dark:text-gray-300">
                     Feature-based architecture scales better than file-type
                     grouping
@@ -135,7 +135,7 @@ export default function ScalableReactBlog() {
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-2 h-2 bg-[#4F46E5] rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-[#1652D9] rounded-full mt-2 flex-shrink-0"></span>
                   <span className="text-gray-700 dark:text-gray-300">
                     Testing and monitoring become critical as complexity grows
                   </span>
@@ -158,7 +158,7 @@ export default function ScalableReactBlog() {
                     <button
                       key={item.id}
                       onClick={() => jumpToSection(item.id)}
-                      className="block w-full text-left text-sm text-gray-600 dark:text-gray-400 hover:text-[#4F46E5] dark:hover:text-[#4F46E5] transition-colors"
+                      className="block w-full text-left text-sm text-gray-600 dark:text-gray-400 hover:text-[#1652D9] dark:hover:text-[#1652D9] transition-colors"
                     >
                       {item.label}
                     </button>
@@ -176,7 +176,7 @@ export default function ScalableReactBlog() {
                 <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                   Why Scalability Matters in 2025
                 </h2>
-                <div className="bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-slate-800 dark:to-slate-700 p-6 rounded-xl mb-8">
+                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-slate-800 dark:to-slate-700 p-6 rounded-xl mb-8">
                   <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
                     As React applications grow from simple prototypes to complex
                     enterprise systems, maintaining performance, developer
@@ -196,7 +196,7 @@ export default function ScalableReactBlog() {
               {/* Architecture Patterns */}
               <section id="architecture" className="mb-16">
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900 dark:text-white">
-                  <BookOpen className="w-8 h-8 text-[#4F46E5]" />
+                  <BookOpen className="w-8 h-8 text-[#1652D9]" />
                   Architecture Patterns
                 </h2>
 
@@ -254,7 +254,7 @@ export default function ScalableReactBlog() {
               {/* Component-Driven Development */}
               <section id="components" className="mb-16">
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900 dark:text-white">
-                  <Users className="w-8 h-8 text-[#4F46E5]" />
+                  <Users className="w-8 h-8 text-[#1652D9]" />
                   Component-Driven Development
                 </h2>
 
@@ -266,7 +266,7 @@ export default function ScalableReactBlog() {
 
                     <button
                       onClick={() => toggleCodeExpansion("button")}
-                      className="flex items-center gap-2 text-[#4F46E5] dark:text-[#4F46E5] hover:text-indigo-800 dark:hover:text-indigo-300 mb-3"
+                      className="flex items-center gap-2 text-[#1652D9] dark:text-[#1652D9] hover:text-blue-800 dark:hover:text-blue-300 mb-3"
                     >
                       {expandedCode.button ? (
                         <ChevronDown className="w-4 h-4" />
@@ -296,7 +296,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseClasses = 'font-semibold rounded-lg transition-all';
   const variants = {
-    primary: 'bg-[#4F46E5] hover:bg-[#3730A3] text-white',
+    primary: 'bg-[#1652D9] hover:bg-[#1B2AA0] text-white',
     secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-900'
   };
   const sizes = {
@@ -325,13 +325,13 @@ export const Button: React.FC<ButtonProps> = ({
                       Component Examples
                     </h4>
                     <div className="space-y-3">
-                      <button className="px-4 py-2 bg-[#4F46E5] hover:bg-[#3730A3] text-white font-semibold rounded-lg transition-all">
+                      <button className="px-4 py-2 bg-[#1652D9] hover:bg-[#1B2AA0] text-white font-semibold rounded-lg transition-all">
                         Primary Button
                       </button>
                       <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-semibold rounded-lg transition-all">
                         Secondary Button
                       </button>
-                      <button className="px-6 py-3 text-lg bg-[#4F46E5] hover:bg-[#3730A3] text-white font-semibold rounded-lg transition-all">
+                      <button className="px-6 py-3 text-lg bg-[#1652D9] hover:bg-[#1B2AA0] text-white font-semibold rounded-lg transition-all">
                         Large Button
                       </button>
                     </div>
@@ -430,7 +430,7 @@ export const Button: React.FC<ButtonProps> = ({
 
                     <button
                       onClick={() => toggleCodeExpansion("lazy")}
-                      className="flex items-center gap-2 text-[#4F46E5] dark:text-[#4F46E5] hover:text-indigo-800 dark:hover:text-indigo-300 mb-3"
+                      className="flex items-center gap-2 text-[#1652D9] dark:text-[#1652D9] hover:text-blue-800 dark:hover:text-blue-300 mb-3"
                     >
                       {expandedCode.lazy ? (
                         <ChevronDown className="w-4 h-4" />
@@ -491,16 +491,16 @@ function App() {
                         <code className="text-sm text-blue-800 dark:text-blue-200">
                           React.memo()
                         </code>
-                        <p className="text-xs text-[#4F46E5] dark:text-blue-300 mt-1">
+                        <p className="text-xs text-[#1652D9] dark:text-blue-300 mt-1">
                           Prevents unnecessary re-renders
                         </p>
                       </div>
 
-                      <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                        <code className="text-sm text-purple-800 dark:text-purple-200">
+                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                        <code className="text-sm text-blue-800 dark:text-blue-200">
                           useMemo()
                         </code>
-                        <p className="text-xs text-[#7C3AED] dark:text-purple-300 mt-1">
+                        <p className="text-xs text-[#0A7590] dark:text-blue-300 mt-1">
                           Memoizes expensive calculations
                         </p>
                       </div>
@@ -553,7 +553,7 @@ function App() {
 
                   <div className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl p-6 text-center">
                     <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Users className="w-6 h-6 text-[#4F46E5] dark:text-blue-400" />
+                      <Users className="w-6 h-6 text-[#1652D9] dark:text-blue-400" />
                     </div>
                     <h4 className="font-semibold mb-2 text-gray-900 dark:text-white">
                       Authentication
@@ -580,17 +580,17 @@ function App() {
 
               {/* Conclusion & CTA */}
               <section className="mb-16">
-                <div className="bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-2xl p-8 text-center">
+                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-2xl p-8 text-center">
                   <h2 className="text-3xl font-bold mb-4">
                     Ready to Scale Your React App?
                   </h2>
-                  <p className="text-xl text-indigo-100 mb-6 max-w-2xl mx-auto">
+                  <p className="text-xl text-blue-100 mb-6 max-w-2xl mx-auto">
                     Download our comprehensive React Architecture Starter Kit
                     with all the patterns and examples from this guide.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button className="px-8 py-3 bg-white text-[#4F46E5] rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-200">
+                    <button className="px-8 py-3 bg-white text-[#1652D9] rounded-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-200">
                       Download Starter Kit
                     </button>
                     <button className="px-6 py-3 bg-white/10 backdrop-blur-sm rounded-lg font-semibold hover:bg-white/20 transition-all duration-200">
@@ -675,11 +675,11 @@ function App() {
                       className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer group"
                     >
                       <div className="mb-3">
-                        <span className="px-2 py-1 bg-[#4F46E5]/8 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">
+                        <span className="px-2 py-1 bg-[#1652D9]/8 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">
                           {article.category}
                         </span>
                       </div>
-                      <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white group-hover:text-[#4F46E5] dark:group-hover:text-[#4F46E5] transition-colors">
+                      <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white group-hover:text-[#1652D9] dark:group-hover:text-[#1652D9] transition-colors">
                         {article.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
@@ -708,9 +708,9 @@ function App() {
                     <input
                       type="email"
                       placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent dark:bg-slate-700 dark:text-white"
+                      className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#1652D9] focus:border-transparent dark:bg-slate-700 dark:text-white"
                     />
-                    <button className="px-6 py-3 bg-[#4F46E5] text-white rounded-lg font-semibold hover:bg-[#3730A3] transition-colors whitespace-nowrap">
+                    <button className="px-6 py-3 bg-[#1652D9] text-white rounded-lg font-semibold hover:bg-[#1B2AA0] transition-colors whitespace-nowrap">
                       Subscribe
                     </button>
                   </div>
@@ -736,10 +736,10 @@ function App() {
                     </div>
 
                     <div className="flex gap-3">
-                      <button className="px-4 py-2 bg-[#4F46E5] text-white rounded-lg hover:bg-[#3730A3] transition-colors flex items-center gap-2">
+                      <button className="px-4 py-2 bg-[#1652D9] text-white rounded-lg hover:bg-[#1B2AA0] transition-colors flex items-center gap-2">
                         📘 LinkedIn
                       </button>
-                      <button className="px-4 py-2 bg-[#0F172A] dark:bg-slate-600 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-slate-500 transition-colors flex items-center gap-2">
+                      <button className="px-4 py-2 bg-[#050A1C] dark:bg-slate-600 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-slate-500 transition-colors flex items-center gap-2">
                         🐦 Twitter
                       </button>
                       <button className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors flex items-center gap-2">
@@ -768,7 +768,7 @@ function App() {
                       Share your thoughts, ask questions, or discuss React
                       architecture patterns with the community.
                     </p>
-                    <button className="px-6 py-3 bg-[#4F46E5] text-white rounded-lg font-semibold hover:bg-[#3730A3] transition-colors">
+                    <button className="px-6 py-3 bg-[#1652D9] text-white rounded-lg font-semibold hover:bg-[#1B2AA0] transition-colors">
                       Start Discussion
                     </button>
                   </div>
@@ -786,7 +786,7 @@ function App() {
       {scrollProgress > 20 && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-[#4F46E5] hover:bg-[#3730A3] text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center z-50"
+          className="fixed bottom-8 right-8 w-12 h-12 bg-[#1652D9] hover:bg-[#1B2AA0] text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center z-50"
         >
           ↑
         </button>

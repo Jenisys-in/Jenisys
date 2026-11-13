@@ -223,11 +223,11 @@ const ITConsultingPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 relative overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-blue-50 relative overflow-x-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <div
-          className="absolute w-96 h-96 bg-gradient-to-r from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse"
+          className="absolute w-96 h-96 bg-gradient-to-r from-blue-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse"
           style={{
             left: mousePosition.x / 10,
             top: mousePosition.y / 10,
@@ -235,11 +235,11 @@ const ITConsultingPage = () => {
           }}
         />
         <div
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-300/30 to-purple-300/30 rounded-full blur-2xl animate-bounce"
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-300/30 to-blue-300/30 rounded-full blur-2xl animate-bounce"
           style={{ animationDuration: "4s" }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-r from-purple-400/25 to-blue-400/25 rounded-full blur-2xl animate-bounce"
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-r from-blue-400/25 to-blue-400/25 rounded-full blur-2xl animate-bounce"
           style={{ animationDuration: "6s", animationDelay: "2s" }}
         />
       </div>
@@ -258,14 +258,14 @@ const ITConsultingPage = () => {
               data-animate
             >
               <div className="mb-8">
-                <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full text-purple-700 font-semibold mb-8 backdrop-blur-sm border border-purple-200/50 hover:scale-105 transition-all duration-300">
+                <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-100 rounded-full text-blue-700 font-semibold mb-8 backdrop-blur-sm border border-blue-200/50 hover:scale-105 transition-all duration-300">
                   <Star className="w-5 h-5 mr-2" />
                   Transform Your Business Today
                 </div>
               </div>
               <h1 className="text-6xl md:text-8xl font-bold text-gray-900 mb-8 leading-tight">
                 Expert IT Consulting
-                <span className="block bg-gradient-to-r from-[#4F46E5] via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-pulse">
+                <span className="block bg-gradient-to-r from-[#1652D9] via-blue-600 to-blue-600 bg-clip-text text-transparent animate-pulse">
                   That Delivers Results
                 </span>
               </h1>
@@ -278,16 +278,16 @@ const ITConsultingPage = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <button
                   onClick={openCalendar}
-                  className="group bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 relative overflow-hidden"
+                  className="group bg-gradient-to-r from-[#1652D9] to-[#1652D9] text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:from-blue-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 relative overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Get Your Free Consultation
                     <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                 </button>
                 <Link href="#our-process">
-                  <button className="group border-2 border-purple-300 text-purple-700 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
+                  <button className="group border-2 border-blue-300 text-blue-700 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-blue-50 hover:border-blue-400 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
                     <span className="flex items-center justify-center">
                       View Our Process
                       <Zap className="w-5 h-5 ml-3 group-hover:rotate-12 transition-transform duration-300" />
@@ -316,8 +316,8 @@ const ITConsultingPage = () => {
                 id="metrics"
                 data-animate
               >
-                <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-purple-100/50 hover:border-purple-300/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
-                  <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-blue-100/50 hover:border-blue-300/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10">
+                  <div className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#1652D9] to-[#1652D9] bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
                     {metric.value}
                   </div>
                   <div className="text-gray-600 font-medium text-sm md:text-base">
@@ -337,7 +337,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Is Your IT
-                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#1652D9] to-[#1652D9] bg-clip-text text-transparent">
                   Holding You Back?
                 </span>
               </h2>
@@ -404,13 +404,13 @@ const ITConsultingPage = () => {
                 id="solutions"
                 data-animate
               >
-                <h3 className="text-3xl font-bold text-[#7C3AED] mb-8 flex items-center">
+                <h3 className="text-3xl font-bold text-[#0A7590] mb-8 flex items-center">
                   <CheckCircle2 className="w-8 h-8 mr-4" />
                   Our Solutions
                 </h3>
                 <div className="space-y-6">
-                  <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-purple-500 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#7C3AED] transition-colors">
+                  <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2">
+                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#0A7590] transition-colors">
                       Modern Infrastructure
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
@@ -418,8 +418,8 @@ const ITConsultingPage = () => {
                       and adapt to changing needs
                     </p>
                   </div>
-                  <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-purple-500 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#7C3AED] transition-colors">
+                  <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2">
+                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#0A7590] transition-colors">
                       Robust Security
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
@@ -427,8 +427,8 @@ const ITConsultingPage = () => {
                       protect your valuable assets
                     </p>
                   </div>
-                  <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-purple-500 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
-                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#7C3AED] transition-colors">
+                  <div className="group bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-sm border-l-4 border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2">
+                    <h4 className="font-bold text-gray-900 mb-3 text-xl group-hover:text-[#0A7590] transition-colors">
                       Process Automation
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
@@ -460,9 +460,9 @@ const ITConsultingPage = () => {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className={`group bg-white/70 backdrop-blur-sm rounded-3xl border border-purple-100/50 p-10 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-3 hover:scale-105 ${
+                  className={`group bg-white/70 backdrop-blur-sm rounded-3xl border border-blue-100/50 p-10 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer transform hover:-translate-y-3 hover:scale-105 ${
                     selectedService === index
-                      ? "ring-2 ring-purple-500 shadow-2xl shadow-purple-500/20 scale-105"
+                      ? "ring-2 ring-blue-500 shadow-2xl shadow-blue-500/20 scale-105"
                       : ""
                   } ${
                     isVisible.services
@@ -476,10 +476,10 @@ const ITConsultingPage = () => {
                     setSelectedService(selectedService === index ? null : index)
                   }
                 >
-                  <div className="text-[#7C3AED] mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                  <div className="text-[#0A7590] mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#7C3AED] transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#0A7590] transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -500,7 +500,7 @@ const ITConsultingPage = () => {
                             key={idx}
                             className="flex items-center text-gray-600"
                           >
-                            <CheckCircle className="w-5 h-5 text-[#7C3AED] mr-3 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 text-[#0A7590] mr-3 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -508,7 +508,7 @@ const ITConsultingPage = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center text-[#7C3AED] font-semibold mt-6 group-hover:translate-x-3 transition-all duration-300">
+                  <div className="flex items-center text-[#0A7590] font-semibold mt-6 group-hover:translate-x-3 transition-all duration-300">
                     Learn More{" "}
                     <ChevronRight className="w-5 h-5 ml-2 group-hover:rotate-90 transition-transform duration-300" />
                   </div>
@@ -526,7 +526,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Our Proven
-                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#1652D9] to-[#1652D9] bg-clip-text text-transparent">
                   Process
                 </span>
               </h2>
@@ -537,7 +537,7 @@ const ITConsultingPage = () => {
             </div>
 
             <div className="relative">
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-200 via-blue-200 to-purple-200 rounded-full"></div>
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-200 via-blue-200 to-blue-200 rounded-full"></div>
 
               {processSteps.map((step, index) => (
                 <div
@@ -560,11 +560,11 @@ const ITConsultingPage = () => {
                         : "md:pl-12 md:text-left"
                     }`}
                   >
-                    <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-10 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 transform hover:-translate-y-3 border border-purple-100/50">
-                      <div className="text-[#7C3AED] mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                    <div className="group bg-white/70 backdrop-blur-sm rounded-3xl p-10 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-3 border border-blue-100/50">
+                      <div className="text-[#0A7590] mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
                         {step.icon}
                       </div>
-                      <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#7C3AED] transition-colors">
+                      <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#0A7590] transition-colors">
                         {step.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed text-lg">
@@ -573,7 +573,7 @@ const ITConsultingPage = () => {
                     </div>
                   </div>
 
-                  <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg hover:scale-125 transition-all duration-300 cursor-pointer">
+                  <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg hover:scale-125 transition-all duration-300 cursor-pointer">
                     {index + 1}
                   </div>
                 </div>
@@ -590,7 +590,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 What Our Clients
-                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#1652D9] to-[#1652D9] bg-clip-text text-transparent">
                   Say About Us
                 </span>
               </h2>
@@ -604,7 +604,7 @@ const ITConsultingPage = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`group bg-white/70 backdrop-blur-sm rounded-3xl border border-purple-100/50 p-10 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-700 transform hover:-translate-y-5 hover:scale-105 ${
+                  className={`group bg-white/70 backdrop-blur-sm rounded-3xl border border-blue-100/50 p-10 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 transform hover:-translate-y-5 hover:scale-105 ${
                     isVisible.testimonials
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-20"
@@ -632,11 +632,11 @@ const ITConsultingPage = () => {
                         alt={testimonial.name}
                         width={64}
                         height={64}
-                        className="w-16 h-16 rounded-full mr-4 object-cover ring-2 ring-purple-200 group-hover:ring-purple-400 transition-all duration-300"
+                        className="w-16 h-16 rounded-full mr-4 object-cover ring-2 ring-blue-200 group-hover:ring-blue-400 transition-all duration-300"
                       />
                     )}
                     <div>
-                      <div className="font-bold text-gray-900 text-lg group-hover:text-[#7C3AED] transition-colors">
+                      <div className="font-bold text-gray-900 text-lg group-hover:text-[#0A7590] transition-colors">
                         {testimonial.name}
                       </div>
                       <div className="text-gray-600">
@@ -788,24 +788,24 @@ const ITConsultingPage = () => {
 
       {/* CTA Section */}
       <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#4F46E5] via-blue-600 to-indigo-700"></div>
-        <div className="absolute inset-0 bg-[#0F172A]/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1652D9] via-blue-600 to-blue-700"></div>
+        <div className="absolute inset-0 bg-[#050A1C]/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               Ready to Transform Your
-              <span className="block text-transparent bg-gradient-to-r from-purple-200 to-blue-200 bg-clip-text">
+              <span className="block text-transparent bg-gradient-to-r from-blue-200 to-blue-200 bg-clip-text">
                 IT Infrastructure?
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-purple-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
               Get a free consultation and discover how a strategic IT plan can
               accelerate your business growth and deliver real results
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={openCalendar}
-                className="group bg-white text-[#7C3AED] px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                className="group bg-white text-[#0A7590] px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
               >
                 <span className="flex items-center justify-center">
                   Book a Strategy Call
@@ -814,7 +814,7 @@ const ITConsultingPage = () => {
               </button>
               <button
                 onClick={openCalendar}
-                className="group border-2 border-white text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-[#7C3AED] transition-all duration-300 transform hover:scale-105"
+                className="group border-2 border-white text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-[#0A7590] transition-all duration-300 transform hover:scale-105"
               >
                 <span className="flex items-center justify-center">
                   Get a Custom IT Plan
@@ -833,7 +833,7 @@ const ITConsultingPage = () => {
             <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Frequently Asked
-                <span className="block bg-gradient-to-r from-[#4F46E5] to-[#4F46E5] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#1652D9] to-[#1652D9] bg-clip-text text-transparent">
                   Questions
                 </span>
               </h2>
@@ -846,7 +846,7 @@ const ITConsultingPage = () => {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`group bg-white/70 backdrop-blur-sm rounded-3xl border border-purple-100/50 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/10 ${
+                  className={`group bg-white/70 backdrop-blur-sm rounded-3xl border border-blue-100/50 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10 ${
                     isVisible.faq
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-10"
@@ -856,14 +856,14 @@ const ITConsultingPage = () => {
                   data-animate
                 >
                   <button
-                    className="w-full p-8 text-left flex items-center justify-between hover:bg-purple-50/50 transition-all duration-300 rounded-3xl"
+                    className="w-full p-8 text-left flex items-center justify-between hover:bg-blue-50/50 transition-all duration-300 rounded-3xl"
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   >
-                    <span className="font-bold text-gray-900 text-lg md:text-xl group-hover:text-[#7C3AED] transition-colors">
+                    <span className="font-bold text-gray-900 text-lg md:text-xl group-hover:text-[#0A7590] transition-colors">
                       {faq.question}
                     </span>
                     <ChevronRight
-                      className={`w-6 h-6 text-[#7C3AED] transition-all duration-300 ${
+                      className={`w-6 h-6 text-[#0A7590] transition-all duration-300 ${
                         openFaq === index
                           ? "rotate-90 scale-125"
                           : "group-hover:scale-110"
