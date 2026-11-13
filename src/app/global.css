@@ -408,13 +408,6 @@
   }
 }
 
-/* Tawk.to mobile */
-@media (max-width: 768px) {
-  #tawk-to-widget {
-    display: block !important;
-  }
-}
-
 /* ============================================
    BUTTON HOVER (simple, kept for legacy compat)
    ============================================ */

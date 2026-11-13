@@ -61,8 +61,7 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            // Tawk.to needs its own styles, fonts, images, sounds and frames, not just its script.
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.tawk.to https://cdn.jsdelivr.net https://assets.apollo.io https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.tawk.to; img-src 'self' data: blob: https://www.jenisys.in https://*.tawk.to https://tawk.link https://cdn.jsdelivr.net https://*.google-analytics.com https://www.googletagmanager.com https://images.unsplash.com; font-src 'self' data: https://fonts.gstatic.com https://*.tawk.to; media-src 'self' https://*.tawk.to; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.apollo.io https://vitals.vercel-insights.com https://*.tawk.to wss://*.tawk.to https://api.hubspot.com; frame-src 'self' https://calendly.com https://*.tawk.to;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net https://assets.apollo.io https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://www.jenisys.in https://cdn.jsdelivr.net https://*.google-analytics.com https://www.googletagmanager.com https://images.unsplash.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.apollo.io https://vitals.vercel-insights.com https://api.hubspot.com; frame-src 'self' https://calendly.com;",
           },
         ],
       },
