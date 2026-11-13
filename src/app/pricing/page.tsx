@@ -10,7 +10,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Pricing: Fixed-Price AI Automation and MVP Development | Jenisys",
   description:
-    "Transparent, fixed pricing. Discovery Sprint $499, AI automation from $1,500, MVP development from $7,500, support plans from $499 a month. Custom quotes for larger projects.",
+    "Fixed pricing: Discovery Sprint $499, AI automation from $1,500, MVP development from $7,500, support from $499 a month. Custom quotes for bigger projects.",
   path: "/pricing",
 });
 

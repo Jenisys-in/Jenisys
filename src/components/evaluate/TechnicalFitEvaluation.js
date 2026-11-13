@@ -144,7 +144,7 @@ export default function TechnicalFitEvaluation() {
   const progress = ((step + 1) / STEPS.length) * 100;
   const verdict = scores ? getVerdict(scores.composite) : null;
 
-  if (!mounted) return null;
+  // Render on the server too, so search engines see the page; saved progress is restored after mount.
 
   return (
     <section className={s.pageWrapper} aria-label="Technical Fit Evaluation">
