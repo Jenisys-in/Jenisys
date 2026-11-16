@@ -16,9 +16,28 @@ const PrivacyPolicy = () => {
                 Jenisys Software Development & Technology Consulting
               </p>
               <p>
-                Last updated: 2024-07-22
+                Last updated: 2026-11-16
               </p>
             </header>
+
+            {/* Services that handle data (added 2026-11-16, reflects how the site works today) */}
+            <section>
+              <h2>
+                Services we use to run this website
+              </h2>
+              <p>
+                This list describes how the site handles data today. It is a summary and does not replace the sections below.
+              </p>
+              <ul>
+                <li><strong>Vercel</strong> hosts the website and provides Web Analytics and Speed Insights, which do not use cookies.</li>
+                <li><strong>Google Analytics</strong> and the <strong>Apollo</strong> website tracker load only after you choose Accept in the cookie bar. If you decline or do not choose, they do not load.</li>
+                <li><strong>Supabase</strong> stores the details you send through our forms: contact briefs, newsletter sign-ups and talent pool applications.</li>
+                <li><strong>HubSpot</strong> receives your name, email and company when you send a brief, so we can follow up.</li>
+                <li><strong>Cloudinary</strong> stores resumes uploaded through the talent pool form.</li>
+                <li><strong>Calendly</strong> provides the booking window. It loads only when you choose to book a call.</li>
+                <li><strong>Email</strong> is used to notify our team of new briefs and sign-ups.</li>
+              </ul>
+            </section>
 
             {/* Terms */}
             <section>

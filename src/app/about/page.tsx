@@ -11,6 +11,22 @@ export const metadata = pageMeta({
   path: "/about",
 });
 
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.jenisys.in/about#tuhin-das",
+  name: "Tuhin Das",
+  jobTitle: "Full-Stack & AI Engineer",
+  worksFor: { "@id": "https://www.jenisys.in#organization" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Georgia State University" },
+  sameAs: ["https://www.upwork.com/freelancers/~012845875e467d10e3"],
+};
+
 export default function About() {
-  return <AboutUs />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
+      <AboutUs />
+    </>
+  );
 }

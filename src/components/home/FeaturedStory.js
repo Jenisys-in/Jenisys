@@ -4,6 +4,7 @@ import OutcomeShift from "../ui-brand/OutcomeShift";
 import { ChapterHead } from "../ui-brand/Chapter";
 import { caseStudies } from "./data";
 import { outcomes } from "@/lib/outcomes";
+import { entries } from "@/lib/case-study-data";
 
 // Chapter 03 — one story told properly, plus a pointer to the second.
 export default function FeaturedStory() {
@@ -18,8 +19,8 @@ export default function FeaturedStory() {
           n="03"
           name="The work"
           id="story-title"
-          title="Two systems we built, and what changed"
-          lead="Larger systems we have built. Our automation and MVP packages use the same engineering at a smaller scale."
+          title="Delivered work, and what changed"
+          lead="Two larger systems and three recent engagements. Our automation and MVP packages use the same engineering at a smaller scale."
           className="j-rise"
         />
 
@@ -64,6 +65,33 @@ export default function FeaturedStory() {
             <span className="font-mono text-[12px] uppercase tracking-[0.06em] text-gain">monthly close</span>
           </div>
         </Link>
+
+        <div className="mt-20">
+          <p className="j-eyebrow mb-6">Recent engagements · from our Upwork portfolio</p>
+          <ul className="j-divided border-y border-line">
+            {entries.filter((e) => e.source === "upwork").map((e) => {
+              const o = outcomes.find((x) => x.slug === e.slug);
+              return (
+                <li key={e.slug}>
+                  <Link href={`/case-study/${e.slug}`} className="group grid items-baseline gap-x-8 gap-y-2 py-6 transition-colors hover:bg-deep md:grid-cols-12 md:px-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                    <span className="font-display text-xl font-semibold tracking-[-0.015em] text-ink md:col-span-7">{e.title}</span>
+                    <span className="flex items-baseline gap-2 tabular-nums md:col-span-4 md:justify-end">
+                      {o ? (
+                        <>
+                          <span className="font-display text-3xl font-bold tracking-[-0.03em] text-ink">{o.prefix || ""}{o.after}{o.unit}</span>
+                          <span className="font-mono text-[12px] uppercase tracking-[0.06em] text-gain">{o.what}</span>
+                        </>
+                      ) : (
+                        <span className="font-mono text-[13px] text-ink">{e.headline}</span>
+                      )}
+                    </span>
+                    <span className="hidden font-mono text-signal transition-transform group-hover:translate-x-1 md:col-span-1 md:block md:text-right" aria-hidden="true">→</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </section>
   );

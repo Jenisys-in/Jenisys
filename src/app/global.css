@@ -3,44 +3,8 @@
 @plugin "tailwindcss-animate";
 
 /* ============================================
-   ENTERPRISE DESIGN SYSTEM — Custom Properties
+   Tokens
    ============================================ */
-
-:root {
-  /* Primary */
-  --ds-primary: #1652D9;
-  --ds-primary-hover: #1B2AA0;
-  --ds-accent: #0A7590;
-
-  /* Backgrounds */
-  --ds-bg-main: #FFFFFF;
-  --ds-bg-section: #F5F7FC;
-  --ds-bg-alt: #EAEFF8;
-  --ds-bg-dark: #050A1C;
-  --ds-bg-dark-surface: #0A1330;
-
-  /* Borders */
-  --ds-border: #D5DCE8;
-
-  /* Text */
-  --ds-text-primary: #0A1230;
-  --ds-text-body: #2E3858;
-  --ds-text-muted: #4A5578;
-  --ds-text-on-dark: #E5E7EB;
-
-  /* Gradient */
-  --ds-gradient: linear-gradient(120deg, #1B2AA0, #1652D9 55%, #0A7590);
-
-  /* Shadows */
-  --ds-shadow-card: 0 1px 2px rgba(0, 0, 0, .04);
-  --ds-shadow-card-hover: 0 12px 24px rgba(0, 0, 0, .08);
-
-  /* Radius */
-  --ds-radius-card: 16px;
-  --ds-radius-btn: 8px;
-
-  /* Spacing scale: 8, 16, 24, 32, 48, 64, 96 */
-}
 
 @theme {
   --breakpoint-min: 393px;
@@ -183,269 +147,15 @@
   }
 }
 
-/* ============================================
-   ENTERPRISE CARD SYSTEM
-   ============================================ */
-
+/* Article cards in the two remaining blog posts (planning/05, stage 4). */
 .ds-card {
-  background: var(--ds-bg-main);
-  border: 1px solid var(--ds-border);
-  border-radius: var(--ds-radius-card);
-  box-shadow: var(--ds-shadow-card);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+  border: 1px solid #d8d3c6;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.ds-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--ds-shadow-card-hover);
-}
 
-/* ============================================
-   BUTTON SYSTEM
-   ============================================ */
-
-.ds-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: var(--ds-primary);
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: var(--ds-radius-btn);
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.ds-btn-primary:hover {
-  background: var(--ds-primary-hover);
-}
-
-.ds-btn-primary:focus-visible {
-  outline: 2px solid var(--ds-primary);
-  outline-offset: 2px;
-}
-
-.ds-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: transparent;
-  color: var(--ds-primary);
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: var(--ds-radius-btn);
-  border: 1px solid var(--ds-primary);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.ds-btn-secondary:hover {
-  background: rgba(79, 70, 229, 0.06);
-}
-
-.ds-btn-secondary:focus-visible {
-  outline: 2px solid var(--ds-primary);
-  outline-offset: 2px;
-}
-
-/* ============================================
-   ICON SYSTEM
-   ============================================ */
-
-.ds-icon-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--ds-primary);
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.ds-icon-container:hover {
-  transform: scale(1.05);
-}
-
-.ds-icon-container-dark {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-/* ============================================
-   GRADIENT UTILITIES
-   ============================================ */
-
-.ds-gradient-bg {
-  background: var(--ds-gradient);
-}
-
-.ds-gradient-text {
-  background: var(--ds-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-filter: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-/* ============================================
-   IMAGE TREATMENT
-   ============================================ */
-
-.ds-image {
-  filter: contrast(1.05) saturate(0.95);
-}
-
-.ds-image-dark-overlay {
-  position: relative;
-}
-
-.ds-image-dark-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  pointer-events: none;
-}
-
-/* ============================================
-   SCROLL / TRANSITION UTILITIES
-   ============================================ */
-
-.transition-opacity {
-  transition: opacity 0.6s ease-in-out;
-}
-
-.scroll-on-appear {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-on-appear.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================================
-   UTILITIES & ANIMATIONS
-   ============================================ */
-
-@layer utilities {
-  .ds-text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--ds-gradient);
-  }
-
-  /* Fade in up animation for server-side rendered elements */
-  @keyframes fade-in-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-}
-
-/* ============================================
-   PERFORMANCE HELPERS
-   ============================================ */
-
-.will-change-transform {
-  will-change: transform;
-}
-
-/* ============================================
-   PRELOADER
-   ============================================ */
-
-.preloader-logo-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes pulseDot {
-
-  0%,
-  80%,
-  100% {
-    opacity: 0.2;
-  }
-
-  40% {
-    opacity: 1;
-  }
-}
-
-.animate-pulseDot {
-  animation: pulseDot 1.4s ease-in-out infinite;
-}
-
-/* ============================================
-   RESPONSIVE NAV
-   ============================================ */
-
-@media (max-width: 768px) {
-  .nav-link {
-    font-size: 16px;
-    padding: 10px 16px;
-    margin: 0 4px;
-  }
-}
-
-/* ============================================
-   BUTTON HOVER (simple, kept for legacy compat)
-   ============================================ */
-
-.Button:hover span {
-  width: 100%;
-}
-
-.bg-white {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.transition-color {
-  transition: background-color 0.1s ease;
-}
-
-/* ============================================
-   LEGACY COMPAT: holographic-button (stripped down)
-   ============================================ */
-
-.holographic-button {
-  position: relative;
-  overflow: hidden;
-  transition: background 0.3s ease;
-}
-
-.smooth-hover {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.smooth-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.15);
-}
 /* ============================================
    JENISYS BRAND LAYER (Night-first)
    ============================================ */
@@ -825,3 +535,8 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
 
 /* Booking dialog */
 .j-dialog::backdrop { background: rgba(5, 10, 28, 0.72); backdrop-filter: blur(4px); }
+
+/* Step fade for the evaluation tool (replaces the Framer Motion transition) */
+@keyframes j-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.j-fade { animation: j-fade-in 240ms var(--ease-light) both; }
+@media (prefers-reduced-motion: reduce) { .j-fade { animation: none; } }

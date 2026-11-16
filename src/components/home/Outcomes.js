@@ -2,12 +2,12 @@ import { outcomes as all } from "@/lib/outcomes";
 import OutcomeShift from "../ui-brand/OutcomeShift";
 import { ChapterHead } from "../ui-brand/Chapter";
 
-const outcomes = all.map((o) => ({ ...o, href: `/case-study/${o.slug}` }));
+const outcomes = all.filter((o) => o.featured).map((o) => ({ ...o, href: `/case-study/${o.slug}` }));
 
 // Chapter 01 — proof before promise. The signature element, enlarged.
 export default function Outcomes({ compact = false, headless = false }) {
   return (
-    <section aria-labelledby="proof-title" className={`j-night ${compact ? "" : "j-section"}`}>
+    <section aria-labelledby="proof-title" className={`j-night ${compact ? "" : "pt-8 pb-20 md:pt-12 md:pb-28"}`}>
       <div className="j-wrap">
         {!headless && (
           <ChapterHead

@@ -5,7 +5,7 @@ import { pageMeta, SITE } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Work: Case Studies in Software and Automation | Jenisys",
   description:
-    "Two production systems, broken down: a government adjudication registry (18 days to 6) and a SaaS billing platform (2-day close to 4 hours).",
+    "Five delivered projects, broken down: a government claims registry (18 days to 6), SaaS billing, document AI, an integration bridge and a Docker migration.",
   path: "/case-study",
 });
 

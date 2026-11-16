@@ -32,7 +32,7 @@ export default function CaseStudiesPage() {
                 >
                   <div className="lg:col-span-5">
                     <p className="j-chapter mb-6"><b>{String(i + 1).padStart(2, "0")}</b> Case study</p>
-                    {lead && <OutcomeShift o={lead} />}
+                    {lead ? <OutcomeShift o={lead} /> : <p className="font-display text-[34px] font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-[44px]">{entry.headline}</p>}
                     {shifts.slice(1).map((o, k) => (
                       <p key={k} className="mt-5 flex items-baseline gap-3 border-t border-line pt-4 font-mono text-sm text-ink-muted">
                         <span className="font-display text-2xl font-bold text-ink tabular-nums">{o.prefix || ""}{o.after}{o.unit}</span> {o.what}
@@ -46,7 +46,7 @@ export default function CaseStudiesPage() {
                     </p>
                     <h2 className="j-h2 mt-4 text-ink transition-colors group-hover:text-signal">{entry.title}</h2>
                     <p className="mt-3 font-mono text-[13px] text-ink-muted">
-                      {entry.duration} · <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+                      {entry.duration ? `${entry.duration} · ` : ""}<time dateTime={entry.date}>{formatDate(entry.date)}</time>{entry.source === "upwork" ? " · From our Upwork portfolio" : ""}
                     </p>
                     <p className="mt-5 max-w-[62ch] text-[17px] leading-relaxed text-ink-muted">{entry.summary}</p>
                     <ul className="mt-6 flex flex-wrap gap-2" aria-label="Stack">

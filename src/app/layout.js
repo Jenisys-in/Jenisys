@@ -129,7 +129,7 @@ export default function RootLayout({ children }) {
                 addressCountry: "IN",
               },
               location: [
-                { "@type": "Place", name: "Jenisys, Atlanta", address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", addressCountry: "US" } },
+                { "@type": "Place", name: "Jenisys, Atlanta", address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", postalCode: "30324", addressCountry: "US" } },
                 { "@type": "Place", name: "Jenisys, Kolkata", address: { "@type": "PostalAddress", addressLocality: "Serampore", addressRegion: "West Bengal", postalCode: "712203", addressCountry: "IN" } },
               ],
               areaServed: ["US", "AU", "GB", "CA", "IN"],

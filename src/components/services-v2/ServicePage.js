@@ -111,7 +111,7 @@ export default function ServicePage({ slug }) {
         </div>
       </section>
 
-      <RelatedWork n="04" />
+      <RelatedWork n="04" slug={slug} />
       {hasProcess && <HowItWorks n="05" />}
       <Faq items={offerFaqs[slug]} title={`Questions about ${offer.name}`} id={`faq-${slug}`} n={hasProcess ? "06" : "05"} ground="paper" />
       <CallBanner n={hasProcess ? "07" : "06"} />

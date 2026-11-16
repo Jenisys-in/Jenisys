@@ -24,7 +24,7 @@ export function pageMeta({ title, description, path, type = "website" }) {
 
 export const serviceSeo = {
   "ai-automation": {
-    title: "AI Automation Services for Small Businesses | Jenisys",
+    title: "AI Automation Agency for Small Business | Jenisys",
     description:
       "Fixed-price AI automation for accounting firms, agencies, clinics and service businesses: lead follow-up, document processing and AI assistants from $1,500.",
   },
@@ -39,7 +39,7 @@ export const serviceSeo = {
       "In 5 working days get a scope document, a clickable prototype and a fixed quote for your app or automation. $499, credited in full when you build with us.",
   },
   support: {
-    title: "Website and App Maintenance Plans | Jenisys",
+    title: "Website Maintenance Services and Support Plans | Jenisys",
     description:
       "Monthly maintenance for websites, apps and automations from $499 a month: security updates, monitoring, bug fixes and small changes.",
   },

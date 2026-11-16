@@ -30,6 +30,13 @@ const nextConfig = {
       to("/industries", "/services"),
       to("/startup-partnership", "/services/mvp-development"),
       to("/quote", "/contact"),
+      // Retired generic 2025 articles (planning/05, stage 4): sent to the closest live page.
+      to("/blog/digital-transformation-fortune-500", "/blog"),
+      to("/blog/cybersecurity-trends-cto-2025", "/blog"),
+      to("/blog/future-ai-business-2025", "/services/ai-automation"),
+      to("/blog/cloud-migration-strategies-startups", "/services/mvp-development"),
+      to("/blog/scalable-react-applications-guide", "/services/mvp-development"),
+      to("/blog/api-design-principles-modern-web", "/services/mvp-development"),
     ];
   },
   async headers() {

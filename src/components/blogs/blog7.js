@@ -153,7 +153,7 @@ export default function Blog7() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f6f4ee]">
       {/* Scroll Progress */}
       <div
         className="fixed top-0 left-0 h-1 bg-[#1652D9] z-50 transition-all duration-150"
@@ -186,7 +186,7 @@ export default function Blog7() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={openCalendar}
-                className="ds-btn-primary px-8 py-4 text-base inline-flex items-center gap-2"
+                className="j-btn j-btn-primary px-8 py-4 text-base inline-flex items-center gap-2"
               >
                 Book a SOPA Compliance Audit <ArrowRight className="w-5 h-5" />
               </button>
@@ -244,7 +244,7 @@ export default function Blog7() {
                 <p className="text-xs text-slate-600 mb-3">Book a 30-min SOPA audit and we will map every deadline across your active contracts.</p>
                 <button
                   onClick={openCalendar}
-                  className="w-full ds-btn-primary text-sm py-2.5"
+                  className="w-full j-btn j-btn-primary text-sm py-2.5"
                 >
                   Book Free Audit
                 </button>
@@ -441,7 +441,7 @@ export default function Blog7() {
                   { value: "0", label: "Adjudication claims filed against Jenisys clients", sub: "In 18 months of operating the compliance system" },
                   { value: "14 hrs/wk", label: "Finance team hours saved per week", sub: "By eliminating manual deadline tracking across contracts" },
                 ].map((s) => (
-                  <div key={s.label} className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] text-white rounded-2xl p-6">
+                  <div key={s.label} className="bg-[#0a1330] border border-[#22305f] text-white rounded-2xl p-6">
                     <div className="text-4xl font-bold mb-2">{s.value}</div>
                     <div className="text-sm font-semibold text-white/90 mb-1">{s.label}</div>
                     <div className="text-xs text-white/60">{s.sub}</div>
@@ -515,7 +515,7 @@ export default function Blog7() {
 
             {/* CTA */}
             <section id="cta" className="mb-16 scroll-mt-24">
-              <div className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] rounded-2xl p-10 text-white text-center">
+              <div className="bg-[#050a1c] border border-[#22305f] rounded-2xl p-10 text-white text-center">
                 <h2 className="text-3xl font-bold mb-4">Get a Free SOPA Compliance Audit</h2>
                 <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
                   In 30 minutes, we map every active contract, identify every reference date, and flag any claims you are currently entitled to make. No commitment. No obligation.
@@ -523,7 +523,7 @@ export default function Blog7() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={openCalendar}
-                    className="bg-white text-[#1652D9] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
+                    className="j-btn j-btn-primary"
                   >
                     Book a Free Audit <ArrowRight className="w-5 h-5" />
                   </button>

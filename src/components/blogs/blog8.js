@@ -219,7 +219,7 @@ export default function Blog8() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f6f4ee]">
       {/* Scroll Progress */}
       <div
         className="fixed top-0 left-0 h-1 bg-[#1652D9] z-50 transition-all duration-150"
@@ -252,7 +252,7 @@ export default function Blog8() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={openCalendar}
-                className="ds-btn-primary px-8 py-4 text-base inline-flex items-center gap-2"
+                className="j-btn j-btn-primary px-8 py-4 text-base inline-flex items-center gap-2"
               >
                 Book a Free Automation Audit <ArrowRight className="w-5 h-5" />
               </button>
@@ -308,7 +308,7 @@ export default function Blog8() {
               <div className="mt-8 p-4 bg-[#1652D9]/6 rounded-xl border border-[#1652D9]/15">
                 <p className="text-sm font-semibold text-[#1652D9] mb-2">Not sure where to start?</p>
                 <p className="text-xs text-slate-600 mb-3">We map your highest-ROI automation opportunities in a free 30-min session.</p>
-                <button onClick={openCalendar} className="w-full ds-btn-primary text-sm py-2.5">
+                <button onClick={openCalendar} className="w-full j-btn j-btn-primary text-sm py-2.5">
                   Book Free Audit
                 </button>
               </div>
@@ -659,7 +659,7 @@ export default function Blog8() {
 
             {/* CTA */}
             <section id="cta" className="mb-16 scroll-mt-24">
-              <div className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] rounded-2xl p-10 text-white text-center">
+              <div className="bg-[#050a1c] border border-[#22305f] rounded-2xl p-10 text-white text-center">
                 <h2 className="text-3xl font-bold mb-4">Book a Free Automation Audit</h2>
                 <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
                   In 30 minutes, we identify the top 5 automation opportunities in your business, calculate the projected ROI for each, and give you a prioritised action plan — whether you work with us or not.
@@ -667,7 +667,7 @@ export default function Blog8() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={openCalendar}
-                    className="bg-white text-[#1652D9] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
+                    className="j-btn j-btn-primary"
                   >
                     Book the Free Audit <ArrowRight className="w-5 h-5" />
                   </button>

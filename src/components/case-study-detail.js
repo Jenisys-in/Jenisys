@@ -6,6 +6,7 @@ import CallBanner from "./home/CallBanner";
 import { AdjudicationVisual, BillingVisual } from "./visuals/CaseVisuals";
 import { entries, TYPE_LABELS } from "@/lib/case-study-data";
 import { outcomes } from "@/lib/outcomes";
+import { upwork } from "@/lib/upwork";
 
 const formatDate = (iso) => new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 const toId = (label) => label.toLowerCase().replace(/\s+/g, "-");
@@ -26,7 +27,7 @@ export default function CaseStudyDetail({ slug }) {
     { label: "Tradeoffs", content: entry.tradeoffs },
     { label: "Implementation Notes", content: entry.implementationNotes },
     { label: "Lessons Learned", content: entry.lessonsLearned },
-  ];
+  ].filter((x) => x.content);
   const shifts = outcomes.filter((o) => o.slug === entry.slug);
   const Visual = visuals[entry.slug];
 
@@ -45,7 +46,7 @@ export default function CaseStudyDetail({ slug }) {
           ))}
         </p>
         <p className="mt-5 font-mono text-[13px] text-ink-muted">
-          {entry.industry} · {entry.duration} · <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+          {entry.industry}{entry.duration ? ` · ${entry.duration}` : ""} · <time dateTime={entry.date}>{formatDate(entry.date)}</time>
         </p>
       </PageHero>
 
@@ -108,6 +109,19 @@ export default function CaseStudyDetail({ slug }) {
                 </section>
               );
             })}
+            {entry.review && (
+              <figure className="j-panel j-light-edge mb-12 p-7 md:p-10">
+                <p className="j-eyebrow mb-4">Client review</p>
+                <blockquote className="font-display text-[22px] font-medium leading-[1.35] tracking-[-0.01em] text-ink md:text-[26px]">“{entry.review.quote}”</blockquote>
+                <figcaption className="mt-5 font-mono text-[12px] uppercase tracking-[0.06em] text-ink-muted">{entry.review.note}</figcaption>
+              </figure>
+            )}
+            {entry.source === "upwork" && (
+              <p className="mb-8 text-[15px] leading-relaxed text-ink-muted">
+                This write-up follows the project entry in our Upwork portfolio, so it is shorter than the two detailed studies.{" "}
+                <a href={upwork.profileUrl} target="_blank" rel="noopener noreferrer" className="j-link">See the profile on Upwork</a>.
+              </p>
+            )}
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8">
               <Link href="/case-study" className="j-link inline-flex items-center gap-2 py-2 text-[15px]">
                 <span className="font-mono" aria-hidden="true">←</span> All work

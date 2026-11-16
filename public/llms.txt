@@ -13,5 +13,10 @@
 - [NSW adjudication registry](https://www.jenisys.in/case-study/nsw-sopa-adjudication-platform): claims processing cut from 18 days to 6.
 - [US SaaS billing platform](https://www.jenisys.in/case-study/us-saas-subscription-billing-platform): monthly close from 2 days to 4 hours; billing tickets down 80%.
 
+- [Enterprise document AI (RAG) pipeline](https://www.jenisys.in/case-study/enterprise-document-ai-rag-pipeline): document search time down 80%, token spend down 35%.
+- [Node.js middleware bridge](https://www.jenisys.in/case-study/nodejs-middleware-api-integration-bridge): 100% data sync reliability, under 150 ms end to end.
+- [Dockerized app deployment with Supabase and Auth0](https://www.jenisys.in/case-study/dockerized-app-deployment-supabase-auth0): zero-downtime live migration.
+- Top Rated on Upwork: 7 of 7 client reviews are five stars.
+
 ## Contact
 - [Contact](https://www.jenisys.in/contact) · contact@jenisys.in

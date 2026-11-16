@@ -18,6 +18,8 @@ export const entries = [
     title: "Adjudication Registry Platform for NSW Building & Construction",
     type: "case-study",
     date: "2024-09-12",
+    serves: ["mvp-development", "discovery-sprint"],
+    headline: "Claims processing: 18 days to 6",
     industry: "Government / Construction",
     systemType: "Regulatory Compliance Platform",
     engineeringFocus: "Workflow Automation & Document Processing",
@@ -50,6 +52,8 @@ export const entries = [
     title: "Subscription & Billing Platform for US SaaS Company",
     type: "case-study",
     date: "2024-05-20",
+    serves: ["ai-automation", "mvp-development", "support"],
+    headline: "Monthly close: 2 days to 4 hours",
     industry: "SaaS / B2B",
     systemType: "Billing & Revenue Operations Platform",
     engineeringFocus: "API Integration & Data Pipeline",
@@ -76,5 +80,82 @@ export const entries = [
       "Monthly close time for the finance team went from two full days to approximately four hours. Billing-related support tickets dropped from around 15 per month to 2–3 per month. Usage data is now visible to customers within 15 minutes of the API call, compared to the previous next-day batch update. The company's finance team now uses the platform's revenue dashboard as their primary reporting tool rather than exporting data from Stripe and reconciling it manually.",
     lessonsLearned:
       "The biggest lesson was that billing logic is domain-specific in ways that are hard to anticipate. Stripe handles the common cases well, but every company has edge cases that don't fit neatly into Stripe's model — things like custom contract terms, negotiated discounts that apply only to the base fee but not usage charges, or mid-cycle plan changes that coincide with a failed payment retry. We spent roughly 30% of the project timeline on proration and edge case handling alone. The reconciliation job was originally an afterthought but turned out to be essential for the finance team's confidence in the system. If we were starting over, we'd design the reconciliation layer from day one rather than bolting it on later.",
+  },
+  // ── From the owner's Upwork portfolio. Text follows the project write-ups on the profile. ──
+  {
+    slug: "enterprise-document-ai-rag-pipeline",
+    title: "Enterprise Document AI & RAG Pipeline for Context-Aware Search",
+    type: "case-study",
+    source: "upwork",
+    date: "2026-06-20",
+    serves: ["ai-automation", "mvp-development"],
+    headline: "Document search time down 80%",
+    industry: "Enterprise document search",
+    systemType: "Document AI (RAG)",
+    engineeringFocus: "Ingestion, embeddings and cited answers",
+    buildCategory: "AI pipeline",
+    stack: ["Python", "OpenAI embeddings", "Supabase Vector (pgvector)", "PostgreSQL"],
+    summary:
+      "A secure document AI that answers questions from complex multi-page PDFs and internal datasets, with the source page cited for every answer.",
+    problem:
+      "The client required a secure AI solution capable of processing and querying complex multi-page PDF documents and internal datasets without hallucinating or leaking proprietary data to public LLM models.",
+    approach:
+      "Developed an end-to-end Python ingestion and RAG (Retrieval-Augmented Generation) pipeline. Extracted and chunked unstructured text, generated OpenAI vector embeddings, and indexed the vector data using Supabase Vector (pgvector). Built a query pipeline with strict ground-truth constraints and page source attribution.",
+    result:
+      "Reduced internal document search time by 80%, provided accurate, verifiable citations for every response, and optimized chunking to reduce API token expenditure by 35%.",
+  },
+  {
+    slug: "nodejs-middleware-api-integration-bridge",
+    title: "Node.js Middleware Bridge for Third-Party API Integration",
+    type: "case-study",
+    source: "upwork",
+    date: "2026-05-15",
+    serves: ["ai-automation", "support"],
+    headline: "100% sync reliability, under 150 ms",
+    industry: "Integrations and payments",
+    systemType: "Real-time data sync",
+    engineeringFocus: "Webhooks, validation and retries",
+    buildCategory: "Backend service",
+    stack: ["Node.js", "Express", "PostgreSQL", "Supabase", "Webhooks"],
+    summary:
+      "A high-availability backend bridge that syncs data in real time between external platforms, payment gateways and a core Supabase database.",
+    problem:
+      "The client needed a high-availability backend bridge to sync real-time data between external platforms, payment gateways, and their core Supabase database without dropping webhook payloads or creating race conditions.",
+    approach:
+      "Engineered a robust Node.js and Express middleware service. Implemented custom webhook listeners, strict payload schema validation, automated retry logic for failed API requests, and an integrated error logging pipeline stored in PostgreSQL.",
+    result:
+      "Delivered 100% data synchronization reliability across systems, eliminated lost payloads during peak traffic, and achieved an end-to-end request latency under 150ms.",
+    review: {
+      quote:
+        "Tuhin is easy to work with despite the time difference, and is focused on creating a deliverable that goes above and beyond any expectations. Everything from start to finish was treated with complete professionalism. I'd be happy to recommend Tuhin to anyone.",
+      note: "Client review for a related Node.js middleware project, March 2025",
+    },
+  },
+  {
+    slug: "dockerized-app-deployment-supabase-auth0",
+    title: "Production Deployment of a Dockerized App with Supabase and Auth0",
+    type: "case-study",
+    source: "upwork",
+    date: "2026-05-02",
+    serves: ["support", "mvp-development"],
+    headline: "Zero-downtime live migration",
+    industry: "Deployment and migration",
+    systemType: "Containerised production environment",
+    engineeringFocus: "Docker, database scaling and role-based access",
+    buildCategory: "Infrastructure",
+    stack: ["Docker", "ASP.NET", "Supabase (PostgreSQL)", "Auth0"],
+    summary:
+      "A legacy full-stack application moved into a containerised production environment, with modern database scaling and enterprise-grade authentication.",
+    problem:
+      "The client needed to migrate a legacy full-stack application into a containerized production environment paired with modern database scaling and enterprise-grade authentication.",
+    approach:
+      "Configured a multi-container Docker environment, established secure database connections to Supabase (PostgreSQL), integrated Auth0 for role-based access control (RBAC), and deployed the infrastructure with automated environment management.",
+    result:
+      "Achieved zero-downtime deployment during live migration, improved database query performance by optimizing index strategy, and earned a 5-star rating on Upwork for seamless technical handover.",
+    review: {
+      quote:
+        "Tuhin is very lovely to work with and really goes all the way. Even in technology, if some things don't work the first time, he goes back and resolves the matters until you are happy. I love working with Tuhin.",
+      note: "Client review on Upwork, May 2026",
+    },
   },
 ];

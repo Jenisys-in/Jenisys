@@ -11,14 +11,25 @@ const GRADIENT = (id, w = 1) => (
 );
 
 // Tangled on the left, ordered on the right: manual work becoming a process.
-export function LineDivider({ className = "" }) {
+export function LineDivider({ className = "", labels = false }) {
   const d =
     "M0 70 C 60 10, 120 120, 170 60 S 250 0, 270 62 S 190 130, 150 84 S 230 20, 330 62 C 420 100, 520 70, 640 70 L 1200 70";
-  return (
+  const svg = (
     <svg viewBox="0 0 1200 140" preserveAspectRatio="none" className={`j-wipe h-[84px] w-full md:h-[112px] ${className}`} aria-hidden="true" focusable="false">
       <defs>{GRADIENT("jl-div", 1200)}</defs>
       <path d={d} fill="none" stroke="url(#jl-div)" strokeWidth="2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
     </svg>
+  );
+  if (!labels) return svg;
+  // Labelled version: says what the picture means (manual work becoming a process).
+  return (
+    <figure>
+      {svg}
+      <figcaption className="mt-2 flex justify-between font-mono text-[12px] uppercase tracking-[0.08em] text-ink-muted">
+        <span>Manual work</span>
+        <span className="text-signal">Software that runs itself</span>
+      </figcaption>
+    </figure>
   );
 }
 

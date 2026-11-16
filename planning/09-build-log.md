@@ -64,3 +64,7 @@ All of this is new copy proposed in `planning/06-conversion-and-content.md`.
 4. Domain move off `.in`, Google Business Profile, Clutch and review requests.
 5. Keyword and baseline measurement (create an OpenSEO project), then the four depth pages in `05-seo-roadmap.md`.
 6. Remove Framer Motion and the legacy tokens after the evaluation tool and blog are migrated; JavaScript and CSS then drop further.
+
+## Round 2 (16 November 2026)
+
+Added after the first report: real data from your Upwork profile (reviews, three portfolio projects, founding year, offices), a labelled Line, client-reviews chapter, three new case studies, a real About page, six generic articles retired with redirects, the two kept articles restyled, brand-card blog covers, Framer Motion and the legacy style rules removed, a privacy-policy services section, Person data, a keyword baseline, and listing copy. See `12-plan-compliance.md` for the line-by-line status.
