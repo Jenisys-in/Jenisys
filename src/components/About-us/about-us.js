@@ -76,7 +76,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <ClientReviews n="02" ground="night" id="about-reviews" count={4} />
+      <ClientReviews n="02" id="about-reviews" count={4} />
 
       <section className="j-paper j-section" aria-labelledby="how-we-work">
         <div className="j-wrap">

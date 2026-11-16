@@ -94,6 +94,11 @@ function DesktopItem({ item, pathname, open, setOpen }) {
               </Link>
             </li>
           ))}
+          <li className="mt-1 border-t border-line pt-1">
+            <Link href={item.path} onClick={() => setOpen(null)} className="flex items-center justify-between gap-4 rounded-lg px-3 py-2.5 text-sm text-ink transition-colors duration-150 hover:bg-raised focus:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+              All {item.name.toLowerCase()} <span className="font-mono text-signal" aria-hidden="true">→</span>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
@@ -228,6 +233,11 @@ function Navbar() {
                             </Link>
                           </li>
                         ))}
+                        <li>
+                          <Link href={item.path} className="block py-2.5 pl-1 text-ink hover:text-signal" tabIndex={mobileOpen ? 0 : -1}>
+                            All {item.name.toLowerCase()} →
+                          </Link>
+                        </li>
                       </ul>
                     )}
                   </>

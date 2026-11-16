@@ -540,3 +540,31 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
 @keyframes j-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .j-fade { animation: j-fade-in 240ms var(--ease-light) both; }
 @media (prefers-reduced-motion: reduce) { .j-fade { animation: none; } }
+
+/* Third ground: Volt. The logo's navy → blue sweep as a full-bleed section, for the moments that should feel
+   different from both Night and Paper (client reviews). Same token remap trick as .j-paper. */
+.j-volt {
+  --color-void: #14208a;
+  --color-deep: #101a70;
+  --color-raised: #1b2aa0;
+  --color-line: rgba(255, 255, 255, 0.2);
+  --color-ink: #ffffff;
+  --color-ink-muted: #d3dcff;
+  --color-signal: #6df0ff;
+  --color-gain: #6ff0b8;
+  background:
+    radial-gradient(60% 80% at 85% 0%, rgba(76, 141, 255, 0.55), transparent 70%),
+    linear-gradient(165deg, #1b2aa0 0%, #14208a 45%, #0a1330 100%);
+  color: var(--color-ink);
+  color-scheme: dark;
+}
+/* Hairline of ribbon light where one ground meets another */
+.j-edge { position: relative; }
+.j-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1b2aa0 12%, #4c8dff 50%, #14e2f9 88%, transparent);
+  pointer-events: none;
+}

@@ -3,7 +3,8 @@ import { Check } from "lucide-react";
 import { money } from "@/lib/offers";
 
 // Pricing tier. Featured tier carries the light edge; others are plain hairline panels.
-export default function PricingCard({ tier, offerName = "", offerSlug = "", href = "/contact" }) {
+export default function PricingCard({ tier, offerName = "", offerSlug = "", href = "" }) {
+  const to = href || `/contact?${offerSlug ? `service=${offerSlug}&` : ""}plan=${encodeURIComponent(tier.name)}`;
   return (
     <div className={`relative flex h-full flex-col rounded-3xl p-7 ${tier.featured ? "j-panel j-light-edge" : "border border-line bg-raised"}`}>
       {tier.featured && (
@@ -25,7 +26,7 @@ export default function PricingCard({ tier, offerName = "", offerSlug = "", href
           </li>
         ))}
       </ul>
-      <Link href={href} className={`j-btn mt-8 w-full ${tier.featured ? "j-btn-primary" : "j-btn-secondary"}`}>
+      <Link href={to} className={`j-btn mt-8 w-full ${tier.featured ? "j-btn-primary" : "j-btn-secondary"}`}>
         Start with {tier.name} <span className="j-arrow" aria-hidden="true">→</span>
       </Link>
     </div>

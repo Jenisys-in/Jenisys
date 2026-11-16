@@ -5,7 +5,7 @@ import Cta from "../ui-brand/Cta";
 // Closing chapter: the Line runs straight to the action. Copy carried over from the previous banner.
 export default function CallBanner({ n = "" }) {
   return (
-    <section id="contact" className="j-night relative isolate overflow-hidden border-t border-line j-section" aria-labelledby="call-title">
+    <section id="contact" className="j-night j-edge relative isolate overflow-hidden j-section" aria-labelledby="call-title">
       <div
         aria-hidden="true"
         className="absolute -z-10 left-1/2 top-full h-[640px] w-[1100px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-60"

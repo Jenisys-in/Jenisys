@@ -13,7 +13,7 @@ export default function FeaturedStory() {
   const shift = outcomes.find((o) => o.slug === main.slug);
   const otherShift = outcomes.find((o) => o.slug === other.slug);
   return (
-    <section className="j-night j-section border-t border-line" aria-labelledby="story-title">
+    <section className="j-night j-edge j-section" aria-labelledby="story-title">
       <div className="j-wrap">
         <ChapterHead
           n="03"

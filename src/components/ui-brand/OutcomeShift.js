@@ -23,7 +23,7 @@ export default function OutcomeShift({ o, href, size = "lg", as: Tag = "div" }) 
       </span>
       <span className="mt-5 flex items-center justify-between font-mono text-xs uppercase tracking-[0.06em] text-gain">
         <span>▼ {o.gain}</span>
-        {href && <span className="text-signal opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true">Read the case →</span>}
+        {href && <span className="text-signal opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100" aria-hidden="true">Read the case →</span>}
       </span>
     </>
   );

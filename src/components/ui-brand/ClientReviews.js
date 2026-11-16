@@ -1,12 +1,14 @@
 import { Star } from "lucide-react";
 import { ChapterHead } from "./Chapter";
+import { RibbonStill } from "./Line";
 import { reviews, upwork } from "@/lib/upwork";
 
 // Real client reviews from the owner's Upwork profile. Names are left out; the project title identifies each one.
-export default function ClientReviews({ n = "04", ground = "paper", id = "reviews", count = 4 }) {
+export default function ClientReviews({ n = "04", ground = "volt", id = "reviews", count = 4 }) {
   const shown = reviews.slice(0, count);
   return (
-    <section id={id} className={`${ground === "paper" ? "j-paper bg-deep" : "j-night"} j-section scroll-mt-20`} aria-labelledby={`${id}-title`}>
+    <section id={id} className={`${ground === "paper" ? "j-paper bg-deep" : ground === "night" ? "j-night" : "j-volt"} j-edge relative isolate overflow-hidden j-section scroll-mt-20`} aria-labelledby={`${id}-title`}>
+      {ground === "volt" && <RibbonStill className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-25" />}
       <div className="j-wrap">
         <ChapterHead
           n={n}

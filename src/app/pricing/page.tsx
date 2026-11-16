@@ -45,13 +45,13 @@ export default function PricingPage() {
                   <p className="j-chapter mb-4"><b>{String(gi + 1).padStart(2, "0")}</b> {offer.audience}</p>
                   <h2 id={`p-${group.offer}`} className="j-h2">{offer.name}</h2>
                   <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">{offer.short}</p>
-                  <Link href={`/services/${offer.slug}`} className="j-link mt-6 inline-flex items-center gap-2 py-2 text-[15px]">
+                  <Link href={`/services/${offer.slug}`} aria-label={`How ${offer.name} works`} className="j-link mt-6 inline-flex items-center gap-2 py-2 text-[15px]">
                     How it works <span className="font-mono" aria-hidden="true">→</span>
                   </Link>
                 </div>
                 <div className={`grid gap-6 pt-3 lg:col-span-8 ${group.tiers.length > 1 ? "md:grid-cols-2" : "md:max-w-md"}`}>
                   {group.tiers.map((t) => (
-                    <PricingCard key={t.name} tier={t} />
+                    <PricingCard key={t.name} tier={t} offerSlug={group.offer} />
                   ))}
                 </div>
               </div>

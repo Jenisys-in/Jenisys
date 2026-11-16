@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Footer from "./Footer";
 import { useCalendar } from "@/contexts/CalendarContext";
@@ -104,6 +104,27 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [started, setStarted] = useState(false);
+  const [plan, setPlan] = useState("");
+  const headingRef = useRef(null);
+  const doneRef = useRef(null);
+
+  // Keep keyboard and screen-reader users oriented when the form changes under them.
+  useEffect(() => {
+    if (step === 2) headingRef.current?.focus();
+  }, [step]);
+  useEffect(() => {
+    if (sent) doneRef.current?.focus();
+  }, [sent]);
+
+  // Arriving from a pricing button: pre-select the service and name the plan, so nothing has to be re-typed.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const map = { "ai-automation": "ai_automation", "mvp-development": "mvp", "discovery-sprint": "discovery_sprint", support: "support" };
+    const type = map[q.get("service")];
+    const chosen = q.get("plan");
+    if (type) setFormData((prev) => ({ ...prev, projectType: type }));
+    if (chosen) setPlan(chosen);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -161,7 +182,7 @@ function Contact() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: `${firstname} ${lastname}`.trim(), firstname, lastname, number: contactNo, ...rest }),
+        body: JSON.stringify({ name: `${firstname} ${lastname}`.trim(), firstname, lastname, number: contactNo, ...rest, msg: plan ? `[Plan: ${plan}] ${rest.msg}` : rest.msg }),
       });
       if (!response.ok) throw new Error("Server responded with an error.");
       track("brief_sent");
@@ -244,7 +265,7 @@ function Contact() {
             <p className="j-chapter mb-5"><b>02</b> Or send a brief</p>
             <div className="j-panel j-light-edge p-6 md:p-10">
               {sent ? (
-                <div role="status" aria-live="polite">
+                <div role="status" aria-live="polite" ref={doneRef} tabIndex={-1} className="outline-none">
                   <p className="font-display text-3xl font-semibold text-ink">Thanks. We have your brief.</p>
                   <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">We’ll reply by email with next steps. Want to talk sooner? Book a call and we’ll go through it together.</p>
                   <button
@@ -262,9 +283,14 @@ function Contact() {
               ) : (
                 <form onSubmit={step === 1 ? goStep2 : handleSubmit} noValidate className="flex flex-col gap-5">
                   <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-display text-2xl font-semibold text-ink">{step === 1 ? "Your brief" : "A few optional details"}</h3>
+                    <h3 ref={headingRef} tabIndex={-1} className="font-display text-2xl font-semibold text-ink outline-none">{step === 1 ? "Your brief" : "A few optional details"}</h3>
                     <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">Step {step} of 2</p>
                   </div>
+                  {plan && step === 1 && (
+                    <p className="-mt-2 rounded-lg border border-line px-4 py-3 text-[15px] text-ink">
+                      You are asking about <strong>{plan}</strong>. Tell us a little about what you need.
+                    </p>
+                  )}
 
                   {step === 1 && (
                     <>

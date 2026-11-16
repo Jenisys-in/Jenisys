@@ -5,9 +5,9 @@ import { ChapterHead } from "../ui-brand/Chapter";
 const icons = [BadgeDollarSign, MonitorPlay, KeyRound, Globe2];
 
 // Four commitments as a divided row (no tilted cards). Paper ground.
-export default function Promises({ n = "05", compact = false }) {
+export default function Promises({ n = "05", compact = false, ground = "paper" }) {
   return (
-    <section className="j-paper j-section-tight border-y border-line" aria-labelledby="promise-title">
+    <section className={`${ground === "night" ? "j-night j-edge" : "j-paper border-y border-line"} j-section-tight`} aria-labelledby="promise-title">
       <div className="j-wrap">
         {compact ? (
           <h2 id="promise-title" className="sr-only">Our promises</h2>

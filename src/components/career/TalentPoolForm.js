@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 const field =
-  "w-full rounded-lg border border-line bg-deep px-4 py-3 text-[15px] text-ink placeholder:text-ink-muted/60 transition-colors duration-150 focus:outline-none focus:border-signal";
+  "w-full rounded-lg border border-line bg-deep px-4 py-3 text-[16px] text-ink placeholder:text-ink-muted/60 transition-colors duration-150 focus:outline-none focus:border-signal";
 
 export default function TalentPoolForm() {
   const [form, setForm] = useState({ name: "", email: "", resume: null, message: "" });

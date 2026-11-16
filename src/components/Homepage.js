@@ -22,7 +22,7 @@ export default function Home() {
       <FeaturedStory />
       <ClientReviews n="04" />
       <HowItWorks withPrices n="05" />
-      <Promises compact />
+      <Promises compact ground="night" />
       <Faq n="06" />
       <CallBanner n="07" />
       <Footer />
