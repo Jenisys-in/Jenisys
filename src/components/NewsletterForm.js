@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { track } from "@/lib/track";
 
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -33,6 +34,7 @@ export default function NewsletterForm() {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
+        track("newsletter_joined");
         setShowAlert(true);
         setFormData({ name: "", email: "" });
         setTimeout(() => setShowAlert(false), 3000);
@@ -48,7 +50,7 @@ export default function NewsletterForm() {
   };
 
   const field =
-    "w-full rounded-md border border-line bg-deep px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-muted/70 focus:outline-none focus:border-signal transition-colors duration-150";
+    "w-full rounded-md border border-line bg-deep px-3.5 py-2.5 text-[16px] text-ink placeholder:text-ink-muted/70 focus:outline-none focus:border-signal focus-visible:ring-2 focus-visible:ring-signal transition-colors duration-150";
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-2.5">

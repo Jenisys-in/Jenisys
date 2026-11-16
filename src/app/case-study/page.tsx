@@ -1,47 +1,23 @@
 import CaseStudiesPage from "@/components/case-study";
 
-export const metadata = {
-  title: "Build Logs & Case Studies — Jenisys",
+import { pageMeta, SITE } from "@/lib/seo";
+
+export const metadata = pageMeta({
+  title: "Work: Case Studies in Software and Automation | Jenisys",
   description:
-    "Real engineering builds, experiments, and technical breakdowns from the Jenisys engineering team. No marketing fluff — just systems, decisions, and lessons.",
-  keywords: [
-    "case studies",
-    "engineering",
-    "build logs",
-    "architecture",
-    "software development",
-    "technical analysis",
+    "Five delivered projects, broken down: a government claims registry (18 days to 6), SaaS billing, document AI, an integration bridge and a Docker migration.",
+  path: "/case-study",
+});
+
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+    { "@type": "ListItem", position: 2, name: "Work", item: `${SITE}/case-study` },
   ],
-  openGraph: {
-    title: "Build Logs & Case Studies — Jenisys",
-    description:
-      "Real engineering builds, experiments, and technical breakdowns from the Jenisys team.",
-    url: "https://www.jenisys.in/case-study",
-    siteName: "Jenisys",
-    images: [
-      {
-        url: "https://www.jenisys.in/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Jenisys Case Studies",
-        type: "image/jpeg",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Build Logs & Case Studies — Jenisys",
-    description:
-      "Real engineering builds from the Jenisys team. Systems, decisions, and lessons.",
-    images: ["https://www.jenisys.in/og-image.jpg"],
-  },
-  alternates: {
-    canonical: "https://www.jenisys.in/case-study",
-  },
 };
 
 export default function CaseStudiesRoute() {
-  return <CaseStudiesPage />;
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} /><CaseStudiesPage /></>;
 }

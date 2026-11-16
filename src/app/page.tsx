@@ -23,10 +23,10 @@ export default function Page() {
           "@type": "ProfessionalService",
           "@id": "https://www.jenisys.in#local",
           name: "Jenisys",
-          image: "https://www.jenisys.in/img/logo2.svg",
+          image: "https://www.jenisys.in/brand/icon-512.png",
           url: "https://www.jenisys.in",
           telephone: "+91 8240384648",
-          priceRange: "$$$",
+          priceRange: "$499 - $15,000+",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Raja Ram mohon roy Sarani",
@@ -43,18 +43,6 @@ export default function Page() {
               "longitude": 88.34
             },
             "geoRadius": "10000000" // Indicating global/wide reach
-          },
-          openingHoursSpecification: {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-            ],
-            opens: "09:00",
-            closes: "18:00",
           },
         }) }}
       />

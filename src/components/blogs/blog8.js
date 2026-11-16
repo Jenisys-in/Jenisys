@@ -219,7 +219,7 @@ export default function Blog8() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f6f4ee]">
       {/* Scroll Progress */}
       <div
         className="fixed top-0 left-0 h-1 bg-[#1652D9] z-50 transition-all duration-150"
@@ -252,7 +252,7 @@ export default function Blog8() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={openCalendar}
-                className="ds-btn-primary px-8 py-4 text-base inline-flex items-center gap-2"
+                className="j-btn j-btn-primary px-8 py-4 text-base inline-flex items-center gap-2"
               >
                 Book a Free Automation Audit <ArrowRight className="w-5 h-5" />
               </button>
@@ -297,7 +297,7 @@ export default function Blog8() {
                     className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeSection === item.id
                         ? "bg-[#1652D9]/8 text-[#1652D9] border-l-2 border-[#1652D9]"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                   >
                     {item.label}
@@ -307,8 +307,8 @@ export default function Blog8() {
 
               <div className="mt-8 p-4 bg-[#1652D9]/6 rounded-xl border border-[#1652D9]/15">
                 <p className="text-sm font-semibold text-[#1652D9] mb-2">Not sure where to start?</p>
-                <p className="text-xs text-slate-500 mb-3">We map your highest-ROI automation opportunities in a free 30-min session.</p>
-                <button onClick={openCalendar} className="w-full ds-btn-primary text-sm py-2.5">
+                <p className="text-xs text-slate-600 mb-3">We map your highest-ROI automation opportunities in a free 30-min session.</p>
+                <button onClick={openCalendar} className="w-full j-btn j-btn-primary text-sm py-2.5">
                   Book Free Audit
                 </button>
               </div>
@@ -363,7 +363,7 @@ export default function Blog8() {
                   <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-5 text-center ds-card">
                     <s.icon className={`w-7 h-7 ${s.color} mx-auto mb-2`} />
                     <div className="text-2xl font-bold text-slate-900 mb-1">{s.value}</div>
-                    <p className="text-xs text-slate-500 leading-snug">{s.label}</p>
+                    <p className="text-xs text-slate-600 leading-snug">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -438,22 +438,22 @@ export default function Blog8() {
               <div className="space-y-8">
                 {BUSINESS_TYPES.map((bt) => (
                   <div key={bt.type} className={`rounded-2xl border overflow-hidden ${bt.color}`}>
-                    <div className="px-6 py-5 border-b border-inherit flex items-center gap-4">
+                    <div className="px-6 py-5 border-b border-inherit flex flex-wrap items-center gap-x-4 gap-y-3">
                       <div className={`w-10 h-10 rounded-xl ${bt.iconBg} flex items-center justify-center`}>
                         <bt.icon className={`w-5 h-5 ${bt.iconColor}`} />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <h3 className="font-bold text-slate-900 text-lg">{bt.type}</h3>
-                        <p className="text-xs text-slate-500">{bt.example}</p>
+                        <p className="text-xs text-slate-600">{bt.example}</p>
                       </div>
                       <div className="ml-auto text-right">
                         <div className="text-2xl font-bold text-[#1652D9]">{bt.roi}</div>
-                        <div className="text-xs text-slate-500">{bt.roiNote}</div>
+                        <div className="text-xs text-slate-600">{bt.roiNote}</div>
                       </div>
                     </div>
                     <div className="p-6 grid md:grid-cols-2 gap-6 bg-white">
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Current Pain Points</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Current Pain Points</p>
                         <ul className="space-y-2">
                           {bt.problems.map((p, i) => (
                             <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
@@ -539,7 +539,7 @@ export default function Blog8() {
                         <span className="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded-full">ROI by {item.timeToROI}</span>
                       </div>
                       <p className="text-sm text-slate-600 leading-relaxed mb-2">{item.why}</p>
-                      <p className="text-xs text-slate-400"><span className="font-semibold text-slate-500">Tooling:</span> {item.tool}</p>
+                      <p className="text-xs text-slate-400"><span className="font-semibold text-slate-600">Tooling:</span> {item.tool}</p>
                     </div>
                   </div>
                 ))}
@@ -659,7 +659,7 @@ export default function Blog8() {
 
             {/* CTA */}
             <section id="cta" className="mb-16 scroll-mt-24">
-              <div className="bg-gradient-to-br from-[#1652D9] to-[#0A7590] rounded-2xl p-10 text-white text-center">
+              <div className="bg-[#050a1c] border border-[#22305f] rounded-2xl p-10 text-white text-center">
                 <h2 className="text-3xl font-bold mb-4">Book a Free Automation Audit</h2>
                 <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
                   In 30 minutes, we identify the top 5 automation opportunities in your business, calculate the projected ROI for each, and give you a prioritised action plan — whether you work with us or not.
@@ -667,7 +667,7 @@ export default function Blog8() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={openCalendar}
-                    className="bg-white text-[#1652D9] font-bold px-8 py-4 rounded-lg hover:bg-white/90 transition-colors inline-flex items-center gap-2"
+                    className="j-btn j-btn-primary"
                   >
                     Book the Free Audit <ArrowRight className="w-5 h-5" />
                   </button>

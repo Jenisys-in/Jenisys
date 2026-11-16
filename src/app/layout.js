@@ -28,9 +28,9 @@ export const viewport = {
 // ✅ SEO metadata (server component can export this)
 export const metadata = {
   metadataBase: new URL("https://www.jenisys.in"),
-  title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
+  title: "Jenisys | AI Automation and MVP Development Agency",
   description:
-    "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
+    "Fixed-price AI automation for service businesses and MVP development for founders. Offices in Atlanta and Kolkata.",
   applicationName: "Jenisys",
   authors: [{ name: "Jenisys Team", url: "https://www.jenisys.in" }],
   generator: "Next.js",
@@ -66,17 +66,17 @@ export const metadata = {
     capable: true,
   },
   openGraph: {
-    title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
+    title: "Jenisys | AI Automation and MVP Development Agency",
     description:
-      "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
+      "Fixed-price AI automation for service businesses and MVP development for founders. Offices in Atlanta and Kolkata.",
     url: "https://www.jenisys.in",
     siteName: "Jenisys",
     images: [
       {
-        url: "https://www.jenisys.in/og-image.jpg",
+        url: "https://www.jenisys.in/og?path=",
         width: 1200,
         height: 630,
-        alt: "Jenisys – AI & Software Development Agency",
+        alt: "Jenisys: AI automation and MVP development",
       },
     ],
     locale: "en_US",
@@ -85,10 +85,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jenisys | AI Software Agency & Enterprise Custom Solutions",
+    title: "Jenisys | AI Automation and MVP Development Agency",
     description:
-      "Jenisys transforms businesses with AI automation, cloud infrastructure, and custom software development. Your partner for scalable enterprise tech.",
-    images: ["https://www.jenisys.in/og-image.jpg"],
+      "Fixed-price AI automation for service businesses and MVP development for founders. Offices in Atlanta and Kolkata.",
+    images: ["https://www.jenisys.in/og?path="],
   },
 };
 
@@ -110,11 +110,12 @@ export default function RootLayout({ children }) {
               "@id": "https://www.jenisys.in#organization",
               name: "Jenisys",
               url: "https://www.jenisys.in",
-              logo: "https://www.jenisys.in/apple-touch-icon.png",
+              logo: "https://www.jenisys.in/brand/icon-512.png",
+              slogan: "Technology, turned into advantage.",
               email: "contact@jenisys.in",
               telephone: "+91 8240384648",
               description:
-                "Jenisys is a leading IT consulting and software development company offering web, mobile, AI/ML, cloud, custom software, IT consulting, and maintenance services for startups and enterprises.",
+                "Jenisys is a software studio that builds fixed-price AI automations for service businesses and MVPs for founders, with offices in Atlanta and Kolkata.",
               sameAs: [
                 "https://www.linkedin.com/company/jenisys",
                 "https://www.instagram.com/jenisys.in/",
@@ -127,6 +128,10 @@ export default function RootLayout({ children }) {
                 postalCode: "712203",
                 addressCountry: "IN",
               },
+              location: [
+                { "@type": "Place", name: "Jenisys, Atlanta", address: { "@type": "PostalAddress", addressLocality: "Atlanta", addressRegion: "GA", postalCode: "30324", addressCountry: "US" } },
+                { "@type": "Place", name: "Jenisys, Kolkata", address: { "@type": "PostalAddress", addressLocality: "Serampore", addressRegion: "West Bengal", postalCode: "712203", addressCountry: "IN" } },
+              ],
               areaServed: ["US", "AU", "GB", "CA", "IN"],
               contactPoint: {
                 "@type": "ContactPoint",

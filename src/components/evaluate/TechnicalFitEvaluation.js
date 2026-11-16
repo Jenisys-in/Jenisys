@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import s from "./evaluate.module.css";
+import { track } from "@/lib/track";
+import Cta from "../ui-brand/Cta";
 import {
   MATURITY_QUESTIONS,
   DIMENSIONS,
@@ -44,11 +45,6 @@ const REGIONS = ["US", "Australia", "Other"];
 const COMPANY_SIZES = ["1–5", "6–20", "21–50", "51+"];
 const BOTTLENECKS = ["Leads", "Conversions", "Automation", "Scaling", "Infrastructure", "Compliance", "Other"];
 
-const fadeVariants = {
-  enter: { opacity: 0, x: 24 },
-  center: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -24 },
-};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -65,6 +61,7 @@ export default function TechnicalFitEvaluation() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
+  useEffect(() => { if (STEPS[step]?.id === "results") track("evaluation_finished"); }, [step]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -167,8 +164,8 @@ export default function TechnicalFitEvaluation() {
 
       {step < 3 && (
         <div className={s.formContainer}>
-          <AnimatePresence mode="wait">
-            <motion.div key={step} variants={fadeVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.25 }}>
+          <>
+            <div key={STEPS[step]?.id} className="j-fade">
               <div className={s.stepCard}>
                 {step === 0 && (
                   <>
@@ -237,16 +234,16 @@ export default function TechnicalFitEvaluation() {
                   <button type="button" className={s.btnPrimary} onClick={next}>{step === 2 ? "Calculate Results" : "Continue"} <ArrowRightIcon /></button>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </>
           <p className={s.privacyNote}>Your data is not stored or sent to any server. All calculations happen in your browser.</p>
         </div>
       )}
 
       {step === 3 && scores && report && (
         <div className={s.resultsWrapper}>
-          <AnimatePresence mode="wait">
-            <motion.div key="results" variants={fadeVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
+          <>
+            <div key={STEPS[step]?.id} className="j-fade">
               <div className={s.verdictCard}>
                 <div className={`${s.scoreCircle} ${verdict === "not-fit" ? s.scoreCircleNotFit : verdict === "possible" ? s.scoreCirclePossible : s.scoreCircleStrong}`}>
                   <span className={s.scoreValue}>{scores.composite}</span>
@@ -314,15 +311,15 @@ export default function TechnicalFitEvaluation() {
                 )}
                 <p className={s.privacyNote}>Your data is not stored or sent to any server. All calculations happen in your browser.</p>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </>
         </div>
       )}
 
       {step === 4 && scores && report && (
         <div className={s.resultsWrapper}>
-          <AnimatePresence mode="wait">
-            <motion.div key="report" variants={fadeVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
+          <>
+            <div key={STEPS[step]?.id} className="j-fade">
               <h2 className={s.pageTitle} style={{ textAlign: "center", marginBottom: 32 }}>Your Assessment Report</h2>
               <ReportSection title="Summary" s={s}><p className={s.reportText}>{report.summary}</p></ReportSection>
               <ReportSection title="Technical Assessment" s={s}><p className={s.reportText}>{report.assessment}</p></ReportSection>
@@ -403,6 +400,12 @@ export default function TechnicalFitEvaluation() {
               <ReportSection title="Recommended Architecture Improvements" s={s}><ReportList items={report.archRecs} s={s} /></ReportSection>
               <ReportSection title="Suggested Next Steps" s={s}><ReportList items={report.nextSteps} s={s} /></ReportSection>
 
+              <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid var(--color-line)" }}>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, marginBottom: 6 }}>Want help acting on this?</p>
+                <p style={{ color: "var(--color-ink-muted)", marginBottom: 16 }}>Bring this report to a free 30-minute call and we’ll turn it into a scoped, fixed-price plan.</p>
+                <Cta note={false} source="evaluate-report" />
+              </div>
+
               <div className={s.actionRow}>
                 <button type="button" className={s.btnAction} onClick={downloadReport}><DownloadIcon /> Download Report</button>
                 <button type="button" className={`${s.btnActionOutline} ${copied ? s.copied : ""}`} onClick={copyToClipboard}>
@@ -415,8 +418,8 @@ export default function TechnicalFitEvaluation() {
               </div>
               <div className={s.restartRow}><button type="button" className={s.btnRestart} onClick={restart}>Start Over</button></div>
               <p className={s.privacyNote} style={{ marginTop: 24 }}>Your data was not stored. This report was generated entirely in your browser.</p>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </>
         </div>
       )}
     </section>

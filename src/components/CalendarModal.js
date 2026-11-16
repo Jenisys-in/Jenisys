@@ -1,40 +1,42 @@
 "use client";
+import { useEffect, useRef } from "react";
+import { X } from "lucide-react";
 
-import React, { useState, useEffect } from "react";
+// Booking dialog: native <dialog> gives focus trapping, Escape to close and an inert background.
+// Scheduler URL is unchanged from the previous modal (set NEXT_PUBLIC_BOOKING_URL to switch accounts).
+const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendly.com/tuhindas2724/30min";
 
-const CalendarModal = ({ isOpen, onClose }) => {
+export default function CalendarModal({ isOpen, onClose }) {
+  const ref = useRef(null);
+
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    const d = ref.current;
+    if (!d) return;
+    if (isOpen && !d.open) d.showModal();
+    if (!isOpen && d.open) d.close();
+    document.documentElement.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 bg-[#0F172A] bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white rounded-2xl w-[90%] max-w-3xl shadow-lg p-6 relative">
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 text-gray-600 hover:text-black text-xl font-bold"
-        >
-          &times;
+    <dialog
+      ref={ref}
+      onClose={onClose}
+      onClick={(e) => e.target === ref.current && onClose()}
+      aria-labelledby="booking-title"
+      className="j-dialog j-paper m-auto w-[min(92vw,760px)] overflow-hidden rounded-2xl border border-line p-0 shadow-2xl"
+    >
+      <div className="flex items-center justify-between border-b border-line px-5 py-4">
+        <h2 id="booking-title" className="font-display text-lg font-semibold text-ink">Book a free 30-minute call</h2>
+        <button type="button" onClick={onClose} aria-label="Close" className="rounded-md p-2 text-ink-muted hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+          <X size={20} />
         </button>
-        <div className="w-full h-[600px]">
-          <iframe
-            src="https://calendly.com/tuhindas2724/30min" // Replace with your actual Calendly or booking link
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            className="rounded-xl"
-            allowFullScreen
-          ></iframe>
-        </div>
       </div>
-    </div>
+      {isOpen && (
+        <iframe title="Choose a time" src={BOOKING_URL} className="block h-[min(70vh,640px)] w-full bg-white" loading="lazy" />
+      )}
+    </dialog>
   );
-};
-
-export default CalendarModal;
+}

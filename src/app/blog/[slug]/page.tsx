@@ -1,5 +1,6 @@
 import { blogs } from '@/lib/blogData';
 import { clampDescription } from "@/lib/seo";
+import { ogUrl } from "@/lib/og";
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }) {
     return notFound();
   }
 
-  const imageUrl = `https://www.jenisys.in${blog.thumbnail}`;
+  const imageUrl = ogUrl(`/blog/${slug}`);
   return {
     title: blog.title,
     description: clampDescription(blog.description),
@@ -33,7 +34,6 @@ export async function generateMetadata({ params }) {
           width: 1200,
           height: 630,
           alt: blog.title,
-          type: "image/jpeg",
         },
       ],
       locale: "en_US",
@@ -93,6 +93,20 @@ export default async function BlogPostPage({ params }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.jenisys.in' },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.jenisys.in/blog' },
+              { '@type': 'ListItem', position: 3, name: blog.title, item: `https://www.jenisys.in/blog/${blog.slug}` },
+            ],
+          }),
+        }}
       />
       <BlogComponent />
     </>

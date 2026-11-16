@@ -1,3 +1,5 @@
+import { ogUrl } from "./og";
+
 export const SITE = "https://www.jenisys.in";
 
 // Builds consistent page metadata with canonical URL and social cards.
@@ -14,15 +16,15 @@ export function pageMeta({ title, description, path, type = "website" }) {
       siteName: "Jenisys",
       type,
       locale: "en_US",
-      images: [{ url: `${SITE}/og-image.jpg`, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogUrl(path), width: 1200, height: 630, alt: title }],
     },
-    twitter: { card: "summary_large_image", title, description, images: [`${SITE}/og-image.jpg`] },
+    twitter: { card: "summary_large_image", title, description, images: [ogUrl(path)] },
   };
 }
 
 export const serviceSeo = {
   "ai-automation": {
-    title: "AI Automation Services for Small Businesses | Jenisys",
+    title: "AI Automation Agency for Small Business | Jenisys",
     description:
       "Fixed-price AI automation for accounting firms, agencies, clinics and service businesses: lead follow-up, document processing and AI assistants from $1,500.",
   },
@@ -37,7 +39,7 @@ export const serviceSeo = {
       "In 5 working days get a scope document, a clickable prototype and a fixed quote for your app or automation. $499, credited in full when you build with us.",
   },
   support: {
-    title: "Website and App Maintenance Plans | Jenisys",
+    title: "Website Maintenance Services and Support Plans | Jenisys",
     description:
       "Monthly maintenance for websites, apps and automations from $499 a month: security updates, monitoring, bug fixes and small changes.",
   },

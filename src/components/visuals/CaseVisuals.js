@@ -16,12 +16,12 @@ export function AdjudicationVisual({ className = "" }) {
               className={`j-card3d flex items-center gap-2.5 px-3 py-2.5 ${i === 7 ? "j-glow-signal" : ""}`}
               style={{ transform: `translateZ(${10 + i * 7}px)` }}
             >
-              <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-[10px] ${i === 7 ? "bg-signal text-on-flare" : "bg-volt/20 text-volt"}`}>{i + 1}</span>
+              <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-[12px] ${i === 7 ? "bg-signal text-on-flare" : "bg-volt/20 text-volt"}`}>{i + 1}</span>
               <span className="truncate text-[12.5px] text-ink">{s}</span>
             </li>
           ))}
         </ol>
-        <p className="mt-4 text-center font-mono text-[11px] text-ink-muted">Statutory deadlines enforced at every step</p>
+        <p className="mt-4 text-center font-mono text-[12px] text-ink-muted">Statutory deadlines enforced at every step</p>
       </div>
     </Tilt>
   );
@@ -46,13 +46,13 @@ export function BillingVisual({ className = "" }) {
                 style={{ transform: `translateZ(${20 + i * 22}px)` }}
               >
                 <p className="text-[14px] font-medium text-ink">{p.title}</p>
-                <p className="font-mono text-[11px] text-ink-muted">{p.sub}</p>
+                <p className="font-mono text-[12px] text-ink-muted">{p.sub}</p>
               </div>
               {i < pipe.length - 1 && <span className="my-1 h-5 w-px bg-gradient-to-b from-volt to-signal" />}
             </div>
           ))}
           <div className="j-card3d mt-2 flex items-center justify-between px-4 py-2.5" style={{ transform: "translateZ(80px)" }}>
-            <span className="font-mono text-[11px] text-ink-muted">Nightly reconciliation</span>
+            <span className="font-mono text-[12px] text-ink-muted">Nightly reconciliation</span>
             <span className="h-2 w-2 rounded-full bg-gain shadow-[0_0_10px_#3ee59c]" />
           </div>
         </div>

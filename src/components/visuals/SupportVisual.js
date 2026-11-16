@@ -16,7 +16,7 @@ export default function SupportVisual({ className = "" }) {
         <div className="j-card3d p-5" style={{ transform: "translateZ(20px)" }}>
           <div className="flex items-center justify-between">
             <span className="text-[14px] font-medium text-ink">System status</span>
-            <span className="flex items-center gap-2 font-mono text-[11px] text-gain">
+            <span className="flex items-center gap-2 font-mono text-[12px] text-gain">
               <span className="h-2 w-2 rounded-full bg-gain shadow-[0_0_10px_#3ee59c] j-pulse" /> All systems normal
             </span>
           </div>
@@ -33,7 +33,7 @@ export default function SupportVisual({ className = "" }) {
               <li key={c.label} className="j-card3d flex items-center gap-3 px-4 py-3" style={{ transform: `translateZ(${40 + i * 14}px)` }}>
                 <Icon size={18} className="text-signal" />
                 <span className="text-[14px] text-ink">{c.label}</span>
-                <span className="ml-auto font-mono text-[11px] text-gain">✓</span>
+                <span className="ml-auto font-mono text-[12px] text-gain">✓</span>
               </li>
             );
           })}

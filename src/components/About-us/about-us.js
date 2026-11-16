@@ -1,190 +1,130 @@
 import Link from "next/link";
 import Footer from "../Footer";
-import CalendarButton from "../home/CalendarButton";
+import CallBanner from "../home/CallBanner";
+import PageHero from "../ui-brand/PageHero";
+import RelatedWork from "../ui-brand/RelatedWork";
+import ClientReviews from "../ui-brand/ClientReviews";
+import { ChapterHead } from "../ui-brand/Chapter";
+import { promises } from "@/lib/offers";
+import { upwork } from "@/lib/upwork";
 
-// NOTE: stats and testimonials below are carried over unchanged from the previous page.
-// They are listed in the growth plan's "Credibility clean-up" for the owner to confirm or remove.
-const stats = [
-  { number: "50+", label: "Projects Delivered" },
-  { number: "99%", label: "Client Satisfaction" },
-  { number: "15+", label: "Industries Served" },
-  { number: "24/7", label: "Support Available" },
-];
-
-const chips = ["Innovation First", "Client Success", "Quality Driven"];
-
-const milestones = [
-  { year: "2020", title: "Founded", description: "Jenisys was born with a mission to transform businesses through technology." },
-  { year: "2021", title: "First Major Client", description: "We delivered our first enterprise-level solution, setting a new standard for excellence." },
-  { year: "2022", title: "Team Expansion", description: "Grew our expert team to over 15 professionals, expanding our capabilities across key domains." },
-  { year: "2023", title: "Global Reach", description: "Extended our services, successfully delivering projects to clients across three continents." },
-  { year: "2024", title: "Innovation Hub", description: "Established a dedicated innovation lab to push the boundaries of AI and emerging technologies." },
-];
-
-const coreValues = [
-  { title: "Customer Centric Approach", description: "We don't just build solutions; we build relationships. Your business needs and goals are always our top priority" },
-  { title: "Unmatched Expertise", description: "Our team consists of seasoned experts with deep industry experience, ensuring your project is in the hands of the best." },
-  { title: "Continuous Innovation", description: "We are committed to pushing boundaries and leveraging cutting-edge technology to give you a true competitive edge." },
-  { title: "Value Driven Services", description: "We focus on delivering tangible results and impactful benefits, ensuring our work always enhances your business outcomes." },
+// Every fact on this page comes from the owner's Upwork profile (src/lib/upwork.js) or from other pages of the site.
+// The earlier statistics ("50+ projects", "99% satisfaction", "15+ industries", "24/7"), the 2020–2024 timeline
+// and the placeholder-style quotes were removed: they could not be supported.
+const facts = [
+  { value: "Top Rated", label: "Badge on Upwork" },
+  { value: `${upwork.fiveStarCount} of ${upwork.reviewCount}`, label: "Client reviews are five stars" },
+  { value: String(upwork.foundedYear), label: "Year Jenisys was founded" },
+  { value: "2", label: "Offices: Atlanta and Kolkata" },
 ];
 
 const techStack = [
   { name: "React", category: "Frontend" },
   { name: "Node.js", category: "Backend" },
   { name: "Python", category: "AI/ML" },
-  { name: "Flutter", category: "Mobile" },
-  { name: "AWS", category: "Cloud" },
-  { name: "Design", category: "UI/UX" },
-];
-
-const testimonials = [
-  { name: "Sarah Johnson", role: "CTO", company: "TechCorp", content: "Jenisys transformed our entire digital infrastructure. Their expertise and dedication are unmatched." },
-  { name: "Michael Chen", role: "Founder", company: "StartupX", content: "Working with Jenisys was a game-changer. They delivered beyond our expectations and within timeline." },
-  { name: "Emma Davis", role: "VP Digital", company: "Enterprise Inc", content: "The level of innovation and technical excellence Jenisys brings is remarkable. Highly recommended!" },
+  { name: "Supabase", category: "Database" },
+  { name: "OpenAI API", category: "AI" },
+  { name: "Stripe", category: "Payments" },
 ];
 
 export default function AboutUs() {
+  const p = upwork.person;
   return (
     <div className="j-night">
-      <section className="relative isolate overflow-hidden border-b border-line">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 j-grid-bg" />
-        <div className="j-wrap pt-16 pb-20 md:pt-24 md:pb-24">
-          <p className="j-eyebrow mb-5">Where Partnership Meets Performance</p>
-          <h1 className="j-h1">About Jenisys</h1>
-          <p className="j-lead mt-7">
-            We&apos;re not just a tech company; we&apos;re your partner in growth. At Jenisys, we build custom software and digital solutions designed to help businesses like yours thrive. We believe that the right technology, built with care and expertise, can be the ultimate advantage.
-          </p>
-          <a href="#our-journey" className="j-btn j-btn-secondary mt-10">
-            Discover How We Partner with You <span className="j-arrow">→</span>
-          </a>
-        </div>
-        <dl className="j-wrap grid grid-cols-2 border-t border-line md:grid-cols-4">
-          {stats.map((s, i) => (
-            <div key={s.label} className={`py-8 ${i > 0 ? "md:border-l" : ""} ${i % 2 ? "border-l" : ""} border-line md:pl-8 ${i % 2 ? "pl-6" : ""}`}>
-              <dd className="font-display text-5xl font-bold tracking-[-0.04em] text-ink tabular-nums">{s.number}</dd>
-              <dt className="mt-2 text-sm text-ink-muted">{s.label}</dt>
+      <PageHero
+        eyebrow="About"
+        title="About Jenisys"
+        lead="Jenisys is a software studio with offices in Atlanta and Kolkata. We build fixed-price AI automations for service businesses and first products for founders."
+        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
+      />
+
+      <section aria-label="Facts" className="j-night border-b border-line">
+        <dl className="j-wrap grid grid-cols-2 md:grid-cols-4">
+          {facts.map((f, i) => (
+            <div key={f.label} className={`border-line py-8 md:py-10 ${i % 2 ? "border-l pl-6" : ""} ${i > 1 ? "border-t md:border-t-0" : ""} ${i > 0 ? "md:border-l md:pl-8" : ""}`}>
+              <dd className="font-display text-[34px] font-bold leading-none tracking-[-0.03em] text-ink md:text-5xl">{f.value}</dd>
+              <dt className="mt-3 text-sm text-ink-muted">{f.label}</dt>
             </div>
           ))}
         </dl>
+        <p className="j-wrap pb-6 text-[13px] text-ink-muted">
+          From our <a href={upwork.profileUrl} target="_blank" rel="noopener noreferrer" className="j-link">Upwork profile</a>.
+        </p>
       </section>
 
-      <section className="py-20 md:py-28">
-        <div className="j-wrap grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <h2 className="j-h2">Who We Are</h2>
-            <div className="mt-6 flex flex-col gap-5 text-[17px] leading-relaxed text-ink-muted max-w-[62ch]">
-              <p>
-                At Jenisys, we&apos;re a team of passionate developers, designers, and strategists. We founded this company on a simple belief: that every business deserves access to world-class technology without the impersonal experience of a giant corporation.
-              </p>
-              <p>Our journey has been about building strong relationships and delivering innovative solutions that create real, lasting value for our clients.</p>
+      <section className="j-paper j-section" aria-labelledby="engineer-title">
+        <div className="j-wrap grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p className="j-chapter mb-5"><b>01</b> The engineer</p>
+            <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-navy via-volt to-signal p-[2px]" aria-hidden="true">
+              <span className="flex h-full w-full items-center justify-center rounded-full bg-void font-display text-2xl font-semibold tracking-[-0.02em] text-ink">TD</span>
             </div>
-            <ul className="mt-8 flex flex-wrap gap-2">
-              {chips.map((c) => (
-                <li key={c} className="rounded-full border border-line px-4 py-1.5 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">
-                  {c}
-                </li>
+            <h2 id="engineer-title" className="j-h2">{p.name}</h2>
+            <p className="mt-3 font-mono text-[13px] uppercase tracking-[0.06em] text-ink-muted">{p.title}</p>
+            <p className="mt-4 text-[15px] text-ink-muted">{p.education}</p>
+            <a href={upwork.profileUrl} target="_blank" rel="noopener noreferrer" className="j-link mt-6 inline-flex items-center gap-2 py-2 text-[15px]">
+              Upwork profile <span className="font-mono" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <blockquote className="font-display text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-ink text-balance md:text-[36px]">“{p.lines[0]}”</blockquote>
+            <p className="mt-6 max-w-[56ch] text-[18px] leading-relaxed text-ink-muted">“{p.lines[1]}”</p>
+            <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.06em] text-ink-muted">From his Upwork overview</p>
+            <ul className="mt-8 flex flex-wrap gap-2" aria-label="Core stack">
+              {p.stack.map((t) => (
+                <li key={t} className="rounded-md border border-line px-3 py-1.5 font-mono text-xs text-ink-muted">{t}</li>
               ))}
             </ul>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 flex flex-col gap-4">
-            <div className="j-panel j-light-edge p-7">
-              <h3 className="j-eyebrow mb-3">Our Mission</h3>
-              <p className="font-display text-xl leading-snug text-ink">To empower businesses with innovative technology solutions that drive sustainable growth and competitive advantage.</p>
-            </div>
-            <div className="rounded-3xl border border-line p-7">
-              <h3 className="j-eyebrow mb-3">Our Vision</h3>
-              <p className="font-display text-xl leading-snug text-ink">To be the global leader in transformative digital solutions that shape the future of business.</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section id="our-journey" className="scroll-mt-24 bg-deep border-y border-line py-20 md:py-28">
-        <div className="j-wrap grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
-            <h2 className="j-h2">Our Journey</h2>
-            <p className="j-lead mt-5">From humble beginnings to industry leadership, here&apos;s how we&apos;ve grown and evolved.</p>
-          </div>
-          <ol className="relative lg:col-span-7 lg:col-start-6">
-            <span aria-hidden="true" className="absolute left-[39px] top-2 bottom-2 w-px bg-gradient-to-b from-navy via-volt to-signal" />
-            {milestones.map((m) => (
-              <li key={m.year} className="relative grid grid-cols-[80px_1fr] gap-6 pb-12 last:pb-0">
-                <span className="relative z-10 self-start rounded-full border border-line bg-deep px-3 py-1 text-center font-mono text-sm text-signal">{m.year}</span>
-                <div>
-                  <h3 className="j-h3">{m.title}</h3>
-                  <p className="mt-2 text-[17px] leading-relaxed text-ink-muted">{m.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <ClientReviews n="02" id="about-reviews" count={4} />
 
-      <section className="py-20 md:py-28">
+      <section className="j-paper j-section" aria-labelledby="how-we-work">
         <div className="j-wrap">
-          <h2 className="j-h2">Our Core Values</h2>
-          <p className="j-lead mt-5">The principles that guide every decision we make and every solution we deliver.</p>
-          <ul className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {coreValues.map((v) => (
-              <li key={v.title} className="bg-void p-7 transition-colors duration-200 hover:bg-deep">
-                <h3 className="font-display text-xl font-semibold tracking-[-0.015em] text-ink">{v.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">{v.description}</p>
+          <ChapterHead n="03" name="How we work" id="how-we-work" title="Agency quality, without agency surprises" />
+          <ul className="mt-12 grid border-y border-line sm:grid-cols-2 lg:grid-cols-4">
+            {promises.map((x, i) => (
+              <li key={x.title} className={`border-line px-1 py-8 sm:px-8 ${i > 0 ? "border-t sm:border-t-0 lg:border-l" : ""} ${i === 2 ? "sm:border-t" : ""} ${i === 3 ? "sm:border-t lg:border-t-0" : ""} lg:first:pl-0`}>
+                <h3 className="j-h3">{x.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">{x.body}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="border-t border-line py-20 md:py-24">
-        <div className="j-wrap grid gap-10 lg:grid-cols-12 lg:items-end">
+      <RelatedWork n="04" />
+
+      <section className="j-paper j-section-tight" aria-labelledby="where-title">
+        <div className="j-wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="j-h2">Our Technology Stack</h2>
-            <p className="j-lead mt-5">We leverage cutting-edge technologies to build robust, scalable, and innovative solutions.</p>
+            <ChapterHead n="05" name="Where" id="where-title" title="Two offices, one team" className="!grid-cols-1" />
+            <ul className="mt-8 border-y border-line">
+              {upwork.offices.map((o) => (
+                <li key={o} className="border-b border-line py-4 font-display text-xl text-ink last:border-b-0">{o}</li>
+              ))}
+            </ul>
           </div>
-          <ul className="lg:col-span-7 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3">
-            {techStack.map((t) => (
-              <li key={t.name} className="bg-void px-5 py-6">
-                <p className="font-display text-lg font-semibold text-ink">{t.name}</p>
-                <p className="mt-1 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">{t.category}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="bg-deep border-y border-line py-20 md:py-28">
-        <div className="j-wrap">
-          <h2 className="j-h2">What Our Clients Say</h2>
-          <ul className="mt-12 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <li key={t.name} className="flex flex-col rounded-3xl border border-line p-7">
-                <blockquote className="text-[17px] leading-relaxed text-ink">&ldquo;{t.content}&rdquo;</blockquote>
-                <p className="mt-auto pt-6 font-mono text-[13px] text-ink-muted">
-                  <span className="text-ink">{t.name}</span> · {t.role}, {t.company}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="relative isolate overflow-hidden py-24 md:py-28">
-        <div
-          aria-hidden="true"
-          className="absolute -z-10 left-1/2 top-full h-[560px] w-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-70"
-          style={{ background: "radial-gradient(closest-side, rgba(20,226,249,.2), rgba(27,42,160,.35) 50%, transparent)" }}
-        />
-        <div className="j-wrap max-w-3xl">
-          <h2 className="j-h2">Ready to Transform Your Business?</h2>
-          <p className="j-lead mt-5">Let&apos;s discuss how we can help you achieve your digital transformation goals and drive your business forward.</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/contact" className="j-btn j-btn-primary">
-              Start Your Project <span className="j-arrow">→</span>
-            </Link>
-            <CalendarButton className="j-btn j-btn-secondary">Schedule a Consultation</CalendarButton>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="j-eyebrow mb-4">Tools we use most</p>
+            <ul className="grid grid-cols-2 border-y border-line sm:grid-cols-3">
+              {techStack.map((t) => (
+                <li key={t.name} className="border-b border-line px-1 py-6 sm:px-5">
+                  <p className="font-display text-lg font-semibold text-ink">{t.name}</p>
+                  <p className="mt-1 font-mono text-xs uppercase tracking-[0.06em] text-ink-muted">{t.category}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-[15px] text-ink-muted">
+              Full tool lists are on each <Link href="/services" className="j-link">service page</Link>.
+            </p>
           </div>
         </div>
       </section>
+
+      <CallBanner n="06" />
       <Footer />
     </div>
   );

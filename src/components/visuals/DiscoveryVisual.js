@@ -26,7 +26,7 @@ export default function DiscoveryVisual({ className = "" }) {
                 </span>
                 <span>
                   <span className="block text-[15px] font-medium text-ink">{d.title}</span>
-                  <span className="block font-mono text-[11px] text-ink-muted">{d.sub}</span>
+                  <span className="block font-mono text-[12px] text-ink-muted">{d.sub}</span>
                 </span>
               </div>
               <div className="mt-4 flex flex-col gap-1.5">

@@ -71,7 +71,7 @@ export default function MvpDevices({ className = "" }) {
         {/* Launch chip */}
         <div className="j-card3d absolute bottom-[4%] left-[8%] flex items-center gap-2 px-3 py-2" style={{ transform: "translateZ(60px)" }}>
           <span className="h-2 w-2 rounded-full bg-gain shadow-[0_0_10px_#3ee59c]" />
-          <span className="font-mono text-[11px] text-ink">Deployed to production</span>
+          <span className="font-mono text-[12px] text-ink">Deployed to production</span>
         </div>
       </div>
     </Tilt>

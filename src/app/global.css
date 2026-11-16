@@ -3,44 +3,8 @@
 @plugin "tailwindcss-animate";
 
 /* ============================================
-   ENTERPRISE DESIGN SYSTEM — Custom Properties
+   Tokens
    ============================================ */
-
-:root {
-  /* Primary */
-  --ds-primary: #1652D9;
-  --ds-primary-hover: #1B2AA0;
-  --ds-accent: #0A7590;
-
-  /* Backgrounds */
-  --ds-bg-main: #FFFFFF;
-  --ds-bg-section: #F5F7FC;
-  --ds-bg-alt: #EAEFF8;
-  --ds-bg-dark: #050A1C;
-  --ds-bg-dark-surface: #0A1330;
-
-  /* Borders */
-  --ds-border: #D5DCE8;
-
-  /* Text */
-  --ds-text-primary: #0A1230;
-  --ds-text-body: #2E3858;
-  --ds-text-muted: #4A5578;
-  --ds-text-on-dark: #E5E7EB;
-
-  /* Gradient */
-  --ds-gradient: linear-gradient(120deg, #1B2AA0, #1652D9 55%, #0A7590);
-
-  /* Shadows */
-  --ds-shadow-card: 0 1px 2px rgba(0, 0, 0, .04);
-  --ds-shadow-card-hover: 0 12px 24px rgba(0, 0, 0, .08);
-
-  /* Radius */
-  --ds-radius-card: 16px;
-  --ds-radius-btn: 8px;
-
-  /* Spacing scale: 8, 16, 24, 32, 48, 64, 96 */
-}
 
 @theme {
   --breakpoint-min: 393px;
@@ -183,269 +147,15 @@
   }
 }
 
-/* ============================================
-   ENTERPRISE CARD SYSTEM
-   ============================================ */
-
+/* Article cards in the two remaining blog posts (planning/05, stage 4). */
 .ds-card {
-  background: var(--ds-bg-main);
-  border: 1px solid var(--ds-border);
-  border-radius: var(--ds-radius-card);
-  box-shadow: var(--ds-shadow-card);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+  border: 1px solid #d8d3c6;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.ds-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--ds-shadow-card-hover);
-}
 
-/* ============================================
-   BUTTON SYSTEM
-   ============================================ */
-
-.ds-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: var(--ds-primary);
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: var(--ds-radius-btn);
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.ds-btn-primary:hover {
-  background: var(--ds-primary-hover);
-}
-
-.ds-btn-primary:focus-visible {
-  outline: 2px solid var(--ds-primary);
-  outline-offset: 2px;
-}
-
-.ds-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: transparent;
-  color: var(--ds-primary);
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: var(--ds-radius-btn);
-  border: 1px solid var(--ds-primary);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.ds-btn-secondary:hover {
-  background: rgba(79, 70, 229, 0.06);
-}
-
-.ds-btn-secondary:focus-visible {
-  outline: 2px solid var(--ds-primary);
-  outline-offset: 2px;
-}
-
-/* ============================================
-   ICON SYSTEM
-   ============================================ */
-
-.ds-icon-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(79, 70, 229, 0.08);
-  color: var(--ds-primary);
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.ds-icon-container:hover {
-  transform: scale(1.05);
-}
-
-.ds-icon-container-dark {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-/* ============================================
-   GRADIENT UTILITIES
-   ============================================ */
-
-.ds-gradient-bg {
-  background: var(--ds-gradient);
-}
-
-.ds-gradient-text {
-  background: var(--ds-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-filter: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-/* ============================================
-   IMAGE TREATMENT
-   ============================================ */
-
-.ds-image {
-  filter: contrast(1.05) saturate(0.95);
-}
-
-.ds-image-dark-overlay {
-  position: relative;
-}
-
-.ds-image-dark-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  pointer-events: none;
-}
-
-/* ============================================
-   SCROLL / TRANSITION UTILITIES
-   ============================================ */
-
-.transition-opacity {
-  transition: opacity 0.6s ease-in-out;
-}
-
-.scroll-on-appear {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-on-appear.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================================
-   UTILITIES & ANIMATIONS
-   ============================================ */
-
-@layer utilities {
-  .ds-text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--ds-gradient);
-  }
-
-  /* Fade in up animation for server-side rendered elements */
-  @keyframes fade-in-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-}
-
-/* ============================================
-   PERFORMANCE HELPERS
-   ============================================ */
-
-.will-change-transform {
-  will-change: transform;
-}
-
-/* ============================================
-   PRELOADER
-   ============================================ */
-
-.preloader-logo-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes pulseDot {
-
-  0%,
-  80%,
-  100% {
-    opacity: 0.2;
-  }
-
-  40% {
-    opacity: 1;
-  }
-}
-
-.animate-pulseDot {
-  animation: pulseDot 1.4s ease-in-out infinite;
-}
-
-/* ============================================
-   RESPONSIVE NAV
-   ============================================ */
-
-@media (max-width: 768px) {
-  .nav-link {
-    font-size: 16px;
-    padding: 10px 16px;
-    margin: 0 4px;
-  }
-}
-
-/* ============================================
-   BUTTON HOVER (simple, kept for legacy compat)
-   ============================================ */
-
-.Button:hover span {
-  width: 100%;
-}
-
-.bg-white {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.transition-color {
-  transition: background-color 0.1s ease;
-}
-
-/* ============================================
-   LEGACY COMPAT: holographic-button (stripped down)
-   ============================================ */
-
-.holographic-button {
-  position: relative;
-  overflow: hidden;
-  transition: background 0.3s ease;
-}
-
-.smooth-hover {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.smooth-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.15);
-}
 /* ============================================
    JENISYS BRAND LAYER (Night-first)
    ============================================ */
@@ -457,10 +167,38 @@ body {
 .font-display { font-family: var(--font-display); }
 .font-mono { font-family: var(--font-mono); }
 
+/* Two grounds. Night is the default; Paper re-maps the same tokens, so every utility
+   (text-ink, bg-void, border-line, text-signal ...) adapts without new classes.
+   .j-night inside .j-paper restores Night for artefact frames. */
 .j-night {
+  --color-void: #050a1c;
+  --color-deep: #0a1330;
+  --color-raised: #111d45;
+  --color-line: #22305f;
+  --color-ink: #edf2ff;
+  --color-ink-muted: #98a5c9;
+  --color-signal: #14e2f9;
+  --color-volt: #4c8dff;
+  --color-gain: #3ee59c;
+  --color-alert: #ff7a70;
   background: var(--color-void);
   color: var(--color-ink);
   color-scheme: dark;
+}
+.j-paper {
+  --color-void: #f6f4ee;
+  --color-deep: #ece9df;
+  --color-raised: #ffffff;
+  --color-line: #d8d3c6;
+  --color-ink: #0a1230;
+  --color-ink-muted: #4a5578;
+  --color-signal: #1652d9;
+  --color-volt: #1652d9;
+  --color-gain: #0b7a4b;
+  --color-alert: #b42318;
+  background: var(--color-void);
+  color: var(--color-ink);
+  color-scheme: light;
 }
 
 .j-wrap {
@@ -684,4 +422,145 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .j-packet, .j-float, .j-pulse { animation: none; }
   .j-stage { transition: none; }
+}
+
+
+/* ============================================
+   v2 — "Signal on Paper" (planning/03-design-direction.md)
+   ============================================ */
+
+/* Display size: the hero headline only */
+.j-display {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(44px, 7.2vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+/* Figure: Outcome Shift numbers */
+.j-fig {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Chapter header: mono number + name, which doubles as a visible outline of the argument */
+.j-chapter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+.j-chapter b { color: var(--color-signal); font-weight: 500; }
+.j-chapter::after { content: ""; height: 1px; width: 48px; background: var(--color-line); }
+
+/* Section rhythm */
+.j-section { padding-block: 72px; }
+@media (min-width: 768px) { .j-section { padding-block: 112px; } }
+@media (min-width: 1024px) { .j-section { padding-block: 160px; } }
+.j-section-tight { padding-block: 56px; }
+@media (min-width: 768px) { .j-section-tight { padding-block: 88px; } }
+
+/* Plain and featured panels (flat, hairline, no tilt, no glow) */
+.j-box { border: 1px solid var(--color-line); border-radius: 16px; background: var(--color-raised); }
+.j-divided > * + * { border-top: 1px solid var(--color-line); }
+
+/* Paper adjustments */
+.j-paper .j-panel { border: 1px solid var(--color-line); }
+.j-paper .j-panel:hover { box-shadow: 0 18px 40px -22px rgba(10, 18, 48, 0.35); }
+.j-paper .j-btn-primary { box-shadow: inset 0 -2px 0 #1b2aa0; }
+.j-paper .j-btn-primary:hover { box-shadow: inset 0 -2px 0 #1b2aa0, 0 8px 24px -8px rgba(255, 178, 63, 0.6); }
+.j-paper .j-btn-secondary { border-color: var(--color-ink); }
+.j-paper .j-btn-secondary:hover { border-color: var(--color-signal); color: var(--color-signal); }
+.j-paper .j-btn:focus-visible { box-shadow: 0 0 0 2px var(--color-void), 0 0 0 4px #1652d9; }
+
+/* The Line: SVG strokes drawn as you scroll. Fully drawn at rest, without
+   scroll-timeline support, and under reduced motion. */
+.j-draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+@keyframes j-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@supports (animation-timeline: view()) {
+  .j-draw {
+    stroke-dashoffset: 1;
+    animation: j-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 40%;
+  }
+}
+/* Stretched SVG lines are revealed with a clip wipe (dash tricks break under non-scaling strokes) */
+@keyframes j-wipe { from { clip-path: inset(-8px 100% -8px 0); } to { clip-path: inset(-8px 0 -8px 0); } }
+@supports (animation-timeline: view()) {
+  .j-wipe { clip-path: inset(-8px 100% -8px 0); animation: j-wipe linear both; animation-timeline: view(); animation-range: entry 5% cover 45%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .j-draw { animation: none !important; stroke-dashoffset: 0 !important; }
+  .j-wipe { animation: none !important; clip-path: none !important; }
+}
+
+/* Hero still: shown instantly, and whenever WebGL is unavailable or switched off */
+.j-hero-still {
+  transition: opacity 700ms var(--ease-light);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 12%, #000 62%);
+  mask-image: linear-gradient(to bottom, transparent 12%, #000 62%);
+}
+@media (min-width: 768px) {
+  .j-hero-still {
+    -webkit-mask-image: linear-gradient(to right, transparent 40%, #000 72%);
+    mask-image: linear-gradient(to right, transparent 40%, #000 72%);
+  }
+}
+html[data-ribbon="live"] .j-hero-still { opacity: 0; }
+
+/* (Scroll-linked fade-up removed: content is visible the moment it scrolls in.) */
+.j-rise { }
+
+/* Cross-document page transitions (View Transitions API; ignored where unsupported) */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.01ms; }
+}
+
+/* Booking dialog */
+.j-dialog::backdrop { background: rgba(5, 10, 28, 0.72); backdrop-filter: blur(4px); }
+
+/* Step fade for the evaluation tool (replaces the Framer Motion transition) */
+@keyframes j-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.j-fade { animation: j-fade-in 240ms var(--ease-light) both; }
+@media (prefers-reduced-motion: reduce) { .j-fade { animation: none; } }
+
+/* Third ground: Volt. The logo's navy → blue sweep as a full-bleed section, for the moments that should feel
+   different from both Night and Paper (client reviews). Same token remap trick as .j-paper. */
+.j-volt {
+  --color-void: #14208a;
+  --color-deep: #101a70;
+  --color-raised: #1b2aa0;
+  --color-line: rgba(255, 255, 255, 0.2);
+  --color-ink: #ffffff;
+  --color-ink-muted: #d3dcff;
+  --color-signal: #6df0ff;
+  --color-gain: #6ff0b8;
+  background:
+    radial-gradient(60% 80% at 85% 0%, rgba(76, 141, 255, 0.55), transparent 70%),
+    linear-gradient(165deg, #1b2aa0 0%, #14208a 45%, #0a1330 100%);
+  color: var(--color-ink);
+  color-scheme: dark;
+}
+/* Hairline of ribbon light where one ground meets another */
+.j-edge { position: relative; }
+.j-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1b2aa0 12%, #4c8dff 50%, #14e2f9 88%, transparent);
+  pointer-events: none;
 }

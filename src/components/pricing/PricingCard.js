@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { money } from "@/lib/offers";
 
-export default function PricingCard({ tier, offerName = "", href = "/contact" }) {
+// Pricing tier. Featured tier carries the light edge; others are plain hairline panels.
+export default function PricingCard({ tier, offerName = "", offerSlug = "", href = "" }) {
+  const to = href || `/contact?${offerSlug ? `service=${offerSlug}&` : ""}plan=${encodeURIComponent(tier.name)}`;
   return (
-    <div className={`relative flex h-full flex-col rounded-3xl p-7 ${tier.featured ? "j-panel j-light-edge j-glow-signal" : "border border-line bg-deep"}`}>
+    <div className={`relative flex h-full flex-col rounded-3xl p-7 ${tier.featured ? "j-panel j-light-edge" : "border border-line bg-raised"}`}>
       {tier.featured && (
-        <span className="absolute -top-3 left-7 rounded-full bg-signal px-3 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-on-flare">Most popular</span>
+        <span className="absolute -top-3 left-7 rounded-full bg-ink px-3 py-1 font-mono text-[12px] uppercase tracking-[0.08em] text-void">Recommended</span>
       )}
       {offerName && <p className="j-eyebrow">{offerName}</p>}
       <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.02em] text-ink">{tier.name}</h3>
@@ -24,8 +26,8 @@ export default function PricingCard({ tier, offerName = "", href = "/contact" })
           </li>
         ))}
       </ul>
-      <Link href={href} className={`j-btn mt-8 w-full ${tier.featured ? "j-btn-primary" : "j-btn-secondary"}`}>
-        Get started <span className="j-arrow">→</span>
+      <Link href={to} className={`j-btn mt-8 w-full ${tier.featured ? "j-btn-primary" : "j-btn-secondary"}`}>
+        Start with {tier.name} <span className="j-arrow" aria-hidden="true">→</span>
       </Link>
     </div>
   );
