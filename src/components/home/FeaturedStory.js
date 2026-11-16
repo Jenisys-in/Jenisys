@@ -58,7 +58,7 @@ export default function FeaturedStory() {
             <span className="j-eyebrow">{other.industry}</span>
             <h3 className="j-h3 mt-2 text-ink">{other.title}</h3>
           </div>
-          <div className="flex items-baseline gap-4 tabular-nums">
+          <div className="flex shrink-0 items-baseline gap-3 whitespace-nowrap tabular-nums">
             <s className="font-mono text-lg text-ink-muted">{otherShift.before}</s>
             <span className="font-mono text-signal" aria-hidden="true">→</span>
             <span className="font-display text-4xl font-bold tracking-[-0.03em] text-ink">{otherShift.after}{otherShift.unit}</span>
