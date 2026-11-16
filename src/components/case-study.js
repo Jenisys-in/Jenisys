@@ -32,7 +32,7 @@ export default function CaseStudiesPage() {
                 >
                   <div className="lg:col-span-5">
                     <p className="j-chapter mb-6"><b>{String(i + 1).padStart(2, "0")}</b> Case study</p>
-                    {lead ? <OutcomeShift o={lead} /> : <p className="font-display text-[34px] font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-[44px]">{entry.headline}</p>}
+                    {lead ? <OutcomeShift o={lead} fill={false} /> : <p className="font-display text-[34px] font-bold leading-[1.05] tracking-[-0.03em] text-ink md:text-[44px]">{entry.headline}</p>}
                     {shifts.slice(1).map((o, k) => (
                       <p key={k} className="mt-5 flex items-baseline gap-3 border-t border-line pt-4 font-mono text-sm text-ink-muted">
                         <span className="font-display text-2xl font-bold text-ink tabular-nums">{o.prefix || ""}{o.after}{o.unit}</span> {o.what}

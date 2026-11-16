@@ -31,9 +31,9 @@ export default function FeaturedStory() {
           <div className="flex flex-col p-7 md:p-12">
             <span className="j-eyebrow">{main.industry}</span>
             <h3 className="j-h3 mt-3 text-ink">{main.title}</h3>
-            <div className="mt-8"><OutcomeShift o={shift} /></div>
+            <div className="mt-8"><OutcomeShift o={shift} fill={false} /></div>
             <p className="mt-8 max-w-[52ch] text-[16px] leading-relaxed text-ink-muted">{main.description}</p>
-            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-5">
+            <dl className="mt-8 grid grid-cols-1 gap-4 border-t border-line pt-5 min-[420px]:grid-cols-3">
               {main.metrics.map(([k, v]) => (
                 <div key={k} className="min-w-0">
                   <dt className="font-mono text-[12px] uppercase tracking-[0.08em] text-ink-muted">{k}</dt>

@@ -56,6 +56,9 @@ export default function AboutUs() {
         <div className="j-wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="j-chapter mb-5"><b>01</b> The engineer</p>
+            <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-navy via-volt to-signal p-[2px]" aria-hidden="true">
+              <span className="flex h-full w-full items-center justify-center rounded-full bg-void font-display text-2xl font-semibold tracking-[-0.02em] text-ink">TD</span>
+            </div>
             <h2 id="engineer-title" className="j-h2">{p.name}</h2>
             <p className="mt-3 font-mono text-[13px] uppercase tracking-[0.06em] text-ink-muted">{p.title}</p>
             <p className="mt-4 text-[15px] text-ink-muted">{p.education}</p>

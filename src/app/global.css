@@ -519,12 +519,8 @@ body {
 }
 html[data-ribbon="live"] .j-hero-still { opacity: 0; }
 
-/* Scroll-linked fade-up for chapter content: content is never hidden without support */
-@keyframes j-rise { from { opacity: 0.001; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@supports (animation-timeline: view()) {
-  .j-rise { animation: j-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
-}
-@media (prefers-reduced-motion: reduce) { .j-rise { animation: none !important; } }
+/* (Scroll-linked fade-up removed: content is visible the moment it scrolls in.) */
+.j-rise { }
 
 /* Cross-document page transitions (View Transitions API; ignored where unsupported) */
 @view-transition { navigation: auto; }

@@ -4,7 +4,7 @@ import { LineArrow } from "./Line";
 
 // Signature component: a measured before → after from a published case study.
 // Rule (brand system §7): only figures that appear in a delivered, published case study.
-export default function OutcomeShift({ o, href, size = "lg", as: Tag = "div" }) {
+export default function OutcomeShift({ o, href, size = "lg", as: Tag = "div", fill = true }) {
   const big = size === "lg";
   const body = (
     <>
@@ -33,5 +33,5 @@ export default function OutcomeShift({ o, href, size = "lg", as: Tag = "div" }) 
         {body}
       </Link>
     );
-  return <Tag className="flex h-full flex-col">{body}</Tag>;
+  return <Tag className={`flex flex-col ${fill ? "h-full" : ""}`}>{body}</Tag>;
 }

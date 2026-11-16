@@ -36,10 +36,33 @@ export default function PricingPage() {
         lead="Every project gets a fixed quote before we start. These are our starting prices; bigger or unusual projects get a custom quote."
       />
       <div className="j-paper">
+        <section className="border-b border-line py-12 md:py-16" aria-labelledby="choose-title">
+          <div className="j-wrap">
+            <p className="j-chapter mb-5"><b>00</b> Which one is right for me?</p>
+            <h2 id="choose-title" className="sr-only">Which one is right for me?</h2>
+            <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { say: "I have an idea but no clear scope", go: "discovery-sprint", label: "Discovery Sprint" },
+                { say: "My team loses hours to manual work", go: "ai-automation", label: "AI Automation" },
+                { say: "I need a product built and launched", go: "mvp-development", label: "MVP Development" },
+                { say: "It is live and has to keep working", go: "support", label: "Support & Maintenance" },
+              ].map((c) => (
+                <li key={c.go} className="bg-raised">
+                  <a href={`#plan-${c.go}`} className="group flex h-full flex-col justify-between gap-6 p-6 transition-colors hover:bg-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                    <span className="font-display text-[20px] font-medium leading-snug tracking-[-0.01em] text-ink">“{c.say}”</span>
+                    <span className="flex items-center justify-between font-mono text-[13px] text-signal">
+                      {c.label} <span className="transition-transform group-hover:translate-y-0.5" aria-hidden="true">↓</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
         {pricing.map((group, gi) => {
           const offer = offerBySlug[group.offer];
           return (
-            <section key={group.offer} className="border-b border-line py-14 md:py-20" aria-labelledby={`p-${group.offer}`}>
+            <section key={group.offer} id={`plan-${group.offer}`} className="scroll-mt-20 border-b border-line py-14 md:py-20" aria-labelledby={`p-${group.offer}`}>
               <div className="j-wrap grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-4">
                   <p className="j-chapter mb-4"><b>{String(gi + 1).padStart(2, "0")}</b> {offer.audience}</p>

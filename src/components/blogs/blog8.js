@@ -438,11 +438,11 @@ export default function Blog8() {
               <div className="space-y-8">
                 {BUSINESS_TYPES.map((bt) => (
                   <div key={bt.type} className={`rounded-2xl border overflow-hidden ${bt.color}`}>
-                    <div className="px-6 py-5 border-b border-inherit flex items-center gap-4">
+                    <div className="px-6 py-5 border-b border-inherit flex flex-wrap items-center gap-x-4 gap-y-3">
                       <div className={`w-10 h-10 rounded-xl ${bt.iconBg} flex items-center justify-center`}>
                         <bt.icon className={`w-5 h-5 ${bt.iconColor}`} />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <h3 className="font-bold text-slate-900 text-lg">{bt.type}</h3>
                         <p className="text-xs text-slate-600">{bt.example}</p>
                       </div>

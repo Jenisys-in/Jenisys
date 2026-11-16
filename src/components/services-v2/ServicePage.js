@@ -44,17 +44,38 @@ export default function ServicePage({ slug }) {
             <h1 className="j-h1 !text-[clamp(36px,4.8vw,64px)]">{offerHeadlines[slug]}</h1>
             <p className="j-lead mt-6">{offer.who}</p>
             <Cta className="mt-9" note={false} source={`service-${slug}`} />
-            <p className="mt-6 font-mono text-[13px] text-ink-muted">
-              from <span className="text-ink">{money(offer.from)}</span>
-              {offer.per ? `/${offer.per}` : ""} · {offer.timeline}
-            </p>
           </div>
           <div>{Visual && <Visual />}</div>
         </div>
       </header>
 
+      {/* At a glance: the three facts a buyer scans for first */}
+      <section aria-label="At a glance" className="border-b border-line">
+        <dl className="j-wrap grid sm:grid-cols-3">
+          {[
+            { k: offer.per ? "Price" : "Starting price", v: `${money(offer.from)}${offer.per ? ` / ${offer.per}` : ""}`, big: true },
+            { k: "Timeline", v: offer.timeline },
+            { k: "Best for", v: offer.audience.replace(/^For /, "").replace(/^./, (c) => c.toUpperCase()) },
+          ].map((f, i) => (
+            <div key={f.k} className={`border-line py-6 sm:py-8 ${i > 0 ? "border-t sm:border-l sm:border-t-0 sm:pl-8" : ""}`}>
+              <dt className="font-mono text-[12px] uppercase tracking-[0.08em] text-ink-muted">{f.k}</dt>
+              <dd className={`mt-2 ${f.big ? "font-display text-[34px] font-bold leading-none tracking-[-0.03em] text-ink tabular-nums" : "text-[17px] text-ink"}`}>{f.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+      <nav aria-label="On this page" className="border-b border-line">
+        <ul className="j-wrap flex gap-2 overflow-x-auto py-3 [scrollbar-width:none]">
+          {[["#overview", "Overview"], ["#examples", slug === "discovery-sprint" ? "The week" : "Examples"], ["#pricing", "Pricing"], ["#related", "Related work"], [`#faq-${slug}`, "Questions"]].map(([href, label]) => (
+            <li key={href} className="shrink-0">
+              <a href={href} className="inline-flex min-h-[40px] items-center rounded-full border border-line px-4 text-[14px] text-ink-muted transition-colors hover:border-signal hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-signal">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       {/* Problem → outcome */}
-      <section className="j-paper j-section" aria-labelledby="outcome-title">
+      <section id="overview" className="j-paper j-section scroll-mt-32" aria-labelledby="outcome-title">
         <div className="j-wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="j-chapter mb-5"><b>01</b> The problem</p>
@@ -75,13 +96,14 @@ export default function ServicePage({ slug }) {
       </section>
 
       {/* Examples */}
-      <section className="j-paper bg-deep j-section-tight border-y border-line" aria-labelledby="examples-title">
+      <section id="examples" className="j-paper bg-deep j-section-tight border-y border-line scroll-mt-32" aria-labelledby="examples-title">
         <div className="j-wrap">
           <ChapterHead n="02" name={slug === "discovery-sprint" ? "The week" : "Examples"} id="examples-title" title={examplesTitle} className="mb-12" />
           <ul className={`j-divided border-y border-line lg:divide-y-0 lg:grid ${offer.examples.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
             {offer.examples.map((e, i) => (
               <li key={e.title} className={`py-7 lg:px-7 lg:first:pl-0 lg:last:pr-0 ${i > 0 ? "lg:border-l lg:border-line" : ""}`}>
-                <h3 className="font-display text-xl font-semibold tracking-[-0.015em] text-ink">{e.title}</h3>
+                <span className="font-mono text-[13px] text-signal">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-2 font-display text-xl font-semibold tracking-[-0.015em] text-ink">{e.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">{e.body}</p>
               </li>
             ))}

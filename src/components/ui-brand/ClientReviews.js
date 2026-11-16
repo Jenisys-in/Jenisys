@@ -8,7 +8,7 @@ export default function ClientReviews({ n = "04", ground = "volt", id = "reviews
   const shown = reviews.slice(0, count);
   return (
     <section id={id} className={`${ground === "paper" ? "j-paper bg-deep" : ground === "night" ? "j-night" : "j-volt"} j-edge relative isolate overflow-hidden j-section scroll-mt-20`} aria-labelledby={`${id}-title`}>
-      {ground === "volt" && <RibbonStill className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-25" />}
+      {ground === "volt" && <RibbonStill lite className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-25" />}
       <div className="j-wrap">
         <ChapterHead
           n={n}
@@ -16,7 +16,6 @@ export default function ClientReviews({ n = "04", ground = "volt", id = "reviews
           id={`${id}-title`}
           title="What clients say after the work ships"
           lead={`Top Rated on Upwork: ${upwork.fiveStarCount} of ${upwork.reviewCount} client reviews are five stars.`}
-          className="j-rise"
         />
         <ul className="mt-14 grid border-y border-line md:grid-cols-2">
           {shown.map((r, i) => (

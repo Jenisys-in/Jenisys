@@ -56,9 +56,10 @@ export function LineArrow({ className = "" }) {
 }
 
 // The static hero ribbon: shown instantly, and whenever WebGL is unavailable (phones, low-power, no GPU).
-export function RibbonStill({ className = "" }) {
-  const strands = Array.from({ length: 9 }, (_, i) => {
-    const t = i / 8 - 0.5;
+export function RibbonStill({ className = "", lite = false }) {
+  const count = lite ? 5 : 9;
+  const strands = Array.from({ length: count }, (_, i) => {
+    const t = i / (count - 1) - 0.5;
     const a = 70 * t;
     return `M-40 ${300 + a} C 160 ${120 + a * 2.2}, 300 ${520 - a * 2}, 520 ${300 + a * 0.6} S 820 ${120 + a * 1.4}, 1000 ${260 + a}`;
   });
@@ -70,14 +71,14 @@ export function RibbonStill({ className = "" }) {
           <stop offset=".55" stopColor="#4c8dff" />
           <stop offset="1" stopColor="#14e2f9" />
         </linearGradient>
-        <filter id="rs-b" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" /></filter>
+        {!lite && <filter id="rs-b" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" /></filter>}
       </defs>
       <g fill="none" stroke="url(#rs-g)" strokeLinecap="round">
         {strands.map((d, i) => (
-          <path key={i} d={d} strokeWidth={i === 0 || i === 8 ? 2.4 : 1.1} opacity={i === 0 || i === 8 ? 0.95 : 0.5} />
+          <path key={i} d={d} strokeWidth={i === 0 || i === count - 1 ? 2.4 : 1.1} opacity={i === 0 || i === count - 1 ? 0.95 : 0.5} />
         ))}
-        <path d={strands[0]} strokeWidth="6" opacity="0.35" filter="url(#rs-b)" />
-        <path d={strands[8]} strokeWidth="6" opacity="0.35" filter="url(#rs-b)" />
+        {!lite && <path d={strands[0]} strokeWidth="6" opacity="0.35" filter="url(#rs-b)" />}
+        {!lite && <path d={strands[count - 1]} strokeWidth="6" opacity="0.35" filter="url(#rs-b)" />}
       </g>
     </svg>
   );

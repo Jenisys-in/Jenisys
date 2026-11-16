@@ -8,7 +8,7 @@ import { ChapterHead } from "./Chapter";
 export default function RelatedWork({ n = "04", slug }) {
   const list = (slug ? entries.filter((e) => e.serves?.includes(slug)) : entries).slice(0, 3);
   return (
-    <section className="j-night j-section-tight" aria-labelledby="related-title">
+    <section id="related" className="j-night j-section-tight scroll-mt-32" aria-labelledby="related-title">
       <div className="j-wrap">
         <ChapterHead
           n={n}
