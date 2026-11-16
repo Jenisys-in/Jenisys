@@ -126,6 +126,7 @@ export default function RibbonCanvas({ className = "" }) {
     resize();
     draw(performance.now());
     canvas.style.opacity = "1";
+    document.documentElement.dataset.ribbon = "live";
     play();
 
     const ro = new ResizeObserver(() => {
@@ -147,6 +148,7 @@ export default function RibbonCanvas({ className = "" }) {
     window.addEventListener("pointermove", onMove, { passive: true });
 
     return () => {
+      delete document.documentElement.dataset.ribbon;
       pause();
       ro.disconnect();
       io.disconnect();

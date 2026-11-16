@@ -184,3 +184,48 @@ export const faqs = [
 ];
 
 export const money = (n) => `$${n.toLocaleString("en-US")}`;
+
+// Service-specific questions. Every answer restates facts already on the pricing tiers and offers above,
+// so a visitor sees different questions on each service page and the structured data is not duplicated.
+export const offerFaqs = {
+  "ai-automation": [
+    { q: "What does an automation cost?", a: "Automation Starter is $1,500 for one workflow with up to three connected tools, live in about 2 weeks. Automation Growth is $4,000 for up to three workflows in about 4 weeks. Bigger or unusual work gets a custom quote." },
+    { q: "Which tools can you connect?", a: "We work with tools such as HubSpot, Xero, QuickBooks, Google Workspace and Microsoft 365, and build with Make, n8n and Zapier, using OpenAI or Claude for the AI step. We confirm every integration during discovery." },
+    { q: "Is this right for my kind of business?", a: "It is built for service businesses: accounting and bookkeeping firms, real estate agencies, clinics, law firms, recruiters, trades and home services." },
+    { q: "What happens if something breaks after launch?", a: "Starter includes 30 days of fixes after launch and Growth includes 60. After that, a Support plan from $499 a month covers updates, fixes and small changes." },
+  ],
+  "mvp-development": [
+    { q: "What does an MVP cost?", a: "MVP Launch starts at $7,500: a web app with sign-up and accounts, up to 8 core screens, payments or one key integration and an admin panel, in about 6 weeks. MVP Plus starts at $15,000 and adds iOS and Android apps, up to 15 core screens and up to 3 integrations, in about 10 weeks." },
+    { q: "Who owns the code?", a: "You do. The code, the hosting accounts and the data are yours from day one." },
+    { q: "Can you add AI features to my product?", a: "Yes. Search, chat, summaries and document understanding can be built into your product." },
+    { q: "What if I don’t know the full scope yet?", a: "Start with a $499 Discovery Sprint. In 5 working days you get a scope document, a prototype and a fixed quote, credited in full if you build with us." },
+  ],
+  "discovery-sprint": [
+    { q: "What do I get at the end?", a: "A written scope listing every feature, screen and integration, a clickable prototype or workflow map, and a fixed price and timeline." },
+    { q: "Is the $499 credited if we build with you?", a: "Yes. The Discovery Sprint fee is credited in full against your build." },
+    { q: "How long does it take?", a: "Five working days: a workshop on days 1 and 2, design on days 3 and 4, and the plan and quote on day 5." },
+    { q: "Who is it for?", a: "Anyone who wants to know exactly what they are buying, what it costs and how long it takes before committing." },
+  ],
+  support: [
+    { q: "What do the plans include?", a: "Support Essentials is $499 a month for 10 developer hours, monitoring and security updates, and a monthly report. Support Plus is $999 a month for 25 hours, a response within 1 business day and a quarterly improvement plan." },
+    { q: "Can I cancel?", a: "Yes. Plans run month to month and you can cancel anytime." },
+    { q: "What counts as a fix or a small change?", a: "Bugs, and small improvements to your website, app or automation, taken from your monthly hours." },
+    { q: "Who is it for?", a: "Businesses with a website, app or automation that has to keep working." },
+  ],
+};
+
+// Heading for each service page: the promise, not just the name.
+export const offerHeadlines = {
+  "ai-automation": "Automations that give your team hours back every week",
+  "mvp-development": "Your product, live in weeks, built by engineers who ship to production",
+  "discovery-sprint": "One week to turn an idea into a plan, a prototype and a fixed quote",
+  support: "Updates, fixes and small improvements every month, so nothing breaks",
+};
+
+// Questions that belong on the pricing page only.
+export const pricingFaqs = [
+  { q: "Are these the final prices?", a: "Every price is a starting price. After discovery you get a fixed quote, and larger or unusual projects get a custom quote." },
+  { q: "Is the Discovery Sprint credited?", a: "Yes. The $499 Discovery Sprint is credited in full if you build with us." },
+  { q: "How long is the free fix period?", a: "Automation Starter includes 30 days of fixes after launch, Automation Growth and MVP Launch 60 days, and MVP Plus 90 days." },
+  { q: "Can I cancel a support plan?", a: "Yes. Support plans run month to month and you can cancel anytime." },
+];

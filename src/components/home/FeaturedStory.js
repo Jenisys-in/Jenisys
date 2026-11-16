@@ -1,0 +1,70 @@
+import Link from "next/link";
+import { AdjudicationVisual } from "../visuals/CaseVisuals";
+import OutcomeShift from "../ui-brand/OutcomeShift";
+import { ChapterHead } from "../ui-brand/Chapter";
+import { caseStudies } from "./data";
+import { outcomes } from "@/lib/outcomes";
+
+// Chapter 03 — one story told properly, plus a pointer to the second.
+export default function FeaturedStory() {
+  const main = caseStudies[0];
+  const other = caseStudies[1];
+  const shift = outcomes.find((o) => o.slug === main.slug);
+  const otherShift = outcomes.find((o) => o.slug === other.slug);
+  return (
+    <section className="j-night j-section border-t border-line" aria-labelledby="story-title">
+      <div className="j-wrap">
+        <ChapterHead
+          n="03"
+          name="The work"
+          id="story-title"
+          title="Two systems we built, and what changed"
+          lead="Larger systems we have built. Our automation and MVP packages use the same engineering at a smaller scale."
+          className="j-rise"
+        />
+
+        <Link
+          href={`/case-study/${main.slug}`}
+          className="j-panel j-light-edge group mt-14 grid overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-signal lg:grid-cols-2"
+        >
+          <div className="flex flex-col p-7 md:p-12">
+            <span className="j-eyebrow">{main.industry}</span>
+            <h3 className="j-h3 mt-3 text-ink">{main.title}</h3>
+            <div className="mt-8"><OutcomeShift o={shift} /></div>
+            <p className="mt-8 max-w-[52ch] text-[16px] leading-relaxed text-ink-muted">{main.description}</p>
+            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-5">
+              {main.metrics.map(([k, v]) => (
+                <div key={k} className="min-w-0">
+                  <dt className="font-mono text-[12px] uppercase tracking-[0.08em] text-ink-muted">{k}</dt>
+                  <dd className="mt-1.5 font-display text-lg font-semibold leading-tight text-ink">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <span className="mt-auto inline-flex items-center gap-2 pt-8 text-[15px] font-medium text-signal">
+              Read the full case study <span className="font-mono transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+            </span>
+          </div>
+          <div className="flex items-center border-t border-line bg-void/40 px-4 py-8 lg:border-l lg:border-t-0 lg:px-10">
+            <AdjudicationVisual className="w-full" />
+          </div>
+        </Link>
+
+        <Link
+          href={`/case-study/${other.slug}`}
+          className="group mt-6 flex flex-col gap-4 rounded-2xl border border-line p-6 transition-colors hover:bg-deep focus:outline-none focus-visible:ring-2 focus-visible:ring-signal md:flex-row md:items-center md:justify-between md:p-8"
+        >
+          <div className="min-w-0">
+            <span className="j-eyebrow">{other.industry}</span>
+            <h3 className="j-h3 mt-2 text-ink">{other.title}</h3>
+          </div>
+          <div className="flex items-baseline gap-4 tabular-nums">
+            <s className="font-mono text-lg text-ink-muted">{otherShift.before}</s>
+            <span className="font-mono text-signal" aria-hidden="true">→</span>
+            <span className="font-display text-4xl font-bold tracking-[-0.03em] text-ink">{otherShift.after}{otherShift.unit}</span>
+            <span className="font-mono text-[12px] uppercase tracking-[0.06em] text-gain">monthly close</span>
+          </div>
+        </Link>
+      </div>
+    </section>
+  );
+}

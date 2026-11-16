@@ -3,10 +3,12 @@ import { Check } from "lucide-react";
 import AutomationFlow from "../visuals/AutomationFlow";
 import MvpDevices from "../visuals/MvpDevices";
 import { offerBySlug, money } from "@/lib/offers";
+import { ChapterHead } from "../ui-brand/Chapter";
 
+// Visuals are dark artefacts: they keep Night inside the Paper chapter.
 function OfferRow({ offer, visual, flip }) {
   return (
-    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
       <div className={flip ? "lg:order-2" : ""}>
         <p className="j-eyebrow mb-4">{offer.audience}</p>
         <h3 className="j-h2">{offer.name}</h3>
@@ -21,25 +23,27 @@ function OfferRow({ offer, visual, flip }) {
         </ul>
         <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
           <Link href={`/services/${offer.slug}`} className="j-btn j-btn-secondary">
-            Explore {offer.name} <span className="j-arrow">→</span>
+            Explore {offer.name} <span className="j-arrow" aria-hidden="true">→</span>
           </Link>
           <p className="font-mono text-sm text-ink-muted">
             from <span className="text-ink">{money(offer.from)}</span> · {offer.timeline}
           </p>
         </div>
       </div>
-      <div className={flip ? "lg:order-1" : ""}>{visual}</div>
+      <div className={flip ? "lg:order-1" : ""}>
+        <div className="j-night overflow-hidden rounded-3xl border border-line px-4 py-8 md:px-8 md:py-12">{visual}</div>
+      </div>
     </div>
   );
 }
 
+// Chapter 02 — two ways in. Each door leads to its own offer, proof and price.
 export default function Offers() {
   return (
-    <section className="j-night overflow-x-clip py-24 md:py-32" aria-labelledby="offers-title">
+    <section className="j-paper j-section overflow-x-clip" aria-labelledby="offers-title">
       <div className="j-wrap">
-        <p className="j-eyebrow mb-4">What we build</p>
-        <h2 id="offers-title" className="j-h2 max-w-3xl">Two ways we help businesses grow</h2>
-        <div className="mt-16 flex flex-col gap-28">
+        <ChapterHead n="02" name="Two ways in" id="offers-title" title="Two ways we help businesses grow" className="j-rise" />
+        <div className="mt-16 flex flex-col gap-24 md:gap-32">
           <OfferRow offer={offerBySlug["ai-automation"]} visual={<AutomationFlow />} />
           <OfferRow offer={offerBySlug["mvp-development"]} visual={<MvpDevices />} flip />
         </div>

@@ -1,3 +1,5 @@
+import { ogUrl } from "./og";
+
 export const SITE = "https://www.jenisys.in";
 
 // Builds consistent page metadata with canonical URL and social cards.
@@ -14,9 +16,9 @@ export function pageMeta({ title, description, path, type = "website" }) {
       siteName: "Jenisys",
       type,
       locale: "en_US",
-      images: [{ url: `${SITE}/og-image.jpg`, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogUrl(path), width: 1200, height: 630, alt: title }],
     },
-    twitter: { card: "summary_large_image", title, description, images: [`${SITE}/og-image.jpg`] },
+    twitter: { card: "summary_large_image", title, description, images: [ogUrl(path)] },
   };
 }
 

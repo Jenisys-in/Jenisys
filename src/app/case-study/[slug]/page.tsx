@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { clampDescription } from "@/lib/seo";
 import CaseStudyDetail from "@/components/case-study-detail";
 import { entries } from "@/lib/case-study-data";
+import { ogUrl } from "@/lib/og";
 
 export async function generateStaticParams() {
     return entries.map((entry) => ({
@@ -36,11 +37,10 @@ export async function generateMetadata({ params }) {
             siteName: "Jenisys",
             images: [
                 {
-                    url: "https://www.jenisys.in/og-image.jpg",
+                    url: ogUrl(`/case-study/${slug}`),
                     width: 1200,
                     height: 630,
                     alt: entry.title,
-                    type: "image/jpeg",
                 },
             ],
             locale: "en_US",
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
             card: "summary_large_image",
             title: `${entry.title} | Jenisys`,
             description: clampDescription(entry.summary),
-            images: ["https://www.jenisys.in/og-image.jpg"],
+            images: [ogUrl(`/case-study/${slug}`)],
         },
         alternates: {
             canonical: `https://www.jenisys.in/case-study/${slug}`,
@@ -71,7 +71,7 @@ export default async function CaseStudyDetailRoute({ params }) {
         "@type": "TechArticle",
         headline: entry.title,
         description: clampDescription(entry.summary),
-        image: "https://www.jenisys.in/og-image.jpg",
+        image: ogUrl(`/case-study/${entry.slug}`),
         author: {
             "@type": "Organization",
             name: "Jenisys",

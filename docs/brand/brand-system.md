@@ -2,6 +2,15 @@
 
 The brand system for jenisys.in. Everything here comes from one source: the Jenisys mark, a single ribbon of light that loops through a J. The ribbon starts deep navy, accelerates through electric blue and ends in a glowing cyan edge. The website should feel the same way: dark and calm at rest, then fast and bright wherever something happens.
 
+> **v2 (16 Nov 2026): "Signal on Paper".** Where this document and `planning/03-design-direction.md` differ, the planning document wins. Summary of what changed:
+> - **Two grounds.** Night (`void`) for statements and proof; **Paper** (`#f6f4ee`, text `#0a1230`) for reading, comparing and deciding. `.j-paper` re-maps the same colour tokens, so existing utilities adapt. `.j-night` nested inside `.j-paper` restores Night for artefact frames.
+> - **The Line.** The logo's ribbon extended into the page story: tangled at the top, straight at the call. Components in `src/components/ui-brand/Line.js`; drawn on scroll with CSS where supported, fully drawn otherwise.
+> - **One action.** Primary button **Book a free call**; secondary **Send a brief**. Component: `ui-brand/Cta.js`.
+> - **Flat panels, one glow per page.** Tilted text cards are retired. Depth stays only inside the dark artefact scenes.
+> - **Type.** Hero display size `.j-display`, figure size `.j-fig`, nothing under 12 px, mono only for labels and data.
+> - **Chapters.** Pages are sequences of numbered chapters (`ui-brand/Chapter.js`).
+> - **Tagline.** "Technology, turned into advantage." (proposed, awaiting sign-off).
+
 **In one line:** night-first, built from the logo's ribbon of light. One warm Flare colour for actions, and real delivery numbers as the main visual proof.
 
 ---

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import s from "./evaluate.module.css";
+import { track } from "@/lib/track";
 import {
   MATURITY_QUESTIONS,
   DIMENSIONS,
@@ -65,6 +66,7 @@ export default function TechnicalFitEvaluation() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
+  useEffect(() => { if (STEPS[step]?.id === "results") track("evaluation_finished"); }, [step]);
 
   useEffect(() => {
     if (!mounted) return;

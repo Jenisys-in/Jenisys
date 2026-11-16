@@ -2,30 +2,27 @@ import Footer from "./Footer";
 import Hero from "./home/Hero";
 import Outcomes from "./home/Outcomes";
 import Offers from "./home/Offers";
+import FeaturedStory from "./home/FeaturedStory";
 import HowItWorks from "./home/HowItWorks";
-import CaseStudies from "./home/CaseStudies";
 import Promises from "./home/Promises";
-import PricingPreview from "./home/PricingPreview";
-import Testimonials from "./home/Testimonials";
 import Faq from "./home/Faq";
-import BlogTeaser from "./home/BlogTeaser";
 import CallBanner from "./home/CallBanner";
+import { LineDivider } from "./ui-brand/Line";
 
-// The home page is a pitch: promise → proof → offer → process → evidence → price → objections → ask.
+// The home page is one argument in seven chapters (planning/03-design-direction.md, E6):
+// offer → proof → two ways in → the work → process and price → promises and questions → the call.
 export default function Home() {
   return (
     <div className="j-night">
       <Hero />
+      <div className="j-night" aria-hidden="true"><div className="j-wrap"><LineDivider /></div></div>
       <Outcomes />
       <Offers />
-      <HowItWorks />
-      <CaseStudies />
-      <Promises />
-      <PricingPreview />
-      <Testimonials />
+      <FeaturedStory />
+      <HowItWorks withPrices />
+      <Promises compact />
       <Faq />
-      <BlogTeaser />
-      <CallBanner />
+      <CallBanner n="06" />
       <Footer />
     </div>
   );

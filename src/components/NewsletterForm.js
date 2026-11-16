@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { track } from "@/lib/track";
 
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -33,6 +34,7 @@ export default function NewsletterForm() {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
+        track("newsletter_joined");
         setShowAlert(true);
         setFormData({ name: "", email: "" });
         setTimeout(() => setShowAlert(false), 3000);

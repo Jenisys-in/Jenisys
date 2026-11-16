@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Footer from "./Footer";
 import { useCalendar } from "@/contexts/CalendarContext";
+import { track } from "@/lib/track";
 
 const FORM_INITIAL_STATE = {
   firstname: "",
@@ -20,7 +21,7 @@ const FORM_INITIAL_STATE = {
 };
 
 const PROJECT_TYPES = [
-  { value: "", label: "Select Project Type" },
+  { value: "", label: "Select project type" },
   { value: "ai_automation", label: "AI Automation" },
   { value: "mvp", label: "MVP / App Development" },
   { value: "discovery_sprint", label: "Discovery Sprint" },
@@ -30,28 +31,27 @@ const PROJECT_TYPES = [
 ];
 
 const BUDGET_RANGES = [
-  { value: "", label: "Select Budget Range" },
+  { value: "", label: "Select budget range" },
   { value: "under_2500", label: "Under $2,500" },
   { value: "2500_7500", label: "$2,500 - $7,500" },
   { value: "7500_15k", label: "$7,500 - $15,000" },
   { value: "15k_50k", label: "$15,000 - $50,000" },
   { value: "50k_plus", label: "$50,000+" },
-  { value: "not_sure", label: "Not Sure Yet" },
+  { value: "not_sure", label: "Not sure yet" },
 ];
 
 const TIMELINE_OPTIONS = [
-  { value: "", label: "Select Timeline" },
-  { value: "asap", label: "ASAP (Rush Job)" },
-  { value: "1_month", label: "Within 1 Month" },
-  { value: "3_months", label: "Within 3 Months" },
-  { value: "6_months", label: "Within 6 Months" },
-  { value: "flexible", label: "Timeline is Flexible" },
+  { value: "", label: "Select timeline" },
+  { value: "asap", label: "As soon as possible" },
+  { value: "1_month", label: "Within 1 month" },
+  { value: "3_months", label: "Within 3 months" },
+  { value: "6_months", label: "Within 6 months" },
+  { value: "flexible", label: "Flexible" },
 ];
 
 const CONTACT_INFO = [
-  { title: "Talk to our Team", content: "+91 8240 384 648", href: "tel:+918240384648" },
-  { title: "Email Us", content: "contact@jenisys.in", href: "mailto:contact@jenisys.in" },
-  { title: "Operating Hours", content: "8am to 5pm" },
+  { title: "Email", content: "contact@jenisys.in", href: "mailto:contact@jenisys.in" },
+  { title: "Phone", content: "+91 8240 384 648", href: "tel:+918240384648" },
 ];
 
 const LOCATIONS = ["Atlanta, USA", "Kolkata, India"];
@@ -67,20 +67,20 @@ const validateField = (name, value) => {
       return /^\+?[1-9]\d{5,15}$/.test(digits) ? "" : "Please enter a valid phone number";
     }
     case "firstname":
-      return value.trim().length >= 2 ? "" : "First name must be at least 2 characters";
+      return value.trim().length >= 2 ? "" : "Please enter your name";
     case "msg":
-      return value.trim().length >= 10 ? "" : "Please provide at least 10 characters describing your project";
+      return value.trim().length >= 10 ? "" : "Please describe what you need in at least 10 characters";
     default:
       return "";
   }
 };
 
 const fieldCls =
-  "w-full rounded-lg border bg-deep px-4 py-3 text-[15px] text-ink placeholder:text-ink-muted/60 transition-colors duration-150 focus:outline-none focus:border-signal";
+  "w-full rounded-lg border bg-void px-4 py-3 text-[16px] text-ink placeholder:text-ink-muted/60 transition-colors duration-150 focus:outline-none focus:border-signal focus-visible:ring-2 focus-visible:ring-signal/40";
 
 function Field({ label, name, error, required, children }) {
   return (
-    <div className="flex flex-col gap-2 min-w-0">
+    <div className="flex min-w-0 flex-col gap-2">
       <label htmlFor={`f-${name}`} className="text-sm text-ink">
         {label} {required && <span className="text-signal" aria-hidden="true">*</span>}
       </label>
@@ -94,16 +94,24 @@ function Field({ label, name, error, required, children }) {
   );
 }
 
+// Two steps: the brief (name, email, what you need), then optional details and consent.
+// The submit contract with /api/contact is unchanged.
 function Contact() {
   const { openCalendar } = useCalendar();
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState(FORM_INITIAL_STATE);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [started, setStarted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const v = type === "checkbox" ? checked : value;
+    if (!started) {
+      setStarted(true);
+      track("brief_started");
+    }
     setFormData((prev) => ({ ...prev, [name]: v }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: type === "checkbox" ? "" : validateField(name, value) }));
   };
@@ -113,22 +121,39 @@ function Contact() {
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
 
-  const handleSubmit = async (e) => {
+  const focusFirst = (errs) => {
+    const first = document.getElementById(`f-${Object.keys(errs)[0]}`);
+    if (first) first.focus();
+  };
+
+  const goStep2 = (e) => {
     e.preventDefault();
-    const validationErrors = {};
-    for (const key of Object.keys(formData)) {
-      if (typeof formData[key] !== "string") continue;
+    const errs = {};
+    for (const key of ["firstname", "email", "msg"]) {
       const err = validateField(key, formData[key]);
-      if (err) validationErrors[key] = err;
+      if (err) errs[key] = err;
     }
-    if (!formData.personalData) validationErrors.personalData = "You must agree to the privacy policy.";
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      const first = document.getElementById(`f-${Object.keys(validationErrors)[0]}`);
-      if (first) first.focus();
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      focusFirst(errs);
       return;
     }
+    setErrors({});
+    setStep(2);
+    track("brief_step_2");
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = {};
+    const phoneErr = validateField("contactNo", formData.contactNo);
+    if (phoneErr) errs.contactNo = phoneErr;
+    if (!formData.personalData) errs.personalData = "You must agree to the privacy policy.";
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      focusFirst(errs);
+      return;
+    }
     setIsSubmitting(true);
     setErrors({});
     try {
@@ -139,11 +164,12 @@ function Contact() {
         body: JSON.stringify({ name: `${firstname} ${lastname}`.trim(), firstname, lastname, number: contactNo, ...rest }),
       });
       if (!response.ok) throw new Error("Server responded with an error.");
+      track("brief_sent");
       setSent(true);
       setFormData(FORM_INITIAL_STATE);
     } catch (error) {
       console.error("Submission error:", error);
-      setErrors({ submit: "There was an error submitting your message. Please try again." });
+      setErrors({ submit: "There was an error sending your brief. Please try again, or email contact@jenisys.in." });
     } finally {
       setIsSubmitting(false);
     }
@@ -173,147 +199,145 @@ function Contact() {
 
   return (
     <div className="j-night">
-      <section className="relative isolate overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 j-grid-bg" />
-        <div className="j-wrap grid gap-14 pt-14 pb-20 md:pt-20 lg:grid-cols-12 lg:gap-16 lg:pb-28">
-          {/* Left: promise + direct lines */}
+      <header className="border-b border-line">
+        <div className="j-wrap pt-14 pb-12 md:pt-20 md:pb-16">
+          <p className="j-eyebrow mb-5">Contact</p>
+          <h1 className="j-h1 max-w-4xl !text-[clamp(38px,5vw,64px)]">Tell us what you want to build or automate.</h1>
+          <p className="j-lead mt-6">Book a call, or send a brief and we’ll reply with a fixed-price quote.</p>
+        </div>
+      </header>
+
+      <div className="j-paper">
+        <div className="j-wrap grid gap-14 py-14 md:py-20 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <p className="j-eyebrow mb-5">Contact Us</p>
-            <h1 className="j-h1 !text-[clamp(38px,5vw,64px)]">Let&apos;s Build Something Amazing Together</h1>
-            <p className="j-lead mt-6">Ready to transform your ideas into reality? Our team is here to help you succeed.</p>
+            <p className="j-chapter mb-5"><b>01</b> Fastest</p>
+            <h2 className="j-h2">Book a free 30-minute call</h2>
+            <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">You leave with a clear next step and a price range, even if we’re not the right fit.</p>
+            <button
+              type="button"
+              onClick={() => {
+                track("call_opened", { source: "contact" });
+                openCalendar();
+              }}
+              className="j-btn j-btn-primary mt-7"
+            >
+              Book a free call <span className="j-arrow" aria-hidden="true">→</span>
+            </button>
 
             <dl className="mt-12 border-t border-line">
               {CONTACT_INFO.map((c) => (
-                <div key={c.title} className="flex items-baseline justify-between gap-6 border-b border-line py-5">
+                <div key={c.title} className="flex items-baseline justify-between gap-6 border-b border-line py-4">
                   <dt className="text-sm text-ink-muted">{c.title}</dt>
-                  <dd className="font-mono text-[15px] text-ink text-right">
-                    {c.href ? (
-                      <a href={c.href} className="hover:text-signal transition-colors duration-150">
-                        {c.content}
-                      </a>
-                    ) : (
-                      c.content
-                    )}
+                  <dd className="text-right font-mono text-[15px] text-ink">
+                    <a href={c.href} className="inline-block py-1.5 transition-colors duration-150 hover:text-signal">{c.content}</a>
                   </dd>
                 </div>
               ))}
               <div className="flex items-baseline justify-between gap-6 border-b border-line py-5">
-                <dt className="text-sm text-ink-muted">We&apos;re located at</dt>
-                <dd className="font-mono text-[15px] text-ink text-right">{LOCATIONS.join(" · ")}</dd>
+                <dt className="text-sm text-ink-muted">Offices</dt>
+                <dd className="text-right font-mono text-[15px] text-ink">{LOCATIONS.join(" · ")}</dd>
               </div>
             </dl>
-
-            <div className="mt-10 flex flex-col gap-3">
-              <p className="font-display text-xl text-ink">Schedule a free call over a cup of coffee</p>
-              <button type="button" onClick={openCalendar} className="j-btn j-btn-secondary self-start">
-                Schedule a call <span className="j-arrow">→</span>
-              </button>
-            </div>
           </div>
 
-          {/* Right: form */}
           <div className="lg:col-span-7">
-            <div className="j-panel j-light-edge p-6 sm:p-8 md:p-10">
+            <p className="j-chapter mb-5"><b>02</b> Or send a brief</p>
+            <div className="j-panel j-light-edge p-6 md:p-10">
               {sent ? (
-                <div role="status" className="py-16 text-center">
-                  <p className="font-display text-3xl font-semibold text-ink">Thanks! You&apos;ll hear from us soon!</p>
-                  <button type="button" onClick={() => setSent(false)} className="j-btn j-btn-secondary mt-8">
-                    Close
+                <div role="status" aria-live="polite">
+                  <p className="font-display text-3xl font-semibold text-ink">Thanks. We have your brief.</p>
+                  <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">We’ll reply by email with next steps. Want to talk sooner? Book a call and we’ll go through it together.</p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSent(false);
+                      setStep(1);
+                      openCalendar();
+                    }}
+                    className="j-btn j-btn-primary mt-8"
+                  >
+                    Book a free call <span className="j-arrow" aria-hidden="true">→</span>
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate>
-                  <h2 className="j-h3">Tell Us About Your Project</h2>
-                  <p className="mt-2 text-[15px] text-ink-muted">The more details you provide, the better we can help you</p>
+                <form onSubmit={step === 1 ? goStep2 : handleSubmit} noValidate className="flex flex-col gap-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="font-display text-2xl font-semibold text-ink">{step === 1 ? "Your brief" : "A few optional details"}</h3>
+                    <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">Step {step} of 2</p>
+                  </div>
 
-                  <div className="mt-8 grid gap-5 sm:grid-cols-2">
-                    <Field label="First Name" name="firstname" error={errors.firstname} required>
-                      <input {...input("firstname", { type: "text", placeholder: "John", autoComplete: "given-name", required: true })} />
-                    </Field>
-                    <Field label="Last Name" name="lastname" error={errors.lastname}>
-                      <input {...input("lastname", { type: "text", placeholder: "Doe", autoComplete: "family-name" })} />
-                    </Field>
-                    <Field label="E-Mail" name="email" error={errors.email} required>
-                      <input {...input("email", { type: "email", placeholder: "john.doe@company.com", autoComplete: "email", required: true })} />
-                    </Field>
-                    <Field label="Contact Number" name="contactNo" error={errors.contactNo}>
-                      <input {...input("contactNo", { type: "tel", placeholder: "+1 (555) 123-4567", autoComplete: "tel" })} />
-                    </Field>
-                    <Field label="Company" name="company" error={errors.company}>
-                      <input {...input("company", { type: "text", placeholder: "Your Company", autoComplete: "organization" })} />
-                    </Field>
-                    <Field label="Project Type" name="projectType" error={errors.projectType}>
-                      {select("projectType", PROJECT_TYPES)}
-                    </Field>
-                    <Field label="Budget" name="budget" error={errors.budget}>
-                      {select("budget", BUDGET_RANGES)}
-                    </Field>
-                    <Field label="Timeline" name="timeline" error={errors.timeline}>
-                      {select("timeline", TIMELINE_OPTIONS)}
-                    </Field>
-                    <div className="sm:col-span-2">
-                      <Field label="Tell us about your project" name="msg" error={errors.msg} required>
-                        <textarea
-                          {...input("msg", {
-                            rows: 5,
-                            placeholder: "Describe your project, goals, and any specific requirements...",
-                            required: true,
-                          })}
-                        />
+                  {step === 1 && (
+                    <>
+                      <Field label="Your name" name="firstname" error={errors.firstname} required>
+                        <input {...input("firstname", { type: "text", autoComplete: "name", placeholder: "Your name" })} />
                       </Field>
-                    </div>
-                  </div>
-
-                  <div className="mt-7 flex flex-col gap-3">
-                    <label className="flex items-start gap-3 text-sm text-ink-muted">
-                      <input
-                        type="checkbox"
-                        id="f-personalData"
-                        name="personalData"
-                        checked={formData.personalData}
-                        onChange={handleChange}
-                        className="mt-0.5 h-4 w-4 shrink-0 accent-[#14e2f9]"
-                        aria-invalid={errors.personalData ? true : undefined}
-                      />
-                      <span>
-                        I authorize Jenisys to use my personal data to reach out to me. <span className="text-signal" aria-hidden="true">*</span>
-                      </span>
-                    </label>
-                    {errors.personalData && <p className="text-sm text-alert">{errors.personalData}</p>}
-                    <label className="flex items-start gap-3 text-sm text-ink-muted">
-                      <input
-                        type="checkbox"
-                        name="marketing"
-                        checked={formData.marketing}
-                        onChange={handleChange}
-                        className="mt-0.5 h-4 w-4 shrink-0 accent-[#14e2f9]"
-                      />
-                      <span>I would like to receive updates regarding products and services of Jenisys.</span>
-                    </label>
-                    <p className="text-xs text-ink-muted">
-                      For more information, please refer to the{" "}
-                      <Link href="/privacy-policy" className="j-link">
-                        Privacy Policy
-                      </Link>{" "}
-                      of Jenisys.
-                    </p>
-                  </div>
-
-                  {errors.submit && (
-                    <p role="alert" className="mt-6 text-sm text-alert">
-                      {errors.submit}
-                    </p>
+                      <Field label="Email" name="email" error={errors.email} required>
+                        <input {...input("email", { type: "email", autoComplete: "email", placeholder: "you@company.com" })} />
+                      </Field>
+                      <Field label="What do you need?" name="msg" error={errors.msg} required>
+                        <textarea {...input("msg", { rows: 5, placeholder: "What you want to build or automate, in a few sentences." })} />
+                      </Field>
+                      <button type="submit" className="j-btn j-btn-primary mt-2 w-full sm:w-auto">
+                        Continue <span className="j-arrow" aria-hidden="true">→</span>
+                      </button>
+                    </>
                   )}
 
-                  <button type="submit" disabled={isSubmitting} className="j-btn j-btn-primary mt-8 w-full sm:w-auto disabled:opacity-60">
-                    {isSubmitting ? "Sending... " : "Get in Touch"} {!isSubmitting && <span className="j-arrow">→</span>}
-                  </button>
+                  {step === 2 && (
+                    <>
+                      <p className="-mt-2 text-[15px] text-ink-muted">These help us price faster. Skip any you like.</p>
+                      <div className="grid gap-5 sm:grid-cols-2">
+                        <Field label="Company" name="company" error={errors.company}>
+                          <input {...input("company", { type: "text", autoComplete: "organization", placeholder: "Your company" })} />
+                        </Field>
+                        <Field label="Phone" name="contactNo" error={errors.contactNo}>
+                          <input {...input("contactNo", { type: "tel", autoComplete: "tel", placeholder: "+1 555 123 4567" })} />
+                        </Field>
+                        <Field label="Project type" name="projectType" error={errors.projectType}>{select("projectType", PROJECT_TYPES)}</Field>
+                        <Field label="Budget" name="budget" error={errors.budget}>{select("budget", BUDGET_RANGES)}</Field>
+                        <div className="sm:col-span-2">
+                          <Field label="Timeline" name="timeline" error={errors.timeline}>{select("timeline", TIMELINE_OPTIONS)}</Field>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col gap-1 border-t border-line pt-5">
+                        <label className="flex min-h-[44px] items-start gap-3 text-[15px] text-ink">
+                          <input
+                            id="f-personalData"
+                            type="checkbox"
+                            name="personalData"
+                            checked={formData.personalData}
+                            onChange={handleChange}
+                            aria-invalid={errors.personalData ? true : undefined}
+                            aria-describedby={errors.personalData ? "f-personalData-err" : undefined}
+                            className="mt-0.5 h-5 w-5 shrink-0 accent-[#1652d9]"
+                          />
+                          <span>I agree that Jenisys may use my details to reply to this brief. <span className="text-signal" aria-hidden="true">*</span></span>
+                        </label>
+                        {errors.personalData && <p id="f-personalData-err" className="text-sm text-alert">{errors.personalData}</p>}
+                        <label className="flex min-h-[44px] items-start gap-3 text-[15px] text-ink-muted">
+                          <input id="f-marketing" type="checkbox" name="marketing" checked={formData.marketing} onChange={handleChange} className="mt-0.5 h-5 w-5 shrink-0 accent-[#1652d9]" />
+                          <span>Send me occasional updates by email.</span>
+                        </label>
+                        <p className="mt-1 text-sm text-ink-muted">See our <Link href="/privacy-policy" className="j-link">Privacy Policy</Link>.</p>
+                      </div>
+
+                      {errors.submit && <p role="alert" className="text-sm text-alert">{errors.submit}</p>}
+
+                      <div className="flex flex-wrap items-center gap-3">
+                        <button type="submit" disabled={isSubmitting} className="j-btn j-btn-primary disabled:opacity-60">
+                          {isSubmitting ? "Sending…" : "Send brief"} <span className="j-arrow" aria-hidden="true">→</span>
+                        </button>
+                        <button type="button" onClick={() => setStep(1)} className="j-btn j-btn-secondary">Back</button>
+                      </div>
+                    </>
+                  )}
                 </form>
               )}
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <Footer />
     </div>
   );

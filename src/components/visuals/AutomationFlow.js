@@ -50,7 +50,7 @@ export default function AutomationFlow({ className = "" }) {
               </span>
               <span className="min-w-0">
                 <span className="block text-[14px] font-medium text-ink">{s.title}</span>
-                <span className="block truncate font-mono text-[11px] text-ink-muted">{s.sub}</span>
+                <span className="block truncate font-mono text-[12px] text-ink-muted">{s.sub}</span>
               </span>
             </div>
           );

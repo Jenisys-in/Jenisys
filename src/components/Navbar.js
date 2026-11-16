@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
+import CalendarButton from "@/components/home/CalendarButton";
 
 const services = [
   { name: "AI Automation", path: "/services/ai-automation", note: "For service businesses" },
@@ -13,12 +14,10 @@ const services = [
 ];
 
 const navItems = [
+  { name: "Work", path: "/case-study" },
   { name: "Services", path: "/services", dropdownItems: services },
   { name: "Pricing", path: "/pricing" },
-  { name: "Case Studies", path: "/case-study" },
   { name: "About", path: "/about" },
-  { name: "Blog", path: "/blog" },
-  { name: "Contact", path: "/contact" },
 ];
 
 function isItemActive(item, pathname) {
@@ -87,7 +86,7 @@ function DesktopItem({ item, pathname, open, setOpen }) {
               >
                 <span>
                   <span className="block">{d.name}</span>
-                  {d.note && <span className="block font-mono text-[11px] text-ink-muted">{d.note}</span>}
+                  {d.note && <span className="block font-mono text-[12px] text-ink-muted">{d.note}</span>}
                 </span>
                 <span className="font-mono text-signal opacity-0 -translate-x-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-x-0">
                   →
@@ -147,7 +146,7 @@ function Navbar() {
         Skip to content
       </a>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
+        className={`j-night fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
           scrolled || mobileOpen ? "bg-void/85 backdrop-blur-xl border-b border-line" : "bg-void border-b border-transparent"
         }`}
         style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
@@ -169,9 +168,9 @@ function Navbar() {
           </div>
 
           <div className="hidden lg:block">
-            <Link href="/contact" className="j-btn j-btn-primary !min-h-[42px] !py-2.5 !px-5">
-              Get Started <span className="j-arrow">→</span>
-            </Link>
+            <CalendarButton className="j-btn j-btn-primary !min-h-[42px] !py-2.5 !px-5" source="nav">
+              Book a free call <span className="j-arrow">→</span>
+            </CalendarButton>
           </div>
 
           <button
@@ -190,7 +189,7 @@ function Navbar() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`lg:hidden fixed inset-0 z-40 bg-void transition-[opacity,transform] duration-200 ${
+        className={`j-night lg:hidden fixed inset-0 z-40 bg-void transition-[opacity,transform] duration-200 ${
           mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
         aria-hidden={!mobileOpen}
@@ -244,13 +243,16 @@ function Navbar() {
               </li>
             ))}
           </ul>
-          <Link href="/contact" className="j-btn j-btn-primary mt-8 w-full" tabIndex={mobileOpen ? 0 : -1}>
-            Get Started <span className="j-arrow">→</span>
+          <CalendarButton className="j-btn j-btn-primary mt-8 w-full" source="menu">
+            Book a free call <span className="j-arrow">→</span>
+          </CalendarButton>
+          <Link href="/contact" className="j-btn j-btn-secondary mt-3 w-full" tabIndex={mobileOpen ? 0 : -1}>
+            Send a brief
           </Link>
         </div>
       </div>
 
-      <div className="h-16 lg:h-[72px] bg-void" style={{ marginTop: "env(safe-area-inset-top, 0px)" }} aria-hidden="true" />
+      <div className="j-night h-16 lg:h-[72px] bg-void" style={{ marginTop: "env(safe-area-inset-top, 0px)" }} aria-hidden="true" />
     </>
   );
 }

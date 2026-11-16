@@ -1,11 +1,10 @@
-// All copy below is taken verbatim from the previous home page components.
-// Do not add or rewrite text here without the owner's approval (see docs/brand/brand-system.md §10).
+// Home page copy. Case study text and testimonials are carried over from the previous site.
+// Testimonials are no longer shown until each is confirmed and attributed (planning/06, section 3).
 
+// Wording below was proposed in planning/06-conversion-and-content.md (hero option A) and awaits owner sign-off.
 export const hero = {
-  titleStart: "Ship products that actually",
-  titleEnd: "move the needle",
-  lead: "From custom software to AI automation — we partner with ambitious teams to build technology that drives real business outcomes.",
-  proof: ["Government & enterprise clients", "End-to-end — design to deployment", "Australia & US — open worldwide"],
+  title: "We turn manual work into software that runs itself.",
+  lead: "AI automations for service businesses and first products for founders. Fixed price, weekly demos, results you can measure.",
 };
 
 export const caseStudiesIntro = {

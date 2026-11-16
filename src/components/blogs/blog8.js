@@ -297,7 +297,7 @@ export default function Blog8() {
                     className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeSection === item.id
                         ? "bg-[#1652D9]/8 text-[#1652D9] border-l-2 border-[#1652D9]"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                   >
                     {item.label}
@@ -307,7 +307,7 @@ export default function Blog8() {
 
               <div className="mt-8 p-4 bg-[#1652D9]/6 rounded-xl border border-[#1652D9]/15">
                 <p className="text-sm font-semibold text-[#1652D9] mb-2">Not sure where to start?</p>
-                <p className="text-xs text-slate-500 mb-3">We map your highest-ROI automation opportunities in a free 30-min session.</p>
+                <p className="text-xs text-slate-600 mb-3">We map your highest-ROI automation opportunities in a free 30-min session.</p>
                 <button onClick={openCalendar} className="w-full ds-btn-primary text-sm py-2.5">
                   Book Free Audit
                 </button>
@@ -363,7 +363,7 @@ export default function Blog8() {
                   <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-5 text-center ds-card">
                     <s.icon className={`w-7 h-7 ${s.color} mx-auto mb-2`} />
                     <div className="text-2xl font-bold text-slate-900 mb-1">{s.value}</div>
-                    <p className="text-xs text-slate-500 leading-snug">{s.label}</p>
+                    <p className="text-xs text-slate-600 leading-snug">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -444,16 +444,16 @@ export default function Blog8() {
                       </div>
                       <div>
                         <h3 className="font-bold text-slate-900 text-lg">{bt.type}</h3>
-                        <p className="text-xs text-slate-500">{bt.example}</p>
+                        <p className="text-xs text-slate-600">{bt.example}</p>
                       </div>
                       <div className="ml-auto text-right">
                         <div className="text-2xl font-bold text-[#1652D9]">{bt.roi}</div>
-                        <div className="text-xs text-slate-500">{bt.roiNote}</div>
+                        <div className="text-xs text-slate-600">{bt.roiNote}</div>
                       </div>
                     </div>
                     <div className="p-6 grid md:grid-cols-2 gap-6 bg-white">
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-3">Current Pain Points</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-red-600 mb-3">Current Pain Points</p>
                         <ul className="space-y-2">
                           {bt.problems.map((p, i) => (
                             <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
@@ -539,7 +539,7 @@ export default function Blog8() {
                         <span className="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded-full">ROI by {item.timeToROI}</span>
                       </div>
                       <p className="text-sm text-slate-600 leading-relaxed mb-2">{item.why}</p>
-                      <p className="text-xs text-slate-400"><span className="font-semibold text-slate-500">Tooling:</span> {item.tool}</p>
+                      <p className="text-xs text-slate-400"><span className="font-semibold text-slate-600">Tooling:</span> {item.tool}</p>
                     </div>
                   </div>
                 ))}

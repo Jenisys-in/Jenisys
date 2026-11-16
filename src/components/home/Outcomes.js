@@ -1,36 +1,29 @@
-import Link from "next/link";
-import CountUp from "./CountUp";
 import { outcomes as all } from "@/lib/outcomes";
+import OutcomeShift from "../ui-brand/OutcomeShift";
+import { ChapterHead } from "../ui-brand/Chapter";
 
 const outcomes = all.map((o) => ({ ...o, href: `/case-study/${o.slug}` }));
 
-// The signature proof element (brand system §7).
-export default function Outcomes() {
+// Chapter 01 — proof before promise. The signature element, enlarged.
+export default function Outcomes({ compact = false, headless = false }) {
   return (
-    <section aria-label="Results from delivered projects" className="j-night">
+    <section aria-labelledby="proof-title" className={`j-night ${compact ? "" : "j-section"}`}>
       <div className="j-wrap">
+        {!headless && (
+          <ChapterHead
+            n="01"
+            name="Proof"
+            id="proof-title"
+            title="Results from delivered projects"
+            lead="Real before-and-after figures, taken from two published case studies."
+            className="j-rise mb-12 md:mb-16"
+          />
+        )}
+        {headless && <h2 id="proof-title" className="sr-only">Results from delivered projects</h2>}
         <ul className="grid border-y border-line md:grid-cols-3">
           {outcomes.map((o, i) => (
-            <li key={i} className={`border-line ${i > 0 ? "border-t md:border-t-0 md:border-l" : ""}`}>
-              <Link href={o.href} className="group flex h-full flex-col gap-3 px-1 py-8 md:px-8 md:py-10 transition-colors duration-200 hover:bg-deep">
-                <span className="j-eyebrow">{o.eyebrow}</span>
-                <span className="text-sm text-ink-muted">{o.what}</span>
-                <span className="flex flex-wrap items-baseline gap-x-4 gap-y-1 tabular-nums">
-                  {o.before && (
-                    <>
-                      <s className="font-mono text-xl text-ink-muted decoration-1">{o.before}</s>
-                      <span className="font-mono text-signal" aria-hidden="true">→</span>
-                    </>
-                  )}
-                  <span className="font-display text-[56px] md:text-[64px] font-bold leading-none tracking-[-0.04em] text-ink">
-                    <CountUp value={o.after} prefix={o.prefix || ""} suffix={o.unit} />
-                  </span>
-                </span>
-                <span className="mt-auto flex items-center justify-between font-mono text-xs uppercase tracking-[0.06em] text-gain">
-                  <span>▼ {o.gain}</span>
-                  <span className="text-signal opacity-0 transition-opacity duration-200 group-hover:opacity-100" aria-hidden="true">→</span>
-                </span>
-              </Link>
+            <li key={i} className={`border-line px-1 py-9 md:px-8 md:py-12 md:first:pl-0 md:last:pr-0 ${i > 0 ? "border-t md:border-t-0 md:border-l" : ""}`}>
+              <OutcomeShift o={o} href={o.href} />
             </li>
           ))}
         </ul>

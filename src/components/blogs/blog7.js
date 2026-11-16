@@ -231,7 +231,7 @@ export default function Blog7() {
                     className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeSection === item.id
                         ? "bg-[#1652D9]/8 text-[#1652D9] border-l-2 border-[#1652D9]"
-                        : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                   >
                     {item.label}
@@ -241,7 +241,7 @@ export default function Blog7() {
 
               <div className="mt-8 p-4 bg-[#1652D9]/6 rounded-xl border border-[#1652D9]/15">
                 <p className="text-sm font-semibold text-[#1652D9] mb-2">Need help now?</p>
-                <p className="text-xs text-slate-500 mb-3">Book a 30-min SOPA audit and we will map every deadline across your active contracts.</p>
+                <p className="text-xs text-slate-600 mb-3">Book a 30-min SOPA audit and we will map every deadline across your active contracts.</p>
                 <button
                   onClick={openCalendar}
                   className="w-full ds-btn-primary text-sm py-2.5"
@@ -334,7 +334,7 @@ export default function Blog7() {
                   ))}
                 </div>
               </div>
-              <p className="text-sm text-slate-500 italic">
+              <p className="text-sm text-slate-600 italic">
                 Note: Residential owner-builder contracts are excluded from SOPA. All commercial, industrial, and investor residential projects are in scope.
               </p>
             </section>
@@ -364,7 +364,7 @@ export default function Blog7() {
                     <div className={`flex-1 pb-6 ${item.warn ? "bg-orange-50 border border-orange-200 rounded-xl p-4 -mt-1" : ""}`}>
                       <div className="flex items-center gap-3 mb-1">
                         <h3 className="font-bold text-slate-900">{item.title}</h3>
-                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${item.warn ? "bg-orange-100 text-orange-700" : "bg-slate-100 text-slate-500"}`}>{item.time}</span>
+                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${item.warn ? "bg-orange-100 text-orange-700" : "bg-slate-100 text-slate-600"}`}>{item.time}</span>
                         {item.warn && <span className="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full">⚠ Critical Deadline</span>}
                       </div>
                       <p className="text-sm text-slate-600 leading-relaxed">{item.detail}</p>
@@ -469,7 +469,7 @@ export default function Blog7() {
                       ].map((row) => (
                         <tr key={row.item}>
                           <td className="py-2.5 pr-4 text-slate-600">{row.item}</td>
-                          <td className="text-right py-2.5 text-slate-500">{row.a}</td>
+                          <td className="text-right py-2.5 text-slate-600">{row.a}</td>
                           <td className="text-right py-2.5 font-semibold text-[#1652D9]">{row.b}</td>
                         </tr>
                       ))}
@@ -496,7 +496,7 @@ export default function Blog7() {
                     </div>
                     <div className="p-6 grid md:grid-cols-3 gap-6">
                       <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-red-500 mb-2">The Problem</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-red-600 mb-2">The Problem</p>
                         <p className="text-sm text-slate-600 leading-relaxed">{uc.problem}</p>
                       </div>
                       <div>
