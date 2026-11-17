@@ -77,3 +77,27 @@ See the summary at the end of the chat message and `planning/13-qa-report.md` fo
 - Real photographs and product screens are still missing (needs your material).
 - Case studies from the Upwork portfolio are shorter than the two detailed ones; a longer write-up of any of them would help.
 - Real-device checks (iPhone Safari, Android Chrome) are yours: the reviews-section lag could only be addressed by cause, not measured here.
+
+---
+
+# Home hero redesign (17 November 2026)
+
+Requested: first line in full capitals; an effect on the second line; remove the two old buttons and replace them with one frosted-glass rectangle containing a catchy call to action (4 to 5 words or more) and three icon-and-label items beneath it.
+
+**Reference links.** The two Pinterest links could not be opened from this environment (blocked), so the effect is my own, built from the brand's idea of light travelling along the ribbon. If the references show something different, say so and it can be swapped.
+
+| Part | What was built |
+|---|---|
+| Line 1 | "WE TURN MANUAL WORK": full capitals (CSS), smaller and letter-spaced so it reads as the lead-in |
+| Line 2 | "into software that runs itself.": large, plain white with a streak of the logo's blue and cyan that travels through the words. It starts about 2.6 s after load, runs four sweeps, then rests on plain white. Under reduced-motion settings it does not animate. The heading text itself is unchanged for search engines and screen readers |
+| Glass panel | Frosted rectangle (blur, soft border, top light edge) over the ribbon, with a soft glow behind. It falls back to a solid navy panel where the browser cannot blur |
+| Button | "Book your free strategy call →" (5 words, 58 px tall, amber, opens the booking window) |
+| Three items | Clock icon with "30 mins"; dollar icon with "Price range discussion"; route icon with "Consultation for next steps". Icons sit in small cyan-tinted rounded squares |
+| Removed | "Book a free call" and "Send a brief" buttons and the line under them, from the hero only (they remain everywhere else) |
+| Layout | Desktop: headline left, glass panel right, over the ribbon. Tablet and phone: panel under the headline, full width on phones. Checked at 320, 390, 820 and 1440 px |
+
+**Tests.** Button opens the booking window; reachable by keyboard with a visible focus ring; three items present; no horizontal overflow at 1440, 390 and 320 px; item text at least 13 px; reduced-motion turns the sweep off; no overlapping text at 8 widths; crawl clean; 30 of 30 interaction checks pass; Lighthouse accessibility and SEO 100.
+
+**Performance decision.** The first version looped the sweep forever. A looping repaint of clipped text raised main-thread blocking in tests (median 377 ms against 208 ms with it off, 5 runs each at 4x CPU slowdown), so the sweep now starts after the page has settled and stops after four passes. Lighthouse for the home page after the change: 93 to 95 (blocking time 270 to 330 ms), against 97 to 100 before the hero redesign. 
+
+**Remaining gap, explained.** To find out whether any single new effect was responsible, each was switched off in turn (9 runs each at 4x CPU slowdown). Median blocking time: current 308 ms, without the glow behind the panel 316 ms, without the glass blur 284 ms, without the headline glow 339 ms. All differences are smaller than the spread between runs of the same variant, so no one effect is a measurable cost; the small gap against the earlier 97 to 100 is more likely the new interactive button and icons, plus normal run-to-run variation (the same page read 86 to 100 across runs). Real-device timing is still worth checking on your phone.

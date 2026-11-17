@@ -564,3 +564,80 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
   background: linear-gradient(90deg, transparent, #1b2aa0 12%, #4c8dff 50%, #14e2f9 88%, transparent);
   pointer-events: none;
 }
+
+/* ============================================
+   Home hero: capitals line, light-sweep line, glass call panel
+   ============================================ */
+.j-hero-kicker {
+  display: block;
+  margin-bottom: 0.3em;
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(22px, 4.2vw, 40px);
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+/* A streak of the logo's blue and cyan travels through the words, like light along the ribbon */
+.j-hero-shine {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(42px, 9.4vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  color: var(--color-ink);
+}
+@media (min-width: 1024px) {
+  .j-hero-shine { font-size: clamp(56px, 6.3vw, 92px); }
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .j-hero-shine {
+    color: transparent;
+    background-image: linear-gradient(100deg, #edf2ff 0%, #edf2ff 36%, #4c8dff 45%, #14e2f9 51%, #edf2ff 61%, #edf2ff 100%);
+    background-size: 260% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 26px rgba(20, 226, 249, 0.16));
+    /* Starts after the page has settled and runs four sweeps, then rests on plain white:
+       a looping repaint of clipped text is costly, so it never runs during load or forever. */
+    animation: j-shine 8s ease-in-out 2.6s 4 both;
+  }
+}
+@keyframes j-shine {
+  0%, 10% { background-position: 100% 0; }
+  58%, 100% { background-position: 0% 0; }
+}
+/* Resting state before and after the sweeps: the headline is plain white. The streak sits off to one side. */
+@media (prefers-reduced-motion: reduce) {
+  .j-hero-shine { animation: none !important; background-position: 38% 0 !important; }
+}
+
+/* Glass panel: frosted, bordered rectangle that sits over the ribbon */
+.j-glass {
+  position: relative;
+  border-radius: 24px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  backdrop-filter: blur(22px) saturate(150%);
+  box-shadow: 0 34px 80px -32px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+/* Where the browser cannot blur, use a solid navy panel so text stays readable */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .j-glass { background: rgba(14, 24, 62, 0.94); }
+}
+.j-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, transparent, #4c8dff 30%, #14e2f9 70%, transparent);
+  opacity: 0.9;
+  pointer-events: none;
+}
+@media (min-width: 1024px) { .j-hero-kicker { font-size: clamp(30px, 3.3vw, 44px); } }
