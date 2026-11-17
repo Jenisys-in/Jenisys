@@ -78,6 +78,9 @@ export default function RibbonCanvas({ className = "" }) {
     const uShift = gl.getUniformLocation(prog, "shift");
 
     const reduce = lowPower || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Phones and small tablets: fewer pixels and 30 frames a second. The ribbon is soft light, so it looks the same.
+    const narrow = window.matchMedia("(max-width: 767px)");
+    let last = 0;
     let raf = 0;
     let visible = true;
     let running = false;
@@ -85,7 +88,7 @@ export default function RibbonCanvas({ className = "" }) {
     const start = performance.now() - 8000;
 
     const resize = () => {
-      const scale = Math.min(window.devicePixelRatio || 1, 1.5) * 0.75;
+      const scale = Math.min(window.devicePixelRatio || 1, 1.5) * (narrow.matches ? 0.5 : 0.75);
       const w = Math.max(1, Math.floor(canvas.clientWidth * scale));
       const h = Math.max(1, Math.floor(canvas.clientHeight * scale));
       if (canvas.width !== w || canvas.height !== h) {
@@ -110,7 +113,10 @@ export default function RibbonCanvas({ className = "" }) {
     };
 
     const loop = (now) => {
-      draw(now);
+      if (!narrow.matches || now - last >= 32) {
+        last = now;
+        draw(now);
+      }
       raf = requestAnimationFrame(loop);
     };
     const play = () => {

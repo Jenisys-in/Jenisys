@@ -3,7 +3,17 @@
 
 // Wording below was proposed in planning/06-conversion-and-content.md (hero option A) and awaits owner sign-off.
 export const hero = {
+  titleTop: "We turn manual work",
+  titleEffect: "into software that runs itself.",
   title: "We turn manual work into software that runs itself.",
+  cta: "Book your free strategy call",
+  // Glass call card under the headline. Every line restates what the free call actually is.
+  card: {
+    tag: "Free strategy call",
+    statementLight: "Bring one slow, manual process.",
+    statementBold: "Leave with next steps and a price range.",
+    note: "Pick a time that suits you",
+  },
   lead: "AI automations for service businesses and first products for founders. Fixed price, weekly demos, results you can measure.",
 };
 
