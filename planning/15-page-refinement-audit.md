@@ -101,3 +101,13 @@ Requested: first line in full capitals; an effect on the second line; remove the
 **Performance decision.** The first version looped the sweep forever. A looping repaint of clipped text raised main-thread blocking in tests (median 377 ms against 208 ms with it off, 5 runs each at 4x CPU slowdown), so the sweep now starts after the page has settled and stops after four passes. Lighthouse for the home page after the change: 93 to 95 (blocking time 270 to 330 ms), against 97 to 100 before the hero redesign. 
 
 **Remaining gap, explained.** To find out whether any single new effect was responsible, each was switched off in turn (9 runs each at 4x CPU slowdown). Median blocking time: current 308 ms, without the glow behind the panel 316 ms, without the glass blur 284 ms, without the headline glow 339 ms. All differences are smaller than the spread between runs of the same variant, so no one effect is a measurable cost; the small gap against the earlier 97 to 100 is more likely the new interactive button and icons, plus normal run-to-run variation (the same page read 86 to 100 across runs). Real-device timing is still worth checking on your phone.
+
+## Hero round 3 (17 November 2026)
+
+- Call card moved under the headline, full width, styled as fluted glass (frosted blur, vertical reeds, pill tag, mark, mixed light/bold capitals statement, three items along the bottom).
+- New statement on the card (restates the call, no new claims): "Bring one slow, manual process. Leave with next steps and a price range."
+- A beam of the logo's light (CSS gradients, transform-only drift) sits behind the card so the glass has something to bend.
+- "into software that runs itself." now always shows the blue-cyan gradient, and a white glint loops through it forever. It moves only with transform, so it costs no repaint. The glint's words come from a data attribute, so the heading text appears once for search engines and screen readers.
+- The WebGL ribbon now runs on phones too: half resolution and 30 frames a second below 768 px; still skipped on low-power devices, software renderers and reduced motion.
+- New "Pause motion" control (WCAG 2.2.2); the choice is remembered; hidden for reduced-motion users.
+- Measured: Lighthouse mobile performance 94 to 96 (95 to 97 before), largest paint 0.9 s both, layout shift 0; blocking time at 4x CPU within run-to-run noise of the previous version.

@@ -579,8 +579,9 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
   text-transform: uppercase;
   color: var(--color-ink);
 }
-/* A streak of the logo's blue and cyan travels through the words, like light along the ribbon */
-.j-hero-shine {
+/* The line glows in the logo's colours at all times (painted once, never animated).
+   A white glint then travels through the words forever, moved only with transform (see .j-glint). */
+.j-hero-shine, .j-hero-shine-type {
   display: block;
   font-family: var(--font-display);
   font-weight: 650;
@@ -591,30 +592,170 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
   color: var(--color-ink);
 }
 @media (min-width: 1024px) {
-  .j-hero-shine { font-size: clamp(56px, 6.3vw, 92px); }
+  .j-hero-shine, .j-hero-shine-type { font-size: clamp(56px, 6.3vw, 92px); }
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .j-hero-shine {
     color: transparent;
-    background-image: linear-gradient(100deg, #edf2ff 0%, #edf2ff 36%, #4c8dff 45%, #14e2f9 51%, #edf2ff 61%, #edf2ff 100%);
-    background-size: 260% 100%;
-    background-position: 100% 0;
+    background-image: linear-gradient(100deg, #edf2ff 0%, #c4d4ff 30%, #6fa3ff 62%, #14e2f9 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    filter: drop-shadow(0 0 26px rgba(20, 226, 249, 0.16));
-    /* Starts after the page has settled and runs four sweeps, then rests on plain white:
-       a looping repaint of clipped text is costly, so it never runs during load or forever. */
-    animation: j-shine 8s ease-in-out 2.6s 4 both;
   }
 }
-@keyframes j-shine {
-  0%, 10% { background-position: 100% 0; }
-  58%, 100% { background-position: 0% 0; }
+/* Glint: a narrow window slides across the line while its copy of the words slides the other way by the
+   same distance, so the glyphs stay locked in place and only the light moves. Both are transform-only
+   (compositor), so the loop costs no repaint. The words come from data-text, so they are not duplicated. */
+.j-glint { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .j-glint {
+    display: block;
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 28%;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%, #000 55%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 45%, #000 55%, transparent);
+    will-change: transform;
+    animation: j-glint-win 7s linear 1.2s infinite both;
+  }
+  .j-glint-text {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(100% / 0.28);
+    will-change: transform;
+    animation: j-glint-txt 7s linear 1.2s infinite both;
+  }
+  .j-glint-text::after {
+    content: attr(data-text);
+    display: block;
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(20, 226, 249, 0.85), 0 0 4px rgba(255, 255, 255, 0.9);
+  }
+  html[data-motion="paused"] .j-glint,
+  html[data-motion="paused"] .j-glint-text,
+  html[data-motion="paused"] .j-beam { animation-play-state: paused; }
 }
-/* Resting state before and after the sweeps: the headline is plain white. The streak sits off to one side. */
-@media (prefers-reduced-motion: reduce) {
-  .j-hero-shine { animation: none !important; background-position: 38% 0 !important; }
+/* Window: from just off the left edge to just off the right (in its own widths: 1 / 0.28 = 357%).
+   Text: the opposite, in its own widths (0.28 and 1). Same keyframe offsets and linear timing keep them locked. */
+@keyframes j-glint-win {
+  0% { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(357.15%); }
 }
+@keyframes j-glint-txt {
+  0% { transform: translateX(28%); }
+  55%, 100% { transform: translateX(-100%); }
+}
+
+/* Beam: an arc of navy → blue → cyan light behind the call card, so the frosted glass has something to
+   bend. Gradients only (no blur filter); it drifts with transform. */
+.j-beam {
+  position: absolute;
+  left: 50%;
+  top: -55%;
+  width: min(1400px, 150%);
+  aspect-ratio: 2.2;
+  z-index: -1;
+  pointer-events: none;
+  translate: -50% 0;
+  background:
+    radial-gradient(50% 50% at 50% 100%, transparent 62%, rgba(20, 226, 249, 0.55) 68%, rgba(76, 141, 255, 0.45) 72%, rgba(27, 42, 160, 0.35) 78%, transparent 86%),
+    radial-gradient(30% 22% at 50% 70%, rgba(76, 141, 255, 0.28), transparent 70%);
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 92%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 92%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .j-beam { animation: j-beam 16s ease-in-out infinite alternate; will-change: transform; }
+}
+@keyframes j-beam {
+  from { transform: translateX(-6%) rotate(-3deg) scale(1); }
+  to { transform: translateX(6%) rotate(3deg) scale(1.06); }
+}
+@media (max-width: 767px) {
+  .j-beam { top: -20%; width: 260%; }
+}
+
+/* Fluted glass card */
+.j-prism {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 18px;
+  background: linear-gradient(160deg, rgba(22, 34, 92, 0.55), rgba(8, 14, 40, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+@media (min-width: 768px) {
+  .j-prism { padding: 26px 30px; -webkit-backdrop-filter: blur(24px) saturate(160%); backdrop-filter: blur(24px) saturate(160%); }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .j-prism { background: rgba(12, 20, 56, 0.95); }
+}
+/* Reeds: thin vertical bands of light and shade, strongest where the beam passes behind */
+.j-prism::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0, rgba(255, 255, 255, 0) 7px, rgba(0, 0, 0, 0.14) 13px, rgba(255, 255, 255, 0.09) 14px);
+  -webkit-mask-image: radial-gradient(70% 90% at 70% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(70% 90% at 70% 0%, #000, transparent 75%);
+}
+/* Light edge along the top */
+.j-prism::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4c8dff 30%, #14e2f9 70%, transparent);
+  pointer-events: none;
+}
+.j-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.j-prism-statement {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 5.6vw, 30px);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+@media (min-width: 1024px) { .j-prism-statement { font-size: clamp(28px, 2.4vw, 36px); } }
+
+.j-motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-ink-muted);
+  transition: color 150ms, border-color 150ms;
+}
+.j-motion-toggle:hover { color: var(--color-ink); border-color: var(--color-signal); }
+.j-motion-toggle:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .j-motion-toggle { display: none; } }
 
 /* Glass panel: frosted, bordered rectangle that sits over the ribbon */
 .j-glass {

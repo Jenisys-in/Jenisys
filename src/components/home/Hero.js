@@ -1,66 +1,96 @@
 import Link from "next/link";
-import { Clock3, CircleDollarSign, Route } from "lucide-react";
+import { Clock3, CircleDollarSign, Route, Asterisk } from "lucide-react";
 import RibbonMount from "./RibbonMount";
 import CalendarButton from "./CalendarButton";
+import MotionToggle from "./MotionToggle";
 import { RibbonStill } from "../ui-brand/Line";
 import { hero } from "./data";
 import { upwork } from "@/lib/upwork";
 
-// What the free call gives you, shown inside the glass panel.
+// What the free call gives you, along the bottom of the glass card.
 const gives = [
-  { Icon: Clock3, label: "30 mins" },
+  { Icon: Clock3, label: "30-minute call" },
   { Icon: CircleDollarSign, label: "Price range discussion" },
   { Icon: Route, label: "Consultation for next steps" },
 ];
 
-// Chapter 0: the offer, stated plainly. Headline on the left; the one action, in a glass panel, on the right.
+// Chapter 0: the offer, stated plainly. Headline first, then the one action in a fluted glass card
+// that sits over a beam of the logo's light.
 export default function Hero() {
+  const { card } = hero;
   return (
     <section className="j-night relative isolate overflow-hidden" aria-labelledby="hero-title">
-      {/* Static ribbon: the whole picture on phones, low-power devices and without WebGL */}
+      {/* Static ribbon: shown until the live one is ready, and kept on low-power devices or without WebGL */}
       <RibbonStill className="j-hero-still absolute inset-0 -z-20 h-full w-full opacity-60 md:opacity-90" />
       <div aria-hidden="true" className="absolute inset-0 -z-20 j-grid-bg opacity-60" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 hidden md:block">
+      <div aria-hidden="true" className="j-hero-ribbon absolute inset-0 -z-10">
         <RibbonMount />
       </div>
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-void" />
 
-      <div className="j-wrap pt-14 pb-12 md:pt-24 md:pb-16 lg:pt-28 lg:pb-20">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-7">
-            <p className="j-eyebrow mb-6 flex items-center gap-3">
-              <span className="inline-block h-px w-8 bg-gradient-to-r from-navy via-volt to-signal" aria-hidden="true" />
-              AI automation · MVP development
-            </p>
-            <h1 id="hero-title">
-              <span className="j-hero-kicker">{hero.titleTop}</span>{" "}
+      <div className="j-wrap pt-12 pb-10 md:pt-20 md:pb-14 lg:pt-20 lg:pb-14">
+        <p className="j-eyebrow mb-6 flex items-center gap-3">
+          <span className="inline-block h-px w-8 bg-gradient-to-r from-navy via-volt to-signal" aria-hidden="true" />
+          AI automation · MVP development
+        </p>
+        <div className="grid items-end gap-6 lg:grid-cols-12 lg:gap-10">
+          <h1 id="hero-title" className="lg:col-span-8">
+            <span className="j-hero-kicker">{hero.titleTop}</span>{" "}
+            <span className="relative block">
               <span className="j-hero-shine">{hero.titleEffect}</span>
-            </h1>
-            <p className="j-lead mt-7 max-w-[34rem]">{hero.lead}</p>
-          </div>
+              {/* Moving glint: drawn from data-text by CSS, so the words exist once in the page */}
+              <span className="j-glint" aria-hidden="true">
+                <span className="j-glint-text j-hero-shine-type" data-text={hero.titleEffect} />
+              </span>
+            </span>
+          </h1>
+          <p className="j-lead max-w-[34rem] lg:col-span-4 lg:pb-2">{hero.lead}</p>
+        </div>
 
-          {/* Glass call panel */}
-          <div className="relative lg:col-span-5">
-            <div aria-hidden="true" className="pointer-events-none absolute -inset-6 -z-10 rounded-[40px] opacity-80 blur-2xl" style={{ background: "radial-gradient(closest-side, rgba(76,141,255,.35), rgba(20,226,249,.12) 60%, transparent)" }} />
-            <div className="j-glass w-full max-w-[34rem] p-4 sm:p-5 lg:ml-auto lg:max-w-[28rem]">
-              <CalendarButton className="j-btn j-btn-primary w-full !min-h-[58px] !rounded-2xl !text-[16px] !font-semibold sm:!text-[17px]" source="hero">
-                {hero.cta} <span className="j-arrow" aria-hidden="true">→</span>
-              </CalendarButton>
-              <ul className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-5 text-center">
-                {gives.map(({ Icon, label }, i) => (
-                  <li key={label} className={`flex flex-col items-center gap-2.5 px-1 ${i > 0 ? "border-l border-white/10" : ""}`}>
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-signal/30 bg-signal/10 text-signal shadow-[0_0_24px_-6px_rgba(20,226,249,0.55)] sm:h-11 sm:w-11">
-                      <Icon size={20} strokeWidth={1.6} aria-hidden="true" />
-                    </span>
-                    <span className="text-[13px] font-medium leading-snug text-ink sm:text-sm">{label}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* Glass call card over a beam of light */}
+        <div className="relative mt-10 md:mt-12">
+          <div aria-hidden="true" className="j-beam" />
+          <div className="j-prism">
+            <div className="flex items-center justify-between gap-4">
+              <span className="j-pill">
+                <span className="h-1.5 w-1.5 rounded-full bg-gain" aria-hidden="true" />
+                {card.tag}
+              </span>
+              <Asterisk size={22} strokeWidth={1.5} className="text-signal" aria-hidden="true" />
             </div>
+
+            <div className="mt-5 grid items-end gap-6 md:mt-6 md:grid-cols-12 md:gap-8">
+              <p className="j-prism-statement md:col-span-7">
+                <span className="font-light text-ink/80">{card.statementLight}</span>{" "}
+                <span className="font-bold text-ink">{card.statementBold}</span>
+              </p>
+              <div className="md:col-span-5">
+                <CalendarButton className="j-btn j-btn-primary w-full !min-h-[58px] !rounded-2xl !text-[16px] !font-semibold sm:!text-[17px]" source="hero">
+                  {hero.cta} <span className="j-arrow" aria-hidden="true">→</span>
+                </CalendarButton>
+                <p className="mt-3 text-center font-mono text-[12px] uppercase tracking-[0.1em] text-ink-muted">
+                  <span className="text-signal" aria-hidden="true">→ </span>{card.note}
+                </p>
+              </div>
+            </div>
+
+            <ul className="mt-6 grid grid-cols-3 border-t border-white/15 pt-4 md:mt-7 md:pt-5">
+              {gives.map(({ Icon, label }, i) => (
+                <li
+                  key={label}
+                  className={`flex flex-col items-center gap-2 px-1 text-center sm:flex-row sm:justify-center sm:gap-3 sm:text-left ${i > 0 ? "border-l border-white/15" : ""}`}
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-signal/35 bg-signal/10 text-signal">
+                    <Icon size={17} strokeWidth={1.7} aria-hidden="true" />
+                  </span>
+                  <span className="text-[12.5px] font-medium uppercase leading-snug tracking-[0.06em] text-ink sm:text-[13px]">{label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-5 border-t border-line pt-6 md:mt-16">
+        <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4 md:mt-10">
           <Link
             href="/case-study/nsw-sopa-adjudication-platform"
             className="group inline-flex flex-wrap items-baseline gap-x-4 gap-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal"
@@ -76,6 +106,7 @@ export default function Hero() {
             <span className="h-1.5 w-1.5 rounded-full bg-gain" aria-hidden="true" />
             Top Rated on Upwork · {upwork.fiveStarCount} of {upwork.reviewCount} reviews five stars
           </a>
+          <MotionToggle className="sm:ml-auto" />
         </div>
       </div>
     </section>
