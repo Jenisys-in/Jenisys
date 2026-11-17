@@ -109,5 +109,5 @@ Requested: first line in full capitals; an effect on the second line; remove the
 - A beam of the logo's light (CSS gradients, transform-only drift) sits behind the card so the glass has something to bend.
 - "into software that runs itself." now always shows the blue-cyan gradient, and a white glint loops through it forever. It moves only with transform, so it costs no repaint. The glint's words come from a data attribute, so the heading text appears once for search engines and screen readers.
 - The WebGL ribbon now runs on phones too: half resolution and 30 frames a second below 768 px; still skipped on low-power devices, software renderers and reduced motion.
-- New "Pause motion" control (WCAG 2.2.2); the choice is remembered; hidden for reduced-motion users.
+- (A "Pause motion" button was added and then removed at the owner's request.)
 - Measured: Lighthouse mobile performance 94 to 96 (95 to 97 before), largest paint 0.9 s both, layout shift 0; blocking time at 4x CPU within run-to-run noise of the previous version.

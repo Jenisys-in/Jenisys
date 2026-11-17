@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Clock3, CircleDollarSign, Route, Asterisk } from "lucide-react";
 import RibbonMount from "./RibbonMount";
 import CalendarButton from "./CalendarButton";
-import MotionToggle from "./MotionToggle";
 import { RibbonStill } from "../ui-brand/Line";
 import { hero } from "./data";
 import { upwork } from "@/lib/upwork";
@@ -106,7 +105,6 @@ export default function Hero() {
             <span className="h-1.5 w-1.5 rounded-full bg-gain" aria-hidden="true" />
             Top Rated on Upwork · {upwork.fiveStarCount} of {upwork.reviewCount} reviews five stars
           </a>
-          <MotionToggle className="sm:ml-auto" />
         </div>
       </div>
     </section>

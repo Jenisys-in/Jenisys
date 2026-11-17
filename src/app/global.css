@@ -632,9 +632,6 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
     color: #ffffff;
     text-shadow: 0 0 18px rgba(20, 226, 249, 0.85), 0 0 4px rgba(255, 255, 255, 0.9);
   }
-  html[data-motion="paused"] .j-glint,
-  html[data-motion="paused"] .j-glint-text,
-  html[data-motion="paused"] .j-beam { animation-play-state: paused; }
 }
 /* Window: from just off the left edge to just off the right (in its own widths: 1 / 0.28 = 357%).
    Text: the opposite, in its own widths (0.28 and 1). Same keyframe offsets and linear timing keep them locked. */
@@ -740,22 +737,7 @@ html[data-ribbon="live"] .j-hero-still { opacity: 0; }
 }
 @media (min-width: 1024px) { .j-prism-statement { font-size: clamp(28px, 2.4vw, 36px); } }
 
-.j-motion-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 36px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid var(--color-line);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-ink-muted);
-  transition: color 150ms, border-color 150ms;
-}
-.j-motion-toggle:hover { color: var(--color-ink); border-color: var(--color-signal); }
-.j-motion-toggle:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { .j-motion-toggle { display: none; } }
+
 
 /* Glass panel: frosted, bordered rectangle that sits over the ribbon */
 .j-glass {
