@@ -44,7 +44,7 @@ Daily cron ──► heartbeat (Supabase stays active) · Jesper /health (wakes 
 | Joined the newsletter | 10 |
 | Arrived through a personal link | 10 |
 
-Known people (email or personal link) are reported to Jesper on each new visit; anonymous visitors only at 50+ and on every 15-point rise. A linked visitor at 60+ (or opening a personal link) gets a follow-up task for today and a Telegram alert.
+Known people (email or personal link) are reported to Jesper on each new visit; anonymous visitors only at 50+ and on every 15-point rise. A linked visitor at 60+ (or opening a personal link) gets a follow-up task for today and a Slack alert.
 
 ## Setup (in this order)
 
@@ -57,7 +57,7 @@ Known people (email or personal link) are reported to Jesper on each new visit; 
    - `SLACK_WEBHOOK_URL` (optional, free): api.slack.com/apps → Create New App → From scratch → Incoming Webhooks → On → Add New Webhook to Workspace → pick a channel → copy the URL. (Telegram also works: `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`.)
    - `CALENDLY_TOKEN` (optional): Calendly → Integrations → API & webhooks → Personal access token. Without it, bookings still alert you but stay in Calendly.
 4. **Merge the website branch.** `vercel.json` adds the daily job (04:17 UTC).
-5. Test once: send a brief from the live site. It should appear in Jesper under *Website leads* within seconds, and on Telegram.
+5. Test once: send a brief from the live site. It should appear in Jesper under *Website leads* within seconds, and in Slack.
 
 Without the variables, the website works exactly as before (Supabase only), and unsynced leads are delivered by the daily job once the variables are added.
 
