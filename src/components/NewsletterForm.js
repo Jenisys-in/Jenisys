@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { track } from "@/lib/track";
+import { visitorId } from "@/lib/visitor";
 
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -31,7 +32,7 @@ export default function NewsletterForm() {
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, visitorId: visitorId() }),
       });
       if (response.ok) {
         track("newsletter_joined");

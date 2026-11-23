@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "./Footer";
 import { useCalendar } from "@/contexts/CalendarContext";
 import { track } from "@/lib/track";
+import { attribution, visitorId } from "@/lib/visitor";
 
 const FORM_INITIAL_STATE = {
   firstname: "",
@@ -107,6 +108,7 @@ function Contact() {
   const [plan, setPlan] = useState("");
   const headingRef = useRef(null);
   const doneRef = useRef(null);
+  const trapRef = useRef(null);
 
   // Keep keyboard and screen-reader users oriented when the form changes under them.
   useEffect(() => {
@@ -182,7 +184,11 @@ function Contact() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: `${firstname} ${lastname}`.trim(), firstname, lastname, number: contactNo, ...rest, msg: plan ? `[Plan: ${plan}] ${rest.msg}` : rest.msg }),
+        body: JSON.stringify({
+          name: `${firstname} ${lastname}`.trim(), firstname, lastname, number: contactNo, ...rest, msg: plan ? `[Plan: ${plan}] ${rest.msg}` : rest.msg,
+          // Spam trap, and (only with cookie consent) the visit history that led here.
+          website: trapRef.current?.value || "", visitorId: visitorId(), attribution: attribution(),
+        }),
       });
       if (!response.ok) throw new Error("Server responded with an error.");
       track("brief_sent");
@@ -282,6 +288,11 @@ function Contact() {
                 </div>
               ) : (
                 <form onSubmit={step === 1 ? goStep2 : handleSubmit} noValidate className="flex flex-col gap-5">
+                  {/* Spam trap: hidden from people and screen readers; bots that fill it are ignored. */}
+                  <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                    <label htmlFor="f-website">Website</label>
+                    <input ref={trapRef} id="f-website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+                  </div>
                   <div className="flex items-center justify-between gap-4">
                     <h3 ref={headingRef} tabIndex={-1} className="font-display text-2xl font-semibold text-ink outline-none">{step === 1 ? "Your brief" : "A few optional details"}</h3>
                     <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">Step {step} of 2</p>

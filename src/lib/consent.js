@@ -1,6 +1,7 @@
 // Cookie consent state shared by the banner and the scripts it gates.
 export const CONSENT_KEY = "cookieConsent";
 export const CONSENT_EVENT = "jenisys:consent";
+export const CONSENT_OPEN_EVENT = "jenisys:consent-open";
 
 export function readConsent() {
   try {
