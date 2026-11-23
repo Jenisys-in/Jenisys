@@ -1,7 +1,24 @@
-import { NextResponse } from "next/server";
-import { insertRow } from "@/lib/supabase-server";
+import { NextResponse, after } from "next/server";
+import { getSupabase } from "@/lib/supabase-server";
+import { syncContact } from "@/lib/leads-sync";
+import { notify } from "@/lib/notify";
 import { mailOptions, transporter } from "../../../../config/nodemailer";
-import { Client } from "@hubspot/api-client";
+
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const short = (v, max) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : undefined);
+
+// First-touch attribution from the browser (only present with cookie consent). Bounded and typed.
+function cleanAttribution(a) {
+  if (!a || typeof a !== "object") return {};
+  const utm = {};
+  if (a.utm && typeof a.utm === "object") {
+    for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]) {
+      const v = short(a.utm[k], 120);
+      if (v) utm[k] = v;
+    }
+  }
+  return { source: short(a.source, 200), referrer: short(a.referrer, 300), landing: short(a.landing, 300), utm, ref: short(a.ref, 12) };
+}
 
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
@@ -37,33 +54,42 @@ const generateEmailContent = (raw) => {
 };
 
 export async function POST(req) {
-  const data = await req.json();
+  const data = await req.json().catch(() => null);
+  if (!data || typeof data !== "object") {
+    return NextResponse.json({ message: "Invalid input" }, { status: 400 });
+  }
+
+  // Honeypot: a hidden field people never see. Bots that fill it get a normal-looking reply and nothing is stored.
+  if (typeof data.website === "string" && data.website.trim() !== "") {
+    return NextResponse.json({ success: true });
+  }
 
   // strict input validation
   const MAX_LENGTH = 1000;
-  if (!data.name || !data.email || typeof data.name !== 'string' || typeof data.email !== 'string') {
-     return NextResponse.json({ message: "Invalid input" }, { status: 400 });
+  if (!data.name || !data.email || typeof data.name !== "string" || typeof data.email !== "string") {
+    return NextResponse.json({ message: "Invalid input" }, { status: 400 });
   }
-
-  if (data.name.length > 50 || data.email.length > 100 || (data.msg && data.msg.length > MAX_LENGTH)) {
+  if (data.name.length > 50 || data.email.length > 100 || (data.msg && String(data.msg).length > MAX_LENGTH)) {
     return NextResponse.json({ message: "Input too long" }, { status: 400 });
   }
-
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(data.email)) {
     return NextResponse.json({ message: "Invalid email format" }, { status: 400 });
   }
 
-  try {
-    // Save to database (Supabase). Known fields get columns; the full submission is kept in payload.
-    const known = Object.fromEntries(
-      Object.keys(CONTACT_MESSAGE_FIELDS)
-        .filter((k) => data[k] !== undefined && data[k] !== null)
-        .map((k) => [k, String(data[k]).slice(0, 2000)])
-    );
-    await insertRow("contacts", {
+  const known = Object.fromEntries(
+    Object.keys(CONTACT_MESSAGE_FIELDS)
+      .filter((k) => data[k] !== undefined && data[k] !== null && data[k] !== "")
+      .map((k) => [k, String(data[k]).slice(0, 2000)])
+  );
+  const visitorId = typeof data.visitorId === "string" && UUID.test(data.visitorId) ? data.visitorId.toLowerCase() : null;
+
+  // 1. Store first. The lead is safe even if email, Telegram or the CRM fail afterwards.
+  const { data: row, error } = await getSupabase()
+    .from("contacts")
+    .insert({
       name: known.name,
-      email: known.email,
+      email: known.email.trim().toLowerCase(),
       phone: known.number || null,
       company: known.company || null,
       project_type: known.projectType || null,
@@ -71,53 +97,35 @@ export async function POST(req) {
       timeline: known.timeline || null,
       message: known.msg || null,
       payload: known,
-    });
+      visitor_id: visitorId,
+      attribution: cleanAttribution(data.attribution),
+    })
+    .select("*")
+    .single();
+  if (error) {
+    console.error("Contact insert failed:", error.message);
+    return NextResponse.json({ message: "We could not save your brief. Please try again, or email contact@jenisys.in." }, { status: 500 });
+  }
 
-    // Send email
-    // A failed notification email must not lose the lead: the record is already saved.
+  // 2. After the reply is sent: link the visitor, push to the CRM, alert and email. None of this delays the visitor.
+  after(async () => {
+    if (visitorId) {
+      await getSupabase().from("web_visitors").update({ email: row.email }).eq("id", visitorId);
+    }
+    const crm = await syncContact(row);
+    const ref = crm?.ok ? crm.data?.lead?.ref : null;
+    await notify(crm?.data?.status === "duplicate" ? "Repeat enquiry from the website" : "New enquiry from the website", [
+      `${row.name}${row.company ? ` · ${row.company}` : ""} <${row.email}>`,
+      row.budget && `Budget: ${row.budget}`,
+      row.message && row.message.slice(0, 300),
+      ref ? `In Jesper: ${ref}` : "Saved on the website; it will reach Jesper on the next sync.",
+    ]);
     try {
-      await transporter.sendMail({
-        ...mailOptions,
-        ...generateEmailContent(data),
-        subject: "New Contact Message",
-      });
+      await transporter.sendMail({ ...mailOptions, ...generateEmailContent(data), subject: "New Contact Message" });
     } catch (mailErr) {
       console.error("Notification email failed:", mailErr?.message || mailErr);
     }
+  });
 
-    // Create HubSpot contact
-    try {
-      const hubspotClient = new Client({
-        accessToken: process.env.HUBSPOT_ACCESS_TOKEN,
-      });
-
-      const properties = {
-        firstname: data.firstname,
-        lastname: data.lastname,
-        email: data.email,
-        phone: data.number,
-        company: data.company,
-        project_type: data.projectType,
-        budget: data.budget,
-        timeline: data.timeline,
-        contact_message: data.msg,
-        lead_source: "website",
-      };
-
-      await hubspotClient.crm.contacts.basicApi.create({
-        properties,
-      });
-    } catch (hubspotErr) {
-      console.log("HubSpot Error:", hubspotErr);
-      // Do not block the request if HubSpot fails
-    }
-
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.log("Error:", err);
-    return NextResponse.json(
-      { message: "Error processing request", error: err.message },
-      { status: 400 }
-    );
-  }
+  return NextResponse.json({ success: true });
 }

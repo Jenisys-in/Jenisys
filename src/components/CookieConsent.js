@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { readConsent, writeConsent } from "@/lib/consent";
+import { CONSENT_OPEN_EVENT, readConsent, writeConsent } from "@/lib/consent";
 
 // Compact consent bar: a slim strip on phones, a small card bottom-left on larger screens.
 // Accept and Decline carry equal weight. Trackers only load after Accept (see ConsentScripts).
@@ -9,10 +9,14 @@ const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (readConsent() === null) {
-      const timer = setTimeout(() => setIsVisible(true), 1200);
-      return () => clearTimeout(timer);
-    }
+    const open = () => setIsVisible(true);
+    window.addEventListener(CONSENT_OPEN_EVENT, open);
+    let timer;
+    if (readConsent() === null) timer = setTimeout(open, 1200);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener(CONSENT_OPEN_EVENT, open);
+    };
   }, []);
 
   const choose = (granted) => {

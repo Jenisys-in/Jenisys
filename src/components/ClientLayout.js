@@ -13,6 +13,7 @@ const CalendarModal = dynamic(() => import("@/components/CalendarModal"), { ssr:
 const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
 const ConsentScripts = dynamic(() => import("@/components/ConsentScripts"), { ssr: false });
 const StickyCta = dynamic(() => import("@/components/StickyCta"), { ssr: false });
+const VisitorTracker = dynamic(() => import("@/components/VisitorTracker"), { ssr: false });
 
 const ClientLayout = ({ children }) => {
   const { isCalendarOpen, closeCalendar } = useCalendar();
@@ -27,6 +28,7 @@ const ClientLayout = ({ children }) => {
 
       <CookieConsent />
       <ConsentScripts />
+      <VisitorTracker />
 
       <SpeedInsights />
       <Analytics />

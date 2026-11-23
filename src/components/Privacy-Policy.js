@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
               </p>
             </header>
 
-            {/* Services that handle data (added 2026-11-16, reflects how the site works today) */}
+            {/* Services that handle data (updated 2026-11-23, reflects how the site works today) */}
             <section>
               <h2>
                 Services we use to run this website
@@ -31,10 +31,12 @@ const PrivacyPolicy = () => {
               <ul>
                 <li><strong>Vercel</strong> hosts the website and provides Web Analytics and Speed Insights, which do not use cookies.</li>
                 <li><strong>Google Analytics</strong> and the <strong>Apollo</strong> website tracker load only after you choose Accept in the cookie bar. If you decline or do not choose, they do not load.</li>
-                <li><strong>Supabase</strong> stores the details you send through our forms: contact briefs, newsletter sign-ups and talent pool applications.</li>
-                <li><strong>HubSpot</strong> receives your name, email and company when you send a brief, so we can follow up.</li>
-                <li><strong>Cloudinary</strong> stores resumes uploaded through the talent pool form.</li>
-                <li><strong>Calendly</strong> provides the booking window. It loads only when you choose to book a call.</li>
+                <li><strong>Supabase</strong> stores the details you send through our forms: contact briefs, call bookings, newsletter sign-ups and talent pool applications.</li>
+                <li><strong>Website activity, only if you accept cookies:</strong> we store a random visitor ID in your browser and record which pages and sections you view, for how long, and actions such as opening the booking calendar. If you later send a brief, book a call or join the newsletter, this history is linked to your details so we understand what you are interested in. Raw page events are deleted after 90 days. If you decline, nothing is recorded, and choosing Decline later deletes the ID from your browser.</li>
+                <li><strong>Personal links:</strong> links we send you by email or message may contain a short code (for example <code>?r=…</code>) so we know you opened them. It is used only if you accept cookies.</li>
+                <li><strong>Jesper</strong>, our own customer relationship system (hosted on Neon in the United States), receives the details you send through the contact form and call bookings, and the website activity described above, so we can follow up.</li>
+                                <li><strong>Cloudinary</strong> stores resumes uploaded through the talent pool form.</li>
+                <li><strong>Cal.com</strong> provides the booking calendar. It loads only when you choose to book a call. When you book, Cal.com sends us your name, email, the time you chose and your answers, and we add them to Jesper. If you accepted cookies, your visitor ID is sent with the booking so it joins your website activity.</li>
                 <li><strong>Email</strong> is used to notify our team of new briefs and sign-ups.</li>
               </ul>
             </section>

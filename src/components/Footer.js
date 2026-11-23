@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "./NewsletterForm";
+import CookieSettingsButton from "./CookieSettingsButton";
 import CalendarButton from "./home/CalendarButton";
 
 const quickLinks = [
@@ -93,9 +94,12 @@ const Footer = () => {
 
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-6 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Jenisys. All rights reserved.</p>
-          <Link href="/privacy-policy" className="inline-block py-2 transition-colors duration-150 hover:text-ink">
-            Privacy Policy
-          </Link>
+          <span className="flex gap-6">
+            <CookieSettingsButton className="inline-block py-2 transition-colors duration-150 hover:text-ink" />
+            <Link href="/privacy-policy" className="inline-block py-2 transition-colors duration-150 hover:text-ink">
+              Privacy Policy
+            </Link>
+          </span>
         </div>
       </div>
     </footer>

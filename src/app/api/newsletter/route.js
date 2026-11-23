@@ -26,6 +26,13 @@ export async function POST(req) {
     return NextResponse.json({ message: "Could not save your sign-up. Please try again." }, { status: 500 });
   }
 
+  // Link the address to the visitor (cookie consent only). Sign-ups stay on the website: they reach the CRM
+  // only if this person later shows buying signals or already has a lead there.
+  const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (typeof data.visitorId === "string" && UUID.test(data.visitorId)) {
+    await getSupabase().from("web_visitors").update({ email: data.email.trim().toLowerCase() }).eq("id", data.visitorId.toLowerCase());
+  }
+
   // 2. Notify the team. Non-fatal: a mail problem must not turn a saved sign-up into an error.
   try {
     await transporter.sendMail({
