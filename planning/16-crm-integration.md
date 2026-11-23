@@ -10,7 +10,7 @@ Browser (only after cookie consent)
        └─ POST /api/t (same-origin beacon) ──► Supabase: web_events (raw, 90 days) + web_visitors (totals, score)
                                                   └─ high intent ──► Jesper /api/v1/signals ──► crm_web_visitors
 Contact form ──► /api/contact ──► Supabase contacts (always first) ──► Jesper lead (exactly once)
-Calendly booking ──► /api/booking ──► verified with Calendly API ──► Supabase bookings ──► Jesper lead at "Discovery call" + meeting task
+Cal.com booking ──► signed webhook /api/booking/cal ──► Supabase bookings ──► Jesper lead at "Discovery call" + meeting task
 Newsletter ──► Supabase only (links the visitor's email; no CRM lead)
 Daily cron ──► heartbeat (Supabase stays active) · Jesper /health (wakes Neon) · retry unsynced leads · delete old raw events
 ```
@@ -54,9 +54,10 @@ Known people (email or personal link) are reported to Jesper on each new visit; 
    - `JESPER_API_URL` = the Jesper server address (the one in Jesper's sign-in screen)
    - `JESPER_API_KEY` = the key from step 2
    - `CRON_SECRET` = any long random string (Vercel Cron sends it automatically)
-   - `SLACK_WEBHOOK_URL` (optional, free): api.slack.com/apps → Create New App → From scratch → Incoming Webhooks → On → Add New Webhook to Workspace → pick a channel → copy the URL. (Telegram also works: `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`.)
-   - `CALENDLY_TOKEN` (optional): Calendly → Integrations → API & webhooks → Personal access token. Without it, bookings still alert you but stay in Calendly.
-4. **Merge the website branch.** `vercel.json` adds the daily job (04:17 UTC).
+   - Alerts (optional, off for now): `SLACK_WEBHOOK_URL`, or `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`.
+   - `CAL_WEBHOOK_SECRET`: the secret you type into the Cal.com webhook (below).
+4. **Cal.com webhook:** Cal.com → Settings → Developer → Webhooks → New. Subscriber URL `https://www.jenisys.in/api/booking/cal`; triggers Booking Created, Booking Rescheduled, Booking Cancelled; secret = the same value as `CAL_WEBHOOK_SECRET`.
+5. **Merge the website branch.** `vercel.json` adds the daily job (04:17 UTC).
 5. Test once: send a brief from the live site. It should appear in Jesper under *Website leads* within seconds, and in Slack.
 
 Without the variables, the website works exactly as before (Supabase only), and unsynced leads are delivered by the daily job once the variables are added.
@@ -66,7 +67,7 @@ Without the variables, the website works exactly as before (Supabase only), and 
 - Jesper key only on the server; the browser never sees it. Separate key scope (`web:write`) for signals.
 - Tracking endpoint: same-origin only, 16 KB limit, typed and bounded fields, event types allow-listed, bots ignored, own rate-limit bucket (90/min) so it cannot block form sending (20/min).
 - Contact form: honeypot field, generic error messages (no internal details), stored before any outside call.
-- Bookings verified against Calendly's API; forged URLs are refused.
+- Cal.com webhooks are accepted only with a valid HMAC-SHA256 signature (`x-cal-signature-256`); retries are stored once.
 - Supabase: new tables have row-level security on with no public policies; the scoring function can only be run by the service role. Security advisor: only the expected "RLS on, no policy" notices.
 - Jesper: existing hashed keys, rate limits, audit log; new inputs validated and length-capped; concurrent duplicates return 409.
 - Dependencies: Next.js patched to 16.4.6 (critical advisory). Jesper: MCP SDK and Hono node server patched.
@@ -80,6 +81,6 @@ Without the variables, the website works exactly as before (Supabase only), and 
 ## Still open
 
 - `nodemailer` needs a major upgrade (advisory concerns options the site does not pass from users); `zod` 4 and `exceljs` in Jesper likewise.
-- Calendly's API access on the free plan should be confirmed when you create the token.
+- Cancellations are recorded on the website (`bookings.status`), not yet on the Jesper lead; after a reschedule, close the old meeting task in Jesper.
 - The rate limiter is per server instance (in memory); Vercel's platform protection covers large floods.
 - The new privacy-policy paragraphs describe the tracking accurately but are legal text: please read them before merging.

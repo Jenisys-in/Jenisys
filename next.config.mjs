@@ -66,7 +66,7 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net https://assets.apollo.io https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://www.jenisys.in https://cdn.jsdelivr.net https://*.google-analytics.com https://www.googletagmanager.com https://images.unsplash.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.apollo.io https://vitals.vercel-insights.com; frame-src 'self' https://calendly.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net https://assets.apollo.io https://va.vercel-scripts.com https://app.cal.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://www.jenisys.in https://cdn.jsdelivr.net https://*.google-analytics.com https://www.googletagmanager.com https://images.unsplash.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.apollo.io https://vitals.vercel-insights.com https://app.cal.com; frame-src 'self' https://app.cal.com https://cal.com;",
           },
         ],
       },
