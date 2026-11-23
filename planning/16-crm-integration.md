@@ -54,7 +54,7 @@ Known people (email or personal link) are reported to Jesper on each new visit; 
    - `JESPER_API_URL` = the Jesper server address (the one in Jesper's sign-in screen)
    - `JESPER_API_KEY` = the key from step 2
    - `CRON_SECRET` = any long random string (Vercel Cron sends it automatically)
-   - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` (optional): create a bot with @BotFather, send it a message, then read your chat ID from `https://api.telegram.org/bot<token>/getUpdates`
+   - `SLACK_WEBHOOK_URL` (optional, free): api.slack.com/apps → Create New App → From scratch → Incoming Webhooks → On → Add New Webhook to Workspace → pick a channel → copy the URL. (Telegram also works: `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`.)
    - `CALENDLY_TOKEN` (optional): Calendly → Integrations → API & webhooks → Personal access token. Without it, bookings still alert you but stay in Calendly.
 4. **Merge the website branch.** `vercel.json` adds the daily job (04:17 UTC).
 5. Test once: send a brief from the live site. It should appear in Jesper under *Website leads* within seconds, and on Telegram.
